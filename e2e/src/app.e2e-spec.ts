@@ -10,6 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
+    browser.get('https://tobologz.github.io')
     expect(page.getTitleText()).toEqual('Welcome to AngularWindsorEmpire!');
   });
 

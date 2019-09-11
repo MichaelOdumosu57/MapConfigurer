@@ -1,1 +1,18 @@
+
+
+
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url('assets/fonts/noto_sans.woff2') format('woff2')
+    /*url('/src/assets/fonts/roboto/Roboto-Regular.woff2') format('woff2');*/
+}
+
+
+#w_o_r_d_s {
+    border: 1px solid black;
+    font-family:'Noto Sans';
+}
+
+
