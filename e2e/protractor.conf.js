@@ -13,37 +13,37 @@ exports.config = {
 //   capabilities: {
 //     'browserName': 'chrome'
 //   },
-    capabilities :{
-      browserName: 'chrome',
-      chromeOptions: {
-        args: ['--headless', '--no-sandbox']
-      }
-    },
-//   multiCapabilities: [
-//   {
-//     browserName: 'firefox'
-//   },
-//   {
-//     browserName: 'chrome',
-//   },
-//   {
-//     browserName: 'safari',
-//     'platform' : 'macOS 10.13',
-//     'version' :'11.1',
-//   },
-//   {
-//     browserName: 'internet explorer',
-//     'platform' : 'Windows 8.1',
-//     'version' :'11.0',
-//     'screenResolution':'1024x768'
-//   },
-//   {
-//     browserName: 'MicrosoftEdge',
-//     'platform' : 'Windows 10',
-//     'version' :'17.17134',
-//     'screenResolution':'1280x800'
-//   }
-//   ],
+    // capabilities :{
+    //   browserName: 'chrome',
+    //   chromeOptions: {
+    //     args: ['--headless', '--no-sandbox']
+    //   }
+    // },
+  multiCapabilities: [
+  {
+    browserName: 'firefox'
+  },
+  {
+    browserName: 'chrome',
+  },
+  {
+    browserName: 'safari',
+    'platform' : 'macOS 10.13',
+    'version' :'11.1',
+  },
+  {
+    browserName: 'internet explorer',
+    'platform' : 'Windows 8.1',
+    'version' :'11.0',
+    'screenResolution':'1024x768'
+  },
+  {
+    browserName: 'MicrosoftEdge',
+    'platform' : 'Windows 10',
+    'version' :'17.17134',
+    'screenResolution':'1280x800'
+  }
+  ],
   sauceUser:needed.sauceUser,
   sauceKey:needed.sauceKey,
   seleniumAddress: "https://" + needed.sauceUser + ":" + needed.sauceKey +
