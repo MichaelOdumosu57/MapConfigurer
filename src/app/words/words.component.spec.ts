@@ -5,10 +5,10 @@ import { WordsService  } from '../words.service';
 describe('WordsComponent', () => {
 
   let comp: WordsComponent;
-  let WordsService : WordsService;
+  let wordsService : WordsService;
   
-  userService = new UserService()
-  comp = new  WordsComponent(   WordsService  )
+  wordsService = new  WordsService()
+  comp = new  WordsComponent(   wordsService  )
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
