@@ -1,20 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { WordsComponent } from './words.component
+import { WordsComponent } from './words.component';
 import { WordsService  } from '../words.service';
-// import {path } from 'chromedriver'
-
-
-// console.log(path)
-
 
 describe('WordsComponent', () => {
 
   let comp: WordsComponent;
-  let WordsService : WordsService ;
+  let WordsService : WordsService;
   
   userService = new UserService()
-  comp = new  WordsComponent( WordsService  )
+  comp = new  WordsComponent(   WordsService  )
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
@@ -34,6 +28,6 @@ describe('WordsComponent', () => {
   });
   
   it('name property should not be undefined', () => {
-    expect(component.name).not.toBe(undefined);
+    expect(comp.name).not.toBe(undefined);
   });
 });
