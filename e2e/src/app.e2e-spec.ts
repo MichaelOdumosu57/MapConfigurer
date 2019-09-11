@@ -9,7 +9,7 @@ describe('workspace-project App', () => {
 //   });
 
   it('should display welcome message', () => {
-    browser.get('https://tobologz.github.io').then(()=>{
+    browser.get('http://24.189.66.225').then(()=>{
         browser.getTitle().then((a)=>{
             expect(a).toBe('Welcome to AngularWindsorEmpire!')
         })
