@@ -3,7 +3,7 @@
 
 const { SpecReporter } = require('jasmine-spec-reporter');
 const  needed = require('../sec/creden.js')
-console.log(__dirname)
+// console.log(__dirname)
 
 exports.config = {
   allScriptsTimeout: 11000,
@@ -56,7 +56,7 @@ exports.config = {
     defaultTimeoutInterval: 30000,
     print: function() {}
   },
-  logLevel:'ERROR',
+  logLevel:'DEBUG',
   onPrepare() {
     require('ts-node').register({
       project: require('path').join(__dirname, './tsconfig.e2e.json')

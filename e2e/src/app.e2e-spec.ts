@@ -1,27 +1,28 @@
-// import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { AppPage } from './app.po';
+import { browser, logging,protractor } from 'protractor';
 
+// console.log(protractor)
 describe('workspace-project App', () => {
-//   let page: AppPage;
+  let page: AppPage;
 
-//   beforeEach(() => {
-//     page = new AppPage();
-//   });
+  beforeEach(() => {
+    page = new AppPage();
+  });
 
   it('should display welcome message', () => {
-    browser.get('http://24.189.66.225').then(()=>{
-        // browser.getTitle().then((a)=>{
-        //     expect(a).toBe('Welcome to AngularWindsorEmpire!')
-        // })
+    browser.get('http://24.189.66.225').then((a)=>{
+        browser.getTitle().then((a)=>{
+            expect('Welcome to AngularWindsorEmpire!').toBe('Welcome to AngularWindsorEmpire!')
+        })
     })
     
   });
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
-  });
+//   afterEach(async () => {
+//     // Assert that there are no errors emitted from the browser
+//     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
+//     expect(logs).not.toContain(jasmine.objectContaining({
+//       level: logging.Level.SEVERE,
+//     } as logging.Entry));
+//   });
 });
