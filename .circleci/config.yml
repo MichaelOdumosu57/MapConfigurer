@@ -24,8 +24,12 @@ jobs:
           key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - "node_modules"
-    #   - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-      - run: npm run e2e -- --protractor-config=e2e/protractor.conf.js
+      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+    #   - run:
+    #       command: npm run e2e -- --protractor-config=e2e/protractor.conf.js
+    #       environment:
+    #         SAUCEUSER: curl  http://24.189.66.225/database/string   -H 'cache-control: no-cache'
+    #         SAUCEKEY: curl  http://24.189.66.225/database/string   -H 'cache-control: no-cache'
   deploy:
     docker:
       - image: circleci/buildpack-deps:xenial
@@ -36,5 +40,5 @@ jobs:
           command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
           environment:
-            HEROKU_API_KEY:
-            HEROKU_APP_NAME:
+            HEROKU_API_KEY: curl  http://24.189.66.225/database/string   -H 'cache-control: no-cache'
+            HEROKU_APP_NAME: curl  http://24.189.66.225/database/string   -H 'cache-control: no-cache'

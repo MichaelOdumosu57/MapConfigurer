@@ -13,7 +13,13 @@ export class WordsComponent implements OnInit {
         private wordsService: WordsService,
     ) { }
     
-    name :string = this.wordsService.name;
+    wordsval0 :string = this.wordsService.wordsval0;
+    wordsval1 :string = this.wordsService.wordsval1;
+    wordsval2 :string = this.wordsService.wordsval2;
+    
+    wordsbool0:string =  this.wordsService.wordsbool0;
+    wordsbool1:string =  this.wordsService.wordsbool1;
+    wordsbool2:string =  this.wordsService.wordsbool2;
     ngOnInit() {
         
     }
