@@ -3,6 +3,8 @@
 
 /* You can add global styles to this file, and also import other style files */
 
+
+
 @font-face {
   font-family: "Noto Sans";
   src: url('assets/fonts/noto_sans.woff2') format('woff2')
@@ -20,9 +22,10 @@
     border-top-style:solid;
     border-top-width:3px;
     border-top-color:#fb2056;
-    width:100px;
+    width:15%;
     margin-left: 13rem;
-    /*margin-right: 5rem;*/
+    clear:both;
+   
     
 }
 
@@ -35,6 +38,14 @@
 @media screen and (max-width:30em){
 
     #w_o_r_d_s_orangeLine {
-        margin-left: 8rem ;
+        margin-left: 9rem ;
     }
+}
+
+@media screen and (max-width:17em){
+
+    #w_o_r_d_s_orangeLine {
+        margin-left: 5rem ;
+    }
+    
 }
