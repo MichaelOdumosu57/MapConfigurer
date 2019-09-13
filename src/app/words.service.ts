@@ -10,8 +10,10 @@ export class WordsService {
   wordsval0:string = 'w_o_r_d_s'
   wordsval1:string = 'w_o_r_d_s_orangeLine'
   wordsval2:string = 'w_o_r_d_s_paragraph'
+  wordsval3:string = 'w_o_r_d_s_orangeDash'
   
   wordsbool0:string = 'true'
   wordsbool1:string = 'true'
   wordsbool2:string = 'true'
+  wordsbool3:string = 'true'
 }

@@ -24,9 +24,15 @@
     border-top-color:#fb2056;
     width:15%;
     margin-left: 13rem;
-    clear:both;
-   
-    
+    /*margin-left:15%;*/
+}
+
+#w_o_r_d_s_orangeDash {
+    border-top-style:solid;
+    border-top-width:3px;
+    border-top-color:#fb2056;
+    width:1rem;
+    /*margin-left: 13rem;*/
 }
 
 
@@ -38,14 +44,14 @@
 @media screen and (max-width:30em){
 
     #w_o_r_d_s_orangeLine {
-        margin-left: 9rem ;
+        margin-left: 42%; ;
     }
 }
 
 @media screen and (max-width:17em){
 
-    #w_o_r_d_s_orangeLine {
-        margin-left: 5rem ;
-    }
+    /*#w_o_r_d_s_orangeLine {*/
+    /*    margin-left: 5rem ;*/
+    /*}*/
     
 }
