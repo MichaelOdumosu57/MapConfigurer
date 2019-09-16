@@ -18,7 +18,7 @@
 }
 
 
-#w_o_r_d_s_orangeLine {
+#w_o_r_d_s_Line {
     border-top-style:solid;
     border-top-width:3px;
     border-top-color:#fb2056;
@@ -27,24 +27,33 @@
     /*margin-left:15%;*/
 }
 
-#w_o_r_d_s_orangeDash {
-    border-top-style:solid;
-    border-top-width:3px;
-    border-top-color:#fb2056;
-    width:1rem;
-    /*margin-left: 13rem;*/
-}
-
 
 #w_o_r_d_s_paragraph {
     /*border: 1px solid black;*/
     font-family:'Noto Sans';
 }
 
+#w_o_r_d_s_Dash {
+    border-top-style:solid;
+    border-top-width:3px;
+    border-top-color:#fb2056;
+    width:1rem;
+    margin: 1rem;
+    left:10em;
+}
+
+#w_o_r_d_s_paragraphDash {
+    /*border: 1px solid black;*/
+    font-family:'Noto Sans';
+    /*text-indent:2em;*/
+    /*padding:3em;*/
+    /*text-align:justify;*/
+}
+
 @media screen and (max-width:30em){
 
-    #w_o_r_d_s_orangeLine {
-        margin-left: 42%; ;
+    #w_o_r_d_s_Line {
+        margin-left: 42%; 
     }
 }
 
