@@ -34,12 +34,14 @@ export class WordsComponent implements OnInit {
     wordsSeq4:Array<Number> =  this.wordsService.wordsSeq4;
     
     wordsStyle3:any =  this.wordsService.wordsStyle3;
-    wordsStyle4:string =  this.wordsService.wordsStyle4;    
+    wordsStyle4:any =  this.wordsService.wordsStyle4;    
     
     
     ngOnInit() {
         
-        this.wordsStyle3 = this.domSanitizer.bypassSecurityTrustStyle(this.wordsService.wordsGroup0({}).wordsStyle)
+        // this.wordsStyle3 = this.domSanitizer.bypassSecurityTrustStyle(this.wordsService.wordsGroup0({}).wordsStyle)
+        this.wordsStyle3 = this.wordsService.wordsGroup0({}).wordsStyle
+        
         
     }
     

@@ -39,7 +39,8 @@
     border-top-color:#fb2056;
     width:1rem;
     margin: 1rem;
-    left:10em;
+    bottom:10em;
+    /*position:relative;*/
 }
 
 #w_o_r_d_s_paragraphDash {

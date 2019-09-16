@@ -1,5 +1,5 @@
 export class wordsGroupObject  {
-    wordsStyle: string;
+    wordsStyle: Object;
     // id: number;
 }
 

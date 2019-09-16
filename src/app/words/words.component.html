@@ -2,7 +2,7 @@
 <div *ngIf="wordsbool1 ==='true'" id = {{wordsval1}} class = 'mw3 ml2-l ml2-m'></div>
 <h3  *ngIf="wordsbool2 ==='true'" id = {{wordsval2}} class = 'f4 fw1 mw6 tc' >Fuerat aestu carentem habentia spectent tonitrua mutastis locavit liberioris. Sinistra possedit litora ut nabataeaque. Setucant coepyterunt perveniunt animal! Concordi aurea nabataeaque seductaque constaque cepit sublime flexi nullus.</h3>
 <ng-container *ngFor = 'let a of wordsSeq3' >
-    <div *ngIf="wordsbool3 ==='true'" id = {{wordsval3}} class = 'mw2' [style]= 'wordsStyle3' ></div>
+    <div *ngIf="wordsbool3 ==='true'" id = {{wordsval3}} class = 'mw2' [ngStyle] = wordsStyle3  ></div>
 </ng-container>
 <ng-container *ngFor = 'let a of wordsSeq4' >
     <h3  *ngIf="wordsbool4 ==='true'" id = {{wordsval4}} class = 'f5' style  = {{wordsStyle4}}>Trying to stay on a specific diet? We Can Help!</h3>

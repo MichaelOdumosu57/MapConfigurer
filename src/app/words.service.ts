@@ -29,14 +29,14 @@ export class WordsService {
   wordsSeq4:Array<Number> = [3,3,3]
   
   
-  wordsStyle3:any;
-  wordsStyle4:string;
+  wordsStyle3:any ={position:'relative'};
+  wordsStyle4:any;
   
   wordsGroupObject0:wordsGroupObject = {wordsStyle:'default'};
   wordsGroup0(dev_obj:Object):wordsGroupObject{
-    this.wordsGroupObject0.wordsStyle =  this.wordsStyle3  = `
-        position:relative;
-    `
+    this.wordsGroupObject0.wordsStyle =  this.wordsStyle3  = {
+        position:'relative'
+    }
     console.log(  this.wordsStyle3  )
     return  this.wordsGroupObject0
     
