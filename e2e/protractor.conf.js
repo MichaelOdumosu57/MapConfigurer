@@ -25,6 +25,8 @@ exports.config = {
   },
   {
     browserName: 'chrome',
+    browserVersion: '77.0',
+    platformName: 'Windows 10'
   },
   {
     browserName: 'safari',

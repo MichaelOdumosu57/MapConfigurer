@@ -1,20 +1,30 @@
-import {   Component, OnInit,getPlatform } from '@angular/core';
+import {   Component, OnInit,Input,ViewChild,Directive,AfterViewInit,DebugElement } from '@angular/core';
 import {   WordsService } from '../words.service';
 import {   BrowserModule,platformBrowser,disableDebugTools   } from '@angular/platform-browser';
 import {   DomSanitizer   } from '@angular/platform-browser';
 
+
+
+
+
+    
 @Component({
   selector: 'app-words',
   templateUrl: './words.component.html',
   styleUrls: ['./words.component.css']
 })
-export class WordsComponent implements OnInit {
+export class WordsComponent implements OnInit,AfterViewInit {
 
+    @ViewChild('myval') myForm: any;    
+   
     constructor(
         private wordsService: WordsService,
         private domSanitizer: DomSanitizer
     ) { }
 
+
+
+    
     wordsval0 :string = this.wordsService.wordsval0;
     wordsval1 :string = this.wordsService.wordsval1;
     wordsval2 :string = this.wordsService.wordsval2;
@@ -41,11 +51,22 @@ export class WordsComponent implements OnInit {
         
         // this.wordsStyle3 = this.domSanitizer.bypassSecurityTrustStyle(this.wordsService.wordsGroup0({}).wordsStyle)
         this.wordsStyle3 = this.wordsService.wordsGroup0({}).wordsStyle
+        this.wordsStyle4 = this.wordsService.wordsGroup1({}).wordsStyle
+        
+        
         
         
     }
     
- 
+    
+    ngAfterViewInit() {
+        console.log(this.myForm)
+        
+      
+    }    
+    
   
 }
+
+
 

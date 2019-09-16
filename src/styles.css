@@ -38,8 +38,8 @@
     border-top-width:3px;
     border-top-color:#fb2056;
     width:1rem;
-    margin: 1rem;
-    bottom:10em;
+    /*margin: 1rem;*/
+    /*bottom:10em;*/
     /*position:relative;*/
 }
 
@@ -53,9 +53,15 @@
 
 @media screen and (max-width:30em){
 
-    #w_o_r_d_s_Line {
-        margin-left: 42%; 
-    }
+  #w_o_r_d_s_Line {
+      margin-left: 42%; 
+  }
+    
+  #w_o_r_d_s_paragraphDash {
+      /*border: 1px solid black;*/
+      /*font-size:.875rem;*/
+      /*margin-top:-6%!important;*/
+  }    
 }
 
 @media screen and (max-width:17em){
