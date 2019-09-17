@@ -1,11 +1,8 @@
-import {   Component, OnInit,Input,ViewChild,Directive,AfterViewInit,DebugElement } from '@angular/core';
+import {   Component, OnInit,Input,ViewChildren,Directive,AfterViewInit,Inject } from '@angular/core';
 import {   WordsService } from '../words.service';
 import {   BrowserModule,platformBrowser,disableDebugTools   } from '@angular/platform-browser';
 import {   DomSanitizer   } from '@angular/platform-browser';
-
-
-
-
+import {   WINDOW   } from '../window.service'
 
     
 @Component({
@@ -15,16 +12,17 @@ import {   DomSanitizer   } from '@angular/platform-browser';
 })
 export class WordsComponent implements OnInit,AfterViewInit {
 
-    @ViewChild('myval') myForm: any;    
+    @ViewChildren('myval') wordsMyElements: any;    
+    
    
     constructor(
         private wordsService: WordsService,
-        private domSanitizer: DomSanitizer
+        private domSanitizer: DomSanitizer,
+        @Inject(WINDOW) private window: Window
     ) { }
 
+    wordsElementHeight : Array<Number> = this.wordsService.wordsElementHeight; 
 
-
-    
     wordsval0 :string = this.wordsService.wordsval0;
     wordsval1 :string = this.wordsService.wordsval1;
     wordsval2 :string = this.wordsService.wordsval2;
@@ -54,15 +52,31 @@ export class WordsComponent implements OnInit,AfterViewInit {
         this.wordsStyle4 = this.wordsService.wordsGroup1({}).wordsStyle
         
         
-        
-        
     }
     
     
     ngAfterViewInit() {
-        console.log(this.myForm)
+        console.log(   this.window   )
+        for(var i=0; i!== this.wordsMyElements.length;i++){
         
-      
+            console.log(   this.wordsMyElements._results[i]   )  
+            if(   this.wordsMyElements._results[i].nativeElement.id === 'w_o_r_d_s_paragraphDash'   ){
+            
+                //find out how tall is paragprah dash,height and adjust according
+                if(   this.wordsMyElements._results[i].nativeElement.clientHeight !== this.wordsService.wordsElementparagrpahDashHeight   ){
+                
+                    
+                    console.log(   this.wordsMyElements._results[i-3].nativeElement.style   )
+                    
+                    
+                }
+                //
+                
+                
+            }
+            
+            
+        }
     }    
     
   

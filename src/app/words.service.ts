@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import {  wordsGroupObject } from './wordsGroupObject';
 
+import { isPlatformBrowser } from "@angular/common";
+import { ClassProvider, FactoryProvider, InjectionToken, PLATFORM_ID } from '@angular/core';
+
+/* Create a new injection token for injecting the window into a component. */
+
 @Injectable({
   providedIn: 'root'
 })
@@ -8,7 +13,8 @@ import {  wordsGroupObject } from './wordsGroupObject';
 
 export class WordsService {
 
-  constructor( ) {};
+  constructor() { };
+  
   
   wordsval0:string = 'w_o_r_d_s'
   wordsval1:string = 'w_o_r_d_s_Line'
@@ -34,6 +40,9 @@ export class WordsService {
   
   wordsGroupObject0:wordsGroupObject = {wordsStyle:[{}]}
   wordsGroupObject1:wordsGroupObject = {wordsStyle:[{}]}
+  
+  wordsElementHeight : Array<Number>;
+  wordsElementparagrpahDashHeight : Number = 18
   
   wordsGroup0(dev_obj:Object):wordsGroupObject{
       this.wordsGroupObject0.wordsStyle =  this.wordsStyle3  = 
