@@ -4,6 +4,10 @@ import {   BrowserModule,platformBrowser,disableDebugTools   } from '@angular/pl
 import {   DomSanitizer   } from '@angular/platform-browser';
 import {   WINDOW   } from '../window.service'
 
+
+
+        
+        
     
 @Component({
   selector: 'app-words',
@@ -45,6 +49,7 @@ export class WordsComponent implements OnInit,AfterViewInit {
     wordsStyle4:any =  this.wordsService.wordsStyle4;    
     
     
+    
     ngOnInit() {
         
         // this.wordsStyle3 = this.domSanitizer.bypassSecurityTrustStyle(this.wordsService.wordsGroup0({}).wordsStyle)
@@ -56,27 +61,7 @@ export class WordsComponent implements OnInit,AfterViewInit {
     
     
     ngAfterViewInit() {
-        console.log(   this.window   )
-        for(var i=0; i!== this.wordsMyElements.length;i++){
-        
-            console.log(   this.wordsMyElements._results[i]   )  
-            if(   this.wordsMyElements._results[i].nativeElement.id === 'w_o_r_d_s_paragraphDash'   ){
-            
-                //find out how tall is paragprah dash,height and adjust according
-                if(   this.wordsMyElements._results[i].nativeElement.clientHeight !== this.wordsService.wordsElementparagrpahDashHeight   ){
-                
-                    
-                    console.log(   this.wordsMyElements._results[i-3].nativeElement.style   )
-                    
-                    
-                }
-                //
-                
-                
-            }
-            
-            
-        }
+        this.window.onresize = this.window.onload = this.wordsService.wordsRepositionDashes(this.wordsMyElements)
     }    
     
   

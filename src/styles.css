@@ -49,6 +49,12 @@
     /*text-indent:2em;*/
     /*padding:3em;*/
     /*text-align:justify;*/
+    /*margin-top: 0em;*/
+    /*margin-botton:0em;*/
+    /*margin-block-start: 0em;*/
+    /*margin-block-end: 0em;    */
+    /*-webkit-margin-block-start: 0em;*/
+    /*-webkit-margin-block-end: 0em;        */
 }
 
 @media screen and (max-width:30em){
@@ -57,11 +63,7 @@
       margin-left: 42%; 
   }
     
-  #w_o_r_d_s_paragraphDash {
-      /*border: 1px solid black;*/
-      /*font-size:.875rem;*/
-      /*margin-top:-6%!important;*/
-  }    
+   
 }
 
 @media screen and (max-width:17em){
