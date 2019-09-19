@@ -47,24 +47,6 @@ export class WordsService {
   wordsGroup0(dev_obj:Object):wordsGroupObject{
       this.wordsGroupObject0.wordsStyle =  this.wordsStyle3  = 
       [
-        // {
-        //     position:'relative',
-        //     'margin-left':'1em',
-        //     'margin-top':'2em',
-        //     'margin-bottom':'2em'
-        // },
-        // {
-        //     position:'relative',
-        //     'margin-left':'1em',
-        //     'margin-top':'2em',
-        //     'margin-bottom':'2em'
-        // },
-        // {
-        //     position:'relative',
-        //     'margin-left':'1em',
-        //     'margin-top':'2em',
-        //     'margin-bottom':'2em'
-        // }      
         {
             position:'relative',
             'left':'1em',
@@ -102,21 +84,6 @@ export class WordsService {
   wordsGroup1(dev_obj:Object):wordsGroupObject{
       this.wordsGroupObject1.wordsStyle =  this.wordsStyle4  = 
       [
-        // {
-        //     position:'relative',
-        //     'margin-left':'3em',
-        //     'margin-top':'-7em' 
-        // },
-        // {
-        //     position:'relative',
-        //     'margin-left':'3em',
-        //     'margin-top':'1em' 
-        // },
-        // {
-        //     position:'relative',
-        //     'margin-left':'3em',
-        //     'margin-top':'1em' 
-        // }
         {
             position:'relative',
             'left':'3em',
@@ -137,37 +104,39 @@ export class WordsService {
   } 
   wordsRepositionDashesCount:any = 0;
   wordsRepositionDashesData: Array<any>;
-  wordsRepositionDashes(dashes:any):any{
+  wordsRepositionDash: Array<any> = [];
+  wordsRepositionDashes():any{
       return (event:any)=>{
-          for(var i=0; i!== dashes.length;i++){
+          for(   let dashes of this.wordsRepositionDash   ){
+              for(var i=0; i!== dashes.length;i++){
+                      
+                   
+                  if(   dashes._results[i].nativeElement.id === 'w_o_r_d_s_paragraphDash'   ){
                   
-               
-              if(   dashes._results[i].nativeElement.id === 'w_o_r_d_s_paragraphDash'   ){
-              
-                      //find out how tall is paragprah dash,height and adjust according
-                      dashes._results[i-3].nativeElement.style.top
-                      console.log(   dashes._results[i].nativeElement.clientHeight,
-                         this.wordsElementparagrpahDashHeight,
-                         this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top,
-                        dashes._results[i].nativeElement.clientHeight/this.wordsElementparagrpahDashHeight
-                      )
+                          //find out how tall is paragprah dash,height and adjust according
+                          dashes._results[i-3].nativeElement.style.top
+                          // console.log(   dashes._results[i].nativeElement.clientHeight,
+                          //   this.wordsElementparagrpahDashHeight,
+                          //   this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top,
+                          //   dashes._results[i].nativeElement.clientHeight/this.wordsElementparagrpahDashHeight
+                          // )
+                          dashes._results[i-3].nativeElement.style.top = (   parseInt(this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top.split("px")[0]) + (
+                          parseInt(this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top.split("px")[0]) * ( ( dashes._results[i].nativeElement.clientHeight/this.wordsElementparagrpahDashHeight - 1   ) * this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].factor)  * this.wordsRepositionDashesCount)   ).toString() + "px"
+                          this.wordsRepositionDashesCount += 1
+                          //
+                          
+                          // dashes._results[i-3].nativeElement.style.top
+                            // base +     base * factor * arrayIndex
+                             
+                            // so when word wrap is one the factor expression needs to end up as zero
+                            //   on word wrap  1 factor ===0 
                       
-                      dashes._results[i-3].nativeElement.style.top = (   parseInt(this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top.split("px")[0]) + (
-                      parseInt(this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top.split("px")[0]) * ( ( dashes._results[i].nativeElement.clientHeight/this.wordsElementparagrpahDashHeight - 1   ) * this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].factor)  * this.wordsRepositionDashesCount)   ).toString() + "px"
-                      this.wordsRepositionDashesCount += 1
-                      //
-                      
-                      // dashes._results[i-3].nativeElement.style.top
-                        // base +     base * factor * arrayIndex
-                         
-                        // so when word wrap is one the factor expression needs to end up as zero
-                        //   on word wrap  1 factor ===0 
-                  
-              }
-                      
-                      
-          }  
-          this.wordsRepositionDashesCount = 0 
+                  }
+                          
+                          
+              }  
+              this.wordsRepositionDashesCount = 0 
+          }
       }
   }  
 }
