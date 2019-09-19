@@ -68,26 +68,30 @@ export class WordsService {
         {
             position:'relative',
             'left':'1em',
-            'top':'32px'
+            'top':'32px',
+            'factor':'0'
         },
         {
             position:'relative',
             'left':'1em',
-            'top':'64px'
+            'top':'64px',
+            'factor':'.27'
         },
         {
             position:'relative',
             'left':'1em',
-            'top':'96px'
+            'top':'96px',
+            'factor':'.175'
         }         
       ]
       
       this.wordsRepositionDashesData = Array.from(this.wordsStyle3,(a:any)=>{
-        var stuff = a.top
+        var w_R_D_D_0_i = a.top
+        var w_R_D_D_1_i = a.factor 
         return {
               lineHeight:18,
-              factor:.5,
-              top:stuff
+              top: w_R_D_D_0_i,
+              factor:w_R_D_D_1_i,
           } 
         
       })
@@ -149,7 +153,7 @@ export class WordsService {
                       )
                       
                       dashes._results[i-3].nativeElement.style.top = (   parseInt(this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top.split("px")[0]) + (
-                      parseInt(this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top.split("px")[0]) * ( dashes._results[i].nativeElement.clientHeight/this.wordsElementparagrpahDashHeight - 1)  * this.wordsRepositionDashesCount)   ).toString() + "px"
+                      parseInt(this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top.split("px")[0]) * ( ( dashes._results[i].nativeElement.clientHeight/this.wordsElementparagrpahDashHeight - 1   ) * this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].factor)  * this.wordsRepositionDashesCount)   ).toString() + "px"
                       this.wordsRepositionDashesCount += 1
                       //
                       
