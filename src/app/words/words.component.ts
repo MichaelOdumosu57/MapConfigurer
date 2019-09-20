@@ -1,4 +1,4 @@
-import {   Component, OnInit,Input,ViewChildren,Directive,AfterViewInit,Inject } from '@angular/core';
+import {   Component, OnInit,Input,ViewChildren,Directive,Inject } from '@angular/core';
 import {   WordsService   } from '../words.service';
 import {   BrowserModule,platformBrowser,disableDebugTools   } from '@angular/platform-browser';
 import {   DomSanitizer   } from '@angular/platform-browser';
@@ -14,7 +14,7 @@ import {   DomSanitizer   } from '@angular/platform-browser';
   templateUrl: './words.component.html',
   styleUrls: ['./words.component.css']
 })
-export class WordsComponent implements OnInit,AfterViewInit {
+export class WordsComponent implements OnInit {
 
     @ViewChildren('myval') wordsMyElements: any;    
     
@@ -47,8 +47,6 @@ export class WordsComponent implements OnInit,AfterViewInit {
     wordsStyle3:any =  this.wordsService.wordsStyle3;
     wordsStyle4:any =  this.wordsService.wordsStyle4;    
     
-    
-    
     ngOnInit() {
         
         // this.wordsStyle3 = this.domSanitizer.bypassSecurityTrustStyle(this.wordsService.wordsGroup0({}).wordsStyle)
@@ -57,23 +55,6 @@ export class WordsComponent implements OnInit,AfterViewInit {
         
         
     }
-    
-    
-    ngAfterViewInit() {
-        // this.wordsService.wordsRepositionDash.push(   this.wordsMyElements   )
-        
-        
-        // if(   this.window.onload !== undefined   ){
-        
-        
-        //     this.window.onresize = this.window.onload = this.wordsService.wordsRepositionDashes()
-            
-            
-        // }
-        
-        
-        // console.log(this.wordsMyElements)
-    }    
     
   
 }

@@ -108,20 +108,20 @@ export class WordsService {
   wordsRepositionDashes():any{
       return (event:any)=>{
           for(   let dashes of this.wordsRepositionDash   ){
-              for(var i=0; i!== dashes._results.length;i++){
+              for(var i=0; i!== dashes.length;i++){
                       
                    
-                  if(   dashes._results[i].nativeElement.id === 'w_o_r_d_s_paragraphDash'   ){
+                  if(   dashes[i].nativeElement.id === 'w_o_r_d_s_paragraphDash'   ){
                   
                           //find out how tall is paragprah dash,height and adjust according
-                          dashes._results[i-3].nativeElement.style.top
+                          dashes[i-3].nativeElement.style.top
                           // console.log(   dashes._results[i].nativeElement.clientHeight,
                           //   this.wordsElementparagrpahDashHeight,
                           //   this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top,
                           //   dashes._results[i].nativeElement.clientHeight/this.wordsElementparagrpahDashHeight
                           // )
-                          dashes._results[i-3].nativeElement.style.top = (   parseInt(this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top.split("px")[0]) + (
-                          parseInt(this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top.split("px")[0]) * ( ( dashes._results[i].nativeElement.clientHeight/this.wordsElementparagrpahDashHeight - 1   ) * this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].factor)  * this.wordsRepositionDashesCount)   ).toString() + "px"
+                          dashes[i-3].nativeElement.style.top = (   parseInt(this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top.split("px")[0]) + (
+                          parseInt(this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top.split("px")[0]) * ( ( dashes[i].nativeElement.clientHeight/this.wordsElementparagrpahDashHeight - 1   ) * this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].factor)  * this.wordsRepositionDashesCount)   ).toString() + "px"
                           this.wordsRepositionDashesCount += 1
                           //
                           
@@ -139,24 +139,5 @@ export class WordsService {
           }
       }
   }  
-  
-  wordsGenerateSelector(): string{
-      var a = 0;
-      var string = '';
-      return (function(){
-      
-      
-        if(   a!==3   ){
-            
-            
-            string += 'myval'+a+','
-            
-        a+=1
-        arguments.callee()        
-        }
-        return string.slice(0,-1)
-        
-      })()
-  }
   
 }

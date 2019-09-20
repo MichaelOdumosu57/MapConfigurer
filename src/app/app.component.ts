@@ -7,7 +7,6 @@ import {   WINDOW   } from './window.service';
 function appGenerateSelector(){
     var a = 0;
     var string = '';
-    var myObj = {}
     while(   a!==3   ){
         string += 'myval'+a+','
         a+=1
@@ -48,6 +47,7 @@ export class AppComponent implements AfterViewInit {
             this.app_wordsMyElements.push(   [this.app_wordsConponentElements._results[i],...this.app_wordsComponentReferences._results[i].wordsMyElements._results]   )
         }
         console.log(   this.app_wordsMyElements   )
+        this.wordsService.wordsRepositionDash.push(   ...this.app_wordsMyElements   )
         
         
         if(   this.window.onload !== undefined   ){
