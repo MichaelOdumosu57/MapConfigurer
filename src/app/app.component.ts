@@ -1,7 +1,7 @@
 import { Component,OnInit,ViewChildren,AfterViewInit,Inject,ElementRef  } from '@angular/core';
 import {   WordsService   } from './words.service';
 import {   WINDOW   } from './window.service';
-
+import {   fromEvent   } from 'rxjs';
 
 
 function appGenerateSelector(){
@@ -35,10 +35,7 @@ export class AppComponent implements AfterViewInit {
         @Inject(WINDOW) private window: Window
     ) { }
     
-
-    
     appTitle:string = 'WindsorEmpire'
-    
     
     ngAfterViewInit() {
         // this.wordsService.wordsRepositionDash.push(   this.appMyElements     )
@@ -49,14 +46,13 @@ export class AppComponent implements AfterViewInit {
         console.log(   this.app_wordsMyElements   )
         this.wordsService.wordsRepositionDash.push(   ...this.app_wordsMyElements   )
         
-        
-        if(   this.window.onload !== undefined   ){
-        
-        
-            this.window.onresize = this.window.onload = this.wordsService.wordsRepositionDashes()
+        const app_LoadEvent0 = fromEvent(this.window ,'load');
+        const app_ResizeEvent0 = fromEvent(this.window ,'resize');
+        app_LoadEvent0.subscribe(this.wordsService.wordsRepositionDashes())
+        app_ResizeEvent0.subscribe(this.wordsService.wordsRepositionDashes())
+        //to unsubscribe set equal to a var and unsubscribe somewhere
             
-            
-        }        
+             
     }
 }
 
