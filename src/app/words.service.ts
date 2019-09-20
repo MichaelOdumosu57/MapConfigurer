@@ -108,7 +108,7 @@ export class WordsService {
   wordsRepositionDashes():any{
       return (event:any)=>{
           for(   let dashes of this.wordsRepositionDash   ){
-              for(var i=0; i!== dashes.length;i++){
+              for(var i=0; i!== dashes._results.length;i++){
                       
                    
                   if(   dashes._results[i].nativeElement.id === 'w_o_r_d_s_paragraphDash'   ){
@@ -139,4 +139,24 @@ export class WordsService {
           }
       }
   }  
+  
+  wordsGenerateSelector(): string{
+      var a = 0;
+      var string = '';
+      return (function(){
+      
+      
+        if(   a!==3   ){
+            
+            
+            string += 'myval'+a+','
+            
+        a+=1
+        arguments.callee()        
+        }
+        return string.slice(0,-1)
+        
+      })()
+  }
+  
 }

@@ -2,7 +2,7 @@ import {   Component, OnInit,Input,ViewChildren,Directive,AfterViewInit,Inject }
 import {   WordsService   } from '../words.service';
 import {   BrowserModule,platformBrowser,disableDebugTools   } from '@angular/platform-browser';
 import {   DomSanitizer   } from '@angular/platform-browser';
-import {   WINDOW   } from '../window.service'
+
 
 
 
@@ -21,8 +21,7 @@ export class WordsComponent implements OnInit,AfterViewInit {
    
     constructor(
         private wordsService: WordsService,
-        private domSanitizer: DomSanitizer,
-        @Inject(WINDOW) private window: Window
+        private domSanitizer: DomSanitizer
     ) { }
 
     wordsElementHeight : Array<Number> = this.wordsService.wordsElementHeight; 
@@ -61,16 +60,16 @@ export class WordsComponent implements OnInit,AfterViewInit {
     
     
     ngAfterViewInit() {
-        this.wordsService.wordsRepositionDash.push(   this.wordsMyElements   )
+        // this.wordsService.wordsRepositionDash.push(   this.wordsMyElements   )
         
         
-        if(   this.window.onload !== undefined   ){
+        // if(   this.window.onload !== undefined   ){
         
         
-            this.window.onresize = this.window.onload = this.wordsService.wordsRepositionDashes()
+        //     this.window.onresize = this.window.onload = this.wordsService.wordsRepositionDashes()
             
             
-        }
+        // }
         
         
         // console.log(this.wordsMyElements)
