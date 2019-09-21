@@ -26,6 +26,8 @@ export class WordsComponent implements OnInit {
 
     wordsElementHeight : Array<Number> = this.wordsService.wordsElementHeight; 
 
+    @Input() wordsTemplateVariable:string | any;
+    
     wordsval0 :string = this.wordsService.wordsval0;
     wordsval1 :string = this.wordsService.wordsval1;
     wordsval2 :string = this.wordsService.wordsval2;
@@ -49,9 +51,10 @@ export class WordsComponent implements OnInit {
     
     ngOnInit() {
         
-        // this.wordsStyle3 = this.domSanitizer.bypassSecurityTrustStyle(this.wordsService.wordsGroup0({}).wordsStyle)
+        
         this.wordsStyle3 = this.wordsService.wordsGroup0({}).wordsStyle
         this.wordsStyle4 = this.wordsService.wordsGroup1({}).wordsStyle
+        console.log(   this.wordsTemplateVariable   )
         
         
     }

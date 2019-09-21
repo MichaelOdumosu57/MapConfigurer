@@ -15,7 +15,6 @@ export class WordsService {
 
   constructor() { };
   
-  
   wordsval0:string = 'w_o_r_d_s'
   wordsval1:string = 'w_o_r_d_s_Line'
   wordsval2:string = 'w_o_r_d_s_paragraph'
@@ -34,13 +33,47 @@ export class WordsService {
   wordsSeq3:Array<Number> = [3,3,3,3,3,3]
   wordsSeq4:Array<Number> = [3,3,3,3,3,3]
   
-  
   wordsStyle3:any;
   wordsStyle4:any;
   
   wordsGroupObject0:wordsGroupObject = {wordsStyle:[{}]}
   wordsGroupObject1:wordsGroupObject = {wordsStyle:[{}]}
+
+  //represnetaing each instance of the wordsComponent
+  wordsComponentObject0:any = {
+      styles:[
+        {
+            position:'relative',
+            left:'30px'
+        }
+      ]
+  }
+  wordsComponentObject1:any = {
+      styles:[
+        {
+            position:'relative',
+            left:'30px'
+        }
+      ]
+  }  
+  wordsComponentObject2:any = {
+      styles:[
+        {
+            position:'relative',
+            left:'30px'
+        }
+      ]
+  }  
   
+  wordsComponent(dev_obj:Object | any| void) : any{
+      for(   let metadata of dev_obj.ng_ITO   ){
+          for(   let i in metadata){
+              // console.log(metadata[i].nativeElement)       
+          }
+      }      
+  }
+  //represnetaing each instance of the wordsComponent
+    
   wordsElementHeight : Array<number>;
   wordsElementparagrpahDashHeight : number = 18
   
@@ -102,6 +135,8 @@ export class WordsService {
       ]
       return  this.wordsGroupObject1
   } 
+  
+  //dashes repositioning
   wordsRepositionDashesCount:any = 0;
   wordsRepositionDashesData: Array<any>;
   wordsRepositionDash: Array<any> = [];
@@ -133,11 +168,13 @@ export class WordsService {
                       
                   }
                           
-                          
+                  
+                  if(   dashes[i].nativeElement.tagName === 'APP-WORDS'   ){}        
               }  
               this.wordsRepositionDashesCount = 0 
           }
       }
   }  
+  // dashes repositioning
   
 }

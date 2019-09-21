@@ -50,7 +50,12 @@ export class AppComponent implements AfterViewInit {
         const app_ResizeEvent0 = fromEvent(this.window ,'resize');
         app_LoadEvent0.subscribe(this.wordsService.wordsRepositionDashes())
         app_ResizeEvent0.subscribe(this.wordsService.wordsRepositionDashes())
-        //to unsubscribe set equal to a var and unsubscribe somewhere
+        
+        //words elements configuration
+        this.wordsService.wordsComponent({ng_ITO:this.app_wordsMyElements })
+        //words elements configuration
+        
+        
             
              
     }
