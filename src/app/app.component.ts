@@ -27,7 +27,6 @@ export class AppComponent implements AfterViewInit {
     
     @ViewChildren(appGenerateSelector(), { read: ElementRef })  app_wordsConponentElements: any;
     @ViewChildren(appGenerateSelector())  app_wordsComponentReferences: any;
-    app_wordsMyElements: Array<any> = [];
     
     
     constructor(
@@ -38,13 +37,14 @@ export class AppComponent implements AfterViewInit {
     appTitle:string = 'WindsorEmpire'
     
     ngAfterViewInit() {
-        // this.wordsService.wordsRepositionDash.push(   this.appMyElements     )
         console.log(   this.app_wordsConponentElements ,this.app_wordsComponentReferences   )   
         for(var i in  this.app_wordsComponentReferences._results){
-            this.app_wordsMyElements.push(   [this.app_wordsConponentElements._results[i],...this.app_wordsComponentReferences._results[i].wordsMyElements._results]   )
+            this.wordsService.wordsMyElements.next(   [this.app_wordsConponentElements._results[i],...this.app_wordsComponentReferences._results[i].wordsMyElements._results]   )
         }
-        console.log(   this.app_wordsMyElements   )
-        this.wordsService.wordsRepositionDash.push(   ...this.app_wordsMyElements   )
+        this.wordsService.wordsMyElements.subscribe((a)=>{
+            this.wordsService.wordsRepositionDash.push(   a   )        
+        })
+        
         
         const app_LoadEvent0 = fromEvent(this.window ,'load');
         const app_ResizeEvent0 = fromEvent(this.window ,'resize');
@@ -52,7 +52,7 @@ export class AppComponent implements AfterViewInit {
         app_ResizeEvent0.subscribe(this.wordsService.wordsRepositionDashes())
         
         //words elements configuration
-        this.wordsService.wordsComponent({ng_ITO:this.app_wordsMyElements })
+        // this.wordsService.wordsComponent({ng_ITO:this.app_wordsMyElements })
         //words elements configuration
         
         

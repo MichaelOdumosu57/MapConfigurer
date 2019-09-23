@@ -1,13 +1,10 @@
-import {   Component, OnInit,Input,ViewChildren,Directive,Inject } from '@angular/core';
+import {   Component, OnInit,Input,ViewChildren,Directive,Inject,AfterViewInit, AfterContentInit } from '@angular/core';
 import {   WordsService   } from '../words.service';
 import {   BrowserModule,platformBrowser,disableDebugTools   } from '@angular/platform-browser';
 import {   DomSanitizer   } from '@angular/platform-browser';
 
 
 
-
-        
-        
     
 @Component({
   selector: 'app-words',
@@ -18,7 +15,6 @@ export class WordsComponent implements OnInit {
 
     @ViewChildren('myval') wordsMyElements: any;    
     
-   
     constructor(
         private wordsService: WordsService,
         private domSanitizer: DomSanitizer
@@ -37,7 +33,7 @@ export class WordsComponent implements OnInit {
     wordsbool0:string =  this.wordsService.wordsbool0;
     wordsbool1:string =  this.wordsService.wordsbool1;
     wordsbool2:string =  this.wordsService.wordsbool2;
-    wordsbool3:string =  this.wordsService.wordsbool3;
+    wordsbool3:string =  this.wordsService.wordsbool3; 
     wordsbool4:string =  this.wordsService.wordsbool4;
     
     wordsSeq0:Array<Number> =  this.wordsService.wordsSeq0;
@@ -49,14 +45,17 @@ export class WordsComponent implements OnInit {
     wordsStyle3:any =  this.wordsService.wordsStyle3;
     wordsStyle4:any =  this.wordsService.wordsStyle4;    
     
-    ngOnInit() {
-        
-        
+     ngOnInit() {
+
+        //FIXME
         this.wordsStyle3 = this.wordsService.wordsGroup0({}).wordsStyle
         this.wordsStyle4 = this.wordsService.wordsGroup1({}).wordsStyle
-        console.log(   this.wordsTemplateVariable   )
-        
-        
+        //FIXME
+        // console.log(   this.wordsService[this.wordsTemplateVariable]   )
+        this.wordsService.wordsMyElements.subscribe((a)=>{
+            console.log(   this.wordsTemplateVariable   )
+            console.log(a)
+        })
     }
     
   

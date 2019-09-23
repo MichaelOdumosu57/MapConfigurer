@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import {  wordsGroupObject } from './wordsGroupObject';
+import { Observable, of, Subject } from 'rxjs';
 
-import { isPlatformBrowser } from "@angular/common";
-import { ClassProvider, FactoryProvider, InjectionToken, PLATFORM_ID } from '@angular/core';
 
-/* Create a new injection token for injecting the window into a component. */
 
 @Injectable({
   providedIn: 'root'
 })
-
 
 export class WordsService {
 
@@ -39,7 +36,8 @@ export class WordsService {
   wordsGroupObject0:wordsGroupObject = {wordsStyle:[{}]}
   wordsGroupObject1:wordsGroupObject = {wordsStyle:[{}]}
 
-  //represnetaing each instance of the wordsComponent
+  //represnetaing each instance of the wordsComponent\
+  wordsMyElements :Subject<any[]> = new Subject<Array<any>>();
   wordsComponentObject0:any = {
       styles:[
         {
