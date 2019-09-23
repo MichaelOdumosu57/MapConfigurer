@@ -45,10 +45,10 @@ export class AppComponent implements AfterViewInit {
                     this.app_wordsConponentElements._results[i],
                     ...this.app_wordsComponentReferences._results[i].wordsMyElements._results
                 ])
-            this.wordsService.wordsRepositionDash.push([
-                this.app_wordsConponentElements._results[i],
-                ...this.app_wordsComponentReferences._results[i].wordsMyElements._results
-            ])  
+            // this.wordsService.wordsRepositionDash.push([
+            //     this.app_wordsConponentElements._results[i],
+            //     ...this.app_wordsComponentReferences._results[i].wordsMyElements._results
+            // ])  
         }
         this.wordsService.wordsMyElements.next(this.wordsService.wordsMyElementsArray)        
         // DONE with Subject<Array<any[]>>
@@ -56,14 +56,7 @@ export class AppComponent implements AfterViewInit {
         const app_LoadEvent0 = fromEvent(this.window ,'load');
         const app_ResizeEvent0 = fromEvent(this.window ,'resize');
         app_LoadEvent0.subscribe(this.wordsService.wordsRepositionDashes())
-        app_ResizeEvent0.subscribe(this.wordsService.wordsRepositionDashes())
-        
-        //words elements configuration
-        // this.wordsService.wordsComponent({ng_ITO:this.app_wordsMyElements })
-        //words elements configuration
-        
-        
-            
+        app_ResizeEvent0.subscribe(this.wordsService.wordsRepositionDashes())            
              
     }
 }

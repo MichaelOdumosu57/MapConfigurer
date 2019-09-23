@@ -51,9 +51,33 @@ export class WordsService {
             {},
             {},
             {},
-            {},
-            {},
-            {},
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'1em',
+                    'top':'32px',
+                    'factor':'0'
+                }
+            },
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'1em',
+                    'top':'64px',
+                    'factor':'.27'
+                }
+            }  ,
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'1em',
+                    'top':'96px',
+                    'factor':'.175'
+                }
+            },  
             {
                 override:'true',
                 css:{
@@ -217,10 +241,9 @@ export class WordsService {
   //dashes repositioning
   wordsRepositionDashesCount:any = 0;
   wordsRepositionDashesData: Array<any>;
-  wordsRepositionDash: Array<any> = [];
   wordsRepositionDashes():any{
       return (event:any)=>{
-          for(   let dashes of this.wordsRepositionDash   ){
+          for(   let dashes of this.wordsMyElementsArray   ){
               for(var i=0; i!== dashes.length;i++){
                       
                    
@@ -246,7 +269,7 @@ export class WordsService {
                   }
                           
                   
-                  if(   dashes[i].nativeElement.tagName === 'APP-WORDS'   ){}        
+                        
               }  
               this.wordsRepositionDashesCount = 0 
           }
