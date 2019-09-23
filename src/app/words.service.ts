@@ -10,31 +10,31 @@ import { Observable, of, Subject } from 'rxjs';
 
 export class WordsService {
 
-  constructor() { };
-  
-  wordsval0:string = 'w_o_r_d_s'
-  wordsval1:string = 'w_o_r_d_s_Line'
-  wordsval2:string = 'w_o_r_d_s_paragraph'
-  wordsval3:string = 'w_o_r_d_s_Dash'
-  wordsval4:string = 'w_o_r_d_s_paragraphDash'
-  
-  wordsbool0:string = 'true'
-  wordsbool1:string = 'true'
-  wordsbool2:string = 'true'
-  wordsbool3:string = 'true'
-  wordsbool4:string = 'true'
-  
-  wordsSeq0:Array<Number> = [3]
-  wordsSeq1:Array<Number> = [3]
-  wordsSeq2:Array<Number> = [3]
-  wordsSeq3:Array<Number> = [3,3,3,3,3,3]
-  wordsSeq4:Array<Number> = [3,3,3,3,3,3]
-  
-  wordsStyle3:any;
-  wordsStyle4:any;
-  
-  wordsGroupObject0:wordsGroupObject = {wordsStyle:[{}]}
-  wordsGroupObject1:wordsGroupObject = {wordsStyle:[{}]}
+    constructor() { };
+    
+    wordsval0:string = 'w_o_r_d_s'
+    wordsval1:string = 'w_o_r_d_s_Line'
+    wordsval2:string = 'w_o_r_d_s_paragraph'
+    wordsval3:string = 'w_o_r_d_s_Dash'
+    wordsval4:string = 'w_o_r_d_s_paragraphDash'
+    
+    wordsbool0:string = 'true'
+    wordsbool1:string = 'true'
+    wordsbool2:string = 'true'
+    wordsbool3:string = 'true'
+    wordsbool4:string = 'true'
+    
+    wordsSeq0:Array<Number> = [3]
+    wordsSeq1:Array<Number> = [3]
+    wordsSeq2:Array<Number> = [3]
+    wordsSeq3:Array<Number> = [3,3,3,3,3,3]
+    wordsSeq4:Array<Number> = [3,3,3,3,3,3]
+    
+    wordsStyle3:any;
+    wordsStyle4:Array<any> = [3,3,3] 
+    
+    wordsGroupObject0:wordsGroupObject = {wordsStyle:[{}]}
+    wordsGroupObject1:wordsGroupObject = {wordsStyle:[{}]}
 
     //represnetaing each instance of the wordsComponent
     wordsMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
@@ -45,9 +45,39 @@ export class WordsService {
                 override:'true',
                 css:{
                     position:'relative',
-                    left:'300px'
+                    left:'30px'
                 }
-            }
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'3em',
+                    'top':'0em'
+                }
+            }  ,
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'3em',
+                    'top':'0em'
+                }
+            }  ,
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'3em',
+                    'top':'0em'
+                }
+            }                                                
         ]
     }
     wordsComponentObject1:any = {
@@ -56,9 +86,39 @@ export class WordsService {
                 override:'true',
                 css:{
                     position:'relative',
-                    left:'300px'
+                    left:'30px'
                 }
-            }
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'3em',
+                    'top':'0em'
+                }
+            }  ,
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'3em',
+                    'top':'0em'
+                }
+            }  ,
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'3em',
+                    'top':'0em'
+                }
+            }                                                
         ]
     }
     wordsComponentObject2:any ={
@@ -67,23 +127,53 @@ export class WordsService {
                 override:'true',
                 css:{
                     position:'relative',
-                    left:'300px'
+                    left:'30px'
                 }
-            }
+            },
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'3em',
+                    'top':'0em'
+                }
+            }  ,
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'3em',
+                    'top':'0em'
+                }
+            }  ,
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'3em',
+                    'top':'0em'
+                }
+            }                                                
         ]
     }
   
-  wordsComponent(dev_obj:Object | any| void) : any{
-      for(   let metadata of dev_obj.ng_ITO   ){
-          for(   let i in metadata){
-              // console.log(metadata[i].nativeElement)       
-          }
-      }      
-  }
-  //represnetaing each instance of the wordsComponent
-    
-  wordsElementHeight : Array<number>;
-  wordsElementparagrpahDashHeight : number = 18
+    wordsComponent(dev_obj:Object | any| void) : any{
+        for(   let metadata of dev_obj.ng_ITO   ){
+            for(   let i in metadata){
+                // console.log(metadata[i].nativeElement)       
+            }
+        }      
+    }
+    //represnetaing each instance of the wordsComponent
+        
+    wordsElementHeight : Array<number>;
+    wordsElementparagrpahDashHeight : number = 18
   
   wordsGroup0(dev_obj:Object):wordsGroupObject{
       this.wordsGroupObject0.wordsStyle =  this.wordsStyle3  = 
@@ -122,27 +212,7 @@ export class WordsService {
       return  this.wordsGroupObject0
     
   }  
-  wordsGroup1(dev_obj:Object):wordsGroupObject{
-      this.wordsGroupObject1.wordsStyle =  this.wordsStyle4  = 
-      [
-        {
-            position:'relative',
-            'left':'3em',
-            'top':'0em'
-        },
-        {
-            position:'relative',
-            'left':'3em',
-            'top':'0em'
-        },
-        {
-            position:'relative',
-            'left':'3em',
-            'top':'0em'
-        }          
-      ]
-      return  this.wordsGroupObject1
-  } 
+
   
   //dashes repositioning
   wordsRepositionDashesCount:any = 0;

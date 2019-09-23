@@ -1,7 +1,7 @@
 import {   Component, OnInit,Input,ViewChildren,Directive,Inject,AfterViewInit, AfterContentInit } from '@angular/core';
 import {   WordsService   } from '../words.service';
 import {   BrowserModule,platformBrowser,disableDebugTools   } from '@angular/platform-browser';
-import {   DomSanitizer   } from '@angular/platform-browser';
+
 
 
 
@@ -16,8 +16,7 @@ export class WordsComponent implements OnInit {
     @ViewChildren('myval') wordsMyElements: any;    
     
     constructor(
-        private wordsService: WordsService,
-        private domSanitizer: DomSanitizer
+        private wordsService: WordsService
     ) { }
 
     wordsElementHeight : Array<Number> = this.wordsService.wordsElementHeight; 
@@ -49,7 +48,6 @@ export class WordsComponent implements OnInit {
 
         //FIXME
         this.wordsStyle3 = this.wordsService.wordsGroup0({}).wordsStyle
-        this.wordsStyle4 = this.wordsService.wordsGroup1({}).wordsStyle
         //FIXME
 
         /* at the slice this means that the the templatevariable must have a number 
@@ -65,14 +63,14 @@ export class WordsComponent implements OnInit {
                 if(   this.wordsService[this.wordsTemplateVariable].styles[index].override === 'true'   ){
 
 
-                    
                     for(   var prop in  this.wordsService[this.wordsTemplateVariable].styles[index].css   ){
                         arr[this.wordsTemplateVariable.slice(-1)][index].nativeElement.style[prop] = this.wordsService[this.wordsTemplateVariable].styles[index].css[prop]
                     }
 
-                
-                
+                                
                 }
+
+
             }
         })
     }
