@@ -58,12 +58,17 @@ export class WordsComponent implements OnInit {
         */
         // console.log(   this.wordsService.wordsMyElements   )
         this.wordsService.wordsMyElements.subscribe((arr)=>{
-            console.log(   this.wordsTemplateVariable   )
-            console.log(   arr   )
-            arr[this.wordsTemplateVariable.slice(-1)].subscribe((a)=>{
-                console.log(   this.wordsTemplateVariable   )
-                console.log(a)
-            })
+            // console.log(   this.wordsTemplateVariable   )
+            // console.log(   arr   )
+
+            // DONE with Subject<Array<Subject<any[]>>> 
+            // arr[this.wordsTemplateVariable.slice(-1)].subscribe((a)=>{
+            //     console.log(   this.wordsTemplateVariable   )
+            //     console.log(a)
+            // })
+            // DONE with Subject<Array<Subject<any[]>>> 
+
+            console.log(arr[this.wordsTemplateVariable.slice(-1)])
         })
     }
     

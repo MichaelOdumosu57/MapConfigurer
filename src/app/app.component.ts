@@ -62,11 +62,26 @@ export class AppComponent implements AfterViewInit {
         // }
         // DONE with Array<Subject<Array<any>>
         
-        
+         // DONE with Subject<Array<Subject<any[]>>>
+        // for(var i in  this.app_wordsComponentReferences._results){
+        //     this.wordsService.wordsMyElementsArray.push(   new Subject<Array<any>>()   )
+        //     this.wordsService.wordsMyElementsArray[i].next([
+        //             this.app_wordsConponentElements._results[i],
+        //             ...this.app_wordsComponentReferences._results[i].wordsMyElements._results
+        //         ])
+        //     this.wordsService.wordsRepositionDash.push([
+        //         this.app_wordsConponentElements._results[i],
+        //         ...this.app_wordsComponentReferences._results[i].wordsMyElements._results
+        //     ])  
+        // }
+        // this.wordsService.wordsMyElements.next(this.wordsService.wordsMyElementsArray)
+         // DONE with Subject<Array<Subject<any[]>>>
+
+        // DONE with Subject<Array<any[]>>
         for(var i in  this.app_wordsComponentReferences._results){
             
-            this.wordsService.wordsMyElementsArray.push(   new Subject<Array<any>>()   )
-            this.wordsService.wordsMyElementsArray[i].next([
+            this.wordsService.wordsMyElementsArray.push(   []   )
+            this.wordsService.wordsMyElementsArray[i].push([
                     this.app_wordsConponentElements._results[i],
                     ...this.app_wordsComponentReferences._results[i].wordsMyElements._results
                 ])
@@ -75,8 +90,8 @@ export class AppComponent implements AfterViewInit {
                 ...this.app_wordsComponentReferences._results[i].wordsMyElements._results
             ])  
         }
-        this.wordsService.wordsMyElements.next(this.wordsService.wordsMyElementsArray)
-
+        this.wordsService.wordsMyElements.next(this.wordsService.wordsMyElementsArray)        
+        // DONE with Subject<Array<any[]>>
         
         const app_LoadEvent0 = fromEvent(this.window ,'load');
         const app_ResizeEvent0 = fromEvent(this.window ,'resize');

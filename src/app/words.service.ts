@@ -36,8 +36,8 @@ export class WordsService {
   wordsGroupObject0:wordsGroupObject = {wordsStyle:[{}]}
   wordsGroupObject1:wordsGroupObject = {wordsStyle:[{}]}
 
-  //represnetaing each instance of the wordsComponent\
-  wordsMyElements :Subject<Array<Subject<any[]>>> = new Subject<Array<any>>();
+  //represnetaing each instance of the wordsComponent
+  wordsMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
   wordsMyElementsArray: any[] = []; 
   wordsComponentObject0:any = {
       styles:[
