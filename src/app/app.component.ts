@@ -1,7 +1,7 @@
 import { Component,OnInit,ViewChildren,AfterViewInit,Inject,ElementRef  } from '@angular/core';
 import {   WordsService   } from './words.service';
 import {   WINDOW   } from './window.service';
-import {   fromEvent   } from 'rxjs';
+import {   fromEvent,Subject,Observable,of   } from 'rxjs';
 
 
 function appGenerateSelector(){
@@ -37,14 +37,33 @@ export class AppComponent implements AfterViewInit {
     appTitle:string = 'WindsorEmpire'
     
     ngAfterViewInit() {
-        console.log(   this.app_wordsConponentElements ,this.app_wordsComponentReferences   )   
-        for(var i in  this.app_wordsComponentReferences._results){
-            this.wordsService.wordsMyElements.next(   [this.app_wordsConponentElements._results[i],...this.app_wordsComponentReferences._results[i].wordsMyElements._results]   )
-        }
-        this.wordsService.wordsMyElements.subscribe((a)=>{
-            this.wordsService.wordsRepositionDash.push(   a   )        
-        })
-        
+        console.log(   this.app_wordsConponentElements ,this.app_wordsComponentReferences   ) 
+
+        // DONE with a  Subject<Array<any>
+        // for(var i in  this.app_wordsComponentReferences._results){
+        //     this.wordsService.wordsMyElements.next(   [this.app_wordsConponentElements._results[i],...this.app_wordsComponentReferences._results[i].wordsMyElements._results]   )
+        // }
+        // this.wordsService.wordsMyElements.subscribe((a)=>{
+        //     this.wordsService.wordsRepositionDash.push(   a   )        
+        // })
+        // DONE with a  Subject<Array<any>
+
+        // DONE with Array<Subject<Array<any>>
+        // for(var i in  this.app_wordsComponentReferences._results){
+        //     this.wordsService.wordsMyElements.push(   new Subject<Array<any>>()   )
+        //     this.wordsService.wordsMyElements[i].next([
+        //         this.app_wordsConponentElements._results[i],
+        //         ...this.app_wordsComponentReferences._results[i].wordsMyElements._results
+        //     ])  
+        //     this.wordsService.wordsRepositionDash.push([
+        //         this.app_wordsConponentElements._results[i],
+        //         ...this.app_wordsComponentReferences._results[i].wordsMyElements._results
+        //     ])  
+        // }
+        // DONE with Array<Subject<Array<any>>
+
+
+
         
         const app_LoadEvent0 = fromEvent(this.window ,'load');
         const app_ResizeEvent0 = fromEvent(this.window ,'resize');

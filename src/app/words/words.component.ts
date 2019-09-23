@@ -51,8 +51,13 @@ export class WordsComponent implements OnInit {
         this.wordsStyle3 = this.wordsService.wordsGroup0({}).wordsStyle
         this.wordsStyle4 = this.wordsService.wordsGroup1({}).wordsStyle
         //FIXME
+
         // console.log(   this.wordsService[this.wordsTemplateVariable]   )
-        this.wordsService.wordsMyElements.subscribe((a)=>{
+        /* at the slice this means that the the templatevariable must have a number 
+        so I can get to the exact index in the array
+        */
+        console.log(   this.wordsService.wordsMyElements   )
+        this.wordsService.wordsMyElements[this.wordsTemplateVariable.slice(-1)].subscribe((a)=>{
             console.log(   this.wordsTemplateVariable   )
             console.log(a)
         })
