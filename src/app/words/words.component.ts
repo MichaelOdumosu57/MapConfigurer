@@ -52,7 +52,6 @@ export class WordsComponent implements OnInit {
         this.wordsStyle4 = this.wordsService.wordsGroup1({}).wordsStyle
         //FIXME
 
-        // console.log(   this.wordsService[this.wordsTemplateVariable]   )
         /* at the slice this means that the the templatevariable must have a number 
         so I can get to the exact index in the array
         */
@@ -60,15 +59,21 @@ export class WordsComponent implements OnInit {
         this.wordsService.wordsMyElements.subscribe((arr)=>{
             // console.log(   this.wordsTemplateVariable   )
             // console.log(   arr   )
+            for(   var index in this.wordsService[this.wordsTemplateVariable].styles    ){
+            
+                
+                if(   this.wordsService[this.wordsTemplateVariable].styles[index].override === 'true'   ){
 
-            // DONE with Subject<Array<Subject<any[]>>> 
-            // arr[this.wordsTemplateVariable.slice(-1)].subscribe((a)=>{
-            //     console.log(   this.wordsTemplateVariable   )
-            //     console.log(a)
-            // })
-            // DONE with Subject<Array<Subject<any[]>>> 
 
-            console.log(arr[this.wordsTemplateVariable.slice(-1)])
+                    
+                    for(   var prop in  this.wordsService[this.wordsTemplateVariable].styles[index].css   ){
+                        arr[this.wordsTemplateVariable.slice(-1)][index].nativeElement.style[prop] = this.wordsService[this.wordsTemplateVariable].styles[index].css[prop]
+                    }
+
+                
+                
+                }
+            }
         })
     }
     

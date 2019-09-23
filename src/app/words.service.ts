@@ -36,33 +36,42 @@ export class WordsService {
   wordsGroupObject0:wordsGroupObject = {wordsStyle:[{}]}
   wordsGroupObject1:wordsGroupObject = {wordsStyle:[{}]}
 
-  //represnetaing each instance of the wordsComponent
-  wordsMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
-  wordsMyElementsArray: any[] = []; 
-  wordsComponentObject0:any = {
-      styles:[
-        {
-            position:'relative',
-            left:'30px'
-        }
-      ]
-  }
-  wordsComponentObject1:any = {
-      styles:[
-        {
-            position:'relative',
-            left:'30px'
-        }
-      ]
-  }  
-  wordsComponentObject2:any = {
-      styles:[
-        {
-            position:'relative',
-            left:'30px'
-        }
-      ]
-  }  
+    //represnetaing each instance of the wordsComponent
+    wordsMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
+    wordsMyElementsArray: any[] = []; 
+    wordsComponentObject0:any = {
+        styles:[
+            {  
+                override:'true',
+                css:{
+                    position:'relative',
+                    left:'300px'
+                }
+            }
+        ]
+    }
+    wordsComponentObject1:any = {
+        styles:[
+            {  
+                override:'true',
+                css:{
+                    position:'relative',
+                    left:'300px'
+                }
+            }
+        ]
+    }
+    wordsComponentObject2:any ={
+        styles:[
+            {  
+                override:'true',
+                css:{
+                    position:'relative',
+                    left:'300px'
+                }
+            }
+        ]
+    }
   
   wordsComponent(dev_obj:Object | any| void) : any{
       for(   let metadata of dev_obj.ng_ITO   ){
@@ -109,7 +118,7 @@ export class WordsService {
           } 
         
       })
-      console.log(   this.wordsRepositionDashesData   )
+    //   console.log(   this.wordsRepositionDashesData   )
       return  this.wordsGroupObject0
     
   }  
@@ -148,7 +157,6 @@ export class WordsService {
                   if(   dashes[i].nativeElement.id === 'w_o_r_d_s_paragraphDash'   ){
                   
                           //find out how tall is paragprah dash,height and adjust according
-                          dashes[i-3].nativeElement.style.top
                           // console.log(   dashes._results[i].nativeElement.clientHeight,
                           //   this.wordsElementparagrpahDashHeight,
                           //   this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top,
