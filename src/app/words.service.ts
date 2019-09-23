@@ -56,8 +56,11 @@ export class WordsService {
                 css:{
                     position:'relative',
                     'left':'1em',
-                    'top':'32px',
-                    'factor':'0'
+                    'top':'32px'
+                },
+                repositionDash:{
+                    lineHeight:18,
+                    factor:'0'        
                 }
             },
             {
@@ -65,17 +68,23 @@ export class WordsService {
                 css:{
                     position:'relative',
                     'left':'1em',
-                    'top':'64px',
-                    'factor':'.27'
+                    'top':'64px'
+                },
+                repositionDash:{
+                    lineHeight:18,
+                    factor:'.27'        
                 }
-            }  ,
+            },
             {
                 override:'true',
                 css:{
                     position:'relative',
                     'left':'1em',
-                    'top':'96px',
-                    'factor':'.175'
+                    'top':'96px'
+                },
+                repositionDash:{
+                    lineHeight:18,
+                    factor:'.175'      
                 }
             },  
             {
@@ -84,23 +93,32 @@ export class WordsService {
                     position:'relative',
                     'left':'3em',
                     'top':'0em'
+                },
+                repositionDash:{
+                    respective:4
                 }
-            }  ,
+            },
             {
                 override:'true',
                 css:{
                     position:'relative',
                     'left':'3em',
                     'top':'0em'
-                }
-            }  ,
+                },
+                repositionDash:{
+                    respective:5
+                }                
+            },
             {
                 override:'true',
                 css:{
                     position:'relative',
                     'left':'3em',
                     'top':'0em'
-                }
+                },
+                repositionDash:{
+                    respective:6
+                }                  
             }                                                
         ]
     }
@@ -116,36 +134,78 @@ export class WordsService {
             {},
             {},
             {},
-            {},
-            {},
-            {},
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'1em',
+                    'top':'32px'
+                },
+                repositionDash:{
+                    lineHeight:18,
+                    factor:'0'        
+                }
+            },
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'1em',
+                    'top':'64px'
+                },
+                repositionDash:{
+                    lineHeight:18,
+                    factor:'.27'        
+                }
+            },
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'1em',
+                    'top':'96px'
+                },
+                repositionDash:{
+                    lineHeight:18,
+                    factor:'.175'      
+                }
+            },  
             {
                 override:'true',
                 css:{
                     position:'relative',
                     'left':'3em',
                     'top':'0em'
+                },
+                repositionDash:{
+                    respective:4
                 }
-            }  ,
+            },
             {
                 override:'true',
                 css:{
                     position:'relative',
                     'left':'3em',
                     'top':'0em'
-                }
-            }  ,
+                },
+                repositionDash:{
+                    respective:5
+                }                
+            },
             {
                 override:'true',
                 css:{
                     position:'relative',
                     'left':'3em',
                     'top':'0em'
-                }
+                },
+                repositionDash:{
+                    respective:6
+                }                  
             }                                                
         ]
     }
-    wordsComponentObject2:any ={
+    wordsComponentObject2:any = {
         styles:[
             {  
                 override:'true',
@@ -157,32 +217,74 @@ export class WordsService {
             {},
             {},
             {},
-            {},
-            {},
-            {},
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'1em',
+                    'top':'32px'
+                },
+                repositionDash:{
+                    lineHeight:18,
+                    factor:'0'        
+                }
+            },
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'1em',
+                    'top':'64px'
+                },
+                repositionDash:{
+                    lineHeight:18,
+                    factor:'.27'        
+                }
+            },
+            {
+                override:'true',
+                css:{
+                    position:'relative',
+                    'left':'1em',
+                    'top':'96px'
+                },
+                repositionDash:{
+                    lineHeight:18,
+                    factor:'.175'      
+                }
+            },  
             {
                 override:'true',
                 css:{
                     position:'relative',
                     'left':'3em',
                     'top':'0em'
+                },
+                repositionDash:{
+                    respective:4
                 }
-            }  ,
+            },
             {
                 override:'true',
                 css:{
                     position:'relative',
                     'left':'3em',
                     'top':'0em'
-                }
-            }  ,
+                },
+                repositionDash:{
+                    respective:5
+                }                
+            },
             {
                 override:'true',
                 css:{
                     position:'relative',
                     'left':'3em',
                     'top':'0em'
-                }
+                },
+                repositionDash:{
+                    respective:6
+                }                  
             }                                                
         ]
     }
@@ -199,9 +301,9 @@ export class WordsService {
     wordsElementHeight : Array<number>;
     wordsElementparagrpahDashHeight : number = 18
   
-  wordsGroup0(dev_obj:Object):wordsGroupObject{
-      this.wordsGroupObject0.wordsStyle =  this.wordsStyle3  = 
-      [
+    wordsGroup0(dev_obj:Object):wordsGroupObject{
+        this.wordsGroupObject0.wordsStyle =  this.wordsStyle3  = 
+        [
         {
             position:'relative',
             'left':'1em',
@@ -220,51 +322,56 @@ export class WordsService {
             'top':'96px',
             'factor':'.175'
         }         
-      ]
-      
-      this.wordsRepositionDashesData = Array.from(this.wordsStyle3,(a:any)=>{
-        var w_R_D_D_0_i = a.top
-        var w_R_D_D_1_i = a.factor 
-        return {
-              lineHeight:18,
-              top: w_R_D_D_0_i,
-              factor:w_R_D_D_1_i,
-          } 
+        ]
         
-      })
-    //   console.log(   this.wordsRepositionDashesData   )
-      return  this.wordsGroupObject0
-    
-  }  
+
+        return  this.wordsGroupObject0
+
+    }  
 
   
   //dashes repositioning
   wordsRepositionDashesCount:any = 0;
   wordsRepositionDashesData: Array<any>;
-  wordsRepositionDashes():any{
+  wordsRepositionDashes(dev_obj:any):any{
       return (event:any)=>{
           for(   let dashes of this.wordsMyElementsArray   ){
               for(var i=0; i!== dashes.length;i++){
                       
-                   
+                
                   if(   dashes[i].nativeElement.id === 'w_o_r_d_s_paragraphDash'   ){
                   
-                          //find out how tall is paragprah dash,height and adjust according
-                          // console.log(   dashes._results[i].nativeElement.clientHeight,
-                          //   this.wordsElementparagrpahDashHeight,
-                          //   this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top,
-                          //   dashes._results[i].nativeElement.clientHeight/this.wordsElementparagrpahDashHeight
-                          // )
-                          dashes[i-3].nativeElement.style.top = (   parseInt(this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top.split("px")[0]) + (
-                          parseInt(this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top.split("px")[0]) * ( ( dashes[i].nativeElement.clientHeight/this.wordsElementparagrpahDashHeight - 1   ) * this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].factor)  * this.wordsRepositionDashesCount)   ).toString() + "px"
-                          this.wordsRepositionDashesCount += 1
-                          //
-                          
-                          // dashes._results[i-3].nativeElement.style.top
-                            // base +     base * factor * arrayIndex
-                             
-                            // so when word wrap is one the factor expression needs to end up as zero
-                            //   on word wrap  1 factor ===0 
+                        //find out how tall is paragprah dash,height and adjust according
+                        // console.log(   dashes._results[i].nativeElement.clientHeight,
+                        //   this.wordsElementparagrpahDashHeight,
+                        //   this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top,
+                        //   dashes._results[i].nativeElement.clientHeight/this.wordsElementparagrpahDashHeight
+                        // )
+                        // console.log(   dev_obj.templateVar  )                       
+                        // console.log(   this[dev_obj.templateVar].styles[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ]   )
+                        dashes[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ].nativeElement.style.top = (   
+                            parseInt(   
+                                this[dev_obj.templateVar].styles[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ].css.top.split("px")[0]   
+                            ) + 
+                            (
+                                parseInt(
+                                    this[dev_obj.templateVar].styles[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ].css.top.split("px")[0]
+                                ) * 
+                                ( 
+                                        (   
+                                            dashes[i].nativeElement.clientHeight/this[   dev_obj.templateVar   ].styles[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ].repositionDash.lineHeight - 1   
+                                        ) * this[   dev_obj.templateVar   ].styles[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ].repositionDash.factor
+                                )  * this.wordsRepositionDashesCount
+                            )   
+                        ).toString() + "px"
+                        this.wordsRepositionDashesCount += 1
+                        //
+                        
+                        // dashes._results[i-3].nativeElement.style.top
+                        // base +     base * factor * arrayIndex
+                            
+                        // so when word wrap is one the factor expression needs to end up as zero
+                        //   on word wrap  1 factor ===0 
                       
                   }
                           

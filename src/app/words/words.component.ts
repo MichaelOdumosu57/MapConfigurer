@@ -1,6 +1,8 @@
 import {   Component, OnInit,Input,ViewChildren,Directive,Inject,AfterViewInit, AfterContentInit } from '@angular/core';
 import {   WordsService   } from '../words.service';
 import {   BrowserModule,platformBrowser,disableDebugTools   } from '@angular/platform-browser';
+import {   WINDOW   } from '../window.service';
+import {   fromEvent   } from 'rxjs';
 
 
 
@@ -16,7 +18,8 @@ export class WordsComponent implements OnInit {
     @ViewChildren('myval') wordsMyElements: any;    
     
     constructor(
-        private wordsService: WordsService
+        private wordsService: WordsService,
+        @Inject(WINDOW) private window: Window
     ) { }
 
     wordsElementHeight : Array<Number> = this.wordsService.wordsElementHeight; 
@@ -44,7 +47,7 @@ export class WordsComponent implements OnInit {
     wordsStyle3:any =  this.wordsService.wordsStyle3;
     wordsStyle4:any =  this.wordsService.wordsStyle4;    
     
-     ngOnInit() {
+    ngOnInit() {
 
         //FIXME
         this.wordsStyle3 = this.wordsService.wordsGroup0({}).wordsStyle
@@ -75,6 +78,14 @@ export class WordsComponent implements OnInit {
         })
     }
     
+    ngAfterViewInit() {
+        //FIXME why it it calling 30 times shld call 10
+        const wordsLoadEvent0 = fromEvent(this.window ,'load');
+        const wordsResizeEvent0 = fromEvent(this.window ,'resize');
+        wordsLoadEvent0.subscribe(this.wordsService.wordsRepositionDashes({templateVar:this.wordsTemplateVariable}))
+        wordsResizeEvent0.subscribe(this.wordsService.wordsRepositionDashes({templateVar:this.wordsTemplateVariable})) 
+         //FIXME          
+    }
   
 }
 

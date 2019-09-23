@@ -1,6 +1,5 @@
 import { Component,OnInit,ViewChildren,AfterViewInit,Inject,ElementRef  } from '@angular/core';
 import {   WordsService   } from './words.service';
-import {   WINDOW   } from './window.service';
 import {   fromEvent,Subject,Observable,of   } from 'rxjs';
 
 
@@ -31,7 +30,7 @@ export class AppComponent implements AfterViewInit {
     
     constructor(
         private wordsService: WordsService,
-        @Inject(WINDOW) private window: Window
+      
     ) { }
     
     appTitle:string = 'WindsorEmpire'
@@ -53,11 +52,7 @@ export class AppComponent implements AfterViewInit {
         this.wordsService.wordsMyElements.next(this.wordsService.wordsMyElementsArray)        
         // DONE with Subject<Array<any[]>>
         
-        const app_LoadEvent0 = fromEvent(this.window ,'load');
-        const app_ResizeEvent0 = fromEvent(this.window ,'resize');
-        app_LoadEvent0.subscribe(this.wordsService.wordsRepositionDashes())
-        app_ResizeEvent0.subscribe(this.wordsService.wordsRepositionDashes())            
-             
+
     }
 }
 
