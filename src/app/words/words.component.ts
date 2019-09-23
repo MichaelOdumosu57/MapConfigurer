@@ -56,10 +56,14 @@ export class WordsComponent implements OnInit {
         /* at the slice this means that the the templatevariable must have a number 
         so I can get to the exact index in the array
         */
-        console.log(   this.wordsService.wordsMyElements   )
-        this.wordsService.wordsMyElements[this.wordsTemplateVariable.slice(-1)].subscribe((a)=>{
+        // console.log(   this.wordsService.wordsMyElements   )
+        this.wordsService.wordsMyElements.subscribe((arr)=>{
             console.log(   this.wordsTemplateVariable   )
-            console.log(a)
+            console.log(   arr   )
+            arr[this.wordsTemplateVariable.slice(-1)].subscribe((a)=>{
+                console.log(   this.wordsTemplateVariable   )
+                console.log(a)
+            })
         })
     }
     
