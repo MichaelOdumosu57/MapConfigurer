@@ -1,5 +1,6 @@
 import { Component,OnInit,ViewChildren,AfterViewInit,Inject,ElementRef  } from '@angular/core';
 import {   WordsService   } from './words.service';
+
 import {   fromEvent,Subject,Observable,of   } from 'rxjs';
 
 
@@ -29,8 +30,7 @@ export class AppComponent implements AfterViewInit {
     
     
     constructor(
-        private wordsService: WordsService,
-      
+        private wordsService: WordsService
     ) { }
     
     appTitle:string = 'WindsorEmpire'
@@ -51,8 +51,8 @@ export class AppComponent implements AfterViewInit {
         }
         this.wordsService.wordsMyElements.next(this.wordsService.wordsMyElementsArray)        
         // DONE with Subject<Array<any[]>>
-        
-
+         
+             
     }
 }
 

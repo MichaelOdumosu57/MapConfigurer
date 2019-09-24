@@ -30,7 +30,7 @@ export class WordsService {
     wordsSeq3:Array<Number> = [3,3,3,3,3,3]
     wordsSeq4:Array<Number> = [3,3,3,3,3,3]
     
-    wordsStyle3:any;
+    wordsStyle3:Array<any> = [3,3,3] 
     wordsStyle4:Array<any> = [3,3,3] 
     
     wordsGroupObject0:wordsGroupObject = {wordsStyle:[{}]}
@@ -301,40 +301,13 @@ export class WordsService {
     wordsElementHeight : Array<number>;
     wordsElementparagrpahDashHeight : number = 18
   
-    wordsGroup0(dev_obj:Object):wordsGroupObject{
-        this.wordsGroupObject0.wordsStyle =  this.wordsStyle3  = 
-        [
-        {
-            position:'relative',
-            'left':'1em',
-            'top':'32px',
-            'factor':'0'
-        },
-        {
-            position:'relative',
-            'left':'1em',
-            'top':'64px',
-            'factor':'.27'
-        },
-        {
-            position:'relative',
-            'left':'1em',
-            'top':'96px',
-            'factor':'.175'
-        }         
-        ]
-        
-
-        return  this.wordsGroupObject0
-
-    }  
-
   
   //dashes repositioning
   wordsRepositionDashesCount:any = 0;
-  wordsRepositionDashesData: Array<any>;
   wordsRepositionDashes(dev_obj:any):any{
       return (event:any)=>{
+          console.log(event)
+        //   console.log(   this.wordsMyElementsArray    )
           for(   let dashes of this.wordsMyElementsArray   ){
               for(var i=0; i!== dashes.length;i++){
                       
@@ -343,9 +316,6 @@ export class WordsService {
                   
                         //find out how tall is paragprah dash,height and adjust according
                         // console.log(   dashes._results[i].nativeElement.clientHeight,
-                        //   this.wordsElementparagrpahDashHeight,
-                        //   this.wordsRepositionDashesData[   this.wordsRepositionDashesCount   ].top,
-                        //   dashes._results[i].nativeElement.clientHeight/this.wordsElementparagrpahDashHeight
                         // )
                         // console.log(   dev_obj.templateVar  )                       
                         // console.log(   this[dev_obj.templateVar].styles[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ]   )

@@ -2,8 +2,8 @@ import {   Component, OnInit,Input,ViewChildren,Directive,Inject,AfterViewInit, 
 import {   WordsService   } from '../words.service';
 import {   BrowserModule,platformBrowser,disableDebugTools   } from '@angular/platform-browser';
 import {   WINDOW   } from '../window.service';
-import {   fromEvent   } from 'rxjs';
-
+import {   fromEvent,interval   } from 'rxjs';
+import {   take,timeout   } from 'rxjs/operators';
 
 
 
@@ -49,9 +49,6 @@ export class WordsComponent implements OnInit {
     
     ngOnInit() {
 
-        //FIXME
-        this.wordsStyle3 = this.wordsService.wordsGroup0({}).wordsStyle
-        //FIXME
 
         /* at the slice this means that the the templatevariable must have a number 
         so I can get to the exact index in the array
@@ -75,16 +72,26 @@ export class WordsComponent implements OnInit {
 
 
             }
-        })
+        })        
     }
     
     ngAfterViewInit() {
-        //FIXME why it it calling 30 times shld call 10
+        //FIXME why it it 
         const wordsLoadEvent0 = fromEvent(this.window ,'load');
         const wordsResizeEvent0 = fromEvent(this.window ,'resize');
         wordsLoadEvent0.subscribe(this.wordsService.wordsRepositionDashes({templateVar:this.wordsTemplateVariable}))
-        wordsResizeEvent0.subscribe(this.wordsService.wordsRepositionDashes({templateVar:this.wordsTemplateVariable})) 
-         //FIXME          
+        wordsResizeEvent0.subscribe(this.wordsService.wordsRepositionDashes({templateVar:this.wordsTemplateVariable}))
+        //FIXME    
+
+        //polyfill if browsers get stubborn with the event listener
+        var wordsIntervalRxjs0 = interval(10)
+        var wordsTakeRxjs0 =  wordsIntervalRxjs0.pipe(take(1))               
+        wordsTakeRxjs0.subscribe((a)=>{
+            var event = this.window.document.createEvent("Event");
+            event.initEvent("load", false, true);      
+            this.window.dispatchEvent( event)      
+        })  
+        //polyfill if browsers get stubborn with the event listener     
     }
   
 }
