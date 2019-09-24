@@ -12,7 +12,7 @@ export class WordsService {
 
     constructor() { };
     
-    wordsval0:string = 'w_o_r_d_s'
+    wordsval0:string = 'w_o_r_d_s_Title'
     wordsval1:string = 'w_o_r_d_s_Line'
     wordsval2:string = 'w_o_r_d_s_paragraph'
     wordsval3:string = 'w_o_r_d_s_Dash'

@@ -22,7 +22,9 @@ describe('AppComponent', () => {
 
     beforeEach(()=>{
         fixture = TestBed.createComponent(AppComponent);
+        fixture.childComponent = TestBed.createComponent(WordsComponent).componentInstance;
         app = fixture.debugElement.componentInstance;
+        fixture.detectChanges()
     })
 
     it('should create the app', () => {
@@ -33,8 +35,56 @@ describe('AppComponent', () => {
         expect(app.appTitle).toEqual('WindsorEmpire');
     });
 
-    // it('should render title ', () => {
-    //     const compiled = fixture.debugElement.nativeElement;
-    //     expect(compiled.querySelector('h1').textContent).toContain('Welcome to AngularWindsorEmpire!');
-    // });
+    it('afterViewInit Lifecycle Hook should return undeinfed ', () => {
+        spyOn(app,'ngAfterViewInit')
+        app.ngAfterViewInit()
+        expect(app.ngAfterViewInit()).toBeUndefined()
+    });
+
+    it('should see all the required elements when it collects them for processing  ', () => {
+        // spyOn(app,'ngAfterViewInit')
+        var test = true
+        app.ngAfterViewInit()
+        for(   var comp of app.wordsService.wordsMyElementsArray   ){
+            for(   var elem of comp   ){
+                switch(   elem.nativeElement.id   ){
+                    case '':
+                      console.log('')
+                      break;
+                    case 'w_o_r_d_s_Title':
+                      // code block
+                    //   console.log('w_o_r_d_s_Titl')
+                      break;
+                    case 'w_o_r_d_s_Line':
+                      // code block
+                    //   console.log('w_o_r_d_s_Line')
+                      break;
+                    case 'w_o_r_d_s_paragraph':
+                      // code block
+                    //   console.log('w_o_r_d_s_paragraph')
+                      break;
+                    case 'w_o_r_d_s_Dash':
+                      // code block
+                    //   console.log('w_o_r_d_s_Dash')
+                      break;
+                    case 'w_o_r_d_s_paragraphDash':
+                    //   console.log('w_o_r_d_s_paragraphDash')
+                      // code block
+                      break;
+                    default:
+                     
+                        test = false
+                        expect(test).toBe(true)
+                        break;
+                }
+                if(  !test   ){
+                    break
+                }
+            }
+            if(   !test   ){
+                break
+            }
+        }
+        expect(test).toBe(true)
+    });
 });
