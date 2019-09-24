@@ -28,7 +28,6 @@ export class AppComponent implements AfterViewInit {
     @ViewChildren(appGenerateSelector(), { read: ElementRef })  app_wordsConponentElements: any;
     @ViewChildren(appGenerateSelector())  app_wordsComponentReferences: any;
     
-    
     constructor(
         private wordsService: WordsService
     ) { }
@@ -43,11 +42,7 @@ export class AppComponent implements AfterViewInit {
             this.wordsService.wordsMyElementsArray.push([
                     this.app_wordsConponentElements._results[i],
                     ...this.app_wordsComponentReferences._results[i].wordsMyElements._results
-                ])
-            // this.wordsService.wordsRepositionDash.push([
-            //     this.app_wordsConponentElements._results[i],
-            //     ...this.app_wordsComponentReferences._results[i].wordsMyElements._results
-            // ])  
+                ]) 
         }
         this.wordsService.wordsMyElements.next(this.wordsService.wordsMyElementsArray)        
         // DONE with Subject<Array<any[]>>

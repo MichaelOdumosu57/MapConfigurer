@@ -299,7 +299,7 @@ export class WordsService {
     wordsRepositionDashesCount:any = 0;
     wordsRepositionDashes(dev_obj:any ):any{
         return (event:any)=>{
-            console.log(event)
+            // console.log(event)
         //   console.log(   this.wordsMyElementsArray    )
             for(   let dashes of this.wordsMyElementsArray   ){
                 for(var i=0; i!== dashes.length;i++){

@@ -1,35 +1,40 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import {   WordsComponent   } from './words/words.component';
+import { WINDOW_PROVIDERS } from './window.service';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
+    var app;
+    var fixture;
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            providers:[WINDOW_PROVIDERS],
+            imports: [
+                RouterTestingModule
+            ],
+            declarations: [
+                AppComponent,
+                WordsComponent
+            ],
+        }).compileComponents();
+    }));
 
-  xit('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
+    beforeEach(()=>{
+        fixture = TestBed.createComponent(AppComponent);
+        app = fixture.debugElement.componentInstance;
+    })
 
-  xit(`should have as title 'AngularWindsorEmpire'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('AngularWindsorEmpire');
-  });
+    it('should create the app', () => {
+        expect(app).toBeTruthy();
+    });
 
-  xit('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to AngularWindsorEmpire!');
-  });
+    it(`should have the right title'`, () => {
+        expect(app.appTitle).toEqual('WindsorEmpire');
+    });
+
+    // it('should render title ', () => {
+    //     const compiled = fixture.debugElement.nativeElement;
+    //     expect(compiled.querySelector('h1').textContent).toContain('Welcome to AngularWindsorEmpire!');
+    // });
 });
