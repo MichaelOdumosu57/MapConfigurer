@@ -22,8 +22,7 @@ export class WordsComponent implements OnInit {
         @Inject(WINDOW) private window: Window
     ) { }
 
-    wordsElementHeight : Array<Number> = this.wordsService.wordsElementHeight; 
-
+    
     @Input() wordsTemplateVariable:string | any;
     
     wordsval0 :string = this.wordsService.wordsval0;

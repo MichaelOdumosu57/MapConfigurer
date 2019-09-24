@@ -22,6 +22,18 @@ describe('WordsService', () => {
       expect(service.wordsval3).toMatch('w_o_r_d_s_Dash')
       expect(service.wordsval4).toMatch('w_o_r_d_s_paragraphDash')
     });     
+
+    it('should have wordsRepositionDashesCount exist and equal to 0', () => {
+        expect(service.wordsRepositionDashesCount).not.toBeUndefined()
+        expect(service.wordsRepositionDashesCount).toEqual(0)
+    });     
+
+    it('"s" wordsReposiitionDashes fn should do as expected',()=>{
+        spyOn(service,'wordsRepositionDashes')
+        service.wordsRepositionDashes({})
+        expect(typeof  service.wordsRepositionDashes).toMatch('function')
+      
+    })
 });
 
 

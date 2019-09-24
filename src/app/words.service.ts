@@ -32,9 +32,6 @@ export class WordsService {
     
     wordsStyle3:Array<any> = [3,3,3] 
     wordsStyle4:Array<any> = [3,3,3] 
-    
-    wordsGroupObject0:wordsGroupObject = {wordsStyle:[{}]}
-    wordsGroupObject1:wordsGroupObject = {wordsStyle:[{}]}
 
     //represnetaing each instance of the wordsComponent
     wordsMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
@@ -297,23 +294,19 @@ export class WordsService {
         }      
     }
     //represnetaing each instance of the wordsComponent
-        
-    wordsElementHeight : Array<number>;
-    wordsElementparagrpahDashHeight : number = 18
   
-  
-  //dashes repositioning
-  wordsRepositionDashesCount:any = 0;
-  wordsRepositionDashes(dev_obj:any):any{
-      return (event:any)=>{
-          console.log(event)
+    //dashes repositioning
+    wordsRepositionDashesCount:any = 0;
+    wordsRepositionDashes(dev_obj:any ):any{
+        return (event:any)=>{
+            console.log(event)
         //   console.log(   this.wordsMyElementsArray    )
-          for(   let dashes of this.wordsMyElementsArray   ){
-              for(var i=0; i!== dashes.length;i++){
-                      
+            for(   let dashes of this.wordsMyElementsArray   ){
+                for(var i=0; i!== dashes.length;i++){
+                        
                 
-                  if(   dashes[i].nativeElement.id === 'w_o_r_d_s_paragraphDash'   ){
-                  
+                    if(   dashes[i].nativeElement.id === 'w_o_r_d_s_paragraphDash'   ){
+                    
                         //find out how tall is paragprah dash,height and adjust according
                         // console.log(   dashes._results[i].nativeElement.clientHeight,
                         // )
@@ -342,16 +335,16 @@ export class WordsService {
                             
                         // so when word wrap is one the factor expression needs to end up as zero
                         //   on word wrap  1 factor ===0 
-                      
-                  }
-                          
-                  
                         
-              }  
-              this.wordsRepositionDashesCount = 0 
-          }
-      }
-  }  
-  // dashes repositioning
+                    }
+                            
+                    
+                        
+                }  
+                this.wordsRepositionDashesCount = 0 
+            }
+        }
+    }  
+    // dashes repositioning
   
 }

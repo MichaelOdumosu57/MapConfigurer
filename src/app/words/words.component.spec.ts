@@ -8,7 +8,7 @@ xdescribe('WordsComponent', () => {
   let wordsService : WordsService;
   
   wordsService = new  WordsService()
-  comp = new  WordsComponent(   wordsService  )
+//   comp = new  WordsComponent(   wordsService  )
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
