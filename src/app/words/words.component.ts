@@ -6,7 +6,6 @@ import {   fromEvent,interval   } from 'rxjs';
 import {   take,timeout   } from 'rxjs/operators';
 
 
-
     
 @Component({
   selector: 'app-words',
@@ -47,8 +46,6 @@ export class WordsComponent implements OnInit {
     wordsStyle4:any =  this.wordsService.wordsStyle4;    
     
     ngOnInit() {
-
-
         /* at the slice this means that the the templatevariable must have a number 
         so I can get to the exact index in the array
         */
@@ -63,7 +60,11 @@ export class WordsComponent implements OnInit {
 
 
                     for(   var prop in  this.wordsService[this.wordsTemplateVariable].styles[index].css   ){
+                        
+
                         arr[this.wordsTemplateVariable.slice(-1)][index].nativeElement.style[prop] = this.wordsService[this.wordsTemplateVariable].styles[index].css[prop]
+                       
+                        
                     }
 
                                 

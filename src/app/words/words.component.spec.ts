@@ -1,33 +1,85 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { WordsComponent } from './words.component';
 import { WordsService  } from '../words.service';
+import { WINDOW_PROVIDERS } from '../window.service';
+import { compileNgModule } from '@angular/core/src/render3/jit/module';
+import { Observable, of, Subject } from 'rxjs';
 
-xdescribe('WordsComponent', () => {
+describe('WordsComponent', () => {
 
-  let comp: WordsComponent;
-  let wordsService : WordsService;
+//   let comp: WordsComponent;
+//   let wordsService : WordsService;
   
-  wordsService = new  WordsService()
+//   wordsService = new  WordsService()
 //   comp = new  WordsComponent(   wordsService  )
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ WordsComponent ]
-//     })
-//     .compileComponents();
-//   }));
+    var fixture: ComponentFixture<WordsComponent>
+    var component: any;
+       
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(WordsComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            providers:[WINDOW_PROVIDERS],
+            declarations: [ WordsComponent ]
+        })
+        .compileComponents();
+    }));
 
-  // it('should create', () => {
-  //   expect(comp).toBeTruthy();
-  // });
-  
-  // it('name property should not be undefined', () => {
-  //   expect(comp.name).not.toBe(undefined);
-  // });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(WordsComponent);
+        component = fixture.debugElement.componentInstance;
+        fixture.detectChanges();
+    });
+
+      
+    it('should be assigning css values approiately to all elements', () => {
+        // angular seems to already run ngOnInit and everything for the component, but this is not unit tested thats why were taking the values and unit testing them here
+        var test = true;
+        component.wordsTemplateVariable = 'wordsComponentObject0';
+        component.wordsService.wordsMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
+                return  {nativeElement:elem} 
+            }) 
+        ])
+        component.wordsService.wordsMyElements.next(   component.wordsService.wordsMyElementsArray   )
+        component.ngOnInit()
+        for(   var index in component.wordsService.wordsMyElementsArray[0]   ){ // for 0 in wordsComponentObject0
+            // console.log(    component.wordsService.wordsMyElementsArray[0][index].nativeElement.style   )
+            // console.log(    component.wordsService[component.wordsTemplateVariable].styles[index].css   )
+            if(    component.wordsService[component.wordsTemplateVariable].styles[index].css !== undefined &&  component.wordsService[component.wordsTemplateVariable].styles[index].override === 'true'   ){
+
+
+                for(   var prop of component.wordsService.wordsMyElementsArray[0][index].nativeElement.style   ){
+                    
+                    
+                    // console.log(component.wordsService.wordsMyElementsArray[0][index].nativeElement.style[prop])    
+                    // console.log(component.wordsService[component.wordsTemplateVariable].styles[index].css[prop]) 
+                    if(    component.wordsService.wordsMyElementsArray[0][index].nativeElement.style[prop] !== component.wordsService[component.wordsTemplateVariable].styles[index].css[prop]   ){
+
+
+                        test = false;
+                        expect(test).toBe(true)
+                        break
+
+
+                    }
+
+
+                }
+
+
+            }
+            
+            
+            if(   !test   ){
+                break
+            }
+        }        
+        expect(test).toBe(true)
+    });
+
+    it('should create the component', () => {
+        expect(component).toBeTruthy();
+    });
+
+    
 });
