@@ -34,6 +34,7 @@ describe('WordsComponent', () => {
       
     it('should be assigning css values approiately to all elements', () => {
         // angular seems to already run ngOnInit and everything for the component, but this is not unit tested thats why were taking the values and unit testing them here
+        // might have to make a loop for each component instance you have in your app
         var test = true;
         component.wordsTemplateVariable = 'wordsComponentObject0';
         component.wordsService.wordsMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
@@ -80,6 +81,11 @@ describe('WordsComponent', () => {
     it('should create the component', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should fire the wordsService.wordsRepositionDashes fn on Words Component  AfterViewInit lifecycle hook',()=>{
+        spyOn(component.wordsService,'wordsRepositionDashes')
+        expect(component.wordsService.wordsRepositionDashes).toHaveBeenCalled()
+    })
 
     
 });

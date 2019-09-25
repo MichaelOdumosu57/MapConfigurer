@@ -23,28 +23,28 @@ exports.config = {
   {
     browserName: 'firefox'
   },
-  {
-    browserName: 'chrome',
-    browserVersion: '77.0',
-    platformName: 'Windows 10'
-  },
-  {
-    browserName: 'safari',
-    'platform' : 'macOS 10.13',
-    'version' :'11.1',
-  },
-  {
-    browserName: 'internet explorer',
-    'platform' : 'Windows 8.1',
-    'version' :'11.0',
-    'screenResolution':'1024x768'
-  },
-  {
-    browserName: 'MicrosoftEdge',
-    'platform' : 'Windows 10',
-    'version' :'17.17134',
-    'screenResolution':'1280x800'
-  }
+//   {
+//     browserName: 'chrome',
+//     browserVersion: '77.0',
+//     platformName: 'Windows 10'
+//   },
+//   {
+//     browserName: 'safari',
+//     'platform' : 'macOS 10.13',
+//     'version' :'11.1',
+//   },
+//   {
+//     browserName: 'internet explorer',
+//     'platform' : 'Windows 8.1',
+//     'version' :'11.0',
+//     'screenResolution':'1024x768'
+//   },
+//   {
+//     browserName: 'MicrosoftEdge',
+//     'platform' : 'Windows 10',
+//     'version' :'17.17134',
+//     'screenResolution':'1280x800'
+//   }
   ],
   sauceUser:needed.sauceUser,
   sauceKey:needed.sauceKey,
@@ -58,7 +58,7 @@ exports.config = {
     defaultTimeoutInterval: 30000,
     print: function() {}
   },
-  logLevel:'DEBUG',
+  logLevel:'INFO',
   onPrepare() {
     require('ts-node').register({
       project: require('path').join(__dirname, './tsconfig.e2e.json')
