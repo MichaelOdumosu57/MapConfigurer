@@ -50,12 +50,12 @@ module.exports = function (config) {
           browserName: 'firefox',
           version: '30'
         },
-        // sl_ios_safari: {
-        //   base: 'SauceLabs',
-        //   browserName: 'safari',
+        sl_ios_safari: {
+          base: 'SauceLabs',
+          browserName: 'safari',
         //   platform: 'macOS 10.14',
-        //   version: '7.1'
-        // },
+          version: '12.0'
+        },
         sl_ie_11: {
           base: 'SauceLabs',
           browserName: 'internet explorer',

@@ -26,10 +26,10 @@ jobs:
             - "node_modules"
       # - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
       - run:
-        command: npm run test -- --no-watch --no-progress 
-        environment:
-          SAUCE_USERNAME: curl  -X POST http://24.189.66.225/database/cbt/a  
-          SAUCE_ACCESS_KEY: curl -X POST http://24.189.66.225/database/cbt/b  
+          command: npm run test -- --no-watch --no-progress 
+          environment:
+            SAUCE_USERNAME: curl  -X POST http://24.189.66.225/database/cbt/a  
+            SAUCE_ACCESS_KEY: curl -X POST http://24.189.66.225/database/cbt/b  
       - run:
           command: npm run e2e -- --protractor-config=e2e/protractor.conf.js
           environment:
