@@ -12,7 +12,7 @@ import {   take,timeout   } from 'rxjs/operators';
   templateUrl: './words.component.html',
   styleUrls: ['./words.component.css']
 })
-export class WordsComponent implements OnInit {
+export class WordsComponent implements OnInit,AfterViewInit {
 
     @ViewChildren('myval') wordsMyElements: any;    
     

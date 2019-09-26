@@ -83,7 +83,10 @@ describe('WordsComponent', () => {
     });
 
     it('should fire the wordsService.wordsRepositionDashes fn on Words Component  AfterViewInit lifecycle hook',()=>{
-        spyOn(component.wordsService,'wordsRepositionDashes')
+        fixture = TestBed.createComponent(WordsComponent);
+        component = fixture.debugElement.componentInstance;        
+        spyOn( component.wordsService,'wordsRepositionDashes')
+        component.ngAfterViewInit()
         expect(component.wordsService.wordsRepositionDashes).toHaveBeenCalled()
     })
 
