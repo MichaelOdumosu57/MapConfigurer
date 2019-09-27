@@ -65,59 +65,89 @@ export class WordsComponent implements OnInit,AfterViewInit {
             // console.log(   this.wordsTemplateVariable   )
             // console.log(   arr   )
             this.wordsService[this.wordsTemplateVariable].stylesCopy = this.wordsService[this.wordsTemplateVariable].styles.filter((a,i)=>{
+                
 
-                if( i!== 0){
+                if(  this.wordsService[this.wordsTemplateVariable].styles.length - this.wordsValIndex[3] <= i){
+                    return a         
+                }
+                    // console.log(i,this.wordsValIndex[2])
 
-                    // console.log(   arr[this.wordsTemplateVariable.slice(-1)][i].nativeElement.id   )
-                    // console.log(   this.wordsVal[this.wordsValIndex[0]]   )
+                if(  this.wordsService[this.wordsTemplateVariable].styles.length - this.wordsValIndex[3] > i){
+
+                            
+                    if(   this.wordsValIndex[2] === 'true'    ){  // helps me keep the elements in order
+
+                        
+                        this.wordsValIndex[3] += 1
+                        this.wordsValIndex[2]  = 'justChanged'
 
 
-                    if(   this.wordsVal[this.wordsValIndex[0]] !== arr[this.wordsTemplateVariable.slice(-1)][i].nativeElement.id   ){
-                        this.wordsValIndex[0] = this.wordsVal.slice(   this.wordsValIndex[0]   ).reduce((a,b,i)=>{
-                            if(   b ===   arr[this.wordsTemplateVariable.slice(-1)][i].nativeElement.id   ){
-                                this.wordsValIndex[1] = i -1
-                            }
-                            return this.wordsValIndex[1]                           
-                        })
-                        console.log(this.wordsValIndex[0])
-                        this.wordsStyleIndex[0] = 0    
-                        this.wordsValIndex[1]  = 0                       
                     }
+
                     
-
-                    else if(    this.wordsVal[this.wordsValIndex[0]] === arr[this.wordsTemplateVariable.slice(-1)][i].nativeElement.id   ){
-                        this.wordsStyleIndex[0] += 1    
+                    if(   i!== 0 &&  (   this.wordsValIndex[2] === 'justChanged' || this.wordsValIndex[2]  === 'false'    )   ){ 
 
 
+                        this.wordsValIndex[2]  = 'false' 
+                        console.log(   arr[this.wordsTemplateVariable.slice(-1)][   i   ].nativeElement.id   )
+                        console.log(   this.wordsVal[this.wordsValIndex[0]]   )
+                        console.log(   this.wordsValIndex[0]    )
 
-                        /* time to move onto the next one because there are 
-                        supposed to be no more elements for that specific string */
-                        if(   this.wordsStyleIndex[0] === this.wordsStyle[this.wordsValIndex[0]].length   ){ 
-                            this.wordsValIndex[0] += 1
-                            this.wordsStyleIndex[0] = 0 
+
+                        if(   this.wordsVal[this.wordsValIndex[0]] !== arr[this.wordsTemplateVariable.slice(-1)][   i  ].nativeElement.id   ){
+                            console.log('must fix')
+                            this.wordsValIndex[0] += this.wordsVal.slice(   this.wordsValIndex[0] -1   ).reduce((c,b,index)=>{
+
+                                console.log(b, arr[this.wordsTemplateVariable.slice(-1)][   i    ].nativeElement.id)
+                                if(   b ===   arr[this.wordsTemplateVariable.slice(-1)][   i    ].nativeElement.id   ){
+                                    this.wordsValIndex[1] = index 
+                                }
+                                return this.wordsValIndex[1]                           
+                            })
+                            console.log(this.wordsValIndex[0])
+                            this.wordsStyleIndex[0] = 0    
+                            this.wordsValIndex[1]  = 0      
+                            this.wordsValIndex[2] = 'true'       
+                            
+                            
                         }
+                        
+
+                        else if(    this.wordsVal[this.wordsValIndex[0]] === arr[this.wordsTemplateVariable.slice(-1)][   i    ].nativeElement.id   ){
+                            this.wordsStyleIndex[0] += 1    
+
+
+
+                            /* time to move onto the next one because there are 
+                            supposed to be no more elements for that specific string */
+                            if(   this.wordsStyleIndex[0] === this.wordsStyle[this.wordsValIndex[0]].length   ){ 
+                                this.wordsValIndex[0] += 1
+                                this.wordsStyleIndex[0] = 0 
+                            }
+
+
+                            return a
+                        }
+                        
+                        
+
+
+                    }
+
+                    else if( i=== 0){
 
 
                         return a
+
+
                     }
-                    
-                    
-
-
-                }
-
-                else if( i=== 0){
-
-
-                    return a
-
 
                 }
                 
             })
+            this.wordsValIndex[2]  = 'false'
 
-            console.log(   this.wordsService[this.wordsTemplateVariable].stylesCopy.length   )
-            console.log(   arr[this.wordsTemplateVariable.slice(-1)].length   )
+            console.log(   this.wordsService[this.wordsTemplateVariable].stylesCopy, arr[this.wordsTemplateVariable.slice(-1)]     )
             for(   var index in this.wordsService[this.wordsTemplateVariable].stylesCopy    ){
             
                 // console.log(   arr[this.wordsTemplateVariable.slice(-1)][index].nativeElement.id   )

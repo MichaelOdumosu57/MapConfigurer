@@ -24,7 +24,7 @@ export class WordsService {
     wordsbool2:string = 'true'
     wordsbool3:string = 'true'
     wordsbool4:string = 'true'
-    wordsbool:Array<string> = ['false','true','true','true','true']
+    wordsbool:Array<string> = ['true','false','true','true','true']
     
     wordsSeq0:Array<Number> = [3]
     wordsSeq1:Array<Number> = [3]
@@ -39,7 +39,7 @@ export class WordsService {
     wordsStyle4:Array<any> = [3,3,3] 
     wordsStyle: Array<any[]> = [[3],[3],[3],[3,3,3],[3,3,3]]
 
-    wordsValIndex:Array<any> = [0,0] // helps to filter out element that are not availble
+    wordsValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
     wordsStyleIndex:Array<any> = [0]
 
     //represnetaing each instance of the wordsComponent
@@ -54,9 +54,15 @@ export class WordsService {
                     left:'30px'
                 }
             },
-            {},
-            {},
-            {},
+            {
+                override:'1'
+            },
+            {
+                override:'2'
+            },
+            {
+                override:'3'
+            },
             {
                 override:'true',
                 css:{
