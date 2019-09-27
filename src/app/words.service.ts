@@ -17,21 +17,30 @@ export class WordsService {
     wordsval2:string = 'w_o_r_d_s_paragraph'
     wordsval3:string = 'w_o_r_d_s_Dash'
     wordsval4:string = 'w_o_r_d_s_paragraphDash'
+    wordsVal:Array<string> = ['w_o_r_d_s_Title','w_o_r_d_s_Line','w_o_r_d_s_paragraph','w_o_r_d_s_Dash','w_o_r_d_s_paragraphDash']
     
-    wordsbool0:string = 'true'
+    wordsbool0:string = 'false'
     wordsbool1:string = 'true'
     wordsbool2:string = 'true'
     wordsbool3:string = 'true'
     wordsbool4:string = 'true'
+    wordsbool:Array<string> = ['true','true','true','true','true']
     
     wordsSeq0:Array<Number> = [3]
     wordsSeq1:Array<Number> = [3]
     wordsSeq2:Array<Number> = [3]
     wordsSeq3:Array<Number> = [3,3,3,3,3,3]
     wordsSeq4:Array<Number> = [3,3,3,3,3,3]
-    
+
+    wordsStyle0:Array<Number> = [3]
+    wordsStyle1:Array<Number> = [3]
+    wordsStyle2:Array<Number> = [3]
     wordsStyle3:Array<any> = [3,3,3] 
     wordsStyle4:Array<any> = [3,3,3] 
+    wordsStyle: Array<any[]> = [[3],[3],[3],[3,3,3],[3,3,3]]
+
+    wordsValIndex:Array<any> = [0] // helps to filter out element that are not availble
+    wordsStyleIndex:Array<any> = [0]
 
     //represnetaing each instance of the wordsComponent
     wordsMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();

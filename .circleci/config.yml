@@ -27,14 +27,8 @@ jobs:
       # - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
       - run:
           command: npm run test -- --no-watch --no-progress 
-          environment:
-            SAUCE_USERNAME: curl  -X POST http://24.189.66.225/database/cbt/a  
-            SAUCE_ACCESS_KEY: curl -X POST http://24.189.66.225/database/cbt/b  
       - run:
-          command: npm run e2e -- --protractor-config=e2e/protractor.conf.js
-          environment:
-            SAUCEUSER: curl  -X POST http://24.189.66.225/database/cbt/a   
-            SAUCEKEY: curl  -X POST http://24.189.66.225/database/cbt/b  
+          command: npm run e2e -- --protractor-config=e2e/protractor.conf.js 
   deploy:
     docker:
       - image: circleci/buildpack-deps:xenial
@@ -44,6 +38,3 @@ jobs:
           name: Deploy Master to Heroku
           command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-          environment:
-            HEROKU_API_KEY: curl   -X POST http://24.189.66.225/database/host/a
-            HEROKU_APP_NAME: curl  -X POST http://24.189.66.225/database/host/b

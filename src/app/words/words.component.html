@@ -1,10 +1,16 @@
-<h2   #myval *ngIf="wordsbool0 ==='true'" id = {{wordsval0}} class = 'f2 mw6 tc ttu'   >Upcoming Parties & Events </h2>
-<div #myval  *ngIf="wordsbool1 ==='true'" id = {{wordsval1}} class = 'mw3 ml2-l ml2-m'></div>
-<h3  #myval  *ngIf="wordsbool2 ==='true'" id = {{wordsval2}} class = 'f4 fw1 mw6 tc' >Fuerat aestu carentem habentia spectent tonitrua mutastis locavit liberioris. Sinistra possedit litora ut nabataeaque. Setucant coepyterunt perveniunt animal! Concordi aurea nabataeaque seductaque constaque cepit sublime flexi nullus.</h3>
+<ng-container *ngFor = 'let a of wordsStyle0' >
+    <h2   #myval *ngIf="wordsbool[0] ==='true'" id = {{wordsval0}} class = 'f2 mw6 tc ttu'   >Upcoming Parties & Events </h2>
+</ng-container>
+<ng-container *ngFor = 'let a of wordsStyle1' >
+    <div #myval  *ngIf="wordsbool[1] ==='true'" id = {{wordsval1}} class = 'mw3 ml2-l ml2-m'></div>
+</ng-container>
+<ng-container *ngFor = 'let a of wordsStyle2' >
+    <h3  #myval  *ngIf="wordsbool[2] ==='true'" id = {{wordsval2}} class = 'f4 fw1 mw6 tc' >Fuerat aestu carentem habentia spectent tonitrua mutastis locavit liberioris. Sinistra possedit litora ut nabataeaque. Setucant coepyterunt perveniunt animal! Concordi aurea nabataeaque seductaque constaque cepit sublime flexi nullus.</h3>
+</ng-container>
 <ng-container *ngFor = 'let a of wordsStyle3' >
-    <div  #myval  *ngIf="wordsbool3 ==='true'" id = {{wordsval3}} class = 'mw2'  ></div>
+    <div  #myval  *ngIf="wordsbool[3] ==='true'" id = {{wordsval3}} class = 'mw2'  ></div>
 </ng-container>
 <ng-container *ngFor = 'let a of wordsStyle4' >
-    <p  #myval  *ngIf="wordsbool4 ==='true'" id = {{wordsval4}} class = ''  >Trying to stay on a specific diet? We Can Help!</p>
+    <p  #myval  *ngIf="wordsbool[4] ==='true'" id = {{wordsval4}} class = ''  >Trying to stay on a specific diet? We Can Help!</p>
 </ng-container>
 
