@@ -49,7 +49,7 @@ describe('WordsComponent', () => {
             if(    component.wordsService[component.wordsTemplateVariable].styles[index].css !== undefined &&  component.wordsService[component.wordsTemplateVariable].styles[index].override === 'true'   ){
 
 
-                for(   var prop of component.wordsService.wordsMyElementsArray[0][index].nativeElement.style   ){
+                for(   var prop of component.wordsService.wordsMyElementsArray[0][index].nativeElement.styleCopy   ){
                     
                     
                     // console.log(component.wordsService.wordsMyElementsArray[0][index].nativeElement.style[prop])    
