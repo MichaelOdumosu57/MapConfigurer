@@ -24,7 +24,7 @@ export class WordsService {
     wordsbool2:string = 'true'
     wordsbool3:string = 'true'
     wordsbool4:string = 'true'
-    wordsbool:Array<string> = ['true','false','true','true','true']
+    wordsbool:Array<string> = ['false','true','true','true','true']
     
     wordsSeq0:Array<Number> = [3]
     wordsSeq1:Array<Number> = [3]

@@ -67,12 +67,12 @@ export class WordsComponent implements OnInit,AfterViewInit {
             this.wordsService[this.wordsTemplateVariable].stylesCopy = this.wordsService[this.wordsTemplateVariable].styles.filter((a,i)=>{
                 
 
-                if(  this.wordsService[this.wordsTemplateVariable].styles.length - this.wordsValIndex[3] <= i){
+                if(   this.wordsService[this.wordsTemplateVariable].styles.length - this.wordsValIndex[3] <= i    ){
                     return a         
                 }
                     // console.log(i,this.wordsValIndex[2])
 
-                if(  this.wordsService[this.wordsTemplateVariable].styles.length - this.wordsValIndex[3] > i){
+                if(   this.wordsService[this.wordsTemplateVariable].styles.length - this.wordsValIndex[3] > i   ){
 
                             
                     if(   this.wordsValIndex[2] === 'true'    ){  // helps me keep the elements in order
@@ -89,26 +89,48 @@ export class WordsComponent implements OnInit,AfterViewInit {
 
 
                         this.wordsValIndex[2]  = 'false' 
-                        console.log(   arr[this.wordsTemplateVariable.slice(-1)][   i   ].nativeElement.id   )
-                        console.log(   this.wordsVal[this.wordsValIndex[0]]   )
+                        console.log(   'elements',arr[this.wordsTemplateVariable.slice(-1)][   i   ].nativeElement.id   )
+                        console.log(   'myids',this.wordsVal[this.wordsValIndex[0]]   )
                         console.log(   this.wordsValIndex[0]    )
 
 
                         if(   this.wordsVal[this.wordsValIndex[0]] !== arr[this.wordsTemplateVariable.slice(-1)][   i  ].nativeElement.id   ){
                             console.log('must fix')
-                            this.wordsValIndex[0] += this.wordsVal.slice(   this.wordsValIndex[0] -1   ).reduce((c,b,index)=>{
+                            console.log(this.wordsStyleIndex)
+                            // console.log(   this.wordsVal.slice(   this.wordsValIndex[0] >=1 ? this.wordsValIndex[0]  : 0   )   )
+                            
+                            
+                            
+                            // this.wordsVal.slice(   this.wordsValIndex[0] >=1 ? this.wordsValIndex[0]  : 0   ).reduce((c,b,index)=>{
 
-                                console.log(b, arr[this.wordsTemplateVariable.slice(-1)][   i    ].nativeElement.id)
-                                if(   b ===   arr[this.wordsTemplateVariable.slice(-1)][   i    ].nativeElement.id   ){
-                                    this.wordsValIndex[1] = index 
-                                }
-                                return this.wordsValIndex[1]                           
-                            })
-                            console.log(this.wordsValIndex[0])
-                            this.wordsStyleIndex[0] = 0    
+                            //     console.log(b, arr[this.wordsTemplateVariable.slice(-1)][   i    ].nativeElement.id)
+                            //     if(   b ===   arr[this.wordsTemplateVariable.slice(-1)][   i    ].nativeElement.id   ){
+                            //         this.wordsValIndex[1] = index 
+                            //         // + (this.wordsValIndex[0] >=1 ? 1:2)
+                            //     }
+                            //     return this.wordsValIndex[1]                           
+                            // })
+                            
+                            switch(    true   ){
+                                case(   arr[this.wordsTemplateVariable.slice(-1)][   i +1  ]  === undefined   ): 
+                                    console.log(   undefined   )
+                                    this.wordsStyleIndex[0] = 0  
+                                    this.wordsValIndex[0] = this.wordsVal.indexOf(   arr[this.wordsTemplateVariable.slice(-1)][   i  ].nativeElement.id     )  +1
+                                    break
+                                case(   arr[this.wordsTemplateVariable.slice(-1)][   i +1  ].nativeElement.id  === arr[this.wordsTemplateVariable.slice(-1)][   i  ].nativeElement.id    ): 
+                                    console.log(   'equals'   )
+                                    this.wordsStyleIndex[0] = 1 
+                                    this.wordsValIndex[0] = this.wordsVal.indexOf(   arr[this.wordsTemplateVariable.slice(-1)][   i  ].nativeElement.id     )  
+                                    break        
+                                case(   arr[this.wordsTemplateVariable.slice(-1)][   i +1  ].nativeElement.id  !== arr[this.wordsTemplateVariable.slice(-1)][   i  ].nativeElement.id    ): 
+                                    console.log(   'not equals'   )
+                                    this.wordsStyleIndex[0] = 0 
+                                    this.wordsValIndex[0] = this.wordsVal.indexOf(   arr[this.wordsTemplateVariable.slice(-1)][   i  ].nativeElement.id     )  +1
+                                    break                                                            
+                            }
                             this.wordsValIndex[1]  = 0      
                             this.wordsValIndex[2] = 'true'       
-                            
+                            console.log(this.wordsValIndex)
                             
                         }
                         
@@ -145,18 +167,19 @@ export class WordsComponent implements OnInit,AfterViewInit {
                 }
                 
             })
-            this.wordsValIndex[2]  = 'false'
+            this.wordsValIndex =  [0,0,'false',0]
 
             console.log(   this.wordsService[this.wordsTemplateVariable].stylesCopy, arr[this.wordsTemplateVariable.slice(-1)]     )
+
             for(   var index in this.wordsService[this.wordsTemplateVariable].stylesCopy    ){
             
                 // console.log(   arr[this.wordsTemplateVariable.slice(-1)][index].nativeElement.id   )
-                if(   this.wordsService[this.wordsTemplateVariable].styles[index].override === 'true'   ){
+                if(   this.wordsService[this.wordsTemplateVariable].stylesCopy[index].override === 'true'   ){
 
 
-                    for(   var prop in  this.wordsService[this.wordsTemplateVariable].styles[index].css   ){
+                    for(   var prop in  this.wordsService[this.wordsTemplateVariable].stylesCopy[index].css   ){
                         
-                        
+                        // console.log(   arr[this.wordsTemplateVariable.slice(-1)][index].nativeElement   )
                         arr[this.wordsTemplateVariable.slice(-1)][index].nativeElement.style[prop] = this.wordsService[this.wordsTemplateVariable].stylesCopy[index].css[prop]
                        
                         
