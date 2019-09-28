@@ -24,7 +24,7 @@ export class WordsService {
     wordsbool2:string = 'true'
     wordsbool3:string = 'true'
     wordsbool4:string = 'true'
-    wordsbool:Array<string> = ['false','true','true','true','true']
+    wordsbool:Array<string> = ['false','false','true','true','true']
     
     wordsSeq0:Array<Number> = [3]
     wordsSeq1:Array<Number> = [3]
@@ -35,8 +35,8 @@ export class WordsService {
     wordsStyle0:Array<Number> = [3]
     wordsStyle1:Array<Number> = [3]
     wordsStyle2:Array<Number> = [3]
-    wordsStyle3:Array<any> = [3,3,3] 
-    wordsStyle4:Array<any> = [3,3,3] 
+    wordsStyle3:Array<any> = [3,3,3]
+    wordsStyle4:Array<any> = [3,3,3]
     wordsStyle: Array<any[]> = [[3],[3],[3],[3,3,3],[3,3,3]]
 
     wordsValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
@@ -44,10 +44,10 @@ export class WordsService {
 
     //represnetaing each instance of the wordsComponent
     wordsMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
-    wordsMyElementsArray: any[] = []; 
+    wordsMyElementsArray: any[] = [];
     wordsComponentObject0:any = {
         styles:[
-            {  
+            {
                 override:'true',
                 css:{
                     position:'relative',
@@ -72,7 +72,7 @@ export class WordsService {
                 },
                 repositionDash:{
                     lineHeight:18,
-                    factor:'0'        
+                    factor:'0'
                 }
             },
             {
@@ -84,7 +84,7 @@ export class WordsService {
                 },
                 repositionDash:{
                     lineHeight:18,
-                    factor:'.27'        
+                    factor:'.27'
                 }
             },
             {
@@ -96,9 +96,9 @@ export class WordsService {
                 },
                 repositionDash:{
                     lineHeight:18,
-                    factor:'.175'      
+                    factor:'.175'
                 }
-            },  
+            },
             {
                 override:'true',
                 css:{
@@ -119,7 +119,7 @@ export class WordsService {
                 },
                 repositionDash:{
                     respective:5
-                }                
+                }
             },
             {
                 override:'true',
@@ -130,13 +130,13 @@ export class WordsService {
                 },
                 repositionDash:{
                     respective:6
-                }                  
-            }                                                
+                }
+            }
         ]
     }
     wordsComponentObject1:any = {
         styles:[
-            {  
+            {
                 override:'true',
                 css:{
                     position:'relative',
@@ -155,7 +155,7 @@ export class WordsService {
                 },
                 repositionDash:{
                     lineHeight:18,
-                    factor:'0'        
+                    factor:'0'
                 }
             },
             {
@@ -167,7 +167,7 @@ export class WordsService {
                 },
                 repositionDash:{
                     lineHeight:18,
-                    factor:'.27'        
+                    factor:'.27'
                 }
             },
             {
@@ -179,9 +179,9 @@ export class WordsService {
                 },
                 repositionDash:{
                     lineHeight:18,
-                    factor:'.175'      
+                    factor:'.175'
                 }
-            },  
+            },
             {
                 override:'true',
                 css:{
@@ -202,7 +202,7 @@ export class WordsService {
                 },
                 repositionDash:{
                     respective:5
-                }                
+                }
             },
             {
                 override:'true',
@@ -213,13 +213,13 @@ export class WordsService {
                 },
                 repositionDash:{
                     respective:6
-                }                  
-            }                                                
+                }
+            }
         ]
     }
     wordsComponentObject2:any = {
         styles:[
-            {  
+            {
                 override:'true',
                 css:{
                     position:'relative',
@@ -238,7 +238,7 @@ export class WordsService {
                 },
                 repositionDash:{
                     lineHeight:18,
-                    factor:'0'        
+                    factor:'0'
                 }
             },
             {
@@ -250,7 +250,7 @@ export class WordsService {
                 },
                 repositionDash:{
                     lineHeight:18,
-                    factor:'.27'        
+                    factor:'.27'
                 }
             },
             {
@@ -262,9 +262,9 @@ export class WordsService {
                 },
                 repositionDash:{
                     lineHeight:18,
-                    factor:'.175'      
+                    factor:'.175'
                 }
-            },  
+            },
             {
                 override:'true',
                 css:{
@@ -285,7 +285,7 @@ export class WordsService {
                 },
                 repositionDash:{
                     respective:5
-                }                
+                }
             },
             {
                 override:'true',
@@ -296,17 +296,17 @@ export class WordsService {
                 },
                 repositionDash:{
                     respective:6
-                }                  
-            }                                                
+                }
+            }
         ]
     }
   
     wordsComponent(dev_obj:Object | any| void) : any{
         for(   let metadata of dev_obj.ng_ITO   ){
             for(   let i in metadata){
-                // console.log(metadata[i].nativeElement)       
+                // console.log(metadata[i].nativeElement)
             }
-        }      
+        }
     }
     //represnetaing each instance of the wordsComponent
   
@@ -325,22 +325,22 @@ export class WordsService {
                         //find out how tall is paragprah dash,height and adjust according
                         // console.log(   dashes._results[i].nativeElement.clientHeight,
                         // )
-                        // console.log(   dev_obj.templateVar  )                       
+                        // console.log(   dev_obj.templateVar  )
                         // console.log(   this[dev_obj.templateVar].styles[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ]   )
-                        dashes[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective   ].nativeElement.style.top = (   
-                            parseInt(   
-                                this[dev_obj.templateVar].stylesCopy[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ].css.top.split("px")[0]   
-                            ) + 
+                        dashes[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective   ].nativeElement.style.top = (
+                            parseInt(
+                                this[dev_obj.templateVar].stylesCopy[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ].css.top.split("px")[0]
+                            ) +
                             (
                                 parseInt(
                                     this[dev_obj.templateVar].stylesCopy[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ].css.top.split("px")[0]
-                                ) * 
-                                ( 
-                                        (   
-                                            dashes[i].nativeElement.clientHeight/this[   dev_obj.templateVar   ].stylesCopy[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective   ].repositionDash.lineHeight - 1   
+                                ) *
+                                (
+                                        (
+                                            dashes[i].nativeElement.clientHeight/this[   dev_obj.templateVar   ].stylesCopy[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective   ].repositionDash.lineHeight - 1
                                         ) * this[   dev_obj.templateVar   ].stylesCopy[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ].repositionDash.factor
                                 )  * this.wordsRepositionDashesCount
-                            )   
+                            )
                         ).toString() + "px"
                         this.wordsRepositionDashesCount += 1
                         //
@@ -349,17 +349,17 @@ export class WordsService {
                         // base +     base * factor * arrayIndex
                             
                         // so when word wrap is one the factor expression needs to end up as zero
-                        //   on word wrap  1 factor ===0 
+                        //   on word wrap  1 factor ===0
                         
                     }
                             
                     
                         
-                }  
-                this.wordsRepositionDashesCount = 0 
+                }
+                this.wordsRepositionDashesCount = 0
             }
         }
-    }  
+    }
     // dashes repositioning
   
 }
