@@ -24,7 +24,7 @@ export class WordsService {
     wordsbool2:string = 'true'
     wordsbool3:string = 'true'
     wordsbool4:string = 'true'
-    wordsbool:Array<any> = ['false','false','false','true','true']
+    wordsbool:Array<any> = ['true','true','true','true','true']
 
     
     wordsSeq0:Array<Number> = [3]
@@ -302,15 +302,8 @@ export class WordsService {
             }
         ]
     }
-  
-    wordsComponent(dev_obj:Object | any| void) : any{
-        for(   let metadata of dev_obj.ng_ITO   ){
-            for(   let i in metadata){
-                // console.log(metadata[i].nativeElement)
-            }
-        }
-    }
-    //represnetaing each instance of the wordsComponent
+    //
+
   
     //dashes repositioning
     wordsRepositionDashesCount:any = 0;
@@ -331,16 +324,16 @@ export class WordsService {
                         // console.log(   this[dev_obj.templateVar].styles[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ]   )
                         dashes[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective   ].nativeElement.style.top = (
                             parseInt(
-                                this[dev_obj.templateVar].stylesCopy[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ].css.top.split("px")[0]
+                                this[dev_obj.templateVar].stylesCopy[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective   ].css.top.split("px")[0]
                             ) +
                             (
                                 parseInt(
-                                    this[dev_obj.templateVar].stylesCopy[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ].css.top.split("px")[0]
+                                    this[dev_obj.templateVar].stylesCopy[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective   ].css.top.split("px")[0]
                                 ) *
                                 (
                                         (
                                             dashes[i].nativeElement.clientHeight/this[   dev_obj.templateVar   ].stylesCopy[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective   ].repositionDash.lineHeight - 1
-                                        ) * this[   dev_obj.templateVar   ].stylesCopy[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ].repositionDash.factor
+                                        ) * this[   dev_obj.templateVar   ].stylesCopy[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective   ].repositionDash.factor
                                 )  * this.wordsRepositionDashesCount
                             )
                         ).toString() + "px"

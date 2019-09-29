@@ -33,7 +33,7 @@ export class AppComponent implements AfterViewInit {
     appTitle:string = 'WindsorEmpire'
     
     ngAfterViewInit() {
-        console.log(   this.app_wordsConponentElements ,this.app_wordsComponentReferences   )
+        // console.log(   this.app_wordsConponentElements ,this.app_wordsComponentReferences   )
 
         // DONE with Subject<Array<any[]>>
         for(var i in  this.app_wordsComponentReferences._results){

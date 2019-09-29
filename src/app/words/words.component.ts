@@ -63,38 +63,15 @@ export class WordsComponent implements OnInit,AfterViewInit {
         // console.log(   this.wordsService.wordsMyElements   )
        
         this.wordsService.wordsMyElements.subscribe((arr)=>{
-            console.log(    this.wordsService[this.wordsTemplateVariable].styles   )
-
-            this.wordsService[this.wordsTemplateVariable].stylesCopy = this.wordsService[this.wordsTemplateVariable].styles.filter((a,i)=>{
-
-                if(   i === 0   ){
-                    
-
-                    return true
+               
+            // dealing with  missing elements
+            if(   this.wordsService[this.wordsTemplateVariable].styles.length >   arr[this.wordsTemplateVariable.slice(-1)].length   ){
 
 
-                }
+                this.wordsService[this.wordsTemplateVariable].stylesCopy = this.wordsService[this.wordsTemplateVariable].styles.filter((a,i)=>{
 
-
-                else if(   i!== 0){
-
-
-                    if(   this.wordsStyleIndex[0] === 0   ){
-
-                        console.log(  i,this.wordsbool[  this.wordsBoolIndex[0]    ]  )
+                    if(   i === 0   ){
                         
-                        this.wordsStyleIndex[0] =  this.wordsStyle[ this.wordsBoolIndex[0]   ].length
-                        this.wordsBoolIndex[0] += 1
-                        
-                        
-                    }
-                    
-
-                    this.wordsStyleIndex[0] -= 1
-
-
-                    if(   this.wordsbool[   this.wordsBoolIndex[0] -1   ] === 'true'   ){
-
 
                         return true
 
@@ -102,18 +79,58 @@ export class WordsComponent implements OnInit,AfterViewInit {
                     }
 
 
-                }
-                   
+                    else if(   i!== 0){
 
+
+                        if(   this.wordsStyleIndex[0] === 0   ){
+
+
+                            // console.log(  i,this.wordsbool[  this.wordsBoolIndex[0]    ]  )
+                            this.wordsStyleIndex[0] =  this.wordsStyle[ this.wordsBoolIndex[0]   ].length
+                            this.wordsBoolIndex[0] += 1
+                            
+                            
+                        }
+                        
+
+                        this.wordsStyleIndex[0] -= 1
+
+
+                        if(   this.wordsbool[   this.wordsBoolIndex[0] -1   ] === 'true'   ){
+
+
+                            return true
+
+
+                        }
+
+
+                    }
+                    
+
+                    
+                    
+                })
+
+
+            }
+
+            
+            else if(   this.wordsService[this.wordsTemplateVariable].styles.length  ===  arr[this.wordsTemplateVariable.slice(-1)].length   ){
                 
                 
-            })
-            console.log(   this.wordsbool   )
-            console.log(   this.wordsStyle   )
-            this.wordsValIndex =  [0,0,'false',0]
-            this.wordsStyleIndex = [0]
+                this.wordsService[this.wordsTemplateVariable].stylesCopy = this.wordsService[this.wordsTemplateVariable].styles
 
-            console.log(   this.wordsService[this.wordsTemplateVariable].stylesCopy, arr[this.wordsTemplateVariable.slice(-1)]     )
+
+            }
+
+
+            // console.log(   this.wordsbool   )
+            // console.log(   this.wordsStyle   )
+            // this.wordsValIndex =  [0,0,'false',0]
+            // this.wordsStyleIndex = [0]
+            // console.log(   this.wordsService[this.wordsTemplateVariable].stylesCopy, arr[this.wordsTemplateVariable.slice(-1)]     )
+            // 
 
             for(   var index in this.wordsService[this.wordsTemplateVariable].stylesCopy    ){
             
