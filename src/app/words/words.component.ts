@@ -63,12 +63,15 @@ export class WordsComponent implements OnInit,AfterViewInit {
         // console.log(   this.wordsService.wordsMyElements   )
        
         this.wordsService.wordsMyElements.subscribe((arr)=>{
-               
+
+            // console.log(   arr   )   
+
             // dealing with  missing elements
             if(   this.wordsService[this.wordsTemplateVariable].styles.length >   arr[this.wordsTemplateVariable.slice(-1)].length   ){
 
 
                 this.wordsService[this.wordsTemplateVariable].stylesCopy = this.wordsService[this.wordsTemplateVariable].styles.filter((a,i)=>{
+
 
                     if(   i === 0   ){
                         
@@ -85,7 +88,7 @@ export class WordsComponent implements OnInit,AfterViewInit {
                         if(   this.wordsStyleIndex[0] === 0   ){
 
 
-                            // console.log(  i,this.wordsbool[  this.wordsBoolIndex[0]    ]  )
+                            // console.log(  i,this.wordsBoolIndex[0]      )
                             this.wordsStyleIndex[0] =  this.wordsStyle[ this.wordsBoolIndex[0]   ].length
                             this.wordsBoolIndex[0] += 1
                             
@@ -111,6 +114,7 @@ export class WordsComponent implements OnInit,AfterViewInit {
                     
                     
                 })
+                this.wordsBoolIndex[0] = 0
 
 
             }
@@ -168,7 +172,7 @@ export class WordsComponent implements OnInit,AfterViewInit {
         wordsTakeRxjs0.subscribe((a)=>{
             var event = this.window.document.createEvent("Event");
             event.initEvent("load", false, true);
-            this.window.dispatchEvent( event)
+            this.window.dispatchEvent(   event   )
         })
         //polyfill if browsers get stubborn with the event listener
     }
