@@ -31,6 +31,23 @@ describe('WordsComponent', () => {
         fixture.detectChanges();
     });
 
+    it(   'should be known  by the dev that len of elements should not be greater than the len of styles',()=>{
+        component.wordsTemplateVariable = 'wordsComponentObject0';
+        component.wordsService.wordsMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
+                return  {nativeElement:elem} 
+            }) 
+        ])        
+        
+        if(   component.wordsService.wordsMyElementsArray.length > component.wordsService[component.wordsTemplateVariable].styles.length   ){
+
+
+            expect(false).toBe(true)
+
+
+        }
+
+
+    })
       
     it('should be assigning css values approiately to all elements', () => {
         // angular seems to already run ngOnInit and everything for the component, but this is not unit tested thats why were taking the values and unit testing them here
@@ -43,18 +60,19 @@ describe('WordsComponent', () => {
         ])
         component.wordsService.wordsMyElements.next(   component.wordsService.wordsMyElementsArray   )
         component.ngOnInit()
+        console.log(   component.wordsService[component.wordsTemplateVariable]   )
         for(   var index in component.wordsService.wordsMyElementsArray[0]   ){ // for 0 in wordsComponentObject0
             // console.log(    component.wordsService.wordsMyElementsArray[0][index].nativeElement.style   )
             // console.log(    component.wordsService[component.wordsTemplateVariable].styles[index].css   )
-            if(    component.wordsService[component.wordsTemplateVariable].styles[index].css !== undefined &&  component.wordsService[component.wordsTemplateVariable].styles[index].override === 'true'   ){
+            if(    component.wordsService[component.wordsTemplateVariable].stylesCopy[index].css !== undefined &&  component.wordsService[component.wordsTemplateVariable].stylesCopy[index].override === 'true'   ){
 
 
-                for(   var prop of component.wordsService.wordsMyElementsArray[0][index].nativeElement.styleCopy   ){
+                for(   var prop of component.wordsService.wordsMyElementsArray[0][index].nativeElement.style   ){
                     
                     
                     // console.log(component.wordsService.wordsMyElementsArray[0][index].nativeElement.style[prop])    
-                    // console.log(component.wordsService[component.wordsTemplateVariable].styles[index].css[prop]) 
-                    if(    component.wordsService.wordsMyElementsArray[0][index].nativeElement.style[prop] !== component.wordsService[component.wordsTemplateVariable].styles[index].css[prop]   ){
+                    // console.log(component.wordsService[component.wordsTemplateVariable].stylesCopy[index].css[prop]) 
+                    if(    component.wordsService.wordsMyElementsArray[0][index].nativeElement.style[prop] !== component.wordsService[component.wordsTemplateVariable].stylesCopy[index].css[prop]   ){
 
 
                         test = false;
@@ -82,13 +100,13 @@ describe('WordsComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should fire the wordsService.wordsRepositionDashes fn on Words Component  AfterViewInit lifecycle hook',()=>{
-        fixture = TestBed.createComponent(WordsComponent);
-        component = fixture.debugElement.componentInstance;        
+    it('should fire the wordsService.wordsRepositionDashes fn on Words Component  AfterViewInit lifecycle hook',()=>{    
         spyOn( component.wordsService,'wordsRepositionDashes')
         component.ngAfterViewInit()
         expect(component.wordsService.wordsRepositionDashes).toHaveBeenCalled()
     })
+
+
 
     
 });

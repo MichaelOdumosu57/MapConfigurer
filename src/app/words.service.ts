@@ -23,7 +23,7 @@ export class WordsService {
     wordsbool2:string = 'true'
     wordsbool3:string = 'true'
     wordsbool4:string = 'true'
-    wordsbool:Array<any> = ['false','false','false','true','true']
+    wordsbool:Array<any> = ['true','true','false','true','true']
 
     
     wordsSeq0:Array<Number> = [3]
@@ -312,7 +312,7 @@ export class WordsService {
           console.log(   this.wordsMyElementsArray    )
             for(   let dashes of this.wordsMyElementsArray   ){
                 this.wordsRepositionDashesReadjust = this[dev_obj.templateVar].styles.length  - dashes.length
-                console.log(   this.wordsRepositionDashesReadjust   )
+                // console.log(   this.wordsRepositionDashesReadjust   )
                 for(var i=0; i!== dashes.length;i++){
                         
                 
@@ -321,7 +321,7 @@ export class WordsService {
                         //find out how tall is paragprah dash,height and adjust according
                         // console.log(   dashes[i].nativeElement.clientHeight   )
                         // console.log(   dashes[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective   ].nativeElement.style.top   )
-                        console.log(   this[dev_obj.templateVar].stylesCopy[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective - this.wordsRepositionDashesReadjust],this[dev_obj.templateVar].stylesCopy[i]   )
+                        // console.log(   this[dev_obj.templateVar].stylesCopy[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective - this.wordsRepositionDashesReadjust],this[dev_obj.templateVar].stylesCopy[i]   )
                         // console.log(   dev_obj.templateVar  )
                         // console.log(   this[dev_obj.templateVar].styles[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ]   )
                         dashes[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective - this.wordsRepositionDashesReadjust     ].nativeElement.style.top = (

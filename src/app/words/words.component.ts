@@ -131,11 +131,7 @@ export class WordsComponent implements OnInit,AfterViewInit {
 
             // console.log(   this.wordsbool   )
             // console.log(   this.wordsStyle   )
-            // this.wordsValIndex =  [0,0,'false',0]
-            // this.wordsStyleIndex = [0]
             // console.log(   this.wordsService[this.wordsTemplateVariable].stylesCopy, arr[this.wordsTemplateVariable.slice(-1)]     )
-            // 
-
             for(   var index in this.wordsService[this.wordsTemplateVariable].stylesCopy    ){
             
                 // console.log(   arr[this.wordsTemplateVariable.slice(-1)][index].nativeElement.id   )
