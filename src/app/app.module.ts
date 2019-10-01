@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WordsComponent } from './words/words.component';
 import { WINDOW_PROVIDERS } from './window.service';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WordsComponent
+    WordsComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

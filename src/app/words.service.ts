@@ -11,6 +11,12 @@ export class WordsService {
 
     constructor() { };
     
+    //
+    navigationVal:Array<string> = ['n_a_v_i_g_a_t_i_o_n_Bar','n_a_v_i_g_a_t_i_o_n_Title']
+    navigationBool: Array<any> = ['true','true']
+    navigationStyle: Array<any> = [[3],[3]]
+
+
     wordsval0:string = 'w_o_r_d_s_Title'
     wordsval1:string = 'w_o_r_d_s_Line'
     wordsval2:string = 'w_o_r_d_s_paragraph'
@@ -23,8 +29,7 @@ export class WordsService {
     wordsbool2:string = 'true'
     wordsbool3:string = 'true'
     wordsbool4:string = 'true'
-    wordsbool:Array<any> = ['true','true','false','true','true']
-
+    wordsbool:Array<any> = ['true','true','true','true','true']
     
     wordsSeq0:Array<Number> = [3]
     wordsSeq1:Array<Number> = [3]
