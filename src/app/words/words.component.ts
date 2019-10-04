@@ -14,7 +14,7 @@ import {   take,timeout   } from 'rxjs/operators';
 })
 export class WordsComponent implements OnInit,AfterViewInit {
 
-    @ViewChildren('myval') wordsMyElements: any;
+    @ViewChildren('mywordsval') wordsMyElements: any;
     
     constructor(
         private wordsService: WordsService,
@@ -24,31 +24,11 @@ export class WordsComponent implements OnInit,AfterViewInit {
     
     @Input() wordsTemplateVariable:string | any;
     
-    wordsval0 :string = this.wordsService.wordsval0;
-    wordsval1 :string = this.wordsService.wordsval1;
-    wordsval2 :string = this.wordsService.wordsval2;
-    wordsval3 :string = this.wordsService.wordsval3;
-    wordsval4 :string = this.wordsService.wordsval4;
+
     wordsVal:Array<string> = this.wordsService.wordsVal;
     
-    wordsbool0:string =  this.wordsService.wordsbool0;
-    wordsbool1:string =  this.wordsService.wordsbool1;
-    wordsbool2:string =  this.wordsService.wordsbool2;
-    wordsbool3:string =  this.wordsService.wordsbool3;
-    wordsbool4:string =  this.wordsService.wordsbool4;
     wordsbool:Array<any> = this.wordsService.wordsbool;
     
-    wordsSeq0:Array<Number> =  this.wordsService.wordsSeq0;
-    wordsSeq1:Array<Number> =  this.wordsService.wordsSeq1;
-    wordsSeq2:Array<Number> =  this.wordsService.wordsSeq2;
-    wordsSeq3:Array<Number> =  this.wordsService.wordsSeq3;
-    wordsSeq4:Array<Number> =  this.wordsService.wordsSeq4;
-    
-    wordsStyle0:any =  this.wordsService.wordsStyle0;
-    wordsStyle1:any =  this.wordsService.wordsStyle1;
-    wordsStyle2:any =  this.wordsService.wordsStyle2;
-    wordsStyle3:any =  this.wordsService.wordsStyle3;
-    wordsStyle4:any =  this.wordsService.wordsStyle4;
     wordsStyle:any =  this.wordsService.wordsStyle;
 
     wordsValIndex:Array<any> = this.wordsService.wordsValIndex
