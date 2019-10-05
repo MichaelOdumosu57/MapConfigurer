@@ -25,6 +25,7 @@
             "styles": [
               "src/styles.css",
               "src/tachyons.min.css"
+
             ],
             "scripts": [],
             "es5BrowserSupport": true

@@ -5,12 +5,19 @@
 
 
 
+
 @font-face {
   font-family: "Noto Sans";
   src: url('assets/fonts/noto_sans.woff2') format('woff2')
     /*url('/src/assets/fonts/roboto/Roboto-Regular.woff2') format('woff2');*/
 }
 
+@font-face {
+    font-family: "Big Shoulders-Medium";
+    src: url('assets/fonts/BigShoulders/BigShouldersDisplay-Medium.ttf') format('woff2')
+      /*url('/src/assets/fonts/roboto/Roboto-Regular.woff2') format('woff2');*/
+  }
+  
 
 #w_o_r_d_s_Title {
     border: 1px solid black;
@@ -65,4 +72,8 @@
 #n_a_v_i_g_a_t_i_o_n_Title{
     font-family: 'Montserrat',sans-serif;
     font-weight: 700;
+}
+
+#n_a_v_i_g_a_t_i_o_n_SubTitle{
+    font-family:'Roboto',sans-serif;
 }

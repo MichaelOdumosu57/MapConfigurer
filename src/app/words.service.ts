@@ -12,9 +12,9 @@ export class WordsService {
     constructor() { };
     
     /*navigation*/
-        navigationVal:Array<string> = ['n_a_v_i_g_a_t_i_o_n_Bar','n_a_v_i_g_a_t_i_o_n_Title']
-        navigationBool: Array<any> = ['true','true']
-        navigationStyle: Array<any> = [[3],[3]]
+        navigationVal:Array<string> = ['n_a_v_i_g_a_t_i_o_n_Bar','n_a_v_i_g_a_t_i_o_n_Title','n_a_v_i_g_a_t_i_o_n_SubTitle']
+        navigationBool: Array<any> = ['true','true','true']
+        navigationStyle: Array<any> = [[3],[3],[3]]
 
         navigationValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
         navigationStyleIndex:Array<any> = [0]
@@ -42,9 +42,21 @@ export class WordsService {
                         override:'true',
                         css:{
                             position:'relative',
-                            left:'30px'
+                            top:'-80px',
+                            left:'23px',
+                            margin:'0px'
                         }
-                    },                                     
+                    },  
+                    {
+                        override:'true',
+                        css:{
+                            position:'relative',
+                            top:'-93px',
+                            left:'23px',
+                            'fontSize':'17px'
+
+                        }
+                    },                                                        
                 ]
             }
         //

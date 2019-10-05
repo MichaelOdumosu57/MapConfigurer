@@ -3,7 +3,7 @@ import { browser, logging,protractor,by,element,By } from 'protractor';
 import {   getDebugNode   } from '@angular/core';
 
 // console.log(protractor)
-xdescribe('workspace-project App', () => {
+describe('workspace-project App', () => {
     let page: AppPage;
 
     // beforeEach(() => {

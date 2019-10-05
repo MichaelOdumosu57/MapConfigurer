@@ -2,6 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import {   WordsComponent   } from './words/words.component';
+import {   NavigationComponent   } from './navigation/navigation.component';
 import { WINDOW_PROVIDERS } from './window.service';
 
 describe('AppComponent', () => {
@@ -15,7 +16,8 @@ describe('AppComponent', () => {
             ],
             declarations: [
                 AppComponent,
-                WordsComponent
+                WordsComponent,
+                NavigationComponent 
             ],
         }).compileComponents();
     }));

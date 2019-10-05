@@ -2,7 +2,7 @@
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 
 const { SpecReporter } = require('jasmine-spec-reporter');
-const  needed = require('../sec/creden.js')
+// const  needed = require('../sec/creden.js')
 // console.log(__dirname)
 
 exports.config = {
@@ -13,16 +13,16 @@ exports.config = {
 //   capabilities: {
 //     'browserName': 'chrome'
 //   },
-    // capabilities :{
-    //   browserName: 'chrome',
-    //   chromeOptions: {
-    //     args: ['--headless', '--no-sandbox']
-    //   }
-    // },
-  multiCapabilities: [
-  {
-    browserName: 'firefox'
-  },
+    capabilities :{
+      browserName: 'chrome',
+      chromeOptions: {
+        args: ['--headless', '--no-sandbox']
+      }
+    },
+//   multiCapabilities: [
+//   {
+//     browserName: 'firefox'
+//   },
 //   {
 //     browserName: 'chrome',
 //     browserVersion: '77.0',
@@ -45,13 +45,13 @@ exports.config = {
 //     'version' :'17.17134',
 //     'screenResolution':'1280x800'
 //   }
-  ],
-  sauceUser:needed.sauceUser,
-  sauceKey:needed.sauceKey,
-  seleniumAddress: "https://" + needed.sauceUser + ":" + needed.sauceKey +
-          "@ondemand.saucelabs.com:443/wd/hub",
-  directConnect: false,
-  baseUrl: 'http://localhost:4200/',
+//   ],
+//   sauceUser:needed.sauceUser,
+//   sauceKey:needed.sauceKey,
+//   seleniumAddress: "https://" + needed.sauceUser + ":" + needed.sauceKey +
+        //   "@ondemand.saucelabs.com:443/wd/hub",
+  directConnect: true,  //when using sauce labs console.log baseUrl and changes directconnect to false
+  baseUrl: 'http://localhost:4202/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,

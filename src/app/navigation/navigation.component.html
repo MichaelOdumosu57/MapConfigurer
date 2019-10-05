@@ -2,5 +2,8 @@
     <div  #myNavigationVal *ngIf="navigationBool[0] ==='true'" id = {{navigationVal[0]}} class = 'vh-25  w-100' ></div>
 </ng-container>
 <ng-container *ngFor = 'let a of navigationStyle[1]' >
-    <h1 #myNavigationVal  *ngIf="navigationBool[1] ==='true'" id = {{navigationVal[1]}}  >windsorempire</h1>
+    <h1 #myNavigationVal  *ngIf="navigationBool[1] ==='true'" id = {{navigationVal[1]}} class = 'f2' >windsorempire</h1>
+</ng-container>
+<ng-container *ngFor = 'let a of navigationStyle[2]' >
+    <p #myNavigationVal  *ngIf="navigationBool[2] ==='true'" id = {{navigationVal[2]}}  >Caribbean & Japanese Cuisine</p>
 </ng-container>
