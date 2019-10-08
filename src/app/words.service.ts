@@ -12,10 +12,22 @@ export class WordsService {
     constructor() { };
     
     /*navigation*/
-        navigationVal:Array<string> = ['n_a_v_i_g_a_t_i_o_n_Bar','n_a_v_i_g_a_t_i_o_n_Title','n_a_v_i_g_a_t_i_o_n_SubTitle']
-        navigationBool: Array<any> = ['true','true','true']
-        navigationStyle: Array<any> = [[3],[3],[3]]
-
+        navigationVal:Array<string> = [
+            'n_a_v_i_g_a_t_i_o_n_Bar',
+            'n_a_v_i_g_a_t_i_o_n_Title',
+            'n_a_v_i_g_a_t_i_o_n_SubTitle',
+            'n_a_v_i_g_a_t_i_o_n_logoImg',
+            'n_a_v_i_g_a_t_i_o_n_homeLink',
+            'n_a_v_i_g_a_t_i_o_n_aboutLink',
+            'n_a_v_i_g_a_t_i_o_n_servicesLink',
+            'n_a_v_i_g_a_t_i_o_n_projectsLink',
+            'n_a_v_i_g_a_t_i_o_n_blogLink',
+            'n_a_v_i_g_a_t_i_o_n_contactLink',
+            'n_a_v_i_g_a_t_i_o_n_takeActionLink',
+            'n_a_v_i_g_a_t_i_o_n_takeActionCircle'
+        ]
+        navigationBool: Array<any> = ['true','true','true','true','true','true','true','true','true','true','true','true']
+        navigationStyle: Array<any> = Array.from(Array(12),()=>{return [3]})
         navigationValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
         navigationStyleIndex:Array<any> = [0]
         navigationBoolIndex:Array<any>= [0]
@@ -23,7 +35,7 @@ export class WordsService {
 
         // NavigationComponent Instances
             navigationMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
-            navigationMyElementsArray: any[] = [];        
+            navigationMyElementsArray: any[] = [];
             navigationComponentObject0:any ={
                 styles:[
                     {
@@ -35,28 +47,110 @@ export class WordsService {
                         override:'true',
                         css:{
                             position:'relative',
-                            // left:'30px'
+                            height: '155px'
                         }
-                    },    
+                    },
                     {
                         override:'true',
                         css:{
                             position:'relative',
-                            top:'-80px',
+                            bottom:'80px',
                             left:'23px',
                             margin:'0px'
                         }
-                    },  
+                    },
                     {
                         override:'true',
                         css:{
                             position:'relative',
-                            top:'-93px',
+                            bottom:'93px',
                             left:'23px',
-                            'fontSize':'17px'
+                            'fontSize':'17px',
+                            'fontWeight':400
 
                         }
-                    },                                                        
+                    },
+                    {
+                        override:'true',
+                        css:{
+                            position:'relative',
+                            bottom:'234px',
+                            left:'20px'
+                        }
+                    },
+                    ...Array.from(Array(1),(x,i)=> {
+                        return {
+                        override:'true',
+                        css:{
+                            position:'relative',
+                            bottom:'254px',
+                            left:'600px',
+                            'fontSize':'16px'
+                        }
+                    }}),
+                    {
+                        override:'true',
+                        css:{
+                            position:'relative',
+                            bottom:'288px',
+                            left:'685px',
+                            'fontSize':'16px'
+                        }
+                    },
+                    {
+                        override:'true',
+                        css:{
+                            position:'relative',
+                            bottom:'323px',
+                            left:'770px',
+                            'fontSize':'16px'
+                        }
+                    },
+                    {
+                        override:'true',
+                        css:{
+                            position:'relative',
+                            bottom:'355px',
+                            left:'870px',
+                            'fontSize':'16px'
+                        }
+                    },
+                    {
+                        override:'true',
+                        css:{
+                            position:'relative',
+                            bottom:'390px',
+                            left:'965px',
+                            'fontSize':'16px'
+                        }
+                    },
+                    {
+                        override:'true',
+                        css:{
+                            position:'relative',
+                            bottom:'424px',
+                            left:'1035px',
+                            'fontSize':'16px'
+                        }
+                    },
+                    {
+                        override:'true',
+                        css:{
+                            position:'relative',
+                            bottom:'458px',
+                            left:'1135px',
+                            'fontSize':'16px'
+                        }
+                    },
+                    {
+                        override:'true',
+                        css:{
+                            position:'relative',
+                            bottom:'505px',
+                            left:'1108px'
+                        }
+                    }                    
+                    
                 ]
             }
         //

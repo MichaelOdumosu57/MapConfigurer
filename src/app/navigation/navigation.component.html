@@ -1,9 +1,39 @@
 <ng-container *ngFor = 'let a of navigationStyle[0]' >
-    <div  #myNavigationVal *ngIf="navigationBool[0] ==='true'" id = {{navigationVal[0]}} class = 'vh-25  w-100' ></div>
+    <div  #myNavigationVal *ngIf="navigationBool[0] ==='true'" id = {{navigationVal[0]}} class = 'w-100' ></div>
 </ng-container>
 <ng-container *ngFor = 'let a of navigationStyle[1]' >
     <h1 #myNavigationVal  *ngIf="navigationBool[1] ==='true'" id = {{navigationVal[1]}} class = 'f2' >windsorempire</h1>
 </ng-container>
 <ng-container *ngFor = 'let a of navigationStyle[2]' >
-    <p #myNavigationVal  *ngIf="navigationBool[2] ==='true'" id = {{navigationVal[2]}}  >Caribbean & Japanese Cuisine</p>
+    <h2 #myNavigationVal  *ngIf="navigationBool[2] ==='true'" id = {{navigationVal[2]}}  >Caribbean & Japanese Cuisine</h2>
 </ng-container>
+<ng-container *ngFor = 'let a of navigationStyle[3]' >
+    <img #myNavigationVal  *ngIf="navigationBool[3] ==='true'" id = {{navigationVal[3]}} src = 'assets/media/cropped-IMG-1475-2-102x61.jpg' alt = 'Main Brand Logo' >
+</ng-container>
+<!-- containing anchor navs associated-->
+<ng-container *ngFor = 'let a of navigationStyle[4]' >
+    <p #myNavigationVal  *ngIf="navigationBool[4] ==='true'" id = {{navigationVal[4]}} >Home</p>
+</ng-container>
+<ng-container *ngFor = 'let a of navigationStyle[5]' >
+    <p #myNavigationVal  *ngIf="navigationBool[5] ==='true'" id = {{navigationVal[5]}} >About</p>
+</ng-container>
+<ng-container *ngFor = 'let a of navigationStyle[6]' >
+    <p #myNavigationVal  *ngIf="navigationBool[6] ==='true'" id = {{navigationVal[6]}} >Services</p>
+</ng-container>
+<ng-container *ngFor = 'let a of navigationStyle[7]' >
+    <p #myNavigationVal  *ngIf="navigationBool[7] ==='true'" id = {{navigationVal[7]}} >Projects</p>
+</ng-container>
+<ng-container *ngFor = 'let a of navigationStyle[8]' >
+    <p #myNavigationVal  *ngIf="navigationBool[8] ==='true'" id = {{navigationVal[8]}} >Blog</p>
+</ng-container>
+<ng-container *ngFor = 'let a of navigationStyle[9]' >
+    <p #myNavigationVal  *ngIf="navigationBool[9] ==='true'" id = {{navigationVal[9]}} >Contact</p>
+</ng-container>
+<ng-container *ngFor = 'let a of navigationStyle[10]' >
+    <p #myNavigationVal  *ngIf="navigationBool[10] ==='true'" id = {{navigationVal[10]}} >Take Action</p>
+</ng-container>
+<ng-container *ngFor = 'let a of navigationStyle[11]' >
+    <div #myNavigationVal  *ngIf="navigationBool[11] ==='true'" id = {{navigationVal[11]}} ></div>
+</ng-container>
+<!--  -->
+

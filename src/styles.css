@@ -57,7 +57,7 @@
 @media screen and (max-width:30em){
 
   #w_o_r_d_s_Line {
-      margin-left: 42%; 
+      margin-left: 42%;
   }
     
    
@@ -76,4 +76,44 @@
 
 #n_a_v_i_g_a_t_i_o_n_SubTitle{
     font-family:'Roboto',sans-serif;
+}
+
+#n_a_v_i_g_a_t_i_o_n_logoImg{
+    
+}
+
+#n_a_v_i_g_a_t_i_o_n_homeLink{
+    font-family:'Roboto',sans-serif;
+}
+
+#n_a_v_i_g_a_t_i_o_n_aboutLink{
+    font-family:'Roboto',sans-serif;
+}
+
+#n_a_v_i_g_a_t_i_o_n_servicesLink{
+    font-family:'Roboto',sans-serif;
+}
+
+#n_a_v_i_g_a_t_i_o_n_projectsLink{
+    font-family:'Roboto',sans-serif;
+}
+
+#n_a_v_i_g_a_t_i_o_n_blogLink{
+    font-family:'Roboto',sans-serif;
+}
+
+#n_a_v_i_g_a_t_i_o_n_contactLink{
+    font-family:'Roboto',sans-serif;
+}
+
+
+#n_a_v_i_g_a_t_i_o_n_takeActionLink{
+    font-family:'Roboto',sans-serif;
+}
+
+#n_a_v_i_g_a_t_i_o_n_takeActionCircle{
+    width: 140px;
+    height:45px;
+    border-radius: 50px;        
+    border: 3px solid white
 }

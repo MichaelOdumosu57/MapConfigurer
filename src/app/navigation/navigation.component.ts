@@ -115,6 +115,7 @@ export class NavigationComponent implements OnInit {
 
             }
         })        
+        console.log(this.wordsService.navigationComponentObject0)
     }
 
 }
