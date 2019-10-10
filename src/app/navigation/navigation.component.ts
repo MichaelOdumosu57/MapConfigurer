@@ -136,10 +136,10 @@ export class NavigationComponent implements OnInit,AfterViewInit  {
     
                     if(    j === i.nativeElement.tagName   ){
     
-    
+                        
                         this.navigationCustomWordWrapElements.push(   [i,window.getComputedStyle(i.nativeElement).getPropertyValue('font-size')]   )
                         break
-    
+                        
                         
                     }
     

@@ -67,6 +67,7 @@ export class WordsService {
                         }
                     },
                     {
+                        //HERE
                         override:'true',
                         css:{
                             position:'relative',
@@ -141,12 +142,13 @@ export class WordsService {
                         }
                     },
                     {
+                        //HERE
                         override:'true',
                         css:{
                             position:'relative',
                             bottom:'458px',
                             left:'1135px',
-                            'fontSize':'16px',
+                            fontSize:'16px',
                             width:'0px'
                         }
                     },
@@ -506,7 +508,7 @@ export class WordsService {
 
                     // TEST i[0].nativeElement.style.width  must start with 0px
                     // console.log(    i[0].nativeElement.clientHeight/numberParse(i[1])   )
-                    console.log(   i[0].nativeElement.style.width   )
+                    // console.log(   i[0].nativeElement.style.width   )
                     i[0].nativeElement.style.width =  (   numberParse(   i[0].nativeElement.style.width   )  + 1   ).toString() + "px"
                     // console.log(    i[0].nativeElement.clientHeight/numberParse(i[1])   )
                     // console.log(   numberParse(   i[0].nativeElement.style.width   )   )
