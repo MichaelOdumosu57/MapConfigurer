@@ -2,6 +2,7 @@ import { Component, OnInit,Input,ViewChildren,AfterViewInit,Inject } from '@angu
 import {   WordsService   } from '../words.service';
 import {   fromEvent,interval   } from 'rxjs';
 import {   WINDOW   } from '../window.service';
+import {   take,timeout   } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navigation',
@@ -152,9 +153,24 @@ export class NavigationComponent implements OnInit,AfterViewInit  {
             })            
         })
 
+        // polyfill if event refuses to fire
+        var navigationIntervalRxjs0 = interval(10)
+        var navigationTakeRxjs0 =  navigationIntervalRxjs0.pipe(take(1))
+        navigationTakeRxjs0.subscribe((a)=>{
+            var event = this.window.document.createEvent("Event");
+            event.initEvent("load", false, true);
+            this.window.dispatchEvent(   event   )
+        })        
+        //
+        
         // console.log(   this.navigationCustomWordWrapElements   )
         //TEST FOR THIS
         //
     }
 
 }
+
+
+//TEST
+// that it gets  this.navigationCustomWordWrapElements 
+//TEST i[0].nativeElement.style.width  must start with 0px its defined and you can access from js and later css

@@ -2,6 +2,13 @@ import { Injectable } from '@angular/core';
 import {  wordsGroupObject } from './wordsGroupObject';
 import { Observable, of, Subject } from 'rxjs';
 
+
+
+function numberParse(dimension){
+    dimension = parseFloat(dimension.split("p")[0])
+    return dimension;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -139,7 +146,8 @@ export class WordsService {
                             position:'relative',
                             bottom:'458px',
                             left:'1135px',
-                            'fontSize':'16px'
+                            'fontSize':'16px',
+                            width:'0px'
                         }
                     },
                     {
@@ -485,12 +493,29 @@ export class WordsService {
 
     /* extras(not a component) */
     customWordWrapWordElements: Array<any> = ['H1','H2','H3','H4','H5','H6','P','A']
-    customWordWrap(devObj:any):string{
+    customWordWrap(devObj:any):void{
         console.log(   devObj   )
         for(   let i of devObj.HTMLWordElements   ){
             console.log(   i[0],i[0].nativeElement.clientHeight,i[1]   )
+
+
+            if(   Math.round(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
+
+
+                while(   Math.floor(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
+
+                    // TEST i[0].nativeElement.style.width  must start with 0px
+                    // console.log(    i[0].nativeElement.clientHeight/numberParse(i[1])   )
+                    console.log(   i[0].nativeElement.style.width   )
+                    i[0].nativeElement.style.width =  (   numberParse(   i[0].nativeElement.style.width   )  + 1   ).toString() + "px"
+                    // console.log(    i[0].nativeElement.clientHeight/numberParse(i[1])   )
+                    // console.log(   numberParse(   i[0].nativeElement.style.width   )   )
+                }
+            }
+
+
         }
-        return     
+        
     }
     /* */
 }
