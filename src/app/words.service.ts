@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {  wordsGroupObject } from './wordsGroupObject';
 import { Observable, of, Subject } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -56,7 +55,8 @@ export class WordsService {
                             position:'relative',
                             bottom:'80px',
                             left:'23px',
-                            margin:'0px'
+                            margin:'0px',
+                            width:'0px'
                         }
                     },
                     {
@@ -65,9 +65,9 @@ export class WordsService {
                             position:'relative',
                             bottom:'93px',
                             left:'23px',
-                            'fontSize':'17px',
-                            'fontWeight':400
-
+                            fontSize:'17px',
+                            fontWeight:400,
+                            width:'0px'
                         }
                     },
                     {
@@ -78,7 +78,7 @@ export class WordsService {
                             left:'20px'
                         }
                     },
-                    ...Array.from(Array(1),(x,i)=> {
+                    ...Array.from(Array(1),()=> {
                         return {
                         override:'true',
                         css:{
@@ -175,7 +175,8 @@ export class WordsService {
                     override:'true',
                     css:{
                         position:'relative',
-                        left:'30px'
+                        left:'30px',
+                        // bottom:'300px'
                     }
                 },
                 {
@@ -481,4 +482,17 @@ export class WordsService {
         }
         // dashes repositioning
     /* */ //
+
+    /* extras(not a component) */
+    customWordWrapWordElements: Array<any> = ['H1','H2','H3','H4','H5','H6','P','A']
+    customWordWrap(devObj:any):string{
+        console.log(   devObj   )
+        for(   let i of devObj.HTMLWordElements   ){
+            console.log(   i[0],i[0].nativeElement.clientHeight,i[1]   )
+        }
+        return     
+    }
+    /* */
 }
+
+// customWordWrap is a fn that decides how many lines a string should be wrapped by adjusting the width of the element

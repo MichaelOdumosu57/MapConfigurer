@@ -2,6 +2,8 @@ import { AppPage } from './app.po';
 import { browser, logging,protractor,by,element,By } from 'protractor';
 import {   getDebugNode   } from '@angular/core';
 
+
+browser.waitForAngularEnabled(false)
 // console.log(protractor)
 describe('workspace-project App', () => {
     let page: AppPage;

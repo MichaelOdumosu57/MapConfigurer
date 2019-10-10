@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { WINDOW_PROVIDERS } from '../window.service';
 import { NavigationComponent } from './navigation.component';
 
 describe('NavigationComponent', () => {
@@ -8,7 +8,8 @@ describe('NavigationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavigationComponent ]
+        providers:[WINDOW_PROVIDERS],
+        declarations: [ NavigationComponent ]
     })
     .compileComponents();
   }));

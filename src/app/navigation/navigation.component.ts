@@ -1,17 +1,20 @@
-import { Component, OnInit,Input,ViewChildren } from '@angular/core';
+import { Component, OnInit,Input,ViewChildren,AfterViewInit,Inject } from '@angular/core';
 import {   WordsService   } from '../words.service';
+import {   fromEvent,interval   } from 'rxjs';
+import {   WINDOW   } from '../window.service';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnInit,AfterViewInit  {
 
     @ViewChildren('myNavigationVal') navigationMyElements: any;
 
     constructor(
-        private wordsService: WordsService
+        private wordsService: WordsService,
+        @Inject(WINDOW) private window: Window
     ) { }
     
     @Input() navigationTemplateVariable:string | any;
@@ -23,11 +26,13 @@ export class NavigationComponent implements OnInit {
     navigationStyleIndex:Array<any> = this.wordsService.navigationStyleIndex
     navigationBoolIndex:Array<any> = this.wordsService.navigationBoolIndex    
 
+    navigationCustomWordWrapElements:Array<any>  = []
+
     ngOnInit() {
 
         this.wordsService.navigationMyElements.subscribe((arr)=>{
 
-            console.log(   arr   )   
+            // console.log(   arr   )   
 
             // dealing with  missing elements
             if(   this.wordsService[this.navigationTemplateVariable].styles.length >   arr[this.navigationTemplateVariable.slice(-1)].length   ){
@@ -115,7 +120,41 @@ export class NavigationComponent implements OnInit {
 
             }
         })        
-        console.log(this.wordsService.navigationComponentObject0)
+        // console.log(this.wordsService.navigationComponentObject0)
+    }
+
+    ngAfterViewInit(){
+        // grabbing 'HTMLWordElements'
+
+        const navigationLoadEvent0 = fromEvent(this.window ,'load');
+        navigationLoadEvent0.subscribe((event)=>{
+            for(   let i of this.navigationMyElements._results   ){
+                // console.log(   i.nativeElement.clientHeight,i.nativeElement.tagName   )
+                for(   let j of this.wordsService.customWordWrapWordElements   ){
+    
+    
+                    if(    j === i.nativeElement.tagName   ){
+    
+    
+                        this.navigationCustomWordWrapElements.push(   [i,window.getComputedStyle(i.nativeElement).getPropertyValue('font-size')]   )
+                        break
+    
+                        
+                    }
+    
+    
+                }
+            }
+            this
+            .wordsService
+            .customWordWrap({
+                HTMLWordElements: this.navigationCustomWordWrapElements 
+            })            
+        })
+
+        // console.log(   this.navigationCustomWordWrapElements   )
+        //TEST FOR THIS
+        //
     }
 
 }
