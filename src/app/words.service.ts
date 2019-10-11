@@ -45,8 +45,9 @@ export class WordsService {
             navigationComponentObject0:any ={
                 styles:[
                     {
-                        override:'false',
+                        override:'true',
                         css:{
+                            postion:'absolute'
                         }
                     },
                     {
@@ -120,7 +121,7 @@ export class WordsService {
                             position:'relative',
                             bottom:'355px',
                             left:'870px',
-                            'fontSize':'16px'
+                            fontSize:'16px'
                         }
                     },
                     {
@@ -129,7 +130,7 @@ export class WordsService {
                             position:'relative',
                             bottom:'390px',
                             left:'965px',
-                            'fontSize':'16px'
+                            fontSize:'16px'
                         }
                     },
                     {
@@ -184,9 +185,11 @@ export class WordsService {
                 {
                     override:'true',
                     css:{
-                        position:'relative',
-                        left:'30px',
-                        // bottom:'300px'
+                        position:'absolute',
+                        left:'70px',
+                        bottom:'40px',
+                        // width:'0px',
+                        // height:'0px'
                     }
                 },
                 {
@@ -237,6 +240,7 @@ export class WordsService {
                 {
                     override:'true',
                     css:{
+                        width:'0px',
                         position:'relative',
                         'left':'3em',
                         'top':'0em'
@@ -248,6 +252,7 @@ export class WordsService {
                 {
                     override:'true',
                     css:{
+                        width:'0px',
                         position:'relative',
                         'left':'3em',
                         'top':'0em'
@@ -259,6 +264,7 @@ export class WordsService {
                 {
                     override:'true',
                     css:{
+                        width:'0px',
                         position:'relative',
                         'left':'3em',
                         'top':'0em'
@@ -274,7 +280,7 @@ export class WordsService {
                 {
                     override:'true',
                     css:{
-                        position:'relative',
+                        position:'absolute',
                         left:'30px'
                     }
                 },
@@ -357,8 +363,9 @@ export class WordsService {
                 {
                     override:'true',
                     css:{
-                        position:'relative',
-                        left:'30px'
+                        position:'absolute',
+                        left:'30px',
+                        top:'1200px'
                     }
                 },
                 {},
@@ -495,29 +502,55 @@ export class WordsService {
 
     /* extras(not a component) */
     customWordWrapWordElements: Array<any> = ['H1','H2','H3','H4','H5','H6','P','A']
+    customWordWrapReceive(   devObj:any   ):any{
+        return (event:any)=>{
+            for(   let i of devObj.totalElements  ){
+                
+                for(   let j of this.customWordWrapWordElements   ){
+    
+    
+                    if(    j === i.nativeElement.tagName   ){
+    
+                        // console.log(   i.nativeElement.clientHeight,i.nativeElement.tagName   )
+                        devObj.HTMLWordElements.push(   [i,window.getComputedStyle(i.nativeElement).getPropertyValue('font-size')]   )
+                        break
+                        
+                        
+                    }
+    
+    
+                }
+            }
+            // console.log(devObj.HTMLWordElements)
+            this
+            .customWordWrap({
+                HTMLWordElements: devObj.HTMLWordElements
+            })            
+        }
+    }    
     customWordWrap(devObj:any):void{
         console.log(   devObj   )
         for(   let i of devObj.HTMLWordElements   ){
             console.log(   i[0],i[0].nativeElement.clientHeight,i[1]   )
 
 
-            if(   Math.round(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
+            // if(   Math.round(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
 
 
-                while(   Math.floor(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
+            //     while(   Math.floor(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
 
-                    // TEST i[0].nativeElement.style.width  must start with 0px
-                    // console.log(    i[0].nativeElement.clientHeight/numberParse(i[1])   )
-                    // console.log(   i[0].nativeElement.style.width   )
-                    i[0].nativeElement.style.width =  (   numberParse(   i[0].nativeElement.style.width   )  + 1   ).toString() + "px"
-                    // console.log(    i[0].nativeElement.clientHeight/numberParse(i[1])   )
-                    // console.log(   numberParse(   i[0].nativeElement.style.width   )   )
-                }
-            }
+            //         // TEST i[0].nativeElement.style.width  must start with 0px
+            //         // console.log(    i[0].nativeElement.clientHeight/numberParse(i[1])   )
+            //         // console.log(   i[0].nativeElement.style.width   )
+            //         i[0].nativeElement.style.width =  (   numberParse(   i[0].nativeElement.style.width   )  + 1   ).toString() + "px"
+            //         // console.log(    i[0].nativeElement.clientHeight/numberParse(i[1])   )
+            //         // console.log(   numberParse(   i[0].nativeElement.style.width   )   )
+            //     }
+            // }
 
 
         }
-        
+        devObj.HTMLWordElements = []
     }
     /* */
 }

@@ -128,39 +128,20 @@ export class NavigationComponent implements OnInit,AfterViewInit  {
         // grabbing 'HTMLWordElements'
 
         const navigationLoadEvent0 = fromEvent(this.window ,'load');
-        navigationLoadEvent0.subscribe((event)=>{
-            for(   let i of this.navigationMyElements._results   ){
-                // console.log(   i.nativeElement.clientHeight,i.nativeElement.tagName   )
-                for(   let j of this.wordsService.customWordWrapWordElements   ){
-    
-    
-                    if(    j === i.nativeElement.tagName   ){
-    
-                        
-                        this.navigationCustomWordWrapElements.push(   [i,window.getComputedStyle(i.nativeElement).getPropertyValue('font-size')]   )
-                        break
-                        
-                        
-                    }
-    
-    
-                }
-            }
-            this
-            .wordsService
-            .customWordWrap({
-                HTMLWordElements: this.navigationCustomWordWrapElements 
-            })            
-        })
+        navigationLoadEvent0.subscribe(this.wordsService.customWordWrapReceive({
+            totalElements:this.navigationMyElements._results,
+            HTMLWordElements:this.navigationCustomWordWrapElements
+        }))
+            
 
         // polyfill if event refuses to fire
-        var navigationIntervalRxjs0 = interval(10)
-        var navigationTakeRxjs0 =  navigationIntervalRxjs0.pipe(take(1))
-        navigationTakeRxjs0.subscribe((a)=>{
-            var event = this.window.document.createEvent("Event");
-            event.initEvent("load", false, true);
-            this.window.dispatchEvent(   event   )
-        })        
+        // var navigationIntervalRxjs0 = interval(10)
+        // var navigationTakeRxjs0 =  navigationIntervalRxjs0.pipe(take(1))
+        // navigationTakeRxjs0.subscribe((a)=>{
+        //     var event = this.window.document.createEvent("Event");
+        //     event.initEvent("load", false, true);
+        //     this.window.dispatchEvent(   event   )
+        // })        
         //
         
         // console.log(   this.navigationCustomWordWrapElements   )
@@ -174,3 +155,4 @@ export class NavigationComponent implements OnInit,AfterViewInit  {
 //TEST
 // that it gets  this.navigationCustomWordWrapElements 
 //TEST i[0].nativeElement.style.width  must start with 0px its defined and you can access from js and later css
+// TEST if customeWordWrapReceive returns

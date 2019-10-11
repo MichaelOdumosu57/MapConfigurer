@@ -35,6 +35,7 @@ export class WordsComponent implements OnInit,AfterViewInit {
     wordsStyleIndex:Array<any> = this.wordsService.wordsStyleIndex
     wordsBoolIndex:Array<any> = this.wordsService.wordsBoolIndex
 
+    wordsCustomWordWrapElements:Array<any>  = []
     
     ngOnInit() {
         /* at the slice this means that the the templatevariable must have a number
@@ -139,6 +140,10 @@ export class WordsComponent implements OnInit,AfterViewInit {
         const wordsLoadEvent0 = fromEvent(this.window ,'load');
         const wordsResizeEvent0 = fromEvent(this.window ,'resize');
         wordsLoadEvent0.subscribe(this.wordsService.wordsRepositionDashes({templateVar:this.wordsTemplateVariable}))
+        // wordsLoadEvent0.subscribe(this.wordsService.customWordWrapReceive({
+        //     totalElements:this.wordsMyElements._results,
+        //     HTMLWordElements:this.wordsCustomWordWrapElements
+        // }))        
         wordsResizeEvent0.subscribe(this.wordsService.wordsRepositionDashes({templateVar:this.wordsTemplateVariable}))
         //FIXME
 
