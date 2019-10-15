@@ -60,7 +60,7 @@ describe('WordsComponent', () => {
         ])
         component.wordsService.wordsMyElements.next(   component.wordsService.wordsMyElementsArray   )
         component.ngOnInit()
-        console.log(   component.wordsService[component.wordsTemplateVariable]   )
+        // console.log(   component.wordsService[component.wordsTemplateVariable]   )
         for(   var index in component.wordsService.wordsMyElementsArray[0]   ){ // for 0 in wordsComponentObject0
             // console.log(    component.wordsService.wordsMyElementsArray[0][index].nativeElement.style   )
             // console.log(    component.wordsService[component.wordsTemplateVariable].styles[index].css   )

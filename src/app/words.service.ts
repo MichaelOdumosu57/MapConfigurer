@@ -511,6 +511,7 @@ export class WordsService {
     customWordWrapWordElements: Array<any> = ['H1','H2','H3','H4','H5','H6','P','A']
     customWordWrapReceive(   devObj:any   ):any{
         return (event:any)=>{
+            this.navigationLoadEventObservable0.unsubscribe()      
             // console.log(event)
             // console.log(    devObj.totalElements    )
             // console.log('called')
@@ -545,12 +546,14 @@ export class WordsService {
         // console.log(   devObj   )
         // console.log(   this[devObj.HTMLWordElements.templateVar] )
         for(   let i of this[devObj.HTMLWordElements.templateVar].parameters[devObj.HTMLWordElements.parameters].HTMLWordElements  ){
-            // console.log(   i[0],i[0].nativeElement.clientHeight,i[1]   )
+            // console.log(   i[0],i[0].nativeElement.clientHeight,i[1], i[0].nativeElement.style.width    )
+            
 
 
             if(   Math.round(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
 
 
+                console.log(   i[0].nativeElement.style.width   )
                 while(   Math.floor(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
                     // TEST i[0].nativeElement.style.width  must start with 0px
                     // console.log(    i[0].nativeElement.clientHeight/numberParse(i[1])   )
@@ -564,8 +567,7 @@ export class WordsService {
             }
 
 
-        }
-        this.navigationLoadEventObservable0.unsubscribe()        
+        }  
         // console.log(   this[devObj.HTMLWordElements.templateVar].parameters[devObj.HTMLWordElements.parameters].HTMLWordElements   )
         // console.log(this)
     }
