@@ -170,6 +170,7 @@ export class WordsService {
                 //     }                    
                     
                 // ], // as p
+                // for p tag
                 styles:[
                     {
                         override:'false',
@@ -217,66 +218,66 @@ export class WordsService {
                     },
                     ...Array.from(Array(1),()=> {
                         return {
-                        override:'false',
+                        override:'true',
                         css:{
                             position:'relative',
-                            bottom:'254px',
-                            left:'600px',
+                            bottom:'224px',
+                            left:'550px',
                             'fontSize':'16px'
                         }
                     }}),
                     {
-                        override:'false',
+                        override:'true',
                         css:{
                             position:'relative',
-                            bottom:'288px',
-                            left:'685px',
+                            bottom:'224px',
+                            left:'586px',
                             'fontSize':'16px'
                         }
                     },
                     {
-                        override:'false',
+                        override:'true',
                         css:{
                             position:'relative',
-                            bottom:'323px',
-                            left:'770px',
+                            bottom:'224px',
+                            left:'624px',
                             'fontSize':'16px'
                         }
                     },
                     {
-                        override:'false',
+                        override:'true',
                         css:{
                             position:'relative',
-                            bottom:'355px',
-                            left:'870px',
+                            bottom:'224px',
+                            left:'659px',
                             fontSize:'16px'
                         }
                     },
                     {
-                        override:'false',
+                        override:'true',
                         css:{
                             position:'relative',
-                            bottom:'390px',
-                            left:'965px',
+                            bottom:'224px',
+                            left:'697px',
                             fontSize:'16px'
                         }
                     },
                     {
-                        override:'false',
+                        override:'true',
                         css:{
                             position:'relative',
-                            bottom:'424px',
-                            left:'1035px',
+                            bottom:'224px',
+                            left:'732px',
                             'fontSize':'16px'
                         }
                     },
                     {
                         //HERE
-                        override:'false',
+                        override:'true',
                         css:{
                             position:'relative',
-                            bottom:'458px',
-                            left:'1135px',
+                            bottom:'224px',
+                            left:'795px',
                             fontSize:'16px',
                             width:'0px'
                         }
@@ -285,8 +286,8 @@ export class WordsService {
                         override:'true',
                         css:{
                             position:'relative',
-                            bottom:'505px',
-                            left:'1108px'
+                            bottom:'256px',
+                            left:'1162px'
                         }
                     }                    
                     
