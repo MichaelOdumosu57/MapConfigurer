@@ -28,9 +28,19 @@ export class NavigationComponent implements OnInit,AfterViewInit  {
     navigationBoolIndex:Array<any> = this.wordsService.navigationBoolIndex    
 
     navigationCustomWordWrapElements:Array<any>  = []
+    
+    access(){
+        return this.wordsService
+    }
+
+    accessWindow(){
+        return this.window
+    }
 
     ngOnInit() {
-
+        
+        // console.log(   this.wordsService[this.navigationTemplateVariable]   )
+        // console.log(   this.navigationTemplateVariable   )
         this.wordsService.navigationMyElements.subscribe((arr)=>{
 
             // console.log(   arr   )   
@@ -121,18 +131,29 @@ export class NavigationComponent implements OnInit,AfterViewInit  {
 
             }
         })        
-        // console.log(this.wordsService.navigationComponentObject0)
+               
     }
 
     ngAfterViewInit(){
         // grabbing 'HTMLWordElements'
 
-        const navigationLoadEvent0 = fromEvent(this.window ,'load');
-        navigationLoadEvent0.subscribe(this.wordsService.customWordWrapReceive({
+        
+        this.wordsService.navigationLoadEvent0 = fromEvent(this.window ,'load');
+        this.wordsService[this.navigationTemplateVariable].parameters.push({
+            fn:'wordsService.customWordWrapReceive',
             totalElements:this.navigationMyElements._results,
             HTMLWordElements:this.navigationCustomWordWrapElements
+        })
+        this.wordsService.navigationLoadEventObservable0 = this.wordsService.navigationLoadEvent0.subscribe(this.wordsService.customWordWrapReceive({
+            totalElements:this.navigationMyElements._results,
+            HTMLWordElements:{
+                                parameters:0,
+                                templateVar:this.navigationTemplateVariable
+                            }
         }))
-            
+        
+        
+         
 
         // polyfill if event refuses to fire
         // var navigationIntervalRxjs0 = interval(10)
@@ -153,6 +174,6 @@ export class NavigationComponent implements OnInit,AfterViewInit  {
 
 
 //TEST
-// that it gets  this.navigationCustomWordWrapElements 
+// that it gets  this.navigationCustomWordWrapElements  it keeps failing for some reasons 
 //TEST i[0].nativeElement.style.width  must start with 0px its defined and you can access from js and later css
 // TEST if customeWordWrapReceive returns

@@ -38,6 +38,10 @@ export class WordsService {
         navigationStyleIndex:Array<any> = [0]
         navigationBoolIndex:Array<any>= [0]
 
+        // NavigationComponent events
+            navigationLoadEvent0:Observable<Event>
+            navigationLoadEventObservable0:any
+        //    
 
         // NavigationComponent Instances
             navigationMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
@@ -45,7 +49,7 @@ export class WordsService {
             navigationComponentObject0:any ={
                 styles:[
                     {
-                        override:'true',
+                        override:'false',
                         css:{
                             postion:'absolute'
                         }
@@ -162,6 +166,9 @@ export class WordsService {
                         }
                     }                    
                     
+                ],
+                parameters:[
+                    
                 ]
             }
         //
@@ -187,7 +194,7 @@ export class WordsService {
                     css:{
                         position:'absolute',
                         left:'70px',
-                        bottom:'40px',
+                        // bottom:'40px',
                         // width:'0px',
                         // height:'0px'
                     }
@@ -504,15 +511,21 @@ export class WordsService {
     customWordWrapWordElements: Array<any> = ['H1','H2','H3','H4','H5','H6','P','A']
     customWordWrapReceive(   devObj:any   ):any{
         return (event:any)=>{
+            // console.log(event)
+            // console.log(    devObj.totalElements    )
+            // console.log('called')
             for(   let i of devObj.totalElements  ){
-                
                 for(   let j of this.customWordWrapWordElements   ){
-    
-    
+
+
                     if(    j === i.nativeElement.tagName   ){
     
-                        // console.log(   i.nativeElement.clientHeight,i.nativeElement.tagName   )
-                        devObj.HTMLWordElements.push(   [i,window.getComputedStyle(i.nativeElement).getPropertyValue('font-size')]   )
+
+                        // console.log(   i.nativeElement.clientHeight,i.nativeElement.tagName
+                        this[devObj.HTMLWordElements.templateVar].parameters[devObj.HTMLWordElements.parameters].HTMLWordElements.push(   [i,window.getComputedStyle(i.nativeElement).getPropertyValue('font-size')]   )
+                        // devObj.HTMLWordElements.push(   [j]   )
+                        // console.log(    this[devObj.HTMLWordElements.templateVar].parameters[devObj.HTMLWordElements.parameters].HTMLWordElements   )
+                        // console.log(   i.nativeElement.tagName,j   )                        
                         break
                         
                         
@@ -529,28 +542,32 @@ export class WordsService {
         }
     }    
     customWordWrap(devObj:any):void{
-        console.log(   devObj   )
-        for(   let i of devObj.HTMLWordElements   ){
-            console.log(   i[0],i[0].nativeElement.clientHeight,i[1]   )
+        // console.log(   devObj   )
+        // console.log(   this[devObj.HTMLWordElements.templateVar] )
+        for(   let i of this[devObj.HTMLWordElements.templateVar].parameters[devObj.HTMLWordElements.parameters].HTMLWordElements  ){
+            // console.log(   i[0],i[0].nativeElement.clientHeight,i[1]   )
 
 
-            // if(   Math.round(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
+            if(   Math.round(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
 
 
-            //     while(   Math.floor(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
+                while(   Math.floor(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
+                    // TEST i[0].nativeElement.style.width  must start with 0px
+                    // console.log(    i[0].nativeElement.clientHeight/numberParse(i[1])   )
+                    // console.log(   i[0].nativeElement.style.width   )
+                    i[0].nativeElement.style.width =  (   numberParse(   i[0].nativeElement.style.width   )  + 1   ).toString() + "px"
+                    // console.log(    i[0].nativeElement.clientHeight/numberParse(i[1])   )
+                    // console.log(   numberParse(   i[0].nativeElement.style.width   )   )
+                }
 
-            //         // TEST i[0].nativeElement.style.width  must start with 0px
-            //         // console.log(    i[0].nativeElement.clientHeight/numberParse(i[1])   )
-            //         // console.log(   i[0].nativeElement.style.width   )
-            //         i[0].nativeElement.style.width =  (   numberParse(   i[0].nativeElement.style.width   )  + 1   ).toString() + "px"
-            //         // console.log(    i[0].nativeElement.clientHeight/numberParse(i[1])   )
-            //         // console.log(   numberParse(   i[0].nativeElement.style.width   )   )
-            //     }
-            // }
+
+            }
 
 
         }
-        devObj.HTMLWordElements = []
+        this.navigationLoadEventObservable0.unsubscribe()        
+        // console.log(   this[devObj.HTMLWordElements.templateVar].parameters[devObj.HTMLWordElements.parameters].HTMLWordElements   )
+        // console.log(this)
     }
     /* */
 }

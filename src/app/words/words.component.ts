@@ -1,4 +1,4 @@
-import {   Component, OnInit,Input,ViewChildren,Directive,Inject,AfterViewInit, AfterContentInit } from '@angular/core';
+import {   Component, OnInit,Input,ViewChildren,Directive,Inject,AfterViewInit, AfterContentInit,OnDestroy } from '@angular/core';
 import {   WordsService   } from '../words.service';
 import {   BrowserModule,platformBrowser,disableDebugTools   } from '@angular/platform-browser';
 import {   WINDOW   } from '../window.service';
@@ -12,7 +12,7 @@ import {   take,timeout   } from 'rxjs/operators';
   templateUrl: './words.component.html',
   styleUrls: ['./words.component.css']
 })
-export class WordsComponent implements OnInit,AfterViewInit {
+export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
     @ViewChildren('mywordsval') wordsMyElements: any;
     
@@ -158,6 +158,9 @@ export class WordsComponent implements OnInit,AfterViewInit {
         //polyfill if browsers get stubborn with the event listener
     }
   
+    ngOnDestroy(){
+        
+    }
 }
 
 
