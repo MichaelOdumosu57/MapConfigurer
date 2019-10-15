@@ -1,4 +1,4 @@
-import { Component, OnInit,Input,ViewChildren,AfterViewInit,Inject } from '@angular/core';
+import { Component, OnInit,Input,ViewChildren,AfterViewInit,Inject, OnDestroy } from '@angular/core';
 import {   WordsService   } from '../words.service';
 import {   fromEvent,interval   } from 'rxjs';
 import {   WINDOW   } from '../window.service';
@@ -9,7 +9,7 @@ import {   take,timeout   } from 'rxjs/operators';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
-export class NavigationComponent implements OnInit,AfterViewInit  {
+export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
     @ViewChildren('myNavigationVal') navigationMyElements: any;
 
@@ -144,13 +144,15 @@ export class NavigationComponent implements OnInit,AfterViewInit  {
             totalElements:this.navigationMyElements._results,
             HTMLWordElements:this.navigationCustomWordWrapElements
         })
-        this.wordsService.navigationLoadEventObservable0 = this.wordsService.navigationLoadEvent0.subscribe(this.wordsService.customWordWrapReceive({
+        this.wordsService.navigationLoadEventSubscription0 = this.wordsService.navigationLoadEvent0.subscribe(this.wordsService.customWordWrapReceive({
             totalElements:this.navigationMyElements._results,
             HTMLWordElements:{
                                 parameters:0,
                                 templateVar:this.navigationTemplateVariable
                             }
         }))
+        this.wordsService.navigationResizeEvent0 = fromEvent(this.window ,'resize');
+        this.wordsService.navigationResizeEventSubscription0 = this.wordsService.navigationResizeEvent0.subscribe(()=>{console.log()})
         
         
          
@@ -165,9 +167,10 @@ export class NavigationComponent implements OnInit,AfterViewInit  {
         // })        
         //
         
-        // console.log(   this.navigationCustomWordWrapElements   )
-        //TEST FOR THIS
-        //
+    }
+
+    ngOnDestroy(){
+
     }
 
 }

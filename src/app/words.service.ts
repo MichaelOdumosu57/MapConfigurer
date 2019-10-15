@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {  wordsGroupObject } from './wordsGroupObject';
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, of, Subject, Subscription } from 'rxjs';
 
 
 
@@ -40,13 +40,136 @@ export class WordsService {
 
         // NavigationComponent events
             navigationLoadEvent0:Observable<Event>
-            navigationLoadEventObservable0:any
+            navigationLoadEventSubscription0:Subscription
+            navigationResizeEvent0:Observable<Event>
+            navigationResizeEventSubscription0:Subscription
         //    
 
         // NavigationComponent Instances
             navigationMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
             navigationMyElementsArray: any[] = [];
             navigationComponentObject0:any ={
+                // styles:[
+                //     {
+                //         override:'false',
+                //         css:{
+                //             postion:'absolute'
+                //         }
+                //     },
+                //     {
+                //         override:'true',
+                //         css:{
+                //             position:'relative',
+                //             height: '155px'
+
+                //         }
+                //     },
+                //     {
+                //         override:'true',
+                //         css:{
+                //             position:'relative',
+                //             bottom:'80px',
+                //             left:'23px',
+                //             margin:'0px',
+                //             width:'0px'
+                //         }
+                //     },
+                //     {
+                //         //HERE
+                //         override:'true',
+                //         css:{
+                //             position:'relative',
+                //             bottom:'93px',
+                //             left:'23px',
+                //             fontSize:'17px',
+                //             fontWeight:400,
+                //             width:'0px'
+                //         }
+                //     },
+                //     {
+                //         override:'true',
+                //         css:{
+                //             position:'relative',
+                //             bottom:'234px',
+                //             left:'20px'
+                //         }
+                //     },
+                //     ...Array.from(Array(1),()=> {
+                //         return {
+                //         override:'false',
+                //         css:{
+                //             position:'relative',
+                //             bottom:'254px',
+                //             left:'600px',
+                //             'fontSize':'16px'
+                //         }
+                //     }}),
+                //     {
+                //         override:'false',
+                //         css:{
+                //             position:'relative',
+                //             bottom:'288px',
+                //             left:'685px',
+                //             'fontSize':'16px'
+                //         }
+                //     },
+                //     {
+                //         override:'false',
+                //         css:{
+                //             position:'relative',
+                //             bottom:'323px',
+                //             left:'770px',
+                //             'fontSize':'16px'
+                //         }
+                //     },
+                //     {
+                //         override:'false',
+                //         css:{
+                //             position:'relative',
+                //             bottom:'355px',
+                //             left:'870px',
+                //             fontSize:'16px'
+                //         }
+                //     },
+                //     {
+                //         override:'false',
+                //         css:{
+                //             position:'relative',
+                //             bottom:'390px',
+                //             left:'965px',
+                //             fontSize:'16px'
+                //         }
+                //     },
+                //     {
+                //         override:'false',
+                //         css:{
+                //             position:'relative',
+                //             bottom:'424px',
+                //             left:'1035px',
+                //             'fontSize':'16px'
+                //         }
+                //     },
+                //     {
+                //         //HERE
+                //         override:'false',
+                //         css:{
+                //             position:'relative',
+                //             bottom:'458px',
+                //             left:'1135px',
+                //             fontSize:'16px',
+                //             width:'0px'
+                //         }
+                //     },
+                //     {
+                //         override:'true',
+                //         css:{
+                //             position:'relative',
+                //             bottom:'505px',
+                //             left:'1108px'
+                //         }
+                //     }                    
+                    
+                // ], // as p
                 styles:[
                     {
                         override:'false',
@@ -59,6 +182,7 @@ export class WordsService {
                         css:{
                             position:'relative',
                             height: '155px'
+
                         }
                     },
                     {
@@ -93,7 +217,7 @@ export class WordsService {
                     },
                     ...Array.from(Array(1),()=> {
                         return {
-                        override:'true',
+                        override:'false',
                         css:{
                             position:'relative',
                             bottom:'254px',
@@ -102,7 +226,7 @@ export class WordsService {
                         }
                     }}),
                     {
-                        override:'true',
+                        override:'false',
                         css:{
                             position:'relative',
                             bottom:'288px',
@@ -111,7 +235,7 @@ export class WordsService {
                         }
                     },
                     {
-                        override:'true',
+                        override:'false',
                         css:{
                             position:'relative',
                             bottom:'323px',
@@ -120,7 +244,7 @@ export class WordsService {
                         }
                     },
                     {
-                        override:'true',
+                        override:'false',
                         css:{
                             position:'relative',
                             bottom:'355px',
@@ -129,7 +253,7 @@ export class WordsService {
                         }
                     },
                     {
-                        override:'true',
+                        override:'false',
                         css:{
                             position:'relative',
                             bottom:'390px',
@@ -138,7 +262,7 @@ export class WordsService {
                         }
                     },
                     {
-                        override:'true',
+                        override:'false',
                         css:{
                             position:'relative',
                             bottom:'424px',
@@ -148,7 +272,7 @@ export class WordsService {
                     },
                     {
                         //HERE
-                        override:'true',
+                        override:'false',
                         css:{
                             position:'relative',
                             bottom:'458px',
@@ -166,12 +290,15 @@ export class WordsService {
                         }
                     }                    
                     
-                ],
+                ], 
                 parameters:[
                     
                 ]
             }
         //
+
+        //navigation link repositioning 
+
     /* */
 
 
@@ -511,7 +638,7 @@ export class WordsService {
     customWordWrapWordElements: Array<any> = ['H1','H2','H3','H4','H5','H6','P','A']
     customWordWrapReceive(   devObj:any   ):any{
         return (event:any)=>{
-            this.navigationLoadEventObservable0.unsubscribe()      
+            this.navigationLoadEventSubscription0.unsubscribe()      
             // console.log(event)
             // console.log(    devObj.totalElements    )
             // console.log('called')
