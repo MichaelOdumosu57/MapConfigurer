@@ -102,4 +102,10 @@ describe('NavigationComponent', () => {
 
         }
     })  
+
+    it('the bar must be the first element in navigation, this is to deal with the repositioning of anchors',()=>{
+        expect(component.access().navigationVal[0]).toMatch('n_a_v_i_g_a_t_i_o_n_Bar')
+        expect(component.access().navigationBool[0]).toMatch('true')
+        expect(component.access().navigationStyle[0].length).toBe(1)
+    })
 });

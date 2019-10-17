@@ -29,13 +29,13 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
     navigationCustomWordWrapElements:Array<any>  = []
     
-    access(){
-        return this.wordsService
-    }
+    // access(){
+    //     return this.wordsService
+    // }
 
-    accessWindow(){
-        return this.window
-    }
+    // accessWindow(){
+    //     return this.window
+    // }
 
     ngOnInit() {
         
@@ -44,6 +44,41 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         this.wordsService.navigationMyElements.subscribe((arr)=>{
 
             // console.log(   arr   )   
+
+            // applying dynamic styles
+            console.log(   'DOMRECT bar width',this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width    )         
+            for(   let i in this.wordsService[this.navigationTemplateVariable].styles   ){
+                switch(parseInt(i)) {
+                    case 5:
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .47   ).toString() + "px"
+                      break;
+                    case 6:
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .53   ).toString() + "px"
+                      break;
+                    case 7:
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .58   ).toString() + "px"
+                      break;    
+                    case 8:
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .65   ).toString() + "px"
+                      break;     
+                    case 9:
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .72   ).toString() + "px"
+                      break;    
+                    case 10:
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .77   ).toString() + "px"
+                      break;  
+                    case 11:
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .85   ).toString() + "px"
+                      break;     
+                    case 12:
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .83   ).toString() + "px"
+                      break;                                                                                                                            
+                    default:
+                      // code block
+                  }   
+            }
+            
+            //
 
             // dealing with  missing elements
             if(   this.wordsService[this.navigationTemplateVariable].styles.length >   arr[this.navigationTemplateVariable.slice(-1)].length   ){
@@ -139,23 +174,39 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
         
         this.wordsService.navigationLoadEvent0 = fromEvent(this.window ,'load');
-        this.wordsService[this.navigationTemplateVariable].parameters.push({
-            fn:'wordsService.customWordWrapReceive',
-            totalElements:this.navigationMyElements._results,
-            HTMLWordElements:this.navigationCustomWordWrapElements
-        })
+        this.wordsService[this.navigationTemplateVariable].location.parameters.push(
+            this.wordsService[this.navigationTemplateVariable].parameters.push({
+                fn:'wordsService.customWordWrapReceive',
+                totalElements:this.navigationMyElements._results,
+                HTMLWordElements:this.navigationCustomWordWrapElements
+            }) - 1// for it returns the length of the array
+        )
         this.wordsService.navigationLoadEventSubscription0 = this.wordsService.navigationLoadEvent0.subscribe(this.wordsService.customWordWrapReceive({
             totalElements:this.navigationMyElements._results,
             HTMLWordElements:{
-                                parameters:0,
+                                parameters:this.wordsService[this.navigationTemplateVariable].location.parameters.slice(-1)[0],
                                 templateVar:this.navigationTemplateVariable
                             }
         }))
         this.wordsService.navigationResizeEvent0 = fromEvent(this.window ,'resize');
-        this.wordsService.navigationResizeEventSubscription0 = this.wordsService.navigationResizeEvent0.subscribe(()=>{console.log()})
+        this.wordsService.navigationResizeEventSubscription0 = this.wordsService.navigationResizeEvent0.subscribe((event)=>{
+            console.group()
+            // console.log('innerWidth',this.window.innerWidth)
+            // console.log('outerWidth',this.window.outerWidth)
+            // console.log('screen constant',this.window.screen.width)
+            // console.log('bar width',this.navigationMyElements._results[0].nativeElement.clientWidth)
+            for(   let i in this.navigationMyElements._results   ){
+                if(   parseInt(i) >= 4   ){
+                    // console.log(    this.navigationMyElements._results[i].nativeElement.style.left   )
+                    console.log(   'DOMRECT bar width',this.window.outerWidth   )
+                    console.log(   'css', this.window.getComputedStyle(   this.navigationMyElements._results[0].nativeElement   ).getPropertyValue('width'))
+                }
+            }
+            console.groupEnd()
+        })
         
         
-         
+
 
         // polyfill if event refuses to fire
         // var navigationIntervalRxjs0 = interval(10)
@@ -170,7 +221,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
     }
 
     ngOnDestroy(){
-
+        this.wordsService.navigationResizeEventSubscription0.unsubscribe()
     }
 
 }
