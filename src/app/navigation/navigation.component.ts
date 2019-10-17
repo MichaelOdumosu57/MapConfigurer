@@ -46,32 +46,33 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             // console.log(   arr   )   
 
             // applying dynamic styles
-            console.log(   'DOMRECT bar width',this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width    )         
+            console.log(   'DOMRECT bar width',this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width    )    
+            console.log(   'screen width ', this.window.screen.width   )     
             for(   let i in this.wordsService[this.navigationTemplateVariable].styles   ){
                 switch(parseInt(i)) {
                     case 5:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .47   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .47   ).toString() + "px"
                       break;
                     case 6:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .53   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .53   ).toString() + "px"
                       break;
                     case 7:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .58   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .58   ).toString() + "px"
                       break;    
                     case 8:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .65   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .65   ).toString() + "px"
                       break;     
                     case 9:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .72   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .72   ).toString() + "px"
                       break;    
                     case 10:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .77   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .77   ).toString() + "px"
                       break;  
                     case 11:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .85   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .85   ).toString() + "px"
                       break;     
                     case 12:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.outerWidth * .83   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .83   ).toString() + "px"
                       break;                                                                                                                            
                     default:
                       // code block
@@ -192,13 +193,13 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         this.wordsService.navigationResizeEventSubscription0 = this.wordsService.navigationResizeEvent0.subscribe((event)=>{
             console.group()
             // console.log('innerWidth',this.window.innerWidth)
-            // console.log('outerWidth',this.window.outerWidth)
+            // console.log('outerWidth',this.window.screen.width)
             // console.log('screen constant',this.window.screen.width)
             // console.log('bar width',this.navigationMyElements._results[0].nativeElement.clientWidth)
             for(   let i in this.navigationMyElements._results   ){
                 if(   parseInt(i) >= 4   ){
                     // console.log(    this.navigationMyElements._results[i].nativeElement.style.left   )
-                    console.log(   'DOMRECT bar width',this.window.outerWidth   )
+                    console.log(   'DOMRECT bar width',this.window.screen.width   )
                     console.log(   'css', this.window.getComputedStyle(   this.navigationMyElements._results[0].nativeElement   ).getPropertyValue('width'))
                 }
             }
