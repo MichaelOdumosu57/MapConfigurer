@@ -48,35 +48,37 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             // applying dynamic styles
             console.log(   'DOMRECT bar width',this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width    )    
             console.log(   'screen width ', this.window.screen.width   )     
+            console.log(   'document.body',   this.window.document.body.offsetWidth   )
+            var t = this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width  - 1340
             for(   let i in this.wordsService[this.navigationTemplateVariable].styles   ){
                 switch(parseInt(i)) {
                     case 5:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .47   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .47  + t ).toString() + "px"
                       break;
                     case 6:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .53   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .53  + t ).toString() + "px"
                       break;
                     case 7:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .58   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .58  + t   ).toString() + "px"
                       break;    
                     case 8:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .65   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .65   + t  ).toString() + "px"
                       break;     
                     case 9:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .72   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .72  + t  ).toString() + "px"
                       break;    
                     case 10:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .77   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .77   + t ).toString() + "px"
                       break;  
                     case 11:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .85   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .85  + t  ).toString() + "px"
                       break;     
                     case 12:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  this.window.screen.width * .83   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .83   + t ).toString() + "px"
                       break;                                                                                                                            
                     default:
                       // code block
-                  }   
+                }                    
             }
             
             //
