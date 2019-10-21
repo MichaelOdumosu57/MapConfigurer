@@ -108,4 +108,65 @@ describe('NavigationComponent', () => {
         expect(component.access().navigationBool[0]).toMatch('true')
         expect(component.access().navigationStyle[0].length).toBe(1)
     })
+
+    it('initalizes the navigation anchors for repoisitiing',()=>{
+        component.access().navigationMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
+                return  {nativeElement:elem} 
+            }) 
+        ])
+        component.access().navigationMyElements.next(   component.access().navigationMyElementsArray   )    
+        component.ngOnInit()
+        expect(component.access()[component.navigationTemplateVariable].metadata.barDynamicWidth).not.toBeNull()
+    })
+
+    it('repositiong the navigation on window resize',() =>{ 
+        console.group('repositiong the navigation on window resize')
+        var oldLeft = []
+        var newLeft = []
+        component.access().navigationMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
+                return  {nativeElement:elem} 
+            }) 
+        ])
+        component.access().navigationMyElements.next(   component.access().navigationMyElementsArray   )    
+        component.ngOnInit() 
+        component.ngAfterViewInit()        
+        for(   let i in component.navigationMyElements._results   ){
+            if(   parseInt(i) >= 4   ){
+                // console.log(   'DOMRECT bar width',this.window.screen.width   )
+                // console.log(   'css', this.window.getComputedStyle(   this.navigationMyElements._results[i].nativeElement   ).getPropertyValue('left'))
+                oldLeft.push(   component.accessWindow().getComputedStyle(   component.navigationMyElements._results[i].nativeElement   ).getPropertyValue('left')  )
+            }
+        }        
+        var resizeEvent = new Event('resize')
+        component.navigationMyElements._results[0].nativeElement.style.width = "1670px"
+        component.accessWindow().dispatchEvent(   resizeEvent   )        
+        for(   let i in component.navigationMyElements._results   ){
+            if(   parseInt(i) >= 4   ){
+                // console.log(   'DOMRECT bar width',this.window.screen.width   )
+                // console.log(   'css', this.window.getComputedStyle(   this.navigationMyElements._results[i].nativeElement   ).getPropertyValue('left'))
+                newLeft.push(   component.accessWindow().getComputedStyle(   component.navigationMyElements._results[i].nativeElement   ).getPropertyValue('left')   )
+            }
+        }
+        console.log(oldLeft,newLeft)
+        for(   let i in oldLeft   ){
+
+
+            if(   newLeft[i] === oldLeft[i]   ){
+            
+            
+                fail()
+            
+            
+            }
+
+
+        }       
+        console.groupEnd()     
+    })
+
+    it('should unsubscribe from the resize event which handles navigation anchor repositioning',()=>{
+        // expect(component.ngOnDestroy).toHaveBeenCalled()
+        component.ngOnDestroy()
+        expect(component.access().navigationResizeEventSubscription0.closed).toBe(true)
+    })
 });

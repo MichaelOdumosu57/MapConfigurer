@@ -296,6 +296,9 @@ export class WordsService {
                 ],
                 location:{
                     parameters:[]
+                },
+                metadata:{
+                    barDynamicWidth:null
                 }
             }
         //

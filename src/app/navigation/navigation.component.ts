@@ -4,6 +4,11 @@ import {   fromEvent,interval   } from 'rxjs';
 import {   WINDOW   } from '../window.service';
 import {   take,timeout   } from 'rxjs/operators';
 
+function numberParse(dimension){
+    dimension = parseFloat(dimension.split("p")[0])
+    return dimension;
+}
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -29,13 +34,13 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
     navigationCustomWordWrapElements:Array<any>  = []
     
-    // access(){
-    //     return this.wordsService
-    // }
+    access(){
+        return this.wordsService
+    }
 
-    // accessWindow(){
-    //     return this.window
-    // }
+    accessWindow(){
+        return this.window
+    }
 
     ngOnInit() {
         
@@ -49,32 +54,32 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             console.log(   'DOMRECT bar width',this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width    )    
             console.log(   'screen width ', this.window.screen.width   )     
             console.log(   'document.body',   this.window.document.body.offsetWidth   )
-            var t = this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width  - 1340
+            this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth = this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width  - 1340
             for(   let i in this.wordsService[this.navigationTemplateVariable].styles   ){
                 switch(parseInt(i)) {
                     case 5:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .47  + t ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .47  + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
                       break;
                     case 6:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .53  + t ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .53  + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth ).toString() + "px"
                       break;
                     case 7:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .58  + t   ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .58  + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth   ).toString() + "px"
                       break;    
                     case 8:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .65   + t  ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .65   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
                       break;     
                     case 9:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .72  + t  ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .72  + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth   ).toString() + "px"
                       break;    
                     case 10:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .77   + t ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .77   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
                       break;  
                     case 11:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .85  + t  ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .85  + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth   ).toString() + "px"
                       break;     
                     case 12:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .83   + t ).toString() + "px"
+                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .83   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
                       break;                                                                                                                            
                     default:
                       // code block
@@ -200,37 +205,25 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             // console.log('bar width',this.navigationMyElements._results[0].nativeElement.clientWidth)
             for(   let i in this.navigationMyElements._results   ){
                 if(   parseInt(i) >= 4   ){
-                    // console.log(    this.navigationMyElements._results[i].nativeElement.style.left   )
-                    console.log(   'DOMRECT bar width',this.window.screen.width   )
-                    console.log(   'css', this.window.getComputedStyle(   this.navigationMyElements._results[0].nativeElement   ).getPropertyValue('width'))
+                    // console.log(   'DOMRECT bar width',this.window.screen.width   )
+                    // console.log(   'css', this.window.getComputedStyle(   this.navigationMyElements._results[i].nativeElement   ).getPropertyValue('left'))
+                    this.navigationMyElements._results[i].nativeElement.style.left = (   numberParse(   this.navigationMyElements._results[i].nativeElement.style.left   ) - this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth    ).toString() + "px"  
+                    this.navigationMyElements._results[i].nativeElement.style.left = (   numberParse(   this.navigationMyElements._results[i].nativeElement.style.left   ) +  this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width - 1340   ).toString() + "px"  
                 }
             }
+            this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  = this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width - 1340
             console.groupEnd()
         })
-        
-        
-
-
-        // polyfill if event refuses to fire
-        // var navigationIntervalRxjs0 = interval(10)
-        // var navigationTakeRxjs0 =  navigationIntervalRxjs0.pipe(take(1))
-        // navigationTakeRxjs0.subscribe((a)=>{
-        //     var event = this.window.document.createEvent("Event");
-        //     event.initEvent("load", false, true);
-        //     this.window.dispatchEvent(   event   )
-        // })        
-        //
         
     }
 
     ngOnDestroy(){
         this.wordsService.navigationResizeEventSubscription0.unsubscribe()
+        
     }
 
 }
 
 
 //TEST
-// that it gets  this.navigationCustomWordWrapElements  it keeps failing for some reasons 
-//TEST i[0].nativeElement.style.width  must start with 0px its defined and you can access from js and later css
-// TEST if customeWordWrapReceive returns
+// test that ngOnDestory make a fn call to unsubscribe
