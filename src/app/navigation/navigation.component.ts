@@ -212,15 +212,13 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             // console.log('bar width',this.navigationMyElements._results[0].nativeElement.clientWidth)
             for(   let i of this.navigationMyElements._results.slice(4,12)   ){
                
-                    // console.log(   'DOMRECT bar width',this.window.screen.width   )
-                    // console.log(   'css', this.window.getComputedStyle(   this.navigationMyElements._results[i].nativeElement   ).getPropertyValue('left'))
-                    // this.navigationMyElements._results[i].nativeElement.style.left = (   numberParse(   this.navigationMyElements._results[i].nativeElement.style.left   ) - this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth    ).toString() + "px"  
-                    // this.navigationMyElements._results[i].nativeElement.style.left = (   numberParse(   this.navigationMyElements._results[i].nativeElement.style.left   ) +  this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width - 1340   ).toString() + "px"  
-                    i.nativeElement.style.left = (   numberParse(   i.nativeElement.style.left   ) - this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth    ).toString() + "px"  
-                    i.nativeElement.style.left = (   numberParse(   i.nativeElement.style.left   ) +  this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width - 1340   ).toString() + "px"  
-
-                
-            }
+                // console.log(   'DOMRECT bar width',this.window.screen.width   )
+                // console.log(    i.nativeElement.style.left   )
+                i.nativeElement.style.left = (   numberParse(   i.nativeElement.style.left   ) - this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth    ).toString() + "px"  
+                i.nativeElement.style.left = (   numberParse(   i.nativeElement.style.left   ) +  this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width - 1340   ).toString() + "px"  
+                // console.log(    i.nativeElement.style.left   )
+            
+            }               
             this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  = this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width - 1340
             console.groupEnd()
         })
@@ -233,6 +231,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
                 this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
                 // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
+                this.navigationBool[12] = 'true'
             }
 
             else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
@@ -247,7 +246,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                 // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
                 this.navigationBool[12] = 'true'
 
-                console.log( this.navigationMyElements._results   )
+                // console.log( this.navigationMyElements._results   )
                 if(   this.navigationMyElements._results[12].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownBox"   ){
 
 

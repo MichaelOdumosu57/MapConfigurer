@@ -153,17 +153,24 @@ describe('NavigationComponent', () => {
         component.ngOnInit() 
         component.ngAfterViewInit()        
         for(   let i in component.navigationMyElements._results   ){
-            if(   parseInt(i) >= 4   ){
+            
+            if(   parseInt(i) >= 4 && parseInt(i) <= 11   ){
+                // console.log(component.navigationMyElements._results[i])
                 // console.log(   'DOMRECT bar width',this.window.screen.width   )
                 // console.log(   'css', this.window.getComputedStyle(   this.navigationMyElements._results[i].nativeElement   ).getPropertyValue('left'))
                 oldLeft.push(   component.accessWindow().getComputedStyle(   component.navigationMyElements._results[i].nativeElement   ).getPropertyValue('left')  )
             }
         }        
         var resizeEvent = new Event('resize')
-        component.navigationMyElements._results[0].nativeElement.style.width = "1670px"
-        component.accessWindow().dispatchEvent(   resizeEvent   )        
+        // console.log(   component.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width   )
+        // console.log(   component.navigationMyElements._results[0].nativeElement.style.width   )
+        component.navigationMyElements._results[0].nativeElement.style.width = (   component.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width    + 500   ).toString() + "px"
+        // console.log(   component.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width   )
+        // console.log(   component.navigationMyElements._results[0].nativeElement.style.width   )
+        component.accessWindow().dispatchEvent(   resizeEvent   )     
         for(   let i in component.navigationMyElements._results   ){
-            if(   parseInt(i) >= 4   ){
+            if(   parseInt(i) >= 4 && parseInt(i) <= 11    ){
+                // console.log(component.navigationMyElements._results[i])
                 // console.log(   'DOMRECT bar width',this.window.screen.width   )
                 // console.log(   'css', this.window.getComputedStyle(   this.navigationMyElements._results[i].nativeElement   ).getPropertyValue('left'))
                 newLeft.push(   component.accessWindow().getComputedStyle(   component.navigationMyElements._results[i].nativeElement   ).getPropertyValue('left')   )
