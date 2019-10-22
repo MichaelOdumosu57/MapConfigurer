@@ -4,9 +4,16 @@ import {   fromEvent,interval   } from 'rxjs';
 import {   WINDOW   } from '../window.service';
 import {   take,timeout   } from 'rxjs/operators';
 
-function numberParse(dimension){
+function numberParse(   dimension:any   ){
     dimension = parseFloat(dimension.split("p")[0])
     return dimension;
+}
+
+function getTextWidth(   devObj:{elementText:string,font:string}   ){
+    var canvas = document.createElement("canvas");
+    var ctx = canvas.getContext("2d");
+    ctx.font = devObj.font;  // This can be set programmaticly from the element's font-style if desired
+    return ctx.measureText(devObj.elementText).width;
 }
 
 @Component({
@@ -198,7 +205,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         }))
         this.wordsService.navigationResizeEvent0 = fromEvent(this.window ,'resize');
         this.wordsService.navigationResizeEventSubscription0 = this.wordsService.navigationResizeEvent0.subscribe((event)=>{
-            console.group()
+            console.group('general nav anchor repositioning')
             // console.log('innerWidth',this.window.innerWidth)
             // console.log('outerWidth',this.window.screen.width)
             // console.log('screen constant',this.window.screen.width)
@@ -214,11 +221,39 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  = this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width - 1340
             console.groupEnd()
         })
-        
+        this.wordsService[this.navigationTemplateVariable].metadata.titleWidth = getTextWidth({
+            elementText:this.navigationMyElements._results[1].nativeElement.innerText ,
+            font: this.window.getComputedStyle(   this.navigationMyElements._results[1].nativeElement   ).getPropertyValue('font-size') + " sans-serif"
+        })        
+        this.wordsService.navigationResizeEventSubscription1 = this.wordsService.navigationResizeEvent0.subscribe((event)=>{
+            console.group('anchors overlapping heading')
+            if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
+                this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
+                // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
+            }
+
+            else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
+                this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
+            }            
+            console.groupEnd()    
+        })
+        this.wordsService.navigationLoadEventSubscription1 = this.wordsService.navigationLoadEvent0.subscribe((event)=>{
+            console.group('anchors overlapping heading')
+            if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
+                this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
+                // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
+            }
+
+            else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
+                this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
+            }            
+            console.groupEnd()    
+        })
     }
 
     ngOnDestroy(){
         this.wordsService.navigationResizeEventSubscription0.unsubscribe()
+        this.wordsService.navigationResizeEventSubscription1.unsubscribe()
         
     }
 

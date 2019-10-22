@@ -41,8 +41,11 @@ export class WordsService {
         // NavigationComponent events
             navigationLoadEvent0:Observable<Event>
             navigationLoadEventSubscription0:Subscription
+            navigationLoadEventSubscription1:Subscription 
             navigationResizeEvent0:Observable<Event>
             navigationResizeEventSubscription0:Subscription
+            navigationResizeEvent1:Observable<Event>
+            navigationResizeEventSubscription1:Subscription            
         //    
 
         // NavigationComponent Instances
@@ -298,7 +301,8 @@ export class WordsService {
                     parameters:[]
                 },
                 metadata:{
-                    barDynamicWidth:null
+                    barDynamicWidth:null,
+                    titleWidth:null
                 }
             }
         //
