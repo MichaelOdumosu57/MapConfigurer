@@ -39,6 +39,28 @@ describe('NavigationComponent', () => {
         expect(component).toBeTruthy();
     });
 
+    it(   'should be known  by the dev that len of elements should not be greater than the len of styles',()=>{
+        console.group('should be known  by the dev that len of elements should not be greater than the len of styles')
+        component.navigationTemplateVariable = 'navigationComponentObject0';
+        component.access().navigationMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
+                return  {nativeElement:elem} 
+            }) 
+        ])        
+        
+        // console.log(   component.access().navigationMyElementsArray   )
+        // console.log(   component.access()[component.navigationTemplateVariable].styles.length   )
+        if(   component.access().navigationMyElementsArray[0].length > component.access()[component.navigationTemplateVariable].styles.length   ){
+
+
+            expect(false).toBe(true)
+
+
+        }
+
+
+        console.groupEnd()
+    })    
+
     it('should get this.navigationCustomWordWrapElements ', () => {
 
     console.group(   'should get this.navigationCustomWordWrapElements '   )

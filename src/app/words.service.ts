@@ -30,10 +30,12 @@ export class WordsService {
             'n_a_v_i_g_a_t_i_o_n_blogLink',
             'n_a_v_i_g_a_t_i_o_n_contactLink',
             'n_a_v_i_g_a_t_i_o_n_takeActionLink',
-            'n_a_v_i_g_a_t_i_o_n_takeActionCircle'
+            'n_a_v_i_g_a_t_i_o_n_takeActionCircle',
+            'n_a_v_i_g_a_t_i_o_n_dropDownBox',
+            'n_a_v_i_g_a_t_i_o_n_dropDownIcon'
         ]
-        navigationBool: Array<any> = ['true','true','true','true','true','true','true','true','true','true','true','true']
-        navigationStyle: Array<any> = Array.from(Array(12),()=>{return [3]})
+        navigationBool: Array<any> = ['true','true','true','true','true','true','true','true','true','true','true','true','false','true']
+        navigationStyle: Array<any> = Array.from(Array(14),()=>{return [3]})
         navigationValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
         navigationStyleIndex:Array<any> = [0]
         navigationBoolIndex:Array<any>= [0]
@@ -292,7 +294,23 @@ export class WordsService {
                             top:'60px',
                             left:'1142px'
                         }
-                    }                    
+                    },
+                    {
+                        override:'true',
+                        css:{
+                            position:'absolute',
+                            top:'60px',
+                            left:'1142px'
+                        }
+                    },
+                    {
+                        override:'true',
+                        css:{
+                            position:'absolute',
+                            display:'none',
+                            fontSize:'30px'
+                        }
+                    }                                                             
                     
                 ], 
                 parameters:[    

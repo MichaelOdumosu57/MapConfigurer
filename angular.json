@@ -24,7 +24,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/tachyons.min.css"
+              "src/tachyons.min.css",
+              "src/material-icons.css"
 
             ],
             "scripts": [],

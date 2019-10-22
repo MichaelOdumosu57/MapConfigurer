@@ -49,7 +49,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         return this.window
     }
 
-    ngOnInit() {
+    ngOnInit() {                                                                                                                                                                                                                                                                                        
         
         // console.log(   this.wordsService[this.navigationTemplateVariable]   )
         // console.log(   this.navigationTemplateVariable   )
@@ -58,9 +58,9 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             // console.log(   arr   )   
 
             // applying dynamic styles
-            console.log(   'DOMRECT bar width',this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width    )    
-            console.log(   'screen width ', this.window.screen.width   )     
-            console.log(   'document.body',   this.window.document.body.offsetWidth   )
+            // console.log(   'DOMRECT bar width',this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width    )    
+            // console.log(   'screen width ', this.window.screen.width   )     
+            // console.log(   'document.body',   this.window.document.body.offsetWidth   )
             this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth = this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width  - 1340
             for(   let i in this.wordsService[this.navigationTemplateVariable].styles   ){
                 switch(parseInt(i)) {
@@ -210,13 +210,16 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             // console.log('outerWidth',this.window.screen.width)
             // console.log('screen constant',this.window.screen.width)
             // console.log('bar width',this.navigationMyElements._results[0].nativeElement.clientWidth)
-            for(   let i in this.navigationMyElements._results   ){
-                if(   parseInt(i) >= 4   ){
+            for(   let i of this.navigationMyElements._results.slice(4,12)   ){
+               
                     // console.log(   'DOMRECT bar width',this.window.screen.width   )
                     // console.log(   'css', this.window.getComputedStyle(   this.navigationMyElements._results[i].nativeElement   ).getPropertyValue('left'))
-                    this.navigationMyElements._results[i].nativeElement.style.left = (   numberParse(   this.navigationMyElements._results[i].nativeElement.style.left   ) - this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth    ).toString() + "px"  
-                    this.navigationMyElements._results[i].nativeElement.style.left = (   numberParse(   this.navigationMyElements._results[i].nativeElement.style.left   ) +  this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width - 1340   ).toString() + "px"  
-                }
+                    // this.navigationMyElements._results[i].nativeElement.style.left = (   numberParse(   this.navigationMyElements._results[i].nativeElement.style.left   ) - this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth    ).toString() + "px"  
+                    // this.navigationMyElements._results[i].nativeElement.style.left = (   numberParse(   this.navigationMyElements._results[i].nativeElement.style.left   ) +  this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width - 1340   ).toString() + "px"  
+                    i.nativeElement.style.left = (   numberParse(   i.nativeElement.style.left   ) - this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth    ).toString() + "px"  
+                    i.nativeElement.style.left = (   numberParse(   i.nativeElement.style.left   ) +  this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width - 1340   ).toString() + "px"  
+
+                
             }
             this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  = this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width - 1340
             console.groupEnd()
@@ -242,10 +245,31 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
                 this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
                 // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
+                this.navigationBool[12] = 'true'
+
+                console.log( this.navigationMyElements._results   )
+                if(   this.navigationMyElements._results[12].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownBox"   ){
+
+
+                    this.wordsService.navigationLoadEventSubscription1.unsubscribe()
+                    this.navigationMyElements._results[12].nativeElement.style.position = "absolute"
+                    this.navigationMyElements._results[12].nativeElement.style.top = "50px"
+                    // console.log(this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth )
+                    this.navigationMyElements._results[12].nativeElement.style.left = (  1340* .96   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
+                    this.navigationMyElements._results[13].nativeElement.style.display = 'block'
+                    this.navigationMyElements._results[13].nativeElement.style.top = "60px"
+                    this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
+
+
+                }
+                
+
             }
 
             else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
                 this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
+                this.navigationBool[12] = 'false'
+                this.wordsService.navigationLoadEventSubscription1.unsubscribe()
             }            
             console.groupEnd()    
         })
@@ -254,6 +278,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
     ngOnDestroy(){
         this.wordsService.navigationResizeEventSubscription0.unsubscribe()
         this.wordsService.navigationResizeEventSubscription1.unsubscribe()
+        
         
     }
 

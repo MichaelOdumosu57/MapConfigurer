@@ -38,7 +38,7 @@ describe('WordsComponent', () => {
             }) 
         ])        
         
-        if(   component.wordsService.wordsMyElementsArray.length > component.wordsService[component.wordsTemplateVariable].styles.length   ){
+        if(   component.wordsService.wordsMyElementsArray[0].length > component.wordsService[component.wordsTemplateVariable].styles.length   ){
 
 
             expect(false).toBe(true)
