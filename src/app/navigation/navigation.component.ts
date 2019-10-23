@@ -306,6 +306,21 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
             else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
                 
+
+                if(   this.wordsService.navigationClickEventSubscription0 !== undefined   ){
+
+
+                    if(   !this.wordsService.navigationClickEventSubscription0.closed    ){
+
+
+                        this.wordsService.navigationClickEventSubscription0.unsubscribe()   
+                        
+                
+                    }
+
+
+                }  
+                
                 
                 if(   this.navigationMyElements._results[13] !== undefined   ){
 
@@ -332,6 +347,9 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                             i.nativeElement.style.display = 'block'  
                         }
 
+                        
+                        
+
 
                     }
 
@@ -348,6 +366,8 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         })     
         this.wordsService.navigationLoadEventSubscription1 = this.wordsService.navigationLoadEvent0.subscribe((event)=>{
             console.group('anchors overlapping heading load event')
+
+
             if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
                 // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
                 // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
@@ -381,7 +401,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
                     }
 
-                    
+
                     for(   let i of this.navigationMyElements._results.slice(4,12)   ){
                         i.nativeElement.style.display = 'none'  
                     }                                            
@@ -407,8 +427,25 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
             else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
                 // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
-                this.navigationBool[12] = 'false'
+                // this.navigationBool[12] = 'false'
                 this.wordsService.navigationLoadEventSubscription1.unsubscribe()
+
+
+                if(   this.wordsService.navigationClickEventSubscription0 !== undefined   ){
+
+
+                    if(   !this.wordsService.navigationClickEventSubscription0.closed    ){
+
+
+                        this.wordsService.navigationClickEventSubscription0.unsubscribe()   
+                
+                
+                    }
+
+
+                }       
+                
+                
             }            
 
 
@@ -422,6 +459,15 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
     ngOnDestroy(){
         this.wordsService.navigationResizeEventSubscription0.unsubscribe()
         this.wordsService.navigationResizeEventSubscription1.unsubscribe()
+
+
+        if(   !this.wordsService.navigationLoadEventSubscription1.closed   ){
+
+
+            this.wordsService.navigationLoadEventSubscription1.unsubscribe()
+
+
+        }
         
         
     }
