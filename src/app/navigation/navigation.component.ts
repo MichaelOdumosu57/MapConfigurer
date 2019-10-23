@@ -1,8 +1,8 @@
-import { Component, OnInit,Input,ViewChildren,AfterViewInit,Inject, OnDestroy } from '@angular/core';
+import { Component, OnInit,Input,ViewChildren,AfterViewInit,Inject, OnDestroy,ChangeDetectorRef,ChangeDetectionStrategy } from '@angular/core';
 import {   WordsService   } from '../words.service';
-import {   fromEvent,interval   } from 'rxjs';
+import {   fromEvent,interval, of,from   } from 'rxjs';
 import {   WINDOW   } from '../window.service';
-import {   take,timeout   } from 'rxjs/operators';
+import {   take,timeout,distinctUntilChanged   } from 'rxjs/operators';
 
 function numberParse(   dimension:any   ){
     dimension = parseFloat(dimension.split("p")[0])
@@ -19,7 +19,8 @@ function getTextWidth(   devObj:{elementText:string,font:string}   ){
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+  styleUrls: ['./navigation.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
@@ -27,7 +28,8 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
     constructor(
         private wordsService: WordsService,
-        @Inject(WINDOW) private window: Window
+        @Inject(WINDOW) private window: Window,
+        private ref: ChangeDetectorRef
     ) { }
     
     @Input() navigationTemplateVariable:string | any;
@@ -228,23 +230,63 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         })        
         this.wordsService.navigationResizeEventSubscription1 = this.wordsService.navigationResizeEvent0.subscribe((event)=>{
             console.group('anchors overlapping heading')
-            if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
+
+            
+            if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
                 this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
                 // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
                 this.navigationBool[12] = 'true'
+                this.ref.detectChanges();
+                
+                if(   this.navigationMyElements._results[12].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownBox"   ){
+
+
+                    console.log(     this.navigationMyElements._results[12].nativeElement.id   )
+                    this.navigationMyElements._results[12].nativeElement.style.position = "absolute"
+                    this.navigationMyElements._results[12].nativeElement.style.top = "50px"
+                    // console.log(this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth )
+                    this.navigationMyElements._results[12].nativeElement.style.left = (  1340* .96   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
+                    this.navigationMyElements._results[13].nativeElement.style.display = 'block'
+                    this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
+                    console.log(     this.navigationMyElements._results   )
+        
+                    
+                }
+                console.log(   this.navigationMyElements._results   )
             }
 
-            else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
-                this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
-            }            
-            console.groupEnd()    
-        })
+
+            else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
+                
+                if(   this.navigationMyElements._results[13] !== undefined   ){
+
+
+                    if(   this.navigationMyElements._results[13].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownIcon"   ){
+
+
+                        this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
+                        this.navigationMyElements._results[13].nativeElement.style.display = 'none'
+                        this.navigationBool[12] = 'false'
+
+
+                    }
+
+
+                }
+
+
+            }
+            // console.log(this.navigationMyElements )            
+            console.groupEnd()
+
+        })     
         this.wordsService.navigationLoadEventSubscription1 = this.wordsService.navigationLoadEvent0.subscribe((event)=>{
             console.group('anchors overlapping heading')
-            if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
+            if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
                 this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
                 // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
                 this.navigationBool[12] = 'true'
+                
 
                 // console.log( this.navigationMyElements._results   )
                 if(   this.navigationMyElements._results[12].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownBox"   ){
@@ -258,14 +300,14 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     this.navigationMyElements._results[13].nativeElement.style.display = 'block'
                     this.navigationMyElements._results[13].nativeElement.style.top = "60px"
                     this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
-
+                    
 
                 }
                 
 
             }
 
-            else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
+            else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
                 this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
                 this.navigationBool[12] = 'false'
                 this.wordsService.navigationLoadEventSubscription1.unsubscribe()
