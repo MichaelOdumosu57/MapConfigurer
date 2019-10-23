@@ -238,6 +238,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                 this.navigationBool[12] = 'true'
                 this.ref.detectChanges();
                 
+
                 if(   this.navigationMyElements._results[12].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownBox"   ){
 
 
@@ -253,21 +254,19 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     
                 }
                 // console.log(   this.navigationMyElements._results   )
+
             }
 
 
             else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
                 
                 
-                
-
-
                 if(   this.navigationMyElements._results[13] !== undefined   ){
 
 
                     if(   this.navigationMyElements._results[13].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownIcon"   ){
 
-                        console.log('executed on condition')                        
+                        // console.log('executed on condition')                        
                         this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
                         this.navigationMyElements._results[13].nativeElement.style.display = 'none'
                         this.navigationBool[12] = 'false'
@@ -281,7 +280,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
 
             }
-            console.log(this.navigationMyElements )            
+            // console.log(this.navigationMyElements )            
             console.groupEnd()
 
         })     
@@ -291,6 +290,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                 this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
                 // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
                 this.navigationBool[12] = 'true'
+                this.ref.detectChanges()
                 
 
                 // console.log( this.navigationMyElements._results   )
@@ -305,7 +305,9 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     this.navigationMyElements._results[13].nativeElement.style.display = 'block'
                     this.navigationMyElements._results[13].nativeElement.style.top = "60px"
                     this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
-                    
+                    for(   let i of this.navigationMyElements._results.slice(4,12)   ){
+                        i.nativeElement.style.display = 'none'  
+                    }                                            
 
                 }
                 
