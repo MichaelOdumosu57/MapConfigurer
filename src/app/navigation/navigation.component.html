@@ -41,5 +41,16 @@
 <ng-container *ngFor = 'let a of navigationStyle[13]' >
     <i #myNavigationVal  *ngIf="navigationBool[13] ==='true'" id = {{navigationVal[13]}} class = 'material-icons' >menu</i>
 </ng-container>
+<ng-container *ngFor = 'let a of navigationStyle[14]' >
+<div #myNavigationVal *ngIf="navigationBool[14] ==='true'" id = {{navigationVal[14]}} >
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Projects</a>
+    <a href="#">Blog</a>
+    <a href="#">Contact</a>
+    <a href="#">Take&#160;Action</a>
+</div>
+</ng-container>
 <!--  -->
 

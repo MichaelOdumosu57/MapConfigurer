@@ -236,7 +236,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
             
             if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
-                this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
+                // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
                 // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
                 this.navigationBool[12] = 'true'
                 this.ref.detectChanges();
@@ -274,7 +274,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     else if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
 
                         
-                        console.log('restore title sizes')
+                        // console.log('restore title sizes')
                         this.navigationMyElements._results.slice(1,3).map((x,i)=>{
                             x.nativeElement.style.fontSize =  this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i] 
                             // console.log(   x.nativeElement.style.fontSize  )
@@ -300,12 +300,12 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     if(   this.navigationMyElements._results[13].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownIcon"   ){
 
                         // console.log('executed on condition')                        
-                        this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
+                        // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
                         this.navigationMyElements._results[13].nativeElement.style.display = 'none'
                         // if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
 
                         
-                            console.log('restore title sizes')
+                            // console.log('restore title sizes')
                             this.navigationMyElements._results.slice(1,3).map((x,i)=>{
                                 x.nativeElement.style.fontSize =  this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i] 
                                 
@@ -336,7 +336,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         this.wordsService.navigationLoadEventSubscription1 = this.wordsService.navigationLoadEvent0.subscribe((event)=>{
             console.group('anchors overlapping heading load event')
             if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
-                this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
+                // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
                 // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
                 this.navigationBool[12] = 'true'
                 this.ref.detectChanges()
@@ -362,10 +362,10 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
 
                         
-                        console.log('dropdownBox is interfering with the titile')
+                        // console.log('dropdownBox is interfering with the titile')
                         this.navigationMyElements._results.slice(1,3).map((x,i)=>{
                             x.nativeElement.style.fontSize =  (   numberParse(   this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i]   ) * (   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )/(   this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55 )  ) * .95  ).toString() + "px"
-                            console.log(   x.nativeElement.style.fontSize  )
+                            // console.log(   x.nativeElement.style.fontSize  )
                         })
 
 
@@ -378,10 +378,13 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             }
 
             else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
-                this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
+                // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
                 this.navigationBool[12] = 'false'
                 this.wordsService.navigationLoadEventSubscription1.unsubscribe()
             }            
+
+
+            console.log(   this.navigationMyElements._results  )
             console.groupEnd()    
         })
     }

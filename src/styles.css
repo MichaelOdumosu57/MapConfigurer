@@ -134,3 +134,29 @@ html{
     background-color: #fb2056;
 
 }
+
+
+
+
+
+  
+  /* Dropdown Content (Hidden by Default) */
+  #n_a_v_i_g_a_t_i_o_n_dropDown {
+    /* display: none; */
+    position: absolute;
+    background-color: #FFC0CB;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  #n_a_v_i_g_a_t_i_o_n_dropDown a {
+    color:  #f95e85;
+    padding: 12px 16px;
+    border-bottom:1px solid white;
+    text-decoration: none;
+    display: block;
+    font-family:'Roboto';
+  }
+  
