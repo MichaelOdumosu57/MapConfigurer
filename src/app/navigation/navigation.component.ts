@@ -241,29 +241,33 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                 if(   this.navigationMyElements._results[12].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownBox"   ){
 
 
-                    console.log(     this.navigationMyElements._results[12].nativeElement.id   )
+                    // console.log(     this.navigationMyElements._results[12].nativeElement.id   )
                     this.navigationMyElements._results[12].nativeElement.style.position = "absolute"
                     this.navigationMyElements._results[12].nativeElement.style.top = "50px"
                     // console.log(this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth )
                     this.navigationMyElements._results[12].nativeElement.style.left = (  1340* .96   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
                     this.navigationMyElements._results[13].nativeElement.style.display = 'block'
                     this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
-                    console.log(     this.navigationMyElements._results   )
+                    // console.log(     this.navigationMyElements._results   )
         
                     
                 }
-                console.log(   this.navigationMyElements._results   )
+                // console.log(   this.navigationMyElements._results   )
             }
 
 
             else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
                 
+                
+                this.ref.detectChanges()
+
+
                 if(   this.navigationMyElements._results[13] !== undefined   ){
 
 
                     if(   this.navigationMyElements._results[13].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownIcon"   ){
 
-
+                        console.log('executed on condition')                        
                         this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
                         this.navigationMyElements._results[13].nativeElement.style.display = 'none'
                         this.navigationBool[12] = 'false'
@@ -276,7 +280,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
 
             }
-            // console.log(this.navigationMyElements )            
+            console.log(this.navigationMyElements )            
             console.groupEnd()
 
         })     
