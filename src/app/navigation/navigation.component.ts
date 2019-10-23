@@ -259,7 +259,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
                 
                 
-                this.ref.detectChanges()
+                
 
 
                 if(   this.navigationMyElements._results[13] !== undefined   ){
@@ -271,6 +271,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                         this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
                         this.navigationMyElements._results[13].nativeElement.style.display = 'none'
                         this.navigationBool[12] = 'false'
+                        this.ref.detectChanges()
 
 
                     }
