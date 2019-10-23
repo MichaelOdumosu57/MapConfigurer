@@ -213,13 +213,11 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             // console.log('screen constant',this.window.screen.width)
             // console.log('bar width',this.navigationMyElements._results[0].nativeElement.clientWidth)
             for(   let i of this.navigationMyElements._results.slice(4,12)   ){
-               
                 // console.log(   'DOMRECT bar width',this.window.screen.width   )
                 // console.log(    i.nativeElement.style.left   )
                 i.nativeElement.style.left = (   numberParse(   i.nativeElement.style.left   ) - this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth    ).toString() + "px"  
                 i.nativeElement.style.left = (   numberParse(   i.nativeElement.style.left   ) +  this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width - 1340   ).toString() + "px"  
                 // console.log(    i.nativeElement.style.left   )
-            
             }               
             this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  = this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width - 1340
             console.groupEnd()
@@ -249,9 +247,24 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     this.navigationMyElements._results[12].nativeElement.style.position = "absolute"
                     this.navigationMyElements._results[12].nativeElement.style.top = "50px"
                     // console.log(this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth )
-                    this.navigationMyElements._results[12].nativeElement.style.left = (  1340* .96   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
+                    this.navigationMyElements._results[12].nativeElement.style.left = (  1340* .96   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"                 
                     this.navigationMyElements._results[13].nativeElement.style.display = 'block'
                     this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
+                    
+                    
+                    if(   this.wordsService.navigationClickEventSubscription0 === undefined   ){
+
+
+                            this.wordsService.navigationClickEvent$ = fromEvent([this.navigationMyElements._results[12].nativeElement ,this.navigationMyElements._results[13].nativeElement] ,'click');
+                            this.wordsService.navigationClickEventSubscription0 = this.wordsService.navigationClickEvent$.subscribe((event)=>{
+                                this.navigationMyElements._results[14].nativeElement.style.display = this.navigationMyElements._results[14].nativeElement.style.display === 'block' ? 'none' : 'block'
+                            })  
+                            console.log(   this.wordsService.navigationClickEventSubscription0   )      
+
+
+                    }
+
+                   
                     // console.log(     this.navigationMyElements._results   )
                     for(   let i of this.navigationMyElements._results.slice(4,12)   ){
                         i.nativeElement.style.display = 'none'  
@@ -354,6 +367,21 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     this.navigationMyElements._results[13].nativeElement.style.display = 'block'
                     this.navigationMyElements._results[13].nativeElement.style.top = "60px"
                     this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
+                    
+
+                    if(   this.wordsService.navigationClickEventSubscription0 === undefined   ){
+
+
+                        this.wordsService.navigationClickEvent$ = fromEvent([this.navigationMyElements._results[12].nativeElement ,this.navigationMyElements._results[13].nativeElement] ,'click');
+                        this.wordsService.navigationClickEventSubscription0 = this.wordsService.navigationClickEvent$.subscribe((event)=>{
+                            this.navigationMyElements._results[14].nativeElement.style.display = this.navigationMyElements._results[14].nativeElement.style.display === 'block' ? 'none' : 'block'
+                        })  
+                        console.log(   this.wordsService.navigationClickEventSubscription0   )      
+
+
+                    }
+
+                    
                     for(   let i of this.navigationMyElements._results.slice(4,12)   ){
                         i.nativeElement.style.display = 'none'  
                     }                                            
@@ -384,9 +412,11 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             }            
 
 
-            console.log(   this.navigationMyElements._results  )
+            // console.log(   this.navigationMyElements._results  )
             console.groupEnd()    
         })
+        
+
     }
 
     ngOnDestroy(){

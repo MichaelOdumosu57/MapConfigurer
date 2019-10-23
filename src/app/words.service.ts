@@ -47,9 +47,9 @@ export class WordsService {
             navigationLoadEventSubscription1:Subscription 
             navigationResizeEvent0:Observable<Event>
             navigationResizeEventSubscription0:Subscription
-            navigationResizeEvent1:Observable<Event>
             navigationResizeEventSubscription1:Subscription  
-            navigationResizeEventSubject1:Subject<any>= new Subject<any>();          
+            navigationClickEvent$:Observable<Event>        
+            navigationClickEventSubscription0:Subscription
         //    
 
         // NavigationComponent Instances
@@ -197,6 +197,7 @@ export class WordsService {
                         css:{
                             position:'absolute',
                             // fontSize:'30px',
+                            display:'none',
                             top:'160px'
                         }
                     }                                                                                     
