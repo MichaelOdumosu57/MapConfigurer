@@ -55,128 +55,6 @@ export class WordsService {
             navigationMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
             navigationMyElementsArray: any[] = [];
             navigationComponentObject0:any ={
-                // styles:[
-                //     {
-                //         override:'false',
-                //         css:{
-                //             postion:'absolute'
-                //         }
-                //     },
-                //     {
-                //         override:'true',
-                //         css:{
-                //             position:'relative',
-                //             height: '155px'
-
-                //         }
-                //     },
-                //     {
-                //         override:'true',
-                //         css:{
-                //             position:'relative',
-                //             bottom:'80px',
-                //             left:'23px',
-                //             margin:'0px',
-                //             width:'0px'
-                //         }
-                //     },
-                //     {
-                //         //HERE
-                //         override:'true',
-                //         css:{
-                //             position:'relative',
-                //             bottom:'93px',
-                //             left:'23px',
-                //             fontSize:'17px',
-                //             fontWeight:400,
-                //             width:'0px'
-                //         }
-                //     },
-                //     {
-                //         override:'true',
-                //         css:{
-                //             position:'relative',
-                //             bottom:'234px',
-                //             left:'20px'
-                //         }
-                //     },
-                //     ...Array.from(Array(1),()=> {
-                //         return {
-                //         override:'false',
-                //         css:{
-                //             position:'relative',
-                //             bottom:'254px',
-                //             left:'600px',
-                //             'fontSize':'16px'
-                //         }
-                //     }}),
-                //     {
-                //         override:'false',
-                //         css:{
-                //             position:'relative',
-                //             bottom:'288px',
-                //             left:'685px',
-                //             'fontSize':'16px'
-                //         }
-                //     },
-                //     {
-                //         override:'false',
-                //         css:{
-                //             position:'relative',
-                //             bottom:'323px',
-                //             left:'770px',
-                //             'fontSize':'16px'
-                //         }
-                //     },
-                //     {
-                //         override:'false',
-                //         css:{
-                //             position:'relative',
-                //             bottom:'355px',
-                //             left:'870px',
-                //             fontSize:'16px'
-                //         }
-                //     },
-                //     {
-                //         override:'false',
-                //         css:{
-                //             position:'relative',
-                //             bottom:'390px',
-                //             left:'965px',
-                //             fontSize:'16px'
-                //         }
-                //     },
-                //     {
-                //         override:'false',
-                //         css:{
-                //             position:'relative',
-                //             bottom:'424px',
-                //             left:'1035px',
-                //             'fontSize':'16px'
-                //         }
-                //     },
-                //     {
-                //         //HERE
-                //         override:'false',
-                //         css:{
-                //             position:'relative',
-                //             bottom:'458px',
-                //             left:'1135px',
-                //             fontSize:'16px',
-                //             width:'0px'
-                //         }
-                //     },
-                //     {
-                //         override:'true',
-                //         css:{
-                //             position:'relative',
-                //             bottom:'505px',
-                //             left:'1108px'
-                //         }
-                //     }                    
-                    
-                // ], // as p
-                // for p tag
                 styles:[
                     {
                         override:'false',
@@ -217,8 +95,8 @@ export class WordsService {
                     {
                         override:'true',
                         css:{
-                            position:'relative',
-                            bottom:'234px',
+                            position:'absolute',
+                            top:'15px',
                             left:'20px'
                         }
                     },
@@ -323,7 +201,8 @@ export class WordsService {
                 metadata:{
                     barDynamicWidth:null,
                     titleWidth:null,
-                    resizeElementChange1:null
+                    resizeElementChange1:null,
+                    defaultFontSizes:[]
                 }
             }
         //

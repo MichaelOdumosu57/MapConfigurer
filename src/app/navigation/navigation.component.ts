@@ -207,7 +207,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         }))
         this.wordsService.navigationResizeEvent0 = fromEvent(this.window ,'resize');
         this.wordsService.navigationResizeEventSubscription0 = this.wordsService.navigationResizeEvent0.subscribe((event)=>{
-            console.group('general nav anchor repositioning')
+            console.group('general nav anchor repositioning resize event')
             // console.log('innerWidth',this.window.innerWidth)
             // console.log('outerWidth',this.window.screen.width)
             // console.log('screen constant',this.window.screen.width)
@@ -228,8 +228,11 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             elementText:this.navigationMyElements._results[1].nativeElement.innerText ,
             font: this.window.getComputedStyle(   this.navigationMyElements._results[1].nativeElement   ).getPropertyValue('font-size') + " sans-serif"
         })        
+        for(   let i of this.navigationMyElements._results.slice(1,3)   ){
+            this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes.push(   this.window.getComputedStyle(i.nativeElement).fontSize   )   
+        }   
         this.wordsService.navigationResizeEventSubscription1 = this.wordsService.navigationResizeEvent0.subscribe((event)=>{
-            console.group('anchors overlapping heading')
+            console.group('anchors overlapping heading resize event')
 
             
             if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
@@ -250,6 +253,18 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     this.navigationMyElements._results[13].nativeElement.style.display = 'block'
                     this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
                     // console.log(     this.navigationMyElements._results   )
+                    for(   let i of this.navigationMyElements._results.slice(4,12)   ){
+                        i.nativeElement.style.display = 'none'  
+                    }    
+                    
+                    
+                    if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
+
+                        
+                        console.log('dropdownBox is interfering with the titile')
+
+
+                    }                     
         
                     
                 }
@@ -271,6 +286,9 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                         this.navigationMyElements._results[13].nativeElement.style.display = 'none'
                         this.navigationBool[12] = 'false'
                         this.ref.detectChanges()
+                        for(   let i of this.navigationMyElements._results.slice(4,12)   ){
+                            i.nativeElement.style.display = 'block'  
+                        }
 
 
                     }
@@ -285,7 +303,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
         })     
         this.wordsService.navigationLoadEventSubscription1 = this.wordsService.navigationLoadEvent0.subscribe((event)=>{
-            console.group('anchors overlapping heading')
+            console.group('anchors overlapping heading load event')
             if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
                 this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
                 // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
@@ -309,6 +327,20 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                         i.nativeElement.style.display = 'none'  
                     }                                            
 
+
+                    if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
+
+                        
+                        console.log('dropdownBox is interfering with the titile')
+                        this.navigationMyElements._results.slice(1,3).map((x,i)=>{
+                            x.nativeElement.style.fontSize =  (   numberParse(   this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i]   ) * (   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )/(   this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55 )  ) * .95  ).toString() + "px"
+                            console.log(   x.nativeElement.style.fontSize  )
+                        })
+
+
+                    }            
+                    
+                    
                 }
                 
 
