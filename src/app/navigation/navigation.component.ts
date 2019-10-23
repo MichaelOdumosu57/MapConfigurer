@@ -261,10 +261,28 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
 
                         
-                        console.log('dropdownBox is interfering with the titile')
+                        // console.log('dropdownBox is interfering with the titile')
+                        this.navigationMyElements._results.slice(1,3).map((x,i)=>{
+                            x.nativeElement.style.fontSize =  (   numberParse(   this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i]   ) * (   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )/(   this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55 )  ) * .95  ).toString() + "px"
+                            // console.log(   x.nativeElement.style.fontSize  )
+                        })
 
 
-                    }                     
+                    }   
+
+
+                    else if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
+
+                        
+                        console.log('restore title sizes')
+                        this.navigationMyElements._results.slice(1,3).map((x,i)=>{
+                            x.nativeElement.style.fontSize =  this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i] 
+                            // console.log(   x.nativeElement.style.fontSize  )
+                        })
+        
+        
+                    }                      
+                    
         
                     
                 }
@@ -284,6 +302,17 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                         // console.log('executed on condition')                        
                         this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
                         this.navigationMyElements._results[13].nativeElement.style.display = 'none'
+                        // if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
+
+                        
+                            console.log('restore title sizes')
+                            this.navigationMyElements._results.slice(1,3).map((x,i)=>{
+                                x.nativeElement.style.fontSize =  this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i] 
+                                
+                            })
+            
+            
+                        // }                          
                         this.navigationBool[12] = 'false'
                         this.ref.detectChanges()
                         for(   let i of this.navigationMyElements._results.slice(4,12)   ){
@@ -298,6 +327,8 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
 
             }
+
+            
             // console.log(this.navigationMyElements )            
             console.groupEnd()
 
