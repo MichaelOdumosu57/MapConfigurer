@@ -198,4 +198,57 @@ describe('NavigationComponent', () => {
         component.ngOnDestroy()
         expect(component.access().navigationResizeEventSubscription0.closed).toBe(true)
     })
+
+    it('should have the dropDownbox *ngIf on false initially',()=>{
+        expect(component.navigationBool[12]).toMatch('false')
+    })
+
+
+    describe('on max inital',()=>{
+
+        it('should word wrap all "HTMLWordElements"',()=>{
+            for(   let i of component.navigationMyElements._results  ){
+                for(   let j of component.access().customWordWrapWordElements   ){
+
+
+                    if(    j === i.nativeElement.tagName   ){
+    
+
+                        console.log(i,i.nativeElement.clientHeight, numberParse(component.accessWindow().getComputedStyle(i.nativeElement).getPropertyValue('font-size')))
+                        expect(   Math.floor(   i.nativeElement.clientHeight/ numberParse(component.accessWindow().getComputedStyle(i.nativeElement).getPropertyValue('font-size'))   )   ).not.toBeGreaterThan(1)
+                        break
+                        
+                        
+                    }
+    
+    
+                }
+            }            
+        })
+
+        it('should not have the dropdown items showing at all  ',()=>{      
+            component.navigationTemplateVariable = 'navigationComponentObject0';
+            component.access().navigationMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
+                    return  {nativeElement:elem} 
+                }) 
+            ])   
+            component.access().navigationMyElements.next(   component.access().navigationMyElementsArray   )
+            component.ngOnInit()
+            component.ngAfterViewInit()            
+            for(   let i of component.navigationMyElements._results   ){
+                console.log(i.nativeElement.id)
+                if(    i.nativeElement.id.match('n_a_v_i_g_a_t_i_o_n_dropDown') && window.getComputedStyle( i.nativeElement).display !== 'none'   ){
+
+
+                    fail()
+
+
+                }
+            }     
+        })        
+
+
+    })
 });
+
+

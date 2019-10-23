@@ -252,7 +252,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
                     
                     
-                    if(   this.wordsService.navigationClickEventSubscription0 === undefined   ){
+                    if(   this.wordsService.navigationClickEventSubscription0 === undefined   || this.wordsService.navigationClickEventSubscription0.closed  ){
 
 
                             this.wordsService.navigationClickEvent$ = fromEvent([this.navigationMyElements._results[12].nativeElement ,this.navigationMyElements._results[13].nativeElement] ,'click');
@@ -336,7 +336,6 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                             // console.log('restore title sizes')
                             this.navigationMyElements._results.slice(1,3).map((x,i)=>{
                                 x.nativeElement.style.fontSize =  this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i] 
-                                
                             })
             
             
@@ -389,14 +388,14 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
                     
 
-                    if(   this.wordsService.navigationClickEventSubscription0 === undefined   ){
+                    if(   this.wordsService.navigationClickEventSubscription0 === undefined  || this.wordsService.navigationClickEventSubscription0.closed   ){
 
 
                         this.wordsService.navigationClickEvent$ = fromEvent([this.navigationMyElements._results[12].nativeElement ,this.navigationMyElements._results[13].nativeElement] ,'click');
                         this.wordsService.navigationClickEventSubscription0 = this.wordsService.navigationClickEvent$.subscribe((event)=>{
                             this.navigationMyElements._results[14].nativeElement.style.display = this.navigationMyElements._results[14].nativeElement.style.display === 'block' ? 'none' : 'block'
                         })  
-                        console.log(   this.wordsService.navigationClickEventSubscription0   )      
+                        // console.log(   this.wordsService.navigationClickEventSubscription0   )      
 
 
                     }
