@@ -61,7 +61,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         // console.log(   this.navigationTemplateVariable   )
         this.wordsService.navigationMyElements.subscribe((arr)=>{
 
-            console.log(   arr   )   
+            // console.log(   arr   )   
 
             // applying dynamic styles
             // console.log(   'DOMRECT bar width',this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width    )    

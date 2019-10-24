@@ -36,21 +36,25 @@ export class WordsService {
                 {
                     override:'true',
                     css:{
-                        postion:'absolute'
+                        position:'absolute',
+                        top:'0px',
+                        width:'100%',
+                        'z-index':-1
                     }
                 },
                 {
                     override:'true',
                     css:{
-                        postion:'absolute',
-                        height:'5000ox',
-                        width:'3000px'
+                        position:'absolute',
+                        height:'500px',
+                        width:'inherit',
+                        'background-position':'50% 50%'
                     }
                 },
                 {
                     override:'false',
                     css:{
-                        postion:'absolute',
+                        position:'absolute',
 
                     }
                 }                                                                 

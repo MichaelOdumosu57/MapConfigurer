@@ -37,7 +37,7 @@ export class OverlayComponent implements OnInit {
     ngOnInit() {
         this.wordsService.overlayMyElements.subscribe((arr)=>{
 
-            console.log(   arr   )   
+            // console.log(   arr   )   
             
             // dealing with  missing elements
             if(   this.wordsService[this.overlayTemplateVariable].styles.length >   arr[this.overlayTemplateVariable.slice(-1)].length   ){

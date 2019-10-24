@@ -73,9 +73,6 @@ export class AppComponent implements AfterViewInit {
             //     // console.log(element.nativeElement.id)
             // });
         }
-        console.log(   this.app_OverlayConponentElements._results   )
-        console.log(   this.app_OverlayComponentReferences._results   )
-        console.log(   this.wordsService.overlayMyElementsArray   )
         this.wordsService.overlayMyElements.next(this.wordsService.overlayMyElementsArray)         
         // DONE with Subject<Array<any[]>>
          
