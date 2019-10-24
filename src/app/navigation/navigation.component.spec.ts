@@ -292,6 +292,79 @@ describe('NavigationComponent', () => {
             }     
             expect(pass).toBeTruthy()
         })
+
+        it('should hide the dropDownMenu on the dropdown elements dblclick',()=>{
+            for(   let j of [12,13]   ){
+                component.navigationMyElements._results[j].nativeElement.click()
+                component.navigationMyElements._results[j].nativeElement.click()
+                for(   let i of component.navigationMyElements._results   ){
+
+
+                    if(    (   i.nativeElement.id.match(/\bn_a_v_i_g_a_t_i_o_n_dropDown\b/)   )  ){
+                        // console.log(   i.nativeElement   )
+                        expect(   i.nativeElement.style.display   ).toBe('none')
+                    }
+
+
+                }  
+            }       
+        })  
+
+        it('should display the dropDownMenu on the dropdown elements click',()=>{
+            for(   let j of [12,13]   ){
+                component.navigationMyElements._results[j].nativeElement.click()
+                var pass = false
+                for(   let i of component.navigationMyElements._results   ){
+
+
+                    if(    (   i.nativeElement.id.match(/\bn_a_v_i_g_a_t_i_o_n_dropDown\b/)   )  ){
+                        var pass = true
+                        expect(   i.nativeElement.style.display   ).not.toBe('none')
+                    }
+
+
+                }         
+                
+                
+                if(   !pass   ){
+
+
+                    fail()
+
+
+                }
+
+
+                component.navigationMyElements._results[j].nativeElement.click()
+            }
+        })
+      
+    })
+
+    describe('on dropdown title intersect ',()=>{
+        beforeEach(() => {
+            component.navigationTemplateVariable = 'navigationComponentObject0';
+            component.access().navigationMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
+                    return  {nativeElement:elem} 
+                }) 
+            ])   
+            component.access().navigationMyElements.next(   component.access().navigationMyElementsArray   )
+            component.ngOnInit()
+            component.ngAfterViewInit()  
+            // console.log(   component.navigationMyElements._results   )    
+            component.navigationMyElements._results[0].nativeElement.style.width = '200px'  
+            var resizeEvent = new Event('resize')
+            component.accessWindow().dispatchEvent(   resizeEvent   )              
+        });           
+
+        it('should have shrunk the title along with the subtitle',()=>{
+
+            component.navigationMyElements._results.slice(1,3).map((x,i)=>{
+                // why doesnt title have a starting width
+                expect(   numberParse(   x.nativeElement.style.fontSize   )   ).toBeLessThan(   numberParse(   component.access()[component.navigationTemplateVariable].metadata.defaultFontSizes[i])   )
+            })            
+            
+        })        
     })
 });
 
