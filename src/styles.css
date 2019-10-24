@@ -70,7 +70,8 @@ html{
 /* navigation */
 
 #n_a_v_i_g_a_t_i_o_n_Bar {
-    background-color:#FFC0CB
+    background-color:#FFC0CB;
+    border-bottom:1px solid white;
 }
 
 #n_a_v_i_g_a_t_i_o_n_Title{

@@ -67,7 +67,7 @@ export class WordsService {
                         override:'true',
                         css:{
                             position:'relative',
-                            height: '155px'
+                            height: '165px'
 
                         }
                     },
@@ -197,8 +197,7 @@ export class WordsService {
                         css:{
                             position:'absolute',
                             // fontSize:'30px',
-                            display:'none',
-                            top:'160px'
+                            display:'none'
                         }
                     }                                                                                     
                     

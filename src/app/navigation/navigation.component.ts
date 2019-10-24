@@ -9,6 +9,10 @@ function numberParse(   dimension:any   ){
     return dimension;
 }
 
+function styleProp(   devObj   ){
+    return devObj.window.getComputedStyle(   devObj.element   )
+}
+
 function getTextWidth(   devObj:{elementText:string,font:string}   ){
     var canvas = document.createElement("canvas");
     var ctx = canvas.getContext("2d");
@@ -182,6 +186,8 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
 
             }
+            //for some reason, ngOnInit does not fully complete before ngAfterViewInit and you must place this here
+            this.navigationMyElements._results[13].nativeElement.style.top  = this.navigationMyElements._results[0].nativeElement.clientHeight.toString() + "px"
         })        
                
     }
@@ -229,6 +235,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         for(   let i of this.navigationMyElements._results.slice(1,3)   ){
             this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes.push(   this.window.getComputedStyle(i.nativeElement).fontSize   )   
         }   
+        // console.log(   this.navigationMyElements._results[13],this.window.getComputedStyle(   this.navigationMyElements._results[0].nativeElement   ).getPropertyValue('height')   )
         this.wordsService.navigationResizeEventSubscription1 = this.wordsService.navigationResizeEvent0.subscribe((event)=>{
             console.group('anchors overlapping heading resize event')
 
@@ -451,6 +458,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             // console.log(   this.navigationMyElements._results  )
             console.groupEnd()    
         })
+       
         
 
     }
