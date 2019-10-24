@@ -26,7 +26,9 @@ export class AppComponent implements AfterViewInit {
     @ViewChildren(appGenerateSelector({val:'appwordsval',times:3}), { read: ElementRef })  app_wordsConponentElements: any;
     @ViewChildren(appGenerateSelector({val:'appwordsval',times:3}))  app_wordsComponentReferences: any;
     @ViewChildren(appGenerateSelector({val:'appNavigationVal',times:1}), { read: ElementRef })  app_NavigationConponentElements: any;
-    @ViewChildren(appGenerateSelector({val:'appNavigationVal',times:1}))  app_NavigationComponentReferences: any;    
+    @ViewChildren(appGenerateSelector({val:'appNavigationVal',times:1}))  app_NavigationComponentReferences: any;   
+    @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:1}), { read: ElementRef })  app_OverlayConponentElements: any;
+    @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:1}))  app_OverlayComponentReferences: any;        
     
     constructor(
         private wordsService: WordsService
@@ -38,7 +40,7 @@ export class AppComponent implements AfterViewInit {
         // console.log(   this.app_wordsConponentElements ,this.app_wordsComponentReferences   )
 
         // DONE with Subject<Array<any[]>>
-        for(var i in  this.app_wordsComponentReferences._results){
+        for(let i in  this.app_wordsComponentReferences._results){
             this.wordsService.wordsMyElementsArray.push([
                 this.app_wordsConponentElements._results[i],
                 ...this.app_wordsComponentReferences._results[i].wordsMyElements._results
@@ -50,7 +52,7 @@ export class AppComponent implements AfterViewInit {
         this.wordsService.wordsMyElements.next(this.wordsService.wordsMyElementsArray)
 
         // console.log(   this.app_NavigationConponentElements ,this.app_NavigationComponentReferences   )
-        for(var i in  this.app_NavigationComponentReferences._results){
+        for(let i in  this.app_NavigationComponentReferences._results){
             this.wordsService.navigationMyElementsArray.push([
                 this.app_NavigationConponentElements._results[i],
                 ...this.app_NavigationComponentReferences._results[i].navigationMyElements._results
@@ -61,6 +63,20 @@ export class AppComponent implements AfterViewInit {
         }
         this.wordsService.navigationMyElements.next(this.wordsService.navigationMyElementsArray)        
         // console.log(this.wordsService.wordsMyElementsArray)
+
+        for(let i in  this.app_OverlayComponentReferences._results){
+            this.wordsService.overlayMyElementsArray.push([
+                this.app_OverlayConponentElements._results[i],
+                ...this.app_OverlayComponentReferences._results[i].overlayMyElements._results
+            ])
+            // this.wordsService.wordsMyElementsArray[i].forEach(element => {
+            //     // console.log(element.nativeElement.id)
+            // });
+        }
+        console.log(   this.app_OverlayConponentElements._results   )
+        console.log(   this.app_OverlayComponentReferences._results   )
+        console.log(   this.wordsService.overlayMyElementsArray   )
+        this.wordsService.overlayMyElements.next(this.wordsService.overlayMyElementsArray)         
         // DONE with Subject<Array<any[]>>
          
              

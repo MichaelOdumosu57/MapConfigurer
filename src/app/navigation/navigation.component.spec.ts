@@ -46,18 +46,9 @@ describe('NavigationComponent', () => {
                 return  {nativeElement:elem} 
             }) 
         ])        
-        
         // console.log(   component.access().navigationMyElementsArray   )
         // console.log(   component.access()[component.navigationTemplateVariable].styles.length   )
-        if(   component.access().navigationMyElementsArray[0].length > component.access()[component.navigationTemplateVariable].styles.length   ){
-
-
-            expect(false).toBe(true)
-
-
-        }
-
-
+        expect(   component.access().navigationMyElementsArray[0].length   ).toBeLessThanOrEqual(   component.access()[component.navigationTemplateVariable].styles.length   )
         console.groupEnd()
     })    
 
@@ -65,7 +56,6 @@ describe('NavigationComponent', () => {
 
     console.group(   'should get this.navigationCustomWordWrapElements '   )
         // component.ngAfterViewInit()
-        
         // expect(component.access().customWordWrapReceive).toHaveBeenCalled()
         // console.log(   component.navigationMyElements._results   )
         // component.ngOnInit()

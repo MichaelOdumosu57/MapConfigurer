@@ -17,6 +17,56 @@ export class WordsService {
 
     constructor() { };
     
+    /*overlay*/
+        overlayVal:Array<string> = [
+            'o_v_e_r_l_a_y_Board',
+            'o_v_e_r_l_a_y_Title'
+        ]
+        overlayBool: Array<any> = ['true','true']
+        overlayStyle: Array<any> = Array.from(Array(3),()=>{return [3]})  
+        overlayValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
+        overlayStyleIndex:Array<any> = [0]
+        overlayBoolIndex:Array<any>= [0]      
+        
+        // OverlayComponent Instances
+        overlayMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
+        overlayMyElementsArray: any[] = [];
+        overlayComponentObject0:any ={
+            styles:[
+                {
+                    override:'true',
+                    css:{
+                        postion:'absolute'
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        postion:'absolute',
+                        height:'5000ox',
+                        width:'3000px'
+                    }
+                },
+                {
+                    override:'false',
+                    css:{
+                        postion:'absolute',
+
+                    }
+                }                                                                 
+            ], 
+            parameters:[    
+            ],
+            location:{
+                parameters:[]
+            },
+            metadata:{
+
+            }
+        }           
+
+    /* */
+
     /*navigation*/
         navigationVal:Array<string> = [
             'n_a_v_i_g_a_t_i_o_n_Bar',

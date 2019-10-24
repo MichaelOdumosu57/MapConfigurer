@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import {   WordsComponent   } from './words/words.component';
 import {   NavigationComponent   } from './navigation/navigation.component';
+import {   OverlayComponent   } from './overlay/overlay.component';
 import { WINDOW_PROVIDERS } from './window.service';
 
 describe('AppComponent', () => {
@@ -17,7 +18,8 @@ describe('AppComponent', () => {
             declarations: [
                 AppComponent,
                 WordsComponent,
-                NavigationComponent 
+                NavigationComponent,
+                OverlayComponent 
             ],
         }).compileComponents();
     }));
