@@ -262,11 +262,11 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     if(   this.wordsService.navigationClickEventSubscription0 === undefined   || this.wordsService.navigationClickEventSubscription0.closed  ){
 
 
-                            this.wordsService.navigationClickEvent$ = fromEvent([this.navigationMyElements._results[12].nativeElement ,this.navigationMyElements._results[13].nativeElement] ,'click');
-                            this.wordsService.navigationClickEventSubscription0 = this.wordsService.navigationClickEvent$.subscribe((event)=>{
-                                this.navigationMyElements._results[14].nativeElement.style.display = this.navigationMyElements._results[14].nativeElement.style.display === 'block' ? 'none' : 'block'
-                            })  
-                            // console.log(   this.wordsService.navigationClickEventSubscription0   )      
+                        this.wordsService.navigationClickEvent$ = fromEvent([this.navigationMyElements._results[12].nativeElement ,this.navigationMyElements._results[13].nativeElement] ,'click');
+                        this.wordsService.navigationClickEventSubscription0 = this.wordsService.navigationClickEvent$.subscribe((event)=>{
+                            this.navigationMyElements._results[14].nativeElement.style.display = this.navigationMyElements._results[14].nativeElement.style.display === 'block' ? 'none' : 'block'
+                        })  
+                        // console.log(   this.wordsService.navigationClickEventSubscription0   )      
 
 
                     }
@@ -328,7 +328,10 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
                 }  
                 
+
+                this.navigationMyElements._results[14].nativeElement.style.display = 'none'
                 
+
                 if(   this.navigationMyElements._results[13] !== undefined   ){
 
 
@@ -352,9 +355,6 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                         for(   let i of this.navigationMyElements._results.slice(4,12)   ){
                             i.nativeElement.style.display = 'block'  
                         }
-
-                        
-                        
 
 
                     }

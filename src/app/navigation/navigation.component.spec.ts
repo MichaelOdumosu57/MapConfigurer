@@ -338,6 +338,23 @@ describe('NavigationComponent', () => {
                 component.navigationMyElements._results[j].nativeElement.click()
             }
         })
+
+        it('should hide the dropDownMenu if the webpage is resized to allow for the main nav anchors again',()=>{
+            component.navigationMyElements._results[12].nativeElement.click()    
+            component.navigationMyElements._results[0].nativeElement.style.width = '2000px'  
+            var resizeEvent = new Event('resize')
+            component.accessWindow().dispatchEvent(   resizeEvent   )           
+            for(   let i of component.navigationMyElements._results   ){
+
+
+                if(    (   i.nativeElement.id.match(/\bn_a_v_i_g_a_t_i_o_n_dropDown\b/)   )  ){
+                    // console.log(   i.nativeElement   )
+                    expect(   i.nativeElement.style.display   ).toBe('none')
+                }
+
+
+            }              
+        })
       
     })
 
@@ -366,6 +383,8 @@ describe('NavigationComponent', () => {
             
         })        
     })
+
+    
 });
 
 
