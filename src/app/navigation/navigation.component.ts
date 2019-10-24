@@ -259,7 +259,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                             this.wordsService.navigationClickEventSubscription0 = this.wordsService.navigationClickEvent$.subscribe((event)=>{
                                 this.navigationMyElements._results[14].nativeElement.style.display = this.navigationMyElements._results[14].nativeElement.style.display === 'block' ? 'none' : 'block'
                             })  
-                            console.log(   this.wordsService.navigationClickEventSubscription0   )      
+                            // console.log(   this.wordsService.navigationClickEventSubscription0   )      
 
 
                     }

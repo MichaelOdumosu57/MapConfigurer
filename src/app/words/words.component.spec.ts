@@ -5,7 +5,7 @@ import { WINDOW_PROVIDERS } from '../window.service';
 import { compileNgModule } from '@angular/core/src/render3/jit/module';
 import { Observable, of, Subject } from 'rxjs';
 
-describe('WordsComponent', () => {
+xdescribe('WordsComponent', () => {
 
 //   let comp: WordsComponent;
 //   let wordsService : WordsService;

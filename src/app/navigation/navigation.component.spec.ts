@@ -141,7 +141,7 @@ describe('NavigationComponent', () => {
         expect(component.access()[component.navigationTemplateVariable].metadata.barDynamicWidth).not.toBeNull()
     })
 
-    it('repositiong the navigation on window resize',() =>{ 
+    it('reposition the navigation on window resize',() =>{ 
         console.group('repositiong the navigation on window resize')
         var oldLeft = []
         var newLeft = []
@@ -176,7 +176,7 @@ describe('NavigationComponent', () => {
                 newLeft.push(   component.accessWindow().getComputedStyle(   component.navigationMyElements._results[i].nativeElement   ).getPropertyValue('left')   )
             }
         }
-        console.log(oldLeft,newLeft)
+        // console.log(oldLeft,newLeft)
         for(   let i in oldLeft   ){
 
 
@@ -205,6 +205,7 @@ describe('NavigationComponent', () => {
 
 
     describe('on max inital',()=>{
+     
 
         it('should word wrap all "HTMLWordElements"',()=>{
             for(   let i of component.navigationMyElements._results  ){
@@ -214,7 +215,7 @@ describe('NavigationComponent', () => {
                     if(    j === i.nativeElement.tagName   ){
     
 
-                        console.log(i,i.nativeElement.clientHeight, numberParse(component.accessWindow().getComputedStyle(i.nativeElement).getPropertyValue('font-size')))
+                        // console.log(i,i.nativeElement.clientHeight, numberParse(component.accessWindow().getComputedStyle(i.nativeElement).getPropertyValue('font-size')))
                         expect(   Math.floor(   i.nativeElement.clientHeight/ numberParse(component.accessWindow().getComputedStyle(i.nativeElement).getPropertyValue('font-size'))   )   ).not.toBeGreaterThan(1)
                         break
                         
@@ -236,7 +237,7 @@ describe('NavigationComponent', () => {
             component.ngOnInit()
             component.ngAfterViewInit()            
             for(   let i of component.navigationMyElements._results   ){
-                console.log(i.nativeElement.id)
+                // console.log(i.nativeElement.id)
                 if(    i.nativeElement.id.match('n_a_v_i_g_a_t_i_o_n_dropDown') && window.getComputedStyle( i.nativeElement).display !== 'none'   ){
 
 
@@ -248,6 +249,49 @@ describe('NavigationComponent', () => {
         })        
 
 
+    })
+
+    describe('on home anchor intersect',()=>{
+
+        beforeEach(() => {
+            component.navigationTemplateVariable = 'navigationComponentObject0';
+            component.access().navigationMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
+                    return  {nativeElement:elem} 
+                }) 
+            ])   
+            component.access().navigationMyElements.next(   component.access().navigationMyElementsArray   )
+            component.ngOnInit()
+            component.ngAfterViewInit()  
+            // console.log(   component.navigationMyElements._results   )    
+            component.navigationMyElements._results[0].nativeElement.style.width = '800px'  
+            var resizeEvent = new Event('resize')
+            component.accessWindow().dispatchEvent(   resizeEvent   )              
+        });   
+
+        it('should have the dropDownBox and dropDownIcon display',()=>{
+            var pass = false
+            for(   let i of component.navigationMyElements._results   ){
+                // console.log(i.nativeElement.id)
+                // i 
+                if(    (   i.nativeElement.id.match('n_a_v_i_g_a_t_i_o_n_dropDownBox') || i.nativeElement.id.match('n_a_v_i_g_a_t_i_o_n_dropDownIcon')   )  ){
+
+                    
+                    pass = true
+
+
+                    if(   window.getComputedStyle( i.nativeElement).display === 'none'  ){
+
+
+                        fail()
+                        
+                        
+                    } 
+                           
+
+                }
+            }     
+            expect(pass).toBeTruthy()
+        })
     })
 });
 
