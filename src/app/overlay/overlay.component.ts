@@ -112,19 +112,14 @@ export class OverlayComponent implements OnInit {
 
 
                 if(   this.wordsService[this.overlayTemplateVariable].stylesCopy[index].override === 'true'   ){
-                // console.log(   JSON.stringify(   this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css   ).split(',').join(";").split('{')[1].match(/.+(?=})/)[0].split('"').join("")     )
+
+
+                    // console.log(   JSON.stringify(   this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css   ).split(',').join(";").split('{')[1].match(/.+(?=})/)[0].split('"').join("")     )
                     // console.log(   this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css   )
+                    // any problems, loop through the stylesCopy index and apply of the for 
                     this.wordsService[this.overlayTemplateVariable].ngStyle[index] = this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css
                     this.ref.detectChanges()
-                    // for(   var prop in  this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css   ){
-                                
-                    //     this.wordsService[this.overlayTemplateVariable].ngStyle[index][prop] = this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css[prop]
-                    //     console.log(    this.wordsService[this.overlayTemplateVariable].ngStyle[index][prop]    )
-                    //     // this.wordsService[this.overlayTemplateVariable].ngStyle[index][prop] = this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css[prop]
-                    
-                        
-                    // }            
-                
+
                                 
                 }
     
@@ -132,7 +127,7 @@ export class OverlayComponent implements OnInit {
             }               
             
             
-            //for some reason, ngOnInit does not fully complete before ngAfterViewInit and you must place this here
+            
         })           
     }
 

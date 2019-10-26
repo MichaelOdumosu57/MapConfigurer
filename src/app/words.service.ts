@@ -49,13 +49,16 @@ export class WordsService {
                         position:'absolute',
                         height:'500px',
                         width:'inherit',
-                        'background-position':'50% 50%'
+                        'background-position':'60% 50%',
+                        'background-repeat':'no-repeat'
                     }
                 },
                 {
-                    override:'false',
+                    override:'true',
                     css:{
                         position:'absolute',
+                        top:"150px",
+                        left:"500px"
 
                     }
                 }                                                                 
@@ -67,7 +70,7 @@ export class WordsService {
                 parameters:[]
             },
             metadata:{
-
+                title:'Services'
             }
         }           
 
