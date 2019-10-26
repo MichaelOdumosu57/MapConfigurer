@@ -71,7 +71,7 @@ html{
 /* overlay */
 #o_v_e_r_l_a_y_Board{
     border:1px solid black;
-    height: 270px;
+    /* height: 270px; */
     /* width: 309px; */
     background-image: url('src/assets/media/IMG-1788-1.jpg');
 }

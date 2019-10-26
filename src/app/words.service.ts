@@ -24,6 +24,7 @@ export class WordsService {
         ]
         overlayBool: Array<any> = ['true','true']
         overlayStyle: Array<any> = Array.from(Array(3),()=>{return [3]})  
+        overlayCss:Array<any> = [['position:"static"'],['position:"static"']]
         overlayValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
         overlayStyleIndex:Array<any> = [0]
         overlayBoolIndex:Array<any>= [0]      
@@ -59,6 +60,7 @@ export class WordsService {
                     }
                 }                                                                 
             ], 
+            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
             parameters:[    
             ],
             location:{

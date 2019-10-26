@@ -1,11 +1,12 @@
-import {  Component, OnInit,Input,ViewChildren,AfterViewInit,Inject, OnDestroy } from '@angular/core';
+import { Component, OnInit,Input,ViewChildren,AfterViewInit,Inject, OnDestroy,ChangeDetectorRef,ChangeDetectionStrategy,AfterContentInit } from '@angular/core';
 import {   WordsService   } from '../words.service';
 import {   WINDOW   } from '../window.service';
 
 @Component({
   selector: 'app-overlay',
   templateUrl: './overlay.component.html',
-  styleUrls: ['./overlay.component.css']
+  styleUrls: ['./overlay.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OverlayComponent implements OnInit {
 
@@ -14,6 +15,7 @@ export class OverlayComponent implements OnInit {
     constructor(
         private wordsService: WordsService,
         @Inject(WINDOW) private window: Window,
+        private ref: ChangeDetectorRef,
     ) { }
 
     @Input() overlayTemplateVariable:string | any;
@@ -21,6 +23,7 @@ export class OverlayComponent implements OnInit {
     overlayBool:Array<any> = this.wordsService.overlayBool
     overlayStyle:Array<any> = this.wordsService.overlayStyle
     overlayVal:Array<any> = this.wordsService.overlayVal
+    overlayCss:Array<any> = this.wordsService.overlayCss
 
     overlayStyleIndex:Array<any> = this.wordsService.overlayStyleIndex
     overlayBoolIndex:Array<any> = this.wordsService.overlayBoolIndex   
@@ -106,26 +109,34 @@ export class OverlayComponent implements OnInit {
             // console.log(   this.overlayStyle   )
             // console.log(   this.wordsService[this.overlayTemplateVariable].stylesCopy, arr[this.overlayTemplateVariable.slice(-1)]     )
             for(   var index in this.wordsService[this.overlayTemplateVariable].stylesCopy    ){
-            
-                // console.log(   arr[this.overlayTemplateVariable.slice(-1)][index].nativeElement.id   )
+
+
                 if(   this.wordsService[this.overlayTemplateVariable].stylesCopy[index].override === 'true'   ){
-
-
-                    for(   var prop in  this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css   ){
+                // console.log(   JSON.stringify(   this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css   ).split(',').join(";").split('{')[1].match(/.+(?=})/)[0].split('"').join("")     )
+                    // console.log(   this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css   )
+                    this.wordsService[this.overlayTemplateVariable].ngStyle[index] = this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css
+                    this.ref.detectChanges()
+                    // for(   var prop in  this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css   ){
+                                
+                    //     this.wordsService[this.overlayTemplateVariable].ngStyle[index][prop] = this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css[prop]
+                    //     console.log(    this.wordsService[this.overlayTemplateVariable].ngStyle[index][prop]    )
+                    //     // this.wordsService[this.overlayTemplateVariable].ngStyle[index][prop] = this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css[prop]
+                    
                         
-                        // console.log(   arr[this.overlayTemplateVariable.slice(-1)][index].nativeElement   )
-                        arr[this.overlayTemplateVariable.slice(-1)][index].nativeElement.style[prop] = this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css[prop]
-                       
-                        
-                    }
-
+                    // }            
+                
                                 
                 }
-
-
-            }
+    
+    
+            }               
+            
+            
             //for some reason, ngOnInit does not fully complete before ngAfterViewInit and you must place this here
         })           
     }
+
+
+
 
 }
