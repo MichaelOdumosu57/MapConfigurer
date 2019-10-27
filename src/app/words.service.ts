@@ -24,7 +24,7 @@ export class WordsService {
         ]
         overlayBool: Array<any> = ['true','true']
         overlayStyle: Array<any> = Array.from(Array(3),()=>{return [3]})  
-        overlayCss:Array<any> = [['position:"static"'],['position:"static"']]
+        // overlayCss:Array<any> = [['position:"static"'],['position:"static"']]
         overlayValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
         overlayStyleIndex:Array<any> = [0]
         overlayBoolIndex:Array<any>= [0]    
@@ -59,7 +59,7 @@ export class WordsService {
                     css:{
                         position:'absolute',
                         height:'500px',
-                        width:'inherit',
+                        width:'100%',
                         'background-position':'60% 50%',
                         'background-repeat':'no-repeat'
                     }
@@ -68,8 +68,10 @@ export class WordsService {
                     override:'true',
                     css:{
                         position:'absolute',
-                        top:"150px",
-                        left:'45%'
+                        top:"200px",
+                        left:'45%',
+                        'font-size':'60px',
+                        color:'white'
 
                     }
                 }                                                                 
@@ -81,7 +83,8 @@ export class WordsService {
                 parameters:[]
             },
             metadata:{
-                title:'Services'
+                title:'SERVICES',
+                cssAsync: new  Subject<any>()
             }
         }           
 

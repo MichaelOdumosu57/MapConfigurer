@@ -4,7 +4,8 @@ import {   WINDOW   } from '../window.service';
 import {   fromEvent,interval, of,from   } from 'rxjs';
 
 function getStyle(   devObj:any   ){
-    return devObj.ngStyleArray.filter((a:any)=>{
+    let location = null;
+    devObj.ngStyleArray.filter((a:any)=>{
                             
                             
         if(   Object.keys(a).length !== 0   ){
@@ -16,7 +17,8 @@ function getStyle(   devObj:any   ){
             if(  devObj.lookStart === devObj.index   ){
 
 
-                return a
+                console.log(   devObj.lookStart   )
+                location = devObj.lookStart + 1
 
 
             }
@@ -26,6 +28,20 @@ function getStyle(   devObj:any   ){
 
 
     })  
+    return location
+}
+
+
+function getTextWidth(   devObj:{elementText:string,font:string}   ){
+    var canvas = document.createElement("canvas");
+    var ctx = canvas.getContext("2d");
+    ctx.font = devObj.font;  // This can be set programmaticly from the element's font-style if desired
+    return ctx.measureText(devObj.elementText).width;
+}
+
+function numberParse(   dimension:any   ){
+    dimension = parseFloat(dimension.split("p")[0])
+    return dimension;
 }
 
 @Component({
@@ -49,7 +65,7 @@ export class OverlayComponent implements OnInit,AfterViewInit {
     overlayBool:Array<any> = this.wordsService.overlayBool
     overlayStyle:Array<any> = this.wordsService.overlayStyle
     overlayVal:Array<any> = this.wordsService.overlayVal
-    overlayCss:Array<any> = this.wordsService.overlayCss
+    // overlayCss:Array<any> = this.wordsService.overlayCss
 
     overlayStyleIndex:Array<any> = this.wordsService.overlayStyleIndex
     overlayBoolIndex:Array<any> = this.wordsService.overlayBoolIndex   
@@ -150,39 +166,73 @@ export class OverlayComponent implements OnInit,AfterViewInit {
                 }
     
     
-            }               
-            
-            
-            
+            }
+            console.log(   this.wordsService[this.overlayTemplateVariable]   )               
+            this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.next(1)
         })           
     }
 
 
     ngAfterViewInit(){
         this.wordsService.overlayLoadEvent$ = fromEvent(this.window,'load')
-        this.wordsService.overlayMyElements.subscribe((arr)=>{            
+        this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.subscribe(()=>{            
             console.group('making title centering dynamic load event')          
                 console.log(   this.overlayMyElements._results   )
                 console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle   )  
-                this.overlayMyElements._results.map((x:any,i:any)=>{
+                {  
+                    let z = {
+                        style:null,
+                        element:null
+                    };
+                    let za = {
+                        style:null,
+                        element:null
+                    };
+                    this.overlayMyElements._results.map((x:any,i:any)=>{
 
 
-                    if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
+                        if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
 
 
-                        let y = -1
-                        let z =  getStyle({
-                            lookStart:y,
-                            index:i,
-                            ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
-                        })
-                        console.log(   z[0]   )
+                            let y = -1
+                            z.style = getStyle({
+                                lookStart:y,
+                                index:i,
+                                ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
+                            })
+                            z.element = x.nativeElement
+                            
 
-                        
-                    }
+                            
+                        } 
 
 
-                })   
+                        if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
+
+
+                            let y = -1
+                            za.style = getStyle({
+                                lookStart:y,
+                                index:i,
+                                ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
+                            }) 
+                            console.log(za.style)
+                            za.element = x.nativeElement                            
+
+                            
+                        }
+
+                    
+                    })   
+                    console.log(   this.window.getComputedStyle(   z.element   ).width   )
+                    console.log(   this.window.getComputedStyle(   za.element   ).width   )
+                    console.log(   (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )  )
+                    this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )   ).toString() + "px"; 
+                    // debugger
+                    this.ref.detectChanges()
+                    console.log(z)
+                    console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )              
+                }
         })
     }
 

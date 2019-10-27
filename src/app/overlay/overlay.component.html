@@ -2,5 +2,5 @@
     <div  #myOverlayVal *ngIf="overlayBool[0] ==='true'" id = {{overlayVal[0]}} class = 'w-100'    [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[1]'  ></div>
 </ng-container>
 <ng-container *ngFor = 'let a of overlayStyle[1]'   >
-    <h1 #myOverlayVal  *ngIf="overlayBool[1] ==='true'" id = {{overlayVal[1]}} class = 'f2' [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[2]'  >page headings</h1>
+    <h1 #myOverlayVal  *ngIf="overlayBool[1] ==='true'" id = {{overlayVal[1]}} class = 'f2' [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[2]'  >{{wordsService[overlayTemplateVariable].metadata.title}}</h1>
 </ng-container>
