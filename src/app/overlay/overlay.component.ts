@@ -17,7 +17,7 @@ function getStyle(   devObj:any   ){
             if(  devObj.lookStart === devObj.index   ){
 
 
-                console.log(   devObj.lookStart   )
+                // console.log(   devObj.lookStart   )
                 location = devObj.lookStart + 1
 
 
@@ -175,10 +175,11 @@ export class OverlayComponent implements OnInit,AfterViewInit {
 
     ngAfterViewInit(){
         this.wordsService.overlayLoadEvent$ = fromEvent(this.window,'load')
+        this.wordsService.overlayResizeEvent$ = fromEvent(this.window,'resize')
         this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.subscribe(()=>{            
             console.group('making title centering dynamic load event')          
-                console.log(   this.overlayMyElements._results   )
-                console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle   )  
+                // console.log(   this.overlayMyElements._results   )
+                // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle   )  
                 {  
                     let z = {
                         style:null,
@@ -216,7 +217,7 @@ export class OverlayComponent implements OnInit,AfterViewInit {
                                 index:i,
                                 ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
                             }) 
-                            console.log(za.style)
+                            // console.log(za.style)
                             za.element = x.nativeElement                            
 
                             
@@ -224,15 +225,76 @@ export class OverlayComponent implements OnInit,AfterViewInit {
 
                     
                     })   
-                    console.log(   this.window.getComputedStyle(   z.element   ).width   )
-                    console.log(   this.window.getComputedStyle(   za.element   ).width   )
-                    console.log(   (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )  )
+                    // console.log(   this.window.getComputedStyle(   z.element   ).width   )
+                    // console.log(   this.window.getComputedStyle(   za.element   ).width   )
+                    // console.log(   (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )  ) 
                     this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )   ).toString() + "px"; 
                     // debugger
                     this.ref.detectChanges()
-                    console.log(z)
-                    console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )              
+                    // console.log(z)
+                    // console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )              
                 }
+            console.groupEnd()
+        })
+        this.wordsService.overlayResizeEventSubscription0 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
+            console.group('making title centering dynamic resize event')          
+                // console.log(   this.overlayMyElements._results   )
+                // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle   )  
+                {  
+                    let z = {
+                        style:null,
+                        element:null
+                    };
+                    let za = {
+                        style:null,
+                        element:null
+                    };
+                    this.overlayMyElements._results.map((x:any,i:any)=>{
+
+
+                        if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
+
+
+                            let y = -1
+                            z.style = getStyle({
+                                lookStart:y,
+                                index:i,
+                                ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
+                            })
+                            z.element = x.nativeElement
+                            
+
+                            
+                        } 
+
+
+                        if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
+
+
+                            let y = -1
+                            za.style = getStyle({
+                                lookStart:y,
+                                index:i,
+                                ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
+                            }) 
+                            // console.log(za.style)
+                            za.element = x.nativeElement                            
+
+                            
+                        }
+
+                    
+                    })   
+                    // console.log(   this.window.getComputedStyle(   z.element   ).width   )
+                    // console.log(   this.window.getComputedStyle(   za.element   ).width   )
+                    // console.log(   (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )  ) 
+                    this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )   ).toString() + "px"; 
+                    // debugger
+                    this.ref.detectChanges()
+                    // console.log(z)
+                    // console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )              
+                }
+            console.groupEnd()            
         })
     }
 
