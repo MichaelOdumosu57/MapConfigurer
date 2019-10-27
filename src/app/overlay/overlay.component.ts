@@ -1,6 +1,32 @@
 import { Component, OnInit,Input,ViewChildren,AfterViewInit,Inject, OnDestroy,ChangeDetectorRef,ChangeDetectionStrategy,AfterContentInit } from '@angular/core';
 import {   WordsService   } from '../words.service';
 import {   WINDOW   } from '../window.service';
+import {   fromEvent,interval, of,from   } from 'rxjs';
+
+function getStyle(   devObj:any   ){
+    return devObj.ngStyleArray.filter((a:any)=>{
+                            
+                            
+        if(   Object.keys(a).length !== 0   ){
+
+
+           devObj.lookStart+= 1
+
+
+            if(  devObj.lookStart === devObj.index   ){
+
+
+                return a
+
+
+            }
+
+
+        }
+
+
+    })  
+}
 
 @Component({
   selector: 'app-overlay',
@@ -8,7 +34,7 @@ import {   WINDOW   } from '../window.service';
   styleUrls: ['./overlay.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OverlayComponent implements OnInit {
+export class OverlayComponent implements OnInit,AfterViewInit {
 
     @ViewChildren('myOverlayVal') overlayMyElements: any;     
 
@@ -131,6 +157,34 @@ export class OverlayComponent implements OnInit {
         })           
     }
 
+
+    ngAfterViewInit(){
+        this.wordsService.overlayLoadEvent$ = fromEvent(this.window,'load')
+        this.wordsService.overlayMyElements.subscribe((arr)=>{            
+            console.group('making title centering dynamic load event')          
+                console.log(   this.overlayMyElements._results   )
+                console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle   )  
+                this.overlayMyElements._results.map((x:any,i:any)=>{
+
+
+                    if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
+
+
+                        let y = -1
+                        let z =  getStyle({
+                            lookStart:y,
+                            index:i,
+                            ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
+                        })
+                        console.log(   z[0]   )
+
+                        
+                    }
+
+
+                })   
+        })
+    }
 
 
 

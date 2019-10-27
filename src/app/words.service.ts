@@ -27,8 +27,19 @@ export class WordsService {
         overlayCss:Array<any> = [['position:"static"'],['position:"static"']]
         overlayValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
         overlayStyleIndex:Array<any> = [0]
-        overlayBoolIndex:Array<any>= [0]      
-        
+        overlayBoolIndex:Array<any>= [0]    
+
+        // OverlayComponent events
+        overlayLoadEvent$:Observable<Event>
+        overlayLoadEventSubscription0:Subscription
+        overlayLoadEventSubscription1:Subscription 
+        overlayResizeEvent$:Observable<Event>
+        overlayResizeEventSubscription0:Subscription
+        overlayResizeEventSubscription1:Subscription  
+        overlayClickEvent$:Observable<Event>        
+        overlayClickEventSubscription0:Subscription
+        //         
+
         // OverlayComponent Instances
         overlayMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
         overlayMyElementsArray: any[] = [];
@@ -58,7 +69,7 @@ export class WordsService {
                     css:{
                         position:'absolute',
                         top:"150px",
-                        left:"500px"
+                        left:'45%'
 
                     }
                 }                                                                 
@@ -74,6 +85,7 @@ export class WordsService {
             }
         }           
 
+        
     /* */
 
     /*navigation*/

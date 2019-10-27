@@ -195,7 +195,6 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
     ngAfterViewInit(){
         // grabbing 'HTMLWordElements'
 
-        
         this.wordsService.navigationLoadEvent0 = fromEvent(this.window ,'load');
         this.wordsService[this.navigationTemplateVariable].location.parameters.push(
             this.wordsService[this.navigationTemplateVariable].parameters.push({
