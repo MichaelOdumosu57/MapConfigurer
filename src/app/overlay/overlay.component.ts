@@ -80,9 +80,10 @@ export class OverlayComponent implements OnInit,AfterViewInit {
     
     ngOnInit() {
         this.wordsService.overlayMyElements.subscribe((arr)=>{
-            // console.log(   arr   )   
+            console.log(   arr   )   
             // dealing with  missing elements
-            if(   this.wordsService[this.overlayTemplateVariable].styles.length >   arr[this.overlayTemplateVariable.slice(-1)].length   ){
+
+            if(   this.wordsService[this.overlayTemplateVariable].styles.length >   arr[this.wordsService.overlayComponentMonitor[this.overlayTemplateVariable]].length   ){
 
 
                 this.wordsService[this.overlayTemplateVariable].stylesCopy = this.wordsService[this.overlayTemplateVariable].styles.filter((a,i)=>{
@@ -135,7 +136,7 @@ export class OverlayComponent implements OnInit,AfterViewInit {
             }
 
             
-            else if(   this.wordsService[this.overlayTemplateVariable].styles.length  ===  arr[this.overlayTemplateVariable.slice(-1)].length   ){
+            else if(   this.wordsService[this.overlayTemplateVariable].styles.length  ===  arr[this.wordsService.overlayComponentMonitor[this.overlayTemplateVariable]].length   ){
                 
                 
                 this.wordsService[this.overlayTemplateVariable].stylesCopy = this.wordsService[this.overlayTemplateVariable].styles

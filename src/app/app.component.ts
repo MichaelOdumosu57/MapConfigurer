@@ -27,8 +27,8 @@ export class AppComponent implements AfterViewInit {
     @ViewChildren(appGenerateSelector({val:'appwordsval',times:3}))  app_wordsComponentReferences: any;
     @ViewChildren(appGenerateSelector({val:'appNavigationVal',times:1}), { read: ElementRef })  app_NavigationConponentElements: any;
     @ViewChildren(appGenerateSelector({val:'appNavigationVal',times:1}))  app_NavigationComponentReferences: any;   
-    @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:1}), { read: ElementRef })  app_OverlayConponentElements: any;
-    @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:1}))  app_OverlayComponentReferences: any;        
+    @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:2}), { read: ElementRef })  app_OverlayConponentElements: any;
+    @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:2}))  app_OverlayComponentReferences: any;        
     
     constructor(
         private wordsService: WordsService
@@ -72,6 +72,7 @@ export class AppComponent implements AfterViewInit {
             // this.wordsService.wordsMyElementsArray[i].forEach(element => {
             //     // console.log(element.nativeElement.id)
             // });
+            this.wordsService.overlayComponentMonitor[this.app_OverlayConponentElements._results[i].nativeElement.getAttribute('ng-reflect-overlay-template-variable')] = i
         }
         this.wordsService.overlayMyElements.next(this.wordsService.overlayMyElementsArray)         
         // DONE with Subject<Array<any[]>>

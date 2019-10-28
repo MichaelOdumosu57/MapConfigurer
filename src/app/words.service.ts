@@ -85,8 +85,53 @@ export class WordsService {
                 cssAsync: new  Subject<any>(),
                 mainImg:'assets/media/IMG-1788-1.jpg'
             }
-        }           
+        }  
+        overlayComponentObject1:any ={
+            styles:[
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:'0px',
+                        width:'100%',
+                        'z-index':-1
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        height:'500px',
+                        width:'100%',
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:"200px",
+                        left:'45%',
+                        'font-size':'60px',
+                        color:'white'
 
+                    }
+                }                                                                 
+            ], 
+            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
+            parameters:[    
+            ],
+            location:{
+                parameters:[]
+            },
+            metadata:{
+                title:'SERVICES',
+                cssAsync: new  Subject<any>(),
+                mainImg:'assets/media/IMG-1788-1.jpg'
+            }
+        }                    
+        overlayComponentMonitor:any = {
+
+        }
         
     /* */
 
