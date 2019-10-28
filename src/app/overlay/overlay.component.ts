@@ -31,7 +31,6 @@ function getStyle(   devObj:any   ){
     return location
 }
 
-
 function getTextWidth(   devObj:{elementText:string,font:string}   ){
     var canvas = document.createElement("canvas");
     var ctx = canvas.getContext("2d");
@@ -45,10 +44,10 @@ function numberParse(   dimension:any   ){
 }
 
 @Component({
-  selector: 'app-overlay',
-  templateUrl: './overlay.component.html',
-  styleUrls: ['./overlay.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-overlay',
+    templateUrl: './overlay.component.html',
+    styleUrls: ['./overlay.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OverlayComponent implements OnInit,AfterViewInit {
 
@@ -81,9 +80,7 @@ export class OverlayComponent implements OnInit,AfterViewInit {
     
     ngOnInit() {
         this.wordsService.overlayMyElements.subscribe((arr)=>{
-
             // console.log(   arr   )   
-            
             // dealing with  missing elements
             if(   this.wordsService[this.overlayTemplateVariable].styles.length >   arr[this.overlayTemplateVariable.slice(-1)].length   ){
 
@@ -204,7 +201,6 @@ export class OverlayComponent implements OnInit,AfterViewInit {
                             z.element = x.nativeElement
                             
 
-                            
                         } 
 
 
@@ -262,7 +258,6 @@ export class OverlayComponent implements OnInit,AfterViewInit {
                                 ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
                             })
                             z.element = x.nativeElement
-                            
 
                             
                         } 

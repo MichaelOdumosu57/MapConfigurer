@@ -18,6 +18,7 @@ describe('OverlayComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(OverlayComponent);
     component = fixture.componentInstance;
+    component.overlayTemplateVariable = 'overlayComponentObject0';
     fixture.detectChanges();
   });
 
@@ -27,7 +28,6 @@ describe('OverlayComponent', () => {
 
     it(   'should be known  by the dev that len of elements should not be greater than the len of styles',()=>{
         console.group('should be known  by the dev that len of elements should not be greater than the len of styles')
-        component.overlayTemplateVariable = 'overlayComponentObject0';
         component.access().overlayMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
                 return  {nativeElement:elem} 
             }) 

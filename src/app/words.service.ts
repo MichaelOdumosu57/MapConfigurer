@@ -60,8 +60,6 @@ export class WordsService {
                         position:'absolute',
                         height:'500px',
                         width:'100%',
-                        'background-position':'60% 50%',
-                        'background-repeat':'no-repeat'
                     }
                 },
                 {
@@ -84,7 +82,8 @@ export class WordsService {
             },
             metadata:{
                 title:'SERVICES',
-                cssAsync: new  Subject<any>()
+                cssAsync: new  Subject<any>(),
+                mainImg:'assets/media/IMG-1788-1.jpg'
             }
         }           
 
@@ -314,6 +313,7 @@ export class WordsService {
                     css:{
                         position:'absolute',
                         left:'70px',
+                        top:'700px'
                         // bottom:'40px',
                         // width:'0px',
                         // height:'0px'
