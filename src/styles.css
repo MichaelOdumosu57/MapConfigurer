@@ -7,6 +7,11 @@ html{
     text-size-adjust:100%
 }
 
+@font-face {
+    font-family: "Abril Fatface";
+    src: url('assets/fonts/AbrilFatface.woff2') format('woff2')
+      
+  }
 
 @font-face {
     font-family: "Charmonman";

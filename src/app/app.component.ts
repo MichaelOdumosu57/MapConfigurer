@@ -23,12 +23,12 @@ function appGenerateSelector(   devObj   ){
 
 export class AppComponent implements AfterViewInit {
     
-    @ViewChildren(appGenerateSelector({val:'appwordsval',times:3}), { read: ElementRef })  app_wordsConponentElements: any;
-    @ViewChildren(appGenerateSelector({val:'appwordsval',times:3}))  app_wordsComponentReferences: any;
+    @ViewChildren(appGenerateSelector({val:'appWordsVal',times:3}), { read: ElementRef })  app_wordsConponentElements: any;
+    @ViewChildren(appGenerateSelector({val:'appWordsVal',times:3}))  app_wordsComponentReferences: any;
     @ViewChildren(appGenerateSelector({val:'appNavigationVal',times:1}), { read: ElementRef })  app_NavigationConponentElements: any;
     @ViewChildren(appGenerateSelector({val:'appNavigationVal',times:1}))  app_NavigationComponentReferences: any;   
-    @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:3}), { read: ElementRef })  app_OverlayConponentElements: any;
-    @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:3}))  app_OverlayComponentReferences: any;        
+    @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:4}), { read: ElementRef })  app_OverlayConponentElements: any;
+    @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:4}))  app_OverlayComponentReferences: any;        
     
     constructor(
         private wordsService: WordsService

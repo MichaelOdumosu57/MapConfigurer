@@ -20,10 +20,12 @@ export class WordsService {
     /*overlay*/
         overlayVal:Array<string> = [
             'o_v_e_r_l_a_y_Board',
-            'o_v_e_r_l_a_y_Title'
+            'o_v_e_r_l_a_y_Title',
+            'o_v_e_r_l_a_y_BlendImg',
+            'o_v_e_r_l_a_y_BlendWords'
         ]
-        overlayBool: Array<any> = ['true','true']
-        overlayStyle: Array<any> = Array.from(Array(3),()=>{return [3]})  
+        overlayBool: Array<any> = ['true','true','true','true']
+        overlayStyle: Array<any> = [[3],[3],[3],[3,3]]
         // overlayCss:Array<any> = [['position:"static"'],['position:"static"']]
         overlayValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
         overlayStyleIndex:Array<any> = [0]
@@ -173,7 +175,93 @@ export class WordsService {
                 cssAsync: new  Subject<any>(),
                 mainImg:'assets/media/IMG_1391.jpg'
             }
-        }                            
+        }    
+        overlayComponentObject3:any ={
+            styles:[
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:'0px',
+                        width:'100%',
+                        'z-index':-1
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        height:'500px',
+                        width:'100%',
+                        'z-index':-1,
+                        // opacity:0
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:"200px",
+                        left:'45%',
+                        'font-size':'60px',
+                        'font-family':"'Charmonman',sans-serif",
+                        'font-weight':'500',
+                        color:'white'
+
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        'background-image':'url(assets/media/IMG-1475-2.jpg)',
+                        height:'500px',
+                        color:'white',
+                        'z-index':3,
+                        opacity:.5
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:"200px",
+                        left:'20%',
+                        'font-size':'60px',
+                        'font-family':"'Abril Fatface',sans-serif",
+                        'font-weight':'500',
+                        color:'white'
+
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:"200px",
+                        left:'75%',
+                        'font-size':'60px',
+                        'font-family':"'Abril Fatface',sans-serif",
+                        'font-weight':'500',
+                        color:'white'
+
+                    }
+                }                                                                                                                  
+            ], 
+            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
+            parameters:[    
+            ],
+            location:{
+                parameters:[]
+            },
+            metadata:{
+                title:'',
+                cssAsync: new  Subject<any>(),
+                mainImg:'assets/media/IMG-1790.jpg',
+                blendTitle:'ABOUT ME'
+                
+            }
+        }                                
         overlayComponentMonitor:any = {
         }
         

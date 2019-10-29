@@ -18,7 +18,7 @@ describe('OverlayComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(OverlayComponent);
     component = fixture.componentInstance;
-    component.overlayTemplateVariable = 'overlayComponentObject0';
+    component.overlayTemplateVariable = 'overlayComponentObject3';
     fixture.detectChanges();
   });
 

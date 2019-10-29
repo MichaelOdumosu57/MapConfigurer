@@ -86,6 +86,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
             if(   this.wordsService[this.overlayTemplateVariable].styles.length >   arr[this.wordsService.overlayComponentMonitor[this.overlayTemplateVariable]].length   ){
 
 
+
                 this.wordsService[this.overlayTemplateVariable].stylesCopy = this.wordsService[this.overlayTemplateVariable].styles.filter((a,i)=>{
 
 
@@ -140,6 +141,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 
                 
                 this.wordsService[this.overlayTemplateVariable].stylesCopy = this.wordsService[this.overlayTemplateVariable].styles
+                // console.log('fire')
 
 
             }
@@ -150,7 +152,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
             // console.log(   this.wordsService[this.overlayTemplateVariable].stylesCopy, arr[this.overlayTemplateVariable.slice(-1)]     )
             for(   var index in this.wordsService[this.overlayTemplateVariable].stylesCopy    ){
 
-
+                
                 if(   this.wordsService[this.overlayTemplateVariable].stylesCopy[index].override === 'true'   ){
 
 

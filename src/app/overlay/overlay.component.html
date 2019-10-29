@@ -2,5 +2,11 @@
     <img  #myOverlayVal *ngIf="overlayBool[0] ==='true'" id = {{overlayVal[0]}} class = 'w-100'   width="50%" height="50%" [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[1]' src = "{{wordsService[overlayTemplateVariable].metadata.mainImg}}"  />
 </ng-container>
 <ng-container *ngFor = 'let a of overlayStyle[1]'   >
-    <h1 #myOverlayVal  *ngIf="overlayBool[1] ==='true'" id = {{overlayVal[1]}} class = 'f2' [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[2]'  >{{wordsService[overlayTemplateVariable].metadata.title}}</h1>
+    <h1 #myOverlayVal  *ngIf="overlayBool[1] ==='true'" id = {{overlayVal[1]}} class = 'f2' [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[2]'>{{wordsService[overlayTemplateVariable].metadata.title}}</h1>
+</ng-container>
+<ng-container *ngFor = 'let a of overlayStyle[2]'   >
+    <div #myOverlayVal  *ngIf="overlayBool[2] ==='true'" id = {{overlayVal[2]}} class = 'w-100' [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[3]'></div>
+</ng-container>
+<ng-container *ngFor = 'let a of overlayStyle[3];let b = index'   >
+    <p #myOverlayVal  *ngIf="overlayBool[3] ==='true'" id = {{overlayVal[3]}} class = 'w-100' [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[4+b]'>{{wordsService[overlayTemplateVariable].metadata.blendTitle}}</p>
 </ng-container>
