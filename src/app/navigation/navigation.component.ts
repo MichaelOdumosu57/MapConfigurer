@@ -212,7 +212,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         }))
         this.wordsService.navigationResizeEvent0 = fromEvent(this.window ,'resize');
         this.wordsService.navigationResizeEventSubscription0 = this.wordsService.navigationResizeEvent0.subscribe((event)=>{
-            console.group('general nav anchor repositioning resize event')
+        // console.group('general nav anchor repositioning resize event')
             // console.log('innerWidth',this.window.innerWidth)
             // console.log('outerWidth',this.window.screen.width)
             // console.log('screen constant',this.window.screen.width)
@@ -225,7 +225,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                 // console.log(    i.nativeElement.style.left   )
             }               
             this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  = this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width - 1340
-            console.groupEnd()
+        // console.groupEnd()
         })
         this.wordsService[this.navigationTemplateVariable].metadata.titleWidth = getTextWidth({
             elementText:this.navigationMyElements._results[1].nativeElement.innerText ,
@@ -236,7 +236,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         }   
         // console.log(   this.navigationMyElements._results[13],this.window.getComputedStyle(   this.navigationMyElements._results[0].nativeElement   ).getPropertyValue('height')   )
         this.wordsService.navigationResizeEventSubscription1 = this.wordsService.navigationResizeEvent0.subscribe((event)=>{
-            console.group('anchors overlapping heading resize event')
+        // console.group('anchors overlapping heading resize event')
 
             
             if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
@@ -379,11 +379,10 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
             
             // console.log(this.navigationMyElements )            
-            console.groupEnd()
-
+        // console.groupEnd()
         })     
         this.wordsService.navigationLoadEventSubscription1 = this.wordsService.navigationLoadEvent0.subscribe((event)=>{
-            console.group('anchors overlapping heading load event')
+        // console.group('anchors overlapping heading load event')
 
 
             if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
@@ -468,7 +467,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
 
             // console.log(   this.navigationMyElements._results  )
-            console.groupEnd()    
+        // console.groupEnd()    
         })
        
         

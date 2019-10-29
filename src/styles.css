@@ -8,18 +8,22 @@ html{
 }
 
 
-
+@font-face {
+    font-family: "Charmonman";
+    src: url('assets/fonts/Charmonman.woff2') format('woff2')
+      
+  }
 
 @font-face {
   font-family: "Noto Sans";
   src: url('assets/fonts/noto_sans.woff2') format('woff2')
-    /*url('/src/assets/fonts/roboto/Roboto-Regular.woff2') format('woff2');*/
+    
 }
 
 @font-face {
     font-family: "Big Shoulders-Medium";
     src: url('assets/fonts/BigShoulders/BigShouldersDisplay-Medium.ttf') format('woff2')
-      /*url('/src/assets/fonts/roboto/Roboto-Regular.woff2') format('woff2');*/
+      
   }
   
 

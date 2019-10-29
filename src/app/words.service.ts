@@ -124,13 +124,57 @@ export class WordsService {
                 parameters:[]
             },
             metadata:{
-                title:'SERVICES',
+                title:'OUR PROJECTS',
                 cssAsync: new  Subject<any>(),
-                mainImg:'assets/media/IMG-1788-1.jpg'
+                mainImg:'assets/media/project-background.jpg'
             }
-        }                    
-        overlayComponentMonitor:any = {
+        }     
+        overlayComponentObject2:any ={
+            styles:[
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:'0px',
+                        width:'100%',
+                        'z-index':-1
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        height:'500px',
+                        width:'100%',
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:"200px",
+                        left:'45%',
+                        'font-size':'60px',
+                        'font-family':"'Charmonman',sans-serif",
+                        'font-weight':'500',
+                        color:'white'
 
+                    }
+                }                                                                 
+            ], 
+            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
+            parameters:[    
+            ],
+            location:{
+                parameters:[]
+            },
+            metadata:{
+                title:'CONTACT US',
+                cssAsync: new  Subject<any>(),
+                mainImg:'assets/media/IMG_1391.jpg'
+            }
+        }                            
+        overlayComponentMonitor:any = {
         }
         
     /* */
