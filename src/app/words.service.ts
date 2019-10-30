@@ -23,10 +23,11 @@ export class WordsService {
             'o_v_e_r_l_a_y_AboutPreTitle',
             'o_v_e_r_l_a_y_Title',
             'o_v_e_r_l_a_y_BlendImg',
-            'o_v_e_r_l_a_y_BlendWords'
+            'o_v_e_r_l_a_y_BlendWords',
+            'o_v_e_r_l_a_y_AboutMainLine',
         ]
-        overlayBool: Array<any> = ['true','true','true','true','true']
-        overlayStyle: Array<any> = [[3],[3],[3],[3],[3,3]]
+        overlayBool: Array<any> = ['true','true','true','true','true','true']
+        overlayStyle: Array<any> = [[3],[3],[3],[3],[3,3],[3]]
         // overlayCss:Array<any> = [['position:"static"'],['position:"static"']]
         overlayValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
         overlayStyleIndex:Array<any> = [0]
@@ -88,7 +89,9 @@ export class WordsService {
                         // left:'550px',
                         // 'fontSize':'16px'
                     }
-                }})                                                                                 
+                }}),
+                {                    
+                }                                                                                   
             ], 
             ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
             parameters:[    
@@ -144,7 +147,9 @@ export class WordsService {
                         // left:'550px',
                         // 'fontSize':'16px'
                     }
-                }})  
+                }}),
+                {                    
+                }    
                                                                                  
             ], 
             ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
@@ -203,7 +208,9 @@ export class WordsService {
                         // left:'550px',
                         // 'fontSize':'16px'
                     }
-                }})                                                                                  
+                }}),
+                {                    
+                }                                                                                    
             ], 
             ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
             parameters:[    
@@ -293,6 +300,8 @@ export class WordsService {
                         color:'rgb(226,4,78)'
 
                     }
+                },
+                {                    
                 }                                                                                                                  
             ], 
             ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
@@ -316,7 +325,7 @@ export class WordsService {
                     css:{
                         position:'absolute',
                         top:'0px',
-                        height:'180%',
+                        height:'100%',
                         width:'100%',
                         'z-index':-1
                     }
@@ -350,7 +359,7 @@ export class WordsService {
                     override:'true',
                     css:{
                         position:'absolute',
-                        top:"300px",
+                        top:"270px",
                         left:'45%',
                         'font-size':'141px',
                         'font-family':"'Aclonica',sans-serif",
@@ -379,7 +388,19 @@ export class WordsService {
                     override:'false',
                     css:{
                     }
-                }                                                                                                                                  
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        'background-color':'rgb(249, 87, 128)',
+                        top:'330px',
+                        // left:'45%',
+                        width:"400px",
+                        height:"2px"
+
+                    }
+                }                                                                                                                                                   
             ], 
             ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
             parameters:[    

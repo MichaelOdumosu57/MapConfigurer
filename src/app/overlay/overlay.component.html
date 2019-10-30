@@ -13,4 +13,6 @@
 <ng-container *ngFor = 'let a of overlayStyle[4];let b = index'   >
     <p #myOverlayVal  *ngIf="overlayBool[4] ==='true'" id = {{overlayVal[4]}} class = 'w-100' [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[5+b]'>{{wordsService[overlayTemplateVariable].metadata.blendTitle}}</p>
 </ng-container>
-
+<ng-container *ngFor = 'let a of overlayStyle[5]' >
+    <div #myOverlayVal  *ngIf="overlayBool[5] ==='true'"  id = {{overlayVal[5]}}  [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[7]'></div>
+</ng-container>
