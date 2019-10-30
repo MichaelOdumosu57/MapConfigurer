@@ -193,6 +193,10 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         style:null,
                         element:null
                     };
+                    let zb = {
+                        style:null,
+                        element:null
+                    };                    
                     this.overlayMyElements._results.map((x:any,i:any)=>{
 
 
@@ -211,7 +215,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         } 
 
 
-                        if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
+                        else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
 
 
                             let y = -1
@@ -226,12 +230,28 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             
                         }
 
+
+                        else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutPreTitle'   ){
+    
+    
+                            let y = -1
+                            zb.style = getStyle({
+                                lookStart:y,
+                                index:i,
+                                ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
+                            }) 
+                            // console.log(za.style)
+                            zb.element = x.nativeElement                            
+
+                            
+                        }                            
                     
                     })   
                     // console.log(   this.window.getComputedStyle(   z.element   ).width   )
                     // console.log(   this.window.getComputedStyle(   za.element   ).width   )
                     // console.log(   (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )  ) 
                     this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )   ).toString() + "px"; 
+                    this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zb.element).width   )/2   )   ).toString() + "px"; 
                     // debugger
                     this.ref.detectChanges()
                     // console.log(z)
@@ -252,6 +272,10 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             style:null,
                             element:null
                         };
+                        let zb = {
+                            style:null,
+                            element:null
+                        };                        
                         this.overlayMyElements._results.map((x:any,i:any)=>{
     
     
@@ -270,7 +294,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             } 
     
     
-                            if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
+                            else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
     
     
                                 let y = -1
@@ -284,6 +308,22 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
     
                                 
                             }
+
+
+                            else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutPreTitle'   ){
+    
+    
+                                let y = -1
+                                zb.style = getStyle({
+                                    lookStart:y,
+                                    index:i,
+                                    ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
+                                }) 
+                                // console.log(za.style)
+                                zb.element = x.nativeElement                            
+    
+                                
+                            }                            
     
                         
                         })   
@@ -291,6 +331,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         // console.log(   this.window.getComputedStyle(   za.element   ).width   )
                         // console.log(   (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )  ) 
                         this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )   ).toString() + "px"; 
+                        this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zb.element).width   )/2   )   ).toString() + "px"; 
                         // debugger
                         this.ref.detectChanges()
                         // console.log(z)

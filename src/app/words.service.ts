@@ -316,7 +316,7 @@ export class WordsService {
                     css:{
                         position:'absolute',
                         top:'0px',
-                        height:'150%',
+                        height:'180%',
                         width:'100%',
                         'z-index':-1
                     }
@@ -326,7 +326,7 @@ export class WordsService {
                     css:{
                         position:'fixed',
                         // height:'1000px',
-                        height:'100%',
+                        height:'140%',
                         width:'100%',
                         'z-index':-1
                         // opacity:0
@@ -341,6 +341,7 @@ export class WordsService {
                         left:'45%',
                         'font-size':'78px',
                         'font-style':'italic',
+                        'text-align':'center',
                         color:'white',
                         'text-shadow':'rgba(0, 0, 0, 0.3) 2px -1px 0px' // so this property we allow because it doesnt make a meaningful difference if its not working
                     }
