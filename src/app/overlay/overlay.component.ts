@@ -69,6 +69,9 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
     overlayStyleIndex:Array<any> = this.wordsService.overlayStyleIndex
     overlayBoolIndex:Array<any> = this.wordsService.overlayBoolIndex   
 
+    overlayCustomWordWrapElements:Array<any> = this.wordsService.overlayCustomWordWrapElements 
+
+
     access(){
         return this.wordsService
     }
@@ -178,7 +181,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
         this.wordsService.overlayResizeEvent$ = fromEvent(this.window,'resize')
         this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.subscribe(()=>{    
             this.wordsService.overlayLoadEventSubscription0 = this.wordsService.overlayLoadEvent$.subscribe(()=>{        
-            console.group('making title centering dynamic load event')          
+            // console.group('making title centering dynamic load event')          
                 // console.log(   this.overlayMyElements._results   )
                 // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle   )  
                 {  
@@ -234,7 +237,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                     // console.log(z)
                     // console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )              
                 }
-            console.groupEnd()
+            // console.groupEnd()
             })
             this.wordsService.overlayResizeEventSubscription0 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
                 console.group('making title centering dynamic resize event')          
@@ -295,12 +298,27 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                     }
                 console.groupEnd()            
             })            
+            this.wordsService[this.overlayTemplateVariable].location.parameters.push(
+                this.wordsService[this.overlayTemplateVariable].parameters.push({
+                    fn:'wordsService.customWordWrapReceive',
+                    totalElements:this.overlayMyElements._results,
+                    HTMLWordElements:this.overlayCustomWordWrapElements
+                }) - 1// for it returns the length of the array
+            )    
+            this.wordsService.overlayLoadEventSubscription1 = this.wordsService.overlayLoadEvent$.subscribe(this.wordsService.customWordWrapReceive({
+                totalElements:this.overlayMyElements._results,
+                HTMLWordElements:{
+                                    parameters:this.wordsService[this.overlayTemplateVariable].location.parameters.slice(-1)[0],
+                                    templateVar:this.overlayTemplateVariable
+                                }
+            }))                    
         })
 
     }
 
     ngOnDestroy(){
         this.wordsService.overlayLoadEventSubscription0.unsubscribe()
+        this.wordsService.overlayLoadEventSubscription1.unsubscribe()
         this.wordsService.overlayResizeEventSubscription0.unsubscribe()
         this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.unsubscribe()
     }

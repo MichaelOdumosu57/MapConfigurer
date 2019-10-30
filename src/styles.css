@@ -64,7 +64,7 @@ html{
 #w_o_r_d_s_paragraphDash {
 
     font-family:'Noto Sans';
-
+    /* word-wrap:'break-word'; */
 }
 
 @media screen and (max-width:30em){

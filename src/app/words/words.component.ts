@@ -137,14 +137,14 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
     
     ngAfterViewInit() {
         //FIXME why it it
-        const wordsLoadEvent0 = fromEvent(this.window ,'load');
-        const wordsResizeEvent0 = fromEvent(this.window ,'resize');
-        wordsLoadEvent0.subscribe(this.wordsService.wordsRepositionDashes({templateVar:this.wordsTemplateVariable}))
-        // wordsLoadEvent0.subscribe(this.wordsService.customWordWrapReceive({
+        const wordsLoadEvent$ = fromEvent(this.window ,'load');
+        const wordsResizeEvent$ = fromEvent(this.window ,'resize');
+        this.wordsService.wordsLoadEventSubscription0 = wordsLoadEvent$.subscribe(this.wordsService.wordsRepositionDashes({templateVar:this.wordsTemplateVariable}))
+        // wordsLoadEvent$.subscribe(this.wordsService.customWordWrapReceive({
         //     totalElements:this.wordsMyElements._results,
         //     HTMLWordElements:this.wordsCustomWordWrapElements
         // }))        
-        wordsResizeEvent0.subscribe(this.wordsService.wordsRepositionDashes({templateVar:this.wordsTemplateVariable}))
+        this.wordsService.wordsResizeEventSubscription0 = wordsResizeEvent$.subscribe(this.wordsService.wordsRepositionDashes({templateVar:this.wordsTemplateVariable}))
         //FIXME
 
         //polyfill if browsers get stubborn with the event listener
@@ -159,7 +159,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
     }
   
     ngOnDestroy(){
-        
+        this.wordsService.wordsLoadEventSubscription0.unsubscribe()
+        this.wordsService.wordsResizeEventSubscription0.unsubscribe()
     }
 }
 

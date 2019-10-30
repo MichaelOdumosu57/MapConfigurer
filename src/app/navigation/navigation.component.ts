@@ -203,13 +203,13 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                 HTMLWordElements:this.navigationCustomWordWrapElements
             }) - 1// for it returns the length of the array
         )
-        this.wordsService.navigationLoadEventSubscription0 = this.wordsService.navigationLoadEvent0.subscribe(this.wordsService.customWordWrapReceive({
-            totalElements:this.navigationMyElements._results,
-            HTMLWordElements:{
-                                parameters:this.wordsService[this.navigationTemplateVariable].location.parameters.slice(-1)[0],
-                                templateVar:this.navigationTemplateVariable
-                            }
-        }))
+        // this.wordsService.navigationLoadEventSubscription0 = this.wordsService.navigationLoadEvent0.subscribe(this.wordsService.customWordWrapReceive({
+        //     totalElements:this.navigationMyElements._results,
+        //     HTMLWordElements:{
+        //                         parameters:this.wordsService[this.navigationTemplateVariable].location.parameters.slice(-1)[0],
+        //                         templateVar:this.navigationTemplateVariable
+        //                     }
+        // }))
         this.wordsService.navigationResizeEvent0 = fromEvent(this.window ,'resize');
         this.wordsService.navigationResizeEventSubscription0 = this.wordsService.navigationResizeEvent0.subscribe((event)=>{
         // console.group('general nav anchor repositioning resize event')
@@ -475,6 +475,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
     }
 
     ngOnDestroy(){
+        // this.wordsService.navigationLoadEventSubscription0.unsubscribe() 
         this.wordsService.navigationResizeEventSubscription0.unsubscribe()
         this.wordsService.navigationResizeEventSubscription1.unsubscribe()
 

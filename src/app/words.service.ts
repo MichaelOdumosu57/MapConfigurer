@@ -191,7 +191,7 @@ export class WordsService {
                     override:'true',
                     css:{
                         position:'absolute',
-                        height:'500px',
+                        height:'600px',
                         width:'100%',
                         'z-index':-1,
                         // opacity:0
@@ -211,26 +211,27 @@ export class WordsService {
                     }
                 },
                 {
-                    override:'true',
+                    override:'false',
                     css:{
                         position:'absolute',
-                        'background-image':'url(assets/media/IMG-1475-2.jpg)',
+                        'background-image':'url(assets/media/IMG-1475-12.png)',
                         height:'500px',
                         color:'white',
-                        'z-index':3,
-                        opacity:.5
+                        'z-index':3
                     }
                 },
                 {
                     override:'true',
                     css:{
                         position:'absolute',
-                        top:"200px",
-                        left:'20%',
-                        'font-size':'60px',
+                        top:"275px",
+                        left:'10%',
+                        width:'0px',
+                        'font-size':'24px',
                         'font-family':"'Abril Fatface',sans-serif",
                         'font-weight':'500',
-                        color:'white'
+                        'font-style' :'italic',
+                        color:'rgb(226,4,78)'
 
                     }
                 },
@@ -238,12 +239,14 @@ export class WordsService {
                     override:'true',
                     css:{
                         position:'absolute',
-                        top:"200px",
+                        top:"300px",
                         left:'75%',
-                        'font-size':'60px',
+                        width:'0px',
+                        'font-size':'24px',
                         'font-family':"'Abril Fatface',sans-serif",
                         'font-weight':'500',
-                        color:'white'
+                        'font-style' :'italic',
+                        color:'rgb(226,4,78)'
 
                     }
                 }                                                                                                                  
@@ -257,13 +260,18 @@ export class WordsService {
             metadata:{
                 title:'',
                 cssAsync: new  Subject<any>(),
-                mainImg:'assets/media/IMG-1790.jpg',
+                mainImg:'assets/media/aboutMain.png',
                 blendTitle:'ABOUT ME'
                 
             }
         }                                
         overlayComponentMonitor:any = {
         }
+        //
+
+        // OverlayComponent concept metadata
+        overlayCustomWordWrapElements:Array<any>  = []
+        //
         
     /* */
 
@@ -480,6 +488,19 @@ export class WordsService {
         wordsStyleIndex:Array<any> = [0]
         wordsBoolIndex:Array<any>= [0]
 
+
+        // WordsComponent events
+        wordsLoadEvent$:Observable<Event>
+        wordsLoadEventSubscription0:Subscription
+        wordsLoadEventSubscription1:Subscription 
+        wordsResizeEvent$:Observable<Event>
+        wordsResizeEventSubscription0:Subscription
+        wordsResizeEventSubscription1:Subscription  
+        wordsClickEvent$:Observable<Event>        
+        wordsClickEventSubscription0:Subscription
+        //         
+
+
         //represnetaing each instance of the wordsComponent
         wordsMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
         wordsMyElementsArray: any[] = [];
@@ -544,7 +565,7 @@ export class WordsService {
                 {
                     override:'true',
                     css:{
-                        width:'0px',
+                        // width:'0px',
                         position:'relative',
                         'left':'3em',
                         'top':'0em'
@@ -556,7 +577,7 @@ export class WordsService {
                 {
                     override:'true',
                     css:{
-                        width:'0px',
+                        // width:'0px',
                         position:'relative',
                         'left':'3em',
                         'top':'0em'
@@ -568,7 +589,7 @@ export class WordsService {
                 {
                     override:'true',
                     css:{
-                        width:'0px',
+                        // width:'0px',
                         position:'relative',
                         'left':'3em',
                         'top':'0em'
@@ -808,7 +829,6 @@ export class WordsService {
     customWordWrapWordElements: Array<any> = ['H1','H2','H3','H4','H5','H6','P','A']
     customWordWrapReceive(   devObj:any   ):any{
         return (event:any)=>{
-            this.navigationLoadEventSubscription0.unsubscribe()      
             // console.log(event)
             // console.log(    devObj.totalElements    )
             // console.log('called')
@@ -819,7 +839,7 @@ export class WordsService {
                     if(    j === i.nativeElement.tagName   ){
     
 
-                        // console.log(   i.nativeElement.clientHeight,i.nativeElement.tagName
+                        // console.log(   i.nativeElement.clientHeight,i.nativeElement.tagName   )
                         this[devObj.HTMLWordElements.templateVar].parameters[devObj.HTMLWordElements.parameters].HTMLWordElements.push(   [i,window.getComputedStyle(i.nativeElement).getPropertyValue('font-size')]   )
                         // devObj.HTMLWordElements.push(   [j]   )
                         // console.log(    this[devObj.HTMLWordElements.templateVar].parameters[devObj.HTMLWordElements.parameters].HTMLWordElements   )
@@ -850,7 +870,7 @@ export class WordsService {
             if(   Math.round(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
 
 
-                console.log(   i[0].nativeElement.style.width   )
+                // console.log(   i[0].nativeElement.style.width   )
                 while(   Math.floor(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
                     // TEST i[0].nativeElement.style.width  must start with 0px
                     // console.log(    i[0].nativeElement.clientHeight/numberParse(i[1])   )
