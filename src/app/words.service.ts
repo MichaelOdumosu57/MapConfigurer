@@ -20,12 +20,13 @@ export class WordsService {
     /*overlay*/
         overlayVal:Array<string> = [
             'o_v_e_r_l_a_y_Board',
+            'o_v_e_r_l_a_y_AboutPreTitle',
             'o_v_e_r_l_a_y_Title',
             'o_v_e_r_l_a_y_BlendImg',
             'o_v_e_r_l_a_y_BlendWords'
         ]
-        overlayBool: Array<any> = ['true','true','true','true']
-        overlayStyle: Array<any> = [[3],[3],[3],[3,3]]
+        overlayBool: Array<any> = ['true','true','true','true','true']
+        overlayStyle: Array<any> = [[3],[3],[3],[3],[3,3]]
         // overlayCss:Array<any> = [['position:"static"'],['position:"static"']]
         overlayValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
         overlayStyleIndex:Array<any> = [0]
@@ -65,6 +66,9 @@ export class WordsService {
                     }
                 },
                 {
+
+                },
+                {
                     override:'true',
                     css:{
                         position:'absolute',
@@ -74,7 +78,17 @@ export class WordsService {
                         color:'white'
 
                     }
-                }                                                                 
+                },
+                ...Array.from(Array(3),()=> {
+                    return {
+                    override:'false',
+                    css:{
+                        // position:'absolute',
+                        // top:'72px',
+                        // left:'550px',
+                        // 'fontSize':'16px'
+                    }
+                }})                                                                                 
             ], 
             ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
             parameters:[    
@@ -108,6 +122,9 @@ export class WordsService {
                     }
                 },
                 {
+
+                },
+                {
                     override:'true',
                     css:{
                         position:'absolute',
@@ -117,7 +134,18 @@ export class WordsService {
                         color:'white'
 
                     }
-                }                                                                 
+                },
+                ...Array.from(Array(3),()=> {
+                    return {
+                    override:'false',
+                    css:{
+                        // position:'absolute',
+                        // top:'72px',
+                        // left:'550px',
+                        // 'fontSize':'16px'
+                    }
+                }})  
+                                                                                 
             ], 
             ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
             parameters:[    
@@ -151,6 +179,9 @@ export class WordsService {
                     }
                 },
                 {
+
+                },
+                {
                     override:'true',
                     css:{
                         position:'absolute',
@@ -162,7 +193,17 @@ export class WordsService {
                         color:'white'
 
                     }
-                }                                                                 
+                },
+                ...Array.from(Array(3),()=> {
+                    return {
+                    override:'false',
+                    css:{
+                        // position:'absolute',
+                        // top:'72px',
+                        // left:'550px',
+                        // 'fontSize':'16px'
+                    }
+                }})                                                                                  
             ], 
             ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
             parameters:[    
@@ -196,6 +237,9 @@ export class WordsService {
                         'z-index':-1,
                         // opacity:0
                     }
+                },
+                {
+
                 },
                 {
                     override:'true',
@@ -264,7 +308,94 @@ export class WordsService {
                 blendTitle:'ABOUT ME'
                 
             }
-        }                                
+        }      
+        overlayComponentObject4:any ={
+            styles:[
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:'0px',
+                        height:'150%',
+                        width:'100%',
+                        'z-index':-1
+                    }
+                },                
+                {
+                    override:'true',
+                    css:{
+                        position:'fixed',
+                        // height:'1000px',
+                        height:'100%',
+                        width:'100%',
+                        'z-index':-1
+                        // opacity:0
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        'font-family':"'Vidaloka',sans-serif",
+                        top:"170px",
+                        left:'45%',
+                        'font-size':'78px',
+                        'font-style':'italic',
+                        color:'white',
+                        'text-shadow':'rgba(0, 0, 0, 0.3) 2px -1px 0px' // so this property we allow because it doesnt make a meaningful difference if its not working
+                    }
+                },                 
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:"300px",
+                        left:'45%',
+                        'font-size':'141px',
+                        'font-family':"'Aclonica',sans-serif",
+                        'font-weight':'500',
+                        'text-align':'center',
+                        color:'white'
+
+                    }
+                },
+                {
+                    override:'false',
+                    css:{
+                        position:'absolute',
+                        'background-image':'url(assets/media/IMG-1475-12.png)',
+                        height:'500px',
+                        color:'white',
+                        'z-index':3
+                    }
+                },
+                {
+                    override:'false',
+                    css:{
+                    }
+                },
+                {
+                    override:'false',
+                    css:{
+                    }
+                }                                                                                                                                  
+            ], 
+            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
+            parameters:[    
+            ],
+            location:{
+                parameters:[]
+            },
+            metadata:{
+                title:'CHEF LIA',
+                cssAsync: new  Subject<any>(),
+                mainImg:'assets/media/IMG-1787.jpg',
+                blendTitle:'',
+                aboutPreTitle:'Cooking With'
+
+                
+            }
+        }                                       
         overlayComponentMonitor:any = {
         }
         //
@@ -859,13 +990,12 @@ export class WordsService {
             })            
         }
     }    
-    customWordWrap(devObj:any):void{
+    customWordWrap(   devObj:any   ):void{
         // console.log(   devObj   )
         // console.log(   this[devObj.HTMLWordElements.templateVar] )
         for(   let i of this[devObj.HTMLWordElements.templateVar].parameters[devObj.HTMLWordElements.parameters].HTMLWordElements  ){
             // console.log(   i[0],i[0].nativeElement.clientHeight,i[1], i[0].nativeElement.style.width    )
             
-
 
             if(   Math.round(   i[0].nativeElement.clientHeight/numberParse(i[1])   ) > 1   ){
 

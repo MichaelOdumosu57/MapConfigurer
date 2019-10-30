@@ -27,10 +27,24 @@ html{
 
 @font-face {
     font-family: "Big Shoulders-Medium";
-    src: url('assets/fonts/BigShoulders/BigShouldersDisplay-Medium.ttf') format('woff2')
+    src: url('assets/fonts/BigShoulders/BigShouldersDisplay-Medium.ttf') format('ttf')
+      
+}
+
+@font-face {
+    font-family: "Aclonica";
+    src: url('assets/fonts/AclonicaRegular.woff2') format('woff2')
+      
+}
+
+@font-face {
+    font-family: "Vidaloka";
+    src: url('assets/fonts/Vidaloka.woff2') format('woff2')
       
   }
   
+  
+
 
 #w_o_r_d_s_Title {
     border: 1px solid black;

@@ -83,13 +83,13 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
     
     ngOnInit() {
         this.wordsService.overlayMyElements.subscribe((arr)=>{
-
+            // console.log('fire')
             // dealing with  missing elements
 
             if(   this.wordsService[this.overlayTemplateVariable].styles.length >   arr[this.wordsService.overlayComponentMonitor[this.overlayTemplateVariable]].length   ){
 
 
-
+                // console.log('fire')
                 this.wordsService[this.overlayTemplateVariable].stylesCopy = this.wordsService[this.overlayTemplateVariable].styles.filter((a,i)=>{
 
 
@@ -297,30 +297,60 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         // console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )              
                     }
                 console.groupEnd()            
-            })            
-            this.wordsService[this.overlayTemplateVariable].location.parameters.push(
-                this.wordsService[this.overlayTemplateVariable].parameters.push({
-                    fn:'wordsService.customWordWrapReceive',
+            })    
+            
+            
+            if(   this.overlayTemplateVariable.slice(-1) !== '4'   ){
+
+
+                this.wordsService[this.overlayTemplateVariable].location.parameters.push(
+                    this.wordsService[this.overlayTemplateVariable].parameters.push({
+                        fn:'wordsService.customWordWrapReceive',
+                        totalElements:this.overlayTemplateVariable.slice(-1) !== '4' ? this.overlayMyElements._results : this.overlayMyElements._results.filter(a=>{
+                            
+                            
+                            if(   a.nativeElement.id !==   'o_v_e_r_l_a_y_Title' &&  a.nativeElement.id !==   'o_v_e_r_l_a_y_AboutPreTitle'   ){
+
+
+                                return true
+
+
+                            }
+                        
+                        
+                        }),
+                        HTMLWordElements:this.overlayCustomWordWrapElements
+                    }) - 1// for it returns the length of the array
+                )    
+                // console.log(   this.wordsService[this.overlayTemplateVariable].parameters   )
+                // debugger
+                this.wordsService.overlayLoadEventSubscription1 = this.wordsService.overlayLoadEvent$.subscribe(this.wordsService.customWordWrapReceive({
                     totalElements:this.overlayMyElements._results,
-                    HTMLWordElements:this.overlayCustomWordWrapElements
-                }) - 1// for it returns the length of the array
-            )    
-            this.wordsService.overlayLoadEventSubscription1 = this.wordsService.overlayLoadEvent$.subscribe(this.wordsService.customWordWrapReceive({
-                totalElements:this.overlayMyElements._results,
-                HTMLWordElements:{
-                                    parameters:this.wordsService[this.overlayTemplateVariable].location.parameters.slice(-1)[0],
-                                    templateVar:this.overlayTemplateVariable
-                                }
-            }))                    
+                    HTMLWordElements:{
+                                        parameters:this.wordsService[this.overlayTemplateVariable].location.parameters.slice(-1)[0],
+                                        templateVar:this.overlayTemplateVariable
+                                    }
+                }))
+            
+            
+            }                
         })
 
     }
 
     ngOnDestroy(){
         this.wordsService.overlayLoadEventSubscription0.unsubscribe()
-        this.wordsService.overlayLoadEventSubscription1.unsubscribe()
         this.wordsService.overlayResizeEventSubscription0.unsubscribe()
         this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.unsubscribe()
+
+        
+        if(   this.overlayTemplateVariable.slice(-1) !== '4'   ){
+
+
+            this.wordsService.overlayLoadEventSubscription1.unsubscribe()
+    
+    
+            }        
     }
 
 }
