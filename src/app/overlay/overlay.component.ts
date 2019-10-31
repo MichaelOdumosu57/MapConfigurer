@@ -1,7 +1,9 @@
 import { Component, OnInit,Input,ViewChildren,AfterViewInit,Inject, OnDestroy,ChangeDetectorRef,ChangeDetectionStrategy,AfterContentInit } from '@angular/core';
 import {   WordsService   } from '../words.service';
 import {   WINDOW   } from '../window.service';
-import {   fromEvent,interval, of,from   } from 'rxjs';
+import {   fromEvent,interval, of,from, Observable } from 'rxjs';
+
+// import { observe } from "rxjs-observe";
 
 function getStyle(   devObj:any   ){
     let location = null;
@@ -182,105 +184,8 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
         this.wordsService.overlayResizeEvent$ = fromEvent(this.window,'resize')
         this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.subscribe(()=>{    
             this.wordsService.overlayLoadEventSubscription0 = this.wordsService.overlayLoadEvent$.subscribe(()=>{        
-            // console.group('making title centering dynamic load event')          
-                // console.log(   this.overlayMyElements._results   )
-                // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle   )  
-                {  
-                    let z = {
-                        style:null,
-                        element:null
-                    };
-                    let za = {
-                        style:null,
-                        element:null
-                    };
-                    let zb = {
-                        style:null,
-                        element:null
-                    };  
-                    let zc = {
-                        style:null,
-                        element:null
-                    };                                        
-                    this.overlayMyElements._results.map((x:any,i:any)=>{
-
-
-                        if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
-
-
-                            let y = -1
-                            z.style = getStyle({
-                                lookStart:y,
-                                index:i,
-                                ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
-                            })
-                            z.element = x.nativeElement
-                            
-
-                        } 
-
-
-                        else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
-
-
-                            let y = -1
-                            za.style = getStyle({
-                                lookStart:y,
-                                index:i,
-                                ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
-                            }) 
-                            // console.log(za.style)
-                            za.element = x.nativeElement                            
-
-                            
-                        }
-
-
-                        else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutPreTitle'   ){
-    
-    
-                            let y = -1
-                            zb.style = getStyle({
-                                lookStart:y,
-                                index:i,
-                                ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
-                            }) 
-                            // console.log(za.style)
-                            zb.element = x.nativeElement                            
-
-                            
-                        }                            
-                    
-
-                        else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutMainLine'   ){
-    
-    
-                            let y = -1
-                            zc.style = getStyle({
-                                lookStart:y,
-                                index:i,
-                                ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
-                            }) 
-                            // console.log(zc.style)
-                            zc.element = x.nativeElement                            
-
-                            
-                        }     
-                        
-                        
-                    })   
-                    // console.log(   this.window.getComputedStyle(   z.element   ).width   )
-                    // console.log(   this.window.getComputedStyle(   za.element   ).width   )
-                    // console.log(   (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )  ) 
-                    this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )   ).toString() + "px"; 
-                    this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zb.element).width   )/2   )   ).toString() + "px"; 
-                    this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zc.element).width   )/2   )   ).toString() + "px";                     
-                    // debugger
-                    this.ref.detectChanges()
-                    // console.log(z)
-                    // console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )              
-                }
-            // console.groupEnd()
+            console.group('making title centering dynamic load event')          
+            console.groupEnd()
             })
             this.wordsService.overlayResizeEventSubscription0 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
                 console.group('making title centering dynamic resize event')          
@@ -298,90 +203,109 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         let zb = {
                             style:null,
                             element:null
-                        };    
+                        };  
                         let zc = {
                             style:null,
                             element:null
-                        };                                              
+                        };                                        
                         this.overlayMyElements._results.map((x:any,i:any)=>{
     
     
                             if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
     
     
-                                let y = -1
-                                z.style = getStyle({
-                                    lookStart:y,
-                                    index:i,
-                                    ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
-                                })
+                                // let y = -1
+                                z.style = i+ 1
+                                // getStyle({
+                                //     lookStart:y,
+                                //     index:i,
+                                //     ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
+                                // })
                                 z.element = x.nativeElement
-    
                                 
+    
                             } 
     
     
                             else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
     
     
-                                let y = -1
-                                za.style = getStyle({
-                                    lookStart:y,
-                                    index:i,
-                                    ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
-                                }) 
+                                // let y = -1
+                                za.style = i+1
+                                // getStyle({
+                                //     lookStart:y,
+                                //     index:i,
+                                //     ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
+                                // }) 
                                 // console.log(za.style)
                                 za.element = x.nativeElement                            
     
                                 
                             }
-
-
+    
+    
                             else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutPreTitle'   ){
-    
-    
-                                let y = -1
-                                zb.style = getStyle({
-                                    lookStart:y,
-                                    index:i,
-                                    ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
-                                }) 
+        
+        
+                                // let y = -1
+                                zb.style = i + 1 
+                                // getStyle({
+                                //     lookStart:y,
+                                //     index:i,
+                                //     ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
+                                // }) 
                                 // console.log(za.style)
                                 zb.element = x.nativeElement                            
     
                                 
                             }                            
+                        
     
-
                             else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutMainLine'   ){
-    
-    
-                                let y = -1
-                                zc.style = getStyle({
-                                    lookStart:y,
-                                    index:i,
-                                    ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
-                                }) 
-                                // console.log(za.style)
+        
+        
+                                // let y = -1
+                                zc.style = i + 1
+                                // getStyle({
+                                //     lookStart:y,
+                                //     index:i,
+                                //     ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
+                                // }) 
+                                // console.log(zc.style)
                                 zc.element = x.nativeElement                            
     
                                 
-                            }                                
-                        
+                            }     
+                            
+                            
                         })   
                         // console.log(   this.window.getComputedStyle(   z.element   ).width   )
                         // console.log(   this.window.getComputedStyle(   za.element   ).width   )
                         // console.log(   (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )  ) 
+                        // console.log(   numberParse(   this.window.getComputedStyle(zb.element).width   )   ,numberParse(   this.window.getComputedStyle(zc.element).width   ),numberParse(   this.window.getComputedStyle(z.element).width   )/2,this.window.document.querySelector('app-overlay').clientWidth    )
                         this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )   ).toString() + "px"; 
                         this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zb.element).width   )/2   )   ).toString() + "px"; 
-                        this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zc.element).width   )/2   )   ).toString() + "px"; 
+                        this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zc.element).width   )/2   )   ).toString() + "px";                     
+                        console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left,this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left   )
                         // debugger
                         this.ref.detectChanges()
                         // console.log(z)
                         // console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )              
                     }
-                console.groupEnd()            
+                console.groupEnd()           
             })    
+            try{
+                let event = new Event('resize')
+                this.window.dispatchEvent(event)        
+                this.window.dispatchEvent(event)                  
+            }
+
+            catch(e){
+                    let eventLegacyLoad = this.window.document.createEvent("Event");
+                    eventLegacyLoad.initEvent("resize", false, true);
+                    window.dispatchEvent(    eventLegacyLoad    ) 
+                    window.dispatchEvent(    eventLegacyLoad    )                  
+            }
             
             
             if(   this.overlayTemplateVariable.slice(-1) !== '4'   ){

@@ -7,43 +7,133 @@ html{
     text-size-adjust:100%
 }
 
-@font-face {
+/* @font-face {
     font-family: "Abril Fatface";
     src: url('assets/fonts/AbrilFatface.woff2') format('woff2')
       
+  } */
+
+
+  @font-face {
+    font-family: 'Abril Fatface';
+    font-style: normal;
+    /* font-weight: 400; */
+    src: url('assets/fonts/abril-fatface-v11-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Abril Fatface'), local('AbrilFatface-Regular'),
+         url('assets/fonts/abril-fatface-v11-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('assets/fonts/abril-fatface-v11-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('assets/fonts/abril-fatface-v11-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('assets/fonts/abril-fatface-v11-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('assets/fonts/abril-fatface-v11-latin-regular.svg#AbrilFatface') format('svg'); /* Legacy iOS */
   }
 
-@font-face {
+
+/* @font-face {
     font-family: "Charmonman";
     src: url('assets/fonts/Charmonman.woff2') format('woff2')
       
-  }
+  } */
 
+/* charmonman-regular - latin */
 @font-face {
+    font-family: 'Charmonman';
+    font-style: normal;
+    /* font-weight: 400; */
+    src: url('assets/fonts/charmonman-v3-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Charmonman Regular'), local('Charmonman-Regular'),
+         url('assets/fonts/charmonman-v3-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('assets/fonts/charmonman-v3-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('assets/fonts/charmonman-v3-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('assets/fonts/charmonman-v3-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('assets/fonts/charmonman-v3-latin-regular.svg#Charmonman') format('svg'); /* Legacy iOS */
+  }
+  
+
+/* @font-face {
   font-family: "Noto Sans";
   src: url('assets/fonts/noto_sans.woff2') format('woff2')
     
-}
+} */
 
+
+/* noto-sans-regular - latin */
 @font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    /* font-weight: 400; */
+    src: url('assets/fonts/noto-sans-v9-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Noto Sans'), local('NotoSans'),
+         url('assets/fonts/noto-sans-v9-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('assets/fonts/noto-sans-v9-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('assets/fonts/noto-sans-v9-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('assets/fonts/noto-sans-v9-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('assets/fonts/noto-sans-v9-latin-regular.svg#NotoSans') format('svg'); /* Legacy iOS */
+  }
+  
+
+/* @font-face {
     font-family: "Big Shoulders-Medium";
     src: url('assets/fonts/BigShoulders/BigShouldersDisplay-Medium.ttf') format('ttf')
       
-}
+} */
 
+/* big-shoulders-display-regular - latin */
 @font-face {
+    font-family: 'Big Shoulders Display';
+    font-style: normal;
+    /* font-weight: 400; */
+    src: url('assets/fonts/big-shoulders-display-v1-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Big Shoulders Display Regular'), local('BigShouldersDisplay-Regular'),
+         url('assets/fonts/big-shoulders-display-v1-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('assets/fonts/big-shoulders-display-v1-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('assets/fonts/big-shoulders-display-v1-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('assets/fonts/big-shoulders-display-v1-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('assets/fonts/big-shoulders-display-v1-latin-regular.svg#BigShouldersDisplay') format('svg'); /* Legacy iOS */
+  }
+  
+
+/* @font-face {
     font-family: "Aclonica";
     src: url('assets/fonts/AclonicaRegular.woff2') format('woff2')
       
-}
+} */
 
+/* aclonica-regular - latin */
 @font-face {
+    font-family: 'Aclonica';
+    font-style: normal;
+    /* font-weight: 400; */
+    src: url('assets/fonts/aclonica-v10-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Aclonica Regular'), local('Aclonica-Regular'),
+         url('assets/fonts/aclonica-v10-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('assets/fonts/aclonica-v10-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('assets/fonts/aclonica-v10-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('assets/fonts/aclonica-v10-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('assets/fonts/aclonica-v10-latin-regular.svg#Aclonica') format('svg'); /* Legacy iOS */
+  }
+  
+
+/* @font-face {
     font-family: "Vidaloka";
     src: url('assets/fonts/Vidaloka.woff2') format('woff2')
       
-  }
+  } */
   
   
+ /* vidaloka-regular - latin */
+@font-face {
+  font-family: 'Vidaloka';
+  font-style: normal;
+  /* font-weight: 400; */
+  src: url('assets/fonts/vidaloka-v12-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Vidaloka '), local('Vidaloka-Regular'),
+       url('assets/fonts/vidaloka-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('assets/fonts/vidaloka-v12-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('assets/fonts/vidaloka-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('assets/fonts/vidaloka-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('assets/fonts/vidaloka-v12-latin-regular.svg#Vidaloka') format('svg'); /* Legacy iOS */
+}
+ 
 
 
 #w_o_r_d_s_Title {
@@ -92,10 +182,12 @@ html{
 
 
 /* overlay */
+
+
 #o_v_e_r_l_a_y_Board{
     border:1px solid black;
     /* height: 270px; */
-    /* width: 309px; */
+    /* width: 100%; */
     /* background: no-repeat center  url('src/assets/media/IMG-1788-1.jpg'); */
     /* background-size: 100%; */
 }

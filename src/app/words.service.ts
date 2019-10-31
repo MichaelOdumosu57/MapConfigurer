@@ -336,7 +336,7 @@ export class WordsService {
                         position:'fixed',
                         // height:'1000px',
                         height:'140%',
-                        width:'100%',
+                        // width:'100%',
                         'z-index':-1
                         // opacity:0
                     }
