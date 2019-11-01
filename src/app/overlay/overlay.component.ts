@@ -202,7 +202,12 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 } 
                 
                 
-            })                               
+            }) 
+            this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth = getTextWidth({
+                elementText:z.element.innerText,
+                font:this.window.getComputedStyle(   z.element ).getPropertyValue('font-size') + " Vidaloka"
+            }) +55
+            // console.log(   this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth   )                                       
 
             
             if(   this.overlayTemplateVariable.slice(-1) !== '4'   ){
@@ -243,10 +248,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
             
             if(   this.overlayTemplateVariable.slice(-1) === '4'   ){
 
-                
-                this.wordsService.overlayResizeEventSubscription2 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
-                    this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth = numberParse(   window.getComputedStyle(   z.element   ).width   ) + 55                      
-                })
+
                 this.wordsService.overlayResizeEventSubscription1 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
                     console.group('decreasing preTitle size')
                         {  
@@ -294,19 +296,33 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             })   
                             // console.log(   z.element.clientHeight , numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   )
                             console.table({
+                                'pretitle client height':z.element.clientHeight ,
                                 'preTitle font size':window.getComputedStyle(z.element).getPropertyValue('font-size'),
                                 'preTitle width':numberParse(   window.getComputedStyle(z.element).getPropertyValue('width')   ), 
                                 'overlay img width':numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ), 
-                                'overlay resize standard':this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth  
+                                'overlay resize standard':this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth ,
+                                'website Ready':this.wordsService[this.overlayTemplateVariable].metadata.websiteReady
                             })   
     
     
-                            if(   (   Math.floor(   z.element.clientHeight / numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   ) > 1   ) ||
-                                numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) < this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth    
+                            if(   
+                                (
+                                    (   Math.floor(   z.element.clientHeight / numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   ) > 1   ) 
+                                    ||
+                                    numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) < this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth
+                                )    
+                                ||
+                                this.wordsService[this.overlayTemplateVariable].metadata.websiteReady === 'true'
                             ){
                                 
-                                
-                                this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = (   numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   ) -1   ).toString() + "px"
+
+                                console.log('rezise preTitle')
+                                this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = 
+                                    numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   ) *
+                                        (   (   numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) /
+                                        this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth   )   -.2)
+                                this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] > 78 ? 
+                                            "78px":this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'].toString() + "px"
                                 this.ref.detectChanges()
                                 console.log(    z.element,z.element.clientHeight, window.getComputedStyle(z.element).getPropertyValue('font-size')   )
     
@@ -434,14 +450,31 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
             overlayTakeRxjs0.subscribe(()=>{
                 try{
                     let event = new Event('resize')
-                    this.window.dispatchEvent(event)        
-                    this.window.dispatchEvent(event) 
+                    this.window.dispatchEvent(event)   
                     
                     
                     if(   this.overlayTemplateVariable.slice(-1) === '4'   ){
 
 
-                        this.wordsService.overlayResizeEventSubscription2.unsubscribe()
+                        if(   Math.floor(   z.element.clientHeight / numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   ) > 1   ){
+
+
+                            this.wordsService[this.overlayTemplateVariable].metadata.websiteReady = 'true'
+
+
+                        }
+
+
+                    }                    
+
+
+                    this.window.dispatchEvent(event) 
+
+
+                    if(   this.overlayTemplateVariable.slice(-1) === '4'   ){
+
+
+                        this.wordsService[this.overlayTemplateVariable].metadata.websiteReady = 'true'
 
 
                     }

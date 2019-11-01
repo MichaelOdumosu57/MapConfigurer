@@ -18,7 +18,7 @@ describe('OverlayComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(OverlayComponent);
     component = fixture.componentInstance;
-    component.overlayTemplateVariable = 'overlayComponentObject3';
+    component.overlayTemplateVariable = 'overlayComponentObject4';
     fixture.detectChanges();
   });
 
@@ -32,6 +32,7 @@ describe('OverlayComponent', () => {
                 return  {nativeElement:elem} 
             }) 
         ])        
+        component.ngOnInit()
         // console.log(   component.access().overlayMyElementsArray   )
         // console.log(   component.access()[component.overlayTemplateVariable].styles.length   )
         expect(   component.access().overlayMyElementsArray[0].length   ).toBeLessThanOrEqual(  component.access()[component.overlayTemplateVariable].styles.length   )

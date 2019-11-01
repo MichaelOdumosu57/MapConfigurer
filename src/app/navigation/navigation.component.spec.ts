@@ -35,11 +35,11 @@ describe('NavigationComponent', () => {
         jasmine.clock().uninstall();
     });
   
-    it('should create', () => {
+    xit('should create', () => {
         expect(component).toBeTruthy();
     });
 
-    it(   'should be known  by the dev that len of elements should not be greater than the len of styles',()=>{
+    xit(   'should be known  by the dev that len of elements should not be greater than the len of styles',()=>{
         console.group('should be known  by the dev that len of elements should not be greater than the len of styles')
         component.navigationTemplateVariable = 'navigationComponentObject0';
         component.access().navigationMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
@@ -63,14 +63,6 @@ describe('NavigationComponent', () => {
         var loadEvent = new Event('load')
         component.accessWindow().dispatchEvent(   loadEvent   )
 
-        // component.access().customWordWrapReceive({
-        //     totalElements:component.navigationMyElements._results,
-        //     HTMLWordElements:{
-        //                         parameters:0,
-        //                         templateVar:component.navigationTemplateVariable 
-        //                     }
-        // })        
-        // jasmine.clock().tick(10000000000000);
         // console.log(   component.access()[component.navigationTemplateVariable]   )
         // console.log(   component.navigationCustomWordWrapElements   )
         // console.log(   component.access()[component.navigationTemplateVariable]    )
