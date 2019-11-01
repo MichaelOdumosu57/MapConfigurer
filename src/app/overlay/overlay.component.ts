@@ -299,10 +299,19 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             style:null,
                             element:null
                         };     
-                        let zb = {
+                        let za = {
                             style:null,
                             element:null
-                        };                                                                 
+                        };     
+                        let zObj = {
+                            *generator () {
+                                yield z
+                                yield z
+                                yield za
+                                yield za
+                            }
+                        }    
+                        let zGen =  zObj                                             
                         this.overlayMyElements._results.map((x:any,i:any)=>{
                            
 
@@ -317,12 +326,28 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             } 
     
 
+                            if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
+    
+    
+                                za.style = i+ 1
+                                za.element = x.nativeElement
+                                
+    
+                            } 
+                            
+                            
                         })   
                         // console.log(   z.element.clientHeight , numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   )
-                        console.log(   numberParse(   window.getComputedStyle(z.element).getPropertyValue('width')   )   )   
+                        console.log(   
+                            window.getComputedStyle(z.element).getPropertyValue('font-size'),
+                            numberParse(   window.getComputedStyle(z.element).getPropertyValue('width')   ), 
+                            numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ), 
+                        )   
 
 
-                        if(   (   Math.floor(   z.element.clientHeight / numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   ) > 1   )  ){
+                        if(   (   Math.floor(   z.element.clientHeight / numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   ) > 1   ) ||
+                            numberParse(   window.getComputedStyle(z.element).getPropertyValue('width')   ) + 55 > numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) 
+                        ){
                             
                             
                             this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = (   numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   ) -1   ).toString() + "px"

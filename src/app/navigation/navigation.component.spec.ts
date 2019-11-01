@@ -52,8 +52,8 @@ describe('NavigationComponent', () => {
         console.groupEnd()
     })    
 
-    it('should get this.navigationCustomWordWrapElements ', () => {
-
+    xit('should get this.navigationCustomWordWrapElements ', () => {
+        //dont need this
     console.group(   'should get this.navigationCustomWordWrapElements '   )
         // component.ngAfterViewInit()
         // expect(component.access().customWordWrapReceive).toHaveBeenCalled()
@@ -84,7 +84,8 @@ describe('NavigationComponent', () => {
     console.groupEnd()
     });
 
-    it('should have all widths availble from element.style starting at 0px if the clienthHeight is greater than the font-size by a factor of 2',()=>{
+    xit('should have all widths availble from element.style starting at 0px if the clienthHeight is greater than the font-size by a factor of 2',()=>{
+        //dont need
         component.access().navigationMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
                 return  {nativeElement:elem} 
             }) 

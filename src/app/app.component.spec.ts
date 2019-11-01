@@ -58,7 +58,7 @@ describe('AppComponent', () => {
                       break;
                     case 'w_o_r_d_s_Title':
                       // code block
-                      console.log('w_o_r_d_s_Titl')
+                      console.log('w_o_r_d_s_Title')
                       break;
                     case 'w_o_r_d_s_Line':
                       // code block
