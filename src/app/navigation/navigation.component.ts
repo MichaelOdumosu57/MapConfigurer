@@ -157,7 +157,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             
             else if(   this.wordsService[this.navigationTemplateVariable].styles.length  ===  arr[this.navigationTemplateVariable.slice(-1)].length   ){
                 
-                
+                // console.log('fire')
                 this.wordsService[this.navigationTemplateVariable].stylesCopy = this.wordsService[this.navigationTemplateVariable].styles
 
 
@@ -174,11 +174,9 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
 
                     for(   var prop in  this.wordsService[this.navigationTemplateVariable].stylesCopy[index].css   ){
-                        
+                        // console.log(    arr[this.navigationTemplateVariable.slice(-1)][index] )
                         // console.log(   arr[this.navigationTemplateVariable.slice(-1)][index].nativeElement   )
                         arr[this.navigationTemplateVariable.slice(-1)][index].nativeElement.style[prop] = this.wordsService[this.navigationTemplateVariable].stylesCopy[index].css[prop]
-                       
-                        
                     }
 
                                 
@@ -196,13 +194,13 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         // grabbing 'HTMLWordElements'
 
         this.wordsService.navigationLoadEvent0 = fromEvent(this.window ,'load');
-        this.wordsService[this.navigationTemplateVariable].location.parameters.push(
-            this.wordsService[this.navigationTemplateVariable].parameters.push({
-                fn:'wordsService.customWordWrapReceive',
-                totalElements:this.navigationMyElements._results,
-                HTMLWordElements:this.navigationCustomWordWrapElements
-            }) - 1// for it returns the length of the array
-        )
+        // this.wordsService[this.navigationTemplateVariable].location.parameters.push(
+        //     this.wordsService[this.navigationTemplateVariable].parameters.push({
+        //         fn:'wordsService.customWordWrapReceive',
+        //         totalElements:this.navigationMyElements._results,
+        //         HTMLWordElements:this.navigationCustomWordWrapElements
+        //     }) - 1// for it returns the length of the array
+        // )
         // this.wordsService.navigationLoadEventSubscription0 = this.wordsService.navigationLoadEvent0.subscribe(this.wordsService.customWordWrapReceive({
         //     totalElements:this.navigationMyElements._results,
         //     HTMLWordElements:{
@@ -240,7 +238,8 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
             
             if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
-                // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
+                
+                
                 // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
                 this.navigationBool[12] = 'true'
                 this.ref.detectChanges();

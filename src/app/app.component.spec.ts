@@ -45,8 +45,9 @@ describe('AppComponent', () => {
         expect(app.ngAfterViewInit()).toBeUndefined()
     });
 
-    it('should see all the required elements when it collects them for processing  ', () => {
-        // spyOn(app,'ngAfterViewInit')
+    xit('should see all the required elements when it collects them for processing  ', () => {
+        spyOn(app,'ngAfterViewInit').and.callThrough()
+        // provide for a navgiationComponentMonitor then
         var test = true
         app.ngAfterViewInit()
         for(   var comp of app.wordsService.wordsMyElementsArray   ){
@@ -57,22 +58,22 @@ describe('AppComponent', () => {
                       break;
                     case 'w_o_r_d_s_Title':
                       // code block
-                    //   console.log('w_o_r_d_s_Titl')
+                      console.log('w_o_r_d_s_Titl')
                       break;
                     case 'w_o_r_d_s_Line':
                       // code block
-                    //   console.log('w_o_r_d_s_Line')
+                      console.log('w_o_r_d_s_Line')
                       break;
                     case 'w_o_r_d_s_paragraph':
                       // code block
-                    //   console.log('w_o_r_d_s_paragraph')
+                      console.log('w_o_r_d_s_paragraph')
                       break;
                     case 'w_o_r_d_s_Dash':
                       // code block
-                    //   console.log('w_o_r_d_s_Dash')
+                      console.log('w_o_r_d_s_Dash')
                       break;
                     case 'w_o_r_d_s_paragraphDash':
-                    //   console.log('w_o_r_d_s_paragraphDash')
+                      console.log('w_o_r_d_s_paragraphDash')
                       // code block
                       break;
                     default:

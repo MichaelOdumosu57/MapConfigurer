@@ -2,6 +2,7 @@ import { Component, OnInit,Input,ViewChildren,AfterViewInit,Inject, OnDestroy,Ch
 import {   WordsService   } from '../words.service';
 import {   WINDOW   } from '../window.service';
 import {   fromEvent,interval, of,from, Observable } from 'rxjs';
+import {   catchError   } from 'rxjs/operators'
 
 // import { observe } from "rxjs-observe";
 
@@ -72,6 +73,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
     overlayBoolIndex:Array<any> = this.wordsService.overlayBoolIndex   
 
     overlayCustomWordWrapElements:Array<any> = this.wordsService.overlayCustomWordWrapElements 
+    
 
 
     access(){
@@ -172,8 +174,8 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
     
     
             }
-            console.log(   this.wordsService[this.overlayTemplateVariable]   )  
-            console.log(    this.overlayMyElements._results[6]   )             
+            // console.log(   this.wordsService[this.overlayTemplateVariable]   )  
+            // console.log(    this.overlayMyElements._results[6]   )             
             this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.next(1)
         })           
     }
@@ -183,12 +185,8 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
         this.wordsService.overlayLoadEvent$ = fromEvent(this.window,'load')
         this.wordsService.overlayResizeEvent$ = fromEvent(this.window,'resize')
         this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.subscribe(()=>{    
-            this.wordsService.overlayLoadEventSubscription0 = this.wordsService.overlayLoadEvent$.subscribe(()=>{        
-            console.group('making title centering dynamic load event')          
-            console.groupEnd()
-            })
             this.wordsService.overlayResizeEventSubscription0 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
-                console.group('making title centering dynamic resize event')          
+                // console.group('making title centering dynamic resize event')          
                     // console.log(   this.overlayMyElements._results   )
                     // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle   )  
                     {  
@@ -286,26 +284,69 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )   ).toString() + "px"; 
                         this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zb.element).width   )/2   )   ).toString() + "px"; 
                         this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zc.element).width   )/2   )   ).toString() + "px";                     
-                        console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left,this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left   )
+                        // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left,this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left   )
                         // debugger
                         this.ref.detectChanges()
                         // console.log(z)
                         // console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )              
+                    }
+                // console.groupEnd()           
+            })              
+            this.wordsService.overlayResizeEventSubscription1 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
+                console.group('decreasing preTitle size')
+                    {  
+                        let z = {
+                            style:null,
+                            element:null
+                        };     
+                        let zb = {
+                            style:null,
+                            element:null
+                        };                                                                 
+                        this.overlayMyElements._results.map((x:any,i:any)=>{
+                           
+
+    
+                            if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutPreTitle'   ){
+    
+    
+                                z.style = i+ 1
+                                z.element = x.nativeElement
+                                
+    
+                            } 
+    
+
+                        })   
+                        // console.log(   z.element.clientHeight , numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   )
+                        console.log(   numberParse(   window.getComputedStyle(z.element).getPropertyValue('width')   )   )   
+
+
+                        if(   (   Math.floor(   z.element.clientHeight / numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   ) > 1   )  ){
+                            
+                            
+                            this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = (   numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   ) -1   ).toString() + "px"
+                            this.ref.detectChanges()
+                            console.log(    z.element,z.element.clientHeight, window.getComputedStyle(z.element).getPropertyValue('font-size')   )
+
+
+                        }   
+                        
+                        
                     }
                 console.groupEnd()           
             })    
             try{
                 let event = new Event('resize')
                 this.window.dispatchEvent(event)        
-                this.window.dispatchEvent(event)                  
+                this.window.dispatchEvent(event)                   
             }
-
             catch(e){
-                    let eventLegacyLoad = this.window.document.createEvent("Event");
-                    eventLegacyLoad.initEvent("resize", false, true);
-                    window.dispatchEvent(    eventLegacyLoad    ) 
-                    window.dispatchEvent(    eventLegacyLoad    )                  
-            }
+                let eventLegacyLoad = this.window.document.createEvent("Event");
+                eventLegacyLoad.initEvent("resize", false, true);
+                this.window.dispatchEvent(    eventLegacyLoad    ) 
+                this.window.dispatchEvent(    eventLegacyLoad    )      
+            }  
             
             
             if(   this.overlayTemplateVariable.slice(-1) !== '4'   ){
@@ -341,14 +382,16 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 }))
             
             
-            }                
+            }     
+            
+            
         })
 
     }
 
     ngOnDestroy(){
-        this.wordsService.overlayLoadEventSubscription0.unsubscribe()
         this.wordsService.overlayResizeEventSubscription0.unsubscribe()
+        this.wordsService.overlayResizeEventSubscription1.unsubscribe() 
         this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.unsubscribe()
 
         
