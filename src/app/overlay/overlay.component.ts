@@ -2,7 +2,7 @@ import { Component, OnInit,Input,ViewChildren,AfterViewInit,Inject, OnDestroy,Ch
 import {   WordsService   } from '../words.service';
 import {   WINDOW   } from '../window.service';
 import {   fromEvent,interval, of,from, Observable } from 'rxjs';
-import {   catchError   } from 'rxjs/operators'
+import {   catchError,take,timeout   } from 'rxjs/operators'
 
 // import { observe } from "rxjs-observe";
 
@@ -185,8 +185,145 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
         this.wordsService.overlayLoadEvent$ = fromEvent(this.window,'load')
         this.wordsService.overlayResizeEvent$ = fromEvent(this.window,'resize')
         this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.subscribe(()=>{    
+            let z = {
+                style:null,
+                element:null
+            };             
+            this.overlayMyElements._results.map((x:any,i:any)=>{
+                            
+
+                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutPreTitle'   ){
+
+
+                    z.style = i+ 1
+                    z.element = x.nativeElement
+                    
+
+                } 
+                
+                
+            })                               
+
+            
+            if(   this.overlayTemplateVariable.slice(-1) !== '4'   ){
+
+
+                this.wordsService[this.overlayTemplateVariable].location.parameters.push(
+                    this.wordsService[this.overlayTemplateVariable].parameters.push({
+                        fn:'wordsService.customWordWrapReceive',
+                        totalElements:this.overlayTemplateVariable.slice(-1) !== '4' ? this.overlayMyElements._results : this.overlayMyElements._results.filter(a=>{
+                            
+                            
+                            if(   a.nativeElement.id !==   'o_v_e_r_l_a_y_Title' &&  a.nativeElement.id !==   'o_v_e_r_l_a_y_AboutPreTitle'   ){
+
+
+                                return true
+
+
+                            }
+                        
+                        
+                        }),
+                        HTMLWordElements:this.overlayCustomWordWrapElements
+                    }) - 1// for it returns the length of the array
+                )    
+                // console.log(   this.wordsService[this.overlayTemplateVariable].parameters   )
+                // debugger
+                this.wordsService.overlayLoadEventSubscription1 = this.wordsService.overlayLoadEvent$.subscribe(this.wordsService.customWordWrapReceive({
+                    totalElements:this.overlayMyElements._results,
+                    HTMLWordElements:{
+                                        parameters:this.wordsService[this.overlayTemplateVariable].location.parameters.slice(-1)[0],
+                                        templateVar:this.overlayTemplateVariable
+                                    }
+                }))                 
+            
+            
+            }     
+            
+            
+            if(   this.overlayTemplateVariable.slice(-1) === '4'   ){
+
+                
+                this.wordsService.overlayResizeEventSubscription2 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
+                    this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth = numberParse(   window.getComputedStyle(   z.element   ).width   ) + 55                      
+                })
+                this.wordsService.overlayResizeEventSubscription1 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
+                    console.group('decreasing preTitle size')
+                        {  
+                            let z = {
+                                style:null,
+                                element:null
+                            };     
+                            let za = {
+                                style:null,
+                                element:null
+                            };     
+                            let zObj = {
+                                *generator () {
+                                    yield z
+                                    yield z
+                                    yield za
+                                    yield za
+                                }
+                            }    
+                            let zGen =  zObj                                             
+                            this.overlayMyElements._results.map((x:any,i:any)=>{
+                               
+    
+        
+                                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutPreTitle'   ){
+        
+        
+                                    z.style = i+ 1
+                                    z.element = x.nativeElement
+                                    
+        
+                                } 
+        
+    
+                                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
+        
+        
+                                    za.style = i+ 1
+                                    za.element = x.nativeElement
+                                    
+        
+                                } 
+                                
+                                
+                            })   
+                            // console.log(   z.element.clientHeight , numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   )
+                            console.table({
+                                'preTitle font size':window.getComputedStyle(z.element).getPropertyValue('font-size'),
+                                'preTitle width':numberParse(   window.getComputedStyle(z.element).getPropertyValue('width')   ), 
+                                'overlay img width':numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ), 
+                                'overlay resize standard':this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth  
+                            })   
+    
+    
+                            if(   (   Math.floor(   z.element.clientHeight / numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   ) > 1   ) ||
+                                numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) < this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth    
+                            ){
+                                
+                                
+                                this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = (   numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   ) -1   ).toString() + "px"
+                                this.ref.detectChanges()
+                                console.log(    z.element,z.element.clientHeight, window.getComputedStyle(z.element).getPropertyValue('font-size')   )
+    
+    
+                            }   
+                            
+                            
+                        }
+                    console.groupEnd()           
+                }) 
+                
+                
+            }
+
+
             this.wordsService.overlayResizeEventSubscription0 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
-                // console.group('making title centering dynamic resize event')          
+                console.group('making title centering dynamic resize event')          
                     // console.log(   this.overlayMyElements._results   )
                     // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle   )  
                     {  
@@ -290,133 +427,40 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         // console.log(z)
                         // console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )              
                     }
-                // console.groupEnd()           
-            })              
-            this.wordsService.overlayResizeEventSubscription1 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
-                console.group('decreasing preTitle size')
-                    {  
-                        let z = {
-                            style:null,
-                            element:null
-                        };     
-                        let za = {
-                            style:null,
-                            element:null
-                        };     
-                        let zObj = {
-                            *generator () {
-                                yield z
-                                yield z
-                                yield za
-                                yield za
-                            }
-                        }    
-                        let zGen =  zObj                                             
-                        this.overlayMyElements._results.map((x:any,i:any)=>{
-                           
-
-    
-                            if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutPreTitle'   ){
-    
-    
-                                z.style = i+ 1
-                                z.element = x.nativeElement
-                                
-    
-                            } 
-    
-
-                            if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
-    
-    
-                                za.style = i+ 1
-                                za.element = x.nativeElement
-                                
-    
-                            } 
-                            
-                            
-                        })   
-                        // console.log(   z.element.clientHeight , numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   )
-                        console.log(   
-                            window.getComputedStyle(z.element).getPropertyValue('font-size'),
-                            numberParse(   window.getComputedStyle(z.element).getPropertyValue('width')   ), 
-                            numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ), 
-                        )   
-
-
-                        if(   (   Math.floor(   z.element.clientHeight / numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   ) > 1   ) ||
-                            numberParse(   window.getComputedStyle(z.element).getPropertyValue('width')   ) + 55 > numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) 
-                        ){
-                            
-                            
-                            this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = (   numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   ) -1   ).toString() + "px"
-                            this.ref.detectChanges()
-                            console.log(    z.element,z.element.clientHeight, window.getComputedStyle(z.element).getPropertyValue('font-size')   )
-
-
-                        }   
-                        
-                        
-                    }
                 console.groupEnd()           
-            })    
-            try{
-                let event = new Event('resize')
-                this.window.dispatchEvent(event)        
-                this.window.dispatchEvent(event)                   
-            }
-            catch(e){
-                let eventLegacyLoad = this.window.document.createEvent("Event");
-                eventLegacyLoad.initEvent("resize", false, true);
-                this.window.dispatchEvent(    eventLegacyLoad    ) 
-                this.window.dispatchEvent(    eventLegacyLoad    )      
-            }  
-            
-            
-            if(   this.overlayTemplateVariable.slice(-1) !== '4'   ){
+            })             
+            let overlayIntervalRxjs0 = interval(10)
+            let overlayTakeRxjs0 =  overlayIntervalRxjs0.pipe(take(1))     
+            overlayTakeRxjs0.subscribe(()=>{
+                try{
+                    let event = new Event('resize')
+                    this.window.dispatchEvent(event)        
+                    this.window.dispatchEvent(event) 
+                    
+                    
+                    if(   this.overlayTemplateVariable.slice(-1) === '4'   ){
 
 
-                this.wordsService[this.overlayTemplateVariable].location.parameters.push(
-                    this.wordsService[this.overlayTemplateVariable].parameters.push({
-                        fn:'wordsService.customWordWrapReceive',
-                        totalElements:this.overlayTemplateVariable.slice(-1) !== '4' ? this.overlayMyElements._results : this.overlayMyElements._results.filter(a=>{
-                            
-                            
-                            if(   a.nativeElement.id !==   'o_v_e_r_l_a_y_Title' &&  a.nativeElement.id !==   'o_v_e_r_l_a_y_AboutPreTitle'   ){
+                        this.wordsService.overlayResizeEventSubscription2.unsubscribe()
 
 
-                                return true
+                    }
 
 
-                            }
-                        
-                        
-                        }),
-                        HTMLWordElements:this.overlayCustomWordWrapElements
-                    }) - 1// for it returns the length of the array
-                )    
-                // console.log(   this.wordsService[this.overlayTemplateVariable].parameters   )
-                // debugger
-                this.wordsService.overlayLoadEventSubscription1 = this.wordsService.overlayLoadEvent$.subscribe(this.wordsService.customWordWrapReceive({
-                    totalElements:this.overlayMyElements._results,
-                    HTMLWordElements:{
-                                        parameters:this.wordsService[this.overlayTemplateVariable].location.parameters.slice(-1)[0],
-                                        templateVar:this.overlayTemplateVariable
-                                    }
-                }))
-            
-            
-            }     
-            
-            
+                }
+                catch(e){
+                    let eventLegacyLoad = this.window.document.createEvent("Event");
+                    eventLegacyLoad.initEvent("resize", false, true);
+                    this.window.dispatchEvent(    eventLegacyLoad    ) 
+                    this.window.dispatchEvent(    eventLegacyLoad    )      
+                }  
+            })              
         })
 
     }
 
     ngOnDestroy(){
         this.wordsService.overlayResizeEventSubscription0.unsubscribe()
-        this.wordsService.overlayResizeEventSubscription1.unsubscribe() 
         this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.unsubscribe()
 
         
@@ -424,6 +468,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             this.wordsService.overlayLoadEventSubscription1.unsubscribe()
+            this.wordsService.overlayResizeEventSubscription1.unsubscribe() 
     
     
         }

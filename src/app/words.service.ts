@@ -18,6 +18,12 @@ export class WordsService {
     constructor() { };
     
     /*overlay*/
+
+        // OverlayComponent concept metadata
+        overlayCustomWordWrapElements:Array<any>  = []
+        overlayAboutPreTitleDefaultFontSize = '78px'
+        //
+
         overlayVal:Array<string> = [
             'o_v_e_r_l_a_y_Board',
             'o_v_e_r_l_a_y_AboutPreTitle',
@@ -39,7 +45,8 @@ export class WordsService {
         overlayLoadEventSubscription1:Subscription 
         overlayResizeEvent$:Observable<Event>
         overlayResizeEventSubscription0:Subscription
-        overlayResizeEventSubscription1:Subscription  
+        overlayResizeEventSubscription1:Subscription
+        overlayResizeEventSubscription2:Subscription
         overlayClickEvent$:Observable<Event>        
         overlayClickEventSubscription0:Subscription
         //         
@@ -348,7 +355,7 @@ export class WordsService {
                         'font-family':"'Vidaloka',sans-serif",
                         top:"170px",
                         left:'45%',
-                        'font-size':'78px',
+                        'font-size': this.overlayAboutPreTitleDefaultFontSize,
                         'font-style':'italic',
                         'text-align':'center',
                         color:'white',
@@ -413,17 +420,14 @@ export class WordsService {
                 cssAsync: new  Subject<any>(),
                 mainImg:'assets/media/IMG-1787.jpg',
                 blendTitle:'',
-                aboutPreTitle:'Cooking With'
-
+                aboutPreTitle:'Cooking With',
+                aboutPreTitleDefaultFontSize:this.overlayAboutPreTitleDefaultFontSize, // i hope this okay its from the same words service,
+                aboutBoardDefaultWidth:null
                 
             }
         }                                       
         overlayComponentMonitor:any = {
         }
-        //
-
-        // OverlayComponent concept metadata
-        overlayCustomWordWrapElements:Array<any>  = []
         //
         
     /* */
