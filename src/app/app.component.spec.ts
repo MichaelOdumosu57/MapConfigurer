@@ -45,7 +45,7 @@ describe('AppComponent', () => {
         expect(app.ngAfterViewInit()).toBeUndefined()
     });
 
-    xit('should see all the required elements when it collects them for processing  ', () => {
+    it('should see all the required elements when it collects them for processing  ', () => {
         spyOn(app,'ngAfterViewInit').and.callThrough()
         // provide for a navgiationComponentMonitor then
         var test = true

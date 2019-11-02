@@ -35,11 +35,11 @@ describe('NavigationComponent', () => {
         jasmine.clock().uninstall();
     });
   
-    xit('should create', () => {
+    it('should create', () => {
         expect(component).toBeTruthy();
     });
 
-    xit(   'should be known  by the dev that len of elements should not be greater than the len of styles',()=>{
+    it(   'should be known  by the dev that len of elements should not be greater than the len of styles',()=>{
         console.group('should be known  by the dev that len of elements should not be greater than the len of styles')
         component.navigationTemplateVariable = 'navigationComponentObject0';
         component.access().navigationMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
@@ -52,7 +52,7 @@ describe('NavigationComponent', () => {
         console.groupEnd()
     })    
 
-    xit('should get this.navigationCustomWordWrapElements ', () => {
+    it('should get this.navigationCustomWordWrapElements ', () => {
         //dont need this
     console.group(   'should get this.navigationCustomWordWrapElements '   )
         // component.ngAfterViewInit()
@@ -76,7 +76,7 @@ describe('NavigationComponent', () => {
     console.groupEnd()
     });
 
-    xit('should have all widths availble from element.style starting at 0px if the clienthHeight is greater than the font-size by a factor of 2',()=>{
+    it('should have all widths availble from element.style starting at 0px if the clienthHeight is greater than the font-size by a factor of 2',()=>{
         //dont need
         component.access().navigationMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
                 return  {nativeElement:elem} 

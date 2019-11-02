@@ -259,13 +259,19 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             let za = {
                                 style:null,
                                 element:null
-                            };     
+                            };  
+                            let zb = {
+                                style:null,
+                                element:null
+                            };                                 
                             let zObj = {
                                 *generator () {
                                     yield z
                                     yield z
                                     yield za
                                     yield za
+                                    yield zb
+                                    yield zb                                    
                                 }
                             }    
                             let zGen =  zObj                                             
@@ -292,6 +298,16 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
         
                                 } 
                                 
+
+                                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutMainLine'   ){
+        
+        
+                                    zb.style = i+ 1
+                                    zb.element = x.nativeElement
+                                    
+        
+                                }
+                                
                                 
                             })   
                             // console.log(   z.element.clientHeight , numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   )
@@ -313,13 +329,23 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             ){
                                 
 
-                                console.log('rezise preTitle')
+                                // console.log('rezise preTitle')
                                 this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = 
                                     numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   ) *
                                         (   (   numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) /
                                         this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth   )   - .12)
-                                this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] > 78 ? 
-                                            "78px":this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'].toString() + "px"            
+                                this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] > numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   )  ? 
+                                    this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   :
+                                    this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'].toString() + "px"    
+                                // console.log(   this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth   )
+                                this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['width'] = 
+                                    numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth   )  *
+                                    (   (   numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) /
+                                    this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth   )   - .12)           
+                                this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['width']  =  this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['width'] > numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth   ) ? 
+                                    this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth  : 
+                                    this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['width'].toString() + "px"                               
+                                // console.log(   this.window.getComputedStyle(   zb.element   ).top   )                                                   
                                 this.ref.detectChanges()
                                 // console.log(    z.element,z.element.clientHeight, window.getComputedStyle(z.element).getPropertyValue('font-size')   )
     
@@ -334,7 +360,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             ){
                                 
 
-                                console.log('redefault preTitle')
+                                // console.log('redefault preTitle')
                                 this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = "78px"            
                                 this.ref.detectChanges()
     
@@ -351,7 +377,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             this.wordsService.overlayResizeEventSubscription0 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
-                console.group('making title centering dynamic resize event')          
+                // console.group('making title centering dynamic resize event')          
                     // console.log(   this.overlayMyElements._results   )
                     // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle   )  
                     {  
@@ -455,7 +481,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         // console.log(z)
                         // console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )              
                     }
-                console.groupEnd()           
+                // console.groupEnd()           
             })             
             let overlayIntervalRxjs0 = interval(10)
             let overlayTakeRxjs0 =  overlayIntervalRxjs0.pipe(take(1))     

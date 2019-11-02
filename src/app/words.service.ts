@@ -22,6 +22,8 @@ export class WordsService {
         // OverlayComponent concept metadata
         overlayCustomWordWrapElements:Array<any>  = []
         overlayAboutPreTitleDefaultFontSize = '78px'
+        overlayAboutMailLineDefaultWidth = "400px"
+        overlayAboutMailLineDefaultTop ='330px'
         //
 
         overlayVal:Array<string> = [
@@ -401,9 +403,9 @@ export class WordsService {
                     css:{
                         position:'absolute',
                         'background-color':'rgb(249, 87, 128)',
-                        top:'330px',
+                        top:this.overlayAboutMailLineDefaultTop,
                         // left:'45%',
-                        width:"400px",
+                        width:this.overlayAboutMailLineDefaultWidth,
                         height:"2px"
 
                     }
@@ -422,7 +424,8 @@ export class WordsService {
                 blendTitle:'',
                 aboutPreTitle:'Cooking With',
                 aboutPreTitleDefaultFontSize:this.overlayAboutPreTitleDefaultFontSize, // i hope this okay its from the same words service,
-                aboutBoardDefaultWidth:null
+                aboutBoardDefaultWidth:null,
+                aboutMailLineDefaultWidth  :this.overlayAboutMailLineDefaultWidth   
             }
         }                                       
         overlayComponentMonitor:any = {

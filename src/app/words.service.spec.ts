@@ -1,5 +1,6 @@
 import { WordsService } from './words.service';
-
+import { BehaviorSubject  } from 'rxjs';
+import { async } from '@angular/core/testing';
 
 function equalLen(   devObj   ){
 
@@ -10,6 +11,11 @@ function equalLen(   devObj   ){
 }
 describe('WordsService', () => {
     const service  = new WordsService()
+    let behaviorSubject = null
+    beforeEach(async(() => {
+        behaviorSubject = new BehaviorSubject<boolean>(false)
+
+    }));    
 
     it('should be created', () => {
         expect(service).toBeTruthy();
