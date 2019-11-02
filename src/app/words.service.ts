@@ -422,9 +422,7 @@ export class WordsService {
                 blendTitle:'',
                 aboutPreTitle:'Cooking With',
                 aboutPreTitleDefaultFontSize:this.overlayAboutPreTitleDefaultFontSize, // i hope this okay its from the same words service,
-                aboutBoardDefaultWidth:null,
-                websiteReady:'false'
-                
+                aboutBoardDefaultWidth:null
             }
         }                                       
         overlayComponentMonitor:any = {

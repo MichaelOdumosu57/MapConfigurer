@@ -295,14 +295,13 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                                 
                             })   
                             // console.log(   z.element.clientHeight , numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   )
-                            console.table({
-                                'pretitle client height':z.element.clientHeight ,
-                                'preTitle font size':window.getComputedStyle(z.element).getPropertyValue('font-size'),
-                                'preTitle width':numberParse(   window.getComputedStyle(z.element).getPropertyValue('width')   ), 
-                                'overlay img width':numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ), 
-                                'overlay resize standard':this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth ,
-                                'website Ready':this.wordsService[this.overlayTemplateVariable].metadata.websiteReady
-                            })   
+                            // console.table({
+                            //     'pretitle client height':z.element.clientHeight ,
+                            //     'preTitle font size':window.getComputedStyle(z.element).getPropertyValue('font-size'),
+                            //     'preTitle width':numberParse(   window.getComputedStyle(z.element).getPropertyValue('width')   ), 
+                            //     'overlay img width':numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ), 
+                            //     'overlay resize standard':this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth 
+                            // })   
     
     
                             if(   
@@ -311,8 +310,6 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                                     ||
                                     numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) < this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth
                                 )    
-                                ||
-                                this.wordsService[this.overlayTemplateVariable].metadata.websiteReady === 'true'
                             ){
                                 
 
@@ -320,14 +317,29 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                                 this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = 
                                     numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   ) *
                                         (   (   numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) /
-                                        this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth   )   -.2)
+                                        this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth   )   - .12)
                                 this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] > 78 ? 
-                                            "78px":this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'].toString() + "px"
+                                            "78px":this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'].toString() + "px"            
                                 this.ref.detectChanges()
-                                console.log(    z.element,z.element.clientHeight, window.getComputedStyle(z.element).getPropertyValue('font-size')   )
+                                // console.log(    z.element,z.element.clientHeight, window.getComputedStyle(z.element).getPropertyValue('font-size')   )
     
     
-                            }   
+                            }  
+                            
+                            
+                            else if(   
+                                (
+                                    numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) >= this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth
+                                )    
+                            ){
+                                
+
+                                console.log('redefault preTitle')
+                                this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = "78px"            
+                                this.ref.detectChanges()
+    
+    
+                            }                               
                             
                             
                         }
@@ -451,35 +463,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 try{
                     let event = new Event('resize')
                     this.window.dispatchEvent(event)   
-                    
-                    
-                    if(   this.overlayTemplateVariable.slice(-1) === '4'   ){
-
-
-                        if(   Math.floor(   z.element.clientHeight / numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   ) > 1   ){
-
-
-                            this.wordsService[this.overlayTemplateVariable].metadata.websiteReady = 'true'
-
-
-                        }
-
-
-                    }                    
-
-
                     this.window.dispatchEvent(event) 
-
-
-                    if(   this.overlayTemplateVariable.slice(-1) === '4'   ){
-
-
-                        this.wordsService[this.overlayTemplateVariable].metadata.websiteReady = 'true'
-
-
-                    }
-
-
                 }
                 catch(e){
                     let eventLegacyLoad = this.window.document.createEvent("Event");
