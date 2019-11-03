@@ -442,20 +442,21 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             
                             
                         })   
-                        console.log(   this.window.getComputedStyle(   z.element   ).width   )
+                        // console.log(   this.window.getComputedStyle(   z.element   ).width   )
                         // console.log(   this.window.getComputedStyle(   za.element   ).width   )
                         // console.log(   (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )  ) 
                         // console.log(   numberParse(   this.window.getComputedStyle(zb.element).width   )   ,numberParse(   this.window.getComputedStyle(zc.element).width   ),numberParse(   this.window.getComputedStyle(z.element).width   )/2,this.window.document.querySelector('app-overlay').clientWidth    )
                         this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )   ).toString() + "px"; 
                         this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zb.element).width   )/2   )   ).toString() + "px"; 
                         this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zc.element).width   )/2   )   ).toString() + "px";                     
-                        console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left,
-                                        this.window.getComputedStyle(zb.element).width,
-                                        this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left   
-                                    )
+                        // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left,
+                        //                 this.window.getComputedStyle(zb.element).width,
+                        //                 this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left   
+                        //             )
 
 
                         if(    Math.floor(   zb.element.clientHeight /  numberParse(   this.window.getComputedStyle(   zb.element   )['font-size']   )   ) > 1   ){
+
 
                             this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left = (
                                 numberParse(   this.window.getComputedStyle(z.element).width   )/2  -
@@ -468,7 +469,29 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             
                         }
 
-                        
+
+                        if(    
+                            Math.floor(   za.element.clientHeight /  numberParse(   this.window.getComputedStyle(   za.element   )['font-size']   )   ) > 1  &&
+                            numberParse(   this.window.getComputedStyle(z.element).width   ) >  numberParse(   this.window.getComputedStyle(za.element).width   )
+                        ){
+
+
+                            this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left = (
+                                numberParse(   this.window.getComputedStyle(z.element).width   )/2  -
+                                getTextWidth({
+                                    elementText:za.element.innerText,
+                                    font:this.window.getComputedStyle(   za.element   ).getPropertyValue('font-size') + " Aclonica"
+                                })/2
+                            ).toString() + "px"
+                            
+                            
+                        }                       
+
+
+                        console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left,
+                                        this.window.getComputedStyle(za.element).width,
+                                    )                        
+
                         // debugger
                         this.ref.detectChanges()
                         // console.log(z)

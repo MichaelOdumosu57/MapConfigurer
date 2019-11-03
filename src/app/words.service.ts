@@ -36,7 +36,6 @@ export class WordsService {
         ]
         overlayBool: Array<any> = ['true','true','true','true','true','true']
         overlayStyle: Array<any> = [[3],[3],[3],[3],[3,3],[3]]
-        // overlayCss:Array<any> = [['position:"static"'],['position:"static"']]
         overlayValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
         overlayStyleIndex:Array<any> = [0]
         overlayBoolIndex:Array<any>= [0]    
