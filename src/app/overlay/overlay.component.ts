@@ -336,7 +336,8 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                                         this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth   )   - .12)
                                 this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] > numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   )  ? 
                                     this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   :
-                                    this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'].toString() + "px"    
+                                    this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'].toString() + "px"   
+                                // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size']   )  
                                 // console.log(   this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth   )
                                 this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['width'] = 
                                     numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth   )  *
@@ -377,7 +378,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             this.wordsService.overlayResizeEventSubscription0 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
-                // console.group('making title centering dynamic resize event')          
+                console.group('making title centering dynamic resize event')          
                     // console.log(   this.overlayMyElements._results   )
                     // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle   )  
                     {  
@@ -403,13 +404,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
     
     
-                                // let y = -1
                                 z.style = i+ 1
-                                // getStyle({
-                                //     lookStart:y,
-                                //     index:i,
-                                //     ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
-                                // })
                                 z.element = x.nativeElement
                                 
     
@@ -419,14 +414,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
     
     
-                                // let y = -1
                                 za.style = i+1
-                                // getStyle({
-                                //     lookStart:y,
-                                //     index:i,
-                                //     ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
-                                // }) 
-                                // console.log(za.style)
                                 za.element = x.nativeElement                            
     
                                 
@@ -436,14 +424,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutPreTitle'   ){
         
         
-                                // let y = -1
                                 zb.style = i + 1 
-                                // getStyle({
-                                //     lookStart:y,
-                                //     index:i,
-                                //     ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
-                                // }) 
-                                // console.log(za.style)
                                 zb.element = x.nativeElement                            
     
                                 
@@ -453,14 +434,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutMainLine'   ){
         
         
-                                // let y = -1
                                 zc.style = i + 1
-                                // getStyle({
-                                //     lookStart:y,
-                                //     index:i,
-                                //     ngStyleArray:this.wordsService[this.overlayTemplateVariable].ngStyle  
-                                // }) 
-                                // console.log(zc.style)
                                 zc.element = x.nativeElement                            
     
                                 
@@ -468,20 +442,39 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             
                             
                         })   
-                        // console.log(   this.window.getComputedStyle(   z.element   ).width   )
+                        console.log(   this.window.getComputedStyle(   z.element   ).width   )
                         // console.log(   this.window.getComputedStyle(   za.element   ).width   )
                         // console.log(   (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )  ) 
                         // console.log(   numberParse(   this.window.getComputedStyle(zb.element).width   )   ,numberParse(   this.window.getComputedStyle(zc.element).width   ),numberParse(   this.window.getComputedStyle(z.element).width   )/2,this.window.document.querySelector('app-overlay').clientWidth    )
                         this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )   ).toString() + "px"; 
                         this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zb.element).width   )/2   )   ).toString() + "px"; 
                         this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zc.element).width   )/2   )   ).toString() + "px";                     
-                        // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left,this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left   )
+                        console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left,
+                                        this.window.getComputedStyle(zb.element).width,
+                                        this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left   
+                                    )
+
+
+                        if(    Math.floor(   zb.element.clientHeight /  numberParse(   this.window.getComputedStyle(   zb.element   )['font-size']   )   ) > 1   ){
+
+                            this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left = (
+                                numberParse(   this.window.getComputedStyle(z.element).width   )/2  -
+                                getTextWidth({
+                                    elementText:zb.element.innerText,
+                                    font:this.window.getComputedStyle(   zb.element   ).getPropertyValue('font-size') + " Vidaloka"
+                                })/2
+                            ).toString() + "px"
+                            
+                            
+                        }
+
+                        
                         // debugger
                         this.ref.detectChanges()
                         // console.log(z)
                         // console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )              
                     }
-                // console.groupEnd()           
+                console.groupEnd()           
             })             
             let overlayIntervalRxjs0 = interval(10)
             let overlayTakeRxjs0 =  overlayIntervalRxjs0.pipe(take(1))     
