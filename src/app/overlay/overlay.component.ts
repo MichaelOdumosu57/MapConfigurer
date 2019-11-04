@@ -294,21 +294,21 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                     })   
                     this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleDOMRectTopDiff = zb.element.getBoundingClientRect().top - z.element.getBoundingClientRect().top                   
                     try{
-                    console.table({
-                        //    'pretitile css top':this.window.getComputedStyle(   z.element   ).top,                                     
-                        //    'bar css top':this.window.getComputedStyle(   zb.element   ).top,
-                           'pretitle offsetTop':z.element.offsetTop,
-                           'bar offsetTop':zb.element.offsetTop,
-                           'the bar pretitle offset difference':this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff,
-                           'bar getBoundingClientRect': 'refer to log 1',
-                           'pre Title getBoundingClientRect': 'refer to log 2'
-                        })  
+                    // console.table({
+                    //     //    'pretitile css top':this.window.getComputedStyle(   z.element   ).top,                                     
+                    //     //    'bar css top':this.window.getComputedStyle(   zb.element   ).top,
+                    //        'pretitle offsetTop':z.element.offsetTop,
+                    //        'bar offsetTop':zb.element.offsetTop,
+                    //        'the bar pretitle offset difference':this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff,
+                    //        'bar getBoundingClientRect': 'refer to log 1',
+                    //        'pre Title getBoundingClientRect': 'refer to log 2'
+                    //     })  
                     }
                     catch(e){
 
                     }       
-                    console.log(   zb.element.getBoundingClientRect()   )
-                    console.log(   z.element.getBoundingClientRect()   )                                
+                    // console.log(   zb.element.getBoundingClientRect()   )
+                    // console.log(   z.element.getBoundingClientRect()   )                                
                 })
                 this.wordsService.overlayResizeEventSubscription1 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
                     console.group('decreasing preTitle size')
@@ -424,21 +424,35 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                                 catch(e){
 
                                 }
-                                console.log(   zb.element.getBoundingClientRect()   )
-                                console.log(   z.element.getBoundingClientRect()   )
+                                // console.log(   zb.element.getBoundingClientRect()   )
+                                // console.log(   z.element.getBoundingClientRect()   )
                                 this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['top'] = 
                                 (
                                     (
                                         this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleDOMRectTopDiff - 
                                         (
-                                            numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   ) - 
-                                            numberParse(   this.window.getComputedStyle(   z.element   )['font-size']   )
+                                            (
+                                                numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   ) - 
+                                                numberParse(   this.window.getComputedStyle(   z.element   )['font-size']   )
+                                            ) *
+                                            1.1
+                                            // ( // until we can find perfect solution for this
+                                            //     1+ 
+                                            //     // (
+                                            //     //     1-
+                                            //     //     (
+                                            //     //         numberParse(   this.window.getComputedStyle(   z.element   )['font-size']   )/
+                                            //     //         numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   ) *
+                                            //     //         1.9
+                                            //     //     )
+                                            //     // )
+                                            // )
                                         )
-                                     ) + 
+                                    ) + 
                                     z.element.getBoundingClientRect().top 
                                 ).toString()
                                 +"px"       
-                                console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['top']   )
+                                // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['top']   )
                                 this.ref.detectChanges()
                                 // console.log(    z.element,z.element.clientHeight, window.getComputedStyle(z.element).getPropertyValue('font-size')   )
     
