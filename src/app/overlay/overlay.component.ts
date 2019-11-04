@@ -457,23 +457,23 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                                     this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['width'].toString() + "px"   
                                 this.ref.detectChanges()
                                 try{                            
-                                    // console.table({
-                                    //             //    'pretitile css top':this.window.getComputedStyle(   z.element   ).top,                                     
-                                    //             'bar css top':this.window.getComputedStyle(   zb.element   ).top,
-                                    //             'pretitle offsetTop':z.element.offsetTop,
-                                    //             'bar offsetTop':zb.element.offsetTop,
-                                    //             //    'the bar pretitle offset difference':this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff,
-                                    //             'the bar pretitle DOMRect top difference':this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleDOMRectTopDiff,
-                                    //             'bar getBoundingClientRect': 'refer to log 1',
-                                    //             'pre Title getBoundingClientRect': 'refer to log 2',
-                                    //             'preTitle fontSize': this.window.getComputedStyle(   z.element   )['font-size']
-                                    //             })    
+                                    console.table({
+                                                //    'pretitile css top':this.window.getComputedStyle(   z.element   ).top,                                     
+                                                'bar css top':this.window.getComputedStyle(   zb.element   ).top,
+                                                'pretitle offsetTop':z.element.offsetTop,
+                                                'bar offsetTop':zb.element.offsetTop,
+                                                //    'the bar pretitle offset difference':this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff,
+                                                'the bar pretitle DOMRect top difference':this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleDOMRectTopDiff,
+                                                'bar getBoundingClientRect': 'refer to log 1',
+                                                'pre Title getBoundingClientRect': 'refer to log 2',
+                                                'preTitle fontSize': this.window.getComputedStyle(   z.element   )['font-size']
+                                                })    
                                 }
                                 catch(e){
 
                                 }
-                                // console.log(   zb.element.getBoundingClientRect()   )
-                                // console.log(   z.element.getBoundingClientRect()   )
+                                console.log(   zb.element.getBoundingClientRect()   )
+                                console.log(   z.element.getBoundingClientRect()   )
                                 {
                                 this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['top'] = 
                                 (

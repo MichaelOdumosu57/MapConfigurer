@@ -197,13 +197,25 @@
 }
 
 #o_v_e_r_l_a_y_AboutLearn{
-    background-color:rgb(249, 9, 69);
+    background-color:#f95b82;
     position:absolute
 }
+
+#o_v_e_r_l_a_y_AboutLearn:hover{
+    background-color:rgb(249, 9, 69);
+    position:absolute 
+    /* use feature detection for transititon */
+}   
+
 
 #o_v_e_r_l_a_y_AboutLearnText{
     position: absolute;
 }
+
+
+
+
+
 /* navigation */
 
 #n_a_v_i_g_a_t_i_o_n_Bar {

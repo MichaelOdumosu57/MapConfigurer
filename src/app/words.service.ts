@@ -154,7 +154,8 @@ export class WordsService {
                 {
                     override:'true',
                     css:{
-                        'top':'525px'
+                        'top':'515px',
+                        'font-family':'Noto Sans'
                     }
                 },                                                                                                                                                                                 
             ], 
