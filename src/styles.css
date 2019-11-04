@@ -2,10 +2,10 @@
 
 
 /* You can add global styles to this file, and also import other style files */
-html{
+/* html{
     -webkit-text-size-adjust: 0%;
     text-size-adjust:100%
-}
+} */
 
 /* @font-face {
     font-family: "Abril Fatface";
@@ -196,6 +196,14 @@ html{
     font-family: 'Montserrat',sans-serif;
 }
 
+#o_v_e_r_l_a_y_AboutLearn{
+    background-color:rgb(249, 9, 69);
+    position:absolute
+}
+
+#o_v_e_r_l_a_y_AboutLearnText{
+    position: absolute;
+}
 /* navigation */
 
 #n_a_v_i_g_a_t_i_o_n_Bar {

@@ -33,9 +33,11 @@ export class WordsService {
             'o_v_e_r_l_a_y_BlendImg',
             'o_v_e_r_l_a_y_BlendWords',
             'o_v_e_r_l_a_y_AboutMainLine',
+            'o_v_e_r_l_a_y_AboutLearn',    
+            'o_v_e_r_l_a_y_AboutLearnText',            
         ]
-        overlayBool: Array<any> = ['true','true','true','true','true','true']
-        overlayStyle: Array<any> = [[3],[3],[3],[3],[3,3],[3]]
+        overlayBool: Array<any> = ['true','true','true','true','true','true','true','true']
+        overlayStyle: Array<any> = [[3],[3],[3],[3],[3,3],[3],[3],[3]]
         overlayValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
         overlayStyleIndex:Array<any> = [0]
         overlayBoolIndex:Array<any>= [0]    
@@ -99,7 +101,7 @@ export class WordsService {
                         position:'absolute',
                         top:"270px",
                         left:'45%',
-                        'font-size':'141px',
+                        'font-size':'141px', // for mobile you must do something about this
                         'font-family':"'Aclonica',sans-serif",
                         'font-weight':'500',
                         'text-align':'center',
@@ -138,7 +140,23 @@ export class WordsService {
                         height:"2px"
 
                     }
-                }                                                                                                                                                   
+                },
+                {
+                    override:'true',
+                    css:{
+                        'border-radius':'50px',
+                        'height':'47px',
+                        'width':'182px',
+                        'top':'525px',
+                        left:'45%'
+                    }
+                },    
+                {
+                    override:'true',
+                    css:{
+                        'top':'525px'
+                    }
+                },                                                                                                                                                                                 
             ], 
             ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
             parameters:[    
@@ -156,7 +174,9 @@ export class WordsService {
                 aboutBoardDefaultWidth:null,
                 aboutMailLineDefaultWidth  :this.overlayAboutMailLineDefaultWidth,   
                 aboutMailLineDefaultTop: this.overlayAboutMailLineDefaultTop,
-                aboutBarPreTitleDOMRectTopDiff:null
+                aboutBarPreTitleDOMRectTopDiff:null,
+                text0:'LEARN MORE',
+                
             }
         }        
         overlayComponentObject0:any ={

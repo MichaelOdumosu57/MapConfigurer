@@ -4,7 +4,7 @@ import {   WINDOW   } from '../window.service';
 import {   fromEvent,interval, of,from, Observable } from 'rxjs';
 import {   catchError,take,timeout   } from 'rxjs/operators'
 
-// import { observe } from "rxjs-observe";
+
 
 function getStyle(   devObj:any   ){
     let location = null;
@@ -46,6 +46,24 @@ function numberParse(   dimension:any   ){
     return dimension;
 }
 
+function xPosition(   devObj:any   ){
+    let result = null
+
+    
+    if(   devObj.misc === undefined   ){
+        devObj.misc = [.12]
+    }
+
+
+    devObj.default *
+          (   (   devObj.containActual /
+          devObj.containDefault   )   - devObj.misc[0])  //usually its .12
+    return result = result > devObj.default  ? 
+        devObj.default   :
+        result.toString() + "px"   
+   
+}
+
 @Component({
     selector: 'app-overlay',
     templateUrl: './overlay.component.html',
@@ -73,8 +91,6 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
     overlayBoolIndex:Array<any> = this.wordsService.overlayBoolIndex   
 
     overlayCustomWordWrapElements:Array<any> = this.wordsService.overlayCustomWordWrapElements 
-    
-
 
     access(){
         return this.wordsService
@@ -254,16 +270,26 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         style:null,
                         element:null
                     };      
+                    let za = {
+                        style:null,
+                        element:null
+                    };                     
                     let zb = {
                         style:null,
                         element:null
-                    };                                 
+                    };  
+                    let zc = {
+                        style:null,
+                        element:null
+                    };                                                    
                     let zObj = {
                         *generator () {
                             yield z
                             yield z
                             yield zb
-                            yield zb                                    
+                            yield zb  
+                            yield zc
+                            yield zc                                                                  
                         }
                     }    
                     let zGen =  zObj                                             
@@ -281,6 +307,16 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         } 
 
 
+                        if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
+        
+        
+                            za.style = i+ 1
+                            za.element = x.nativeElement
+                            
+
+                        } 
+
+
                         if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutMainLine'   ){
 
 
@@ -289,10 +325,21 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             
 
                         }
+
+
+                        if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutLearnText'   ){
+
+
+                            zc.style = i+ 1
+                            zc.element = x.nativeElement
+                            
+
+                        }                        
                         
                         
                     })   
                     this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleDOMRectTopDiff = zb.element.getBoundingClientRect().top - z.element.getBoundingClientRect().top                   
+
                     try{
                     // console.table({
                     //     //    'pretitile css top':this.window.getComputedStyle(   z.element   ).top,                                     
@@ -308,7 +355,8 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
                     }       
                     // console.log(   zb.element.getBoundingClientRect()   )
-                    // console.log(   z.element.getBoundingClientRect()   )                                
+                    // console.log(   z.element.getBoundingClientRect()   )                   
+                    
                 })
                 this.wordsService.overlayResizeEventSubscription1 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
                     console.group('decreasing preTitle size')
@@ -324,7 +372,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             let zb = {
                                 style:null,
                                 element:null
-                            };                                 
+                            };                                                             
                             let zObj = {
                                 *generator () {
                                     yield z
@@ -426,6 +474,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                                 }
                                 // console.log(   zb.element.getBoundingClientRect()   )
                                 // console.log(   z.element.getBoundingClientRect()   )
+                                {
                                 this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['top'] = 
                                 (
                                     (
@@ -453,6 +502,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                                 ).toString()
                                 +"px"       
                                 // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['top']   )
+                                }
                                 this.ref.detectChanges()
                                 // console.log(    z.element,z.element.clientHeight, window.getComputedStyle(z.element).getPropertyValue('font-size')   )
     
@@ -505,7 +555,15 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         let zc = {
                             style:null,
                             element:null
-                        };                                        
+                        };   
+                        let zd = {
+                            style:null,
+                            element:null
+                        };  
+                        let ze = {
+                            style:null,
+                            element:null
+                        };                                                                                     
                         this.overlayMyElements._results.map((x:any,i:any)=>{
     
     
@@ -538,7 +596,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                                 
                             }                            
                         
-    
+                            
                             else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutMainLine'   ){
         
         
@@ -546,7 +604,27 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                                 zc.element = x.nativeElement                            
     
                                 
-                            }     
+                            }   
+                            
+
+                            else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutLearnText'   ){
+        
+        
+                                zd.style = i + 1
+                                zd.element = x.nativeElement                            
+    
+                                
+                            }  
+                            
+                            
+                            else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutLearn'   ){
+        
+        
+                                ze.style = i + 1
+                                ze.element = x.nativeElement                            
+    
+                                
+                            }                              
                             
                             
                         })   
@@ -556,7 +634,9 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         // console.log(   numberParse(   this.window.getComputedStyle(zb.element).width   )   ,numberParse(   this.window.getComputedStyle(zc.element).width   ),numberParse(   this.window.getComputedStyle(z.element).width   )/2,this.window.document.querySelector('app-overlay').clientWidth    )
                         this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )   ).toString() + "px"; 
                         this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zb.element).width   )/2   )   ).toString() + "px"; 
-                        this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zc.element).width   )/2   )   ).toString() + "px";                     
+                        this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zc.element).width   )/2   )   ).toString() + "px";  
+                        this.wordsService[this.overlayTemplateVariable].ngStyle[zd.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zd.element).width   )/2   )   ).toString() + "px"; 
+                        this.wordsService[this.overlayTemplateVariable].ngStyle[ze.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(ze.element).width   )/2   )   ).toString() + "px";                                             
                         // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left,
                         //                 this.window.getComputedStyle(zb.element).width,
                         //                 this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left   
