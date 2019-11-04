@@ -69,7 +69,7 @@ describe('WordsService', () => {
         expect(service.wordsRepositionDashesCount).toEqual(0)
     });     
 
-    it('"s" wordsReposiitionDashes fn should do as expected',()=>{
+    it(' wordsReposiitionDashes fn should do as expected',()=>{
         // spyOn(service,'wordsRepositionDashes')
         expect(typeof service.wordsRepositionDashes({})).toMatch('function')
       

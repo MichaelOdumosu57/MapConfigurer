@@ -55,6 +55,110 @@ export class WordsService {
         // OverlayComponent Instances
         overlayMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
         overlayMyElementsArray: any[] = [];
+        overlayComponentObject4:any ={
+            styles:[
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:'0px',
+                        height:'100%',
+                        width:'100%',
+                        'z-index':-1
+                    }
+                },                
+                {
+                    override:'true',
+                    css:{
+                        position:'fixed',
+                        // height:'1000px',
+                        height:'140%',
+                        // width:'100%',
+                        'z-index':-1
+                        // opacity:0
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        'font-family':"'Vidaloka',sans-serif",
+                        top:"170px",
+                        left:'45%',
+                        'font-size': this.overlayAboutPreTitleDefaultFontSize,
+                        'font-style':'italic',
+                        'text-align':'center',
+                        color:'white',
+                        // 'margin-bottom':'20px',
+                        'text-shadow':'rgba(0, 0, 0, 0.3) 2px -1px 0px' // so this property we allow because it doesnt make a meaningful difference if its not working
+                    }
+                },                 
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:"270px",
+                        left:'45%',
+                        'font-size':'141px',
+                        'font-family':"'Aclonica',sans-serif",
+                        'font-weight':'500',
+                        'text-align':'center',
+                        color:'white'
+
+                    }
+                },
+                {
+                    override:'false',
+                    css:{
+                        position:'absolute',
+                        'background-image':'url(assets/media/IMG-1475-12.png)',
+                        height:'500px',
+                        color:'white',
+                        'z-index':3
+                    }
+                },
+                {
+                    override:'false',
+                    css:{
+                    }
+                },
+                {
+                    override:'false',
+                    css:{
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        'background-color':'rgb(249, 87, 128)',
+                        top:this.overlayAboutMailLineDefaultTop,
+                        // left:'45%',
+                        width:this.overlayAboutMailLineDefaultWidth,
+                        height:"2px"
+
+                    }
+                }                                                                                                                                                   
+            ], 
+            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
+            parameters:[    
+            ],
+            location:{
+                parameters:[]
+            },
+            metadata:{
+                title:'CHEF LIA',
+                cssAsync: new  Subject<any>(),
+                mainImg:'assets/media/IMG-1787.jpg',
+                blendTitle:'',
+                aboutPreTitle:'Cooking With',
+                aboutPreTitleDefaultFontSize:this.overlayAboutPreTitleDefaultFontSize, // i hope this okay its from the same words service,
+                aboutBoardDefaultWidth:null,
+                aboutMailLineDefaultWidth  :this.overlayAboutMailLineDefaultWidth,   
+                aboutMailLineDefaultTop: this.overlayAboutMailLineDefaultTop,
+                aboutBarPreTitleDOMRectTopDiff:null
+            }
+        }        
         overlayComponentObject0:any ={
             styles:[
                 {
@@ -325,108 +429,7 @@ export class WordsService {
                 blendTitle:'ABOUT ME'
                 
             }
-        }      
-        overlayComponentObject4:any ={
-            styles:[
-                {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        top:'0px',
-                        height:'100%',
-                        width:'100%',
-                        'z-index':-1
-                    }
-                },                
-                {
-                    override:'true',
-                    css:{
-                        position:'fixed',
-                        // height:'1000px',
-                        height:'140%',
-                        // width:'100%',
-                        'z-index':-1
-                        // opacity:0
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        'font-family':"'Vidaloka',sans-serif",
-                        top:"170px",
-                        left:'45%',
-                        'font-size': this.overlayAboutPreTitleDefaultFontSize,
-                        'font-style':'italic',
-                        'text-align':'center',
-                        color:'white',
-                        'text-shadow':'rgba(0, 0, 0, 0.3) 2px -1px 0px' // so this property we allow because it doesnt make a meaningful difference if its not working
-                    }
-                },                 
-                {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        top:"270px",
-                        left:'45%',
-                        'font-size':'141px',
-                        'font-family':"'Aclonica',sans-serif",
-                        'font-weight':'500',
-                        'text-align':'center',
-                        color:'white'
-
-                    }
-                },
-                {
-                    override:'false',
-                    css:{
-                        position:'absolute',
-                        'background-image':'url(assets/media/IMG-1475-12.png)',
-                        height:'500px',
-                        color:'white',
-                        'z-index':3
-                    }
-                },
-                {
-                    override:'false',
-                    css:{
-                    }
-                },
-                {
-                    override:'false',
-                    css:{
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        'background-color':'rgb(249, 87, 128)',
-                        top:this.overlayAboutMailLineDefaultTop,
-                        // left:'45%',
-                        width:this.overlayAboutMailLineDefaultWidth,
-                        height:"2px"
-
-                    }
-                }                                                                                                                                                   
-            ], 
-            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
-            parameters:[    
-            ],
-            location:{
-                parameters:[]
-            },
-            metadata:{
-                title:'CHEF LIA',
-                cssAsync: new  Subject<any>(),
-                mainImg:'assets/media/IMG-1787.jpg',
-                blendTitle:'',
-                aboutPreTitle:'Cooking With',
-                aboutPreTitleDefaultFontSize:this.overlayAboutPreTitleDefaultFontSize, // i hope this okay its from the same words service,
-                aboutBoardDefaultWidth:null,
-                aboutMailLineDefaultWidth  :this.overlayAboutMailLineDefaultWidth   
-            }
-        }                                       
+        }                                             
         overlayComponentMonitor:any = {
         }
         //

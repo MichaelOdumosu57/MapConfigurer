@@ -24,6 +24,7 @@ describe('NavigationComponent', () => {
 
     beforeEach(() => {
         // spyOn(WordsService.prototype   ,'customWordWrapReceive');
+        
         jasmine.clock().install();
         fixture = TestBed.createComponent(NavigationComponent);
         component = fixture.componentInstance;
@@ -33,10 +34,11 @@ describe('NavigationComponent', () => {
 
     afterEach(function() {
         jasmine.clock().uninstall();
+        component.ngOnDestroy()
     });
   
     it('should create', () => {
-        expect(component).toBeTruthy();
+        expect(component).toBeTruthy();         
     });
 
     it(   'should be known  by the dev that len of elements should not be greater than the len of styles',()=>{
@@ -52,7 +54,7 @@ describe('NavigationComponent', () => {
         console.groupEnd()
     })    
 
-    it('should get this.navigationCustomWordWrapElements ', () => {
+    xit('should get this.navigationCustomWordWrapElements ', () => {
         //dont need this
     console.group(   'should get this.navigationCustomWordWrapElements '   )
         // component.ngAfterViewInit()
@@ -74,9 +76,9 @@ describe('NavigationComponent', () => {
         
         
     console.groupEnd()
-    });
+    }); // dont run this we dont use it anymore
 
-    it('should have all widths availble from element.style starting at 0px if the clienthHeight is greater than the font-size by a factor of 2',()=>{
+    xit('should have all widths availble from element.style starting at 0px if the clienthHeight is greater than the font-size by a factor of 2',()=>{
         //dont need
         component.access().navigationMyElementsArray.push([{nativeElement:fixture.debugElement.nativeElement}, ...Array.from(   fixture.debugElement.nativeElement.children   ).map((elem)=>{
                 return  {nativeElement:elem} 
@@ -106,9 +108,9 @@ describe('NavigationComponent', () => {
 
 
         }
-    })  
+    })  // dont run this we dont use customWordWrap here 
 
-    it('the bar must be the first element in navigation, this is to deal with the repositioning of anchors',()=>{
+    it('the bar must be the first element in navigation, this is to deal with the repositioning of anchors',async()=>{        
         expect(component.access().navigationVal[0]).toMatch('n_a_v_i_g_a_t_i_o_n_Bar')
         expect(component.access().navigationBool[0]).toMatch('true')
         expect(component.access().navigationStyle[0].length).toBe(1)
@@ -185,7 +187,6 @@ describe('NavigationComponent', () => {
     it('should have the dropDownbox *ngIf on false initially',()=>{
         expect(component.navigationBool[12]).toMatch('false')
     })
-
 
     describe('on max inital',()=>{
      
