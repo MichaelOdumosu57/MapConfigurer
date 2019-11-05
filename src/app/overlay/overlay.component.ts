@@ -339,8 +339,8 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         
                     })   
                     this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleDOMRectTopDiff = zb.element.getBoundingClientRect().top - z.element.getBoundingClientRect().top                   
-
-                    try{
+                    this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff = zb.element.offsetTop - z.element.offsetTop
+                    try{    
                     // console.table({
                     //     //    'pretitile css top':this.window.getComputedStyle(   z.element   ).top,                                     
                     //     //    'bar css top':this.window.getComputedStyle(   zb.element   ).top,
@@ -478,7 +478,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                                 this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['top'] = 
                                 (
                                     (
-                                        this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleDOMRectTopDiff - 
+                                        this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff - 
                                         (
                                             (
                                                 numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   ) - 
@@ -498,7 +498,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                                             // )
                                         )
                                     ) + 
-                                    z.element.getBoundingClientRect().top 
+                                    z.element.offsetTop
                                 ).toString()
                                 +"px"       
                                 // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['top']   )

@@ -178,6 +178,7 @@ export class WordsService {
                 aboutMailLineDefaultWidth  :this.overlayAboutMailLineDefaultWidth,   
                 aboutMailLineDefaultTop: this.overlayAboutMailLineDefaultTop,
                 aboutBarPreTitleDOMRectTopDiff:null,
+                aboutBarPreTitleOffsetTopDiff:null,
                 text0:'LEARN MORE',
                 
             }
