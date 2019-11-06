@@ -247,9 +247,18 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                         break;
                     case 6:
                         i.nativeElement.style.left = (   1340 * .85  - (1340 - this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width)    ).toString() + "px"
+                        this.ref.detectChanges()
                       break;     
                     case 7:
-                        i.nativeElement.style.left = (   1340 * .83 - (1340 - this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width)    ).toString() + "px"
+                        console.log(   
+                            getTextWidth({
+                                elementText:this.navigationMyElements._results.slice(4,12)[6].nativeElement.innerText,
+                                font: this.window.getComputedStyle(   this.navigationMyElements._results.slice(4,12)[6].nativeElement  ).getPropertyValue('font-size') + " Roboto"
+                            })/2,
+                            numberParse(   this.window.getComputedStyle(   i.nativeElement   ).width   )/2,
+                            numberParse(   this.window.getComputedStyle(   this.navigationMyElements._results.slice(4,12)[6].nativeElement   ).left   )
+                        )
+                        i.nativeElement.style.left = (   numberParse(  this.window.getComputedStyle(   this.navigationMyElements._results.slice(4,12)[6].nativeElement   ).left   )    ).toString() + "px"                        
                         break;                                                                                                                            
                     default:
                       // code block
