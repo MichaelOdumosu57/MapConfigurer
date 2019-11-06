@@ -491,6 +491,7 @@ export class WordsService {
             navigationResizeEvent0:Observable<Event>
             navigationResizeEventSubscription0:Subscription
             navigationResizeEventSubscription1:Subscription  
+            navigationResizeEventSubscription2:Subscription
             navigationClickEvent$:Observable<Event>        
             navigationClickEventSubscription0:Subscription
         //    
@@ -652,6 +653,7 @@ export class WordsService {
                 },
                 metadata:{
                     barDynamicWidth:null,
+                    barDynamicWidthSet:'false',
                     titleWidth:null,
                     resizeElementChange1:null,
                     defaultFontSizes:[]

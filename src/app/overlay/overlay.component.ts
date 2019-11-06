@@ -204,7 +204,11 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
             let z = {
                 style:null,
                 element:null
-            };             
+            };  
+            let za = {
+                style:null,
+                element:null
+            };                         
             this.overlayMyElements._results.map((x:any,i:any)=>{
                             
 
@@ -218,7 +222,18 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 } 
                 
                 
-            }) 
+               
+                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
+
+
+                    za.style = i+ 1
+                    za.element = x.nativeElement
+                    
+
+                } 
+                
+                
+            })         
             this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth = getTextWidth({
                 elementText:z.element.innerText,
                 font:this.window.getComputedStyle(   z.element ).getPropertyValue('font-size') + " Vidaloka"
