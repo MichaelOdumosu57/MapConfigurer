@@ -250,15 +250,22 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                         this.ref.detectChanges()
                       break;     
                     case 7:
-                        console.log(   
+                        // console.log(   
+                        //     getTextWidth({
+                        //         elementText:this.navigationMyElements._results.slice(4,12)[6].nativeElement.innerText,
+                        //         font: this.window.getComputedStyle(   this.navigationMyElements._results.slice(4,12)[6].nativeElement  ).getPropertyValue('font-size') + " Roboto"
+                        //     })/2,
+                        //     numberParse(   this.window.getComputedStyle(   i.nativeElement   ).width   )/2,
+                        //     numberParse(   this.window.getComputedStyle(   this.navigationMyElements._results.slice(4,12)[6].nativeElement   ).left   )
+                        // )
+                        i.nativeElement.style.left = ( 
+                            numberParse(  this.window.getComputedStyle(   this.navigationMyElements._results.slice(4,12)[6].nativeElement   ).left   )  -
+                            numberParse(   this.window.getComputedStyle(   i.nativeElement   ).width   )/2 +
                             getTextWidth({
                                 elementText:this.navigationMyElements._results.slice(4,12)[6].nativeElement.innerText,
                                 font: this.window.getComputedStyle(   this.navigationMyElements._results.slice(4,12)[6].nativeElement  ).getPropertyValue('font-size') + " Roboto"
-                            })/2,
-                            numberParse(   this.window.getComputedStyle(   i.nativeElement   ).width   )/2,
-                            numberParse(   this.window.getComputedStyle(   this.navigationMyElements._results.slice(4,12)[6].nativeElement   ).left   )
-                        )
-                        i.nativeElement.style.left = (   numberParse(  this.window.getComputedStyle(   this.navigationMyElements._results.slice(4,12)[6].nativeElement   ).left   )    ).toString() + "px"                        
+                            })/2                                
+                        ).toString() + "px"                        
                         break;                                                                                                                            
                     default:
                       // code block
