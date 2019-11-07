@@ -216,7 +216,7 @@ export class WordsService {
 
                     }
                 },
-                ...Array.from(Array(3),()=> {
+                ...Array.from(Array(6),()=> {
                     return {
                     override:'false',
                     css:{
@@ -225,9 +225,7 @@ export class WordsService {
                         // left:'550px',
                         // 'fontSize':'16px'
                     }
-                }}),
-                {                    
-                }                                                                                   
+                }})                                                                                                                                                                                                                                 
             ], 
             ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
             parameters:[    
@@ -274,7 +272,7 @@ export class WordsService {
 
                     }
                 },
-                ...Array.from(Array(3),()=> {
+                ...Array.from(Array(6),()=> {
                     return {
                     override:'false',
                     css:{
@@ -283,10 +281,7 @@ export class WordsService {
                         // left:'550px',
                         // 'fontSize':'16px'
                     }
-                }}),
-                {                    
-                }    
-                                                                                 
+                }})                                                                 
             ], 
             ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
             parameters:[    
@@ -335,7 +330,7 @@ export class WordsService {
 
                     }
                 },
-                ...Array.from(Array(3),()=> {
+                ...Array.from(Array(6),()=> {
                     return {
                     override:'false',
                     css:{

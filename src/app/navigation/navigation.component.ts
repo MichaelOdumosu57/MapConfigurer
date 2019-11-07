@@ -68,7 +68,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             // console.log(   'screen width ', this.window.screen.width   )     
             // console.log(   'document.body',   this.window.document.body.offsetWidth   )
             this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth = this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width  - 1340
-            console.log(    this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth    )
+            // console.log(    this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth    )
             for(   let i in this.wordsService[this.navigationTemplateVariable].styles   ){
                 switch(parseInt(i)) {
                     case 5:
@@ -209,7 +209,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         this.wordsService.navigationResizeEvent0 = fromEvent(this.window ,'resize');
         this.wordsService.navigationResizeEventSubscription2  
         this.wordsService.navigationResizeEventSubscription0 = this.wordsService.navigationResizeEvent0.subscribe((event)=>{
-        console.group('general nav anchor repositioning resize event')
+        // console.group('general nav anchor repositioning resize event')
             // console.log('innerWidth',this.window.innerWidth)
             // console.log('outerWidth',this.window.outerWidth)
             // console.log('screen constant',this.window.screen.width)
@@ -218,13 +218,13 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                 // console.log(   'DOMRECT bar width',this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width   )
                 // console.log(   'bar OffsetWidth', this.navigationMyElements._results[0].nativeElement.offsetWidth   )
                 // console.log(   'bar clientWidth', this.navigationMyElements._results[0].nativeElement.clientWidth   )  
-                console.log(   'bar css width',   this.window.getComputedStyle(   this.navigationMyElements._results[0].nativeElement   ).width   )                              
-                console.log(   'nav left original',i.nativeElement.id,i.nativeElement.style.left   )
+                // console.log(   'bar css width',   this.window.getComputedStyle(   this.navigationMyElements._results[0].nativeElement   ).width   )                              
+                // console.log(   'nav left original',i.nativeElement.id,i.nativeElement.style.left   )
                 // i.nativeElement.style.left = (   numberParse(   i.nativeElement.style.left   ) - this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth    ).toString() + "px"  
                 // i.nativeElement.style.left = (   numberParse(   i.nativeElement.style.left   ) +  this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width  - 1340   ).toString() + "px" 
                 i.nativeElement.style.left = (   this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width -120    ).toString() + "px"  
                 // (   this.navigationMyElements._results[0].nativeElement.offsetWidth   /.2 - numberParse(   i.nativeElement.style.width   )/2  ).toString() + "px"
-                console.log(    'nav element left edited',i.nativeElement.id, i.nativeElement.style.left   )
+                // console.log(    'nav element left edited',i.nativeElement.id, i.nativeElement.style.left   )
                 // console.log(   'navbar offset width',this.navigationMyElements._results[0].nativeElement.offsetWidth    )
                 switch(parseInt(x)) {
                     case 0:
@@ -272,7 +272,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                 }                         
             })            
             this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  = this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width  - 1340
-        console.groupEnd()
+        // console.groupEnd()
         })
         this.wordsService[this.navigationTemplateVariable].metadata.titleWidth = getTextWidth({
             elementText:this.navigationMyElements._results[1].nativeElement.innerText ,

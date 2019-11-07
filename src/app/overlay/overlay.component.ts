@@ -128,7 +128,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         if(   this.overlayStyleIndex[0] === 0   ){
 
 
-                            // console.log(  i,this.overlayBoolIndex[0]      )
+                            console.log(  i,this.overlayBoolIndex[0]      )
                             this.overlayStyleIndex[0] =  this.overlayStyle[ this.overlayBoolIndex[0]   ].length
                             this.overlayBoolIndex[0] += 1
                             
@@ -208,9 +208,23 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
             let za = {
                 style:null,
                 element:null
-            };                         
+            }; 
+            let zb = {
+                style:null,
+                element:null
+            };                                     
             this.overlayMyElements._results.map((x:any,i:any)=>{
-                            
+                
+                
+                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
+
+
+                    zb.style = i+ 1
+                    zb.element = x.nativeElement
+                    
+
+                }
+
 
                 if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutPreTitle'   ){
 
@@ -220,8 +234,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                     
 
                 } 
-                
-                
+                 
                
                 if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
 
@@ -238,40 +251,61 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 elementText:z.element.innerText,
                 font:this.window.getComputedStyle(   z.element ).getPropertyValue('font-size') + " Vidaloka"
             }) +55
-            // console.log(   this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth   )                                       
+            // console.log(   this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth   )  
+            // debugger                                      
 
             
             if(   this.overlayTemplateVariable.slice(-1) !== '4'   ){
 
 
-                this.wordsService[this.overlayTemplateVariable].location.parameters.push(
-                    this.wordsService[this.overlayTemplateVariable].parameters.push({
-                        fn:'wordsService.customWordWrapReceive',
-                        totalElements:this.overlayTemplateVariable.slice(-1) !== '4' ? this.overlayMyElements._results : this.overlayMyElements._results.filter(a=>{
+                if(   
+                    getTextWidth({
+                        elementText:za.element.innerText,
+                        font:this.window.getComputedStyle(   za.element   ).getPropertyValue('font-size') + " sans-serif"
+                    }) <
+                    numberParse(   this.window.getComputedStyle(   zb.element   ).width   ) +30
+                ){
+
+
+                    while(   Math.floor(   za.element.clientHeight/numberParse(   this.window.getComputedStyle(   za.element   )['font-size']   )   ) >1   ){
+                        this.wordsService[this.overlayTemplateVariable].ngStyle[za.style]['left'] = (   numberParse(   this.window.getComputedStyle(   za.element   )['left']   ) - 100   ).toString() + "px"
+                        this.ref.detectChanges()
+                        // console.log(    (   numberParse(   this.window.getComputedStyle(   za.element   )['left']   ) - 100   ).toString() + "px"   )
+                        // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[za.style]['left']   )
+                        // console.log(  za.element.clientHeight/numberParse(   this.window.getComputedStyle(   za.element   )['font-size']   )   )
+                    }
+                    console.log('resizing title')
+                    this.wordsService[this.overlayTemplateVariable].location.parameters.push(
+                        this.wordsService[this.overlayTemplateVariable].parameters.push({
+                            fn:'wordsService.customWordWrapReceive',
+                            totalElements:this.overlayTemplateVariable.slice(-1) !== '4' ? this.overlayMyElements._results : this.overlayMyElements._results.filter(a=>{
+                                
+                                
+                                if(   a.nativeElement.id !==   'o_v_e_r_l_a_y_Title' &&  a.nativeElement.id !==   'o_v_e_r_l_a_y_AboutPreTitle'   ){
+
+
+                                    return true
+
+
+                                }
                             
                             
-                            if(   a.nativeElement.id !==   'o_v_e_r_l_a_y_Title' &&  a.nativeElement.id !==   'o_v_e_r_l_a_y_AboutPreTitle'   ){
-
-
-                                return true
-
-
-                            }
-                        
-                        
-                        }),
-                        HTMLWordElements:this.overlayCustomWordWrapElements
-                    }) - 1// for it returns the length of the array
-                )    
-                // console.log(   this.wordsService[this.overlayTemplateVariable].parameters   )
-                // debugger
-                this.wordsService.overlayLoadEventSubscription1 = this.wordsService.overlayLoadEvent$.subscribe(this.wordsService.customWordWrapReceive({
-                    totalElements:this.overlayMyElements._results,
-                    HTMLWordElements:{
-                                        parameters:this.wordsService[this.overlayTemplateVariable].location.parameters.slice(-1)[0],
-                                        templateVar:this.overlayTemplateVariable
-                                    }
-                }))                 
+                            }),
+                            HTMLWordElements:this.overlayCustomWordWrapElements
+                        }) - 1// for it returns the length of the array
+                    )    
+                    // console.log(   this.wordsService[this.overlayTemplateVariable].parameters   )
+                    // debugger
+                    this.wordsService.overlayLoadEventSubscription1 = this.wordsService.overlayLoadEvent$.subscribe(this.wordsService.customWordWrapReceive({
+                        totalElements:this.overlayMyElements._results,
+                        HTMLWordElements:{
+                                            parameters:this.wordsService[this.overlayTemplateVariable].location.parameters.slice(-1)[0],
+                                            templateVar:this.overlayTemplateVariable
+                                        }
+                    }))   
+                
+                
+                }
             
             
             }     
@@ -643,6 +677,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             
                             
                         })   
+                        
                         // console.log(   this.window.getComputedStyle(   z.element   ).width   )
                         // console.log(   this.window.getComputedStyle(   za.element   ).width   )
                         // console.log(   (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )  ) 
@@ -697,7 +732,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         // debugger
                         this.ref.detectChanges()
                         // console.log(z)
-                        // console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )              
+                        // console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )             
                     }
                 console.groupEnd()           
             })             
