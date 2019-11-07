@@ -322,12 +322,19 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     }    
                     
                     
-                    if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
+                    if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 155  ){
 
                         
                         // console.log('dropdownBox is interfering with the titile')
                         this.navigationMyElements._results.slice(1,3).map((x,i)=>{
-                            x.nativeElement.style.fontSize =  (   numberParse(   this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i]   ) * (   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )/(   this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55 )  ) * .95  ).toString() + "px"
+                            x.nativeElement.style.fontSize =  
+                            (   
+                                numberParse(   this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i]   ) *
+                                (  
+                                     numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )/
+                                     (   this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 155 )  
+                                ) * .95  
+                            ).toString() + "px"
                             // console.log(   x.nativeElement.style.fontSize  )
                         })
 
@@ -346,7 +353,6 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         
         
                     }                      
-                    
         
                     
                 }

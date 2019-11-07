@@ -329,7 +329,7 @@ export class WordsService {
                         left:'45%',
                         'font-size':'60px',
                         'font-family':"'Charmonman',sans-serif",
-                        'font-weight':'500',
+                        'font-weight':'700',
                         color:'white'
 
                     }
@@ -343,9 +343,7 @@ export class WordsService {
                         // left:'550px',
                         // 'fontSize':'16px'
                     }
-                }}),
-                {                    
-                }                                                                                    
+                }})                                                                                   
             ], 
             ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
             parameters:[    
@@ -436,8 +434,16 @@ export class WordsService {
 
                     }
                 },
-                {                    
-                }                                                                                                                  
+                ...Array.from(Array(3),()=> {
+                    return {
+                    override:'false',
+                    css:{
+                        // position:'absolute',
+                        // top:'72px',
+                        // left:'550px',
+                        // 'fontSize':'16px'
+                    }
+                }})                                                                                                                
             ], 
             ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
             parameters:[    
