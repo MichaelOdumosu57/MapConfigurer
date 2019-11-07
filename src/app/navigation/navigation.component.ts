@@ -220,10 +220,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                 // console.log(   'bar clientWidth', this.navigationMyElements._results[0].nativeElement.clientWidth   )  
                 // console.log(   'bar css width',   this.window.getComputedStyle(   this.navigationMyElements._results[0].nativeElement   ).width   )                              
                 // console.log(   'nav left original',i.nativeElement.id,i.nativeElement.style.left   )
-                // i.nativeElement.style.left = (   numberParse(   i.nativeElement.style.left   ) - this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth    ).toString() + "px"  
-                // i.nativeElement.style.left = (   numberParse(   i.nativeElement.style.left   ) +  this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width  - 1340   ).toString() + "px" 
                 i.nativeElement.style.left = (   this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width -120    ).toString() + "px"  
-                // (   this.navigationMyElements._results[0].nativeElement.offsetWidth   /.2 - numberParse(   i.nativeElement.style.width   )/2  ).toString() + "px"
                 // console.log(    'nav element left edited',i.nativeElement.id, i.nativeElement.style.left   )
                 // console.log(   'navbar offset width',this.navigationMyElements._results[0].nativeElement.offsetWidth    )
                 switch(parseInt(x)) {

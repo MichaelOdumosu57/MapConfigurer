@@ -50,6 +50,7 @@ export class WordsService {
         overlayResizeEventSubscription0:Subscription
         overlayResizeEventSubscription1:Subscription
         overlayResizeEventSubscription2:Subscription
+        overlayResizeEventSubscription3:Subscription
         overlayClickEvent$:Observable<Event>        
         overlayClickEventSubscription0:Subscription
         //         
@@ -236,7 +237,8 @@ export class WordsService {
             metadata:{
                 title:'SERVICES',
                 cssAsync: new  Subject<any>(),
-                mainImg:'assets/media/IMG-1788-1.jpg'
+                mainImg:'assets/media/IMG-1788-1.jpg',
+                titleDefaultFontSize:null
             }
         }  
         overlayComponentObject1:any ={
@@ -292,7 +294,9 @@ export class WordsService {
             metadata:{
                 title:'OUR PROJECTS',
                 cssAsync: new  Subject<any>(),
-                mainImg:'assets/media/project-background.jpg'
+                mainImg:'assets/media/project-background.jpg',
+                titleDefaultFontSize:null,
+                customWordWrapReceiveSubject:new  Subject<any>()
             }
         }     
         overlayComponentObject2:any ={
@@ -651,7 +655,8 @@ export class WordsService {
                     barDynamicWidthSet:'false',
                     titleWidth:null,
                     resizeElementChange1:null,
-                    defaultFontSizes:[]
+                    defaultFontSizes:[],
+                    boardTitleDefaultWidth:null
                 }
             }
         //
@@ -1068,6 +1073,17 @@ export class WordsService {
         }  
         // console.log(   this[devObj.HTMLWordElements.templateVar].parameters[devObj.HTMLWordElements.parameters].HTMLWordElements   )
         // console.log(this)
+
+
+        if(   devObj.subject !== undefined   ){
+
+
+            devObj.subject.next(1)
+            
+            
+        }
+
+        
     }
     /* */
 }
