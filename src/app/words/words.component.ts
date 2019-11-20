@@ -691,17 +691,33 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     // console.groupEnd()
                 })      
                 // console.log(    this.wordsMyElements._results   )
-                console.log(   zChild   ) 
-                zChild[3].style.display = 'none'
-                this.ref.detectChanges()     
-                
-                
+                // console.log(   zChild   ) 
+                this.wordsService.wordsResizeEventSubscription0 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+                    zChild[0].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[0].element).width   )
+                    })  
+                    zChild[1].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        containPos:.88
+                    })                    
+                    zChild[2].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[2].element).width   )
+                    })   
+                    zChild[3].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[3].element).width   ),
+                        containPos:.10
+                    })                                                         
+                    this.ref.detectChanges() 
+                })    
             }
         })
     }
   
     ngOnDestroy(){
-
 
         if(   this.wordsTemplateVariable  === 'wordsComponentObject0'   ){
         
@@ -711,6 +727,16 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
         
     
         }
+
+
+        if(   this.wordsTemplateVariable  === 'wordsComponentObject0'   ){
+        
+        
+            // this.wordsService.wordsLoadEventSubscription0.unsubscribe()
+            this.wordsService.wordsResizeEventSubscription0.unsubscribe()
+        
+    
+        }        
 
 
     }

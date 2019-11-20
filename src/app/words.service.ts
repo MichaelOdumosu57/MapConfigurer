@@ -1080,7 +1080,7 @@ export class WordsService {
                             [
                                 {
                                     position:'absolute',
-                                    top:'80px',
+                                    top:'60px',
                                     'z-index':2,
                                     'font-family':'EB Garamond',
                                     'font-size':'21px',
@@ -1093,8 +1093,10 @@ export class WordsService {
                                     position:'absolute',
                                     top:'80px',
                                     'z-index':9,
-                                    height:'10px',
-                                    width:'10px'
+                                    height:'100px',
+                                    width:'150px',
+                                    'border-style': 'groove',
+                                    'border-color':'rgb(238,91,165)'
                                 }                              
                             ],
                             [
@@ -1136,7 +1138,7 @@ export class WordsService {
                                 [
                                     {
                                         position:'absolute',
-                                        top:'160px',
+                                        top:'220px',
                                         width:'8%',
                                         color:'rgb(76, 88, 99)',  
                                         'z-index':2,
