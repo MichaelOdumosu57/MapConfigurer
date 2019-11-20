@@ -46,7 +46,7 @@ function numberParse(   dimension:any   ){
     return dimension;
 }
 
-function xPosition(   devObj:any   ){
+function resizeFont(   devObj:any   ){
     let result = null
 
     
@@ -278,7 +278,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[za.style]['left']   )
                         // console.log(  za.element.clientHeight/numberParse(   this.window.getComputedStyle(   za.element   )['font-size']   )   )
                     }
-                    console.log('resizing title')
+                    // console.log('resizing title')
                     this.wordsService[this.overlayTemplateVariable].location.parameters.push(
                         this.wordsService[this.overlayTemplateVariable].parameters.push({
                             fn:'wordsService.customWordWrapReceive',
@@ -590,7 +590,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             this.wordsService.overlayResizeEventSubscription0 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
-                console.group('making title centering dynamic resize event')          
+                // console.group('making title centering dynamic resize event')          
                     // console.log(   this.overlayMyElements._results   )
                     // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle   )  
                     {  
@@ -682,7 +682,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                             
                             
                         })   
-                        console.group('resize font')
+                        // console.group('resize font')
                             this.wordsService[this.overlayTemplateVariable].ngStyle[za.style]['font-size'] = 
                             numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.titleDefaultFontSize   ) *
                                 (   (   numberParse(   window.getComputedStyle(z.element).getPropertyValue('width')   ) /
@@ -696,7 +696,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                                 this.wordsService[this.overlayTemplateVariable].metadata.titleDefaultFontSize   :
                                 this.wordsService[this.overlayTemplateVariable].ngStyle[za.style]['font-size'].toString() + "px"    
                             this.ref.detectChanges()       
-                        console.groupEnd()                      
+                        // console.groupEnd()                      
                         // console.log(   this.window.getComputedStyle(   z.element   ).width   )
                         // console.log(   this.window.getComputedStyle(   za.element   ).width   )
                         // console.log(   (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )  ) 
@@ -753,7 +753,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         // console.log(z)
                         // console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )                           
                     }
-                console.groupEnd()           
+                // console.groupEnd()           
             })       
             let overlayIntervalRxjs0 = interval(10)
             let overlayTakeRxjs0 =  overlayIntervalRxjs0.pipe(take(1))     

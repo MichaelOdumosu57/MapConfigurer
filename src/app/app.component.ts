@@ -48,6 +48,7 @@ export class AppComponent implements AfterViewInit {
             // this.wordsService.wordsMyElementsArray[i].forEach(element => {
             //     // console.log(element.nativeElement.id)
             // });
+            this.wordsService.wordsComponentMonitor[this.app_wordsConponentElements._results[i].nativeElement.getAttribute('ng-reflect-words-template-variable')] = i
         }
         this.wordsService.wordsMyElements.next(this.wordsService.wordsMyElementsArray)
 

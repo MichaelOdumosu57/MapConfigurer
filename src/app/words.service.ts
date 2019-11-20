@@ -4,6 +4,7 @@ import { Observable, of, Subject, Subscription } from 'rxjs';
 
 
 
+
 function numberParse(dimension){
     dimension = parseFloat(dimension.split("p")[0])
     return dimension;
@@ -16,7 +17,18 @@ function numberParse(dimension){
 export class WordsService {
 
     constructor() { };
-    
+
+    /*app*/
+    appConsecutiveGenerator = (function(){
+        return function *generator() {
+            var index = 1;
+            while (true)
+            yield index++;
+        }()
+    })()
+        
+    /* */
+
     /*overlay*/
 
         // OverlayComponent concept metadata
@@ -673,6 +685,28 @@ export class WordsService {
 
 
     /*words*/ //
+    
+        // wordsComponent concept metadata
+        wordsCustomWordWrapElements:Array<any>  = []
+        wordsComponentObject0BoardHeight = '856.85px'
+        wordsComponentObject0Image0Width = '475px'
+        wordsComponentObject0Image0Height = '307px'
+        wordsComponentObject0Image0Top = '240px'
+        wordsComponentObject0Title0Top = '600px'
+        wordsComponentObject0subTitle0Top = '680px'
+        
+        wordsComponentObject0Image1Width = '475px'
+        wordsComponentObject0Image1Height = '350px'
+        wordsComponentObject0Image1Top = '240px'
+        wordsComponentObject0Title1Top = '650px'
+        wordsComponentObject0subTitle1Top = '730px'
+
+
+        wordsComponentObject1BoardHeight = '320px'
+        wordsAboutMailLineDefaultWidth = "400px"
+        wordsAboutMailLineDefaultTop ='330px'
+        //
+            
         wordsVal:Array<string> = ['w_o_r_d_s_Title','w_o_r_d_s_Line','w_o_r_d_s_paragraph','w_o_r_d_s_Dash','w_o_r_d_s_paragraphDash']
         wordsbool:Array<any> = ['true','true','true','true','true']
         wordsStyle: Array<any[]> = [[3],[3],[3],[3,3,3],[3,3,3]]
@@ -694,10 +728,457 @@ export class WordsService {
         //         
 
 
+
         //represnetaing each instance of the wordsComponent
         wordsMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
         wordsMyElementsArray: any[] = [];
         wordsComponentObject0:any = {
+            styles:[
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:'1000px',
+                        width:'100%',
+                        // bottom:'40px',
+                        // width:'0px',
+                        // height:'529.85px'
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        // top:'700px',
+                        width:'100%',
+                        // bottom:'40px',
+                        // width:'0px',
+                        height:this.wordsComponentObject0BoardHeight
+                    }
+                },                
+                ...Array.from(Array(8),()=> {
+                    return {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:'72px',
+                        left:'550px',
+                        'fontSize':'16px',
+                        // height:'856.85px'
+                    }
+                }}),
+            ],
+            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
+            parameters:[    
+            ],
+            location:{
+                parameters:[]
+            },
+            metadata:{
+                cssAsync: new Subject<any>(),
+                // TitleDefaultFontSize:'32px'
+                boardDefaultHeight:this.wordsComponentObject0BoardHeight
+            },
+            val:[
+                'w_o_r_d_s_Board',
+                'space',
+                'space',
+                'space',
+                'w_o_r_d_s_Paragragh',
+                'w_o_r_d_s_Paragragh',
+                'w_o_r_d_s_Image'
+            ],
+            bool:[
+                'true',
+                'space',
+                'space',
+                'space',
+                'true',
+                'true',
+                'true',
+                'true'
+            ],          
+            quantity:[
+                [3],
+                [
+                    ...Array.from(Array(1),()=> {
+                    return {
+                        quantity:[[3],[],[],[3]],
+                        bool:[['true'],['false'],[],['true']], 
+                        val:[
+                            ['w_o_r_d_s_Title'],
+                            [],
+                            [],
+                            ['w_o_r_d_s_Line']
+                        ], 
+                        text:[
+                            [
+                                ['CATERING'],
+                                ['stuff']
+                            ]
+                        ],
+                        metadata:{
+                            TitleDefaultWidth:null,
+                            TitleDefaultFontSize:'32px' 
+                            // an advatange is I'd have this in the non quantity to access easier
+                        },
+                        ngStyle:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'80px'
+                                }
+                            ],
+                            [],
+                            [],
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'160px',
+                                    width:'8%'                                    
+                                }
+                            ]                            
+                        ],
+                        generator:this.appConsecutiveGenerator
+                    }}),
+                    ...Array.from(Array(1),()=> {
+                        return {
+                            quantity:[[3],[3],[3]],
+                            bool:[['true'],['link','true'],['true']], 
+                            val:[
+                                ['w_o_r_d_s_Title'],
+                                ['w_o_r_d_s_Paragragh','w_o_r_d_s_Paragragh'],
+                                ['w_o_r_d_s_Image']
+                            ], 
+                            text:[
+                                ['CATERING PRICES'],
+                                ['LEARN MORE','do stuff']
+                            ],                            
+                            ngStyle:[
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsComponentObject0Title0Top,
+                                        'font-size':'18px'
+                                    }
+                                ],
+                                [
+                                    {
+                                        color:'rgb(251, 32, 86)',
+                                        position:'absolute',
+                                        top:this.wordsComponentObject0subTitle0Top,
+                                        'font-size':'13px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':700
+                                    },
+                                    {
+                                        color:'blue'
+                                    }
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsComponentObject0Image0Top ,
+                                        width:this.wordsComponentObject0Image0Width,
+                                        height:this.wordsComponentObject0Image0Height,
+                                        'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
+                                        'border-radius':'4px 4px 4px 4px'
+                                    }
+                                ]                                                                      
+                            ],
+                            metadata:{
+                                image:['/assets/media/IMG-1788-1-1024x663.jpg'],
+                                imageDefaultWidth:this.wordsComponentObject0Image0Width,
+                                imageDefaultHeight:this.wordsComponentObject0Image0Height,
+                                titleDefaultTop:this.wordsComponentObject0Title0Top,
+                                subTitleDefaultTop:this.wordsComponentObject0subTitle0Top,
+                                titleDefaultWidth:null
+                            },
+                            extras:[
+                                {},
+                                {
+                                    ngStyle:{
+                                        color:'rgb(251, 32, 86)',
+                                        position:'absolute',
+                                    },
+                                    bool:'true',
+                                    text:'\u27F6'
+                                }
+                            ],                            
+                            generator:this.appConsecutiveGenerator
+                    }}),
+                    ...Array.from(Array(1),()=> {
+                        return {
+                            quantity:[[3],[3],[3]],
+                            bool:[['true'],['link'],['true']], 
+                            val:[
+                                ['w_o_r_d_s_Title'],
+                                ['w_o_r_d_s_Paragragh'],
+                                ['w_o_r_d_s_Image']
+                            ], 
+                            text:[
+                                ['CATERING EVENTS'],
+                                ['LEARN MORE']
+                            ],                            
+                            ngStyle:[
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsComponentObject0Title1Top,
+                                        'font-size':'18px'
+                                    }
+                                ],
+                                [
+                                    {
+                                        color:'rgb(251, 32, 86)',
+                                        position:'absolute',
+                                        top:this.wordsComponentObject0subTitle1Top ,
+                                        'font-size':'13px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':700
+                                    }
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        width:this.wordsComponentObject0Image1Width,
+                                        height:this.wordsComponentObject0Image1Height,
+                                        'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
+                                        'border-radius':'4px 4px 4px 4px',
+                                        top:this.wordsComponentObject0Image1Top,
+                                        left:'200px'                                        
+                                    }
+                                ]                                                                      
+                            ],
+                            metadata:{
+                                image:['/assets/media/IMG-1786-1-1024x754.jpg'],
+                                imageDefaultWidth: this.wordsComponentObject0Image1Width,  
+                                imageDefaultHeight:this.wordsComponentObject0Image1Height,
+                                titleDefaultTop:this.wordsComponentObject0Title1Top,
+                                subTitleDefaultTop:this.wordsComponentObject0subTitle1Top,
+                                titleDefaultWidth:null,
+                                subTitleDefaultWidth:null           
+                            },
+                            extras:[
+                                {},
+                                {
+                                    ngStyle:{
+                                        color:'rgb(251, 32, 86)',
+                                        position:'absolute',
+                                        // top:'-30%'
+                                        'font-weight':'bold'
+                                    },
+                                    bool:'true',
+                                    text:'\u27F6'
+                                }
+                            ],
+                            generator:this.appConsecutiveGenerator
+                    }})                                          
+                ],   
+                [3,3],
+                [3,3]
+            ],
+            generator:(function(){
+                return function *generator() {
+                    var index = 1;
+                    while (true)
+                    yield index;
+                }()
+            })()        
+        }
+        wordsComponentObject1:any = {
+            styles:[
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:'800px',
+                        width:'100%',
+                        // bottom:'40px',
+                        // width:'0px',
+                        // height:'529.85px'
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        'background-color': 'rgb(244,245,249)',
+                        width:'100%',
+                        height:this.wordsComponentObject1BoardHeight
+                    }
+                },                
+                ...Array.from(Array(8),()=> {
+                    return {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:'72px',
+                        left:'550px',
+                        'fontSize':'16px',
+                        // height:'856.85px'
+                    }
+                }}),
+            ],
+            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
+            parameters:[    
+            ],
+            location:{
+                parameters:[]
+            },
+            metadata:{
+                cssAsync: new Subject<any>(),
+                // TitleDefaultFontSize:'32px'
+                boardDefaultHeight:this.wordsComponentObject0BoardHeight
+            },
+            val:[
+                'w_o_r_d_s_Board',
+                'space',
+                'space',
+                'space',
+                'w_o_r_d_s_Paragragh',
+                'w_o_r_d_s_Paragragh',
+                'w_o_r_d_s_Image'
+            ],
+            bool:[
+                'true',
+                'space',
+                'space',
+                'space',
+                'true',
+                'true',
+                'true',
+                'true'
+            ],          
+            quantity:[
+                [3],
+                [
+                    ...Array.from(Array(1),()=> {
+                    return {
+                        quantity:[[],[3],[3],[]],
+                        bool:[[],['true'],['true'],[]], 
+                        val:[
+                            [],
+                            ['w_o_r_d_s_Paragraph'],
+                            ['w_o_r_d_s_Image'],
+                            []
+                        ], 
+                        text:[
+                                [],
+                                ['“One cannot think well, love well, sleep well, if one has not dined well.” ']
+                        ],
+                        metadata:{
+                            TitleDefaultWidth:null,
+                            TitleDefaultFontSize:'32px', 
+                            // an advatange is I'd have this in the non quantity to access easier
+                            image:['assets/media/IMG-1478-1024x683.jpg']                            
+                        },
+                        ngStyle:[
+                            [
+
+                            ],
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'80px',
+                                    'z-index':2,
+                                    'font-family':'EB Garamond',
+                                    'font-size':'21px',
+                                    'font-style':'italic',
+                                    color:'rgb(76, 88, 99)'  
+                                }                              
+                            ],
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'80px',
+                                    'z-index':9,
+                                    height:'10px',
+                                    width:'10px'
+                                }                              
+                            ],
+                            [
+
+                            ]                            
+                        ],
+                        extras:[
+                            {},
+                            {
+                                bool:'false'
+                            }
+                        ],                        
+                        generator:this.appConsecutiveGenerator
+                    }}),    
+                    ...Array.from(Array(1),()=> {
+                        return {
+                            quantity:[[],[3],[3],[]],
+                            bool:[[],['true','true'],['true','true'],[]], 
+                            val:[
+                                [],
+                                ['w_o_r_d_s_Paragraph'],
+                                ['w_o_r_d_s_Image'],
+                                []
+                            ], 
+                            text:[
+                                    [],
+                                    ['-Virginia\u00A0Woolf']
+                            ],
+                            metadata:{
+                                TitleDefaultWidth:null,
+                                TitleDefaultFontSize:'32px', 
+                                // an advatange is I'd have this in the non quantity to access easier
+                                image:['assets/media/quote-1.png']                            
+                            },
+                            ngStyle:[
+                                [
+    
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:'160px',
+                                        width:'8%',
+                                        color:'rgb(76, 88, 99)',  
+                                        'z-index':2,
+                                        'font-family':'Times New Roman',
+                                        'font-size':'21px',
+                                        'font-weight':900                                    
+                                    }                                
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:'160px',
+                                        width:'8%',
+                                        color:'rgb(76, 88, 99)',  
+                                        'z-index':2,                              
+                                    }                                  
+                                ],
+                                [
+    
+                                ]                            
+                            ],
+                            extras:[
+                                {},
+                                {
+                                    bool:'false'
+                                }
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                        }}),                                                           
+                ],   
+                [3,3],
+                [3,3]
+            ],
+            generator:(function(){
+                return function *generator() {
+                    var index = 1;
+                    while (true)
+                    yield index;
+                }()
+            })()        
+        }
+        wordsComponentObject2:any = {
             styles:[
                 {
                     override:'true',
@@ -714,7 +1195,10 @@ export class WordsService {
                     override:'1'
                 },
                 {
-                    override:'2'
+                    override:'true',
+                    css:{
+                        color:'green'
+                    }
                 },
                 {
                     override:'3'
@@ -791,175 +1275,29 @@ export class WordsService {
                         respective:6
                     }
                 }
-            ]
+            ],
+            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
+            parameters:[    
+            ],
+            location:{
+                parameters:[]
+            },
+            metadata:{
+                cssAsync: new Subject<any>(),
+            },
+            val:[],
+            bool:[],
+            quantity:[],
+            generator:(function(){
+                return function *generator() {
+                    var index = 1;
+                    while (true)
+                    yield index++;
+                }()
+            })()        
         }
-        wordsComponentObject1:any = {
-            styles:[
-                {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        left:'30px'
-                    }
-                },
-                {},
-                {},
-                {},
-                {
-                    override:'true',
-                    css:{
-                        position:'relative',
-                        'left':'1em',
-                        'top':'32px'
-                    },
-                    repositionDash:{
-                        lineHeight:18,
-                        factor:'0'
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'relative',
-                        'left':'1em',
-                        'top':'64px'
-                    },
-                    repositionDash:{
-                        lineHeight:18,
-                        factor:'.27'
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'relative',
-                        'left':'1em',
-                        'top':'96px'
-                    },
-                    repositionDash:{
-                        lineHeight:18,
-                        factor:'.175'
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'relative',
-                        'left':'3em',
-                        'top':'0em'
-                    },
-                    repositionDash:{
-                        respective:4
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'relative',
-                        'left':'3em',
-                        'top':'0em'
-                    },
-                    repositionDash:{
-                        respective:5
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'relative',
-                        'left':'3em',
-                        'top':'0em'
-                    },
-                    repositionDash:{
-                        respective:6
-                    }
-                }
-            ]
-        }
-        wordsComponentObject2:any = {
-            styles:[
-                {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        left:'30px',
-                        top:'1200px'
-                    }
-                },
-                {},
-                {},
-                {},
-                {
-                    override:'true',
-                    css:{
-                        position:'relative',
-                        'left':'1em',
-                        'top':'32px'
-                    },
-                    repositionDash:{
-                        lineHeight:18,
-                        factor:'0'
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'relative',
-                        'left':'1em',
-                        'top':'64px'
-                    },
-                    repositionDash:{
-                        lineHeight:18,
-                        factor:'.27'
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'relative',
-                        'left':'1em',
-                        'top':'96px'
-                    },
-                    repositionDash:{
-                        lineHeight:18,
-                        factor:'.175'
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'relative',
-                        'left':'3em',
-                        'top':'0em'
-                    },
-                    repositionDash:{
-                        respective:4
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'relative',
-                        'left':'3em',
-                        'top':'0em'
-                    },
-                    repositionDash:{
-                        respective:5
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'relative',
-                        'left':'3em',
-                        'top':'0em'
-                    },
-                    repositionDash:{
-                        respective:6
-                    }
-                }
-            ]
-        }
+        wordsComponentMonitor:any = {
+        }        
         //
 
         //dashes repositioning
