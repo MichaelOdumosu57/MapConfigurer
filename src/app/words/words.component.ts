@@ -56,7 +56,7 @@ function xPosition(devObj){
         
         
     }
-    
+    console.log(devObj.containPos)
     
     return (    
         (   devObj.contain*devObj.containPos   ) -  
@@ -321,7 +321,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     })      
                     // console.log(    this.wordsMyElements._results   )
                     // console.log(   zChild   ) 
-                    // zChild[7].style.display = 'none'
+                    zChild[7].style.display = 'none'
                     this.ref.detectChanges()                       
                 // console.groupEnd()
                     this.wordsService[this.wordsTemplateVariable].quantity[1][0].metadata.TitleDefaultWidth = getTextWidth({
@@ -574,7 +574,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             }
 
 
-            if(   this.wordsTemplateVariable === 'wordsComponentObject1'   ){
+            else if(   this.wordsTemplateVariable === 'wordsComponentObject1'   ){
 
                 
                 console.log(   this.wordsMyElements._results   )
@@ -714,6 +714,165 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     this.ref.detectChanges() 
                 })    
             }
+
+
+            else if(   this.wordsTemplateVariable === 'wordsComponentObject2'   ){
+
+                
+                let z = {
+                    style:null,
+                    element:null
+                };
+                let zChild =[]           
+                let zCheckpoint = []                         
+                this.wordsMyElements._results.map((x:any,i:any)=>{
+
+
+                    if(   x.nativeElement.id === 'w_o_r_d_s_Board'   ){
+
+
+                        z.style = i + 1
+                        z.element = x.nativeElement
+                        
+    
+                    }    
+                    
+                    
+                    if(   x.nativeElement.id === 'w_o_r_d_s_Title'  ){
+                        // console.log('quantity checkpoint')
+                        zCheckpoint.push(i)
+                    }
+                    
+                    
+                })
+                //we have to hope that things are in order
+                // console.log(zCheckpoint)   
+                let zGrid = {
+                    a:0,
+                    b:0,
+                    c:0,
+                    d:0,
+                    e:null,
+                    f:null
+                }                        
+                zCheckpoint.map((y:any,j:any)=>{
+                    // console.group('associated')
+                    this.wordsMyElements._results.slice(y,zCheckpoint[j+1]).map((x:any,i:any)=>{     
+                        zGrid.b = this.wordsService[this.wordsTemplateVariable].quantity[1][j].val.length 
+                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].val.slice(   zGrid.a,zGrid.b   ).some((a:any,b:any)=>{
+                            zGrid.d = a.length   
+                            zGrid.f = null                          
+                            a.slice(    zGrid.c,zGrid.d   ).some((c:any,d:any)=>{
+                                console.log(   
+                                    c+'\n',
+                                    this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d],  
+                                    this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d],
+                                    x.nativeElement.id
+                                )
+
+
+                                if(   x.nativeElement.id === c   &&
+                                    (   
+                                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d] === 'true' ||
+                                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d]=== 'link' 
+                                    )    
+                                ){
+
+
+                                    zGrid.e = this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d]
+
+
+
+
+                                    zGrid.a = b + 1
+                                    zGrid.c = d + 1 
+                                    zGrid.f = 'true'
+                                    // console.log(   zGrid   ) 
+                                    return true
+
+
+                                }
+
+
+                            })
+
+
+                            if(   zGrid.f !== 'true'  || zGrid.c === zGrid.d   ){
+
+                                
+                                zGrid.c = 0
+
+
+                            }
+
+
+                            if(   zGrid.f === 'true'   ){
+
+                                
+                                return  true
+
+
+                            }
+
+
+                            
+                        })               
+                        zChild.push({
+                            element:x.nativeElement,
+                            style: zGrid.e
+                        })  
+                        zGrid.f = 'false'
+                        // console.log(   zGrid   )                
+                    })
+                    zGrid.a = 0
+                    zGrid.c = 0 
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j]   )
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val   )
+                    // console.groupEnd()
+                })      
+                // console.log(    this.wordsMyElements._results   )
+                console.log(   zChild   ) 
+                this.wordsService.wordsResizeEventSubscription0 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+                    // zChild[0].style['left'] = xPosition({
+                    //     contain:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                    //     target:numberParse(   this.window.getComputedStyle(zChild[0].element).width   )
+                    // })  
+                    // zChild[1].style['left'] = xPosition({
+                    //     contain:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                    //     target:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    //     containPos: .1,
+                    //     targetPos: 0
+                    // })                    
+                    // zChild[2].style['left'] = xPosition({
+                    //     contain:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                    //     target:numberParse(   this.window.getComputedStyle(zChild[2].element).width   )
+                    // })   
+                    zChild[8].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[7].element).width   ) + 
+                                numberParse(   this.window.getComputedStyle(zChild[7].element).left   ) ,
+                        target:numberParse(   this.window.getComputedStyle(zChild[8].element).width   ),
+                        containPos:(
+                                    (
+                                        numberParse(   this.window.getComputedStyle(zChild[7].element).width   ) /
+                                        (
+                                            numberParse(   this.window.getComputedStyle(zChild[7].element).width   ) + 
+                                            numberParse(   this.window.getComputedStyle(zChild[7].element).left   )                                         
+                                        )
+                                    ) 
+                                )/2 +
+                                (
+                                    numberParse(   this.window.getComputedStyle(zChild[7].element).left   ) /
+                                    (
+                                        numberParse(   this.window.getComputedStyle(zChild[7].element).width   ) + 
+                                        numberParse(   this.window.getComputedStyle(zChild[7].element).left   )                                         
+                                    )
+                                )
+                    })                                                         
+                    this.ref.detectChanges() 
+                })    
+            }
+            
+            
         })
     }
   

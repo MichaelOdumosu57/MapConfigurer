@@ -28,8 +28,12 @@
     </ng-container>    
 
     <ng-container *ngFor = 'let aa of a.quantity[3];let bb = index' >
-        <div #mywordsval *ngIf= "a.bool[3][bb] ==='true'" id = {{a.val[3][bb]}} [ngStyle] = 'a.ngStyle[3][bb]' ></div>
-    </ng-container>        
+        <div #mywordsval *ngIf= "a.bool[3][bb] ==='true'   else elseBlock2" id = {{a.val[3][bb]}} [ngStyle] = 'a.ngStyle[3][bb]' ></div>
+        <ng-template #elseBlock2  > 
+            <a #mywordsval *ngIf= "a.bool[3][bb] ==='link'" id = {{a.val[3][bb]}}  [ngStyle] =  'a.ngStyle[3][bb]'  >{{a.text[3][bb]}}</a>
+        </ng-template>             
+    </ng-container>      
+    
 
 </ng-container>
 

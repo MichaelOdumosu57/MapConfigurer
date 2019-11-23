@@ -703,6 +703,8 @@ export class WordsService {
 
 
         wordsComponentObject1BoardHeight = '320px'
+
+        wordsComponentObject2BoardHeight = '753px'
         wordsAboutMailLineDefaultWidth = "400px"
         wordsAboutMailLineDefaultTop ='330px'
         //
@@ -992,7 +994,7 @@ export class WordsService {
                     override:'true',
                     css:{
                         position:'absolute',
-                        top:'800px',
+                        top:'680px',
                         width:'100%',
                         // bottom:'40px',
                         // width:'0px',
@@ -1186,97 +1188,33 @@ export class WordsService {
                     override:'true',
                     css:{
                         position:'absolute',
-                        left:'70px',
-                        top:'700px'
+                        top:'680px',
+                        width:'100%',
                         // bottom:'40px',
                         // width:'0px',
-                        // height:'0px'
-                    }
-                },
-                {
-                    override:'1'
-                },
-                {
-                    override:'true',
-                    css:{
-                        color:'green'
-                    }
-                },
-                {
-                    override:'3'
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'relative',
-                        'left':'1em',
-                        'top':'32px'
-                    },
-                    repositionDash:{
-                        lineHeight:18,
-                        factor:'0'
+                        // height:'529.85px'
                     }
                 },
                 {
                     override:'true',
                     css:{
-                        position:'relative',
-                        'left':'1em',
-                        'top':'64px'
-                    },
-                    repositionDash:{
-                        lineHeight:18,
-                        factor:'.27'
+                        position:'absolute',
+                        'background-color': 'white',
+                        width:'100%',
+                        height:this.wordsComponentObject2BoardHeight
                     }
-                },
-                {
+                },                
+                ...Array.from(Array(9),()=> {
+                    return {
                     override:'true',
                     css:{
-                        position:'relative',
-                        'left':'1em',
-                        'top':'96px'
-                    },
-                    repositionDash:{
-                        lineHeight:18,
-                        factor:'.175'
+                        position:'absolute',
+                        top:'72px',
+                        left:'550px',
+                        'fontSize':'16px',
+                        // height:'856.85px'
                     }
-                },
-                {
-                    override:'true',
-                    css:{
-                        // width:'0px',
-                        position:'relative',
-                        'left':'3em',
-                        'top':'0em'
-                    },
-                    repositionDash:{
-                        respective:4
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        // width:'0px',
-                        position:'relative',
-                        'left':'3em',
-                        'top':'0em'
-                    },
-                    repositionDash:{
-                        respective:5
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        // width:'0px',
-                        position:'relative',
-                        'left':'3em',
-                        'top':'0em'
-                    },
-                    repositionDash:{
-                        respective:6
-                    }
-                }
+                }}),
             ],
             ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
             parameters:[    
@@ -1286,15 +1224,174 @@ export class WordsService {
             },
             metadata:{
                 cssAsync: new Subject<any>(),
+                // TitleDefaultFontSize:'32px'
+                boardDefaultHeight:this.wordsComponentObject0BoardHeight
             },
-            val:[],
-            bool:[],
-            quantity:[],
+            val:[
+                'w_o_r_d_s_Board',
+                'space',
+                'space',
+                'space',
+                'w_o_r_d_s_Paragragh',
+                'w_o_r_d_s_Paragragh',
+                'w_o_r_d_s_Image'
+            ],
+            bool:[
+                'true',
+                'space',
+                'space',
+                'space',
+                'true',
+                'true',
+                'true',
+                'true'
+            ],          
+            quantity:[
+                [3],
+                [
+                    ...Array.from(Array(1),()=> {
+                    return {
+                        quantity:[[3],[3],[3,3,3,3],[3,3,3]],
+                        bool:[['true'],['true'],['true','true','true','true'],['true','true','link']], 
+                        val:[
+                            ['w_o_r_d_s_Title'],
+                            ['w_o_r_d_s_Paragraph'],
+                            ['w_o_r_d_s_Image','w_o_r_d_s_Image','w_o_r_d_s_Image','w_o_r_d_s_Image'],
+                            ['w_o_r_d_s_Line','w_o_r_d_s_Button','w_o_r_d_s_ButtonText']
+                        ], 
+                        text:[
+                                ['Upcoming parties & events'],
+                                [`
+                                    Fuerat aestu carentem habentia 
+                                    spectent tonitrua mutastis locavit liberioris. 
+                                    Sinistra possedit litora ut nabataeaque. Setucant 
+                                    coepyterunt perveniunt animal! Concordi aurea 
+                                    nabataeaque seductaque constaque cepit sublime 
+                                    flexi nullus.`
+                                ],
+                                [],
+                                [null,null,'LEARN MORE']
+                        ],
+                        metadata:{
+                            TitleDefaultWidth:null,
+                            TitleDefaultFontSize:'32px',
+                            // an advatange is I'd have this in the non quantity to access easier
+                            image:[
+                                'assets/media/IMG-1789-1024x661.jpg',
+                                'assets/media/IMG-1792.jpg',
+                                'assets/media/IMG-1793-1.jpg',                                
+                                'assets/media/IMG-1788-1-1024x663.jpg'
+                            ]                            
+                        },
+                        ngStyle:[
+                            [
+                                {
+                                    position:'absolute',
+                                    'font-family':'Montserrat',
+                                    'top':'160px',
+                                    'width':'320px',
+                                    'background-color':'blue',
+                                    'left':'5%',
+                                    'text-align':'left'
+                                }
+                            ],
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'300px',
+                                    left:'5%',
+                                    width:'300px',
+                                    'z-index':2,
+                                    'font-family':'Noto Sans',
+                                    'font-size':'17px',
+                                    color:'rgb(76, 88, 99)',  
+                                    // 'background-color':'rgb(123, 253, 253)'
+                                }                              
+                            ],
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'180px',
+                                    left: '500px',
+                                    'z-index':9,
+                                    height:'232px',
+                                    width:'359px',
+                                    'border-radius':'4px 4px 4px 4px',
+                                    'border-color':'rgb(238,91,165)'
+                                },
+                                {
+                                    position:'absolute',
+                                    top:'180px',
+                                    left: '880px',
+                                    'z-index':9,
+                                    height:'232px',
+                                    width:'359px',
+                                    'border-radius':'4px 4px 4px 4px',
+                                    'border-color':'rgb(238,91,165)'
+                                },
+                                {
+                                    position:'absolute',
+                                    top:'450px',
+                                    left: '500px',
+                                    'z-index':9,
+                                    height:'232px',
+                                    width:'359px',
+                                    'border-radius':'4px 4px 4px 4px',
+                                    'border-color':'rgb(238,91,165)'
+                                },
+                                {
+                                    position:'absolute',
+                                    top:'450px',
+                                    left: '880px',
+                                    'z-index':9,
+                                    height:'232px',
+                                    width:'359px',
+                                    'border-radius':'4px 4px 4px 4px',
+                                    'border-color':'rgb(238,91,165)'
+                                }                                                                                                                                                
+                            ],
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'280px',
+                                    width:'50px',
+                                    left:'5%'
+                                },
+                                {
+                                    position:'absolute',
+                                    'border-radius':'50px',
+                                    'height':'47px',
+                                    'width':'182px',
+                                    'background-color':'#f95b82',
+                                    'top':'525px',
+                                    left:'5%'                                    
+                                },
+                                {
+                                    color:'rgb(255, 255, 255)',
+                                    position:'absolute',
+                                    'top':'538px',
+                                    'font-size':'13px',
+                                    'font-family':'Noto Sans',
+                                    'font-weight':'bold',
+
+                                },                                                                
+                            ]                            
+                        ],
+                        extras:[
+                            {},
+                            {
+                                bool:'false'
+                            }                         
+                        ],                        
+                        generator:this.appConsecutiveGenerator
+                    }}),                                                        
+                ]
+            ],
             generator:(function(){
                 return function *generator() {
                     var index = 1;
                     while (true)
-                    yield index++;
+                    yield index;
                 }()
             })()        
         }
