@@ -239,7 +239,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
             
                 // console.group(   this.wordsTemplateVariable   )
-                    console.log(   this.wordsMyElements._results   )
+                    // console.log(   this.wordsMyElements._results   )
                     let z = {
                         style:null,
                         element:null
@@ -272,83 +272,74 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     let zGrid = {
                         a:0,
                         b:0,
-                        c:0,
-                        d:0,
                         e:null,
                         f:null
-                    }                        
+                    }        
                     zCheckpoint.map((y:any,j:any)=>{
                         // console.group('associated')
-                        this.wordsMyElements._results.slice(y,zCheckpoint[j+1]).map((x:any,i:any)=>{     
-                            zGrid.b = this.wordsService[this.wordsTemplateVariable].quantity[1][j].val.length 
-                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].val.slice(   zGrid.a,zGrid.b   ).some((a:any,b:any)=>{
-                                zGrid.d = a.length   
-                                zGrid.f = null                          
-                                a.slice(    zGrid.c,zGrid.d   ).some((c:any,d:any)=>{
-                                    // console.log(   
-                                    //     c+'\n',
-                                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d],  
-                                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d],
-                                    //     x.nativeElement.id
-                                    // )
-
-
-                                    if(   x.nativeElement.id === c   &&
-                                        (   
-                                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d] === 'true' ||
-                                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d]=== 'link' 
-                                        )    
-                                    ){
-
-
-                                        zGrid.e = this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d]
-                                        zGrid.a = b + 1
-                                        zGrid.c = d + 1 
-                                        zGrid.f = 'true'
-                                        // console.log(   zGrid   ) 
-                                        return true
-
-
-                                    }
-
-
-                                })
-
-
-                                if(   zGrid.f !== 'true'  || zGrid.c === zGrid.d  ){
-
-                                    
-                                    zGrid.c = 0
-
-
-                                }
-
-
-                                if(   zGrid.f === 'true'   ){
-
-                                    
-                                    return  true
-
-
-                                }
-
-
-                                
-                            })               
-                            zChild.push({
-                                element:x.nativeElement,
-                                style: zGrid.e
-                            })  
-                            zGrid.f = 'false'
-                            // console.log(   zGrid   )                
-                        })
+                        // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
                         zGrid.a = 0
-                        zGrid.c = 0 
-                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j]   )
-                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val   )
+                        this.wordsMyElements._results.slice(y,zCheckpoint[j+1]).map((x:any,i:any)=>{     
+                            // console.log(   x.nativeElement.id   )
+                            // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
+    
+                            while(   
+                                this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                                zGrid.b +1 > this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                            ){
+                                // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                                zGrid.a +=1
+                                // debugger                                
+                            }
+                            // console.log(   
+                            //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                            //     zChild,
+                            //     zGrid
+                            // )
+
+
+
+                            if(   x.nativeElement.id === this.wordsService[this.wordsTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                                (   
+                                    this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                                    this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                                    this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
+                                )    
+                            ){               
+                                
+                                
+                                zChild.push({
+                                    element:x.nativeElement,
+                                    style:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b] 
+                                })
+                                
+    
+                                if(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
+    
+    
+                                    zGrid.a += 1
+                                    zGrid.b = 0       
+                                    
+                                    
+                                }
+    
+    
+                                
+                                else if(   true   ){
+    
+    
+                                    zGrid.b += 1       
+                                    
+                                    
+                                }
+    
+    
+                            }
+                            
+                            
+                        })
                         // console.groupEnd()
-                    })      
-                    // console.log(    this.wordsMyElements._results   )
+                    })                                     
                     // console.log(   zChild   ) 
                     this.ref.detectChanges()                       
                 // console.groupEnd()
@@ -605,7 +596,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             else if(   this.wordsTemplateVariable === 'wordsComponentObject1'   ){
 
                 
-                console.log(   this.wordsMyElements._results   )
+                // console.log(   this.wordsMyElements._results   )
                 let z = {
                     style:null,
                     element:null
@@ -638,84 +629,75 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 let zGrid = {
                     a:0,
                     b:0,
-                    c:0,
-                    d:0,
                     e:null,
                     f:null
                 }                        
                 zCheckpoint.map((y:any,j:any)=>{
                     // console.group('associated')
+                    console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                    zGrid.a = 0
                     this.wordsMyElements._results.slice(y,zCheckpoint[j+1]).map((x:any,i:any)=>{     
-                        zGrid.b = this.wordsService[this.wordsTemplateVariable].quantity[1][j].val.length 
-                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].val.slice(   zGrid.a,zGrid.b   ).some((a:any,b:any)=>{
-                            zGrid.d = a.length   
-                            zGrid.f = null                          
-                            a.slice(    zGrid.c,zGrid.d   ).some((c:any,d:any)=>{
-                                // console.log(   
-                                //     c+'\n',
-                                //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d],  
-                                //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d],
-                                //     x.nativeElement.id
-                                // )
+                        console.log(  
+                             x.nativeElement.id,
+                             zGrid
+                       )
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
 
-
-                                if(   x.nativeElement.id === c   &&
-                                    (   
-                                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d] === 'true' ||
-                                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d]=== 'link' 
-                                    )    
-                                ){
-
-
-                                    zGrid.e = this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d]
+                        while(   
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                            zGrid.b +1 > this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                        ){
+                            console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                            zGrid.a +=1
+                            // debugger                                
+                        }
+                        console.log(   
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                            zChild,
+                            zGrid
+                        )
 
 
 
-
-                                    zGrid.a = b + 1
-                                    zGrid.c = d + 1 
-                                    zGrid.f = 'true'
-                                    // console.log(   zGrid   ) 
-                                    return true
-
-
-                                }
-
-
+                        if(   x.nativeElement.id === this.wordsService[this.wordsTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                            (   
+                                this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                                this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                                this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
+                            )    
+                        ){               
+                            
+                            
+                            zChild.push({
+                                element:x.nativeElement,
+                                style:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b] 
                             })
+                            
+
+                            if(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
 
 
-                            if(   zGrid.f !== 'true'  || zGrid.c === zGrid.d   ){
-
+                                zGrid.a += 1
+                                zGrid.b = 0       
                                 
-                                zGrid.c = 0
-
-
-                            }
-
-
-                            if(   zGrid.f === 'true'   ){
-
                                 
-                                return  true
-
-
                             }
 
 
                             
-                        })               
-                        zChild.push({
-                            element:x.nativeElement,
-                            style: zGrid.e
-                        })  
-                        zGrid.f = 'false'
-                        // console.log(   zGrid   )                
+                            else if(   true   ){
+
+
+                                zGrid.b += 1       
+                                
+                                
+                            }
+
+
+                        }
+                        
+                        
                     })
-                    zGrid.a = 0
-                    zGrid.c = 0 
-                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j]   )
-                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val   )
                     // console.groupEnd()
                 })      
                 // console.log(    this.wordsMyElements._results   )
@@ -792,12 +774,28 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 zCheckpoint.map((y:any,j:any)=>{
                     // console.group('associated')
                     // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                    zGrid.a = 0
                     this.wordsMyElements._results.slice(y,zCheckpoint[j+1]).map((x:any,i:any)=>{     
-                        // console.log(x)
-                        // console.log(this.wordsService[this.wordsTemplateVariable].quantity[1][0].val)
+                        // console.log(   x.nativeElement.id   )
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
+
+                        while(   
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                            zGrid.b +1 > this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                        ){
+                            // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                            zGrid.a +=1
+                            // debugger                                
+                        }
+                        // console.log(   
+                        //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                        //     zChild,
+                        //     zGrid
+                        // )
 
 
-                        if(   x.nativeElement.id === this.wordsService[this.wordsTemplateVariable].quantity[1][0].val[zGrid.a][zGrid.b]   &&
+
+                        if(   x.nativeElement.id === this.wordsService[this.wordsTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
                             (   
                                 this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
                                 this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
@@ -812,7 +810,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                             })
                             
 
-                            if(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b+1] === undefined   ){
+                            if(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
 
 
                                 zGrid.a += 1
@@ -823,7 +821,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
                             
-                            else if(   true  ){
+                            else if(   true   ){
 
 
                                 zGrid.b += 1       
@@ -836,10 +834,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                         
                         
                     })
-                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j]   )
-                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val   )
                     // console.groupEnd()
-                })      
+                })         
                 // console.log(    this.wordsMyElements._results   )
                 // console.log(   zChild   ) 
                 // console.log(   this.window.getComputedStyle(zChild[0].element).left   )

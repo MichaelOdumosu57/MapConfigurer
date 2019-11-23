@@ -870,7 +870,7 @@ export class WordsService {
                             bool:[['true'],['link','true'],['true']], 
                             val:[
                                 ['w_o_r_d_s_Title'],
-                                ['w_o_r_d_s_Paragragh','w_o_r_d_s_Paragragh'],
+                                ['w_o_r_d_s_Paragragh'],
                                 ['w_o_r_d_s_Image']
                             ], 
                             text:[
