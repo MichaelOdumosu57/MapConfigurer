@@ -21,19 +21,49 @@ function resize(   devObj:any   ){
     // console.log(   devObj   )
     let result = null
 
-    
+
     if(   devObj.misc === undefined   ){
         devObj.misc = [.12]
     }
+    
+
+    if(   devObj.type === 'direct'   ){
 
 
-    result = devObj.default *
-          (   (   devObj.containActual /
-          devObj.containDefault   )   - devObj.misc[0])  //usually its .12
+        result = 
+        (
+            devObj.default -
+            (
+                devObj.containDefault   -
+                devObj.containActual    
+            ) * 
+            devObj.misc[0]
+        )
+
+
+    }
+    
+    else if(   devObj.type !== 'direct' ){
+
+
+        result = (
+            devObj.default *
+            (
+                (   
+                    (  
+                        devObj.containActual  /
+                        devObj.containDefault   
+                    ) -
+                    devObj.misc[0]   
+                ) 
+            )
+        ) 
+
+
+    }
     return result = result > devObj.default  ? 
         devObj.default.toString() + "px"      :
-        result.toString() + "px"   
-   
+        result.toString() + "px"     
 }
 
 
@@ -56,7 +86,6 @@ function xPosition(devObj){
         
         
     }
-    console.log(devObj.containPos)
     
     return (    
         (   devObj.contain*devObj.containPos   ) -  
@@ -321,7 +350,6 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     })      
                     // console.log(    this.wordsMyElements._results   )
                     // console.log(   zChild   ) 
-                    zChild[7].style.display = 'none'
                     this.ref.detectChanges()                       
                 // console.groupEnd()
                     this.wordsService[this.wordsTemplateVariable].quantity[1][0].metadata.TitleDefaultWidth = getTextWidth({
@@ -623,12 +651,12 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                             zGrid.d = a.length   
                             zGrid.f = null                          
                             a.slice(    zGrid.c,zGrid.d   ).some((c:any,d:any)=>{
-                                console.log(   
-                                    c+'\n',
-                                    this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d],  
-                                    this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d],
-                                    x.nativeElement.id
-                                )
+                                // console.log(   
+                                //     c+'\n',
+                                //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d],  
+                                //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d],
+                                //     x.nativeElement.id
+                                // )
 
 
                                 if(   x.nativeElement.id === c   &&
@@ -746,107 +774,166 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     
                 })
                 //we have to hope that things are in order
-                // console.log(zCheckpoint)   
                 let zGrid = {
-                    a:0,
-                    b:0,
+                    a:0, // first index element group
+                    b:0, // 2nd index specific element
                     c:0,
                     d:0,
                     e:null,
                     f:null
-                }                        
+                }                  
+                // console.log(zCheckpoint)   
+                // console.log(zGrid)           
+                // console.log(this.wordsMyElements._results)    
+                // console.log(this.wordsService[this.wordsTemplateVariable].quantity[1][0].quantity)
+                // console.log(this.wordsService[this.wordsTemplateVariable].quantity[1][0].bool)
+                // console.log(this.wordsService[this.wordsTemplateVariable].quantity[1][0].val)
+                // console.log(this.wordsService[this.wordsTemplateVariable].quantity[1][0].ngStyle)
                 zCheckpoint.map((y:any,j:any)=>{
                     // console.group('associated')
+                    // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
                     this.wordsMyElements._results.slice(y,zCheckpoint[j+1]).map((x:any,i:any)=>{     
-                        zGrid.b = this.wordsService[this.wordsTemplateVariable].quantity[1][j].val.length 
-                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].val.slice(   zGrid.a,zGrid.b   ).some((a:any,b:any)=>{
-                            zGrid.d = a.length   
-                            zGrid.f = null                          
-                            a.slice(    zGrid.c,zGrid.d   ).some((c:any,d:any)=>{
-                                console.log(   
-                                    c+'\n',
-                                    this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d],  
-                                    this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d],
-                                    x.nativeElement.id
-                                )
+                        // console.log(x)
+                        // console.log(this.wordsService[this.wordsTemplateVariable].quantity[1][0].val)
 
 
-                                if(   x.nativeElement.id === c   &&
-                                    (   
-                                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d] === 'true' ||
-                                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d]=== 'link' 
-                                    )    
-                                ){
-
-
-                                    zGrid.e = this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle.slice(   zGrid.a,zGrid.b   )[b].slice(    zGrid.c,zGrid.d   )[d]
-
-
-
-
-                                    zGrid.a = b + 1
-                                    zGrid.c = d + 1 
-                                    zGrid.f = 'true'
-                                    // console.log(   zGrid   ) 
-                                    return true
-
-
-                                }
-
-
+                        if(   x.nativeElement.id === this.wordsService[this.wordsTemplateVariable].quantity[1][0].val[zGrid.a][zGrid.b]   &&
+                            (   
+                                this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                                this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                                this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
+                            )    
+                        ){               
+                            
+                            
+                            zChild.push({
+                                element:x.nativeElement,
+                                style:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b] 
                             })
+                            
+
+                            if(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b+1] === undefined   ){
 
 
-                            if(   zGrid.f !== 'true'  || zGrid.c === zGrid.d   ){
-
+                                zGrid.a += 1
+                                zGrid.b = 0       
                                 
-                                zGrid.c = 0
-
-
-                            }
-
-
-                            if(   zGrid.f === 'true'   ){
-
                                 
-                                return  true
-
-
                             }
 
 
                             
-                        })               
-                        zChild.push({
-                            element:x.nativeElement,
-                            style: zGrid.e
-                        })  
-                        zGrid.f = 'false'
-                        // console.log(   zGrid   )                
+                            else if(   true  ){
+
+
+                                zGrid.b += 1       
+                                
+                                
+                            }
+
+
+                        }
+                        
+                        
                     })
-                    zGrid.a = 0
-                    zGrid.c = 0 
                     // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j]   )
                     // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val   )
                     // console.groupEnd()
                 })      
                 // console.log(    this.wordsMyElements._results   )
-                console.log(   zChild   ) 
-                this.wordsService.wordsResizeEventSubscription0 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
-                    // zChild[0].style['left'] = xPosition({
-                    //     contain:numberParse(   this.window.getComputedStyle(z.element).width   ),
-                    //     target:numberParse(   this.window.getComputedStyle(zChild[0].element).width   )
-                    // })  
-                    // zChild[1].style['left'] = xPosition({
-                    //     contain:numberParse(   this.window.getComputedStyle(z.element).width   ),
-                    //     target:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
-                    //     containPos: .1,
-                    //     targetPos: 0
-                    // })                    
-                    // zChild[2].style['left'] = xPosition({
-                    //     contain:numberParse(   this.window.getComputedStyle(z.element).width   ),
-                    //     target:numberParse(   this.window.getComputedStyle(zChild[2].element).width   )
-                    // })   
+                // console.log(   zChild   ) 
+                // console.log(   this.window.getComputedStyle(zChild[0].element).left   )
+                this.wordsService.wordsResizeEventSubscription0 = this.wordsService.wordsResizeEvent$.subscribe(()=>{   
+                    zChild[2].style['height'] =  resize({
+                        default:numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][0].metadata.imageDefaultHeight[0]   ),
+                        containActual:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                        // containDefault: numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.imageDefaultWidth   )  
+                        containDefault:1100,
+                        // misc:[.24]
+                    }) 
+                    zChild[2].style['width'] =  resize({
+                        default:numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][0].metadata.imageDefaultWidth[0]   ),
+                        containActual:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                        // containDefault: numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.imageDefaultWidth   )  
+                        containDefault:1258,
+                        misc:[.5],
+                        type:'direct'
+                    })      
+                    zChild[3].style['height'] =  resize({
+                        default:numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][0].metadata.imageDefaultHeight[1]   ),
+                        containActual:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                        // containDefault: numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.imageDefaultWidth   )  
+                        containDefault:1100,
+                        // misc:[.24]
+                    }) 
+                    zChild[3].style['width'] =  resize({
+                        default:numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][0].metadata.imageDefaultWidth[1]   ),
+                        containActual:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                        // containDefault: numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.imageDefaultWidth   )  
+                        containDefault:1258,
+                        misc:[.5],
+                        type:'direct'
+                    })   
+                    // console.log(
+                    //     (   1258 - numberParse(   this.window.getComputedStyle(z.element).width   )   )*.1,
+                    //     zChild[2].style['width'],
+                    //     zChild[3].style['width']
+                    // )                    
+                    zChild[4].style['height'] =  resize({
+                        default:numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][0].metadata.imageDefaultHeight[2]   ),
+                        containActual:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                        // containDefault: numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.imageDefaultWidth   )  
+                        containDefault:1183,
+                        // misc:[.24]
+                    }) 
+                    zChild[4].style['width'] =   resize({
+                        default:numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][0].metadata.imageDefaultWidth[2]   ),
+                        containActual:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                        // containDefault: numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.imageDefaultWidth   )  
+                        containDefault:1258,
+                        misc:[.5],
+                        type:'direct'
+                    })   
+                    zChild[5].style['height'] =  resize({
+                        default:numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][0].metadata.imageDefaultHeight[3]   ),
+                        containActual:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                        // containDefault: numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.imageDefaultWidth   )  
+                        containDefault:1183,
+                        // misc:[.24]
+                    }) 
+                    zChild[5].style['width'] =   resize({
+                        default:numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][0].metadata.imageDefaultWidth[3]   ),
+                        containActual:numberParse(   this.window.getComputedStyle(z.element).width   ),
+                        // containDefault: numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.imageDefaultWidth   )  
+                        containDefault:1258,
+                        misc:[.5],
+                        type:'direct'
+                    })                                                                                                    
+                    this.ref.detectChanges()
+                    zChild[3].style['left'] = 
+                    (
+                        numberParse(   zChild[2].style.width   ) + 
+                        numberParse(   zChild[2].style.left   ) + 
+                        25
+                    ).toString() + 'px'  
+                    zChild[5].style['left'] = 
+                    (
+                        numberParse(   zChild[4].style.width   ) + 
+                        numberParse(   zChild[4].style.left   ) + 
+                        25
+                    ).toString() + 'px'   
+                    zChild[4].style['top'] = 
+                    (
+                        numberParse(   zChild[2].style.height   ) + 
+                        numberParse(   zChild[2].style.top   ) + 
+                        25
+                    ).toString() + 'px'      
+                    zChild[5].style['top'] = 
+                    (
+                        numberParse(   zChild[3].style.height   ) + 
+                        numberParse(   zChild[3].style.top   ) + 
+                        25
+                    ).toString() + 'px'                                                                        
                     zChild[8].style['left'] = xPosition({
                         contain:numberParse(   this.window.getComputedStyle(zChild[7].element).width   ) + 
                                 numberParse(   this.window.getComputedStyle(zChild[7].element).left   ) ,
