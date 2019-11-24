@@ -705,6 +705,12 @@ export class WordsService {
         wordsComponentObject1BoardHeight = '320px'
 
         wordsComponentObject2BoardHeight = '753px'
+        wordsComponentObject2ImageDefaultTop = [
+            '180px',
+            '180px',
+            '450px',
+            '450px'
+        ]        
         wordsComponentObject2ImageDefaultHeight = [
             '232px',
             '232px',
@@ -1305,7 +1311,8 @@ export class WordsService {
                             ],
                             imageDefaultHeight:this.wordsComponentObject2ImageDefaultHeight,      
                             imageDefaultWidth:this.wordsComponentObject2ImageDefaultWidth,
-                            imageDefaultLeft: this.wordsComponentObject2ImageDefaultLeft,                    
+                            imageDefaultLeft: this.wordsComponentObject2ImageDefaultLeft,   
+                            imageDefaultTop:this.wordsComponentObject2ImageDefaultTop                 
                         },
                         ngStyle:[
                             [
@@ -1335,7 +1342,7 @@ export class WordsService {
                             [
                                 {
                                     position:'absolute',
-                                    top:'180px',
+                                    top:this.wordsComponentObject2ImageDefaultTop[0],
                                     left: this.wordsComponentObject2ImageDefaultLeft[0] ,
                                     'z-index':9,
                                     height:this.wordsComponentObject2ImageDefaultHeight[0],
@@ -1345,7 +1352,7 @@ export class WordsService {
                                 },
                                 {
                                     position:'absolute',
-                                    top:'180px',
+                                    top:this.wordsComponentObject2ImageDefaultTop[1],
                                     left: this.wordsComponentObject2ImageDefaultLeft[1],
                                     'z-index':8,
                                     height:this.wordsComponentObject2ImageDefaultHeight[1],
@@ -1355,7 +1362,7 @@ export class WordsService {
                                 },
                                 {
                                     position:'absolute',
-                                    top:'450px',
+                                    top:this.wordsComponentObject2ImageDefaultTop[2],
                                     left: this.wordsComponentObject2ImageDefaultLeft[2],
                                     'z-index':7,
                                     height:this.wordsComponentObject2ImageDefaultHeight[2],
@@ -1365,7 +1372,7 @@ export class WordsService {
                                 },
                                 {
                                     position:'absolute',
-                                    top:'450px',
+                                    top:this.wordsComponentObject2ImageDefaultTop[3],
                                     left: this.wordsComponentObject2ImageDefaultLeft[3],
                                     'z-index':6,
                                     height:this.wordsComponentObject2ImageDefaultHeight[3],
