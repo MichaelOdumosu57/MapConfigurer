@@ -976,6 +976,13 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                                     )
                         })                                                                                                                                                        
                         this.ref.detectChanges() 
+                        this.wordsService[this.wordsTemplateVariable].ngStyle[z.style]['height'] = 
+                        (
+                            numberParse(   zChild[5].style.height   ) + 
+                            numberParse(   zChild[5].style.top   ) + 
+                            100
+                        ).toString() + 'px'
+                        this.ref.detectChanges() 
 
 
                     }
@@ -1281,6 +1288,13 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                                     )
                         })                                                                                                                                                     
                         this.ref.detectChanges() 
+                        this.wordsService[this.wordsTemplateVariable].ngStyle[z.style]['height'] = 
+                        (
+                            numberParse(   zChild[5].style.height   ) + 
+                            numberParse(   zChild[5].style.top   ) + 
+                            100
+                        ).toString() + 'px'
+                        this.ref.detectChanges()                         
                         
                         
                     }
