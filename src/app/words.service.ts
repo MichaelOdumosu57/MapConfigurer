@@ -705,6 +705,38 @@ export class WordsService {
         wordsComponentObject1BoardHeight = '320px'
 
         wordsComponentObject2BoardHeight = '753px'
+        wordsComponentObject2TitleTop = '160px'
+        wordsComponentObject2TitleLeft = '63px'
+        wordsComponentObject2TitleWidth = '320px'
+        wordsComponentObject2TitleTextAlign = 'left'
+        wordsComponentObject2LineTop = [
+            '280px'
+        ]
+        wordsComponentObject2LineLeft = [
+            '63px'
+        ]        
+        wordsComponentObject2LineWidth = [
+            '50px'
+        ]      
+        wordsComponentObject2PargraphTop = [
+            '300px',
+            '538px'
+        ]
+        wordsComponentObject2PargraphLeft = [
+            '63px'
+        ] 
+        wordsComponentObject2PargraphWidth = [
+            '300px'
+        ]            
+        wordsComponentObject2PargraphTextAlign = [
+            'start'
+        ]     
+        wordsComponentObject2ButtonTop = [
+            '525px'
+        ]    
+        wordsComponentObject2ButtonLeft = [
+            '63px'
+        ]          
         wordsComponentObject2ImageDefaultTop = [
             '180px',
             '180px',
@@ -761,6 +793,237 @@ export class WordsService {
         //represnetaing each instance of the wordsComponent
         wordsMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
         wordsMyElementsArray: any[] = [];
+        wordsComponentObject2:any = {
+            styles:[
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:'2680px',
+                        width:'100%',
+                        // bottom:'40px',
+                        // width:'0px',
+                        // height:'529.85px'
+                    }
+                },
+                {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        'background-color': 'white',
+                        width:'100%',
+                        height:this.wordsComponentObject2BoardHeight
+                    }
+                },                
+                ...Array.from(Array(9),()=> {
+                    return {
+                    override:'true',
+                    css:{
+                        position:'absolute',
+                        top:'72px',
+                        left:'550px',
+                        'fontSize':'16px',
+                        // height:'856.85px'
+                    }
+                }}),
+            ],
+            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
+            parameters:[    
+            ],
+            location:{
+                parameters:[]
+            },
+            metadata:{
+                cssAsync: new Subject<any>(),
+                // TitleDefaultFontSize:'32px'
+                boardDefaultHeight:this.wordsComponentObject2BoardHeight
+            },
+            val:[
+                'w_o_r_d_s_Board',
+                'space',
+                'space',
+                'space',
+                'w_o_r_d_s_Paragragh',
+                'w_o_r_d_s_Paragragh',
+                'w_o_r_d_s_Image'
+            ],
+            bool:[
+                'true',
+                'space',
+                'space',
+                'space',
+                'true',
+                'true',
+                'true',
+                'true'
+            ],          
+            quantity:[
+                [3],
+                [
+                    ...Array.from(Array(1),()=> {
+                    return {
+                        quantity:[[3],[3],[3,3,3,3],[3,3,3]],
+                        bool:[['true'],['true'],['true','true','true','true'],['true','true','link']], 
+                        val:[
+                            ['w_o_r_d_s_Title'],
+                            ['w_o_r_d_s_Paragraph'],
+                            ['w_o_r_d_s_Image','w_o_r_d_s_Image','w_o_r_d_s_Image','w_o_r_d_s_Image'],
+                            ['w_o_r_d_s_Line','w_o_r_d_s_Button','w_o_r_d_s_ButtonText']
+                        ], 
+                        text:[
+                                ['Upcoming parties & events'],
+                                [`
+                                    Fuerat aestu carentem habentia 
+                                    spectent tonitrua mutastis locavit liberioris. 
+                                    Sinistra possedit litora ut nabataeaque. Setucant 
+                                    coepyterunt perveniunt animal! Concordi aurea 
+                                    nabataeaque seductaque constaque cepit sublime 
+                                    flexi nullus.`
+                                ],
+                                [],
+                                [null,null,'LEARN MORE']
+                        ],
+                        metadata:{
+                            TitleDefaultWidth:null,
+                            TitleDefaultFontSize:'32px',
+                            // an advatange is I'd have this in the non quantity to access easier
+                            image:[
+                                'assets/media/IMG-1789-1024x661.jpg',
+                                'assets/media/IMG-1792.jpg',
+                                'assets/media/IMG-1793-1.jpg',                                
+                                'assets/media/IMG-1788-1-1024x663.jpg'
+                            ],
+                            imageDefaultHeight:this.wordsComponentObject2ImageDefaultHeight,      
+                            imageDefaultWidth:this.wordsComponentObject2ImageDefaultWidth,
+                            imageDefaultLeft: this.wordsComponentObject2ImageDefaultLeft,   
+                            imageDefaultTop:this.wordsComponentObject2ImageDefaultTop,
+                            titleDefaultTop: this.wordsComponentObject2TitleTop,
+                            titleDefaultLeft:this.wordsComponentObject2TitleLeft,   
+                            titleDefaultWidth:this.wordsComponentObject2TitleWidth,
+                            titleDefaultTextAlign:this.wordsComponentObject2TitleTextAlign, 
+                            lineDefaultTop:this.wordsComponentObject2LineTop,
+                            lineDefaultLeft:this.wordsComponentObject2LineLeft,
+                            lineDefaultWidth:this.wordsComponentObject2LineWidth,
+                            paragraphDefaultTop:this.wordsComponentObject2PargraphTop,
+                            paragraphDefaultLeft:this.wordsComponentObject2PargraphLeft,
+                            paragraphDefaultWidth:this.wordsComponentObject2PargraphWidth,
+                            paragraphDefaultTextAlign:this.wordsComponentObject2PargraphTextAlign,
+                            buttonDefaultTop:this.wordsComponentObject2ButtonTop,
+                            buttonDefaultLeft:this.wordsComponentObject2ButtonLeft
+                        },
+                        ngStyle:[
+                            [
+                                {
+                                    position:'absolute',
+                                    'font-family':'Montserrat',
+                                    'top':this.wordsComponentObject2TitleTop,
+                                    'width':this.wordsComponentObject2TitleWidth,
+                                    'background-color':'blue',
+                                    'left':this.wordsComponentObject2TitleLeft,
+                                    'text-align':this.wordsComponentObject2TitleTextAlign 
+                                }
+                            ],
+                            [
+                                {
+                                    position:'absolute',
+                                    top:this.wordsComponentObject2PargraphTop[0],
+                                    left:this.wordsComponentObject2PargraphLeft[0],
+                                    width:this.wordsComponentObject2PargraphWidth[0] ,
+                                    'z-index':2,
+                                    'font-family':'Noto Sans',
+                                    'font-size':'17px',
+                                    color:'rgb(76, 88, 99)',  
+                                    // 'background-color':'limegreen',
+                                    // 'background-color':'rgb(123, 253, 253)'
+                                }                              
+                            ],
+                            [
+                                {
+                                    position:'absolute',
+                                    top:this.wordsComponentObject2ImageDefaultTop[0],
+                                    left: this.wordsComponentObject2ImageDefaultLeft[0] ,
+                                    'z-index':9,
+                                    height:this.wordsComponentObject2ImageDefaultHeight[0],
+                                    width:this.wordsComponentObject2ImageDefaultWidth[0],
+                                    'border-radius':'4px 4px 4px 4px',
+                                    'border-color':'rgb(238,91,165)'
+                                },
+                                {
+                                    position:'absolute',
+                                    top:this.wordsComponentObject2ImageDefaultTop[1],
+                                    left: this.wordsComponentObject2ImageDefaultLeft[1],
+                                    'z-index':8,
+                                    height:this.wordsComponentObject2ImageDefaultHeight[1],
+                                    width:this.wordsComponentObject2ImageDefaultWidth[1],
+                                    'border-radius':'4px 4px 4px 4px',
+                                    'border-color':'rgb(238,91,165)'
+                                },
+                                {
+                                    position:'absolute',
+                                    top:this.wordsComponentObject2ImageDefaultTop[2],
+                                    left: this.wordsComponentObject2ImageDefaultLeft[2],
+                                    'z-index':7,
+                                    height:this.wordsComponentObject2ImageDefaultHeight[2],
+                                    width:this.wordsComponentObject2ImageDefaultWidth[2],
+                                    'border-radius':'4px 4px 4px 4px',
+                                    'border-color':'rgb(238,91,165)'
+                                },
+                                {
+                                    position:'absolute',
+                                    top:this.wordsComponentObject2ImageDefaultTop[3],
+                                    left: this.wordsComponentObject2ImageDefaultLeft[3],
+                                    'z-index':6,
+                                    height:this.wordsComponentObject2ImageDefaultHeight[3],
+                                    width:this.wordsComponentObject2ImageDefaultWidth[3],
+                                    'border-radius':'4px 4px 4px 4px',
+                                    'border-color':'rgb(238,91,165)'
+                                }                                                                                                                                                
+                            ],
+                            [
+                                {
+                                    position:'absolute',
+                                    top:this.wordsComponentObject2LineTop[0],
+                                    width:this.wordsComponentObject2LineWidth[0],
+                                    left:this.wordsComponentObject2LineLeft[0]
+                                },
+                                {
+                                    position:'absolute',
+                                    'border-radius':'50px',
+                                    'height':'47px',
+                                    'width':'182px',
+                                    'background-color':'rgb(251, 32, 86)',
+                                    'top':this.wordsComponentObject2ButtonTop[0],
+                                    left:this.wordsComponentObject2ButtonLeft[0]                                    
+                                },
+                                {
+                                    color:'rgb(255, 255, 255)',
+                                    position:'absolute',
+                                    'top':this.wordsComponentObject2PargraphTop[1],
+                                    'font-size':'13px',
+                                    'font-family':'Noto Sans',
+                                    'font-weight':'bold',
+
+                                },                                                                
+                            ]                            
+                        ],
+                        extras:[
+                            {},
+                            {
+                                bool:'false'
+                            }                         
+                        ],                        
+                        generator:this.appConsecutiveGenerator
+                    }}),                                                        
+                ]
+            ],
+            generator:(function(){
+                return function *generator() {
+                    var index = 1;
+                    while (true)
+                    yield index;
+                }()
+            })()        
+        }        
         wordsComponentObject0:any = {
             styles:[
                 {
@@ -1200,223 +1463,6 @@ export class WordsService {
                 ],   
                 [3,3],
                 [3,3]
-            ],
-            generator:(function(){
-                return function *generator() {
-                    var index = 1;
-                    while (true)
-                    yield index;
-                }()
-            })()        
-        }
-        wordsComponentObject2:any = {
-            styles:[
-                {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        top:'2680px',
-                        width:'100%',
-                        // bottom:'40px',
-                        // width:'0px',
-                        // height:'529.85px'
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        'background-color': 'white',
-                        width:'100%',
-                        height:this.wordsComponentObject2BoardHeight
-                    }
-                },                
-                ...Array.from(Array(9),()=> {
-                    return {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        top:'72px',
-                        left:'550px',
-                        'fontSize':'16px',
-                        // height:'856.85px'
-                    }
-                }}),
-            ],
-            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
-            parameters:[    
-            ],
-            location:{
-                parameters:[]
-            },
-            metadata:{
-                cssAsync: new Subject<any>(),
-                // TitleDefaultFontSize:'32px'
-                boardDefaultHeight:this.wordsComponentObject2BoardHeight
-            },
-            val:[
-                'w_o_r_d_s_Board',
-                'space',
-                'space',
-                'space',
-                'w_o_r_d_s_Paragragh',
-                'w_o_r_d_s_Paragragh',
-                'w_o_r_d_s_Image'
-            ],
-            bool:[
-                'true',
-                'space',
-                'space',
-                'space',
-                'true',
-                'true',
-                'true',
-                'true'
-            ],          
-            quantity:[
-                [3],
-                [
-                    ...Array.from(Array(1),()=> {
-                    return {
-                        quantity:[[3],[3],[3,3,3,3],[3,3,3]],
-                        bool:[['true'],['true'],['true','true','true','true'],['true','true','link']], 
-                        val:[
-                            ['w_o_r_d_s_Title'],
-                            ['w_o_r_d_s_Paragraph'],
-                            ['w_o_r_d_s_Image','w_o_r_d_s_Image','w_o_r_d_s_Image','w_o_r_d_s_Image'],
-                            ['w_o_r_d_s_Line','w_o_r_d_s_Button','w_o_r_d_s_ButtonText']
-                        ], 
-                        text:[
-                                ['Upcoming parties & events'],
-                                [`
-                                    Fuerat aestu carentem habentia 
-                                    spectent tonitrua mutastis locavit liberioris. 
-                                    Sinistra possedit litora ut nabataeaque. Setucant 
-                                    coepyterunt perveniunt animal! Concordi aurea 
-                                    nabataeaque seductaque constaque cepit sublime 
-                                    flexi nullus.`
-                                ],
-                                [],
-                                [null,null,'LEARN MORE']
-                        ],
-                        metadata:{
-                            TitleDefaultWidth:null,
-                            TitleDefaultFontSize:'32px',
-                            // an advatange is I'd have this in the non quantity to access easier
-                            image:[
-                                'assets/media/IMG-1789-1024x661.jpg',
-                                'assets/media/IMG-1792.jpg',
-                                'assets/media/IMG-1793-1.jpg',                                
-                                'assets/media/IMG-1788-1-1024x663.jpg'
-                            ],
-                            imageDefaultHeight:this.wordsComponentObject2ImageDefaultHeight,      
-                            imageDefaultWidth:this.wordsComponentObject2ImageDefaultWidth,
-                            imageDefaultLeft: this.wordsComponentObject2ImageDefaultLeft,   
-                            imageDefaultTop:this.wordsComponentObject2ImageDefaultTop                 
-                        },
-                        ngStyle:[
-                            [
-                                {
-                                    position:'absolute',
-                                    'font-family':'Montserrat',
-                                    'top':'160px',
-                                    'width':'320px',
-                                    'background-color':'blue',
-                                    'left':'63px',
-                                    'text-align':'left'
-                                }
-                            ],
-                            [
-                                {
-                                    position:'absolute',
-                                    top:'300px',
-                                    left:'63px',
-                                    width:'300px',
-                                    'z-index':2,
-                                    'font-family':'Noto Sans',
-                                    'font-size':'17px',
-                                    color:'rgb(76, 88, 99)',  
-                                    // 'background-color':'rgb(123, 253, 253)'
-                                }                              
-                            ],
-                            [
-                                {
-                                    position:'absolute',
-                                    top:this.wordsComponentObject2ImageDefaultTop[0],
-                                    left: this.wordsComponentObject2ImageDefaultLeft[0] ,
-                                    'z-index':9,
-                                    height:this.wordsComponentObject2ImageDefaultHeight[0],
-                                    width:this.wordsComponentObject2ImageDefaultWidth[0],
-                                    'border-radius':'4px 4px 4px 4px',
-                                    'border-color':'rgb(238,91,165)'
-                                },
-                                {
-                                    position:'absolute',
-                                    top:this.wordsComponentObject2ImageDefaultTop[1],
-                                    left: this.wordsComponentObject2ImageDefaultLeft[1],
-                                    'z-index':8,
-                                    height:this.wordsComponentObject2ImageDefaultHeight[1],
-                                    width:this.wordsComponentObject2ImageDefaultWidth[1],
-                                    'border-radius':'4px 4px 4px 4px',
-                                    'border-color':'rgb(238,91,165)'
-                                },
-                                {
-                                    position:'absolute',
-                                    top:this.wordsComponentObject2ImageDefaultTop[2],
-                                    left: this.wordsComponentObject2ImageDefaultLeft[2],
-                                    'z-index':7,
-                                    height:this.wordsComponentObject2ImageDefaultHeight[2],
-                                    width:this.wordsComponentObject2ImageDefaultWidth[2],
-                                    'border-radius':'4px 4px 4px 4px',
-                                    'border-color':'rgb(238,91,165)'
-                                },
-                                {
-                                    position:'absolute',
-                                    top:this.wordsComponentObject2ImageDefaultTop[3],
-                                    left: this.wordsComponentObject2ImageDefaultLeft[3],
-                                    'z-index':6,
-                                    height:this.wordsComponentObject2ImageDefaultHeight[3],
-                                    width:this.wordsComponentObject2ImageDefaultWidth[3],
-                                    'border-radius':'4px 4px 4px 4px',
-                                    'border-color':'rgb(238,91,165)'
-                                }                                                                                                                                                
-                            ],
-                            [
-                                {
-                                    position:'absolute',
-                                    top:'280px',
-                                    width:'50px',
-                                    left:'63px'
-                                },
-                                {
-                                    position:'absolute',
-                                    'border-radius':'50px',
-                                    'height':'47px',
-                                    'width':'182px',
-                                    'background-color':'#f95b82',
-                                    'top':'525px',
-                                    left:'63px'                                    
-                                },
-                                {
-                                    color:'rgb(255, 255, 255)',
-                                    position:'absolute',
-                                    'top':'538px',
-                                    'font-size':'13px',
-                                    'font-family':'Noto Sans',
-                                    'font-weight':'bold',
-
-                                },                                                                
-                            ]                            
-                        ],
-                        extras:[
-                            {},
-                            {
-                                bool:'false'
-                            }                         
-                        ],                        
-                        generator:this.appConsecutiveGenerator
-                    }}),                                                        
-                ]
             ],
             generator:(function(){
                 return function *generator() {
