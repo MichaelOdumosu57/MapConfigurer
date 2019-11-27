@@ -815,7 +815,7 @@ export class WordsService {
                         height:this.wordsComponentObject2BoardHeight
                     }
                 },                
-                ...Array.from(Array(9),()=> {
+                ...Array.from(Array(10),()=> {
                     return {
                     override:'true',
                     css:{
@@ -1013,7 +1013,51 @@ export class WordsService {
                             }                         
                         ],                        
                         generator:this.appConsecutiveGenerator
-                    }}),                                                        
+                    }}),     
+                    ...Array.from(Array(1),()=> {
+                        return {
+                            quantity:[[],[],[],[3]],
+                            bool:[[],[],[],['true']], 
+                            val:[
+                                [],
+                                [],
+                                [],
+                                ['w_o_r_d_s_ContenRef']
+                            ], 
+                            text:[
+                                    [],
+                                    [],
+                                    [],
+                                    [null,null,'LEARN MORE']
+                            ],
+                            metadata:{
+                            },
+                            ngStyle:[
+                                [
+                                ],
+                                [                          
+                                ],
+                                [                                                                                                                                             
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        // width:'3000px',
+                                        left:'63px',
+                                        // height:'30px',
+                                        width:'1183px',
+                                        'background-color':'blue'
+                                    }                                                             
+                                ]                            
+                            ],
+                            extras:[
+                                {},
+                                {
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                        }})                                                                       
                 ]
             ],
             generator:(function(){
