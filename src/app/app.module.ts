@@ -13,10 +13,10 @@ import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent,
     WordsComponent,
     NavigationComponent,
-    OverlayComponent,
-    FooterComponent
+    OverlayComponent
   ],
   imports: [
     BrowserModule,

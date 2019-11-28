@@ -760,7 +760,8 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
             overlayTakeRxjs0.subscribe(()=>{
                 try{
                     let event = new Event('resize')
-                    this.window.dispatchEvent(event)   
+                    this.window.dispatchEvent(event)  
+
 
 
                     if(   this.overlayTemplateVariable.slice(-1) === '4'   ){

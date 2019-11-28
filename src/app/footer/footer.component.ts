@@ -67,7 +67,6 @@ function resize(   devObj:any   ){
         result.toString() + "px"     
 }
 
-
 function xPosition(devObj){
 
 
@@ -127,7 +126,9 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngAfterViewInit(){
 
-
+        this.wordsService.footerLoadEvent$ = fromEvent(this.window ,'load');
+        this.wordsService.footerResizeEvent$ = fromEvent(this.window,'resize');
+        
         if(   this.footerTemplateVariable === 'footerComponentObject0'){
 
 
@@ -150,7 +151,7 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
             //     }
 
 
-            //     if(   x.nativeElement.id === 'f_o_o_t_e_r_ContenRef'   ){
+            //     if(   x.nativeElement.id === 'f_o_o_t_e_r_Board'   ){
 
 
             //         zCheckpoint.push(i)
@@ -170,14 +171,25 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
             }                  
             zCheckpoint.map((y:any,j:any)=>{
                 // console.group('associated')
+                // console.log(    this.footerMyElements._results.slice(y,zCheckpoint[j+1])   )
                 zGrid.a = 0
                 this.footerMyElements._results.slice(y,zCheckpoint[j+1]).map((x:any,i:any)=>{     
+                    console.log(   x.nativeElement.id   )
+                    // console.log(   this.wordsService[this.footerTemplateVariable].quantity[1][j].val  )
+
                     while(   
                         this.wordsService[this.footerTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
                         zGrid.b +1 > this.wordsService[this.footerTemplateVariable].quantity[1][j].quantity[zGrid.a].length
                     ){
-                        zGrid.a +=1                             
+                        // console.log(   this.wordsService[this.footerTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                        zGrid.a +=1
+                        // debugger                                
                     }
+                    console.log(   
+                        this.wordsService[this.footerTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                        zChild,
+                        zGrid
+                    )
 
 
                     if(   x.nativeElement.id === this.wordsService[this.footerTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
@@ -220,10 +232,24 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                     
                 })
                 // console.groupEnd()
-            })   
-            zChild[3].style['display'] = 'none'
+            })
             console.log(zChild)
-            this.ref.detectChanges()
+            this.wordsService.footerResizeEventSubscription0 = this.wordsService.footerResizeEvent$.subscribe(()=>{
+                zChild[2].style['left'] =  xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[2].element).width   )
+                })
+                console.log(    this.window.getComputedStyle(zChild[1].element).width,
+                                 this.window.getComputedStyle(zChild[2].element).width      )
+                zChild[3].style['left'] =  xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[3].element).width   )
+                })           
+                // zChild[2].style['display'] = 'none'
+                this.ref.detectChanges()     
+            })
+
+
         }
 
     }

@@ -835,12 +835,15 @@ export class WordsService {
                                     {
                                         position:'absolute',
                                         color:'rgb(211, 211, 211)',
-                                        'font-family':'Noto Sans'
+                                        'font-family':'Noto Sans',
+                                        'text-align':'center',
                                     },
                                     {
                                         position:'absolute',
                                         color:'rgb(211, 211, 211)',
-                                        'font-family':'Noto Sans'
+                                        'font-family':'Noto Sans',
+                                        top:'55px',
+                                        'text-align':'center'
                                     }                                       
                                 ]                           
                             ],
