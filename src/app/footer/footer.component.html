@@ -1,0 +1,16 @@
+<ng-container *ngFor = 'let a of wordsService[footerTemplateVariable].quantity[1];let b = index' >
+    
+
+    <ng-container *ngFor = 'let aa of a.quantity[0];let bb = index' >
+        <div #myFooterVal *ngIf= "a.bool[0][bb] ==='true'" id = {{a.val[0][bb]}} [ngStyle] = 'a.ngStyle[0][bb]'  ></div>        
+    </ng-container>
+
+    <ng-container *ngFor = 'let aa of a.quantity[1];let bb = index'>
+        <p #myFooterVal *ngIf= "a.bool[1][bb] !=='link' else elseBlock"  [ngStyle] = 'a.ngStyle[1][bb]' id = {{a.val[1][bb]}} >{{a.text[1][bb]}}</p>
+        <ng-template #elseBlock  >
+            <a #myFooterVal *ngIf= "a.bool[1][bb] !=='false'"  [ngStyle] = 'a.ngStyle[1][bb]' id = {{a.val[1][bb]}} >{{a.text[1][bb]}}</a>
+        </ng-template>        
+    </ng-container>
+
+
+</ng-container>

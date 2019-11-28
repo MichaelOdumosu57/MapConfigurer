@@ -100,7 +100,6 @@ function xPosition(devObj){
   templateUrl: './words.component.html',
   styleUrls: ['./words.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
-  
 })
 export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
@@ -852,18 +851,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
                     if(   numberParse(   this.window.getComputedStyle(   z.element   ).width   ) > 1309   ){
 
-
-                        zGrid.c =    
-                            numberParse(   this.window.getComputedStyle(   zChild[3].element   ).width   ) +
-                            numberParse(    zChild[3].style['left']   )   - 
-                            (
-                                numberParse(   this.window.getComputedStyle(   zChild[3].element   ).left   ) -
-                                numberParse(   this.window.getComputedStyle(   zChild[2].element   ).left   ) 
-                            ) -
-                            (
-                                numberParse(   this.window.getComputedStyle(   zChild[2].element   ).left   ) -
-                                numberParse(   this.window.getComputedStyle(   zChild[0].element   ).left   ) 
-                            )                             
+                        
                         // console.log(zGrid.c) 
                         zChild[9].style['left']  =  xPosition({
                             contain:numberParse(   this.window.getComputedStyle(z.element).width   ),
@@ -922,8 +910,18 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                             25 
                         ).toString() + "px"                        
                         this.ref.detectChanges()
+                        zChild[7].style['top']  = (
+                            numberParse(   this.window.getComputedStyle(    zChild[0].element   ).height   ) + 
+                            numberParse(   zChild[0].style['top']   ) +
+                            400 
+                        ).toString() + "px"    
+                        zChild[8].style['top']  = (                             
+                            numberParse(   zChild[7].style['top']   ) +
+                            numberParse(   this.window.getComputedStyle(    zChild[7].element   ).height   )/2 -
+                            numberParse(   this.window.getComputedStyle(    zChild[8].element   ).height   )/2 
+                        ).toString() + "px"                          
 
-
+                        
                     }
 
 

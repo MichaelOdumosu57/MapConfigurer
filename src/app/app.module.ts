@@ -7,6 +7,7 @@ import { WordsComponent } from './words/words.component';
 import { WINDOW_PROVIDERS } from './window.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { OverlayComponent } from './overlay/overlay.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { OverlayComponent } from './overlay/overlay.component';
     AppComponent,
     WordsComponent,
     NavigationComponent,
-    OverlayComponent
+    OverlayComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

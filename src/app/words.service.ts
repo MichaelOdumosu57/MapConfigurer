@@ -684,6 +684,190 @@ export class WordsService {
     /* */
 
 
+        /*footer*/ //
+    
+        // footerComponent concept metadata
+        footerCustomWordWrapElements:Array<any>  = []
+        //
+            
+        footerVal:Array<string> = ['w_o_r_d_s_Title','w_o_r_d_s_Line','w_o_r_d_s_paragraph','w_o_r_d_s_Dash','w_o_r_d_s_paragraphDash']
+        footerbool:Array<any> = ['true','true','true','true','true']
+        footerStyle: Array<any[]> = [[3],[3],[3],[3,3,3],[3,3,3]]
+
+        footerValIndex:Array<any> = [0,0,'false',0] // helps to filter out element that are not availble
+        footerStyleIndex:Array<any> = [0]
+        footerBoolIndex:Array<any>= [0]
+
+
+        // footerComponent events
+        footerLoadEvent$:Observable<Event>
+        footerLoadEventSubscription0:Subscription
+        footerLoadEventSubscription1:Subscription 
+        footerResizeEvent$:Observable<Event>
+        footerResizeEventSubscription0:Subscription
+        footerResizeEventSubscription1:Subscription  
+        footerClickEvent$:Observable<Event>        
+        footerClickEventSubscription0:Subscription
+        //         
+
+
+
+        //represnetaing each instance of the footerComponent
+        footerMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
+        footerMyElementsArray: any[] = [];
+        footerComponentObject0:any = {
+            styles:[
+            ],
+            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
+            parameters:[    
+            ],
+            location:{
+                parameters:[]
+            },
+            metadata:{
+                cssAsync: new Subject<any>(),
+            },
+            val:[
+            ],
+            bool:[
+            ],          
+            quantity:[
+                [
+                    {
+                        quantity:[[3]],
+                        bool:[['true']], 
+                        val:[
+                            ['f_o_o_t_e_r_App']
+                        ], 
+                        text:[
+                                []
+                        ],
+                        metadata:{
+                            TitleDefaultWidth:null,
+                            TitleDefaultFontSize:'32px',
+                            // an advatange is I'd have this in the non quantity to access easier
+                            image:[
+                                'assets/media/IMG-1789-1024x661.jpg',
+                                'assets/media/IMG-1792.jpg',
+                                'assets/media/IMG-1793-1.jpg',                                
+                                'assets/media/IMG-1788-1-1024x663.jpg'
+                            ]
+                        },
+                        ngStyle:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'2590px',
+                                    width:'100%'
+                                }
+                            ]                         
+                        ],
+                        extras:[
+                            {},
+                            {
+                                bool:'false'
+                            }                         
+                        ],                        
+                        generator:this.appConsecutiveGenerator
+                    }                    
+                ],
+                [
+                    ...Array.from(Array(1),()=> {
+                    return {
+                        quantity:[[3]],
+                        bool:[['true']], 
+                        val:[
+                            ['f_o_o_t_e_r_Board']
+                        ], 
+                        text:[
+                            []
+                        ],
+                        metadata:{
+                            TitleDefaultWidth:null,
+                            TitleDefaultFontSize:'32px',
+                            // an advatange is I'd have this in the non quantity to access easier
+                            image:[
+                            ]
+                        },
+                        ngStyle:[
+                            [
+                                {
+                                    position:'absolute',
+                                    width:'100%',
+                                    height:'160px',
+                                    'background-color':'black'
+                                }
+                            ]                     
+                        ],
+                        extras:[
+                            {},
+                            {
+                                bool:'false'
+                            }                         
+                        ],                        
+                        generator:this.appConsecutiveGenerator
+                    }}),     
+                    ...Array.from(Array(1),()=> {
+                        return {
+                            quantity:[[],[3,3]],
+                            bool:[[],['true','true']], 
+                            val:[
+                                [],
+                                ['f_o_o_t_e_r_paragraph','f_o_o_t_e_r_paragraph']
+                            ], 
+                            text:[
+                                    [],
+                                    [
+                                        'Brooklyn, New York, 11233 USA | Phone: 347-940-**** | Email: WindsorEmpireLLC@gmail.com | Chef.Lia.W@gmail.com',
+                                        'Copyright © WindsorEmpireLLC est. 2018'
+                                    ]
+                            ],
+                            metadata:{
+                                TitleDefaultWidth:null,
+                                TitleDefaultFontSize:'32px',
+                                // an advatange is I'd have this in the non quantity to access easier
+                                image:[
+                                ]
+                            },
+                            ngStyle:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        color:'rgb(211, 211, 211)',
+                                        'font-family':'Noto Sans'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        color:'rgb(211, 211, 211)',
+                                        'font-family':'Noto Sans'
+                                    }                                       
+                                ]                           
+                            ],
+                            extras:[
+                                {},
+                                {
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                        }}),                                                                                           
+                ]
+            ],
+            generator:(function(){
+                return function *generator() {
+                    var index = 1;
+                    while (true)
+                    yield index;
+                }()
+            })()        
+        }        
+        footerComponentMonitor:any = {
+        }        
+        //
+    
+
+
     /*words*/ //
     
         // wordsComponent concept metadata
@@ -996,7 +1180,8 @@ export class WordsService {
                                     left:this.wordsComponentObject2ButtonLeft[0]                                    
                                 },
                                 {
-                                    color:'rgb(255, 255, 255)',
+                                    // color:'rgb(255, 255, 255)',
+                                    color:'black',
                                     position:'absolute',
                                     'top':this.wordsComponentObject2PargraphTop[1],
                                     'font-size':'13px',

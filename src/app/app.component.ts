@@ -29,6 +29,8 @@ export class AppComponent implements AfterViewInit {
     @ViewChildren(appGenerateSelector({val:'appNavigationVal',times:1}))  app_NavigationComponentReferences: any;   
     @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:5}), { read: ElementRef })  app_OverlayConponentElements: any;
     @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:5}))  app_OverlayComponentReferences: any;        
+    @ViewChildren(appGenerateSelector({val:'appFooterVal',times:1}), { read: ElementRef })  app_FooterConponentElements: any;
+    @ViewChildren(appGenerateSelector({val:'appFooterVal',times:1}))  app_FooterComponentReferences: any;      
     
     constructor(
         private wordsService: WordsService
@@ -77,6 +79,17 @@ export class AppComponent implements AfterViewInit {
         }
         this.wordsService.overlayMyElements.next(this.wordsService.overlayMyElementsArray)         
         // DONE with Subject<Array<any[]>>
+
+
+        for(let i in this.app_FooterComponentReferences._results){
+            this.wordsService.footerMyElementsArray.push([
+                this.app_FooterConponentElements._results[i],
+                ...this.app_FooterComponentReferences._results[i].footerMyElements._results
+            ])
+            this.wordsService.footerComponentMonitor[this.app_FooterConponentElements._results[i].nativeElement.getAttribute('ng-reflect-footer-template-variable')] = i
+        }
+        this.wordsService.footerMyElements.next(this.wordsService.footerMyElementsArray)         
+        // DONE with Subject<Array<any[]>>        
          
              
     }
