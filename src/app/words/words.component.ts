@@ -861,8 +861,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                         })                
                         this.ref.detectChanges()
                         zChild[0].style['left'] = zChild[9].style['left']
-                        console.log(   numberParse(   this.window.getComputedStyle(z.element).width   )   ) 
-                        console.log(   zChild[0].style['left']   )                          
+                        // console.log(   numberParse(   this.window.getComputedStyle(z.element).width   )   ) 
+                        // console.log(   zChild[0].style['left']   )                          
                         zChild[6].style['left'] = zChild[9].style['left']
                         zChild[1].style['left'] = zChild[9].style['left']     
                         zChild[7].style['left'] = zChild[9].style['left']  
@@ -910,16 +910,29 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                             25 
                         ).toString() + "px"                        
                         this.ref.detectChanges()
+                        // zChild[7].style['top']  = (
+                        //     numberParse(   this.window.getComputedStyle(    zChild[0].element   ).height   ) + 
+                        //     numberParse(   zChild[0].style['top']   ) +
+                        //     400 
+                        // ).toString() + "px"    
+                        // zChild[8].style['top']  = (                             
+                        //     numberParse(   zChild[7].style['top']   ) +
+                        //     numberParse(   this.window.getComputedStyle(    zChild[7].element   ).height   )/2 -
+                        //     numberParse(   this.window.getComputedStyle(    zChild[8].element   ).height   )/2 
+                        // ).toString() + "px"             
+                        // if fail above
                         zChild[7].style['top']  = (
-                            numberParse(   this.window.getComputedStyle(    zChild[0].element   ).height   ) + 
-                            numberParse(   zChild[0].style['top']   ) +
-                            400 
+                            numberParse(   this.window.getComputedStyle(    zChild[1].element   ).height   ) + 
+                            numberParse(   zChild[1].style['top']   ) +
+                            50 
                         ).toString() + "px"    
+                        this.ref.detectChanges()    
                         zChild[8].style['top']  = (                             
                             numberParse(   zChild[7].style['top']   ) +
                             numberParse(   this.window.getComputedStyle(    zChild[7].element   ).height   )/2 -
                             numberParse(   this.window.getComputedStyle(    zChild[8].element   ).height   )/2 
-                        ).toString() + "px"                          
+                        ).toString() + "px"      
+                        this.ref.detectChanges()                                        
 
                         
                     }

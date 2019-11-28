@@ -715,22 +715,7 @@ export class WordsService {
         //represnetaing each instance of the footerComponent
         footerMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
         footerMyElementsArray: any[] = [];
-        footerComponentObject0:any = {
-            styles:[
-            ],
-            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
-            parameters:[    
-            ],
-            location:{
-                parameters:[]
-            },
-            metadata:{
-                cssAsync: new Subject<any>(),
-            },
-            val:[
-            ],
-            bool:[
-            ],          
+        footerComponentObject0:any = {          
             quantity:[
                 [
                     {
@@ -757,8 +742,9 @@ export class WordsService {
                             [
                                 {
                                     position:'absolute',
-                                    top:'2590px',
-                                    width:'100%'
+                                    top:'90%',
+                                    width:'100%',
+                                    // height:'1500px'
                                 }
                             ]                         
                         ],
@@ -1105,7 +1091,7 @@ export class WordsService {
                                     'font-family':'Montserrat',
                                     'top':this.wordsComponentObject2TitleTop,
                                     'width':this.wordsComponentObject2TitleWidth,
-                                    'background-color':'blue',
+                                    // 'background-color':'blue',
                                     'left':this.wordsComponentObject2TitleLeft,
                                     'text-align':this.wordsComponentObject2TitleTextAlign 
                                 }

@@ -28,7 +28,7 @@ function resize(   devObj:any   ){
     }
     
 
-    if(   devObj.type === 'direct'   ){
+    if(   devObj.type === 'direct'   ){ // useful to change the rate of the resize, make at containing obj interval to achieve the responsiveness you need
 
 
         result = 
@@ -138,7 +138,7 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
             }]          
             // console.log(   this.window.document.querySelectorAll('app-footer[ng-reflect-footer-template-variable='+this.footerTemplateVariable+']')   ) 
             let zCheckpoint = [0,1]     
-            console.log(   this.footerMyElements._results   )                    
+            // console.log(   this.footerMyElements._results   )                    
             // this.footerMyElements._results.map((x:any,i:any)=>{
                    
                 
@@ -174,7 +174,7 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                 // console.log(    this.footerMyElements._results.slice(y,zCheckpoint[j+1])   )
                 zGrid.a = 0
                 this.footerMyElements._results.slice(y,zCheckpoint[j+1]).map((x:any,i:any)=>{     
-                    console.log(   x.nativeElement.id   )
+                    // console.log(   x.nativeElement.id   )
                     // console.log(   this.wordsService[this.footerTemplateVariable].quantity[1][j].val  )
 
                     while(   
@@ -185,11 +185,11 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                         zGrid.a +=1
                         // debugger                                
                     }
-                    console.log(   
-                        this.wordsService[this.footerTemplateVariable].quantity[1][j].quantity[zGrid.a],   
-                        zChild,
-                        zGrid
-                    )
+                    // console.log(   
+                    //     this.wordsService[this.footerTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                    //     zChild,
+                    //     zGrid
+                    // )
 
 
                     if(   x.nativeElement.id === this.wordsService[this.footerTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
@@ -233,21 +233,33 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                 })
                 // console.groupEnd()
             })
-            console.log(zChild)
+            // console.log(zChild)
             this.wordsService.footerResizeEventSubscription0 = this.wordsService.footerResizeEvent$.subscribe(()=>{
+                console.log(zChild[2].element.innerText)
                 zChild[2].style['left'] =  xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
-                    target:numberParse(   this.window.getComputedStyle(zChild[2].element).width   )
+                    target: getTextWidth({
+                        elementText:zChild[2].element.innerText,
+                        font:this.window.getComputedStyle(   zChild[2].element   ).getPropertyValue('font-size') + 
+                        " " +
+                        this.window.getComputedStyle(   zChild[2].element ).getPropertyValue('font-family') 
+                    })
                 })
-                console.log(    this.window.getComputedStyle(zChild[1].element).width,
-                                 this.window.getComputedStyle(zChild[2].element).width      )
                 zChild[3].style['left'] =  xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
-                    target:numberParse(   this.window.getComputedStyle(zChild[3].element).width   )
-                })           
-                // zChild[2].style['display'] = 'none'
-                this.ref.detectChanges()     
+                    target: getTextWidth({
+                        elementText:zChild[3].element.innerText,
+                        font:this.window.getComputedStyle(   zChild[3].element   ).getPropertyValue('font-size') + 
+                        " " +
+                        this.window.getComputedStyle(   zChild[3].element ).getPropertyValue('font-family') 
+                    })
+                })                         
+                this.ref.detectChanges()
             })
+            Array.from(this.window.document.querySelectorAll('app-root > *')).map((a)=>{
+                console.log(window.getComputedStyle(a).top)
+            })  
+            // see what happens when app-navigation top is made 0px
 
 
         }
