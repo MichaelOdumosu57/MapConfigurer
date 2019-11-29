@@ -813,7 +813,8 @@ export class WordsService {
                                 TitleDefaultFontSize:'32px',
                                 // an advatange is I'd have this in the non quantity to access easier
                                 image:[
-                                ]
+                                ],
+                                wordsCO2: new Subject<any>()
                             },
                             ngStyle:[
                                 [],

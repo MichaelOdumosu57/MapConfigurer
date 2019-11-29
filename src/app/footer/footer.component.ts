@@ -235,30 +235,107 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
             })
             // console.log(zChild)
             this.wordsService.footerResizeEventSubscription0 = this.wordsService.footerResizeEvent$.subscribe(()=>{
-                console.log(zChild[2].element.innerText)
-                zChild[2].style['left'] =  xPosition({
-                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
-                    target: getTextWidth({
+
+
+                if(   
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) >  getTextWidth({
                         elementText:zChild[2].element.innerText,
                         font:this.window.getComputedStyle(   zChild[2].element   ).getPropertyValue('font-size') + 
                         " " +
                         this.window.getComputedStyle(   zChild[2].element ).getPropertyValue('font-family') 
                     })
-                })
-                zChild[3].style['left'] =  xPosition({
-                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
-                    target: getTextWidth({
+                ){
+
+
+                    zChild[2].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target: getTextWidth({
+                            elementText:zChild[2].element.innerText,
+                            font:this.window.getComputedStyle(   zChild[2].element   ).getPropertyValue('font-size') + 
+                            " " +
+                            this.window.getComputedStyle(   zChild[2].element ).getPropertyValue('font-family') 
+                        })
+                    })
+
+
+                }
+
+
+                else if(   true   ){
+
+
+                    zChild[2].style['left'] = '0px'
+
+
+                }
+
+                this.ref.detectChanges()
+                zChild[3].style['top'] = (
+                    numberParse(
+                        this.window.getComputedStyle(   zChild[2].element   ).top
+                    ) +
+                    numberParse(
+                        this.window.getComputedStyle(   zChild[2].element   ).height
+                    ) + 
+                    10
+                ).toString() + "px"
+                                
+
+                if(   
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) >  getTextWidth({
                         elementText:zChild[3].element.innerText,
                         font:this.window.getComputedStyle(   zChild[3].element   ).getPropertyValue('font-size') + 
                         " " +
                         this.window.getComputedStyle(   zChild[3].element ).getPropertyValue('font-family') 
                     })
-                })                         
+                ){                
+
+
+                    zChild[3].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target: getTextWidth({
+                            elementText:zChild[3].element.innerText,
+                            font:this.window.getComputedStyle(   zChild[3].element   ).getPropertyValue('font-size') + 
+                            " " +
+                            this.window.getComputedStyle(   zChild[3].element ).getPropertyValue('font-family') 
+                        })
+                    })   
+                
+                
+                }
+
+                
+                else if(   true   ){
+
+
+                    zChild[3].style['left'] = '0px'
+
+
+                }
+
                 this.ref.detectChanges()
+
+
+                if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject2]')  !== null ){
+
+
+                    this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.subscribe((data)=>{
+                        // console.log(data)
+                        zChild[0].style.top = (
+                            numberParse(
+                                data[0]     
+                            ) + 
+                            numberParse(
+                                data[1]                     
+                            ) -
+                            10
+                        ).toString() + 'px'
+                        this.ref.detectChanges()                        
+                    })
+
+
+                }
             })
-            Array.from(this.window.document.querySelectorAll('app-root > *')).map((a)=>{
-                console.log(window.getComputedStyle(a).top)
-            })  
             // see what happens when app-navigation top is made 0px
 
 
@@ -267,7 +344,16 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy(){
-        
+        this.wordsService.footerResizeEventSubscription0.unsubscribe()
+
+
+        if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject2]')  !== null ){
+            
+
+            this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.unsubscribe()
+
+            
+        }
     }
 
 }
