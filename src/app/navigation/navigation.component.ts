@@ -47,499 +47,427 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
     navigationCustomWordWrapElements:Array<any>  = []
     
-    access(){
-        return this.wordsService
-    }
+    // access(){
+    //     return this.wordsService
+    // }
 
-    accessWindow(){
-        return this.window
-    }
+    // accessWindow(){
+    //     return this.window
+    // }
 
-    ngOnInit() {                                                                                                                                                                                                                                                                                        
-        
-        // console.log(   this.wordsService[this.navigationTemplateVariable]   )
-        // console.log(   this.navigationTemplateVariable   )
-        this.wordsService.navigationMyElements.subscribe((arr)=>{
-
-            // console.log(   arr   )   
-
-            // applying dynamic styles
-            // console.log(   'DOMRECT bar width',this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width    )    
-            // console.log(   'screen width ', this.window.screen.width   )     
-            // console.log(   'document.body',   this.window.document.body.offsetWidth   )
-            this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth = this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width  - 1340
-            // console.log(    this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth    )
-            for(   let i in this.wordsService[this.navigationTemplateVariable].styles   ){
-                switch(parseInt(i)) {
-                    case 5:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .47  + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
-                      break;
-                    case 6:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .53  + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth ).toString() + "px"
-                      break;
-                    case 7:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .58  + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth   ).toString() + "px"
-                      break;    
-                    case 8:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .65   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
-                      break;     
-                    case 9:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .72  + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth   ).toString() + "px"
-                      break;    
-                    case 10:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .77   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
-                      break;  
-                    case 11:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .85  + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth   ).toString() + "px"
-                      break;     
-                    case 12:
-                        this.wordsService[this.navigationTemplateVariable].styles[i].css.left = (  1340* .83   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
-                      break;                                                                                                                            
-                    default:
-                      // code block
-                }                    
-            }
-            // dealing with  missing elements
-            if(   this.wordsService[this.navigationTemplateVariable].styles.length >   arr[this.navigationTemplateVariable.slice(-1)].length   ){
-
-
-                this.wordsService[this.navigationTemplateVariable].stylesCopy = this.wordsService[this.navigationTemplateVariable].styles.filter((a,i)=>{
-
-
-                    if(   i === 0   ){
-                        
-
-                        return true
-
-
-                    }
-
-
-                    else if(   i!== 0){
-
-
-                        if(   this.navigationStyleIndex[0] === 0   ){
-
-
-                            // console.log(  i,this.navigationBoolIndex[0]      )
-                            this.navigationStyleIndex[0] =  this.navigationStyle[ this.navigationBoolIndex[0]   ].length
-                            this.navigationBoolIndex[0] += 1
-                            
-                            
-                        }
-                        
-
-                        this.navigationStyleIndex[0] -= 1
-
-
-                        if(   this.navigationBool[   this.navigationBoolIndex[0] -1   ] === 'true'   ){
-
-
-                            return true
-
-
-                        }
-
-
-                    }
-                    
-
-                    
-                    
-                })
-                this.navigationBoolIndex[0] = 0
-
-
-            }
-
-            
-            else if(   this.wordsService[this.navigationTemplateVariable].styles.length  ===  arr[this.navigationTemplateVariable.slice(-1)].length   ){
-                
-                // console.log('fire')
-                this.wordsService[this.navigationTemplateVariable].stylesCopy = this.wordsService[this.navigationTemplateVariable].styles
-
-
-            }
-
-
-            // console.log(   this.navigationbool   )
-            // console.log(   this.navigationStyle   )
-            // console.log(   this.wordsService[this.navigationTemplateVariable].stylesCopy, arr[this.navigationTemplateVariable.slice(-1)]     )
-            for(   var index in this.wordsService[this.navigationTemplateVariable].stylesCopy    ){
-            
-                // console.log(   arr[this.navigationTemplateVariable.slice(-1)][index].nativeElement.id   )
-                if(   this.wordsService[this.navigationTemplateVariable].stylesCopy[index].override === 'true'   ){
-
-
-                    for(   var prop in  this.wordsService[this.navigationTemplateVariable].stylesCopy[index].css   ){
-                        // console.log(    arr[this.navigationTemplateVariable.slice(-1)][index] )
-                        // console.log(   arr[this.navigationTemplateVariable.slice(-1)][index].nativeElement   )
-                        arr[this.navigationTemplateVariable.slice(-1)][index].nativeElement.style[prop] = this.wordsService[this.navigationTemplateVariable].stylesCopy[index].css[prop]
-                    }
-
-                                
-                }
-
-
-            }
-            //for some reason, ngOnInit does not fully complete before ngAfterViewInit and you must place this here
-            this.navigationMyElements._results[13].nativeElement.style.top  = this.navigationMyElements._results[0].nativeElement.clientHeight.toString() + "px"
-        })        
-               
+    ngOnInit() {
+        console.log(this.navigationTemplateVariable+ '  ngOnInit fires one remount')
     }
 
     ngAfterViewInit(){
-        // grabbing 'HTMLWordElements'
+        console.log( this.navigationTemplateVariable+ ' ngAfterViewInit fires one remount')        
+        this.wordsService.navigationLoadEvent$ = fromEvent(this.window ,'load');
+        this.wordsService.navigationResizeEvent$ = fromEvent(this.window ,'resize');        
 
-        this.wordsService.navigationLoadEvent0 = fromEvent(this.window ,'load');
-        // this.wordsService[this.navigationTemplateVariable].location.parameters.push(
-        //     this.wordsService[this.navigationTemplateVariable].parameters.push({
-        //         fn:'wordsService.customWordWrapReceive',
-        //         totalElements:this.navigationMyElements._results,
-        //         HTMLWordElements:this.navigationCustomWordWrapElements
-        //     }) - 1// for it returns the length of the array
-        // )
-        // this.wordsService.navigationLoadEventSubscription0 = this.wordsService.navigationLoadEvent0.subscribe(this.wordsService.customWordWrapReceive({
-        //     totalElements:this.navigationMyElements._results,
-        //     HTMLWordElements:{
-        //                         parameters:this.wordsService[this.navigationTemplateVariable].location.parameters.slice(-1)[0],
-        //                         templateVar:this.navigationTemplateVariable
-        //                     }
-        // }))
-        this.wordsService.navigationResizeEvent0 = fromEvent(this.window ,'resize');
-        this.wordsService.navigationResizeEventSubscription2  
-        this.wordsService.navigationResizeEventSubscription0 = this.wordsService.navigationResizeEvent0.subscribe((event)=>{
-        // console.group('general nav anchor repositioning resize event')
-            // console.log('innerWidth',this.window.innerWidth)
-            // console.log('outerWidth',this.window.outerWidth)
-            // console.log('screen constant',this.window.screen.width)
-            // console.log('bar width',this.navigationMyElements._results[0].nativeElement.clientWidth)
-            this.navigationMyElements._results.slice(4,12).map((i:any,x:any)=>{
-                // console.log(   'DOMRECT bar width',this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width   )
-                // console.log(   'bar OffsetWidth', this.navigationMyElements._results[0].nativeElement.offsetWidth   )
-                // console.log(   'bar clientWidth', this.navigationMyElements._results[0].nativeElement.clientWidth   )  
-                // console.log(   'bar css width',   this.window.getComputedStyle(   this.navigationMyElements._results[0].nativeElement   ).width   )                              
-                // console.log(   'nav left original',i.nativeElement.id,i.nativeElement.style.left   )
-                i.nativeElement.style.left = (   this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width -120    ).toString() + "px"  
-                // console.log(    'nav element left edited',i.nativeElement.id, i.nativeElement.style.left   )
-                // console.log(   'navbar offset width',this.navigationMyElements._results[0].nativeElement.offsetWidth    )
-                switch(parseInt(x)) {
-                    case 0:
-                        i.nativeElement.style.left = (   1340 * .47 - (1340 - this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width)   ).toString() + "px"
-                        break;
-                    case 1:
-                        i.nativeElement.style.left = (   1340 * .53  - (1340 - this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width)    ).toString() + "px"
-                        break;
-                    case 2:
-                        i.nativeElement.style.left = (   1340 * .58  - (1340 - this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width)    ).toString() + "px"
-                        break;    
-                    case 3:
-                        i.nativeElement.style.left = (   1340 * .65  - (1340 - this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width)    ).toString() + "px"
-                        break;     
-                    case 4:
-                        i.nativeElement.style.left = (   1340 * .72 - (1340 - this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width)     ).toString() + "px" 
-                        break;    
-                    case 5:
-                        i.nativeElement.style.left = (   1340 * .77 - (1340 - this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width)     ).toString() + "px"  
-                        break;
-                    case 6:
-                        i.nativeElement.style.left = (   1340 * .85  - (1340 - this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width)    ).toString() + "px"
-                        this.ref.detectChanges()
-                      break;     
-                    case 7:
-                        // console.log(   
-                        //     getTextWidth({
-                        //         elementText:this.navigationMyElements._results.slice(4,12)[6].nativeElement.innerText,
-                        //         font: this.window.getComputedStyle(   this.navigationMyElements._results.slice(4,12)[6].nativeElement  ).getPropertyValue('font-size') + " Roboto"
-                        //     })/2,
-                        //     numberParse(   this.window.getComputedStyle(   i.nativeElement   ).width   )/2,
-                        //     numberParse(   this.window.getComputedStyle(   this.navigationMyElements._results.slice(4,12)[6].nativeElement   ).left   )
-                        // )
-                        i.nativeElement.style.left = ( 
-                            numberParse(  this.window.getComputedStyle(   this.navigationMyElements._results.slice(4,12)[6].nativeElement   ).left   )  -
-                            numberParse(   this.window.getComputedStyle(   i.nativeElement   ).width   )/2 +
-                            getTextWidth({
-                                elementText:this.navigationMyElements._results.slice(4,12)[6].nativeElement.innerText,
-                                font: this.window.getComputedStyle(   this.navigationMyElements._results.slice(4,12)[6].nativeElement  ).getPropertyValue('font-size') + " Roboto"
-                            })/2                                
-                        ).toString() + "px"                        
-                        break;                                                                                                                            
-                    default:
-                      // code block
-                }                         
-            })            
-            this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  = this.navigationMyElements._results[0].nativeElement.getBoundingClientRect().width  - 1340
-        // console.groupEnd()
-        })
-        this.wordsService[this.navigationTemplateVariable].metadata.titleWidth = getTextWidth({
-            elementText:this.navigationMyElements._results[1].nativeElement.innerText ,
-            font: this.window.getComputedStyle(   this.navigationMyElements._results[1].nativeElement   ).getPropertyValue('font-size') + " sans-serif"
-        })        
-        for(   let i of this.navigationMyElements._results.slice(1,3)   ){
-            this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes.push(   this.window.getComputedStyle(i.nativeElement).fontSize   )   
-        }   
-        // console.log(   this.navigationMyElements._results[13],this.window.getComputedStyle(   this.navigationMyElements._results[0].nativeElement   ).getPropertyValue('height')   )
-        this.wordsService.navigationResizeEventSubscription1 = this.wordsService.navigationResizeEvent0.subscribe((event)=>{
-        // console.group('anchors overlapping heading resize event')
+        if(   this.navigationTemplateVariable === 'navigationComponentObject0'    ){
 
+
+            let zChild =[{
+                element: this.window.document.querySelector('app-navigation[ng-reflect-navigation-template-variable='+this.navigationTemplateVariable+']'),
+                style:this.wordsService[this.navigationTemplateVariable].quantity[0][0].ngStyle[0][0],
+                innerText:null
+            }]          
+            let zCheckpoint = []                         
+            this.navigationMyElements._results.map((x:any,i:any)=>{
+
+
+                if(   x.nativeElement.id === 'n_a_v_i_g_a_t_i_o_n_Board'   ){
+                    zCheckpoint.push(i)
+                }                        
+                
             
-            if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
-                
-                
-                // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
-                this.navigationBool[12] = 'true'
-                this.ref.detectChanges();
-                
+            })
+            console.log(zCheckpoint)
+            let zGrid = {
+                a:0, 
+                b:0, 
+                c:0,
+                d:0,
+                e:null,
+                f:null
+            }                  
+            zCheckpoint.map((y:any,j:any)=>{
+                // console.group('associated')
+                // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                zGrid.a = 0;
+                (function(qq){
+                    return qq.navigationMyElements._results.length === 1 ? qq.navigationMyElements._results : qq.navigationMyElements._results.slice(y,zCheckpoint[j+1])
+                })(this).map((x:any,i:any)=>{     
+                    // console.log(   x.nativeElement.id   )
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
 
-                if(   this.navigationMyElements._results[12].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownBox"   ){
-
-
-                    // console.log(     this.navigationMyElements._results[12].nativeElement.id   )
-                    this.navigationMyElements._results[12].nativeElement.style.position = "absolute"
-                    this.navigationMyElements._results[12].nativeElement.style.top = "50px"
-                    // console.log(this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth )
-                    this.navigationMyElements._results[12].nativeElement.style.left = (  1340* .96   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"                 
-                    this.navigationMyElements._results[13].nativeElement.style.display = 'block'
-                    this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
-                    
-                    
-                    if(   this.wordsService.navigationClickEventSubscription0 === undefined   || this.wordsService.navigationClickEventSubscription0.closed  ){
-
-
-                        this.wordsService.navigationClickEvent$ = fromEvent([this.navigationMyElements._results[12].nativeElement ,this.navigationMyElements._results[13].nativeElement] ,'click');
-                        this.wordsService.navigationClickEventSubscription0 = this.wordsService.navigationClickEvent$.subscribe((event)=>{
-                            this.navigationMyElements._results[14].nativeElement.style.display = this.navigationMyElements._results[14].nativeElement.style.display === 'block' ? 'none' : 'block'
-                        })  
-                        // console.log(   this.wordsService.navigationClickEventSubscription0   )      
-
-
+                    while(   
+                        this.wordsService[this.navigationTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                        zGrid.b +1 > this.wordsService[this.navigationTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                    ){
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                        zGrid.a +=1
+                        // debugger                                
                     }
+                    // console.log(   
+                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                    //     zChild,
+                    //     zGrid
+                    // )
 
-                   
-                    // console.log(     this.navigationMyElements._results   )
-                    for(   let i of this.navigationMyElements._results.slice(4,12)   ){
-                        i.nativeElement.style.display = 'none'  
-                    }    
-                    
-                    
-                    if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 155  ){
 
+                    if(   x.nativeElement.id === this.wordsService[this.navigationTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                        (   
+                            this.wordsService[this.navigationTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                            this.wordsService[this.navigationTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                            this.wordsService[this.navigationTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
+                        )    
+                    ){               
                         
-                        // console.log('dropdownBox is interfering with the titile')
-                        this.navigationMyElements._results.slice(1,3).map((x,i)=>{
-                            x.nativeElement.style.fontSize =  
-                            (   
-                                numberParse(   this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i]   ) *
-                                (  
-                                     numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )/
-                                     (   this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 155 )  
-                                ) * .95  
-                            ).toString() + "px"
-                            // console.log(   x.nativeElement.style.fontSize  )
+                        
+                        zChild.push({
+                            element:x.nativeElement,
+                            style:this.wordsService[this.navigationTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
+                            innerText: this.wordsService[this.navigationTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b]
                         })
-
-
-                    }   
-
-
-                    else if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
-
-                        
-                        // console.log('restore title sizes')
-                        this.navigationMyElements._results.slice(1,3).map((x,i)=>{
-                            x.nativeElement.style.fontSize =  this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i] 
-                            // console.log(   x.nativeElement.style.fontSize  )
-                        })
-        
-        
-                    }                      
-        
-                    
-                }
-                // console.log(   this.navigationMyElements._results   )
-
-            }
-
-
-            else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
-                
-
-                if(   this.wordsService.navigationClickEventSubscription0 !== undefined   ){
-
-
-                    if(   !this.wordsService.navigationClickEventSubscription0.closed    ){
-
-
-                        this.wordsService.navigationClickEventSubscription0.unsubscribe()   
-                        
-                
-                    }
-
-
-                }  
-               
-                
-                if(   this.navigationMyElements._results[14] !== undefined   ){
-
-
-                    if(   this.navigationMyElements._results[14].nativeElement.id === 'n_a_v_i_g_a_t_i_o_n_dropDown'  ){
                         
 
-                        this.navigationMyElements._results[14].nativeElement.style.display = 'none'
+                        if(   this.wordsService[this.navigationTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
 
 
-                    }
-                    
+                            zGrid.a += 1
+                            zGrid.b = 0       
+                            
+                            
+                        }
 
-
-                }
-                
-                
-                if(   this.navigationMyElements._results[13] !== undefined   ){
-
-
-                    if(   this.navigationMyElements._results[13].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownIcon"   ){
-
-                        // console.log('executed on condition')                        
-                        // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
-                        this.navigationMyElements._results[13].nativeElement.style.display = 'none'
-                        // if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
 
                         
-                            // console.log('restore title sizes')
-                            this.navigationMyElements._results.slice(1,3).map((x,i)=>{
-                                x.nativeElement.style.fontSize =  this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i] 
-                            })
-            
-            
-                        // }                          
-                        this.navigationBool[12] = 'false'
-                        this.ref.detectChanges()
-                        for(   let i of this.navigationMyElements._results.slice(4,12)   ){
-                            i.nativeElement.style.display = 'block'  
+                        else if(   true   ){
+
+
+                            zGrid.b += 1       
+                            
+                            
                         }
 
 
                     }
+                    
+                    
+                })
+                // console.groupEnd()
+            })
+            // see what happens when app-navigation top is made 0px
+            console.log(   zChild   ) 
+            this.wordsService[this.navigationTemplateVariable].metadata.titleWidth = getTextWidth({
+                elementText:zChild[2].innerText ,
+                font: this.window.getComputedStyle(   zChild[2].element   ).getPropertyValue('font-size') + 
+                " " +
+                this.window.getComputedStyle(   zChild[2].element ).getPropertyValue('font-family') 
+            })        
+            for(   let i of zChild.slice(2,4)   ){
+                this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes.push(   this.window.getComputedStyle(i.element).fontSize   )   
+            }                   
+            this.wordsService.navigationResizeEventSubscription0 = this.wordsService.navigationResizeEvent$.subscribe((event)=>{
+                this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth = zChild[1].element.getBoundingClientRect().width  - 1340;
+                this.ref.detectChanges()                
+                zChild[5].style['left'] = (   1340 * .47 - (1340 - zChild[1].element.getBoundingClientRect().width)   ).toString() + "px"
+                zChild[6].style['left'] = (   1340 * .53 - (1340 - zChild[1].element.getBoundingClientRect().width)   ).toString() + "px"
+                zChild[7].style['left'] = (   1340 * .58 - (1340 - zChild[1].element.getBoundingClientRect().width)   ).toString() + "px"
+                zChild[8].style['left'] = (   1340 * .65 - (1340 - zChild[1].element.getBoundingClientRect().width)   ).toString() + "px"
+                zChild[9].style['left'] = (   1340 * .72 - (1340 - zChild[1].element.getBoundingClientRect().width)   ).toString() + "px"
+                zChild[10].style['left'] = (   1340 * .77 - (1340 - zChild[1].element.getBoundingClientRect().width)   ).toString() + "px"
+                zChild[11].style['left'] = (   1340 * .85 - (1340 - zChild[1].element.getBoundingClientRect().width)   ).toString() + "px"
+                this.ref.detectChanges()
+                zChild[12].style['left'] = ( 
+                    numberParse(  this.window.getComputedStyle(   zChild[11].element  ).left   )  -
+                    numberParse(   this.window.getComputedStyle(  zChild[12].element   ).width   )/2 +
+                    getTextWidth({
+                        elementText:zChild[11].innerText,
+                        font: this.window.getComputedStyle(   zChild[11].element  ).getPropertyValue('font-size') + 
+                        " " +
+                        this.window.getComputedStyle(   zChild[11].element ).getPropertyValue('font-family') 
+                    })/2                                
+                ).toString() + "px"  
+                this.ref.detectChanges()
+            })
+            this.wordsService.navigationResizeEventSubscription1 = this.wordsService.navigationResizeEvent$.subscribe((event)=>{
 
 
+                if(   numberParse(   this.window.getComputedStyle(zChild[5].element).left    )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
                 }
+            })
+
+        }
+        
 
 
-            }
+        // this.wordsService[this.navigationTemplateVariable].metadata.titleWidth = getTextWidth({
+        //     elementText:this.navigationMyElements._results[1].nativeElement.innerText ,
+        //     font: this.window.getComputedStyle(   this.navigationMyElements._results[1].nativeElement   ).getPropertyValue('font-size') + " sans-serif"
+        // })        
+        // for(   let i of this.navigationMyElements._results.slice(1,3)   ){
+        //     this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes.push(   this.window.getComputedStyle(i.nativeElement).fontSize   )   
+        // }   
+        // // console.log(   this.navigationMyElements._results[13],this.window.getComputedStyle(   this.navigationMyElements._results[0].nativeElement   ).getPropertyValue('height')   )
+        // this.wordsService.navigationResizeEventSubscription1 = this.wordsService.navigationResizeEvent$.subscribe((event)=>{
+        // // console.group('anchors overlapping heading resize event')
 
             
-            // console.log(this.navigationMyElements )            
-        // console.groupEnd()
-        })     
-        this.wordsService.navigationLoadEventSubscription1 = this.wordsService.navigationLoadEvent0.subscribe((event)=>{
-        // console.group('anchors overlapping heading load event')
-
-
-            if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
-                // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
-                // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
-                this.navigationBool[12] = 'true'
-                this.ref.detectChanges()
+        //     if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
+                
+                
+        //         // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
+        //         this.navigationBool[12] = 'true'
+        //         this.ref.detectChanges();
                 
 
-                // console.log( this.navigationMyElements._results   )
-                if(   this.navigationMyElements._results[12].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownBox"   ){
+        //         if(   this.navigationMyElements._results[12].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownBox"   ){
 
 
-                    this.wordsService.navigationLoadEventSubscription1.unsubscribe()
-                    this.navigationMyElements._results[12].nativeElement.style.position = "absolute"
-                    this.navigationMyElements._results[12].nativeElement.style.top = "50px"
-                    // console.log(this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth )
-                    this.navigationMyElements._results[12].nativeElement.style.left = (  1340* .96   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
-                    this.navigationMyElements._results[13].nativeElement.style.display = 'block'
-                    this.navigationMyElements._results[13].nativeElement.style.top = "60px"
-                    this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
+        //             // console.log(     this.navigationMyElements._results[12].nativeElement.id   )
+        //             this.navigationMyElements._results[12].nativeElement.style.position = "absolute"
+        //             this.navigationMyElements._results[12].nativeElement.style.top = "50px"
+        //             // console.log(this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth )
+        //             this.navigationMyElements._results[12].nativeElement.style.left = (  1340* .96   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"                 
+        //             this.navigationMyElements._results[13].nativeElement.style.display = 'block'
+        //             this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
                     
-
-                    if(   this.wordsService.navigationClickEventSubscription0 === undefined  || this.wordsService.navigationClickEventSubscription0.closed   ){
-
-
-                        this.wordsService.navigationClickEvent$ = fromEvent([this.navigationMyElements._results[12].nativeElement ,this.navigationMyElements._results[13].nativeElement] ,'click');
-                        this.wordsService.navigationClickEventSubscription0 = this.wordsService.navigationClickEvent$.subscribe((event)=>{
-                            this.navigationMyElements._results[14].nativeElement.style.display = this.navigationMyElements._results[14].nativeElement.style.display === 'block' ? 'none' : 'block'
-                        })  
-                        // console.log(   this.wordsService.navigationClickEventSubscription0   )      
+                    
+        //             if(   this.wordsService.navigationClickEventSubscription0 === undefined   || this.wordsService.navigationClickEventSubscription0.closed  ){
 
 
-                    }
+        //                 this.wordsService.navigationClickEvent$ = fromEvent([this.navigationMyElements._results[12].nativeElement ,this.navigationMyElements._results[13].nativeElement] ,'click');
+        //                 this.wordsService.navigationClickEventSubscription0 = this.wordsService.navigationClickEvent$.subscribe((event)=>{
+        //                     this.navigationMyElements._results[14].nativeElement.style.display = this.navigationMyElements._results[14].nativeElement.style.display === 'block' ? 'none' : 'block'
+        //                 })  
+        //                 // console.log(   this.wordsService.navigationClickEventSubscription0   )      
 
 
-                    for(   let i of this.navigationMyElements._results.slice(4,12)   ){
-                        i.nativeElement.style.display = 'none'  
-                    }                                            
+        //             }
 
-
-                    if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
+                   
+        //             // console.log(     this.navigationMyElements._results   )
+        //             for(   let i of this.navigationMyElements._results.slice(4,12)   ){
+        //                 i.nativeElement.style.display = 'none'  
+        //             }    
+                    
+                    
+        //             if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 155  ){
 
                         
-                        // console.log('dropdownBox is interfering with the titile')
-                        this.navigationMyElements._results.slice(1,3).map((x,i)=>{
-                            x.nativeElement.style.fontSize =  (   numberParse(   this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i]   ) * (   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )/(   this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55 )  ) * .95  ).toString() + "px"
-                            // console.log(   x.nativeElement.style.fontSize  )
-                        })
+        //                 // console.log('dropdownBox is interfering with the titile')
+        //                 this.navigationMyElements._results.slice(1,3).map((x,i)=>{
+        //                     x.nativeElement.style.fontSize =  
+        //                     (   
+        //                         numberParse(   this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i]   ) *
+        //                         (  
+        //                              numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )/
+        //                              (   this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 155 )  
+        //                         ) * .95  
+        //                     ).toString() + "px"
+        //                     // console.log(   x.nativeElement.style.fontSize  )
+        //                 })
 
 
-                    }            
+        //             }   
+
+
+        //             else if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
+
+                        
+        //                 // console.log('restore title sizes')
+        //                 this.navigationMyElements._results.slice(1,3).map((x,i)=>{
+        //                     x.nativeElement.style.fontSize =  this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i] 
+        //                     // console.log(   x.nativeElement.style.fontSize  )
+        //                 })
+        
+        
+        //             }                      
+        
+                    
+        //         }
+        //         // console.log(   this.navigationMyElements._results   )
+
+        //     }
+
+
+        //     else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
+                
+
+        //         if(   this.wordsService.navigationClickEventSubscription0 !== undefined   ){
+
+
+        //             if(   !this.wordsService.navigationClickEventSubscription0.closed    ){
+
+
+        //                 this.wordsService.navigationClickEventSubscription0.unsubscribe()   
+                        
+                
+        //             }
+
+
+        //         }  
+               
+                
+        //         if(   this.navigationMyElements._results[14] !== undefined   ){
+
+
+        //             if(   this.navigationMyElements._results[14].nativeElement.id === 'n_a_v_i_g_a_t_i_o_n_dropDown'  ){
+                        
+
+        //                 this.navigationMyElements._results[14].nativeElement.style.display = 'none'
+
+
+        //             }
+                    
+
+
+        //         }
+                
+                
+        //         if(   this.navigationMyElements._results[13] !== undefined   ){
+
+
+        //             if(   this.navigationMyElements._results[13].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownIcon"   ){
+
+        //                 // console.log('executed on condition')                        
+        //                 // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
+        //                 this.navigationMyElements._results[13].nativeElement.style.display = 'none'
+        //                 // if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
+
+                        
+        //                     // console.log('restore title sizes')
+        //                     this.navigationMyElements._results.slice(1,3).map((x,i)=>{
+        //                         x.nativeElement.style.fontSize =  this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i] 
+        //                     })
+            
+            
+        //                 // }                          
+        //                 this.navigationBool[12] = 'false'
+        //                 this.ref.detectChanges()
+        //                 for(   let i of this.navigationMyElements._results.slice(4,12)   ){
+        //                     i.nativeElement.style.display = 'block'  
+        //                 }
+
+
+        //             }
+
+
+        //         }
+
+
+        //     }
+
+            
+        //     // console.log(this.navigationMyElements )            
+        // // console.groupEnd()
+        // })     
+        // this.wordsService.navigationLoadEventSubscription1 = this.wordsService.navigationLoadEvent$.subscribe((event)=>{
+        // // console.group('anchors overlapping heading load event')
+
+
+        //     if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
+        //         // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
+        //         // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
+        //         this.navigationBool[12] = 'true'
+        //         this.ref.detectChanges()
+                
+
+        //         // console.log( this.navigationMyElements._results   )
+        //         if(   this.navigationMyElements._results[12].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownBox"   ){
+
+
+        //             this.wordsService.navigationLoadEventSubscription1.unsubscribe()
+        //             this.navigationMyElements._results[12].nativeElement.style.position = "absolute"
+        //             this.navigationMyElements._results[12].nativeElement.style.top = "50px"
+        //             // console.log(this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth )
+        //             this.navigationMyElements._results[12].nativeElement.style.left = (  1340* .96   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
+        //             this.navigationMyElements._results[13].nativeElement.style.display = 'block'
+        //             this.navigationMyElements._results[13].nativeElement.style.top = "60px"
+        //             this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
+                    
+
+        //             if(   this.wordsService.navigationClickEventSubscription0 === undefined  || this.wordsService.navigationClickEventSubscription0.closed   ){
+
+
+        //                 this.wordsService.navigationClickEvent$ = fromEvent([this.navigationMyElements._results[12].nativeElement ,this.navigationMyElements._results[13].nativeElement] ,'click');
+        //                 this.wordsService.navigationClickEventSubscription0 = this.wordsService.navigationClickEvent$.subscribe((event)=>{
+        //                     this.navigationMyElements._results[14].nativeElement.style.display = this.navigationMyElements._results[14].nativeElement.style.display === 'block' ? 'none' : 'block'
+        //                 })  
+        //                 // console.log(   this.wordsService.navigationClickEventSubscription0   )      
+
+
+        //             }
+
+
+        //             for(   let i of this.navigationMyElements._results.slice(4,12)   ){
+        //                 i.nativeElement.style.display = 'none'  
+        //             }                                            
+
+
+        //             if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
+
+                        
+        //                 // console.log('dropdownBox is interfering with the titile')
+        //                 this.navigationMyElements._results.slice(1,3).map((x,i)=>{
+        //                     x.nativeElement.style.fontSize =  (   numberParse(   this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i]   ) * (   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )/(   this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55 )  ) * .95  ).toString() + "px"
+        //                     // console.log(   x.nativeElement.style.fontSize  )
+        //                 })
+
+
+        //             }            
                     
                     
-                }
+        //         }
                 
 
-            }
+        //     }
 
-            else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
-                // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
-                // this.navigationBool[12] = 'false'
-                this.wordsService.navigationLoadEventSubscription1.unsubscribe()
-
-
-                if(   this.wordsService.navigationClickEventSubscription0 !== undefined   ){
+        //     else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
+        //         // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
+        //         // this.navigationBool[12] = 'false'
+        //         this.wordsService.navigationLoadEventSubscription1.unsubscribe()
 
 
-                    if(   !this.wordsService.navigationClickEventSubscription0.closed    ){
+        //         if(   this.wordsService.navigationClickEventSubscription0 !== undefined   ){
 
 
-                        this.wordsService.navigationClickEventSubscription0.unsubscribe()   
+        //             if(   !this.wordsService.navigationClickEventSubscription0.closed    ){
+
+
+        //                 this.wordsService.navigationClickEventSubscription0.unsubscribe()   
                 
                 
-                    }
+        //             }
 
 
-                }       
+        //         }       
                 
                 
-            }            
+        //     }            
 
 
-            // console.log(   this.navigationMyElements._results  )
-        // console.groupEnd()    
-        })
+        //     // console.log(   this.navigationMyElements._results  )
+        // // console.groupEnd()    
+        // })
        
         
 
     }
 
     ngOnDestroy(){
-        // this.wordsService.navigationLoadEventSubscription0.unsubscribe() 
-        this.wordsService.navigationResizeEventSubscription0.unsubscribe()
-        this.wordsService.navigationResizeEventSubscription1.unsubscribe()
+        console.log( this.navigationTemplateVariable+ ' ngOnDestroy fires on dismount') 
 
 
-        if(   !this.wordsService.navigationLoadEventSubscription1.closed   ){
-
-
-            this.wordsService.navigationLoadEventSubscription1.unsubscribe()
-
-
-        }
+        if(   this.navigationTemplateVariable  === 'navigationComponentObject0'   ){
         
         
+            this.wordsService.navigationResizeEventSubscription0.unsubscribe()
+        
+    
+        }        
     }
 
 }

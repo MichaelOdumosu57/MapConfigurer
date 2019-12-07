@@ -758,6 +758,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
             let overlayIntervalRxjs0 = interval(10)
             let overlayTakeRxjs0 =  overlayIntervalRxjs0.pipe(take(1))     
             overlayTakeRxjs0.subscribe(()=>{
+                // debugger
                 try{
                     let event = new Event('resize')
                     this.window.dispatchEvent(event)  

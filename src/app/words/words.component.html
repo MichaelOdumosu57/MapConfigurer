@@ -1,36 +1,38 @@
-<ng-container *ngFor = 'let a of wordsService[wordsTemplateVariable].quantity[0]' >
-    <div #mywordsval *ngIf="wordsService[wordsTemplateVariable].bool[0] ==='true'" id = {{wordsService[wordsTemplateVariable].val[0]}} 
-    [ngStyle] = wordsService[wordsTemplateVariable].ngStyle[1]  ></div>
-    <!-- [ngStyle] = wordsService[wordsTemplateVariable].ngStyle[wordsService[wordsTemplateVariable].generator.next().value]  ></div> idk why this stopped working -->
-</ng-container>
+
 
 
 <ng-container *ngFor = 'let a of wordsService[wordsTemplateVariable].quantity[1];let b = index' >
 
-    <ng-container *ngFor = 'let aa of a.quantity[0];let bb = index' >
-        <h1 #mywordsval *ngIf= "a.bool[0][bb] ==='true'" id = {{a.val[0][bb]}} class = 'tc ttu'
-        [ngStyle] = 'a.ngStyle[0][bb]'  >{{a.text[0][bb]}}</h1>
+
+    <ng-container *ngFor = 'let aa of a.quantity[0];let bb = index'  >
+        <div #mywordsval *ngIf= "a.bool[0][bb] ==='true'" id = {{a.val[0][bb]}}
+        [ngStyle] = 'a.ngStyle[0][bb]' ></div>
     </ng-container>
 
-    <ng-container *ngFor = 'let aa of a.quantity[1];let bb = index'>
-        <p #mywordsval *ngIf= "a.bool[1][bb] !=='link' else elseBlock"  [ngStyle] = 'a.ngStyle[1][bb]' id = {{a.val[1][bb]}} >{{a.text[1][bb]}}<span  *ngIf= "a.extras[1].bool !=='false'" [ngStyle] = 'a.extras[1].ngStyle' >{{a.extras[1].text}}</span>
+    <ng-container *ngFor = 'let aa of a.quantity[1];let bb = index' >
+        <h1 #mywordsval *ngIf= "a.bool[1][bb] ==='true'" id = {{a.val[1][bb]}} class = 'tc ttu'
+        [ngStyle] = 'a.ngStyle[1][bb]'  >{{a.text[1][bb]}}</h1>
+    </ng-container>
+
+    <ng-container *ngFor = 'let aa of a.quantity[2];let bb = index'>
+        <p #mywordsval *ngIf= "a.bool[2][bb] !=='link' else elseBlock"  [ngStyle] = 'a.ngStyle[2][bb]' id = {{a.val[2][bb]}} >{{a.text[2][bb]}}<span  *ngIf= "a.extras[2].bool !=='false'" [ngStyle] = 'a.extras[2].ngStyle' >{{a.extras[2].text}}</span>
             <!-- <i class = 'material-icons'  *ngIf= "a.extras[1].bool !=='false'" [ngStyle] = 'a.extras[1].ngStyle' >arrow_right_alt</i> -->
         </p>
         <ng-template #elseBlock  >
-            <a #mywordsval *ngIf= "a.bool[1][bb] !=='false'"  [ngStyle] = 'a.ngStyle[1][bb]' id = {{a.val[1][bb]}} >{{a.text[1][bb]}}<span  *ngIf= "a.extras[1].bool !=='false'" [ngStyle] = 'a.extras[1].ngStyle' >{{a.extras[1].text}}</span>
+            <a #mywordsval *ngIf= "a.bool[2][bb] !=='false'"  [ngStyle] = 'a.ngStyle[2][bb]' id = {{a.val[2][bb]}} >{{a.text[2][bb]}}<span  *ngIf= "a.extras[2].bool !=='false'" [ngStyle] = 'a.extras[2].ngStyle' >{{a.extras[2].text}}</span>
                 <!-- <i class = 'material-icons'  *ngIf= "a.extras[1].bool !=='false'" [ngStyle] = 'a.extras[1].ngStyle' >arrow_right_alt</i> -->
             </a>
         </ng-template>        
     </ng-container>
 
-    <ng-container *ngFor = 'let aa of a.quantity[2];let bb = index' >
-        <img #mywordsval *ngIf= "a.bool[2][bb] ==='true'" id = {{a.val[2][bb]}} [ngStyle] = 'a.ngStyle[2][bb]' src="{{a.metadata.image[bb]}}" />
+    <ng-container *ngFor = 'let aa of a.quantity[3];let bb = index' >
+        <img #mywordsval *ngIf= "a.bool[3][bb] ==='true'" id = {{a.val[3][bb]}} [ngStyle] = 'a.ngStyle[3][bb]' src="{{a.metadata.image[bb]}}" />
     </ng-container>    
 
-    <ng-container *ngFor = 'let aa of a.quantity[3];let bb = index' >
-        <div #mywordsval *ngIf= "a.bool[3][bb] ==='true'   else elseBlock2" id = {{a.val[3][bb]}} [ngStyle] = 'a.ngStyle[3][bb]' ></div>
+    <ng-container *ngFor = 'let aa of a.quantity[4];let bb = index' >
+        <div #mywordsval *ngIf= "a.bool[4][bb] ==='true'   else elseBlock2" id = {{a.val[4][bb]}} [ngStyle] = 'a.ngStyle[4][bb]' ></div>
         <ng-template #elseBlock2  > 
-            <a #mywordsval *ngIf= "a.bool[3][bb] ==='link'" id = {{a.val[3][bb]}}  [ngStyle] =  'a.ngStyle[3][bb]'  >{{a.text[3][bb]}}</a>
+            <a #mywordsval *ngIf= "a.bool[4][bb] ==='link'" id = {{a.val[4][bb]}}  [ngStyle] =  'a.ngStyle[4][bb]'  >{{a.text[4][bb]}}</a>
         </ng-template>             
     </ng-container>      
     

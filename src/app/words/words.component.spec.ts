@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { WordsComponent } from './words.component';
 import { WordsService  } from '../words.service';
 import { WINDOW_PROVIDERS } from '../window.service';
-import { compileNgModule } from '@angular/core/src/render3/jit/module';
 import { Observable, of, Subject } from 'rxjs';
 
 describe('WordsComponent', () => {

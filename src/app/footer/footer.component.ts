@@ -122,19 +122,22 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
     ngOnInit() {
+        console.log('footer ngOnInit remout')        
     }
 
     ngAfterViewInit(){
-
+        console.log('footer ngAfterViewInit remout')        
         this.wordsService.footerLoadEvent$ = fromEvent(this.window ,'load');
         this.wordsService.footerResizeEvent$ = fromEvent(this.window,'resize');
+        
         
         if(   this.footerTemplateVariable === 'footerComponentObject0'){
 
 
             let zChild =[{
                 element: this.window.document.querySelector('app-footer[ng-reflect-footer-template-variable='+this.footerTemplateVariable+']'),
-                style:this.wordsService[this.footerTemplateVariable].quantity[0][0].ngStyle[0][0]
+                style:this.wordsService[this.footerTemplateVariable].quantity[0][0].ngStyle[0][0],
+                innerText:null
             }]          
             // console.log(   this.window.document.querySelectorAll('app-footer[ng-reflect-footer-template-variable='+this.footerTemplateVariable+']')   ) 
             let zCheckpoint = [0,1]     
@@ -203,7 +206,8 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                         
                         zChild.push({
                             element:x.nativeElement,
-                            style:this.wordsService[this.footerTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b] 
+                            style:this.wordsService[this.footerTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
+                            innerText: this.wordsService[this.footerTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b],
                         })
                         
 
@@ -233,13 +237,13 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                 })
                 // console.groupEnd()
             })
-            // console.log(zChild)
+            console.log(zChild)
             this.wordsService.footerResizeEventSubscription0 = this.wordsService.footerResizeEvent$.subscribe(()=>{
 
 
                 if(   
                     numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) >  getTextWidth({
-                        elementText:zChild[2].element.innerText,
+                        elementText:zChild[2].innerText,
                         font:this.window.getComputedStyle(   zChild[2].element   ).getPropertyValue('font-size') + 
                         " " +
                         this.window.getComputedStyle(   zChild[2].element ).getPropertyValue('font-family') 
@@ -250,7 +254,7 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                     zChild[2].style['left'] =  xPosition({
                         contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                         target: getTextWidth({
-                            elementText:zChild[2].element.innerText,
+                            elementText:zChild[2].innerText,
                             font:this.window.getComputedStyle(   zChild[2].element   ).getPropertyValue('font-size') + 
                             " " +
                             this.window.getComputedStyle(   zChild[2].element ).getPropertyValue('font-family') 
@@ -283,7 +287,7 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
 
                 if(   
                     numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) >  getTextWidth({
-                        elementText:zChild[3].element.innerText,
+                        elementText:zChild[3].innerText,
                         font:this.window.getComputedStyle(   zChild[3].element   ).getPropertyValue('font-size') + 
                         " " +
                         this.window.getComputedStyle(   zChild[3].element ).getPropertyValue('font-family') 
@@ -294,7 +298,7 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                     zChild[3].style['left'] =  xPosition({
                         contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                         target: getTextWidth({
-                            elementText:zChild[3].element.innerText,
+                            elementText:zChild[3].innerText,
                             font:this.window.getComputedStyle(   zChild[3].element   ).getPropertyValue('font-size') + 
                             " " +
                             this.window.getComputedStyle(   zChild[3].element ).getPropertyValue('font-family') 
@@ -341,19 +345,29 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
 
         }
 
+
     }
 
     ngOnDestroy(){
-        this.wordsService.footerResizeEventSubscription0.unsubscribe()
+        console.log('footer OnDestroy dismout')     
+        
+        if(   this.footerTemplateVariable === 'footerComponentObject0'){
 
 
-        if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject2]')  !== null ){
-            
+            this.wordsService.footerResizeEventSubscription0.unsubscribe()
 
-            this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.unsubscribe()
 
-            
+            if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject2]')  !== null ){
+                
+
+                this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.unsubscribe()
+
+                
+            }
+
         }
+
+
     }
 
 }

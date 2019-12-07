@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { WINDOW_PROVIDERS } from '../window.service';
 import { WordsService  } from '../words.service';
 import { NavigationComponent } from './navigation.component';
-import { compileNgModule } from '@angular/core/src/render3/jit/module';
 import { Observable, of, Subject } from 'rxjs';
 
 function numberParse(dimension){

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {  wordsGroupObject } from './wordsGroupObject';
 import { Observable, of, Subject, Subscription } from 'rxjs';
+import { Router,RouterEvent } from '@angular/router';
 
 
 
@@ -15,10 +16,16 @@ function numberParse(dimension){
 })
 
 export class WordsService {
+   
 
-    constructor() { };
+    constructor(
+        private router:Router
+    ) { };
 
     /*app*/
+    a  = {
+        display:'none'
+    }
     appConsecutiveGenerator = (function(){
         return function *generator() {
             var index = 1;
@@ -26,6 +33,19 @@ export class WordsService {
             yield index++;
         }()
     })()
+    appNav:any = {
+        home:'true',
+        about:null,
+        services:null,
+        projects:null,
+        blog:null,
+        contact:null,
+        takeAction:null
+    }
+    appCurrentNav:string = '/home'
+    appRouterEvent$:Observable<any> = this.router.events    
+    appRouterEventSubscription0:Subscription
+    appSubscriptionArray:Subscription[] = []
         
     /* */
 
@@ -502,10 +522,10 @@ export class WordsService {
         navigationBoolIndex:Array<any>= [0]
 
         // NavigationComponent events
-            navigationLoadEvent0:Observable<Event>
+            navigationLoadEvent$:Observable<Event>
             navigationLoadEventSubscription0:Subscription
             navigationLoadEventSubscription1:Subscription 
-            navigationResizeEvent0:Observable<Event>
+            navigationResizeEvent$:Observable<Event>
             navigationResizeEventSubscription0:Subscription
             navigationResizeEventSubscription1:Subscription  
             navigationResizeEventSubscription2:Subscription
@@ -518,124 +538,6 @@ export class WordsService {
             navigationMyElementsArray: any[] = [];
             navigationComponentObject0:any ={
                 styles:[
-                    {
-                        override:'false',
-                        css:{
-                            postion:'absolute'
-                        }
-                    },
-                    {
-                        override:'true',
-                        css:{
-                            position:'relative',
-                            height: '165px'
-
-                        }
-                    },
-                    {
-                        override:'true',
-                        css:{
-                            position:'relative',
-                            bottom:'80px',
-                            left:'23px',
-                            margin:'0px',
-                            width:'0px'
-                        }
-                    },
-                    {
-                        //HERE
-                        override:'true',
-                        css:{
-                            position:'relative',
-                            bottom:'93px',
-                            left:'23px',
-                            fontSize:'17px',
-                            fontWeight:400,
-                            width:'0px'
-                        }
-                    },
-                    {
-                        override:'true',
-                        css:{
-                            position:'absolute',
-                            top:'15px',
-                            left:'20px'
-                        }
-                    },
-                    ...Array.from(Array(1),()=> {
-                        return {
-                        override:'true',
-                        css:{
-                            position:'absolute',
-                            top:'72px',
-                            left:'550px',
-                            'fontSize':'16px'
-                        }
-                    }}),
-                    {
-                        override:'true',
-                        css:{
-                            position:'absolute',
-                            top:'72px',
-                            left:'586px',
-                            'fontSize':'16px'
-                        }
-                    },
-                    {
-                        override:'true',
-                        css:{
-                            position:'absolute',
-                            top:'72px',
-                            left:'624px',
-                            'fontSize':'16px'
-                        }
-                    },
-                    {
-                        override:'true',
-                        css:{
-                            position:'absolute',
-                            top:'72px',
-                            left:'659px',
-                            fontSize:'16px'
-                        }
-                    },
-                    {
-                        override:'true',
-                        css:{
-                            position:'absolute',
-                            top:'72px',
-                            left:'697px',
-                            fontSize:'16px'
-                        }
-                    },
-                    {
-                        override:'true',
-                        css:{
-                            position:'absolute',
-                            top:'72px',
-                            left:'732px',
-                            'fontSize':'16px'
-                        }
-                    },
-                    {
-                        //HERE
-                        override:'true',
-                        css:{
-                            position:'absolute',
-                            top:'72px',
-                            left:'795px',
-                            fontSize:'16px',
-                            width:'0px'
-                        }
-                    },
-                    {
-                        override:'true',
-                        css:{
-                            position:'absolute',
-                            top:'60px',
-                            left:'1142px'
-                        }
-                    },
                     {
                         override:'true',
                         css:{
@@ -663,11 +565,6 @@ export class WordsService {
                     }                                                                                     
                     
                 ], 
-                parameters:[    
-                ],
-                location:{
-                    parameters:[]
-                },
                 metadata:{
                     barDynamicWidth:null,
                     barDynamicWidthSet:'false',
@@ -675,7 +572,195 @@ export class WordsService {
                     resizeElementChange1:null,
                     defaultFontSizes:[],
                     boardTitleDefaultWidth:null
-                }
+                },
+                quantity:[
+                    [    
+                        {
+                            quantity:[[3]],
+                            bool:[['true']], 
+                            val:[
+                                ['n_a_v_i_g_a_t_i_o_n_App']
+                            ], 
+                            text:[
+                                    []
+                            ],
+                            metadata:{
+                            },
+                            ngStyle:[
+                                [
+                                    {
+                                        postion:'absolute',
+                                        top:'0px'
+                                    }
+                                ]                         
+                            ],
+                            extras:[
+                                {},
+                                {
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                        }   
+                    ],
+                    [
+                        ...Array.from(Array(1),()=> {
+                        return {
+                            quantity:[[3],[3],[3],[3],[3,3,3,3,3,3,3],[3]],
+                            bool:[['true'],['true'],['true'],['true'],Array.from(Array(7),()=>{return 'true'}),['true']], 
+                            val:[
+                                ['n_a_v_i_g_a_t_i_o_n_Board'],
+                                ['n_a_v_i_g_a_t_i_o_n_Title'],
+                                ['n_a_v_i_g_a_t_i_o_n_SubTitle'],                                
+                                ['n_a_v_i_g_a_t_i_o_n_logoImg'],
+                                [
+                                    'n_a_v_i_g_a_t_i_o_n_homeLink',
+                                    'n_a_v_i_g_a_t_i_o_n_aboutLink',
+                                    'n_a_v_i_g_a_t_i_o_n_servicesLink',
+                                    'n_a_v_i_g_a_t_i_o_n_projectsLink',
+                                    'n_a_v_i_g_a_t_i_o_n_blogLink',
+                                    'n_a_v_i_g_a_t_i_o_n_contactLink',
+                                    'n_a_v_i_g_a_t_i_o_n_takeActionLink',                                    
+                                ],
+                                ['n_a_v_i_g_a_t_i_o_n_takeActionCircle']
+                            ], 
+                            text:[
+                                    [],
+                                    ['windsorempire'],
+                                    ['Caribbean & Japanese Cuisine'],
+                                    [],
+                                    [
+                                        'Home',
+                                        'About',
+                                        'Services',
+                                        'Projects',
+                                        'Blog',
+                                        'Contact',
+                                        // 'Take&#160;Action' if problem arise
+                                        'Take Action'
+                                    ],
+                                    []
+                            ],
+                            metadata:{
+                                TitleDefaultWidth:null,
+                                TitleDefaultFontSize:'32px', 
+                                // an advatange is I'd have this in the non quantity to access easier
+                                image:[
+                                    {
+                                        src:'assets/media/cropped-IMG-1475-2-102x61.jpg',
+                                        alt:'Main Brand Logo'
+                                    }
+                                ]                            
+                            },
+                            ngStyle:[
+                                [
+                                    {
+                                        position:'absolute',
+                                        height: '165px',
+                                        width:'100%',
+                                        top:'0px'
+                                    }
+                                ],
+                                [
+                                    {
+                                        'font-size':'36px',
+                                        position:'absolute',
+                                        left:'23px',
+                                        top:'88px',
+                                        margin:'0px',
+                                        width:'0px'                                                
+                                    }
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:'120px',
+                                        left:'23px',
+                                        fontSize:'16px',
+                                        fontWeight:400,
+                                        // width:'0px'
+                                    }
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:'15px',
+                                        left:'20px'
+                                    }                                                                
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:'72px',
+                                        left:'550px',
+                                        'fontSize':'16px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:'72px',
+                                        left:'586px',
+                                        'fontSize':'16px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:'72px',
+                                        left:'624px',
+                                        'fontSize':'16px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:'72px',
+                                        left:'659px',
+                                        fontSize:'16px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:'72px',
+                                        left:'697px',
+                                        fontSize:'16px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:'72px',
+                                        left:'732px',
+                                        'fontSize':'16px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:'72px',
+                                        left:'795px',
+                                        fontSize:'16px',
+                                        // width:'0px'
+                                    }                                                                                                                                                
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:'60px',
+                                        left:'1142px'
+                                    }
+                                ]                            
+                            ],
+                            extras:[
+                                {},
+                                {},
+                                {
+                                    bool:'false'
+                                }
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                        }})                                                         
+                    ],   
+                    [3,3],
+                    [3,3]
+                ],
+                generator:(function(){
+                    return function *generator() {
+                        var index = 1;
+                        while (true)
+                        yield index;
+                    }()
+                })()                 
             }
         //
 
@@ -952,6 +1037,7 @@ export class WordsService {
 
 
         // WordsComponent events
+        wordsMyElementsSubscription: Subscription;
         wordsLoadEvent$:Observable<Event>
         wordsLoadEventSubscription0:Subscription
         wordsLoadEventSubscription1:Subscription 
@@ -967,84 +1053,54 @@ export class WordsService {
         //represnetaing each instance of the wordsComponent
         wordsMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
         wordsMyElementsArray: any[] = [];
-        wordsComponentObject2:any = {
-            styles:[
-                {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        top:'2680px',
-                        width:'100%',
-                        // bottom:'40px',
-                        // width:'0px',
-                        // height:'529.85px'
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        'background-color': 'white',
-                        width:'100%',
-                        height:this.wordsComponentObject2BoardHeight
-                    }
-                },                
-                ...Array.from(Array(10),()=> {
-                    return {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        top:'72px',
-                        left:'550px',
-                        'fontSize':'16px',
-                        // height:'856.85px'
-                    }
-                }}),
-            ],
-            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
-            parameters:[    
-            ],
-            location:{
-                parameters:[]
-            },
-            metadata:{
-                cssAsync: new Subject<any>(),
-                // TitleDefaultFontSize:'32px'
-                boardDefaultHeight:this.wordsComponentObject2BoardHeight
-            },
-            val:[
-                'w_o_r_d_s_Board',
-                'space',
-                'space',
-                'space',
-                'w_o_r_d_s_Paragragh',
-                'w_o_r_d_s_Paragragh',
-                'w_o_r_d_s_Image'
-            ],
-            bool:[
-                'true',
-                'space',
-                'space',
-                'space',
-                'true',
-                'true',
-                'true',
-                'true'
-            ],          
+        wordsComponentObject2:any = {      
             quantity:[
-                [3],
                 [
+                       
+                        {
+                            quantity:[[3]],
+                            bool:[['true']], 
+                            val:[
+                                ['w_o_r_d_s_App']
+                            ], 
+                            text:[
+                                    []
+                            ],
+                            metadata:{
+                            },
+                            ngStyle:[
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:'2680px',
+                                        width:'100%'
+                                    }
+                                ]                         
+                            ],
+                            extras:[
+                                {},
+                                {
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                        }   
+                                       
+                ],
+                [                    
                     ...Array.from(Array(1),()=> {
                     return {
-                        quantity:[[3],[3],[3,3,3,3],[3,3,3]],
-                        bool:[['true'],['true'],['true','true','true','true'],['true','true','link']], 
+                        quantity:[[3],[3],[3],[3,3,3,3],[3,3,3]],
+                        bool:[['true'],['true'],['true'],['true','true','true','true'],['true','true','link']], 
                         val:[
+                            ['w_o_r_d_s_Board'],
                             ['w_o_r_d_s_Title'],
                             ['w_o_r_d_s_Paragraph'],
                             ['w_o_r_d_s_Image','w_o_r_d_s_Image','w_o_r_d_s_Image','w_o_r_d_s_Image'],
                             ['w_o_r_d_s_Line','w_o_r_d_s_Button','w_o_r_d_s_ButtonText']
                         ], 
                         text:[
+                                [],
                                 ['Upcoming parties & events'],
                                 [`
                                     Fuerat aestu carentem habentia 
@@ -1086,6 +1142,14 @@ export class WordsService {
                             buttonDefaultLeft:this.wordsComponentObject2ButtonLeft
                         },
                         ngStyle:[
+                            [
+                                {
+                                    position:'absolute',
+                                    'background-color': 'white',
+                                    width:'100%',
+                                    height:this.wordsComponentObject2BoardHeight
+                                },                                
+                            ],                            
                             [
                                 {
                                     position:'absolute',
@@ -1183,6 +1247,7 @@ export class WordsService {
                         ],
                         extras:[
                             {},
+                            {},
                             {
                                 bool:'false'
                             }                         
@@ -1191,9 +1256,10 @@ export class WordsService {
                     }}),     
                     ...Array.from(Array(1),()=> {
                         return {
-                            quantity:[[],[],[],[3]],
-                            bool:[[],[],[],['true']], 
+                            quantity:[[],[],[],[],[3]],
+                            bool:[[],[],[],[],['true']], 
                             val:[
+                                [],
                                 [],
                                 [],
                                 [],
@@ -1203,11 +1269,13 @@ export class WordsService {
                                     [],
                                     [],
                                     [],
+                                    [],
                                     [null,null,'LEARN MORE']
                             ],
                             metadata:{
                             },
                             ngStyle:[
+                                [],
                                 [
                                 ],
                                 [                          
@@ -1227,6 +1295,7 @@ export class WordsService {
                             ],
                             extras:[
                                 {},
+                                {},
                                 {
                                     bool:'false'
                                 }                         
@@ -1243,86 +1312,89 @@ export class WordsService {
                 }()
             })()        
         }        
-        wordsComponentObject0:any = {
-            styles:[
-                {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        top:'1000px',
-                        width:'100%',
-                        // bottom:'40px',
-                        // width:'0px',
-                        // height:'529.85px'
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        // top:'700px',
-                        width:'100%',
-                        // bottom:'40px',
-                        // width:'0px',
-                        height:this.wordsComponentObject0BoardHeight
-                    }
-                },                
-                ...Array.from(Array(8),()=> {
-                    return {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        top:'72px',
-                        left:'550px',
-                        'fontSize':'16px',
-                        // height:'856.85px'
-                    }
-                }}),
-            ],
-            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
-            parameters:[    
-            ],
-            location:{
-                parameters:[]
-            },
-            metadata:{
-                cssAsync: new Subject<any>(),
-                // TitleDefaultFontSize:'32px'
-                boardDefaultHeight:this.wordsComponentObject0BoardHeight
-            },
-            val:[
-                'w_o_r_d_s_Board',
-                'space',
-                'space',
-                'space',
-                'w_o_r_d_s_Paragragh',
-                'w_o_r_d_s_Paragragh',
-                'w_o_r_d_s_Image'
-            ],
-            bool:[
-                'true',
-                'space',
-                'space',
-                'space',
-                'true',
-                'true',
-                'true',
-                'true'
-            ],          
+        wordsComponentObject0:any = { 
             quantity:[
-                [3],
+                [    
+                    {
+                        quantity:[[3]],
+                        bool:[['true']], 
+                        val:[
+                            ['w_o_r_d_s_App']
+                        ], 
+                        text:[
+                                []
+                        ],
+                        metadata:{
+                        },
+                        ngStyle:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'1000px',
+                                    width:'100%',
+                                    // bottom:'40px',
+                                    // width:'0px',
+                                    // height:'529.85px'
+                                }
+                            ]                         
+                        ],
+                        extras:[
+                            {},
+                            {
+                                bool:'false'
+                            }                         
+                        ],                        
+                        generator:this.appConsecutiveGenerator
+                    }   
+                ],                
                 [
                     ...Array.from(Array(1),()=> {
+                        return {
+                            quantity:[[3]],
+                            bool:[['true']], 
+                            val:[
+                                ['w_o_r_d_s_Board']
+                            ], 
+                            text:[
+                                []
+                            ],
+                            metadata:{
+                                boardDefaultHeight:this.wordsComponentObject0BoardHeight
+                            },
+                            ngStyle:[
+                                [
+                                    {
+                                        position:'absolute',
+                                        // top:'700px',
+                                        width:'100%',
+                                        // bottom:'40px',
+                                        // width:'0px',
+                                        height:this.wordsComponentObject0BoardHeight
+                                    }
+                                ]                     
+                            ],
+                            extras:[
+                                {},
+                                {
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                        }}),  
+               
+                    ...Array.from(Array(1),()=> {
                     return {
-                        quantity:[[3],[],[],[3]],
-                        bool:[['true'],['false'],[],['true']], 
+                        quantity:[[],[3],[],[],[3]],
+                        bool:[[],['true'],['false'],[],['true']], 
                         val:[
+                            [],
                             ['w_o_r_d_s_Title'],
                             [],
                             [],
                             ['w_o_r_d_s_Line']
                         ], 
                         text:[
+                            [],
                             [
                                 ['CATERING'],
                                 ['stuff']
@@ -1334,6 +1406,7 @@ export class WordsService {
                             // an advatange is I'd have this in the non quantity to access easier
                         },
                         ngStyle:[
+                            [],
                             [
                                 {
                                     position:'absolute',
@@ -1351,21 +1424,24 @@ export class WordsService {
                             ]                            
                         ],
                         generator:this.appConsecutiveGenerator
-                    }}),
+                    }}),                    
                     ...Array.from(Array(1),()=> {
                         return {
-                            quantity:[[3],[3],[3]],
-                            bool:[['true'],['link','true'],['true']], 
+                            quantity:[[],[3],[3],[3]],
+                            bool:[[],['true'],['link','true'],['true']], 
                             val:[
+                                [],
                                 ['w_o_r_d_s_Title'],
                                 ['w_o_r_d_s_Paragragh'],
                                 ['w_o_r_d_s_Image']
                             ], 
                             text:[
+                                [],
                                 ['CATERING PRICES'],
                                 ['LEARN MORE','do stuff']
                             ],                            
                             ngStyle:[
+                                [],
                                 [
                                     {
                                         position:'absolute',
@@ -1407,6 +1483,7 @@ export class WordsService {
                             },
                             extras:[
                                 {},
+                                {},
                                 {
                                     ngStyle:{
                                         color:'rgb(251, 32, 86)',
@@ -1417,21 +1494,24 @@ export class WordsService {
                                 }
                             ],                            
                             generator:this.appConsecutiveGenerator
-                    }}),
+                    }}),                    
                     ...Array.from(Array(1),()=> {
                         return {
-                            quantity:[[3],[3],[3]],
-                            bool:[['true'],['link'],['true']], 
+                            quantity:[[],[3],[3],[3]],
+                            bool:[[],['true'],['link'],['true']], 
                             val:[
+                                [],
                                 ['w_o_r_d_s_Title'],
                                 ['w_o_r_d_s_Paragragh'],
                                 ['w_o_r_d_s_Image']
                             ], 
                             text:[
+                                [],
                                 ['CATERING EVENTS'],
                                 ['LEARN MORE']
                             ],                            
                             ngStyle:[
+                                [],
                                 [
                                     {
                                         position:'absolute',
@@ -1472,6 +1552,7 @@ export class WordsService {
                             },
                             extras:[
                                 {},
+                                {},
                                 {
                                     ngStyle:{
                                         color:'rgb(251, 32, 86)',
@@ -1486,8 +1567,6 @@ export class WordsService {
                             generator:this.appConsecutiveGenerator
                     }})                                          
                 ],   
-                [3,3],
-                [3,3]
             ],
             generator:(function(){
                 return function *generator() {
@@ -1497,94 +1576,71 @@ export class WordsService {
                 }()
             })()        
         }
-        wordsComponentObject1:any = {
-            styles:[
-                {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        top:'680px',
-                        width:'100%',
-                        // bottom:'40px',
-                        // width:'0px',
-                        // height:'529.85px'
-                    }
-                },
-                {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        'background-color': 'rgb(244,245,249)',
-                        width:'100%',
-                        height:this.wordsComponentObject1BoardHeight
-                    }
-                },                
-                ...Array.from(Array(8),()=> {
-                    return {
-                    override:'true',
-                    css:{
-                        position:'absolute',
-                        top:'72px',
-                        left:'550px',
-                        'fontSize':'16px',
-                        // height:'856.85px'
-                    }
-                }}),
-            ],
-            ngStyle:Array.from(Array(20),(x,i)=>{return {}}),
-            parameters:[    
-            ],
-            location:{
-                parameters:[]
-            },
-            metadata:{
-                cssAsync: new Subject<any>(),
-                // TitleDefaultFontSize:'32px'
-                boardDefaultHeight:this.wordsComponentObject0BoardHeight
-            },
-            val:[
-                'w_o_r_d_s_Board',
-                'space',
-                'space',
-                'space',
-                'w_o_r_d_s_Paragragh',
-                'w_o_r_d_s_Paragragh',
-                'w_o_r_d_s_Image'
-            ],
-            bool:[
-                'true',
-                'space',
-                'space',
-                'space',
-                'true',
-                'true',
-                'true',
-                'true'
-            ],          
+        wordsComponentObject1:any = {     
             quantity:[
-                [3],
+                [    
+                    {
+                        quantity:[[3]],
+                        bool:[['true']], 
+                        val:[
+                            ['w_o_r_d_s_App']
+                        ], 
+                        text:[
+                                []
+                        ],
+                        metadata:{
+                        },
+                        ngStyle:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'680px',
+                                    width:'100%'
+                                } 
+                            ]                         
+                        ],
+                        extras:[
+                            {},
+                            {
+                                bool:'false'
+                            }                         
+                        ],                        
+                        generator:this.appConsecutiveGenerator
+                    }   
+                ],
                 [
                     ...Array.from(Array(1),()=> {
                     return {
-                        quantity:[[],[3],[3],[]],
-                        bool:[[],['true'],['true'],[]], 
+                        quantity:[[3],[],[3,3],[3,3],[]],
+                        bool:[['true'],[],['true','true'],['true','true'],[]], 
                         val:[
+                            ['w_o_r_d_s_Board'],
                             [],
-                            ['w_o_r_d_s_Paragraph'],
-                            ['w_o_r_d_s_Image'],
+                            ['w_o_r_d_s_Paragraph','w_o_r_d_s_Paragraph'],
+                            ['w_o_r_d_s_Image','w_o_r_d_s_Image'],
                             []
                         ], 
                         text:[
                                 [],
-                                ['“One cannot think well, love well, sleep well, if one has not dined well.” ']
+                                [],
+                                ['“One cannot think well, love well, sleep well, if one has not dined well.” ','-Virginia\u00A0Woolf'],
+                                []
                         ],
                         metadata:{
                             TitleDefaultWidth:null,
                             TitleDefaultFontSize:'32px', 
                             // an advatange is I'd have this in the non quantity to access easier
-                            image:['assets/media/IMG-1478-1024x683.jpg']                            
+                            image:['assets/media/IMG-1478-1024x683.jpg','assets/media/quote-1.png']                            
                         },
                         ngStyle:[
+                            [
+                                {
+                                    position:'absolute',
+                                    'background-color': 'rgb(244,245,249)',
+                                    width:'100%',
+                                    height:this.wordsComponentObject1BoardHeight
+                                }
+                            ],
                             [
 
                             ],
@@ -1597,7 +1653,17 @@ export class WordsService {
                                     'font-size':'21px',
                                     'font-style':'italic',
                                     color:'rgb(76, 88, 99)'  
-                                }                              
+                                },
+                                {
+                                    position:'absolute',
+                                    top:'220px',
+                                    width:'8%',
+                                    color:'rgb(76, 88, 99)',  
+                                    'z-index':2,
+                                    'font-family':'Times New Roman',
+                                    'font-size':'21px',
+                                    'font-weight':900                                    
+                                }                                                                
                             ],
                             [
                                 {
@@ -1608,7 +1674,14 @@ export class WordsService {
                                     width:'150px',
                                     'border-style': 'groove',
                                     'border-color':'rgb(238,91,165)'
-                                }                              
+                                },
+                                {
+                                    position:'absolute',
+                                    top:'160px',
+                                    width:'8%',
+                                    color:'rgb(76, 88, 99)',  
+                                    'z-index':2,                              
+                                }                                                               
                             ],
                             [
 
@@ -1616,69 +1689,13 @@ export class WordsService {
                         ],
                         extras:[
                             {},
+                            {},
                             {
                                 bool:'false'
                             }
                         ],                        
                         generator:this.appConsecutiveGenerator
-                    }}),    
-                    ...Array.from(Array(1),()=> {
-                        return {
-                            quantity:[[],[3],[3],[]],
-                            bool:[[],['true','true'],['true','true'],[]], 
-                            val:[
-                                [],
-                                ['w_o_r_d_s_Paragraph'],
-                                ['w_o_r_d_s_Image'],
-                                []
-                            ], 
-                            text:[
-                                    [],
-                                    ['-Virginia\u00A0Woolf']
-                            ],
-                            metadata:{
-                                TitleDefaultWidth:null,
-                                TitleDefaultFontSize:'32px', 
-                                // an advatange is I'd have this in the non quantity to access easier
-                                image:['assets/media/quote-1.png']                            
-                            },
-                            ngStyle:[
-                                [
-    
-                                ],
-                                [
-                                    {
-                                        position:'absolute',
-                                        top:'220px',
-                                        width:'8%',
-                                        color:'rgb(76, 88, 99)',  
-                                        'z-index':2,
-                                        'font-family':'Times New Roman',
-                                        'font-size':'21px',
-                                        'font-weight':900                                    
-                                    }                                
-                                ],
-                                [
-                                    {
-                                        position:'absolute',
-                                        top:'160px',
-                                        width:'8%',
-                                        color:'rgb(76, 88, 99)',  
-                                        'z-index':2,                              
-                                    }                                  
-                                ],
-                                [
-    
-                                ]                            
-                            ],
-                            extras:[
-                                {},
-                                {
-                                    bool:'false'
-                                }
-                            ],                        
-                            generator:this.appConsecutiveGenerator
-                        }}),                                                           
+                    }})                                                         
                 ],   
                 [3,3],
                 [3,3]
