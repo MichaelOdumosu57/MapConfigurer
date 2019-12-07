@@ -919,6 +919,7 @@ export class WordsService {
                                         color:'rgb(211, 211, 211)',
                                         'font-family':'Noto Sans',
                                         'text-align':'center',
+                                        top:'0px'
                                     },
                                     {
                                         position:'absolute',
@@ -1408,7 +1409,10 @@ export class WordsService {
                             [
                                 ['CATERING'],
                                 ['stuff']
-                            ]
+                            ],
+                            [],
+                            [],
+                            [],
                         ],
                         metadata:{
                             TitleDefaultWidth:null,
@@ -1448,7 +1452,9 @@ export class WordsService {
                             text:[
                                 [],
                                 ['CATERING PRICES'],
-                                ['LEARN MORE','do stuff']
+                                ['LEARN MORE','do stuff'],
+                                [],
+                                [],
                             ],                            
                             ngStyle:[
                                 [],
@@ -1518,7 +1524,8 @@ export class WordsService {
                             text:[
                                 [],
                                 ['CATERING EVENTS'],
-                                ['LEARN MORE']
+                                ['LEARN MORE'],
+                                []
                             ],                            
                             ngStyle:[
                                 [],

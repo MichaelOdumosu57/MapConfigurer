@@ -283,7 +283,12 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                     ) + 
                     10
                 ).toString() + "px"
-                                
+                // console.log(
+                //     this.window.getComputedStyle(   zChild[2].element   ).top,
+                //     this.window.getComputedStyle(   zChild[2].element   ).height,
+                //     zChild[3].style['top'],
+                //     this.window.getComputedStyle(zChild[3].element).top
+                // )                
 
                 if(   
                     numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) >  getTextWidth({
