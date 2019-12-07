@@ -542,14 +542,6 @@ export class WordsService {
                         override:'true',
                         css:{
                             position:'absolute',
-                            top:'60px',
-                            left:'1142px'
-                        }
-                    },
-                    {
-                        override:'true',
-                        css:{
-                            position:'absolute',
                             display:'none',
                             fontSize:'30px',
                             top:'60px'
@@ -606,8 +598,8 @@ export class WordsService {
                     [
                         ...Array.from(Array(1),()=> {
                         return {
-                            quantity:[[3],[3],[3],[3],[3,3,3,3,3,3,3],[3]],
-                            bool:[['true'],['true'],['true'],['true'],Array.from(Array(7),()=>{return 'true'}),['true']], 
+                            quantity:[[3],[3],[3],[3],[3,3,3,3,3,3,3],[3,3,3],[] ],
+                            bool:[['true'],['true'],['true'],['true'],Array.from(Array(7),()=>{return 'true'}),['true','true','icon'],['true']], 
                             val:[
                                 ['n_a_v_i_g_a_t_i_o_n_Board'],
                                 ['n_a_v_i_g_a_t_i_o_n_Title'],
@@ -622,7 +614,12 @@ export class WordsService {
                                     'n_a_v_i_g_a_t_i_o_n_contactLink',
                                     'n_a_v_i_g_a_t_i_o_n_takeActionLink',                                    
                                 ],
-                                ['n_a_v_i_g_a_t_i_o_n_takeActionCircle']
+                                [
+                                    'n_a_v_i_g_a_t_i_o_n_takeActionCircle',
+                                    'n_a_v_i_g_a_t_i_o_n_dropDownBox',
+                                    'n_a_v_i_g_a_t_i_o_n_dropDownIcon'
+                                ],
+                                ['n_a_v_i_g_a_t_i_o_n_dropDown']
                             ], 
                             text:[
                                     [],
@@ -639,6 +636,7 @@ export class WordsService {
                                         // 'Take&#160;Action' if problem arise
                                         'Take Action'
                                     ],
+                                    [],
                                     []
                             ],
                             metadata:{
@@ -738,7 +736,18 @@ export class WordsService {
                                         position:'absolute',
                                         top:'60px',
                                         left:'1142px'
-                                    }
+                                    },
+                                    {
+                                        position:'absolute',
+                                        display:'none',
+                                        top:'50px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        fontSize:'30px',
+                                        display:'none',
+                                        top:'60px'
+                                    }                                                                        
                                 ]                            
                             ],
                             extras:[

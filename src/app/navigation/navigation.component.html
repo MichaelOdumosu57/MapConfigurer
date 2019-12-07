@@ -26,10 +26,26 @@
     
 
     <ng-container *ngFor = 'let aa of a.quantity[5];let bb = index' >
-        <div #myNavigationVal   *ngIf= "a.bool[5][bb] ==='true'" id = {{a.val[5][bb]}} [ngStyle] = 'a.ngStyle[5][bb]' ></div>
-    </ng-container>       
+        <div #myNavigationVal   *ngIf= "a.bool[5][bb] ==='true'  else elseBlock3" id = {{a.val[5][bb]}} [ngStyle] = 'a.ngStyle[5][bb]' ></div>
+        <ng-template #elseBlock3  > 
+            <i #myNavigationVal  *ngIf="a.bool[5][bb] ==='icon'" id = {{a.val[5][bb]}} [ngStyle] = 'a.ngStyle[5][bb]' class = 'material-icons' >menu</i>
+        </ng-template> 
+    </ng-container>    
     
+    <ng-container *ngFor = 'let aa of a.quantity[6];let bb = index' >
+        <div #myNavigationVal   *ngIf= "a.bool[6][bb] ==='true' " id = {{a.val[6][bb]}} [ngStyle] = 'a.ngStyle[6][bb]' >
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Projects</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+            <a href="#">Take&#160;Action</a>            
+        </div>
+    </ng-container>  
 
+    
+<!-- for the menu icon try to use &#9776; ☰ -->
 
 
 </ng-container>

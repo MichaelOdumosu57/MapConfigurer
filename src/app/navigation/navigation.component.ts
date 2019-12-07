@@ -1,6 +1,6 @@
 import { Component, OnInit,Input,ViewChildren,AfterViewInit,Inject, OnDestroy,ChangeDetectorRef,ChangeDetectionStrategy } from '@angular/core';
 import {   WordsService   } from '../words.service';
-import {   fromEvent,interval, of,from   } from 'rxjs';
+import {   fromEvent,interval, of,from, Observable   } from 'rxjs';
 import {   WINDOW   } from '../window.service';
 import {   take,timeout,distinctUntilChanged   } from 'rxjs/operators';
 
@@ -62,7 +62,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
     ngAfterViewInit(){
         console.log( this.navigationTemplateVariable+ ' ngAfterViewInit fires one remount')        
         this.wordsService.navigationLoadEvent$ = fromEvent(this.window ,'load');
-        this.wordsService.navigationResizeEvent$ = fromEvent(this.window ,'resize');        
+        this.wordsService.navigationResizeEvent$ = fromEvent(this.window ,'resize');    
 
         if(   this.navigationTemplateVariable === 'navigationComponentObject0'    ){
 
@@ -70,7 +70,8 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             let zChild =[{
                 element: this.window.document.querySelector('app-navigation[ng-reflect-navigation-template-variable='+this.navigationTemplateVariable+']'),
                 style:this.wordsService[this.navigationTemplateVariable].quantity[0][0].ngStyle[0][0],
-                innerText:null
+                innerText:null,
+                bool:this.wordsService[this.navigationTemplateVariable].quantity[0][0].bool[0][0]
             }]          
             let zCheckpoint = []                         
             this.navigationMyElements._results.map((x:any,i:any)=>{
@@ -120,6 +121,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                         (   
                             this.wordsService[this.navigationTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
                             this.wordsService[this.navigationTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                            this.wordsService[this.navigationTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'icon' ||
                             this.wordsService[this.navigationTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
                         )    
                     ){               
@@ -128,7 +130,8 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                         zChild.push({
                             element:x.nativeElement,
                             style:this.wordsService[this.navigationTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
-                            innerText: this.wordsService[this.navigationTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b]
+                            innerText: this.wordsService[this.navigationTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b],
+                            bool:this.wordsService[this.navigationTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b]
                         })
                         
 
@@ -196,6 +199,76 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
 
                 if(   numberParse(   this.window.getComputedStyle(zChild[5].element).left    )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
+
+                    
+                    zChild[12].style['display'] = 'none'
+                    zChild[13].style['display'] = 'block'
+                    zChild[14].style['display'] = 'block'
+                    zChild.slice(5,12).map((x,i)=>{
+                        x.style['color'] =  'rgb(249,94,133)';
+                        x.style['padding'] =  '12px 16px'
+                        x.style['background-color'] = 'rgb(255,192,203)'
+                        x.style['border-bottom'] = '1px solid white';
+                        x.style['text-decoration'] = 'none';
+                        x.style['display'] = 'block';
+                        x.style['font-family'] = 'Roboto';
+                        x.style['left'] = '0px'
+                        x.style['width'] = '100%'
+                        x.style['box-shadow'] = '8px 8px 16px 0px rgba(0,0,0,0.2)'
+                        
+                        this.ref.detectChanges()
+                        
+                        
+                        if(   i === 0   ){
+
+
+                            x.style['top'] = (
+                                numberParse(   this.window.getComputedStyle(   zChild[1].element   ).height   ) -
+                                1
+                            ).toString() + 'px'
+                            // x.style['box-shadow'] = '0px 8px 16px 0px rgba(0,0,0,0.2)'
+                            
+
+
+                        }
+                        
+
+                        else if(i !== 0  ){
+
+
+                            x.style['top'] = (
+                                numberParse(   this.window.getComputedStyle(   zChild.slice(5,12)[i-1].element   ).top   ) +
+                                numberParse(   this.window.getComputedStyle(   zChild.slice(5,12)[i-1].element   ).height   )
+                            ).toString() + "px"
+                            
+
+                        }
+
+
+                        this.ref.detectChanges()
+                    })                                      
+                    this.ref.detectChanges()                       
+                    zChild[13].style['left']  = (  1340* .96  - (1340 - zChild[1].element.getBoundingClientRect().width) ).toString() + "px" 
+                    zChild[14].style['left']  = (  1340* .963  - (1340 - zChild[1].element.getBoundingClientRect().width) ).toString() + "px" 
+                    this.ref.detectChanges()
+
+
+                    if(   this.wordsService.navigationClickEventSubscription0 === undefined   || this.wordsService.navigationClickEventSubscription0.closed  ){
+
+
+                        this.wordsService.navigationClickEvent$ = fromEvent([zChild[13].element ,zChild[14].element] ,'click');
+                        this.wordsService.navigationClickEventSubscription0 = this.wordsService.navigationClickEvent$.subscribe((event)=>{
+                            for(   let i of zChild.slice(5,12)   ){
+                                i.style['display'] = i.style['display'] === 'block' ? 'none' :'block'                                 
+                            }                                 
+                            this.ref.detectChanges()
+                        })  
+                        // console.log(   this.wordsService.navigationClickEventSubscription0   )      
+
+
+                    }   
+                    
+                    
                 }
             })
 
