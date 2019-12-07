@@ -642,6 +642,7 @@ export class WordsService {
                             metadata:{
                                 TitleDefaultWidth:null,
                                 TitleDefaultFontSize:'32px', 
+                                dropDownDisplay:'block',
                                 // an advatange is I'd have this in the non quantity to access easier
                                 image:[
                                     {

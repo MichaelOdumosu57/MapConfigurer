@@ -201,53 +201,57 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                 if(   numberParse(   this.window.getComputedStyle(zChild[5].element).left    )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
 
                     
+                    // console.log(this.wordsService[this.navigationTemplateVariable].quantity[1][0].metadata.dropDownDisplay)
                     zChild[12].style['display'] = 'none'
                     zChild[13].style['display'] = 'block'
                     zChild[14].style['display'] = 'block'
+                    zChild[5].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[1].element   ).height   ) -
+                        1
+                    ).toString() + 'px'
+                    zChild[5].style['box-shadow'] = '0px 8px 16px 0px rgba(0,0,0,0.2)'
                     zChild.slice(5,12).map((x,i)=>{
                         x.style['color'] =  'rgb(249,94,133)';
                         x.style['padding'] =  '12px 16px'
                         x.style['background-color'] = 'rgb(255,192,203)'
                         x.style['border-bottom'] = '1px solid white';
                         x.style['text-decoration'] = 'none';
-                        x.style['display'] = 'block';
-                        x.style['font-family'] = 'Roboto';
                         x.style['left'] = '0px'
                         x.style['width'] = '100%'
-                        x.style['box-shadow'] = '8px 8px 16px 0px rgba(0,0,0,0.2)'
-                        
                         this.ref.detectChanges()
-                        
-                        
-                        if(   i === 0   ){
-
-
-                            x.style['top'] = (
-                                numberParse(   this.window.getComputedStyle(   zChild[1].element   ).height   ) -
-                                1
-                            ).toString() + 'px'
-                            // x.style['box-shadow'] = '0px 8px 16px 0px rgba(0,0,0,0.2)'
-                            
-
-
-                        }
-                        
-
-                        else if(i !== 0  ){
+                        // console.log(
+                        //     x.style['height'],
+                        //     this.window.getComputedStyle(x.element)['height']
+                        // )
+                        if(i !== 0  ){
 
 
                             x.style['top'] = (
                                 numberParse(   this.window.getComputedStyle(   zChild.slice(5,12)[i-1].element   ).top   ) +
-                                numberParse(   this.window.getComputedStyle(   zChild.slice(5,12)[i-1].element   ).height   )
+                                numberParse(   '43px'   ) // here execption since in IE it stil considers the height of the text to be the true height
                             ).toString() + "px"
                             
 
                         }
-
-
                         this.ref.detectChanges()
                     })                                      
-                    this.ref.detectChanges()                       
+                    this.ref.detectChanges()
+                    
+                    
+
+                    if(   this.wordsService[this.navigationTemplateVariable].quantity[1][0].metadata.dropDownDisplay !== 'none'   ){
+
+
+                        for(   let i of zChild.slice(5,12)   ){
+                            i.style['display'] = 'none'                              
+                        } 
+                        this.wordsService[this.navigationTemplateVariable].quantity[1][0].metadata.dropDownDisplay = 'none' 
+                        this.ref.detectChanges()
+
+
+                    }      
+                    
+                    
                     zChild[13].style['left']  = (  1340* .96  - (1340 - zChild[1].element.getBoundingClientRect().width) ).toString() + "px" 
                     zChild[14].style['left']  = (  1340* .963  - (1340 - zChild[1].element.getBoundingClientRect().width) ).toString() + "px" 
                     this.ref.detectChanges()
@@ -268,7 +272,87 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
                     }   
                     
+                    if(   numberParse(   this.window.getComputedStyle(zChild[13].element).left    )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 155  ){
+
+
+                       zChild.slice(2,4).map((x,i)=>{
+                            x.style['font-size'] =  
+                            (   
+                                numberParse(   this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i]   ) *
+                                (  
+                                     numberParse(   zChild[13].style['left']   )/
+                                     (   this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 155 )  
+                                ) * .95  
+                            ).toString() + "px"
+                        })                        
+                    }
+
+
+                    else if(   numberParse(   this.window.getComputedStyle(zChild[13].element).left    )     >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
+
+                        
+                        // console.log('restore title sizes')
+                        zChild.slice(2,4).map((x,i)=>{
+                            x.style['font-size'] =  this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i] 
+                        })
+        
+        
+                    }                    
+
+
+                }
+
+
+                else if(   numberParse(   this.window.getComputedStyle(zChild[5].element).left    )   >    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100   ){
+
+
+                    if(   this.wordsService.navigationClickEventSubscription0 !== undefined   ){
+
+
+                        if(   !this.wordsService.navigationClickEventSubscription0.closed    ){
+    
+    
+                            this.wordsService.navigationClickEventSubscription0.unsubscribe()   
+                            
                     
+                        }
+    
+    
+                    }
+
+
+                    if(   this.wordsService[this.navigationTemplateVariable].quantity[1][0].metadata.dropDownDisplay !== 'block'   ){
+
+
+                        for(   let i of zChild.slice(5,13)   ){
+                            i.style['display'] = 'block'                              
+                        } 
+                        this.wordsService[this.navigationTemplateVariable].quantity[1][0].metadata.dropDownDisplay = 'block' 
+                        this.ref.detectChanges()
+
+
+                    }                     
+                    
+                    
+                    zChild[13].style['display'] = 'none'
+                    zChild[14].style['display'] = 'none'             
+                    // console.log('restore title sizes')
+                    zChild.slice(2,4).map((x,i)=>{
+                        x.style['font-size'] =  this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i] 
+                    })   
+                    zChild[5].style['box-shadow'] = 'none'
+                    zChild.slice(5,12).map((x,i)=>{
+                        x.style['color'] =  'rgb(0, 0, 0)';
+                        x.style['padding'] =  '0px 0px'
+                        x.style['background-color'] = 'none'
+                        x.style['border-bottom'] = '0px none rgb(0,0,0)';
+                        // x.style['text-decoration'] = 'none';
+                        // x.style['height'] = 'auto'
+                        x.style['width'] = 'auto'
+                        x.style['top'] = '72px' 
+                        this.ref.detectChanges()                      
+                    })                     
+                    this.ref.detectChanges()                   
                 }
             })
 
@@ -276,255 +360,6 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         
 
 
-        // this.wordsService[this.navigationTemplateVariable].metadata.titleWidth = getTextWidth({
-        //     elementText:this.navigationMyElements._results[1].nativeElement.innerText ,
-        //     font: this.window.getComputedStyle(   this.navigationMyElements._results[1].nativeElement   ).getPropertyValue('font-size') + " sans-serif"
-        // })        
-        // for(   let i of this.navigationMyElements._results.slice(1,3)   ){
-        //     this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes.push(   this.window.getComputedStyle(i.nativeElement).fontSize   )   
-        // }   
-        // // console.log(   this.navigationMyElements._results[13],this.window.getComputedStyle(   this.navigationMyElements._results[0].nativeElement   ).getPropertyValue('height')   )
-        // this.wordsService.navigationResizeEventSubscription1 = this.wordsService.navigationResizeEvent$.subscribe((event)=>{
-        // // console.group('anchors overlapping heading resize event')
-
-            
-        //     if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
-                
-                
-        //         // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
-        //         this.navigationBool[12] = 'true'
-        //         this.ref.detectChanges();
-                
-
-        //         if(   this.navigationMyElements._results[12].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownBox"   ){
-
-
-        //             // console.log(     this.navigationMyElements._results[12].nativeElement.id   )
-        //             this.navigationMyElements._results[12].nativeElement.style.position = "absolute"
-        //             this.navigationMyElements._results[12].nativeElement.style.top = "50px"
-        //             // console.log(this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth )
-        //             this.navigationMyElements._results[12].nativeElement.style.left = (  1340* .96   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"                 
-        //             this.navigationMyElements._results[13].nativeElement.style.display = 'block'
-        //             this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
-                    
-                    
-        //             if(   this.wordsService.navigationClickEventSubscription0 === undefined   || this.wordsService.navigationClickEventSubscription0.closed  ){
-
-
-        //                 this.wordsService.navigationClickEvent$ = fromEvent([this.navigationMyElements._results[12].nativeElement ,this.navigationMyElements._results[13].nativeElement] ,'click');
-        //                 this.wordsService.navigationClickEventSubscription0 = this.wordsService.navigationClickEvent$.subscribe((event)=>{
-        //                     this.navigationMyElements._results[14].nativeElement.style.display = this.navigationMyElements._results[14].nativeElement.style.display === 'block' ? 'none' : 'block'
-        //                 })  
-        //                 // console.log(   this.wordsService.navigationClickEventSubscription0   )      
-
-
-        //             }
-
-                   
-        //             // console.log(     this.navigationMyElements._results   )
-        //             for(   let i of this.navigationMyElements._results.slice(4,12)   ){
-        //                 i.nativeElement.style.display = 'none'  
-        //             }    
-                    
-                    
-        //             if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 155  ){
-
-                        
-        //                 // console.log('dropdownBox is interfering with the titile')
-        //                 this.navigationMyElements._results.slice(1,3).map((x,i)=>{
-        //                     x.nativeElement.style.fontSize =  
-        //                     (   
-        //                         numberParse(   this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i]   ) *
-        //                         (  
-        //                              numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )/
-        //                              (   this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 155 )  
-        //                         ) * .95  
-        //                     ).toString() + "px"
-        //                     // console.log(   x.nativeElement.style.fontSize  )
-        //                 })
-
-
-        //             }   
-
-
-        //             else if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
-
-                        
-        //                 // console.log('restore title sizes')
-        //                 this.navigationMyElements._results.slice(1,3).map((x,i)=>{
-        //                     x.nativeElement.style.fontSize =  this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i] 
-        //                     // console.log(   x.nativeElement.style.fontSize  )
-        //                 })
-        
-        
-        //             }                      
-        
-                    
-        //         }
-        //         // console.log(   this.navigationMyElements._results   )
-
-        //     }
-
-
-        //     else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
-                
-
-        //         if(   this.wordsService.navigationClickEventSubscription0 !== undefined   ){
-
-
-        //             if(   !this.wordsService.navigationClickEventSubscription0.closed    ){
-
-
-        //                 this.wordsService.navigationClickEventSubscription0.unsubscribe()   
-                        
-                
-        //             }
-
-
-        //         }  
-               
-                
-        //         if(   this.navigationMyElements._results[14] !== undefined   ){
-
-
-        //             if(   this.navigationMyElements._results[14].nativeElement.id === 'n_a_v_i_g_a_t_i_o_n_dropDown'  ){
-                        
-
-        //                 this.navigationMyElements._results[14].nativeElement.style.display = 'none'
-
-
-        //             }
-                    
-
-
-        //         }
-                
-                
-        //         if(   this.navigationMyElements._results[13] !== undefined   ){
-
-
-        //             if(   this.navigationMyElements._results[13].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownIcon"   ){
-
-        //                 // console.log('executed on condition')                        
-        //                 // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
-        //                 this.navigationMyElements._results[13].nativeElement.style.display = 'none'
-        //                 // if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
-
-                        
-        //                     // console.log('restore title sizes')
-        //                     this.navigationMyElements._results.slice(1,3).map((x,i)=>{
-        //                         x.nativeElement.style.fontSize =  this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i] 
-        //                     })
-            
-            
-        //                 // }                          
-        //                 this.navigationBool[12] = 'false'
-        //                 this.ref.detectChanges()
-        //                 for(   let i of this.navigationMyElements._results.slice(4,12)   ){
-        //                     i.nativeElement.style.display = 'block'  
-        //                 }
-
-
-        //             }
-
-
-        //         }
-
-
-        //     }
-
-            
-        //     // console.log(this.navigationMyElements )            
-        // // console.groupEnd()
-        // })     
-        // this.wordsService.navigationLoadEventSubscription1 = this.wordsService.navigationLoadEvent$.subscribe((event)=>{
-        // // console.group('anchors overlapping heading load event')
-
-
-        //     if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
-        //         // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#90EE90"
-        //         // console.log(   numberParse(   this.navigationMyElements._results[1].nativeElement.style.left   )   )
-        //         this.navigationBool[12] = 'true'
-        //         this.ref.detectChanges()
-                
-
-        //         // console.log( this.navigationMyElements._results   )
-        //         if(   this.navigationMyElements._results[12].nativeElement.id === "n_a_v_i_g_a_t_i_o_n_dropDownBox"   ){
-
-
-        //             this.wordsService.navigationLoadEventSubscription1.unsubscribe()
-        //             this.navigationMyElements._results[12].nativeElement.style.position = "absolute"
-        //             this.navigationMyElements._results[12].nativeElement.style.top = "50px"
-        //             // console.log(this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth )
-        //             this.navigationMyElements._results[12].nativeElement.style.left = (  1340* .96   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
-        //             this.navigationMyElements._results[13].nativeElement.style.display = 'block'
-        //             this.navigationMyElements._results[13].nativeElement.style.top = "60px"
-        //             this.navigationMyElements._results[13].nativeElement.style.left = (  1340* .963   + this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth  ).toString() + "px"
-                    
-
-        //             if(   this.wordsService.navigationClickEventSubscription0 === undefined  || this.wordsService.navigationClickEventSubscription0.closed   ){
-
-
-        //                 this.wordsService.navigationClickEvent$ = fromEvent([this.navigationMyElements._results[12].nativeElement ,this.navigationMyElements._results[13].nativeElement] ,'click');
-        //                 this.wordsService.navigationClickEventSubscription0 = this.wordsService.navigationClickEvent$.subscribe((event)=>{
-        //                     this.navigationMyElements._results[14].nativeElement.style.display = this.navigationMyElements._results[14].nativeElement.style.display === 'block' ? 'none' : 'block'
-        //                 })  
-        //                 // console.log(   this.wordsService.navigationClickEventSubscription0   )      
-
-
-        //             }
-
-
-        //             for(   let i of this.navigationMyElements._results.slice(4,12)   ){
-        //                 i.nativeElement.style.display = 'none'  
-        //             }                                            
-
-
-        //             if(   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55  ){
-
-                        
-        //                 // console.log('dropdownBox is interfering with the titile')
-        //                 this.navigationMyElements._results.slice(1,3).map((x,i)=>{
-        //                     x.nativeElement.style.fontSize =  (   numberParse(   this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes[i]   ) * (   numberParse(   this.navigationMyElements._results[12].nativeElement.style.left   )/(   this.wordsService[this.navigationTemplateVariable].metadata.titleWidth  + 55 )  ) * .95  ).toString() + "px"
-        //                     // console.log(   x.nativeElement.style.fontSize  )
-        //                 })
-
-
-        //             }            
-                    
-                    
-        //         }
-                
-
-        //     }
-
-        //     else if(   numberParse(   this.navigationMyElements._results[4].nativeElement.style.left   )   >=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 100  ){
-        //         // this.navigationMyElements._results[0].nativeElement.style.backgroundColor = "#FFC0CB"
-        //         // this.navigationBool[12] = 'false'
-        //         this.wordsService.navigationLoadEventSubscription1.unsubscribe()
-
-
-        //         if(   this.wordsService.navigationClickEventSubscription0 !== undefined   ){
-
-
-        //             if(   !this.wordsService.navigationClickEventSubscription0.closed    ){
-
-
-        //                 this.wordsService.navigationClickEventSubscription0.unsubscribe()   
-                
-                
-        //             }
-
-
-        //         }       
-                
-                
-        //     }            
-
-
-        //     // console.log(   this.navigationMyElements._results  )
-        // // console.groupEnd()    
-        // })
        
         
 
@@ -538,6 +373,20 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         
         
             this.wordsService.navigationResizeEventSubscription0.unsubscribe()
+            this.wordsService.navigationResizeEventSubscription1.unsubscribe()
+            if(   this.wordsService.navigationClickEventSubscription0 !== undefined   ){
+
+
+                if(   !this.wordsService.navigationClickEventSubscription0.closed    ){
+
+
+                    this.wordsService.navigationClickEventSubscription0.unsubscribe()   
+                    
+            
+                }
+
+
+            }            
         
     
         }        
