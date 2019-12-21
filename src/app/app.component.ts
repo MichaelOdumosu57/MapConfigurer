@@ -1,4 +1,4 @@
-import {   Component,OnInit,ViewChildren,AfterViewInit,Inject,ElementRef  } from '@angular/core';
+import {   Component,OnInit,AfterViewInit,AfterContentInit,ViewChildren,Inject,ElementRef  } from '@angular/core';
 import {   WordsService   } from './words.service';
 import {   fromEvent,Subject,Observable,of,Subscription,interval   } from 'rxjs';
 import {   Router,RouterEvent } from '@angular/router';
@@ -27,12 +27,12 @@ function appGenerateSelector(   devObj   ){
 
 export class AppComponent implements OnInit,AfterViewInit {
     
-    @ViewChildren(appGenerateSelector({val:'appWordsVal',times:3}), { read: ElementRef })  app_wordsConponentElements: any;
-    @ViewChildren(appGenerateSelector({val:'appWordsVal',times:3}))  app_wordsComponentReferences: any;
-    @ViewChildren(appGenerateSelector({val:'appNavigationVal',times:1}), { read: ElementRef })  app_NavigationConponentElements: any;
-    @ViewChildren(appGenerateSelector({val:'appNavigationVal',times:1}))  app_NavigationComponentReferences: any;   
-    @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:5}), { read: ElementRef })  app_OverlayConponentElements: any;
-    @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:5}))  app_OverlayComponentReferences: any;        
+    // @ViewChildren(appGenerateSelector({val:'appWordsVal',times:3}), { read: ElementRef })  app_wordsConponentElements: any;
+    // @ViewChildren(appGenerateSelector({val:'appWordsVal',times:3}))  app_wordsComponentReferences: any;
+    // @ViewChildren(appGenerateSelector({val:'appNavigationVal',times:1}), { read: ElementRef })  app_NavigationConponentElements: any;
+    // @ViewChildren(appGenerateSelector({val:'appNavigationVal',times:1}))  app_NavigationComponentReferences: any;   
+    // @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:5}), { read: ElementRef })  app_OverlayConponentElements: any;
+    // @ViewChildren(appGenerateSelector({val:'appOverlayVal',times:5}))  app_OverlayComponentReferences: any;        
  
     
     constructor(
@@ -44,9 +44,240 @@ export class AppComponent implements OnInit,AfterViewInit {
     appTitle:string = 'WindsorEmpire'
  
     ngOnInit(){
+        console.log('app ngOnInit fires on mount')
+        this.wordsService.appViewComplete.subscribe(()=>{
+            console.log(this.wordsService.appCurrentNav)
+
+
+            if(   this.wordsService.appCurrentNav === '/home'   ){
+
+
+                let arr = [
+                    'navigationComponentObject0',
+                    'overlayComponentObject4',
+                    'wordsComponentObject1',
+                    'wordsComponentObject0',
+                    'wordsComponentObject2',
+                    'footerComponentObject0'
+                ].sort()
+                this.wordsService.appViewCompleteArray = this.wordsService.appViewCompleteArray.sort()
+                // console.log(    arr.filter((x,i) =>{ 
+                //     return this.wordsService.appViewCompleteArray[i] !== x 
+                // }),
+                // arr,
+                // this.wordsService.appViewCompleteArray
+                // )
+
+
+                if(
+                    arr.filter((x,i) =>{ 
+                        return this.wordsService.appViewCompleteArray[i] !== x 
+                    }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length
+                ){
+
+                    console.log('dispatched')
+                    try{
+                        let event = new Event('resize')
+                        this.window.dispatchEvent(event)      
+                        this.window.dispatchEvent(event) 
+                    }
+                    catch(e){
+                        let eventLegacyLoad = this.window.document.createEvent("Event");
+                        eventLegacyLoad.initEvent("resize", false, true);
+                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        this.window.dispatchEvent(    eventLegacyLoad    )      
+                    }  
+                    this.wordsService.appViewCompleteArray = []
+                    
+                }
+
+
+            }
+
+
+            else if(   this.wordsService.appCurrentNav === '/about'   ){
+
+
+                let arr = [
+                    'navigationComponentObject0',
+                    'overlayComponentObject3',
+                    'wordsComponentObject5',
+                    'footerComponentObject0'
+                ].sort()
+                this.wordsService.appViewCompleteArray = this.wordsService.appViewCompleteArray.sort()
+                // console.log(    arr.filter((x,i) =>{ 
+                //     return this.wordsService.appViewCompleteArray[i] !== x 
+                // }),
+                // arr,
+                // this.wordsService.appViewCompleteArray
+                // )
+
+
+                if(
+                    arr.filter((x,i) =>{ 
+                        return this.wordsService.appViewCompleteArray[i] !== x 
+                    }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length
+                ){
+
+                    console.log('dispatched')
+                    try{
+                        let event = new Event('resize')
+                        this.window.dispatchEvent(event)      
+                        this.window.dispatchEvent(event) 
+                    }
+                    catch(e){
+                        let eventLegacyLoad = this.window.document.createEvent("Event");
+                        eventLegacyLoad.initEvent("resize", false, true);
+                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        this.window.dispatchEvent(    eventLegacyLoad    )      
+                    }  
+                    this.wordsService.appViewCompleteArray = []
+                    
+                }
+
+
+            }
+            
+            
+            else if(   this.wordsService.appCurrentNav === '/services'   ){
+
+
+                let arr = [
+                    'navigationComponentObject0',
+                    'overlayComponentObject0',
+                    'footerComponentObject0',
+                    'wordsComponentObject3',
+                    'wordsComponentObject4',
+                ].sort()
+                this.wordsService.appViewCompleteArray = this.wordsService.appViewCompleteArray.sort()
+                // console.log(    arr.filter((x,i) =>{ 
+                //     return this.wordsService.appViewCompleteArray[i] !== x 
+                // }),
+                // arr,
+                // this.wordsService.appViewCompleteArray
+                // )
+
+
+                if(
+                    arr.filter((x,i) =>{ 
+                        return this.wordsService.appViewCompleteArray[i] !== x 
+                    }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length
+                ){
+
+                    console.log('dispatched')
+                    try{
+                        let event = new Event('resize')
+                        this.window.dispatchEvent(event)      
+                        this.window.dispatchEvent(event) 
+                    }
+                    catch(e){
+                        let eventLegacyLoad = this.window.document.createEvent("Event");
+                        eventLegacyLoad.initEvent("resize", false, true);
+                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        this.window.dispatchEvent(    eventLegacyLoad    )      
+                    }  
+                    this.wordsService.appViewCompleteArray = []
+                    
+                }
+
+
+            }
+            
+            
+            else if(   this.wordsService.appCurrentNav === '/projects'   ){
+
+
+                let arr = [
+                    'navigationComponentObject0',
+                    'overlayComponentObject1',
+                    'footerComponentObject0',
+                    'wordsComponentObject6',
+                    'wordsComponentObject7',
+                    'wordsComponentObject8'
+                ].sort()
+                this.wordsService.appViewCompleteArray = this.wordsService.appViewCompleteArray.sort()
+                // console.log(    arr.filter((x,i) =>{ 
+                //     return this.wordsService.appViewCompleteArray[i] !== x 
+                // }),
+                // arr,
+                // this.wordsService.appViewCompleteArray
+                // )
+
+
+                if(
+                    arr.filter((x,i) =>{ 
+                        return this.wordsService.appViewCompleteArray[i] !== x 
+                    }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length
+                ){
+
+                    console.log('dispatched')
+                    try{
+                        let event = new Event('resize')
+                        this.window.dispatchEvent(event)      
+                        this.window.dispatchEvent(event) 
+                    }
+                    catch(e){
+                        let eventLegacyLoad = this.window.document.createEvent("Event");
+                        eventLegacyLoad.initEvent("resize", false, true);
+                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        this.window.dispatchEvent(    eventLegacyLoad    )      
+                    }  
+                    this.wordsService.appViewCompleteArray = []
+                    
+                }
+
+
+            }   
+            
+            
+            else if(   this.wordsService.appCurrentNav === '/contact'   ){
+
+
+                let arr = [
+                    'navigationComponentObject0',
+                    'overlayComponentObject2',
+                    'wordsComponentObject9',
+                    'footerComponentObject0'
+                ].sort()
+                this.wordsService.appViewCompleteArray = this.wordsService.appViewCompleteArray.sort()
+                // console.log(    arr.filter((x,i) =>{ 
+                //     return this.wordsService.appViewCompleteArray[i] !== x 
+                // }),
+                // arr,
+                // this.wordsService.appViewCompleteArray
+                // )
+
+
+                if(
+                    arr.filter((x,i) =>{ 
+                        return this.wordsService.appViewCompleteArray[i] !== x 
+                    }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length
+                ){
+
+                    console.log('dispatched')
+                    try{
+                        let event = new Event('resize')
+                        this.window.dispatchEvent(event)      
+                        this.window.dispatchEvent(event) 
+                    }
+                    catch(e){
+                        let eventLegacyLoad = this.window.document.createEvent("Event");
+                        eventLegacyLoad.initEvent("resize", false, true);
+                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        this.window.dispatchEvent(    eventLegacyLoad    )      
+                    }  
+                    this.wordsService.appViewCompleteArray = []
+                    
+                }
+
+
+            }    
+            
+            
+        })
         this.wordsService.appRouterEventSubscription0 = this.wordsService.appRouterEvent$.subscribe((a)=>{
             
-            
+            console.log('fire')
             if(   a.url !== undefined   ){
 
 
@@ -60,23 +291,14 @@ export class AppComponent implements OnInit,AfterViewInit {
 
                 }
                 
-                
+                this.wordsService.appCurrentNav = a.url  
                 switch (   a.url   ){
                     case '/':  
                         this.wordsService.appCurrentNav = '/home'                   
-                        break;
-                    case '/home':        
-                        this.wordsService.appCurrentNav = '/home'         
-                        break;            
-                    case '/about':     
-                        this.wordsService.appCurrentNav = '/about'                            
-                        break;   
-                    case '/services':     
-                        this.wordsService.appCurrentNav = '/services'                            
-                        break;                                               
+                        break;                                                                                       
                     default:
                         break;
-                }
+                }                
                 
                 
             }
@@ -84,108 +306,13 @@ export class AppComponent implements OnInit,AfterViewInit {
             
         })
     }
-    // ngAfterViewInit() {
 
 
-    //     // console.log(   this.app_wordsConponentElements ,this.app_wordsComponentReferences   )
 
-    //     // DONE with Subject<Array<any[]>>
-    //     for(let i in  this.app_wordsComponentReferences._results){
-    //         this.wordsService.wordsMyElementsArray =[
-    //             this.app_wordsConponentElements._results[i],
-    //             ...this.app_wordsComponentReferences._results[i].wordsMyElements._results
-    //         ]
-    //         // this.wordsService.wordsMyElementsArray[i].forEach(element => {
-    //         //     // console.log(element.nativeElement.id)
-    //         // });
-    //         this.wordsService.wordsComponentMonitor[this.app_wordsConponentElements._results[i].nativeElement.getAttribute('ng-reflect-words-template-variable')] = i
-    //     }
-    //     this.wordsService.wordsMyElements.next(this.wordsService.wordsMyElementsArray)
-
-    //     // console.log(   this.app_NavigationConponentElements ,this.app_NavigationComponentReferences   )
-    //     for(let i in  this.app_NavigationComponentReferences._results){
-    //         this.wordsService.navigationMyElementsArray =[
-    //             this.app_NavigationConponentElements._results[i],
-    //             ...this.app_NavigationComponentReferences._results[i].navigationMyElements._results
-    //         ]
-    //         // this.wordsService.wordsMyElementsArray[i].forEach(element => {
-    //         //     // console.log(element.nativeElement.id)
-    //         // });
-    //     }
-    //     this.wordsService.navigationMyElements.next(this.wordsService.navigationMyElementsArray)        
-    //     // console.log(this.wordsService.wordsMyElementsArray)
-
-    //     for(let i in  this.app_OverlayComponentReferences._results){
-    //         this.wordsService.overlayMyElementsArray =[
-    //             this.app_OverlayConponentElements._results[i],
-    //             ...this.app_OverlayComponentReferences._results[i].overlayMyElements._results
-    //         ]
-    //         // this.wordsService.wordsMyElementsArray[i].forEach(element => {
-    //         //     // console.log(element.nativeElement.id)
-    //         // });
-    //         this.wordsService.overlayComponentMonitor[this.app_OverlayConponentElements._results[i].nativeElement.getAttribute('ng-reflect-overlay-template-variable')] = i
-    //     }
-    //     this.wordsService.overlayMyElements.next(this.wordsService.overlayMyElementsArray)         
-    //     // DONE with Subject<Array<any[]>>
-         
-    // }
-    ngAfterViewInit() {
-
-
-        // console.log(   this.app_wordsConponentElements ,this.app_wordsComponentReferences   )
-
-        // // DONE with Subject<Array<any[]>>
-        // for(let i in  this.app_wordsComponentReferences._results){
-        //     this.wordsService.wordsMyElementsArray.push([
-        //         this.app_wordsConponentElements._results[i],
-        //         ...this.app_wordsComponentReferences._results[i].wordsMyElements._results
-        //     ])
-        //     // this.wordsService.wordsMyElementsArray[i].forEach(element => {
-        //     //     // console.log(element.nativeElement.id)
-        //     // });
-        //     this.wordsService.wordsComponentMonitor[this.app_wordsConponentElements._results[i].nativeElement.getAttribute('ng-reflect-words-template-variable')] = i
-        // }
-        // this.wordsService.wordsMyElements.next(this.wordsService.wordsMyElementsArray)
-
-        // console.log(   this.app_NavigationConponentElements ,this.app_NavigationComponentReferences   )
-        for(let i in  this.app_NavigationComponentReferences._results){
-            this.wordsService.navigationMyElementsArray.push([
-                this.app_NavigationConponentElements._results[i],
-                ...this.app_NavigationComponentReferences._results[i].navigationMyElements._results
-            ])
-            // this.wordsService.wordsMyElementsArray[i].forEach(element => {
-            //     // console.log(element.nativeElement.id)
-            // });
-        }
-        this.wordsService.navigationMyElements.next(this.wordsService.navigationMyElementsArray)        
-        // console.log(this.wordsService.wordsMyElementsArray)
-
-        for(let i in  this.app_OverlayComponentReferences._results){
-            this.wordsService.overlayMyElementsArray.push([
-                this.app_OverlayConponentElements._results[i],
-                ...this.app_OverlayComponentReferences._results[i].overlayMyElements._results
-            ])
-            // this.wordsService.wordsMyElementsArray[i].forEach(element => {
-            //     // console.log(element.nativeElement.id)
-            // });
-            this.wordsService.overlayComponentMonitor[this.app_OverlayConponentElements._results[i].nativeElement.getAttribute('ng-reflect-overlay-template-variable')] = i
-        }
-        this.wordsService.overlayMyElements.next(this.wordsService.overlayMyElementsArray)         
-        // DONE with Subject<Array<any[]>>
-
-
-        // for(let i in this.app_FooterComponentReferences._results){
-        //     this.wordsService.footerMyElementsArray.push([
-        //         this.app_FooterConponentElements._results[i],
-        //         ...this.app_FooterComponentReferences._results[i].footerMyElements._results
-        //     ])
-        //     // this.wordsService.footerComponentMonitor[this.app_FooterConponentElements._results[i].nativeElement.getAttribute('ng-reflect-footer-template-variable')] = i
-        // }
-        // this.wordsService.footerMyElements.next(this.wordsService.footerMyElementsArray)         
-        // DONE with Subject<Array<any[]>>        
-         
-             
+    ngAfterViewInit(){
+        console.log('app ngAfterViewInit fires on mount')
     }
+
 }
 
 

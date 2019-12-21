@@ -122,11 +122,11 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
     ngOnInit() {
-        console.log('footer ngOnInit remout')        
+        console.log(this.footerTemplateVariable+ ' ngOnInit remout')        
     }
 
     ngAfterViewInit(){
-        console.log('footer ngAfterViewInit remout')        
+        console.log(this.footerTemplateVariable+ '  ngAfterViewInit remout')        
         this.wordsService.footerLoadEvent$ = fromEvent(this.window ,'load');
         this.wordsService.footerResizeEvent$ = fromEvent(this.window,'resize');
         
@@ -237,7 +237,7 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                 })
                 // console.groupEnd()
             })
-            console.log(zChild)
+            // console.log(zChild)
             this.wordsService.footerResizeEventSubscription0 = this.wordsService.footerResizeEvent$.subscribe(()=>{
 
 
@@ -272,6 +272,7 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
                 }
+
 
                 this.ref.detectChanges()
                 zChild[3].style['top'] = (
@@ -325,50 +326,219 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.ref.detectChanges()
 
 
-                if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject2]')  !== null ){
-
-
-                    this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.subscribe((data)=>{
-                        // console.log(data)
-                        zChild[0].style.top = (
-                            numberParse(
-                                data[0]     
-                            ) + 
-                            numberParse(
-                                data[1]                     
-                            ) -
-                            10
-                        ).toString() + 'px'
-                        this.ref.detectChanges()                        
-                    })
-
-
-                }
             })
+
+
+            if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject2]')  !== null ){
+
+                
+                this.wordsService.footerResizeEventSubscription1 = this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.subscribe((data)=>{
+                    // console.log(data)
+                    zChild[0].style['top'] = (
+                        numberParse(
+                            data[0]     
+                        ) + 
+                        numberParse(
+                            data[1]                     
+                        ) -
+                        10
+                    ).toString() + 'px'
+                    this.ref.detectChanges()                        
+                })
+
+
+            }    
+            
+            
+            if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject4]')  !== null ){
+
+                
+                this.wordsService.footerResizeEventSubscription2 = this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO4.subscribe((data)=>{
+                    zChild[0].style['top'] = (
+                        numberParse(
+                            data[0]     
+                        ) + 
+                        numberParse(
+                            data[1]                     
+                        ) -
+                        10
+                    ).toString() + 'px'
+                    this.ref.detectChanges()                        
+                })
+
+
+            }        
+            
+            
+            if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject5]')  !== null ){
+
+                
+                this.wordsService.footerResizeEventSubscription3 = this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO5.subscribe((data)=>{
+                    zChild[0].style['top'] = (
+                        numberParse(
+                            data[0]     
+                        ) + 
+                        numberParse(
+                            data[1]                     
+                        ) -
+                        10
+                    ).toString() + 'px'
+                    this.ref.detectChanges()                        
+                })
+
+
+            }               
+            
+
+            if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject8]')  !== null ){
+
+                
+                this.wordsService.footerResizeEventSubscription4 = this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO8.subscribe((data)=>{
+                    zChild[0].style['top'] = (
+                        numberParse(
+                            data[0]     
+                        ) + 
+                        numberParse(
+                            data[1]                     
+                        ) -
+                        10
+                    ).toString() + 'px'
+                    this.ref.detectChanges()                        
+                })
+
+
+            }             
+            
+
+            if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject9]')  !== null ){
+
+                
+                this.wordsService.footerResizeEventSubscription5 = this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO9.subscribe((data)=>{
+                    zChild[0].style['top'] = (
+                        numberParse(
+                            data[0]     
+                        ) + 
+                        numberParse(
+                            data[1]                     
+                        ) -
+                        10
+                    ).toString() + 'px'
+                    this.ref.detectChanges()                        
+                })
+
+
+            }             
             // see what happens when app-navigation top is made 0px
 
 
         }
 
 
+        this.wordsService.appViewComplete.next(
+            (function(qq){
+                qq.wordsService.appViewCompleteArray.push(qq.footerTemplateVariable) 
+            })(this)
+        )        
     }
 
     ngOnDestroy(){
-        console.log('footer OnDestroy dismout')     
+        console.log(this.footerTemplateVariable+ ' ngOnDestroy dismout')     
         
         if(   this.footerTemplateVariable === 'footerComponentObject0'){
 
+            
+            if(   
+                this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2 !== undefined &&
+                this.wordsService.footerResizeEventSubscription1 !== undefined 
+            ){
+                
+                // console.log(   this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.closed   )
+                if(  !this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.closed   ){
 
+
+                    this.wordsService.footerResizeEventSubscription1.unsubscribe()
+                
+            
+                }    
+                
+
+            }
+
+
+            if(  
+                this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO4 !== undefined &&
+                this.wordsService.footerResizeEventSubscription2 !== undefined
+            ){
+                
+                // console.log(   this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.closed   )
+                if(  !this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO4.closed   ){
+
+
+                    this.wordsService.footerResizeEventSubscription2.unsubscribe()
+                
+            
+                }    
+                
+
+            }            
+
+
+            if(  
+                this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO5 !== undefined &&
+                this.wordsService.footerResizeEventSubscription3 !== undefined
+            ){
+                
+                // console.log(   this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.closed   )
+                if(  !this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO5.closed   ){
+
+
+                    this.wordsService.footerResizeEventSubscription3.unsubscribe()
+                
+            
+                }    
+                
+
+            }   
+            
+            
+            if(  
+                this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO8 !== undefined &&
+                this.wordsService.footerResizeEventSubscription4 !== undefined
+            ){
+                
+                // console.log(   this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.closed   )
+                if(  !this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO8.closed   ){
+
+
+                    this.wordsService.footerResizeEventSubscription4.unsubscribe()
+                
+            
+                }    
+                
+
+            } 
+
+
+            if(  
+                this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO9 !== undefined &&
+                this.wordsService.footerResizeEventSubscription5 !== undefined
+            ){
+                
+                // console.log(   this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.closed   )
+                if(  !this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO9.closed   ){
+
+
+                    this.wordsService.footerResizeEventSubscription5.unsubscribe()
+                
+            
+                }    
+                
+
+            }            
+            
+            
             this.wordsService.footerResizeEventSubscription0.unsubscribe()
 
-
-            if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject2]')  !== null ){
-                
-
-                this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.unsubscribe()
-
-                
-            }
 
         }
 

@@ -1,11 +1,8 @@
 import { Component, OnInit,Input,ViewChildren,AfterViewInit,Inject, OnDestroy,ChangeDetectorRef,ChangeDetectionStrategy,AfterContentInit } from '@angular/core';
 import {   WordsService   } from '../words.service';
 import {   WINDOW   } from '../window.service';
-import {   fromEvent,interval, of,from, Observable } from 'rxjs';
-import {   catchError,take,timeout   } from 'rxjs/operators'
-
-
-
+import {   fromEvent,interval, of,from, Observable,merge, Subject, combineLatest } from 'rxjs';
+import {   catchError,take,timeout,mapTo    } from 'rxjs/operators';
 function getStyle(   devObj:any   ){
     let location = null;
     devObj.ngStyleArray.filter((a:any)=>{
@@ -46,22 +43,78 @@ function numberParse(   dimension:any   ){
     return dimension;
 }
 
-function resizeFont(   devObj:any   ){
+function resize(   devObj:any   ){
     let result = null
 
-    
+
     if(   devObj.misc === undefined   ){
         devObj.misc = [.12]
     }
+    
+
+    if(   devObj.type === 'direct'   ){
 
 
-    devObj.default *
-          (   (   devObj.containActual /
-          devObj.containDefault   )   - devObj.misc[0])  //usually its .12
+        result = 
+        (
+            devObj.default -
+            (
+                devObj.containDefault   -
+                devObj.containActual    
+            ) * 
+            devObj.misc[0]
+        )
+
+
+    }
+    
+    else if(   devObj.type !== 'direct' ){
+
+
+        result = (
+            devObj.default *
+            (
+                (   
+                    (  
+                        devObj.containActual  /
+                        devObj.containDefault   
+                    ) -
+                    devObj.misc[0]   
+                ) 
+            )
+        ) 
+
+
+    }
     return result = result > devObj.default  ? 
-        devObj.default   :
-        result.toString() + "px"   
-   
+        devObj.default :
+        result     
+}
+
+function xPosition(devObj){
+
+
+    if(   devObj.containPos === undefined   ){
+
+
+        devObj.containPos = .5
+        
+        
+    }
+
+
+    if(   devObj.targetPos === undefined   ){
+
+        
+        devObj.targetPos = .5
+        
+        
+    }
+    
+    return (    
+        (   devObj.contain*devObj.containPos   ) -  
+        (   devObj.target*devObj.targetPos   )   
+    ).toString() + "px"; 
 }
 
 @Component({
@@ -92,733 +145,993 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
     overlayCustomWordWrapElements:Array<any> = this.wordsService.overlayCustomWordWrapElements 
 
-    access(){
-        return this.wordsService
-    }
+    // access(){
+    //     return this.wordsService
+    // }
 
-    accessWindow(){
-        return this.window
-    }
+    // accessWindow(){
+    //     return this.window
+    // }
     
     
     ngOnInit() {
-        this.wordsService.overlayMyElements.subscribe((arr)=>{
-            // console.log('fire')
-            // dealing with  missing elements
-
-            if(   this.wordsService[this.overlayTemplateVariable].styles.length > arr[this.wordsService.overlayComponentMonitor[this.overlayTemplateVariable]].length   ){
-
-
-                // console.log('fire greater')
-                this.wordsService[this.overlayTemplateVariable].stylesCopy = this.wordsService[this.overlayTemplateVariable].styles.filter((a,i)=>{
-
-
-                    if(   i === 0   ){
-                        
-
-                        return true
-
-
-                    }
-
-
-                    else if(   i!== 0   ){
-
-
-                        if(   this.overlayStyleIndex[0] === 0   ){
-
-
-                            console.log(  i,this.overlayBoolIndex[0]      )
-                            this.overlayStyleIndex[0] =  this.overlayStyle[ this.overlayBoolIndex[0]   ].length
-                            this.overlayBoolIndex[0] += 1
-                            
-                            
-                        }
-                        
-
-                        this.overlayStyleIndex[0] -= 1
-
-
-                        if(   this.overlayBool[   this.overlayBoolIndex[0] -1   ] === 'true'   ){
-
-
-                            return true
-
-
-                        }
-
-
-                    }
-                    
-
-                    
-                    
-                })
-                this.overlayBoolIndex[0] = 0
-
-
-            }
-
-            
-            else if(   this.wordsService[this.overlayTemplateVariable].styles.length  ===  arr[this.wordsService.overlayComponentMonitor[this.overlayTemplateVariable]].length   ){
-                
-                
-                this.wordsService[this.overlayTemplateVariable].stylesCopy = this.wordsService[this.overlayTemplateVariable].styles
-                // console.log('fire')
-
-
-            }
-
-
-            // console.log(   this.overlaybool   )
-            // console.log(   this.overlayStyle   )
-            // console.log(   this.wordsService[this.overlayTemplateVariable].stylesCopy, arr[this.overlayTemplateVariable.slice(-1)]     )
-            for(   var index in this.wordsService[this.overlayTemplateVariable].stylesCopy    ){
-
-                
-                if(   this.wordsService[this.overlayTemplateVariable].stylesCopy[index].override === 'true'   ){
-
-
-                    // console.log(   JSON.stringify(   this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css   ).split(',').join(";").split('{')[1].match(/.+(?=})/)[0].split('"').join("")     )
-                    // console.log(   this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css   )
-                    // any problems, loop through the stylesCopy index and apply of the for 
-                    this.wordsService[this.overlayTemplateVariable].ngStyle[index] = this.wordsService[this.overlayTemplateVariable].stylesCopy[index].css
-                    this.ref.detectChanges()
-
-                                
-                }
-    
-    
-            }
-            // console.log(   this.wordsService[this.overlayTemplateVariable]   )  
-            // console.log(    this.overlayMyElements._results[6]   )             
-            this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.next(1)
-        })           
+        console.log(this.overlayTemplateVariable+ '  ngOnInit fires one remount')
     }
 
     ngAfterViewInit(){
+        console.log( this.overlayTemplateVariable+ ' ngAfterViewInit fires one remount') 
         this.wordsService.overlayLoadEvent$ = fromEvent(this.window,'load')
         this.wordsService.overlayResizeEvent$ = fromEvent(this.window,'resize')
-        this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.subscribe(()=>{    
-            let z = {
-                style:null,
-                element:null
-            };  
-            let za = {
-                style:null,
-                element:null
-            }; 
-            let zb = {
-                style:null,
-                element:null
-            };                                     
+
+
+        if(   this.overlayTemplateVariable === 'overlayComponentObject4'    ){
+
+
+            let zChild =[{
+                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
+                style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
+                innerText:null,
+                bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
+            }]          
+            let zCheckpoint = []                        
             this.overlayMyElements._results.map((x:any,i:any)=>{
-                
-                
+
+
                 if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
-
-
-                    zb.style = i+ 1
-                    zb.element = x.nativeElement
-                    
-
-                }
-
-
-                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutPreTitle'   ){
-
-
-                    z.style = i+ 1
-                    z.element = x.nativeElement
-                    
-
-                } 
-                 
-               
-                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
-
-
-                    za.style = i+ 1
-                    za.element = x.nativeElement
-                    
-
-                } 
+                    zCheckpoint.push(i)
+                }                        
                 
-                
-            })         
-            this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth = getTextWidth({
-                elementText:z.element.innerText,
-                font:this.window.getComputedStyle(   z.element ).getPropertyValue('font-size') + " Vidaloka"
-            }) +55 // you did this because the title at a certain length would be static for  the width the board can get to on resize, and easy to access
-            this.wordsService[this.overlayTemplateVariable].metadata.titleDefaultFontSize = this.window.getComputedStyle(   za.element   )['font-size']
-            this.wordsService[this.overlayTemplateVariable].metadata.boardTitleDefaultWidth = getTextWidth({
-                elementText:za.element.innerText,
-                font:this.window.getComputedStyle(   za.element ).getPropertyValue('font-size') + " Montserrat"
-            }) +55
-            // console.log(   this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth   )  
-            // debugger                                      
-
             
-            if(   this.overlayTemplateVariable.slice(-1) !== '4'   ){
-
-
-                if(   
-                    getTextWidth({
-                        elementText:za.element.innerText,
-                        font:this.window.getComputedStyle(   za.element   ).getPropertyValue('font-size') + " sans-serif"
-                    }) <
-                    numberParse(   this.window.getComputedStyle(   zb.element   ).width   ) +30
-                ){
-
-
-                    while(   Math.floor(   za.element.clientHeight/numberParse(   this.window.getComputedStyle(   za.element   )['font-size']   )   ) >1   ){
-                        this.wordsService[this.overlayTemplateVariable].ngStyle[za.style]['left'] = (   numberParse(   this.window.getComputedStyle(   za.element   )['left']   ) - 100   ).toString() + "px"
-                        this.ref.detectChanges()
-                        // console.log(    (   numberParse(   this.window.getComputedStyle(   za.element   )['left']   ) - 100   ).toString() + "px"   )
-                        // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[za.style]['left']   )
-                        // console.log(  za.element.clientHeight/numberParse(   this.window.getComputedStyle(   za.element   )['font-size']   )   )
+            })
+            console.log(zCheckpoint)
+            let zGrid = {
+                a:0, 
+                b:0, 
+                c:0,
+                d:0,
+                e:null,
+                f:null
+            }                  
+            zCheckpoint.map((y:any,j:any)=>{
+                // console.group('associated')
+                // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                zGrid.a = 0;
+                (function(qq){
+                    return qq.overlayMyElements._results.length === 1 ? qq.overlayMyElements._results : qq.overlayMyElements._results.slice(y,zCheckpoint[j+1])
+                })(this).map((x:any,i:any)=>{     
+                    // console.log(   x.nativeElement.id   )
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
+                    // console.log(x)
+                    while(   
+                        this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                        zGrid.b +1 > this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                    ){
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                        zGrid.a +=1
+                        // debugger                                
                     }
-                    // console.log('resizing title')
-                    this.wordsService[this.overlayTemplateVariable].location.parameters.push(
-                        this.wordsService[this.overlayTemplateVariable].parameters.push({
-                            fn:'wordsService.customWordWrapReceive',
-                            totalElements:this.overlayTemplateVariable.slice(-1) !== '4' ? this.overlayMyElements._results : this.overlayMyElements._results.filter(a=>{
-                                
-                                
-                                if(   a.nativeElement.id !==   'o_v_e_r_l_a_y_Title' &&  a.nativeElement.id !==   'o_v_e_r_l_a_y_AboutPreTitle'   ){
+                    // console.log(   
+                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                    //     zChild,
+                    //     zGrid
+                    // )
 
 
-                                    return true
+                    if(   x.nativeElement.id === this.wordsService[this.overlayTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                        (   
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'icon' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
+                        )    
+                    ){               
 
 
-                                }
+                        let domElement = x.nativeElement as HTMLElement;
+                        zChild.push({
+                            element:domElement,
+                            style:this.wordsService[this.overlayTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
+                            innerText: this.wordsService[this.overlayTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b],
+                            bool:this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b]
+                        })
+                        
+
+                        if(   this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
+
+
+                            zGrid.a += 1
+                            zGrid.b = 0       
                             
                             
-                            }),
-                            HTMLWordElements:this.overlayCustomWordWrapElements
-                        }) - 1// for it returns the length of the array
-                    )    
-                    // console.log(   this.wordsService[this.overlayTemplateVariable].parameters   )
-                    // debugger
-                    this.wordsService.overlayLoadEventSubscription1 = this.wordsService.overlayLoadEvent$.subscribe(this.wordsService.customWordWrapReceive({
-                        totalElements:this.overlayMyElements._results,
-                        HTMLWordElements:{
-                                            parameters:this.wordsService[this.overlayTemplateVariable].location.parameters.slice(-1)[0],
-                                            templateVar:this.overlayTemplateVariable
-                                        },
-                        subject: this.wordsService[this.overlayTemplateVariable].metadata.customWordWrapReceiveSubject
-                    }))   
-                
-                
-                }
-            
-            
-            }     
-            
-            
-            if(   this.overlayTemplateVariable.slice(-1) === '4'   ){
-
-
-                this.wordsService.overlayResizeEventSubscription2 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
-                    let z = {
-                        style:null,
-                        element:null
-                    };      
-                    let za = {
-                        style:null,
-                        element:null
-                    };                     
-                    let zb = {
-                        style:null,
-                        element:null
-                    };  
-                    let zc = {
-                        style:null,
-                        element:null
-                    };                                                    
-                    let zObj = {
-                        *generator () {
-                            yield z
-                            yield z
-                            yield zb
-                            yield zb  
-                            yield zc
-                            yield zc                                                                  
-                        }
-                    }    
-                    let zGen =  zObj                                             
-                    this.overlayMyElements._results.map((x:any,i:any)=>{
-                       
-
-
-                        if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutPreTitle'   ){
-
-
-                            z.style = i+ 1
-                            z.element = x.nativeElement
-                            
-
-                        } 
-
-
-                        if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
-        
-        
-                            za.style = i+ 1
-                            za.element = x.nativeElement
-                            
-
-                        } 
-
-
-                        if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutMainLine'   ){
-
-
-                            zb.style = i+ 1
-                            zb.element = x.nativeElement
-                            
-
                         }
 
 
-                        if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutLearnText'   ){
+                        
+                        else if(   true   ){
 
 
-                            zc.style = i+ 1
-                            zc.element = x.nativeElement
+                            zGrid.b += 1       
                             
+                            
+                        }
 
-                        }                        
-                        
-                        
-                    })   
-                    this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleDOMRectTopDiff = zb.element.getBoundingClientRect().top - z.element.getBoundingClientRect().top                   
-                    this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff = zb.element.offsetTop - z.element.offsetTop
-                    try{    
-                    // console.table({
-                    //     //    'pretitile css top':this.window.getComputedStyle(   z.element   ).top,                                     
-                    //     //    'bar css top':this.window.getComputedStyle(   zb.element   ).top,
-                    //        'pretitle offsetTop':z.element.offsetTop,
-                    //        'bar offsetTop':zb.element.offsetTop,
-                    //        'the bar pretitle offset difference':this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff,
-                    //        'bar getBoundingClientRect': 'refer to log 1',
-                    //        'pre Title getBoundingClientRect': 'refer to log 2'
-                    //     })  
+
                     }
-                    catch(e){
-
-                    }       
-                    // console.log(   zb.element.getBoundingClientRect()   )
-                    // console.log(   z.element.getBoundingClientRect()   )                   
+                    
                     
                 })
-                this.wordsService.overlayResizeEventSubscription1 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
-                    // console.group('decreasing preTitle size')
-                        {  
-                            let z = {
-                                style:null,
-                                element:null
-                            };     
-                            let za = {
-                                style:null,
-                                element:null
-                            };  
-                            let zb = {
-                                style:null,
-                                element:null
-                            };                                                             
-                            let zObj = {
-                                *generator () {
-                                    yield z
-                                    yield z
-                                    yield za
-                                    yield za
-                                    yield zb
-                                    yield zb                                    
-                                }
-                            }    
-                            let zGen =  zObj                                             
-                            this.overlayMyElements._results.map((x:any,i:any)=>{
-                               
-    
-        
-                                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutPreTitle'   ){
-        
-        
-                                    z.style = i+ 1
-                                    z.element = x.nativeElement
-                                    
-        
-                                } 
-        
-    
-                                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
-        
-        
-                                    za.style = i+ 1
-                                    za.element = x.nativeElement
-                                    
-        
-                                } 
-                                
+                // console.groupEnd()
+            })
+            // see what happens when app-overlay top is made 0px
+            console.log(   zChild   ) 
+            this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth = 516
+            // console.log(this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth )    
+            this.wordsService[this.overlayTemplateVariable].metadata.titleDefaultFontSize = '141px'
+            // console.log(   this.window.getComputedStyle(   zChild[4].element   )['font-size']   ) this value changes on navigation
+            this.wordsService[this.overlayTemplateVariable].metadata.boardTitleDefaultWidth = 733
+            // console.log(this.wordsService[this.overlayTemplateVariable].metadata.boardTitleDefaultWidth )
+            this.ref.detectChanges()
+            // console.log(zChild[7].style['top'])
 
-                                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutMainLine'   ){
-        
-        
-                                    zb.style = i+ 1
-                                    zb.element = x.nativeElement
-                                    
-        
-                                }
-                                
-                                
-                            })   
-                            // console.log(   z.element.clientHeight , numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   )
-                            // console.table({
-                            //     'pretitle client height':z.element.clientHeight ,
-                            //     'preTitle font size':window.getComputedStyle(z.element).getPropertyValue('font-size'),
-                            //     'preTitle width':numberParse(   window.getComputedStyle(z.element).getPropertyValue('width')   ), 
-                            //     'overlay img width':numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ), 
-                            //     'overlay resize standard':this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth 
-                            // })   
-    
-    
-                            if(   
-                                (
-                                    (   Math.floor(   z.element.clientHeight / numberParse(   window.getComputedStyle(z.element).getPropertyValue('font-size')   )   ) > 1   ) 
-                                    ||
-                                    numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) < this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth
-                                )    
-                            ){
-                                
 
-                                // console.log('rezise preTitle')
-                                this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = 
-                                    numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   ) *
-                                        (   (   numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) /
-                                        this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth   )   - .12)
-                                this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] > numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   )  ? 
-                                    this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   :
-                                    this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'].toString() + "px"   
-                                // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size']   )  
-                                // console.log(   this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth   )
-                                this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['width'] = 
-                                    numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth   )  *
-                                    (   (   numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) /
-                                    this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth   )   - .12)           
-                                this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['width']  =  this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['width'] > numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth   ) ? 
-                                    this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth  : 
-                                    this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['width'].toString() + "px"   
-                                this.ref.detectChanges()
-                                try{                            
-                                    // console.table({
-                                    //             //    'pretitile css top':this.window.getComputedStyle(   z.element   ).top,                                     
-                                    //             'bar css top':this.window.getComputedStyle(   zb.element   ).top,
-                                    //             'pretitle offsetTop':z.element.offsetTop,
-                                    //             'bar offsetTop':zb.element.offsetTop,
-                                    //             //    'the bar pretitle offset difference':this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff,
-                                    //             'the bar pretitle DOMRect top difference':this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleDOMRectTopDiff,
-                                    //             'bar getBoundingClientRect': 'refer to log 1',
-                                    //             'pre Title getBoundingClientRect': 'refer to log 2',
-                                    //             'preTitle fontSize': this.window.getComputedStyle(   z.element   )['font-size']
-                                    //             })    
-                                }
-                                catch(e){
+            if(   this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff === null   ){
 
-                                }
-                                // console.log(   zb.element.getBoundingClientRect()   )
-                                // console.log(   z.element.getBoundingClientRect()   )
-                                {
-                                this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['top'] = 
-                                (
-                                    (
-                                        this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff - 
-                                        (
-                                            (
-                                                numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   ) - 
-                                                numberParse(   this.window.getComputedStyle(   z.element   )['font-size']   )
-                                            ) *
-                                            1.1
-                                            // ( // until we can find perfect solution for this
-                                            //     1+ 
-                                            //     // (
-                                            //     //     1-
-                                            //     //     (
-                                            //     //         numberParse(   this.window.getComputedStyle(   z.element   )['font-size']   )/
-                                            //     //         numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   ) *
-                                            //     //         1.9
-                                            //     //     )
-                                            //     // )
-                                            // )
-                                        )
-                                    ) + 
-                                    z.element.offsetTop
-                                ).toString()
-                                +"px"       
-                                // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['top']   )
-                                }
-                                this.ref.detectChanges()
-                                // console.log(    z.element,z.element.clientHeight, window.getComputedStyle(z.element).getPropertyValue('font-size')   )
-    
-    
-                            }  
-                            
-                            
-                            else if(   
-                                (
-                                    numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ) >= this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth
-                                )    
-                            ){
-                                
 
-                                // console.log('redefault preTitle')
-                                this.wordsService[this.overlayTemplateVariable].ngStyle[z.style]['font-size'] = this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize
-                                this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['top'] = this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultTop   
-                                this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style]['width'] = this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth      
-                                this.ref.detectChanges()
-    
-    
-                            }                               
-                            
-                            
-                        }
-                    // console.groupEnd()           
-                }) 
+                this.wordsService.overlayResizeEventSubscription0 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
+                    this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleDOMRectTopDiff = zChild[7].element.getBoundingClientRect().top - zChild[1].element.getBoundingClientRect().top                   
+                    this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff = zChild[7].element.offsetTop - zChild[3].element.offsetTop
+                    // console.log(   this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff   )  
+                    this.wordsService.overlayResizeEventSubscription0.unsubscribe()              
+                })
 
-                
+
             }
 
 
-            this.wordsService.overlayResizeEventSubscription0 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
-                // console.group('making title centering dynamic resize event')          
-                    // console.log(   this.overlayMyElements._results   )
-                    // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle   )  
-                    {  
-                        let z = {
-                            style:null,
-                            element:null
-                        };
-                        let za = {
-                            style:null,
-                            element:null
-                        };
-                        let zb = {
-                            style:null,
-                            element:null
-                        };  
-                        let zc = {
-                            style:null,
-                            element:null
-                        };   
-                        let zd = {
-                            style:null,
-                            element:null
-                        };  
-                        let ze = {
-                            style:null,
-                            element:null
-                        };                                                                                     
-                        this.overlayMyElements._results.map((x:any,i:any)=>{
-    
-    
-                            if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
-    
-    
-                                z.style = i+ 1
-                                z.element = x.nativeElement
-                                
-    
-                            } 
-    
-    
-                            else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Title'   ){
-    
-    
-                                za.style = i+1
-                                za.element = x.nativeElement                            
-    
-                                
-                            }
-    
-    
-                            else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutPreTitle'   ){
-        
-        
-                                zb.style = i + 1 
-                                zb.element = x.nativeElement                            
-    
-                                
-                            }                            
+            this.wordsService.overlayResizeEventSubscription1 = this.wordsService.overlayResizeEvent$.subscribe(()=>{   
+                
+                
+                if(   
+                    Math.floor(   
+                        zChild[3].element.clientHeight / 
+                        numberParse(   window.getComputedStyle(zChild[3].element).getPropertyValue('font-size')   )   
+                    ) > 1  ||
+                    (
+                        numberParse(   window.getComputedStyle(zChild[1].element).getPropertyValue('width')   ) < this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth + 200    
+                    )
+                ){
+                    
+                    
+                    zChild[3].style['font-size'] = resize({
+                        default:numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   ),
+                        containActual:numberParse(   window.getComputedStyle(zChild[1].element)['width']   ),
+                        containDefault:this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth +200
+                    })
+                    zChild[3].style['font-size'] = zChild[3].style['font-size'] > numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   )  ?
+                    this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   :
+                    zChild[3].style['font-size'].toString() + "px"
+                    zChild[7].style['width'] = resize({ // can change the rate with direct
+                        default:numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth   ),
+                        containActual:numberParse(   window.getComputedStyle(zChild[1].element)['width']   ),
+                        containDefault:this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth +200
+                    })
+                    zChild[7].style['width'] = zChild[7].style['width'] > numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth   )  ?
+                    this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth   :
+                    zChild[7].style['width'].toString() + "px"        
+                    this.ref.detectChanges()            
+                    zChild[7].style['top'] = 
+                    (
+                        (
+                            this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff - 
+                            (
+                                (
+                                    numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   ) - 
+                                    numberParse(   this.window.getComputedStyle(   zChild[3].element   )['font-size']   )
+                                ) *
+                                1.1
+                                // ( // until we can find perfect solution for this
+                                //     1+ 
+                                //     // (
+                                //     //     1-
+                                //     //     (
+                                //     //         numberParse(   this.window.getComputedStyle(   zChild[3].element   )['font-size']   )/
+                                //     //         numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   ) *
+                                //     //         1.9
+                                //     //     )
+                                //     // )
+                                // )
+                            )
+                        ) + 
+                        zChild[3].element.offsetTop
+                    ).toString()
+                    +"px"  
+                    // console.table(
+                        // this.wordsService[this.overlayTemplateVariable].metadata.aboutBarPreTitleOffsetTopDiff,
+                    //     numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize   ) - 
+                    //     numberParse(   this.window.getComputedStyle(   zChild[3].element   )['font-size']   ),                        
+                        // zChild[7].style['top']
+                    // )
+                    this.ref.detectChanges() 
+                }
+
+
+                else if(   
+                    (
+                        numberParse(   window.getComputedStyle(zChild[1].element).getPropertyValue('width')   ) >= this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth
+                    )    
+                ){
+
+                    // console.log('redefault preTitle')
+                    zChild[3].style['font-size'] = this.wordsService[this.overlayTemplateVariable].metadata.aboutPreTitleDefaultFontSize
+                    zChild[7].style['top'] = this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultTop   
+                    zChild[7].style['width'] = this.wordsService[this.overlayTemplateVariable].metadata.aboutMailLineDefaultWidth      
+                    this.ref.detectChanges()             
+                    // console.log(zChild[3].style['font-size'])
+                    // console.log( zChild[7].style['top'] )
+                    // console.log( zChild[7].style['width'] )
+                    
+                }                    
+
+
+            })         
+            this.wordsService.overlayResizeEventSubscription2 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
+                // console.log(   zChild[4].style['font-size']   )
+                zChild[4].style['font-size'] = resize({
+                    default:numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.titleDefaultFontSize   ),
+                    containActual:numberParse(   window.getComputedStyle(zChild[1].element)['width']   ),
+                    containDefault:this.wordsService[this.overlayTemplateVariable].metadata.boardTitleDefaultWidth
+                })
+                // console.log(   zChild[4].style['font-size']   )
+                zChild[4].style['font-size'] = zChild[4].style['font-size'] >  numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.titleDefaultFontSize   ) ?
+                this.wordsService[this.overlayTemplateVariable].metadata.titleDefaultFontSize   :
+                zChild[4].style['font-size'].toString() + "px"
+                // console.log(   zChild[4].style['font-size']   )
+                this.ref.detectChanges()
+                zChild[3].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:getTextWidth({
+                        elementText:zChild[3].innerText,
+                        font:this.window.getComputedStyle(   zChild[3].element   )['font-size'] +                 
+                        " " +
+                        this.window.getComputedStyle(   zChild[3].element   )['font-family']
+                    })
+                })
+                zChild[4].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:getTextWidth({
+                        elementText:zChild[4].innerText,
+                        font:this.window.getComputedStyle(   zChild[4].element   )['font-size'] +                 
+                        " " +
+                        this.window.getComputedStyle(   zChild[4].element   )['font-family']
+                    })
+                })     
+                zChild[5].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:getTextWidth({
+                        elementText:zChild[5].innerText,
+                        font:this.window.getComputedStyle(   zChild[5].element   )['font-size'] +                 
+                        " " +
+                        this.window.getComputedStyle(   zChild[5].element   )['font-family']
+                    })
+                })    
+                zChild[6].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[6].element).width   )
+                })      
+                zChild[7].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[7].element).width   )
+                })                                           
+                this.ref.detectChanges()       
+                zChild[5].style['top'] =this.window.getComputedStyle(zChild[6].element).top
+                //for some reason this works
+                this.ref.detectChanges()
+
+            }) 
+            this.wordsService.overlayResizeEventSubscription3 = 
+            combineLatest(   
+                this.wordsService[this.overlayTemplateVariable].quantity[1][0].metadata.wordsCO0,
+                this.wordsService[this.overlayTemplateVariable].quantity[1][0].metadata.wordsCO2
+            ).subscribe((rs)=>{
+                // console.log(
+                //     numberParse(   rs[0][0]   ) +
+                //     numberParse(   rs[0][1]   ),
+                //     numberParse(   rs[1][0]   ) -
+                //     (
+                //         numberParse(   rs[0][0]   ) +
+                //         numberParse(   rs[0][1]   ) 
+                //     )                   
+                // )  
+                zChild[2].style['height']  = (.7  * 
+                    (
+                        numberParse(   rs[1][0]   ) -
+                            (
+                                numberParse(   rs[0][0]   ) +
+                                numberParse(   rs[0][1]   ) 
+                            )  
+                        )
+                    ).toString() + 'px' 
+
+
+                if(   this.window.getComputedStyle(   zChild[1].element).width > "946px"   ){
+
+                            
+                    zChild[2].style['width'] = resize({
+                        default: numberParse(   this.wordsService[this.overlayTemplateVariable].quantity[1][0].metadata.image[1].defaultWidth   ),
+                        containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
+                        containDefault:1262
+                    }).toString() + "px"
+                   
+                    
+                }         
+                
+                
+                else if(   this.window.getComputedStyle(   zChild[1].element).width < "946px"   ){
+
                         
-                            
-                            else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutMainLine'   ){
-        
-        
-                                zc.style = i + 1
-                                zc.element = x.nativeElement                            
-    
-                                
-                            }   
-                            
-
-                            else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutLearnText'   ){
-        
-        
-                                zd.style = i + 1
-                                zd.element = x.nativeElement                            
-    
-                                
-                            }  
-                            
-                            
-                            else if(   x.nativeElement.id === 'o_v_e_r_l_a_y_AboutLearn'   ){
-        
-        
-                                ze.style = i + 1
-                                ze.element = x.nativeElement                            
-    
-                                
-                            }                              
-                            
-                            
-                        })   
-                        // console.group('resize font')
-                            this.wordsService[this.overlayTemplateVariable].ngStyle[za.style]['font-size'] = 
-                            numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.titleDefaultFontSize   ) *
-                                (   (   numberParse(   window.getComputedStyle(z.element).getPropertyValue('width')   ) /
-                                this.wordsService[this.overlayTemplateVariable].metadata.boardTitleDefaultWidth   )   - .12)
-                            // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[za.style]['font-size'],
-                            //             this.wordsService[this.overlayTemplateVariable].metadata.titleDefaultFontSize,
-                            //             numberParse(   window.getComputedStyle(za.element).getPropertyValue('width')   ),
-                            //             this.wordsService[this.overlayTemplateVariable].metadata.boardTitleDefaultWidth      
-                            //             )
-                            this.wordsService[this.overlayTemplateVariable].ngStyle[za.style]['font-size'] = this.wordsService[this.overlayTemplateVariable].ngStyle[za.style]['font-size'] > numberParse(   this.wordsService[this.overlayTemplateVariable].metadata.titleDefaultFontSize   )  ? 
-                                this.wordsService[this.overlayTemplateVariable].metadata.titleDefaultFontSize   :
-                                this.wordsService[this.overlayTemplateVariable].ngStyle[za.style]['font-size'].toString() + "px"    
-                            this.ref.detectChanges()       
-                        // console.groupEnd()                      
-                        // console.log(   this.window.getComputedStyle(   z.element   ).width   )
-                        // console.log(   this.window.getComputedStyle(   za.element   ).width   )
-                        // console.log(   (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )  ) 
-                        // console.log(   numberParse(   this.window.getComputedStyle(zb.element).width   )   ,numberParse(   this.window.getComputedStyle(zc.element).width   ),numberParse(   this.window.getComputedStyle(z.element).width   )/2,this.window.document.querySelector('app-overlay').clientWidth    )
-                        this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(za.element).width   )/2   )   ).toString() + "px"; 
-                        this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zb.element).width   )/2   )   ).toString() + "px"; 
-                        this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zc.element).width   )/2   )   ).toString() + "px";  
-                        this.wordsService[this.overlayTemplateVariable].ngStyle[zd.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(zd.element).width   )/2   )   ).toString() + "px"; 
-                        this.wordsService[this.overlayTemplateVariable].ngStyle[ze.style].left = (    (   numberParse(   this.window.getComputedStyle(z.element).width   )/2   ) -  (   numberParse(   this.window.getComputedStyle(ze.element).width   )/2   )   ).toString() + "px";                                             
-                        // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left,
-                        //                 this.window.getComputedStyle(zb.element).width,
-                        //                 this.wordsService[this.overlayTemplateVariable].ngStyle[zc.style].left   
-                        //             )
+                    zChild[2].style['width'] = resize({
+                        default: numberParse(   this.wordsService[this.overlayTemplateVariable].quantity[1][0].metadata.image[1].defaultWidth   ),
+                        containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
+                        containDefault:562
+                    }).toString() + "px"                       
+                    
+                
+                }                 
+                this.ref.detectChanges()
+                zChild[2].style['top'] = 
+                (
+                    numberParse(
+                        xPosition({
+                            target:numberParse(zChild[2].style['height']),
+                            contain:(
+                                numberParse(   rs[1][0]   ) -
+                                    (
+                                        numberParse(   rs[0][0]   ) +
+                                        numberParse(   rs[0][1]   ) 
+                                    )  
+                                )
+                        })
+                    ) + 
+                    numberParse(   rs[0][0]   ) +
+                    numberParse(   rs[0][1]   )
+                ).toString() + 'px'  
+                zChild[2].style['left'] = xPosition({
+                    target:numberParse(   this.window.getComputedStyle(   zChild[2].element   ).width   ),
+                    contain:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                })                              
+            this.ref.detectChanges()
+            })
+      
+            "946px"
+            
+            
+        }
 
 
-                        if(    Math.floor(   zb.element.clientHeight /  numberParse(   this.window.getComputedStyle(   zb.element   )['font-size']   )   ) > 1   ){
+        else if(   this.overlayTemplateVariable === 'overlayComponentObject0'   ){
 
 
-                            this.wordsService[this.overlayTemplateVariable].ngStyle[zb.style].left = (
-                                numberParse(   this.window.getComputedStyle(z.element).width   )/2  -
-                                getTextWidth({
-                                    elementText:zb.element.innerText,
-                                    font:this.window.getComputedStyle(   zb.element   ).getPropertyValue('font-size') + " Vidaloka"
-                                })/2
-                            ).toString() + "px"
+            let zChild =[{
+                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
+                style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
+                innerText:null,
+                bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
+            }]     
+            let zCheckpoint = []                        
+            this.overlayMyElements._results.map((x:any,i:any)=>{
+
+
+                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
+                    zCheckpoint.push(i)
+                }                        
+                
+            
+            })      
+            let zGrid = {
+                a:0, 
+                b:0, 
+            }  
+            zCheckpoint.map((y:any,j:any)=>{
+                // console.group('associated')
+                // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                zGrid.a = 0;
+                (function(qq){
+                    return qq.overlayMyElements._results.length === 1 ? qq.overlayMyElements._results : qq.overlayMyElements._results.slice(y,zCheckpoint[j+1])
+                })(this).map((x:any,i:any)=>{     
+                    // console.log(   x.nativeElement.id   )
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
+                    // console.log(x)
+                    while(   
+                        this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                        zGrid.b +1 > this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                    ){
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                        zGrid.a +=1
+                        // debugger                                
+                    }
+                    // console.log(   
+                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                    //     zChild,
+                    //     zGrid
+                    // )
+
+
+                    if(   x.nativeElement.id === this.wordsService[this.overlayTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                        (   
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'icon' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
+                        )    
+                    ){               
+
+
+                        let domElement = x.nativeElement as HTMLElement;
+                        zChild.push({
+                            element:domElement,
+                            style:this.wordsService[this.overlayTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
+                            innerText: this.wordsService[this.overlayTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b],
+                            bool:this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b]
+                        })
+                        
+
+                        if(   this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
+
+
+                            zGrid.a += 1
+                            zGrid.b = 0       
                             
                             
                         }
 
 
-                        if(    
-                            Math.floor(   za.element.clientHeight /  numberParse(   this.window.getComputedStyle(   za.element   )['font-size']   )   ) > 1  &&
-                            numberParse(   this.window.getComputedStyle(z.element).width   ) >  numberParse(   this.window.getComputedStyle(za.element).width   )
-                        ){
+                        
+                        else if(   true   ){
 
 
-                            this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left = (
-                                numberParse(   this.window.getComputedStyle(z.element).width   )/2  -
-                                getTextWidth({
-                                    elementText:za.element.innerText,
-                                    font:this.window.getComputedStyle(   za.element   ).getPropertyValue('font-size') + " Aclonica"
-                                })/2
-                            ).toString() + "px"
+                            zGrid.b += 1       
                             
                             
-                        }                       
-
-
-                        // console.log(   this.wordsService[this.overlayTemplateVariable].ngStyle[za.style].left,
-                        //                 this.window.getComputedStyle(za.element).width,
-                        //             )                          
-                        // debugger
-                        this.ref.detectChanges()
-                        // console.log(z)
-                        // console.log(   this.wordsService[this.overlayTemplateVariable]. ngStyle   )                           
-                    }
-                // console.groupEnd()           
-            })       
-            let overlayIntervalRxjs0 = interval(10)
-            let overlayTakeRxjs0 =  overlayIntervalRxjs0.pipe(take(1))     
-            overlayTakeRxjs0.subscribe(()=>{
-                // debugger
-                try{
-                    let event = new Event('resize')
-                    this.window.dispatchEvent(event)  
-
-
-
-                    if(   this.overlayTemplateVariable.slice(-1) === '4'   ){
-
-
-                        this.wordsService.overlayResizeEventSubscription2.unsubscribe()
+                        }
 
 
                     }
+                    
+                    
+                })
+                // console.groupEnd()
+            })      
+            // console.log(   zChild   ) 
+            this.wordsService.overlayResizeEventSubscription4 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
+                
+
+                if(  
+                    getTextWidth({
+                        elementText:zChild[2].innerText,
+                        font:this.window.getComputedStyle(   zChild[2].element   )['font-size'] +                 
+                        " " +
+                        this.window.getComputedStyle(   zChild[2].element   )['font-family']
+                    }) < 368.4
+                ){
 
 
-                    this.window.dispatchEvent(event) 
+                    zChild[2].style['font-size'] = resize({
+                        default:numberParse(   this.wordsService.overlayComponentObject0TitleFontSize   ),
+                        containActual:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        containDefault:368.4,
+                        type:'direct',
+                        misc:[.18]
+                    }).toString() + "px"
+                    this.ref.detectChanges()
                 }
-                catch(e){
-                    let eventLegacyLoad = this.window.document.createEvent("Event");
-                    eventLegacyLoad.initEvent("resize", false, true);
-                    this.window.dispatchEvent(    eventLegacyLoad    )
-                    
-                    
-                    if(   this.overlayTemplateVariable.slice(-1) === '4'   ){
 
 
-                        this.wordsService.overlayResizeEventSubscription2.unsubscribe()
+                zChild[2].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:getTextWidth({
+                        elementText:zChild[2].innerText,
+                        font:this.window.getComputedStyle(   zChild[2].element   )['font-size'] +                 
+                        " " +
+                        this.window.getComputedStyle(   zChild[2].element   )['font-family']
+                    })
+                })  
+                this.ref.detectChanges()                
+            })
+            
+            
+        }
+
+
+        else if(   this.overlayTemplateVariable === 'overlayComponentObject1'   ){
+
+
+            let zChild =[{
+                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
+                style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
+                innerText:null,
+                bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
+            }]     
+            let zCheckpoint = []                        
+            this.overlayMyElements._results.map((x:any,i:any)=>{
+
+
+                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
+                    zCheckpoint.push(i)
+                }                        
+                
+            
+            })      
+            let zGrid = {
+                a:0, 
+                b:0, 
+            }  
+            zCheckpoint.map((y:any,j:any)=>{
+                // console.group('associated')
+                // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                zGrid.a = 0;
+                (function(qq){
+                    return qq.overlayMyElements._results.length === 1 ? qq.overlayMyElements._results : qq.overlayMyElements._results.slice(y,zCheckpoint[j+1])
+                })(this).map((x:any,i:any)=>{     
+                    // console.log(   x.nativeElement.id   )
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
+                    // console.log(x)
+                    while(   
+                        this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                        zGrid.b +1 > this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                    ){
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                        zGrid.a +=1
+                        // debugger                                
+                    }
+                    // console.log(   
+                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                    //     zChild,
+                    //     zGrid
+                    // )
+
+
+                    if(   x.nativeElement.id === this.wordsService[this.overlayTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                        (   
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'icon' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
+                        )    
+                    ){               
+
+
+                        let domElement = x.nativeElement as HTMLElement;
+                        zChild.push({
+                            element:domElement,
+                            style:this.wordsService[this.overlayTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
+                            innerText: this.wordsService[this.overlayTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b],
+                            bool:this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b]
+                        })
+                        
+
+                        if(   this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
+
+
+                            zGrid.a += 1
+                            zGrid.b = 0       
+                            
+                            
+                        }
+
+
+                        
+                        else if(   true   ){
+
+
+                            zGrid.b += 1       
+                            
+                            
+                        }
 
 
                     }
                     
                     
-                    this.window.dispatchEvent(    eventLegacyLoad    )      
-                }  
-            })              
-        })
+                })
+                // console.groupEnd()
+            })      
+            // console.log(   zChild   ) 
+            this.wordsService.overlayResizeEventSubscription5 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
+                // console.log(
+                //     getTextWidth({
+                //         elementText:zChild[2].innerText,
+                //         font:this.window.getComputedStyle(   zChild[2].element   )['font-size'] +                 
+                //         " " +
+                //         this.window.getComputedStyle(   zChild[2].element   )['font-family']
+                //     })      
+                // )
 
+
+                if(  
+                    numberParse(   this.wordsService.overlayComponentObject1TitleWidth   ) > numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) + 30                   
+                ){
+
+
+                    zChild[2].style['font-size'] = resize({
+                        default:numberParse(   this.wordsService.overlayComponentObject1TitleFontSize   ),
+                        containActual:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        containDefault:500.6,
+                        // type:'direct',
+                        // misc:[.18]
+                    }).toString() + "px"
+                    this.ref.detectChanges()
+                    // console.log(     zChild[2].style['font-size']   )
+
+                }
+
+
+                else if(  
+                    567.6 < numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) + 30                   
+                ){   
+                    
+                    
+                    zChild[2].style['font-size'] = this.wordsService.overlayComponentObject1TitleFontSize   
+                    this.ref.detectChanges()
+
+
+                }
+
+
+                zChild[2].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:getTextWidth({
+                        elementText:zChild[2].innerText,
+                        font:this.window.getComputedStyle(   zChild[2].element   )['font-size'] +                 
+                        " " +
+                        this.window.getComputedStyle(   zChild[2].element   )['font-family']
+                    })
+                })  
+                this.ref.detectChanges()                
+            })
+            
+            
+        }
+        
+        
+        else if(   this.overlayTemplateVariable === 'overlayComponentObject2'   ){
+
+
+            let zChild =[{
+                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
+                style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
+                innerText:null,
+                bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
+            }]     
+            let zCheckpoint = []                        
+            this.overlayMyElements._results.map((x:any,i:any)=>{
+
+
+                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
+                    zCheckpoint.push(i)
+                }                        
+                
+            
+            })      
+            let zGrid = {
+                a:0, 
+                b:0, 
+            }  
+            zCheckpoint.map((y:any,j:any)=>{
+                // console.group('associated')
+                // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                zGrid.a = 0;
+                (function(qq){
+                    return qq.overlayMyElements._results.length === 1 ? qq.overlayMyElements._results : qq.overlayMyElements._results.slice(y,zCheckpoint[j+1])
+                })(this).map((x:any,i:any)=>{     
+                    // console.log(   x.nativeElement.id   )
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
+                    // console.log(x)
+                    while(   
+                        this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                        zGrid.b +1 > this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                    ){
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                        zGrid.a +=1
+                        // debugger                                
+                    }
+                    // console.log(   
+                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                    //     zChild,
+                    //     zGrid
+                    // )
+
+
+                    if(   x.nativeElement.id === this.wordsService[this.overlayTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                        (   
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'icon' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
+                        )    
+                    ){               
+
+
+                        let domElement = x.nativeElement as HTMLElement;
+                        zChild.push({
+                            element:domElement,
+                            style:this.wordsService[this.overlayTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
+                            innerText: this.wordsService[this.overlayTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b],
+                            bool:this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b]
+                        })
+                        
+
+                        if(   this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
+
+
+                            zGrid.a += 1
+                            zGrid.b = 0       
+                            
+                            
+                        }
+
+
+                        
+                        else if(   true   ){
+
+
+                            zGrid.b += 1       
+                            
+                            
+                        }
+
+
+                    }
+                    
+                    
+                })
+                // console.groupEnd()
+            })      
+            // console.log(   zChild   ) 
+            this.wordsService.overlayResizeEventSubscription6 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
+                // console.log(
+                //     getTextWidth({
+                //         elementText:zChild[2].innerText,
+                //         font:this.window.getComputedStyle(   zChild[2].element   )['font-size'] +                 
+                //         " " +
+                //         this.window.getComputedStyle(   zChild[2].element   )['font-family']
+                //     })      
+                // )
+
+
+                if(  
+                    567.6 > numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) + 30                   
+                ){
+
+
+                    zChild[2].style['font-size'] = resize({
+                        default:numberParse(   this.wordsService.overlayComponentObject1TitleFontSize   ),
+                        containActual:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        containDefault:500.6,
+                        // type:'direct',
+                        // misc:[.18]
+                    }).toString() + "px"
+                    this.ref.detectChanges()
+                    // console.log(     zChild[2].style['font-size']   )
+
+                }
+
+
+                else if(  
+                   numberParse(   this.wordsService.overlayComponentObject2TitleWidth   ) < numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) + 30                   
+                ){   
+                    
+                    
+                    zChild[2].style['font-size'] = this.wordsService.overlayComponentObject1TitleFontSize   
+                    this.ref.detectChanges()
+
+
+                }
+
+
+                zChild[2].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:getTextWidth({
+                        elementText:zChild[2].innerText,
+                        font:this.window.getComputedStyle(   zChild[2].element   )['font-size'] +                 
+                        " " +
+                        this.window.getComputedStyle(   zChild[2].element   )['font-family']
+                    })
+                })  
+                this.ref.detectChanges()                
+            })
+            
+            
+        }     
+        
+
+        else if(   this.overlayTemplateVariable === 'overlayComponentObject3'   ){
+
+
+            let zChild =[{
+                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
+                style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
+                innerText:null,
+                bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
+            }]     
+            let zCheckpoint = []                        
+            this.overlayMyElements._results.map((x:any,i:any)=>{
+
+
+                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
+                    zCheckpoint.push(i)
+                }                        
+                
+            
+            })      
+            let zGrid = {
+                a:0, 
+                b:0, 
+            }  
+            zCheckpoint.map((y:any,j:any)=>{
+                // console.group('associated')
+                // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                zGrid.a = 0;
+                (function(qq){
+                    return qq.overlayMyElements._results.length === 1 ? qq.overlayMyElements._results : qq.overlayMyElements._results.slice(y,zCheckpoint[j+1])
+                })(this).map((x:any,i:any)=>{     
+                    // console.log(   x.nativeElement.id   )
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
+                    // console.log(x)
+                    while(   
+                        this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                        zGrid.b +1 > this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                    ){
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                        zGrid.a +=1
+                        // debugger                                
+                    }
+                    // console.log(   
+                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                    //     zChild,
+                    //     zGrid
+                    // )
+
+
+                    if(   x.nativeElement.id === this.wordsService[this.overlayTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                        (   
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'icon' ||
+                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
+                        )    
+                    ){               
+
+
+                        let domElement = x.nativeElement as HTMLElement;
+                        zChild.push({
+                            element:domElement,
+                            style:this.wordsService[this.overlayTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
+                            innerText: this.wordsService[this.overlayTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b],
+                            bool:this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b]
+                        })
+                        
+
+                        if(   this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
+
+
+                            zGrid.a += 1
+                            zGrid.b = 0       
+                            
+                            
+                        }
+
+
+                        
+                        else if(   true   ){
+
+
+                            zGrid.b += 1       
+                            
+                            
+                        }
+
+
+                    }
+                    
+                    
+                })
+                // console.groupEnd()
+            })      
+            console.log(   zChild   ) 
+            zChild[2].style['width'] = (
+                getTextWidth({
+                    elementText:zChild[2].innerText,
+                    font: this.window.getComputedStyle(   zChild[2].element   ).getPropertyValue('font-size') + 
+                    " " +
+                    this.window.getComputedStyle(   zChild[2].element ).getPropertyValue('font-family') 
+                }) +
+                10
+                ).toString() + "px"   
+            zChild[3].style['width'] = (
+            getTextWidth({
+                elementText:zChild[3].innerText,
+                font: this.window.getComputedStyle(   zChild[3].element   ).getPropertyValue('font-size') + 
+                " " +
+                this.window.getComputedStyle(   zChild[3].element ).getPropertyValue('font-family') 
+            }) +
+            10
+            ).toString() + "px"       
+            this.ref.detectChanges()
+            
+        }
+        
+        this.wordsService.appViewComplete.next(
+            (function(qq){
+                qq.wordsService.appViewCompleteArray.push(qq.overlayTemplateVariable) 
+            })(this)
+        )
     }
 
     ngOnDestroy(){
-        this.wordsService.overlayResizeEventSubscription0.unsubscribe()
-        this.wordsService[this.overlayTemplateVariable].metadata.cssAsync.unsubscribe()
-
+        console.log( this.overlayTemplateVariable+ ' ngOnDestroy fires on dismount')
         
-        if(   this.overlayTemplateVariable.slice(-1) !== '4'   ){
-
-
-            this.wordsService.overlayLoadEventSubscription1.unsubscribe()
-    
-    
-        }
+        // figure out why it doesn't like to remount here 
+        if(   this.overlayTemplateVariable  === 'overlayComponentObject4'   ){
         
+            
+            if(   this.wordsService.overlayResizeEventSubscription0 !== undefined   ){
 
-        if(   this.overlayTemplateVariable.slice(-1) === '4'   ){
+
+                if(   !this.wordsService.overlayResizeEventSubscription0.closed   ){
+
+
+                    this.wordsService.overlayResizeEventSubscription0.unsubscribe() 
+
+
+                }
+
+
+            }
 
 
             this.wordsService.overlayResizeEventSubscription1.unsubscribe() 
-    
+            this.wordsService.overlayResizeEventSubscription2.unsubscribe()  
+            this.wordsService.overlayResizeEventSubscription3.unsubscribe()          
+        
     
         }
+        
+        
+        else if(   this.overlayTemplateVariable === 'overlayComponentObject0'   ){
+
+
+            this.wordsService.overlayResizeEventSubscription4.unsubscribe()
+
+
+        }
+
+
+        else if(   this.overlayTemplateVariable === 'overlayComponentObject1'   ){
+
+
+            this.wordsService.overlayResizeEventSubscription5.unsubscribe()
+
+
+        }
+
+
+        else if(   this.overlayTemplateVariable === 'overlayComponentObject2'   ){
+
+
+            this.wordsService.overlayResizeEventSubscription6.unsubscribe()
+
+
+        }        
+
+
+        else if(   this.overlayTemplateVariable === 'overlayComponentObject3'   ){
+
+
+            // this.wordsService.overlayResizeEventSubscription7.unsubscribe()
+
+
+        }           
+        
         
     }
 

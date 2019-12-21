@@ -10,8 +10,12 @@
     </ng-container>
 
     <ng-container *ngFor = 'let aa of a.quantity[1];let bb = index' >
-        <h1 #mywordsval *ngIf= "a.bool[1][bb] ==='true'" id = {{a.val[1][bb]}} class = 'tc ttu'
+        <h1 #mywordsval *ngIf= "a.bool[1][bb] ==='true' else elseBlock3" id = {{a.val[1][bb]}} 
         [ngStyle] = 'a.ngStyle[1][bb]'  >{{a.text[1][bb]}}</h1>
+        <ng-template #elseBlock3  > 
+            <h2 #mywordsval *ngIf= "a.bool[1][bb] ==='h2'" id = {{a.val[1][bb]}} 
+            [ngStyle] = 'a.ngStyle[1][bb]'  >{{a.text[1][bb]}}</h2>            
+        </ng-template>      
     </ng-container>
 
     <ng-container *ngFor = 'let aa of a.quantity[2];let bb = index'>
@@ -32,8 +36,11 @@
     <ng-container *ngFor = 'let aa of a.quantity[4];let bb = index' >
         <div #mywordsval *ngIf= "a.bool[4][bb] ==='true'   else elseBlock2" id = {{a.val[4][bb]}} [ngStyle] = 'a.ngStyle[4][bb]' ></div>
         <ng-template #elseBlock2  > 
-            <a #mywordsval *ngIf= "a.bool[4][bb] ==='link'" id = {{a.val[4][bb]}}  [ngStyle] =  'a.ngStyle[4][bb]'  >{{a.text[4][bb]}}</a>
-        </ng-template>             
+            <a #mywordsval *ngIf= "a.bool[4][bb] ==='link' else elseBlock4" id = {{a.val[4][bb]}}  [ngStyle] =  'a.ngStyle[4][bb]'  >{{a.text[4][bb]}}</a>
+        </ng-template>  
+        <ng-template #elseBlock4  > 
+            <button #mywordsval *ngIf= "a.bool[4][bb] ==='button' " id = {{a.val[4][bb]}}  [ngStyle] =  'a.ngStyle[4][bb]'  >{{a.text[4][bb]}}</button>
+        </ng-template>                     
     </ng-container>      
     
 

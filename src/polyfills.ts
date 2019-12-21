@@ -77,4 +77,4 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 // import 'core-js/es/weak-map';
 // import 'core-js/es/set';
 // import 'core-js/es/reflect';
-
+import 'src/assets/scripts/object-setprototypeof-ie9.js'

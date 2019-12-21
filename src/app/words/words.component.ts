@@ -141,7 +141,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild =[{
-                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']'),
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
                 innerText:null
             }]          
@@ -163,7 +163,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 
                 
             })
-            console.log(zCheckpoint)
+            // console.log(zCheckpoint)
             let zGrid = {
                 a:0, 
                 b:0, 
@@ -175,8 +175,10 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             zCheckpoint.map((y:any,j:any)=>{
                 // console.group('associated')
                 // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
-                zGrid.a = 0
-                this.wordsMyElements._results.slice(y,zCheckpoint[j+1]).map((x:any,i:any)=>{     
+                zGrid.a = 0;
+                (function(qq){
+                    return qq.wordsMyElements._results.length === 1 ? qq.wordsMyElements._results : qq.wordsMyElements._results.slice(y,zCheckpoint[j+1])
+                })(this).map((x:any,i:any)=>{     
                     // console.log(   x.nativeElement.id   )
                     // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
 
@@ -205,7 +207,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                         
                         
                         zChild.push({
-                            element:x.nativeElement,
+                            element:x.nativeElement as HTMLElement,
                             style:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
                             innerText: this.wordsService[this.wordsTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b]
                         })
@@ -238,7 +240,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.groupEnd()
             })
             // see what happens when app-navigation top is made 0px
-            console.log(   zChild   ) 
+            // console.log(   zChild   ) 
             this.ref.detectChanges()                       
             this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.TitleDefaultWidth = getTextWidth({
                 elementText:zChild[2].innerText,
@@ -461,7 +463,15 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             }
 
 
-        })                  
+        })   
+        this.wordsService.wordsResizeEventSubscription4 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+            // console.log(   this.window.getComputedStyle(z.element).height   )
+            // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
+            this.wordsService.overlayComponentObject4.quantity[1][0].metadata.wordsCO0.next([
+                this.window.getComputedStyle(zChild[1].element).height,
+                this.window.getComputedStyle(zChild[1].element.parentElement).top 
+            ])              
+        })                       
 
 
         }
@@ -568,7 +578,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             // see what happens when app-navigation top is made 0px
             // console.log(   zChild   ) 
             this.ref.detectChanges()  
-            this.wordsService.wordsResizeEventSubscription0 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+            this.wordsService.wordsResizeEventSubscription1 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
                 zChild[2].style['left'] = xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                     target:numberParse(   this.window.getComputedStyle(zChild[2].element).width   )
@@ -654,7 +664,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                         (   
                             this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
                             this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
-                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'h2' 
                         )    
                     ){               
                         
@@ -695,7 +706,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             // see what happens when app-navigation top is made 0px
             // console.log(   zChild   ) 
             this.ref.detectChanges() 
-            this.wordsService.wordsResizeEventSubscription0 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+            this.wordsService.wordsResizeEventSubscription2 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
 
 
                 if(   numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ) > 1064   ){
@@ -1209,18 +1220,823 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     this.ref.detectChanges()                                                                                                                                                                                        
                 }                    
             })    
-            this.wordsService.wordsResizeEventSubscription1 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+            this.wordsService.wordsResizeEventSubscription3 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
                 // console.log(   this.window.getComputedStyle(z.element).height   )
                 // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
                 this.wordsService.footerComponentObject0.quantity[1][1].metadata.wordsCO2.next([
                     this.window.getComputedStyle(zChild[1].element).height,
                     this.window.getComputedStyle(zChild[1].element.parentElement).top 
                 ])
+                this.wordsService.overlayComponentObject4.quantity[1][0].metadata.wordsCO2.next([
+                    this.window.getComputedStyle(zChild[1].element.parentElement).top
+                ])                
             })
         }
         
+
+        else if(   this.wordsTemplateVariable === 'wordsComponentObject3'   ){
+
+
+            let zChild =[{
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
+                style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
+                innerText:null
+            }]          
+            // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
+            // console.log(this.wordsMyElements._results)
+            // console.log(zChild)
+            let zCheckpoint = []                         
+            this.wordsMyElements._results.map((x:any,i:any)=>{
+
+
+                if(   x.nativeElement.id === 'w_o_r_d_s_Board'   ){
+                    zCheckpoint.push(i)
+                }    
+                
+                
+                if(    x.nativeElement.id === 'w_o_r_d_s_Title'   ){
+                    zCheckpoint.push(i)
+                }
+                
+                
+            })
+            // console.log(zCheckpoint)
+            let zGrid = {
+                a:0, 
+                b:0, 
+                c:0,
+                d:0,
+                e:null,
+                f:null
+            }                  
+            zCheckpoint.map((y:any,j:any)=>{
+                // console.group('associated')
+                // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                zGrid.a = 0;
+                (function(qq){
+                    return qq.wordsMyElements._results.length === 1 ? qq.wordsMyElements._results : qq.wordsMyElements._results.slice(y,zCheckpoint[j+1])
+                })(this).map((x:any,i:any)=>{     
+                    // console.log(   x.nativeElement.id   )
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
+
+                    while(   
+                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                        zGrid.b +1 > this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                    ){
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                        zGrid.a +=1
+                        // debugger                                
+                    }
+                    // console.log(   
+                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                    //     zChild,
+                    //     zGrid
+                    // )
+
+
+                    if(   x.nativeElement.id === this.wordsService[this.wordsTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                        (   
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
+                        )    
+                    ){               
+                        
+                        
+                        zChild.push({
+                            element:x.nativeElement as HTMLElement,
+                            style:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
+                            innerText: this.wordsService[this.wordsTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b]
+                        })
+                        
+
+                        if(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
+
+
+                            zGrid.a += 1
+                            zGrid.b = 0       
+                            
+                            
+                        }
+
+
+                        
+                        else if(   true   ){
+
+
+                            zGrid.b += 1       
+                            
+                            
+                        }
+
+
+                    }
+                    
+                    
+                })
+                // console.groupEnd()
+            })
+            // console.log(zChild)
+            this.wordsService.wordsResizeEventSubscription4 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+                zChild[2].style['left'] =  xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target: getTextWidth({
+                        elementText:zChild[2].innerText,
+                        font: this.window.getComputedStyle(   zChild[2].element ).getPropertyValue('font-size') + 
+                        " " +
+                        this.window.getComputedStyle(   zChild[2].element ).getPropertyValue('font-family') 
+                    })
+                })
+                zChild[3].style['left'] =  xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[3].element).width   )
+                })  
+                zChild[4].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[4].element).width   ),
+                    containPos:.27
+                })    
+                zChild[5].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[5].element).width   ),
+                    containPos:.27
+                })                                 
+                zChild[6].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[6].element).width   ),
+                    containPos:.27
+                })
+                zChild[7].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[7].element).width   ),
+                    containPos:.72
+                })    
+                zChild[8].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[8].element).width   ),
+                    containPos:.72
+                })                                 
+                zChild[9].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[9].element).width   ),
+                    containPos:.72
+                })      
+                zChild[10].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[10].element).width   ),
+                    containPos:.27
+                })    
+                zChild[11].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[11].element).width   ),
+                    containPos:.27
+                })                                 
+                zChild[12].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[12].element).width   ),
+                    containPos:.27
+                }) 
+                zChild[13].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[13].element).width   ),
+                    containPos:.72
+                })    
+                zChild[14].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[14].element).width   ),
+                    containPos:.72
+                })                                 
+                zChild[15].style['left'] = xPosition({
+                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    target:numberParse(   this.window.getComputedStyle(zChild[15].element).width   ),
+                    containPos:.72
+                })                                                     
+                this.ref.detectChanges()
+            })
+
+            
+
+        }
+
+        
+        else if(   this.wordsTemplateVariable === 'wordsComponentObject4'   ){
+
+
+            let zChild =[{
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
+                style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
+                innerText:null
+            }]          
+            // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
+            // console.log(this.wordsMyElements._results)
+            console.log(zChild)
+            let zCheckpoint = []                         
+            this.wordsMyElements._results.map((x:any,i:any)=>{
+
+
+                if(   x.nativeElement.id === 'w_o_r_d_s_Board'   ){
+                    zCheckpoint.push(i)
+                }    
+                
+                
+                if(    x.nativeElement.id === 'w_o_r_d_s_Title'   ){
+                    zCheckpoint.push(i)
+                }
+                
+                
+            })
+            console.log(zCheckpoint)
+            let zGrid = {
+                a:0, 
+                b:0, 
+                c:0,
+                d:0,
+                e:null,
+                f:null
+            }                  
+            zCheckpoint.map((y:any,j:any)=>{
+                // console.group('associated')
+                // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                zGrid.a = 0;
+                (function(qq){
+                    return qq.wordsMyElements._results.length === 1 ? qq.wordsMyElements._results : qq.wordsMyElements._results.slice(y,zCheckpoint[j+1])
+                })(this).map((x:any,i:any)=>{     
+                    // console.log(   x.nativeElement.id   )
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
+
+                    while(   
+                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                        zGrid.b +1 > this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                    ){
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                        zGrid.a +=1
+                        // debugger                                
+                    }
+                    // console.log(   
+                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                    //     zChild,
+                    //     zGrid
+                    // )
+
+
+                    if(   x.nativeElement.id === this.wordsService[this.wordsTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                        (   
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
+                        )    
+                    ){               
+                        
+                        
+                        zChild.push({
+                            element:x.nativeElement as HTMLElement,
+                            style:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
+                            innerText: this.wordsService[this.wordsTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b]
+                        })
+                        
+
+                        if(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
+
+
+                            zGrid.a += 1
+                            zGrid.b = 0       
+                            
+                            
+                        }
+
+
+                        
+                        else if(   true   ){
+
+
+                            zGrid.b += 1       
+                            
+                            
+                        }
+
+
+                    }
+                    
+                    
+                })
+                // console.groupEnd()
+            })
+            console.log(zChild)
+            this.wordsService.wordsResizeEventSubscription5 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+                this.ref.detectChanges()
+            })
+            this.wordsService.wordsResizeEventSubscription6 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+                // console.log('needed data from wordsCO4')
+                // console.log(   this.window.getComputedStyle(z.element).height   )
+                // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
+                this.wordsService.footerComponentObject0.quantity[1][1].metadata.wordsCO4.next([
+                    this.window.getComputedStyle(zChild[1].element).height,
+                    this.window.getComputedStyle(zChild[1].element.parentElement).top 
+                ])                
+            })            
+
+            
+
+        }   
+        
+        
+        else if(   this.wordsTemplateVariable === 'wordsComponentObject5'   ){
+
+
+            let zChild =[{
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
+                style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
+                innerText:null
+            }]          
+            // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
+            // console.log(this.wordsMyElements._results)
+            console.log(zChild)
+            let zCheckpoint = []                         
+            this.wordsMyElements._results.map((x:any,i:any)=>{
+
+
+                if(   x.nativeElement.id === 'w_o_r_d_s_Board'   ){
+                    zCheckpoint.push(i)
+                }    
+                
+                
+                if(    x.nativeElement.id === 'w_o_r_d_s_Title'   ){
+                    zCheckpoint.push(i)
+                }
+
+
+                if(    x.nativeElement.id === 'w_o_r_d_s_Image'   ){
+                    zCheckpoint.push(i)
+                }                
+                
+                
+            })
+            console.log(zCheckpoint)
+            let zGrid = {
+                a:0, 
+                b:0, 
+                c:0,
+                d:0,
+                e:null,
+                f:null
+            }                  
+            zCheckpoint.map((y:any,j:any)=>{
+                // console.group('associated')
+                // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                zGrid.a = 0;
+                (function(qq){
+                    return qq.wordsMyElements._results.length === 1 ? qq.wordsMyElements._results : qq.wordsMyElements._results.slice(y,zCheckpoint[j+1])
+                })(this).map((x:any,i:any)=>{     
+                    // console.log(   x.nativeElement.id   )
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
+
+                    while(   
+                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                        zGrid.b +1 > this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                    ){
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                        zGrid.a +=1
+                        // debugger                                
+                    }
+                    // console.log(   
+                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                    //     zChild,
+                    //     zGrid
+                    // )
+
+
+                    if(   x.nativeElement.id === this.wordsService[this.wordsTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                        (   
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
+                        )    
+                    ){               
+                        
+                        
+                        zChild.push({
+                            element:x.nativeElement as HTMLElement,
+                            style:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
+                            innerText: this.wordsService[this.wordsTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b]
+                        })
+                        
+
+                        if(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
+
+
+                            zGrid.a += 1
+                            zGrid.b = 0       
+                            
+                            
+                        }
+
+
+                        
+                        else if(   true   ){
+
+
+                            zGrid.b += 1       
+                            
+                            
+                        }
+
+
+                    }
+                    
+                    
+                })
+                // console.groupEnd()
+            })
+            console.log(zChild)
+            this.wordsService.wordsResizeEventSubscription7 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+                this.ref.detectChanges()
+            })
+            this.wordsService.wordsResizeEventSubscription8 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+                // console.log('needed data from wordsCO4')
+                // console.log(   this.window.getComputedStyle(z.element).height   )
+                // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
+                this.wordsService.footerComponentObject0.quantity[1][1].metadata.wordsCO5.next([
+                    this.window.getComputedStyle(zChild[1].element).height,
+                    this.window.getComputedStyle(zChild[1].element.parentElement).top 
+                ])                
+            })            
+
+            
+
+        }      
+        
+        
+        else if(   this.wordsTemplateVariable === 'wordsComponentObject6'   ){
+
+
+            let zChild =[{
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
+                style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
+                innerText:null
+            }]          
+            // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
+            console.log(this.wordsMyElements._results)
+            console.log(zChild)
+            let zCheckpoint = []                         
+            this.wordsMyElements._results.map((x:any,i:any)=>{
+
+
+                if(   x.nativeElement.id === 'w_o_r_d_s_Board'   ){
+                    zCheckpoint.push(i)
+                }    
+                
+                
+                if(    x.nativeElement.id === 'w_o_r_d_s_Title'   ){
+                    zCheckpoint.push(i)
+                }
+                      
+                            
+                
+            })
+            console.log(zCheckpoint)
+            let zGrid = {
+                a:0, 
+                b:0, 
+                c:0,
+                d:0,
+                e:null,
+                f:null
+            }                  
+            zCheckpoint.map((y:any,j:any)=>{
+                // console.group('associated')
+                // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                zGrid.a = 0;
+                (function(qq){
+                    return qq.wordsMyElements._results.length === 1 ? qq.wordsMyElements._results : qq.wordsMyElements._results.slice(y,zCheckpoint[j+1])
+                })(this).map((x:any,i:any)=>{     
+                    // console.log(   x.nativeElement.id   )
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
+
+                    while(   
+                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                        zGrid.b +1 > this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                    ){
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                        zGrid.a +=1
+                        // debugger                                
+                    }
+                    // console.log(   
+                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                    //     zChild,
+                    //     zGrid
+                    // )
+
+
+                    if(   x.nativeElement.id === this.wordsService[this.wordsTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                        (   
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'h2' 
+                        )    
+                    ){               
+                        
+                        
+                        zChild.push({
+                            element:x.nativeElement as HTMLElement,
+                            style:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
+                            innerText: this.wordsService[this.wordsTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b]
+                        })
+                        
+
+                        if(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
+
+
+                            zGrid.a += 1
+                            zGrid.b = 0       
+                            
+                            
+                        }
+
+
+                        
+                        else if(   true   ){
+
+
+                            zGrid.b += 1       
+                            
+                            
+                        }
+
+
+                    }
+                    
+                    
+                })
+                // console.groupEnd()
+            })
+            console.log(zChild)
+            // this.wordsService.wordsResizeEventSubscription7 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+            //     this.ref.detectChanges()
+            // })
+            // this.wordsService.wordsResizeEventSubscription8 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+            //     // console.log('needed data from wordsCO4')
+            //     // console.log(   this.window.getComputedStyle(z.element).height   )
+            //     // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
+            //     this.wordsService.footerComponentObject0.quantity[1][1].metadata.wordsCO5.next([
+            //         this.window.getComputedStyle(zChild[1].element).height,
+            //         this.window.getComputedStyle(zChild[1].element.parentElement).top 
+            //     ])                
+            // })            
+
+            
+
+        } 
+        
+        
+        else if(   this.wordsTemplateVariable === 'wordsComponentObject8'   ){
+
+
+            let zChild =[{
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
+                style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
+                innerText:null
+            }]          
+            // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
+            // console.log(this.wordsMyElements._results)
+            console.log(zChild)
+            let zCheckpoint = []                         
+            this.wordsMyElements._results.map((x:any,i:any)=>{
+
+
+                if(   x.nativeElement.id === 'w_o_r_d_s_Board'   ){
+                    zCheckpoint.push(i)
+                }    
+                
+                
+                if(    x.nativeElement.id === 'w_o_r_d_s_Title'   ){
+                    zCheckpoint.push(i)
+                }
+                            
+                
+            })
+            console.log(zCheckpoint)
+            let zGrid = {
+                a:0, 
+                b:0, 
+                c:0,
+                d:0,
+                e:null,
+                f:null
+            }                  
+            zCheckpoint.map((y:any,j:any)=>{
+                // console.group('associated')
+                // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                zGrid.a = 0;
+                (function(qq){
+                    return qq.wordsMyElements._results.length === 1 ? qq.wordsMyElements._results : qq.wordsMyElements._results.slice(y,zCheckpoint[j+1])
+                })(this).map((x:any,i:any)=>{     
+                    // console.log(   x.nativeElement.id   )
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
+
+                    while(   
+                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                        zGrid.b +1 > this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                    ){
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                        zGrid.a +=1
+                        // debugger                                
+                    }
+                    // console.log(   
+                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                    //     zChild,
+                    //     zGrid
+                    // )
+
+
+                    if(   x.nativeElement.id === this.wordsService[this.wordsTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                        (   
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'h2' 
+                        )    
+                    ){               
+                        
+                        
+                        zChild.push({
+                            element:x.nativeElement as HTMLElement,
+                            style:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
+                            innerText: this.wordsService[this.wordsTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b]
+                        })
+                        
+
+                        if(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
+
+
+                            zGrid.a += 1
+                            zGrid.b = 0       
+                            
+                            
+                        }
+
+
+                        
+                        else if(   true   ){
+
+
+                            zGrid.b += 1       
+                            
+                            
+                        }
+
+
+                    }
+                    
+                    
+                })
+                // console.groupEnd()
+            })
+            console.log(zChild)
+            this.wordsService.wordsResizeEventSubscription15 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+                this.ref.detectChanges()
+            })
+            this.wordsService.wordsResizeEventSubscription16 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+                // console.log('needed data from wordsCO4')
+                // console.log(   this.window.getComputedStyle(z.element).height   )
+                // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
+                this.wordsService.footerComponentObject0.quantity[1][1].metadata.wordsCO8.next([
+                    this.window.getComputedStyle(zChild[1].element).height,
+                    this.window.getComputedStyle(zChild[1].element.parentElement).top 
+                ])                
+            })            
+
+            
+
+        }
+        
+        
+        else if(   this.wordsTemplateVariable === 'wordsComponentObject9'   ){
+
+
+            let zChild =[{
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
+                style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
+                innerText:null
+            }]          
+            // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
+            // console.log(this.wordsMyElements._results)
+            console.log(zChild)
+            let zCheckpoint = []                         
+            this.wordsMyElements._results.map((x:any,i:any)=>{
+
+
+                if(   x.nativeElement.id === 'w_o_r_d_s_Board'   ){
+                    zCheckpoint.push(i)
+                }    
+                
+                
+                if(    x.nativeElement.id === 'w_o_r_d_s_Title'   ){
+                    zCheckpoint.push(i)
+                }
+                            
+                
+            })
+            console.log(zCheckpoint)
+            let zGrid = {
+                a:0, 
+                b:0, 
+                c:0,
+                d:0,
+                e:null,
+                f:null
+            }                  
+            zCheckpoint.map((y:any,j:any)=>{
+                // console.group('associated')
+                // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                zGrid.a = 0;
+                (function(qq){
+                    return qq.wordsMyElements._results.length === 1 ? qq.wordsMyElements._results : qq.wordsMyElements._results.slice(y,zCheckpoint[j+1])
+                })(this).map((x:any,i:any)=>{     
+                    // console.log(   x.nativeElement.id   )
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
+
+                    while(   
+                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                        zGrid.b +1 > this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                    ){
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                        zGrid.a +=1
+                        // debugger                                
+                    }
+                    // console.log(   
+                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                    //     zChild,
+                    //     zGrid
+                    // )
+
+
+                    if(   x.nativeElement.id === this.wordsService[this.wordsTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                        (   
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' ||
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'h2' 
+                        )    
+                    ){               
+                        
+                        
+                        zChild.push({
+                            element:x.nativeElement as HTMLElement,
+                            style:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
+                            innerText: this.wordsService[this.wordsTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b]
+                        })
+                        
+
+                        if(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
+
+
+                            zGrid.a += 1
+                            zGrid.b = 0       
+                            
+                            
+                        }
+
+
+                        
+                        else if(   true   ){
+
+
+                            zGrid.b += 1       
+                            
+                            
+                        }
+
+
+                    }
+                    
+                    
+                })
+                // console.groupEnd()
+            })
+            console.log(zChild)
+            this.wordsService.wordsResizeEventSubscription17 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+                this.ref.detectChanges()
+            })
+            this.wordsService.wordsResizeEventSubscription18 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+                // console.log('needed data from wordsCO4')
+                // console.log(   this.window.getComputedStyle(z.element).height   )
+                // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
+                this.wordsService.footerComponentObject0.quantity[1][1].metadata.wordsCO9.next([
+                    this.window.getComputedStyle(zChild[1].element).height,
+                    this.window.getComputedStyle(zChild[1].element.parentElement).top 
+                ])                
+            })            
+
+            
+
+        }        
         // debugger
-    
+        this.wordsService.appViewComplete.next(
+            (function(qq){
+                qq.wordsService.appViewCompleteArray.push(   qq.wordsTemplateVariable   )
+            })(this)
+        )        
     }
   
     ngOnDestroy(){
@@ -1236,27 +2052,81 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
         }
 
 
-        if(   this.wordsTemplateVariable  === 'wordsComponentObject1'   ){
+        else if(   this.wordsTemplateVariable  === 'wordsComponentObject1'   ){
         
                 
 
-            this.wordsService.wordsResizeEventSubscription0.unsubscribe()
+            this.wordsService.wordsResizeEventSubscription1.unsubscribe()
         
     
         }  
         
 
-        if(   this.wordsTemplateVariable  === 'wordsComponentObject2'   ){
+        else if(   this.wordsTemplateVariable  === 'wordsComponentObject2'   ){
         
                 
 
-            this.wordsService.wordsResizeEventSubscription0.unsubscribe()
-            this.wordsService.wordsResizeEventSubscription1.unsubscribe()
+            this.wordsService.wordsResizeEventSubscription2.unsubscribe()
+            this.wordsService.wordsResizeEventSubscription3.unsubscribe()
         
     
-        }          
+        }      
+        
+        
+        else if(   this.wordsTemplateVariable  === 'wordsComponentObject3'   ){
+        
+                
+
+            this.wordsService.wordsResizeEventSubscription4.unsubscribe()
+        
+    
+        }    
+        
+        
+        else if(   this.wordsTemplateVariable  === 'wordsComponentObject4'   ){
+        
+                
+
+            this.wordsService.wordsResizeEventSubscription5.unsubscribe()
+            this.wordsService.wordsResizeEventSubscription6.unsubscribe()
+        
+    
+        }         
 
 
+        else if(   this.wordsTemplateVariable  === 'wordsComponentObject5'   ){
+        
+                
+
+            this.wordsService.wordsResizeEventSubscription7.unsubscribe()
+            this.wordsService.wordsResizeEventSubscription8.unsubscribe()
+        
+    
+        }    
+
+
+        else if(   this.wordsTemplateVariable  === 'wordsComponentObject8'   ){
+        
+                
+
+            this.wordsService.wordsResizeEventSubscription15.unsubscribe()
+            this.wordsService.wordsResizeEventSubscription16.unsubscribe()
+        
+    
+        }               
+
+
+        else if(   this.wordsTemplateVariable  === 'wordsComponentObject9'   ){
+        
+                
+
+            this.wordsService.wordsResizeEventSubscription17.unsubscribe()
+            this.wordsService.wordsResizeEventSubscription18.unsubscribe()
+        
+    
+        }  
+        
+        
     }
 }
 

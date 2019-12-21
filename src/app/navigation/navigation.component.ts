@@ -20,6 +20,81 @@ function getTextWidth(   devObj:{elementText:string,font:string}   ){
     return ctx.measureText(devObj.elementText).width;
 }
 
+function resize(   devObj:any   ){
+    // console.log(   devObj   )
+    let result = null
+
+
+    if(   devObj.misc === undefined   ){
+        devObj.misc = [.12]
+    }
+    
+
+    if(   devObj.type === 'direct'   ){
+
+
+        result = 
+        (
+            devObj.default -
+            (
+                devObj.containDefault   -
+                devObj.containActual    
+            ) * 
+            devObj.misc[0]
+        )
+
+
+    }
+    
+    else if(   devObj.type !== 'direct' ){
+
+
+        result = (
+            devObj.default *
+            (
+                (   
+                    (  
+                        devObj.containActual  /
+                        devObj.containDefault   
+                    ) -
+                    devObj.misc[0]   
+                ) 
+            )
+        ) 
+
+
+    }
+    return result = result > devObj.default  ? 
+        devObj.default.toString() + "px"      :
+        result.toString() + "px"     
+}
+
+function xPosition(devObj){
+
+
+    if(   devObj.containPos === undefined   ){
+
+
+        devObj.containPos = .5
+        
+        
+    }
+
+
+    if(   devObj.targetPos === undefined   ){
+
+        
+        devObj.targetPos = .5
+        
+        
+    }
+    
+    return (    
+        (   devObj.contain*devObj.containPos   ) -  
+        (   devObj.target*devObj.targetPos   )   
+    ).toString() + "px"; 
+}
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -57,6 +132,27 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
     ngOnInit() {
         console.log(this.navigationTemplateVariable+ '  ngOnInit fires one remount')
+
+
+        if(   this.wordsService.navigationElementHoldingBay.length !== 0   ){
+
+
+            if(   this.wordsService.navigationElementHoldingBay[7].style['display'] === 'none'  ){ // state management need a better value !!!
+                // console.warn('hit')
+        
+                for(   let i of this.wordsService.navigationElementHoldingBay.slice(0,7)   ){
+                    i.style['display'] = 'none'                                  
+                }                                 
+                this.ref.detectChanges()
+
+
+            }
+            this.wordsService.navigationElementHoldingBay = []  
+
+
+        }      
+
+
     }
 
     ngAfterViewInit(){
@@ -64,11 +160,12 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         this.wordsService.navigationLoadEvent$ = fromEvent(this.window ,'load');
         this.wordsService.navigationResizeEvent$ = fromEvent(this.window ,'resize');    
 
+        
         if(   this.navigationTemplateVariable === 'navigationComponentObject0'    ){
 
 
             let zChild =[{
-                element: this.window.document.querySelector('app-navigation[ng-reflect-navigation-template-variable='+this.navigationTemplateVariable+']'),
+                element: this.window.document.querySelector('app-navigation[ng-reflect-navigation-template-variable='+this.navigationTemplateVariable+']') as HTMLElement,
                 style:this.wordsService[this.navigationTemplateVariable].quantity[0][0].ngStyle[0][0],
                 innerText:null,
                 bool:this.wordsService[this.navigationTemplateVariable].quantity[0][0].bool[0][0]
@@ -83,7 +180,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                 
             
             })
-            console.log(zCheckpoint)
+            // console.log(zCheckpoint)
             let zGrid = {
                 a:0, 
                 b:0, 
@@ -127,8 +224,9 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     ){               
                         
                         
+                        let domElement = x.nativeElement as HTMLElement;
                         zChild.push({
-                            element:x.nativeElement,
+                            element:domElement,
                             style:this.wordsService[this.navigationTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
                             innerText: this.wordsService[this.navigationTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b],
                             bool:this.wordsService[this.navigationTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b]
@@ -162,7 +260,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                 // console.groupEnd()
             })
             // see what happens when app-navigation top is made 0px
-            console.log(   zChild   ) 
+            // console.log(   zChild   ) 
             this.wordsService[this.navigationTemplateVariable].metadata.titleWidth = getTextWidth({
                 elementText:zChild[2].innerText ,
                 font: this.window.getComputedStyle(   zChild[2].element   ).getPropertyValue('font-size') + 
@@ -171,12 +269,13 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             })        
             for(   let i of zChild.slice(2,4)   ){
                 this.wordsService[this.navigationTemplateVariable].metadata.defaultFontSizes.push(   this.window.getComputedStyle(i.element).fontSize   )   
-            }                   
+            }             
+            this.wordsService.navigationElementHoldingBay.push(...zChild.slice(5,13)) 
             this.wordsService.navigationResizeEventSubscription0 = this.wordsService.navigationResizeEvent$.subscribe((event)=>{
                 this.wordsService[this.navigationTemplateVariable].metadata.barDynamicWidth = zChild[1].element.getBoundingClientRect().width  - 1340;
                 this.ref.detectChanges()                
                 zChild[5].style['left'] = (   1340 * .47 - (1340 - zChild[1].element.getBoundingClientRect().width)   ).toString() + "px"
-                zChild[6].style['left'] = (   1340 * .53 - (1340 - zChild[1].element.getBoundingClientRect().width)   ).toString() + "px"
+                zChild[6].style['left'] = (   1340 * .524 - (1340 - zChild[1].element.getBoundingClientRect().width)   ).toString() + "px"
                 zChild[7].style['left'] = (   1340 * .58 - (1340 - zChild[1].element.getBoundingClientRect().width)   ).toString() + "px"
                 zChild[8].style['left'] = (   1340 * .65 - (1340 - zChild[1].element.getBoundingClientRect().width)   ).toString() + "px"
                 zChild[9].style['left'] = (   1340 * .72 - (1340 - zChild[1].element.getBoundingClientRect().width)   ).toString() + "px"
@@ -223,7 +322,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                         //     x.style['height'],
                         //     this.window.getComputedStyle(x.element)['height']
                         // )
-                        if(i !== 0  ){
+                        if(   i !== 0   ){
 
 
                             x.style['top'] = (
@@ -233,6 +332,8 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                             
 
                         }
+
+
                         this.ref.detectChanges()
                     })                                      
                     this.ref.detectChanges()
@@ -267,6 +368,8 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                             }                                 
                             this.ref.detectChanges()
                         })  
+                        // dispatch router event if the values are the smaec
+                        // console.log(event)
                         // console.log(   this.wordsService.navigationClickEventSubscription0   )      
 
 
@@ -274,7 +377,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     
                     if(   numberParse(   this.window.getComputedStyle(zChild[13].element).left    )   <=    this.wordsService[this.navigationTemplateVariable].metadata.titleWidth + 155  ){
 
-
+                    //    console.log('drop down interfers with title]')
                        zChild.slice(2,4).map((x,i)=>{
                             x.style['font-size'] =  
                             (   
@@ -300,6 +403,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     }                    
 
 
+                    this.ref.detectChanges()
                 }
 
 
@@ -358,11 +462,12 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
         }
         
-
-
-       
-        
-
+        // debugger
+        this.wordsService.appViewComplete.next(
+            (function(qq){
+                qq.wordsService.appViewCompleteArray.push(qq.navigationTemplateVariable) 
+            })(this)
+        )
     }
 
     ngOnDestroy(){
@@ -374,6 +479,8 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         
             this.wordsService.navigationResizeEventSubscription0.unsubscribe()
             this.wordsService.navigationResizeEventSubscription1.unsubscribe()
+
+
             if(   this.wordsService.navigationClickEventSubscription0 !== undefined   ){
 
 
@@ -389,7 +496,9 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             }            
         
     
-        }        
+        }      
+        
+        
     }
 
 }

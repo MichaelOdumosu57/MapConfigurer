@@ -20,7 +20,7 @@
     </ng-container>  
 
     <ng-container *ngFor = 'let aa of a.quantity[4];let bb = index' >
-        <a #myNavigationVal *ngIf= "a.bool[4][bb] ==='true'" id = {{a.val[4][bb]}} 
+        <a #myNavigationVal routerLink={{a.metadata.router[4][bb].link}} routerLinkActive="active"  *ngIf= "a.bool[4][bb] ==='true'" id = {{a.val[4][bb]}} 
         [ngStyle] = 'a.ngStyle[4][bb]'>{{a.text[4][bb]}}</a>
     </ng-container>    
     
@@ -32,17 +32,6 @@
         </ng-template> 
     </ng-container>    
     
-    <ng-container *ngFor = 'let aa of a.quantity[6];let bb = index' >
-        <div #myNavigationVal   *ngIf= "a.bool[6][bb] ==='true' " id = {{a.val[6][bb]}} [ngStyle] = 'a.ngStyle[6][bb]' >
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Projects</a>
-            <a href="#">Blog</a>
-            <a href="#">Contact</a>
-            <a href="#">Take&#160;Action</a>            
-        </div>
-    </ng-container>  
 
     
 <!-- for the menu icon try to use &#9776; ☰ -->

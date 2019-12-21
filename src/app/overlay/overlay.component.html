@@ -1,24 +1,32 @@
-<ng-container *ngFor = 'let a of overlayStyle[0]'    >
-    <img  #myOverlayVal *ngIf="overlayBool[0] ==='true'" id = {{overlayVal[0]}} class = 'w-100'   [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[1]' src = "{{wordsService[overlayTemplateVariable].metadata.mainImg}}"  />
-</ng-container>
-<ng-container *ngFor = 'let a of overlayStyle[1]'   >
-    <h1 #myOverlayVal  *ngIf="overlayBool[1] ==='true'" id = {{overlayVal[1]}} class = 'f4' [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[2]'>{{wordsService[overlayTemplateVariable].metadata.aboutPreTitle}}</h1>
-</ng-container>
-<ng-container *ngFor = 'let a of overlayStyle[2]'   >
-    <h1 #myOverlayVal  *ngIf="overlayBool[2] ==='true'" id = {{overlayVal[2]}} class = 'f2' [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[3]'>{{wordsService[overlayTemplateVariable].metadata.title}}</h1>
-</ng-container>
-<ng-container *ngFor = 'let a of overlayStyle[3]'   >
-    <div #myOverlayVal  *ngIf="overlayBool[3] ==='true'" id = {{overlayVal[3]}} class = 'w-100' [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[4]'></div>
-</ng-container>
-<ng-container *ngFor = 'let a of overlayStyle[4];let b = index'   >
-    <p #myOverlayVal  *ngIf="overlayBool[4] ==='true'" id = {{overlayVal[4]}} class = 'w-100' [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[5+b]'>{{wordsService[overlayTemplateVariable].metadata.blendTitle}}</p>
-</ng-container>
-<ng-container *ngFor = 'let a of overlayStyle[5]' >
-    <div #myOverlayVal  *ngIf="overlayBool[5] ==='true'"  id = {{overlayVal[5]}}  [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[7]'></div>
-</ng-container>
-<ng-container *ngFor = 'let a of overlayStyle[6]' >
-    <div #myOverlayVal  *ngIf="overlayBool[6] ==='true'"  id = {{overlayVal[6]}}  [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[8]'></div>
-</ng-container>
-<ng-container *ngFor = 'let a of overlayStyle[7]' >
-    <a #myOverlayVal  *ngIf="overlayBool[7] ==='true'"  id = {{overlayVal[7]}}  [ngStyle] = 'wordsService[overlayTemplateVariable].ngStyle[9]'>{{wordsService[overlayTemplateVariable].metadata.text0}}</a>
+<ng-container *ngFor = 'let a of wordsService[overlayTemplateVariable].quantity[1];let b = index' >
+
+    <ng-container *ngFor = 'let aa of a.quantity[0];let bb = index' >
+        <img  #myOverlayVal *ngIf= "a.bool[0][bb] ==='true'" id = {{a.val[0][bb]}} [ngStyle] = 'a.ngStyle[0][bb]' 
+        src="{{a.metadata.image[bb].src}}" alt ="{{a.metadata.image[bb].alt}}"/>        
+    </ng-container>
+
+    <ng-container *ngFor = 'let aa of a.quantity[1];let bb = index' >
+        <h1  #myOverlayVal *ngIf= "a.bool[1][bb] ==='true'" id = {{a.val[1][bb]}} [ngStyle] = 'a.ngStyle[1][bb]' >{{a.text[1][bb]}}</h1>        
+    </ng-container>    
+
+    <ng-container *ngFor = 'let aa of a.quantity[2];let bb = index' >
+        <h2  #myOverlayVal *ngIf= "a.bool[2][bb] ==='true'" id = {{a.val[2][bb]}} [ngStyle] = 'a.ngStyle[2][bb]' >{{a.text[2][bb]}}</h2>        
+    </ng-container> 
+    
+    <ng-container *ngFor = 'let aa of a.quantity[3];let bb = index' >
+        <h3  #myOverlayVal *ngIf= "a.bool[3][bb] ==='true'" id = {{a.val[3][bb]}} [ngStyle] = 'a.ngStyle[3][bb]' >{{a.text[3][bb]}}</h3>        
+    </ng-container>   
+    
+    <ng-container *ngFor = 'let aa of a.quantity[4];let bb = index' >
+        <p  #myOverlayVal *ngIf= "a.bool[4][bb] ==='true'" id = {{a.val[4][bb]}} [ngStyle] = 'a.ngStyle[4][bb]' >{{a.text[4][bb]}}</p>        
+    </ng-container>     
+
+    <ng-container *ngFor = 'let aa of a.quantity[5];let bb = index' >
+        <div  #myOverlayVal *ngIf= "a.bool[5][bb] ==='true' else elseBlock2" id = {{a.val[5][bb]}} [ngStyle] = 'a.ngStyle[5][bb]' ></div>     
+        <ng-template #elseBlock2  > 
+            <button #myOverlayVal *ngIf= "a.bool[5][bb] ==='button' " id = {{a.val[5][bb]}}  [ngStyle] =  'a.ngStyle[5][bb]'  ></button>
+        </ng-template>    
+    </ng-container>       
+
+
 </ng-container>
