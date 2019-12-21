@@ -1,13 +1,13 @@
-<ng-container *ngIf ="wordsService.appCurrentNav === '/home'">
+<ng-container *ngIf ="window.location.pathname  === '/home' || window.location.pathname  === '/' ">
     <app-navigation   [navigationTemplateVariable] = '"navigationComponentObject0"' #appNavigationVal0 ></app-navigation>
     <app-overlay   [overlayTemplateVariable]= '"overlayComponentObject4"' #appOverlayVal4 [ngStyle] = 'wordsService.overlayComponentObject4.quantity[0][0].ngStyle[0][0]'></app-overlay>
-    <app-words   [wordsTemplateVariable] = '"wordsComponentObject1"' #appWordsVal1 [ngStyle] = 'wordsService.wordsComponentObject1.quantity[0][0].ngStyle[0][0]' ></app-words>
+    <!-- <app-words   [wordsTemplateVariable] = '"wordsComponentObject1"' #appWordsVal1 [ngStyle] = 'wordsService.wordsComponentObject1.quantity[0][0].ngStyle[0][0]' ></app-words> -->
     <app-words  [wordsTemplateVariable] = '"wordsComponentObject0"' #appWordsVal0 [ngStyle] = 'wordsService.wordsComponentObject0.quantity[0][0].ngStyle[0][0]' [id] = 'wordsService.wordsComponentObject0.quantity[0][0].val[0][0]' ></app-words>
     <app-words [wordsTemplateVariable] = '"wordsComponentObject2"' #appWordsVal2 [ngStyle] = 'wordsService.wordsComponentObject2.quantity[0][0].ngStyle[0][0]'  ></app-words>
     <app-footer [footerTemplateVariable] = '"footerComponentObject0"' #appFooterVal0 [ngStyle] = 'wordsService.footerComponentObject0.quantity[0][0].ngStyle[0][0]' ></app-footer>
 </ng-container>
 
-<ng-container *ngIf ="wordsService.appCurrentNav === '/about'">
+<ng-container *ngIf ="window.location.pathname  === '/about'">
     <app-navigation   [navigationTemplateVariable] = '"navigationComponentObject0"' #appNavigationVal0 ></app-navigation> 
     <app-overlay [overlayTemplateVariable]= '"overlayComponentObject3"' #appOverlayVal3 [ngStyle] = 'wordsService.overlayComponentObject3.quantity[0][0].ngStyle[0][0]'></app-overlay>    
     <app-words  [wordsTemplateVariable] = '"wordsComponentObject5"' #appWordsVal5 [ngStyle] = 'wordsService.wordsComponentObject5.quantity[0][0].ngStyle[0][0]'  ></app-words>   
@@ -15,7 +15,7 @@
 </ng-container>
 
 
-<ng-container *ngIf ="wordsService.appCurrentNav === '/services'">
+<ng-container *ngIf ="window.location.pathname  === '/services'">
     <app-navigation    [navigationTemplateVariable] = '"navigationComponentObject0"' #appNavigationVal0 ></app-navigation> 
     <app-overlay [overlayTemplateVariable]= '"overlayComponentObject0"' #appOverlayVal0 [ngStyle] = 'wordsService.overlayComponentObject0.quantity[0][0].ngStyle[0][0]'></app-overlay>
     <app-words  [wordsTemplateVariable] = '"wordsComponentObject3"' #appWordsVal3 [ngStyle] = 'wordsService.wordsComponentObject3.quantity[0][0].ngStyle[0][0]'  ></app-words>    
@@ -24,7 +24,7 @@
 </ng-container>
 
 
-<ng-container *ngIf ="wordsService.appCurrentNav === '/projects'">
+<ng-container *ngIf ="window.location.pathname  === '/projects'">
     <app-navigation   [navigationTemplateVariable] = '"navigationComponentObject0"' #appNavigationVal0 ></app-navigation> 
     <app-overlay [overlayTemplateVariable]= '"overlayComponentObject1"' #appOverlayVal1 [ngStyle] = 'wordsService.overlayComponentObject1.quantity[0][0].ngStyle[0][0]'></app-overlay>
     <app-words  [wordsTemplateVariable] = '"wordsComponentObject6"' #appWordsVal6 [ngStyle] = 'wordsService.wordsComponentObject6.quantity[0][0].ngStyle[0][0]'  ></app-words> 
@@ -33,7 +33,7 @@
     <app-footer   [footerTemplateVariable] = '"footerComponentObject0"' #appFooterVal0 [ngStyle] = 'wordsService.footerComponentObject0.quantity[0][0].ngStyle[0][0]' ></app-footer>
 </ng-container>
 
-<ng-container *ngIf ="wordsService.appCurrentNav === '/contact'">
+<ng-container *ngIf ="window.location.pathname  === '/contact'">
     <app-navigation   [navigationTemplateVariable] = '"navigationComponentObject0"' #appNavigationVal0 ></app-navigation> 
     <app-overlay [overlayTemplateVariable]= '"overlayComponentObject2"' #appOverlayVal2 [ngStyle] = 'wordsService.overlayComponentObject2.quantity[0][0].ngStyle[0][0]'></app-overlay>
     <app-words   [wordsTemplateVariable] = '"wordsComponentObject9"' #appWordsVal8 [ngStyle] = 'wordsService.wordsComponentObject9.quantity[0][0].ngStyle[0][0]'  ></app-words>       

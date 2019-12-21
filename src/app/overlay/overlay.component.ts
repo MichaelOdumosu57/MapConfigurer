@@ -183,7 +183,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 
             
             })
-            console.log(zCheckpoint)
+            // console.log(zCheckpoint)
             let zGrid = {
                 a:0, 
                 b:0, 
@@ -263,7 +263,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.groupEnd()
             })
             // see what happens when app-overlay top is made 0px
-            console.log(   zChild   ) 
+            // console.log(   zChild   ) 
             this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth = 516
             // console.log(this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth )    
             this.wordsService[this.overlayTemplateVariable].metadata.titleDefaultFontSize = '141px'

@@ -20,8 +20,10 @@
     </ng-container>  
 
     <ng-container *ngFor = 'let aa of a.quantity[4];let bb = index' >
-        <a #myNavigationVal routerLink={{a.metadata.router[4][bb].link}} routerLinkActive="active"  *ngIf= "a.bool[4][bb] ==='true'" id = {{a.val[4][bb]}} 
-        [ngStyle] = 'a.ngStyle[4][bb]'>{{a.text[4][bb]}}</a>
+        <!-- <a #myNavigationVal routerLink={{a.metadata.router[4][bb].link}} routerLinkActive="active"  *ngIf= "a.bool[4][bb] ==='true'" id = {{a.val[4][bb]}} 
+        [ngStyle] = 'a.ngStyle[4][bb]'>{{a.text[4][bb]}}</a> -->
+        <a #myNavigationVal href='{{a.metadata.router[4][bb].link}}'  *ngIf= "a.bool[4][bb] ==='true'" id = {{a.val[4][bb]}} 
+        [ngStyle] = 'a.ngStyle[4][bb]'>{{a.text[4][bb]}}</a>        
     </ng-container>    
     
 

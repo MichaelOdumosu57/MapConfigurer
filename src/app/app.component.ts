@@ -1,7 +1,7 @@
 import {   Component,OnInit,AfterViewInit,AfterContentInit,ViewChildren,Inject,ElementRef  } from '@angular/core';
 import {   WordsService   } from './words.service';
 import {   fromEvent,Subject,Observable,of,Subscription,interval   } from 'rxjs';
-import {   Router,RouterEvent } from '@angular/router';
+// import {   Router,RouterEvent } from '@angular/router';
 import {   WINDOW   } from './window.service';
 import {   catchError,take,timeout   } from 'rxjs/operators'
 
@@ -47,15 +47,53 @@ export class AppComponent implements OnInit,AfterViewInit {
         console.log('app ngOnInit fires on mount')
         this.wordsService.appViewComplete.subscribe(()=>{
             console.log(this.wordsService.appCurrentNav)
+            console.log(   this.window.location   )
 
 
-            if(   this.wordsService.appCurrentNav === '/home'   ){
+            // if(   
+            //     this.window.location.pathname === this.wordsService.appCurrentNav || 
+            //     (   
+            //         this.window.location.pathname  === '/' && this.wordsService.appCurrentNav === '/home'   
+            //     ) 
+            // ){
+
+
+
+
+
+            // }
+            
+
+
+
+            // else  if(   
+            //     this.window.location.pathname !== this.wordsService.appCurrentNav || 
+            //     (   
+            //         this.window.location.pathname  === '/' && this.wordsService.appCurrentNav !== '/home'   
+            //     ) 
+            // ){
+
+
+            //     this.wordsService.appCurrentNav = this.window.location.pathname  
+            //     switch (   this.window.location.pathname   ){
+            //         case '/':  
+            //             this.wordsService.appCurrentNav = '/home'                   
+            //             break;                                                                                       
+            //         default:
+            //             break;
+            //     }
+
+
+            // }            
+
+            
+            if(   this.window.location.pathname  === '/' || this.window.location.pathname  === '/home'    ){
 
 
                 let arr = [
                     'navigationComponentObject0',
                     'overlayComponentObject4',
-                    'wordsComponentObject1',
+                    // 'wordsComponentObject1',
                     'wordsComponentObject0',
                     'wordsComponentObject2',
                     'footerComponentObject0'
@@ -95,7 +133,7 @@ export class AppComponent implements OnInit,AfterViewInit {
             }
 
 
-            else if(   this.wordsService.appCurrentNav === '/about'   ){
+            else if(   this.window.location.pathname === '/about'   ){
 
 
                 let arr = [
@@ -139,7 +177,7 @@ export class AppComponent implements OnInit,AfterViewInit {
             }
             
             
-            else if(   this.wordsService.appCurrentNav === '/services'   ){
+            else if(   this.window.location.pathname === '/services'   ){
 
 
                 let arr = [
@@ -184,7 +222,7 @@ export class AppComponent implements OnInit,AfterViewInit {
             }
             
             
-            else if(   this.wordsService.appCurrentNav === '/projects'   ){
+            else if(   this.window.location.pathname === '/projects'   ){
 
 
                 let arr = [
@@ -230,7 +268,7 @@ export class AppComponent implements OnInit,AfterViewInit {
             }   
             
             
-            else if(   this.wordsService.appCurrentNav === '/contact'   ){
+            else if(   this.window.location.pathname === '/contact'   ){
 
 
                 let arr = [
@@ -275,36 +313,8 @@ export class AppComponent implements OnInit,AfterViewInit {
             
             
         })
-        this.wordsService.appRouterEventSubscription0 = this.wordsService.appRouterEvent$.subscribe((a)=>{
-            
-            console.log('fire')
-            if(   a.url !== undefined   ){
 
 
-                if(   a.url === this.wordsService.appCurrentNav || 
-                    (a.url === '/' && this.wordsService.appCurrentNav === '/home'   ) 
-                ){
-
-
-                    return
-
-
-                }
-                
-                this.wordsService.appCurrentNav = a.url  
-                switch (   a.url   ){
-                    case '/':  
-                        this.wordsService.appCurrentNav = '/home'                   
-                        break;                                                                                       
-                    default:
-                        break;
-                }                
-                
-                
-            }
-
-            
-        })
     }
 
 

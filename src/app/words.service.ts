@@ -19,7 +19,7 @@ export class WordsService {
    
 
     constructor(
-        private router:Router
+        // private router:Router
     ) { };
 
     /*app*/
@@ -33,17 +33,9 @@ export class WordsService {
             yield index++;
         }()
     })()
-    appNav:any = {
-        home:'true',
-        about:null,
-        services:null,
-        projects:null,
-        blog:null,
-        contact:null,
-        takeAction:null
-    }
+
     appCurrentNav:string = '/home'
-    appRouterEvent$:Observable<any> = this.router.events    
+    // appRouterEvent$:Observable<any> = this.router.events    
     appRouterEventSubscription0:Subscription
     appSubscriptionArray:Subscription[] = []
     appViewComplete:Subject<any> =  new  Subject<any>()
