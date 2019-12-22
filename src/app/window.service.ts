@@ -20,7 +20,7 @@ export class BrowserWindowRef extends WindowRef {
     super();
   }
 
-  get nativeWindow(): Window | Object {
+  get nativeWindow(): Window | Object  {
     return window;
   }
 

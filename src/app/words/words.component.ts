@@ -1225,7 +1225,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
                 this.wordsService.footerComponentObject0.quantity[1][1].metadata.wordsCO2.next([
                     this.window.getComputedStyle(zChild[1].element).height,
-                    this.window.getComputedStyle(zChild[1].element.parentElement).top 
+                    this.window.getComputedStyle(zChild[1].element.parentElement).top,
+                    'home' 
                 ])
                 this.wordsService.overlayComponentObject4.quantity[1][0].metadata.wordsCO2.next([
                     this.window.getComputedStyle(zChild[1].element.parentElement).top
@@ -1531,7 +1532,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
                 this.wordsService.footerComponentObject0.quantity[1][1].metadata.wordsCO4.next([
                     this.window.getComputedStyle(zChild[1].element).height,
-                    this.window.getComputedStyle(zChild[1].element.parentElement).top 
+                    this.window.getComputedStyle(zChild[1].element.parentElement).top,
+                    'services'
                 ])                
             })            
 
@@ -1657,7 +1659,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
                 this.wordsService.footerComponentObject0.quantity[1][1].metadata.wordsCO5.next([
                     this.window.getComputedStyle(zChild[1].element).height,
-                    this.window.getComputedStyle(zChild[1].element.parentElement).top 
+                    this.window.getComputedStyle(zChild[1].element.parentElement).top,
+                    'about' 
                 ])                
             })            
 
@@ -1770,22 +1773,9 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 })
                 // console.groupEnd()
             })
-            console.log(zChild)
-            // this.wordsService.wordsResizeEventSubscription7 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
-            //     this.ref.detectChanges()
-            // })
-            // this.wordsService.wordsResizeEventSubscription8 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
-            //     // console.log('needed data from wordsCO4')
-            //     // console.log(   this.window.getComputedStyle(z.element).height   )
-            //     // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
-            //     this.wordsService.footerComponentObject0.quantity[1][1].metadata.wordsCO5.next([
-            //         this.window.getComputedStyle(zChild[1].element).height,
-            //         this.window.getComputedStyle(zChild[1].element.parentElement).top 
-            //     ])                
-            // })            
+            console.log(zChild)          
 
             
-
         } 
         
         
@@ -1902,7 +1892,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
                 this.wordsService.footerComponentObject0.quantity[1][1].metadata.wordsCO8.next([
                     this.window.getComputedStyle(zChild[1].element).height,
-                    this.window.getComputedStyle(zChild[1].element.parentElement).top 
+                    this.window.getComputedStyle(zChild[1].element.parentElement).top,
+                    'projects' 
                 ])                
             })            
 
@@ -2024,7 +2015,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
                 this.wordsService.footerComponentObject0.quantity[1][1].metadata.wordsCO9.next([
                     this.window.getComputedStyle(zChild[1].element).height,
-                    this.window.getComputedStyle(zChild[1].element.parentElement).top 
+                    this.window.getComputedStyle(zChild[1].element.parentElement).top ,
+                    'contact'
                 ])                
             })            
 

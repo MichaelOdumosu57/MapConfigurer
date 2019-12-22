@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {  wordsGroupObject } from './wordsGroupObject';
 import { Observable, of, Subject, Subscription } from 'rxjs';
-import { Router,RouterEvent } from '@angular/router';
+// import { Router,RouterEvent } from '@angular/router';
+import { zChildren } from './customExports';
 
 
 
@@ -35,6 +35,7 @@ export class WordsService {
     })()
 
     appCurrentNav:string = '/home'
+    appReloaded:string = 'true'
     // appRouterEvent$:Observable<any> = this.router.events    
     appRouterEventSubscription0:Subscription
     appSubscriptionArray:Subscription[] = []
@@ -720,6 +721,7 @@ export class WordsService {
 
         // NavigationComponent concept metadata
         navigationElementHoldingBay :any[] = []
+        navigationClickElements:zChildren[] = []
         //
             
         navigationVal:Array<string> = [
@@ -757,6 +759,12 @@ export class WordsService {
             navigationLinkClickEvent$:Observable<Event>        
             navigationClickEventSubscription0:Subscription
             navigationClickEventSubscription1:Subscription
+            navigationClickEventSubscription2:Subscription
+            navigationClickEventSubscription3:Subscription
+            navigationClickEventSubscription4:Subscription
+            navigationClickEventSubscription5:Subscription
+            navigationClickEventSubscription6:Subscription
+            navigationClickEventSubscription7:Subscription                                    
         //    
 
         // NavigationComponent Instances
@@ -857,10 +865,10 @@ export class WordsService {
                                     }
                                 ],
                                 router:[
-                                    null,
-                                    null,
-                                    null,
-                                    null,
+                                    [],
+                                    [],
+                                    [],
+                                    [],
                                     [
                                         {
                                           link: "/home"
@@ -883,7 +891,9 @@ export class WordsService {
                                         {
                                           link: "/takeaction"
                                         }
-                                      ]
+                                    ],
+                                    [],
+                                    []
                                 ]                            
                             },
                             ngStyle:[
@@ -996,8 +1006,6 @@ export class WordsService {
                             generator:this.appConsecutiveGenerator
                         }})                                                         
                     ],   
-                    [3,3],
-                    [3,3]
                 ],
                 generator:(function(){
                     return function *generator() {

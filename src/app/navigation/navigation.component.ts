@@ -3,6 +3,7 @@ import {   WordsService   } from '../words.service';
 import {   fromEvent,interval, of,from, Observable   } from 'rxjs';
 import {   WINDOW   } from '../window.service';
 import {   take,timeout,distinctUntilChanged   } from 'rxjs/operators';
+import {   zChildren   } from '../customExports'
 
 function numberParse(   dimension:any   ){
     dimension = parseFloat(dimension.split("p")[0])
@@ -164,10 +165,9 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         if(   this.navigationTemplateVariable === 'navigationComponentObject0'    ){
 
 
-            let zChild =[{
+            let zChild :zChildren[] = [{
                 element: this.window.document.querySelector('app-navigation[ng-reflect-navigation-template-variable='+this.navigationTemplateVariable+']') as HTMLElement,
                 style:this.wordsService[this.navigationTemplateVariable].quantity[0][0].ngStyle[0][0],
-                innerText:null,
                 bool:this.wordsService[this.navigationTemplateVariable].quantity[0][0].bool[0][0]
             }]          
             let zCheckpoint = []                         
@@ -225,11 +225,16 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                         
                         
                         let domElement = x.nativeElement as HTMLElement;
+                        // console.log(this.wordsService[this.navigationTemplateVariable].quantity[1][j])
+                        // console.log(   this.wordsService[this.navigationTemplateVariable].quantity[1][j].metadata.router[zGrid.a][zGrid.b]   )
                         zChild.push({
                             element:domElement,
                             style:this.wordsService[this.navigationTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
                             innerText: this.wordsService[this.navigationTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b],
-                            bool:this.wordsService[this.navigationTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b]
+                            bool:this.wordsService[this.navigationTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b],
+                            link:this.wordsService[this.navigationTemplateVariable].quantity[1][j].metadata.router[zGrid.a][zGrid.b] === undefined ?
+                                null :
+                                this.wordsService[this.navigationTemplateVariable].quantity[1][j].metadata.router[zGrid.a][zGrid.b].link,
                         })
                         
 
@@ -261,6 +266,17 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
             })
             // see what happens when app-navigation top is made 0px
             // console.log(   zChild   ) 
+            this.wordsService.navigationClickEvent$ = fromEvent([zChild[13].element ,zChild[14].element] ,'click');
+            zChild.slice(5,12).forEach((x,i)=>{
+                // console.log(i+1)
+                // console.log(x.element)
+                this.wordsService['navigationClickEventSubscription'+(i+1).toString()] = fromEvent(x.element,'click').subscribe(()=>{
+                    this.wordsService.appCurrentNav = x.link
+                })
+                // console.log(this.wordsService['navigationClickEventSubscription'+[i+1]])
+            })
+            this.wordsService.navigationClickElements.push(...zChild.slice(5,12)) 
+            // console.log(this.wordsService)
             this.wordsService[this.navigationTemplateVariable].metadata.titleWidth = getTextWidth({
                 elementText:zChild[2].innerText ,
                 font: this.window.getComputedStyle(   zChild[2].element   ).getPropertyValue('font-size') + 
@@ -479,6 +495,11 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
         
             this.wordsService.navigationResizeEventSubscription0.unsubscribe()
             this.wordsService.navigationResizeEventSubscription1.unsubscribe()
+            this.wordsService.navigationClickElements.forEach((x,i)=>{
+                this.wordsService['navigationClickEventSubscription'+[i+1]].unsubscribe()
+                // console.log(i+1)
+            })     
+            this.wordsService.navigationClickElements = []       
 
 
             if(   this.wordsService.navigationClickEventSubscription0 !== undefined   ){

@@ -1,4 +1,4 @@
-import {   Component,OnInit,AfterViewInit,AfterContentInit,ViewChildren,Inject,ElementRef  } from '@angular/core';
+import {   Component,OnInit,AfterViewInit,AfterContentInit,ViewChildren,Inject,ElementRef,ChangeDetectorRef,ChangeDetectionStrategy  } from '@angular/core';
 import {   WordsService   } from './words.service';
 import {   fromEvent,Subject,Observable,of,Subscription,interval   } from 'rxjs';
 // import {   Router,RouterEvent } from '@angular/router';
@@ -16,12 +16,15 @@ function appGenerateSelector(   devObj   ){
     }
     return string.slice(0,-1)
 }
-  
+
+
+
   
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.css'],
+    // changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 
@@ -38,62 +41,69 @@ export class AppComponent implements OnInit,AfterViewInit {
     constructor(
         private wordsService: WordsService,
         @Inject(WINDOW) private window: Window,
-        
-    ) { }
+        private ref:ChangeDetectorRef
+    ) {}
     
     appTitle:string = 'WindsorEmpire'
+    
  
     ngOnInit(){
         console.log('app ngOnInit fires on mount')
+
+        
+        if(   this.window.name === ''   ){
+
+
+            this.window.name = '/'
+
+
+        }
+
+
+        if(   this.wordsService.appReloaded === 'true'){
+
+
+            this.wordsService.appCurrentNav = this.window.name 
+            // this.ref.detectChanges()
+
+
+        }            
+              
+        
         this.wordsService.appViewComplete.subscribe(()=>{
             console.log(this.wordsService.appCurrentNav)
-            console.log(   this.window.location   )
-
-
-            // if(   
-            //     this.window.location.pathname === this.wordsService.appCurrentNav || 
-            //     (   
-            //         this.window.location.pathname  === '/' && this.wordsService.appCurrentNav === '/home'   
-            //     ) 
-            // ){
-
-
-
-
-
-            // }
-            
-
-
-
-            // else  if(   
-            //     this.window.location.pathname !== this.wordsService.appCurrentNav || 
-            //     (   
-            //         this.window.location.pathname  === '/' && this.wordsService.appCurrentNav !== '/home'   
-            //     ) 
-            // ){
-
-
-            //     this.wordsService.appCurrentNav = this.window.location.pathname  
-            //     switch (   this.window.location.pathname   ){
-            //         case '/':  
-            //             this.wordsService.appCurrentNav = '/home'                   
-            //             break;                                                                                       
-            //         default:
-            //             break;
-            //     }
-
-
-            // }            
+            // console.log(   this.window.location   )
+            // console.log(
+            //     this.window.name,
+            //     this.wordsService.appReloaded
+            // )
 
             
-            if(   this.window.location.pathname  === '/' || this.window.location.pathname  === '/home'    ){
+            if(   this.window.name === ''   ){
+
+
+                this.window.name = '/'
+
+
+            }
+       
+
+            if(   this.wordsService.appReloaded !== 'true'){
+
+
+                this.window.name = this.wordsService.appCurrentNav
+    
+    
+            }            
+
+
+            if(   this.wordsService.appCurrentNav  === '/' || this.wordsService.appCurrentNav  === '/home'    ){
 
 
                 let arr = [
                     'navigationComponentObject0',
                     'overlayComponentObject4',
-                    // 'wordsComponentObject1',
+                    'wordsComponentObject1',
                     'wordsComponentObject0',
                     'wordsComponentObject2',
                     'footerComponentObject0'
@@ -113,6 +123,7 @@ export class AppComponent implements OnInit,AfterViewInit {
                     }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length
                 ){
 
+                    
                     console.log('dispatched')
                     try{
                         let event = new Event('resize')
@@ -123,17 +134,28 @@ export class AppComponent implements OnInit,AfterViewInit {
                         let eventLegacyLoad = this.window.document.createEvent("Event");
                         eventLegacyLoad.initEvent("resize", false, true);
                         this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )      
+                        this.window.dispatchEvent(    eventLegacyLoad    )   
+                             
                     }  
                     this.wordsService.appViewCompleteArray = []
+
+
+                    if(   this.wordsService.appReloaded === 'true'){
+
+
+                        this.wordsService.appReloaded = 'false'
+        
+        
+                    } 
                     
+
                 }
-
-
+                
+                
             }
 
 
-            else if(   this.window.location.pathname === '/about'   ){
+            if(   this.wordsService.appCurrentNav === '/about'   ){
 
 
                 let arr = [
@@ -157,6 +179,7 @@ export class AppComponent implements OnInit,AfterViewInit {
                     }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length
                 ){
 
+
                     console.log('dispatched')
                     try{
                         let event = new Event('resize')
@@ -167,17 +190,28 @@ export class AppComponent implements OnInit,AfterViewInit {
                         let eventLegacyLoad = this.window.document.createEvent("Event");
                         eventLegacyLoad.initEvent("resize", false, true);
                         this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )      
+                        this.window.dispatchEvent(    eventLegacyLoad    )   
+                             
                     }  
                     this.wordsService.appViewCompleteArray = []
-                    
-                }
 
 
+                    if(   this.wordsService.appReloaded === 'true'){
+
+
+                        this.wordsService.appReloaded = 'false'
+        
+        
+                    } 
+
+
+                }    
+                
+                
             }
             
             
-            else if(   this.window.location.pathname === '/services'   ){
+            if(   this.wordsService.appCurrentNav === '/services'   ){
 
 
                 let arr = [
@@ -202,6 +236,7 @@ export class AppComponent implements OnInit,AfterViewInit {
                     }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length
                 ){
 
+
                     console.log('dispatched')
                     try{
                         let event = new Event('resize')
@@ -212,9 +247,20 @@ export class AppComponent implements OnInit,AfterViewInit {
                         let eventLegacyLoad = this.window.document.createEvent("Event");
                         eventLegacyLoad.initEvent("resize", false, true);
                         this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )      
-                    }  
+                        this.window.dispatchEvent(    eventLegacyLoad    )   
+                             
+                    }   
                     this.wordsService.appViewCompleteArray = []
+
+
+                    if(   this.wordsService.appReloaded === 'true'){
+
+
+                        this.wordsService.appReloaded = 'false'
+        
+        
+                    }    
+                    
                     
                 }
 
@@ -222,7 +268,7 @@ export class AppComponent implements OnInit,AfterViewInit {
             }
             
             
-            else if(   this.window.location.pathname === '/projects'   ){
+            if(   this.wordsService.appCurrentNav === '/projects'   ){
 
 
                 let arr = [
@@ -248,6 +294,7 @@ export class AppComponent implements OnInit,AfterViewInit {
                     }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length
                 ){
 
+
                     console.log('dispatched')
                     try{
                         let event = new Event('resize')
@@ -258,9 +305,20 @@ export class AppComponent implements OnInit,AfterViewInit {
                         let eventLegacyLoad = this.window.document.createEvent("Event");
                         eventLegacyLoad.initEvent("resize", false, true);
                         this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )      
-                    }  
+                        this.window.dispatchEvent(    eventLegacyLoad    )   
+                             
+                    } 
                     this.wordsService.appViewCompleteArray = []
+
+
+                    if(   this.wordsService.appReloaded === 'true'){
+
+
+                        this.wordsService.appReloaded = 'false'
+        
+        
+                    } 
+
                     
                 }
 
@@ -268,7 +326,7 @@ export class AppComponent implements OnInit,AfterViewInit {
             }   
             
             
-            else if(   this.window.location.pathname === '/contact'   ){
+            if(   this.wordsService.appCurrentNav === '/contact'   ){
 
 
                 let arr = [
@@ -302,9 +360,20 @@ export class AppComponent implements OnInit,AfterViewInit {
                         let eventLegacyLoad = this.window.document.createEvent("Event");
                         eventLegacyLoad.initEvent("resize", false, true);
                         this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )      
-                    }  
+                        this.window.dispatchEvent(    eventLegacyLoad    )   
+                             
+                    } 
                     this.wordsService.appViewCompleteArray = []
+
+
+                    if(   this.wordsService.appReloaded === 'true'){
+
+
+                        this.wordsService.appReloaded = 'false'
+        
+        
+                    } 
+
                     
                 }
 
@@ -313,8 +382,6 @@ export class AppComponent implements OnInit,AfterViewInit {
             
             
         })
-
-
     }
 
 
