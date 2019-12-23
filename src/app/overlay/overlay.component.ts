@@ -499,7 +499,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                     target:numberParse(   this.window.getComputedStyle(   zChild[2].element   ).width   ),
                     contain:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
                 })                              
-            this.ref.detectChanges()
+                this.ref.detectChanges()
             })
       
             "946px"

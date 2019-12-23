@@ -5,3 +5,9 @@ export class zChildren {
     innerText?:null | string;
     link?:string;
 }
+
+export class componentObject { // not final
+    quantity: any[]; 
+    generator?: Generator;
+    metadata?: Object 
+}

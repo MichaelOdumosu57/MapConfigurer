@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject, Subscription } from 'rxjs';
 // import { Router,RouterEvent } from '@angular/router';
-import { zChildren } from './customExports';
+import { zChildren, componentObject } from './customExports';
 
 
 
@@ -1294,13 +1294,19 @@ export class WordsService {
             '1260px',
         ]          
 
+        wordsCO3Title = {
+            defaultLeft:['225.367px','831.2px','258.533px','853.867px']
+        }
         wordsCO3ParagraphDefaultWidth  = [
             '464px',
             '464px',
             '464px',
             '464px'
-
         ]
+
+        wordsCO3Paragraph = {
+            defaultLeft:['108.917px','677.117px','108.917px','677.117px']
+        }
         wordsCO3ParagraphDefaultTop  = [
             '740px',
             '700px',
@@ -1308,6 +1314,9 @@ export class WordsService {
             '1340px'
         ]        
 
+        wordsCO3Image = {
+            defaultLeft:['98.9167px','667.117px','98.9167px','667.117px']
+        }
         wordsCO3ImageDefaultWidth  = [
             '484px',
             '484px',
@@ -1607,7 +1616,9 @@ export class WordsService {
         wordsResizeEventSubscription15:Subscription 
         wordsResizeEventSubscription16:Subscription
         wordsResizeEventSubscription17:Subscription  
-        wordsResizeEventSubscription18:Subscription                         
+        wordsResizeEventSubscription18:Subscription      
+        wordsResizeEventSubscription19:Subscription    
+        wordsResizeEventSubscription20:Subscription               
         wordsClickEvent$:Observable<Event>        
         wordsClickEventSubscription0:Subscription
         //         
@@ -1617,7 +1628,7 @@ export class WordsService {
         //represnetaing each instance of the wordsComponent
         wordsMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
         wordsMyElementsArray: any[] = [];
-        wordsComponentObject2:any = {      
+        wordsComponentObject2:componentObject = {      
             quantity:[
                 [       
                     {
@@ -1873,7 +1884,7 @@ export class WordsService {
                 }()
             })()        
         }        
-        wordsComponentObject0:any = { 
+        wordsComponentObject0:componentObject = { 
             quantity:[
                 [    
                     {
@@ -2143,7 +2154,7 @@ export class WordsService {
                 }()
             })()        
         }
-        wordsComponentObject1:any = {     
+        wordsComponentObject1:componentObject = {     
             quantity:[
                 [    
                     {
@@ -2275,7 +2286,7 @@ export class WordsService {
                 }()
             })()        
         }
-        wordsComponentObject3:any = { 
+        wordsComponentObject3:componentObject = { 
             quantity:[
                 [    
                     {
@@ -2331,7 +2342,8 @@ export class WordsService {
                                         width:'100%',
                                         // bottom:'40px',
                                         // width:'0px',
-                                        height:this.wordsCO3BoardDefaultHeight[0]
+                                        height:this.wordsCO3BoardDefaultHeight[0],
+                                        'background-color':'yellow'
                                     }
                                 ]                     
                             ],
@@ -2342,7 +2354,7 @@ export class WordsService {
                                 }                         
                             ],                        
                             generator:this.appConsecutiveGenerator
-                        }}),   
+                    }}),   
                     ...Array.from(Array(1),()=> {
                     return {
                         quantity:[[],[3],[],[],[3]],
@@ -2416,7 +2428,7 @@ export class WordsService {
                                         position:'absolute',
                                         top:this.wordsCO3TitleDefaultTop[0],
                                         'font-size':'18px',
-                                        left:'225.367px'
+                                        left:this.wordsCO3Title.defaultLeft[0]
                                     }
                                 ],
                                 [
@@ -2429,7 +2441,7 @@ export class WordsService {
                                         'font-family':'Homenaje',
                                         'font-weight':400,
                                         'text-align':'center',
-                                        left:'108.917px'
+                                        left:this.wordsCO3Paragraph.defaultLeft[0]
                                     }
                                 ],
                                 [
@@ -2440,7 +2452,7 @@ export class WordsService {
                                         height:this.wordsCO3ImageDefaultHeight[0],
                                         'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
                                         'border-radius':'4px 4px 4px 4px',
-                                        left:'98.9167px'
+                                        left: this.wordsCO3Image.defaultLeft[0]
                                     }
                                 ]                                                                      
                             ],
@@ -2485,7 +2497,7 @@ export class WordsService {
                                         position:'absolute',
                                         top:this.wordsCO3TitleDefaultTop[1],
                                         'font-size':'18px',
-                                        left:'831.2px'
+                                        left:this.wordsCO3Title.defaultLeft[1]
                                     }
                                 ],
                                 [
@@ -2498,7 +2510,7 @@ export class WordsService {
                                         'font-family':'Homenaje',
                                         'font-weight':400,
                                         'text-align':'center',
-                                        left:'677.117px'
+                                        left:this.wordsCO3Paragraph.defaultLeft[1]
                                     }
                                 ],
                                 [
@@ -2509,7 +2521,7 @@ export class WordsService {
                                         height:this.wordsCO3ImageDefaultHeight[1],
                                         'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
                                         'border-radius':'4px 4px 4px 4px',
-                                        left:'667.117px'
+                                        left:this.wordsCO3Image.defaultLeft[1]
                                     }
                                 ]                                                                      
                             ],
@@ -2554,7 +2566,7 @@ export class WordsService {
                                         position:'absolute',
                                         top:this.wordsCO3TitleDefaultTop[2],
                                         'font-size':'18px',
-                                        left:'258.533px'
+                                        left:this.wordsCO3Title.defaultLeft[2]
                                     }
                                 ],
                                 [
@@ -2567,7 +2579,7 @@ export class WordsService {
                                         'font-size':'16px',
                                         'font-family':'Homenaje',
                                         'font-weight':400,
-                                        left:'108.917px'
+                                        left:this.wordsCO3Paragraph.defaultLeft[2] 
                                     },
                                     {
                                         color:'blue'
@@ -2581,7 +2593,7 @@ export class WordsService {
                                         height:this.wordsCO3ImageDefaultHeight[2],
                                         'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
                                         'border-radius':'4px 4px 4px 4px',
-                                        left:'98.9167px'
+                                        left:this.wordsCO3Image.defaultLeft[2]
                                     }
                                 ]                                                                      
                             ],
@@ -2626,7 +2638,7 @@ export class WordsService {
                                         position:'absolute',
                                         top:this.wordsCO3TitleDefaultTop[3],
                                         'font-size':'18px',
-                                        left:'853.867px'
+                                        left:this.wordsCO3Title.defaultLeft[3]
                                     }
                                 ],
                                 [
@@ -2639,7 +2651,7 @@ export class WordsService {
                                         'font-family':'Homenaje',
                                         'font-weight':400,
                                         'text-align':'center',
-                                        left:'677.117px'
+                                        left:this.wordsCO3Paragraph.defaultLeft[3]
                                     }
                                 ],
                                 [
@@ -2650,7 +2662,7 @@ export class WordsService {
                                         height:this.wordsCO3ImageDefaultHeight[3] ,
                                         'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
                                         'border-radius':'4px 4px 4px 4px',
-                                        left:'667.117px'
+                                        left:this.wordsCO3Image.defaultLeft[3]
                                     }
                                 ]                                                                      
                             ],
@@ -2670,7 +2682,61 @@ export class WordsService {
                                 }
                             ],                            
                             generator:this.appConsecutiveGenerator
-                    }}),                                                                            
+                    }}),   
+                    ...Array.from(Array(1),()=> {
+                        return {
+                            quantity:[[],[],[],[],[3]],
+                            bool:[[],[],[],[],['true']], 
+                            val:[
+                                [],
+                                [],
+                                [],
+                                [],
+                                ['w_o_r_d_s_ContenRef']
+                            ], 
+                            text:[
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [null,null,'LEARN MORE']
+                            ],
+                            metadata:{
+                            },
+                            ngStyle:[
+                                [],
+                                [
+                                ],
+                                [                          
+                                ],
+                                [                                                                                                                                             
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        // width:'3000px',
+                                        left:(
+                                            numberParse(   this.wordsCO3Image.defaultLeft[0]   )
+                                        ).toString() + 'px', // determined evalution and use another is a good idea here
+                                        height:'30px',
+                                        width:(
+                                            numberParse(   this.wordsCO3Image.defaultLeft[1]   ) +
+                                            numberParse(   this.wordsCO3ImageDefaultWidth[1]   ) -
+                                            numberParse(   this.wordsCO3Image.defaultLeft[0]   )
+                                        ).toString() + 'px',
+                                        'background-color':'blue'
+                                    }                                                             
+                                ]                            
+                            ],
+                            extras:[
+                                {},
+                                {},
+                                {
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                        }})                                                                                             
                 ],   
             ],
             generator:(function(){
@@ -2679,9 +2745,49 @@ export class WordsService {
                     while (true)
                     yield index;
                 }()
-            })()        
+            })(),
+            metadata:{
+                holdingBay2:[       
+                    {
+                        left:numberParse(   this.wordsCO3Title.defaultLeft[0]   )
+                    },
+                    {
+                        left:numberParse(   this.wordsCO3Paragraph.defaultLeft[0]   )
+                    },
+                    {
+                        left: numberParse(   this.wordsCO3Image.defaultLeft[0]   )
+                    },
+                    {
+                        left:numberParse(   this.wordsCO3Title.defaultLeft[1]   )
+                    },
+                    {
+                        left:numberParse(   this.wordsCO3Paragraph.defaultLeft[1]   )
+                    },
+                    {
+                        left: numberParse(   this.wordsCO3Image.defaultLeft[1]   )
+                    },
+                    {
+                        left:numberParse(   this.wordsCO3Title.defaultLeft[2]   )
+                    },
+                    {
+                        left:numberParse(   this.wordsCO3Paragraph.defaultLeft[2]   )
+                    },
+                    {
+                        left: numberParse(   this.wordsCO3Image.defaultLeft[2]   )
+                    },
+                    {
+                        left:numberParse(   this.wordsCO3Title.defaultLeft[3]   )
+                    },
+                    {
+                        left:numberParse(   this.wordsCO3Paragraph.defaultLeft[3]   )
+                    },
+                    {
+                        left: numberParse(   this.wordsCO3Image.defaultLeft[3]   )
+                    },                                                                                                                                                                                                                                                                               
+                ]
+            }        
         }   
-        wordsComponentObject4:any = { 
+        wordsComponentObject4:componentObject = { 
             quantity:[
                 [    
                     {
@@ -2728,6 +2834,7 @@ export class WordsService {
                                 []
                             ],
                             metadata:{
+                                wordsCO3: new Subject<any>()
                             },
                             ngStyle:[
                                 [
