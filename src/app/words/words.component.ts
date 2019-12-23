@@ -1384,7 +1384,12 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     this.ref.detectChanges()
                     zChild[4].style['left'] = xPosition({
                         contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
-                        target:numberParse(   this.window.getComputedStyle(zChild[4].element).width   ),
+                        target:getTextWidth({
+                            elementText:zChild[7].innerText,
+                            font:this.window.getComputedStyle(   zChild[7].element ).getPropertyValue('font-size') + 
+                            " " +
+                            this.window.getComputedStyle(   zChild[7].element ).getPropertyValue('font-family') 
+                        }),
                         containPos:.27
                     })   
                     zChild[4].style['top'] = (
@@ -1429,7 +1434,12 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     this.ref.detectChanges()                             
                     zChild[7].style['left'] = xPosition({
                         contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
-                        target:numberParse(   this.window.getComputedStyle(zChild[7].element).width   ),
+                        target:getTextWidth({
+                            elementText:zChild[7].innerText,
+                            font:this.window.getComputedStyle(   zChild[7].element ).getPropertyValue('font-size') + 
+                            " " +
+                            this.window.getComputedStyle(   zChild[7].element ).getPropertyValue('font-family') 
+                        }),
                         containPos:.72
                     })    
                     zChild[7].style['top'] = (
@@ -1476,13 +1486,18 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                         (
                             numberParse(   this.window.getComputedStyle(    zChild[5].element   ).height   ) +
                             numberParse(   this.window.getComputedStyle(    zChild[5].element   ).top   ) +
-                            60
+                            100
                         )
                     ).toString() + 'px' 
                     this.ref.detectChanges()                
                     zChild[10].style['left'] = xPosition({
                         contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
-                        target:numberParse(   this.window.getComputedStyle(zChild[10].element).width   ),
+                        target:getTextWidth({
+                            elementText:zChild[10].innerText,
+                            font:this.window.getComputedStyle(   zChild[10].element ).getPropertyValue('font-size') + 
+                            " " +
+                            this.window.getComputedStyle(   zChild[10].element ).getPropertyValue('font-family') 
+                        }) ,
                         containPos:.27
                     })    
                     zChild[10].style['top'] = (
@@ -1535,17 +1550,16 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     ).toString()+'px'      
                     // console.log(zChild[5].style['width'])    
                     this.ref.detectChanges()
-                    zChild[15].style['top'] = (
-                        (
-                            numberParse(   this.window.getComputedStyle(    zChild[8].element   ).height   ) +
-                            numberParse(   this.window.getComputedStyle(    zChild[8].element   ).top   ) +
-                            60
-                        )
-                    ).toString() + 'px' 
+                    zChild[15].style['top'] =zChild[12].style['top']
                     this.ref.detectChanges()                   
                     zChild[13].style['left'] = xPosition({
                         contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
-                        target:numberParse(   this.window.getComputedStyle(zChild[13].element).width   ),
+                        target:getTextWidth({
+                            elementText:zChild[13].innerText,
+                            font:this.window.getComputedStyle(   zChild[13].element ).getPropertyValue('font-size') + 
+                            " " +
+                            this.window.getComputedStyle(   zChild[13].element ).getPropertyValue('font-family') 
+                        }),
                         containPos:.72
                     })   
                     zChild[13].style['top'] = (

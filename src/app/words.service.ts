@@ -3112,7 +3112,7 @@ export class WordsService {
                 }()
             })()        
         }  
-        wordsComponentObject5:any = { 
+        wordsComponentObject5:componentObject = { 
             quantity:[
                 [    
                     {
@@ -3552,7 +3552,7 @@ export class WordsService {
                 }()
             })()        
         }     
-        wordsComponentObject6:any = { 
+        wordsComponentObject6:componentObject = { 
             quantity:[
                 [    
                     {
@@ -3782,7 +3782,7 @@ export class WordsService {
                 }()
             })()        
         }
-        wordsComponentObject7:any = { 
+        wordsComponentObject7:componentObject = { 
             quantity:[
                 [    
                     {
@@ -4012,7 +4012,7 @@ export class WordsService {
                 }()
             })()        
         }     
-        wordsComponentObject8:any = { 
+        wordsComponentObject8:componentObject = { 
             quantity:[
                 [    
                     {
@@ -4242,7 +4242,7 @@ export class WordsService {
                 }()
             })()        
         }      
-        wordsComponentObject9:any = { 
+        wordsComponentObject9:componentObject = { 
             quantity:[
                 [    
                     {
