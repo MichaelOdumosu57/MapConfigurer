@@ -1367,7 +1367,12 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     default:numberParse(   this.wordsService.wordsCO3ImageDefaultWidth[0]    ),
                     containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
                     containDefault:1050
-                })                 
+                })   
+                this.ref.detectChanges()    
+                zChild[5].style['width'] = (
+                    .95 * numberParse(   this.window.getComputedStyle(   zChild[6].element   ).width   )
+                ).toString()+'px'      
+                // console.log(zChild[5].style['width'])    
                 this.ref.detectChanges()
                 zChild[4].style['left'] = xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
@@ -1399,57 +1404,169 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 this.ref.detectChanges()
 
                 zChild[9].style['height'] =  resize({
-                    default:numberParse(   this.wordsService.wordsCO3ImageDefaultHeight[0]   ),
+                    default:numberParse(   this.wordsService.wordsCO3ImageDefaultHeight[1]   ),
                     containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
                     containDefault:1050
                 }) 
                 zChild[9].style['width'] = resize({
-                    default:numberParse(   this.wordsService.wordsCO3ImageDefaultWidth[0]    ),
+                    default:numberParse(   this.wordsService.wordsCO3ImageDefaultWidth[1]    ),
                     containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
                     containDefault:1050
                 })                 
-                this.ref.detectChanges()                
+                this.ref.detectChanges()  
+                zChild[8].style['width'] = (
+                    .95 * numberParse(   this.window.getComputedStyle(   zChild[9].element   ).width   )
+                ).toString()+'px'      
+                // console.log(zChild[5].style['width'])    
+                this.ref.detectChanges()                             
                 zChild[7].style['left'] = xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                     target:numberParse(   this.window.getComputedStyle(zChild[7].element).width   ),
                     containPos:.72
                 })    
+                zChild[7].style['top'] = (
+                    numberParse(   this.wordsService.wordsCO3TitleDefaultTop[1]   ) -   (
+                        numberParse(   this.wordsService.wordsCO3ImageDefaultHeight[1]   ) -
+                        numberParse(   this.window.getComputedStyle(    zChild[9].element   ).height   )       
+                    )
+                ).toString() + 'px'                  
                 zChild[8].style['left'] = xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                     target:numberParse(   this.window.getComputedStyle(zChild[8].element).width   ),
                     containPos:.72
-                })                                 
+                })
+                zChild[8].style['top'] = (
+                    numberParse(   this.wordsService.wordsCO3ParagraphDefaultTop[1]   ) -   (
+                        numberParse(   this.wordsService.wordsCO3ImageDefaultHeight[1]   ) -
+                        numberParse(   this.window.getComputedStyle(    zChild[9].element   ).height   )       
+                    )
+                ).toString() + 'px'                                                 
                 zChild[9].style['left'] = xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                     target:numberParse(   this.window.getComputedStyle(zChild[9].element).width   ),
                     containPos:.72
                 })      
+                this.ref.detectChanges()
 
+                zChild[12].style['height'] =  resize({
+                    default:numberParse(   this.wordsService.wordsCO3ImageDefaultHeight[2]   ),
+                    containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
+                    containDefault:1050
+                }) 
+                zChild[12].style['width'] = resize({
+                    default:numberParse(   this.wordsService.wordsCO3ImageDefaultWidth[2]    ),
+                    containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
+                    containDefault:1050
+                })                 
+                this.ref.detectChanges()  
+                zChild[11].style['width'] = (
+                    .95 * numberParse(   this.window.getComputedStyle(   zChild[12].element   ).width   )
+                ).toString()+'px'      
+                // console.log(zChild[5].style['width'])    
+                this.ref.detectChanges()
+                zChild[12].style['top'] = (
+                    (
+                        numberParse(   this.window.getComputedStyle(    zChild[5].element   ).height   ) +
+                        numberParse(   this.window.getComputedStyle(    zChild[5].element   ).top   ) +
+                        60
+                    )
+                ).toString() + 'px' 
+                this.ref.detectChanges()                
                 zChild[10].style['left'] = xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                     target:numberParse(   this.window.getComputedStyle(zChild[10].element).width   ),
                     containPos:.27
                 })    
+                zChild[10].style['top'] = (
+                    numberParse(   this.wordsService.wordsCO3TitleDefaultTop[2]   ) - 
+                    (
+                        numberParse(   this.wordsService.wordsCO3ImageDefaultHeight[2]   ) -
+                        numberParse(   this.window.getComputedStyle(    zChild[12].element   ).height   )      
+                    ) -
+                    (
+                        numberParse(   this.wordsService.wordsCO3ImageDefaultTop[2]   ) -
+                        numberParse(   this.window.getComputedStyle(    zChild[12].element   ).top   )      
+                    )                       
+                ).toString() + 'px'                
                 zChild[11].style['left'] = xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                     target:numberParse(   this.window.getComputedStyle(zChild[11].element).width   ),
                     containPos:.27
-                })                                 
+                })  
+                zChild[11].style['top'] = (
+                    numberParse(   this.wordsService.wordsCO3ParagraphDefaultTop[2]   ) -   
+                    (
+                        numberParse(   this.wordsService.wordsCO3ImageDefaultHeight[2]   ) -
+                        numberParse(   this.window.getComputedStyle(    zChild[12].element   ).height   )      
+                    ) -
+                    (
+                        numberParse(   this.wordsService.wordsCO3ImageDefaultTop[2]   ) -
+                        numberParse(   this.window.getComputedStyle(    zChild[12].element   ).top   )      
+                    )                     
+                ).toString() + 'px'                                                  
                 zChild[12].style['left'] = xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                     target:numberParse(   this.window.getComputedStyle(zChild[12].element).width   ),
                     containPos:.27
                 }) 
+                this.ref.detectChanges()
+
+                zChild[15].style['height'] =  resize({
+                    default:numberParse(   this.wordsService.wordsCO3ImageDefaultHeight[3]   ),
+                    containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
+                    containDefault:1050
+                }) 
+                zChild[15].style['width'] = resize({
+                    default:numberParse(   this.wordsService.wordsCO3ImageDefaultWidth[3]    ),
+                    containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
+                    containDefault:1050
+                })                 
+                this.ref.detectChanges()  
+                zChild[14].style['width'] = (
+                    .95 * numberParse(   this.window.getComputedStyle(   zChild[15].element   ).width   )
+                ).toString()+'px'      
+                // console.log(zChild[5].style['width'])    
+                this.ref.detectChanges()
+                zChild[15].style['top'] = (
+                    (
+                        numberParse(   this.window.getComputedStyle(    zChild[8].element   ).height   ) +
+                        numberParse(   this.window.getComputedStyle(    zChild[8].element   ).top   ) +
+                        60
+                    )
+                ).toString() + 'px' 
+                this.ref.detectChanges()                   
                 zChild[13].style['left'] = xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                     target:numberParse(   this.window.getComputedStyle(zChild[13].element).width   ),
                     containPos:.72
-                })    
+                })   
+                zChild[13].style['top'] = (
+                    numberParse(   this.wordsService.wordsCO3TitleDefaultTop[3]   ) - 
+                    (
+                        numberParse(   this.wordsService.wordsCO3ImageDefaultHeight[3]   ) -
+                        numberParse(   this.window.getComputedStyle(    zChild[15].element   ).height   )      
+                    ) -
+                    (
+                        numberParse(   this.wordsService.wordsCO3ImageDefaultTop[3]   ) -
+                        numberParse(   this.window.getComputedStyle(    zChild[15].element   ).top   )      
+                    )                       
+                ).toString() + 'px'                 
                 zChild[14].style['left'] = xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                     target:numberParse(   this.window.getComputedStyle(zChild[14].element).width   ),
                     containPos:.72
                 })                                 
+                zChild[14].style['top'] =  (
+                    numberParse(   this.wordsService.wordsCO3ParagraphDefaultTop[3]   ) -   
+                    (
+                        numberParse(   this.wordsService.wordsCO3ImageDefaultHeight[3]   ) -
+                        numberParse(   this.window.getComputedStyle(    zChild[15].element   ).height   )      
+                    ) -
+                    (
+                        numberParse(   this.wordsService.wordsCO3ImageDefaultTop[3]   ) -
+                        numberParse(   this.window.getComputedStyle(    zChild[15].element   ).top   )      
+                    )                     
+                ).toString() + 'px'                
                 zChild[15].style['left'] = xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                     target:numberParse(   this.window.getComputedStyle(zChild[15].element).width   ),

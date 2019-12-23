@@ -1289,7 +1289,7 @@ export class WordsService {
         ]
         wordsCO3TitleDefaultTop  = [
             '660px',
-            '',
+            '620px',
             '1240px',
             '1260px',
         ]          
@@ -1303,7 +1303,7 @@ export class WordsService {
         ]
         wordsCO3ParagraphDefaultTop  = [
             '740px',
-            '680px',
+            '700px',
             '1320px',
             '1340px'
         ]        
@@ -2483,7 +2483,7 @@ export class WordsService {
                                 [
                                     {
                                         position:'absolute',
-                                        top:this.wordsComponentObject0Title0Top,
+                                        top:this.wordsCO3TitleDefaultTop[1],
                                         'font-size':'18px',
                                         left:'831.2px'
                                     }
@@ -2493,7 +2493,6 @@ export class WordsService {
                                         color:'rgb(76, 88, 99)',
                                         position:'absolute',
                                         top:this.wordsCO3ParagraphDefaultTop[1],
-                                        height: this.wordsCO3ImageDefaultHeight[1],
                                         width:this.wordsCO3ParagraphDefaultWidth[1],
                                         'font-size':'16px',
                                         'font-family':'Homenaje',
