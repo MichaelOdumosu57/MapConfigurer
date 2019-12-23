@@ -1941,8 +1941,7 @@ export class WordsService {
                                 }                         
                             ],                        
                             generator:this.appConsecutiveGenerator
-                        }}),  
-               
+                        }}),   
                     ...Array.from(Array(1),()=> {
                     return {
                         quantity:[[],[3],[],[],[3]],
@@ -2376,7 +2375,8 @@ export class WordsService {
                                 {
                                     position:'absolute',
                                     top:'80px',
-                                    'text-align':'center'
+                                    'text-align':'center',
+                                    left:'389.3px'
                                 }
                             ],
                             [],
@@ -2385,7 +2385,8 @@ export class WordsService {
                                 {
                                     position:'absolute',
                                     top:'160px',
-                                    width:'6%'                                    
+                                    width:'6%',
+                                    left:'593.467px'                                    
                                 }
                             ]                            
                         ],
@@ -2414,7 +2415,8 @@ export class WordsService {
                                     {
                                         position:'absolute',
                                         top:this.wordsCO3TitleDefaultTop[0],
-                                        'font-size':'18px'
+                                        'font-size':'18px',
+                                        left:'225.367px'
                                     }
                                 ],
                                 [
@@ -2423,13 +2425,11 @@ export class WordsService {
                                         position:'absolute',
                                         top:this.wordsCO3ParagraphDefaultTop[0],
                                         width:this.wordsCO3ParagraphDefaultWidth[0],                                         
-                                        'font-size':'13px',
+                                        'font-size':'16px',
                                         'font-family':'Homenaje',
                                         'font-weight':400,
-                                        'text-align':'center'
-                                    },
-                                    {
-                                        color:'blue'
+                                        'text-align':'center',
+                                        left:'108.917px'
                                     }
                                 ],
                                 [
@@ -2437,9 +2437,10 @@ export class WordsService {
                                         position:'absolute',
                                         top:this.wordsCO3ImageDefaultTop[0] ,
                                         width:this.wordsCO3ImageDefaultWidth[0],
-                                        height:this. wordsCO3ImageDefaultHeight[0],
+                                        height:this.wordsCO3ImageDefaultHeight[0],
                                         'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
-                                        'border-radius':'4px 4px 4px 4px'
+                                        'border-radius':'4px 4px 4px 4px',
+                                        left:'98.9167px'
                                     }
                                 ]                                                                      
                             ],
@@ -2483,7 +2484,8 @@ export class WordsService {
                                     {
                                         position:'absolute',
                                         top:this.wordsComponentObject0Title0Top,
-                                        'font-size':'18px'
+                                        'font-size':'18px',
+                                        left:'831.2px'
                                     }
                                 ],
                                 [
@@ -2491,15 +2493,13 @@ export class WordsService {
                                         color:'rgb(76, 88, 99)',
                                         position:'absolute',
                                         top:this.wordsCO3ParagraphDefaultTop[1],
-                                        'font-size':'13px',
                                         height: this.wordsCO3ImageDefaultHeight[1],
                                         width:this.wordsCO3ParagraphDefaultWidth[1],
-                                        'font-family':'Noto Sans',
-                                        'font-weight':700,
-                                        'text-align':'center'
-                                    },
-                                    {
-                                        color:'blue'
+                                        'font-size':'16px',
+                                        'font-family':'Homenaje',
+                                        'font-weight':400,
+                                        'text-align':'center',
+                                        left:'677.117px'
                                     }
                                 ],
                                 [
@@ -2509,7 +2509,8 @@ export class WordsService {
                                         width:this.wordsCO3ImageDefaultWidth[1],
                                         height:this.wordsCO3ImageDefaultHeight[1],
                                         'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
-                                        'border-radius':'4px 4px 4px 4px'
+                                        'border-radius':'4px 4px 4px 4px',
+                                        left:'667.117px'
                                     }
                                 ]                                                                      
                             ],
@@ -2554,6 +2555,7 @@ export class WordsService {
                                         position:'absolute',
                                         top:this.wordsCO3TitleDefaultTop[2],
                                         'font-size':'18px',
+                                        left:'258.533px'
                                     }
                                 ],
                                 [
@@ -2563,9 +2565,10 @@ export class WordsService {
                                         top:this.wordsCO3ParagraphDefaultTop[2],
                                         width:this.wordsCO3ParagraphDefaultWidth[2],
                                         'text-align':'center',
-                                        'font-size':'13px',
-                                        'font-family':'Noto Sans',
-                                        'font-weight':700
+                                        'font-size':'16px',
+                                        'font-family':'Homenaje',
+                                        'font-weight':400,
+                                        left:'108.917px'
                                     },
                                     {
                                         color:'blue'
@@ -2578,7 +2581,8 @@ export class WordsService {
                                         width:this.wordsCO3ImageDefaultWidth[2],
                                         height:this.wordsCO3ImageDefaultHeight[2],
                                         'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
-                                        'border-radius':'4px 4px 4px 4px'
+                                        'border-radius':'4px 4px 4px 4px',
+                                        left:'98.9167px'
                                     }
                                 ]                                                                      
                             ],
@@ -2622,7 +2626,8 @@ export class WordsService {
                                     {
                                         position:'absolute',
                                         top:this.wordsCO3TitleDefaultTop[3],
-                                        'font-size':'18px'
+                                        'font-size':'18px',
+                                        left:'853.867px'
                                     }
                                 ],
                                 [
@@ -2631,13 +2636,11 @@ export class WordsService {
                                         position:'absolute',
                                         width:this.wordsCO3ParagraphDefaultWidth[3],
                                         top:this.wordsCO3ParagraphDefaultTop[3],
-                                        'font-size':'13px',
-                                        'font-family':'Noto Sans',
-                                        'font-weight':700,
-                                        'text-align':'center'
-                                    },
-                                    {
-                                        color:'blue'
+                                        'font-size':'16px',
+                                        'font-family':'Homenaje',
+                                        'font-weight':400,
+                                        'text-align':'center',
+                                        left:'677.117px'
                                     }
                                 ],
                                 [
@@ -2647,7 +2650,8 @@ export class WordsService {
                                         width:this.wordsCO3ImageDefaultWidth[3],
                                         height:this.wordsCO3ImageDefaultHeight[3] ,
                                         'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
-                                        'border-radius':'4px 4px 4px 4px'
+                                        'border-radius':'4px 4px 4px 4px',
+                                        left:'667.117px'
                                     }
                                 ]                                                                      
                             ],
