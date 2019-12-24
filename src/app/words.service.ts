@@ -2312,6 +2312,18 @@ export class WordsService {
                                 }
                             ]                         
                         ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'500px',
+                                    width:'100%',
+                                    // bottom:'40px',
+                                    // width:'0px',
+                                    // height:'1500px'
+                                }
+                            ]                         
+                        ],                        
                         extras:[
                             {},
                             {
@@ -2347,6 +2359,19 @@ export class WordsService {
                                     }
                                 ]                     
                             ],
+                            ngCssDefault:[
+                                [
+                                    {
+                                        position:'absolute',
+                                        // top:'700px',
+                                        width:'100%',
+                                        // bottom:'40px',
+                                        // width:'0px',
+                                        height:this.wordsCO3BoardDefaultHeight[0],
+                                        'background-color':'yellow'
+                                    }
+                                ]                     
+                            ],                            
                             extras:[
                                 {},
                                 {
@@ -2388,7 +2413,8 @@ export class WordsService {
                                     position:'absolute',
                                     top:'80px',
                                     'text-align':'center',
-                                    left:'389.3px'
+                                    left:'389.3px',
+                                    'font-size':'32px'
                                 }
                             ],
                             [],
@@ -2402,6 +2428,28 @@ export class WordsService {
                                 }
                             ]                            
                         ],
+                        ngCssDefault:[
+                            [],
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'80px',
+                                    'text-align':'center',
+                                    left:'389.3px',
+                                    'font-size':'32px'
+                                }
+                            ],
+                            [],
+                            [],
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'160px',
+                                    width:'6%',
+                                    left:'593.467px'                                    
+                                }
+                            ]                            
+                        ],                        
                         generator:this.appConsecutiveGenerator
                     }}),                    
                     ...Array.from(Array(1),()=> {
@@ -2456,6 +2504,41 @@ export class WordsService {
                                     }
                                 ]                                                                      
                             ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO3TitleDefaultTop[0],
+                                        'font-size':'18px',
+                                        left:this.wordsCO3Title.defaultLeft[0]
+                                    }
+                                ],
+                                [
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO3ParagraphDefaultTop[0],
+                                        width:this.wordsCO3ParagraphDefaultWidth[0],                                         
+                                        'font-size':'16px',
+                                        'font-family':'Homenaje',
+                                        'font-weight':400,
+                                        'text-align':'center',
+                                        left:this.wordsCO3Paragraph.defaultLeft[0]
+                                    }
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO3ImageDefaultTop[0] ,
+                                        width:this.wordsCO3ImageDefaultWidth[0],
+                                        height:this.wordsCO3ImageDefaultHeight[0],
+                                        'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
+                                        'border-radius':'4px 4px 4px 4px',
+                                        left: this.wordsCO3Image.defaultLeft[0]
+                                    }
+                                ]                                                                      
+                            ],                            
                             metadata:{
                                 image:['/assets/media/IMG-1786-1024x754.jpg']
                             },
@@ -2525,6 +2608,41 @@ export class WordsService {
                                     }
                                 ]                                                                      
                             ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO3TitleDefaultTop[1],
+                                        'font-size':'18px',
+                                        left:this.wordsCO3Title.defaultLeft[1]
+                                    }
+                                ],
+                                [
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO3ParagraphDefaultTop[1],
+                                        width:this.wordsCO3ParagraphDefaultWidth[1],
+                                        'font-size':'16px',
+                                        'font-family':'Homenaje',
+                                        'font-weight':400,
+                                        'text-align':'center',
+                                        left:this.wordsCO3Paragraph.defaultLeft[1]
+                                    }
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO3ImageDefaultTop[1],
+                                        width:this.wordsCO3ImageDefaultWidth[1],
+                                        height:this.wordsCO3ImageDefaultHeight[1],
+                                        'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
+                                        'border-radius':'4px 4px 4px 4px',
+                                        left:this.wordsCO3Image.defaultLeft[1]
+                                    }
+                                ]                                                                      
+                            ],                            
                             metadata:{
                                 image:['/assets/media/IMG-1790-1024x678.jpg'],
                             },
@@ -2597,6 +2715,44 @@ export class WordsService {
                                     }
                                 ]                                                                      
                             ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO3TitleDefaultTop[2],
+                                        'font-size':'18px',
+                                        left:this.wordsCO3Title.defaultLeft[2]
+                                    }
+                                ],
+                                [
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO3ParagraphDefaultTop[2],
+                                        width:this.wordsCO3ParagraphDefaultWidth[2],
+                                        'text-align':'center',
+                                        'font-size':'16px',
+                                        'font-family':'Homenaje',
+                                        'font-weight':400,
+                                        left:this.wordsCO3Paragraph.defaultLeft[2] 
+                                    },
+                                    {
+                                        color:'blue'
+                                    }
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO3ImageDefaultTop[2],
+                                        width:this.wordsCO3ImageDefaultWidth[2],
+                                        height:this.wordsCO3ImageDefaultHeight[2],
+                                        'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
+                                        'border-radius':'4px 4px 4px 4px',
+                                        left:this.wordsCO3Image.defaultLeft[2]
+                                    }
+                                ]                                                                      
+                            ],                            
                             metadata:{
                                 image:['/assets/media/IMG-1788-1-1024x663.jpg']
                             },
@@ -2666,6 +2822,41 @@ export class WordsService {
                                     }
                                 ]                                                                      
                             ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO3TitleDefaultTop[3],
+                                        'font-size':'18px',
+                                        left:this.wordsCO3Title.defaultLeft[3]
+                                    }
+                                ],
+                                [
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        width:this.wordsCO3ParagraphDefaultWidth[3],
+                                        top:this.wordsCO3ParagraphDefaultTop[3],
+                                        'font-size':'16px',
+                                        'font-family':'Homenaje',
+                                        'font-weight':400,
+                                        'text-align':'center',
+                                        left:this.wordsCO3Paragraph.defaultLeft[3]
+                                    }
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO3ImageDefaultTop[3] ,
+                                        width:this.wordsCO3ImageDefaultWidth[3],
+                                        height:this.wordsCO3ImageDefaultHeight[3] ,
+                                        'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
+                                        'border-radius':'4px 4px 4px 4px',
+                                        left:this.wordsCO3Image.defaultLeft[3]
+                                    }
+                                ]                                                                      
+                            ],                            
                             metadata:{
                                 image:['/assets/media/IMG-1787-1024x719.jpg']
                             },
@@ -2718,16 +2909,41 @@ export class WordsService {
                                         left:(
                                             numberParse(   this.wordsCO3Image.defaultLeft[0]   )
                                         ).toString() + 'px', // determined evalution and use another is a good idea here
-                                        height:'30px',
+                                        height:'0px',
                                         width:(
                                             numberParse(   this.wordsCO3Image.defaultLeft[1]   ) +
                                             numberParse(   this.wordsCO3ImageDefaultWidth[1]   ) -
                                             numberParse(   this.wordsCO3Image.defaultLeft[0]   )
                                         ).toString() + 'px',
-                                        'background-color':'blue'
+                                        // 'background-color':'blue'
                                     }                                                             
                                 ]                            
                             ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                ],
+                                [                          
+                                ],
+                                [                                                                                                                                             
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        // width:'3000px',
+                                        left:(
+                                            numberParse(   this.wordsCO3Image.defaultLeft[0]   )
+                                        ).toString() + 'px', // determined evalution and use another is a good idea here
+                                        height:'0px',
+                                        width:(
+                                            numberParse(   this.wordsCO3Image.defaultLeft[1]   ) +
+                                            numberParse(   this.wordsCO3ImageDefaultWidth[1]   ) -
+                                            numberParse(   this.wordsCO3Image.defaultLeft[0]   )
+                                        ).toString() + 'px',
+                                        // 'background-color':'blue'
+                                    }                                                             
+                                ]                            
+                            ],                            
                             extras:[
                                 {},
                                 {},

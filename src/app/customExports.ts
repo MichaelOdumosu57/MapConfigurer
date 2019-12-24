@@ -1,6 +1,7 @@
 export class zChildren {
     element:  HTMLElement;
-    style:Object ;
+    style:Object;
+    cssDefault?:Object;
     bool?:string;
     innerText?:null | string;
     link?:string;

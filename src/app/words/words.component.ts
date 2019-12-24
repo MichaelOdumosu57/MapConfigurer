@@ -1315,7 +1315,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                         zChild.push({
                             element:x.nativeElement as HTMLElement,
                             style:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
-                            innerText: this.wordsService[this.wordsTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b]
+                            innerText: this.wordsService[this.wordsTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b],
+                            cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngCssDefault[zGrid.a][zGrid.b],
                         })
 
 
@@ -1345,13 +1346,324 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 })
                 // console.groupEnd()
             })
-            console.log(zChild)       
+            console.log(zChild)  
+            let fontLimit = 500     
             this.wordsService.wordsResizeEventSubscription4 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
                 
-                
-                if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 1282   ){
-               
-               
+
+                if(   
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 761                    
+                ){
+
+
+                    zChild.forEach((x,i)=>{
+                        x.style = Object.assign(x.style,x.cssDefault)
+                    }) 
+                    this.ref.detectChanges()
+                    zChild[16].style['left'] = '0px'
+                    zChild[16].style['width'] = '0px'
+                    zChild[2].style['font-size'] = resize({
+                        default:numberParse(   zChild[2].cssDefault['font-size']   ),
+                        containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
+                        containDefault:500
+                    })
+                    this.ref.detectChanges()
+                    zChild[2].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target: getTextWidth({
+                            elementText:zChild[2].innerText,
+                            font: this.window.getComputedStyle(   zChild[2].element ).getPropertyValue('font-size') + 
+                            " " +
+                            this.window.getComputedStyle(   zChild[2].element ).getPropertyValue('font-family') 
+                        })
+                    })
+                    this.ref.detectChanges()
+                    zChild[3].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[3].element).width   )
+                    })
+                    zChild[3].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(zChild[2].element).top   )+
+                        numberParse(   this.window.getComputedStyle(zChild[2].element).height   ) +
+                        40
+                    ).toString()+'px'                     
+                    this.ref.detectChanges()
+
+                    zChild[6].style['width'] =  (
+                        .9 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px' 
+                    zChild[6].style['height'] =  (
+                        .6 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px' 
+                    this.ref.detectChanges()
+                    zChild[6].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[6].element).width   )
+                    }) 
+                    zChild[6].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(zChild[3].element).top   )+
+                        numberParse(   this.window.getComputedStyle(zChild[3].element).height   ) +
+                        30
+                    ).toString()+'px'                    
+                    this.ref.detectChanges()
+                    zChild[4].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(zChild[6].element).top   ) +
+                        numberParse(   this.window.getComputedStyle(zChild[6].element).height   ) +
+                        30
+                    ).toString() + 'px'
+                    zChild[4].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:getTextWidth({
+                            elementText:zChild[4].innerText,
+                            font:this.window.getComputedStyle(   zChild[4].element ).getPropertyValue('font-size') + 
+                            " " +
+                            this.window.getComputedStyle(   zChild[4].element ).getPropertyValue('font-family') 
+                        })
+                    })    
+
+
+                    if(   
+                        numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > fontLimit                    
+                    ){
+
+
+                        zChild[5].style['font-size'] = resize({
+                            default:numberParse(   zChild[5].cssDefault['font-size']   ),
+                            containActual:numberParse(   this.window.getComputedStyle(   zChild[6].element   ).width   ),
+                            containDefault:450
+                        })
+
+
+                    }
+
+
+                    zChild[5].style['width'] = (
+                        .95 * numberParse(   this.window.getComputedStyle(   zChild[6].element   ).width   )
+                    ).toString()+'px'   
+                    this.ref.detectChanges()
+                    zChild[5].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(zChild[4].element).top   ) +
+                        numberParse(   this.window.getComputedStyle(zChild[4].element).height   ) +
+                        30
+                    ).toString() + 'px'
+                    zChild[5].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[5].element).width   ),
+                    })    
+                    this.ref.detectChanges()   
+
+                    zChild[9].style['width'] =  (
+                        .9 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px' 
+                    zChild[9].style['height'] =  (
+                        .6 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px' 
+                    this.ref.detectChanges() 
+                    zChild[9].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(zChild[5].element).top   )+
+                        numberParse(   this.window.getComputedStyle(zChild[5].element).height   ) +
+                        90
+                    ).toString()+'px'
+                    zChild[9].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[9].element).width   )
+                    })                     
+                    this.ref.detectChanges() 
+                    zChild[7].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(zChild[9].element).top   ) +
+                        numberParse(   this.window.getComputedStyle(zChild[9].element).height   ) +
+                        30
+                    ).toString() + 'px'
+                    zChild[7].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:getTextWidth({
+                            elementText:zChild[7].innerText,
+                            font:this.window.getComputedStyle(   zChild[7].element ).getPropertyValue('font-size') + 
+                            " " +
+                            this.window.getComputedStyle(   zChild[7].element ).getPropertyValue('font-family') 
+                        })
+                    })    
+
+
+                    if(   
+                        numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > fontLimit                    
+                    ){
+                        
+                        
+                        zChild[8].style['font-size'] = resize({
+                            default:numberParse(   zChild[8].cssDefault['font-size']   ),
+                            containActual:numberParse(   this.window.getComputedStyle(   zChild[9].element   ).width   ),
+                            containDefault:450
+                        })
+
+
+                    }
+
+
+                    zChild[8].style['width'] = (
+                        .95 * numberParse(   this.window.getComputedStyle(   zChild[9].element   ).width   )
+                    ).toString()+'px'   
+                    this.ref.detectChanges()  
+                    zChild[8].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(zChild[7].element).top   ) +
+                        numberParse(   this.window.getComputedStyle(zChild[7].element).height   ) +
+                        30
+                    ).toString() + 'px'
+                    zChild[8].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[8].element).width   ),
+                    })    
+                    this.ref.detectChanges()                                                         
+
+                    zChild[12].style['width'] =  (
+                        .9 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px' 
+                    zChild[12].style['height'] =  (
+                        .6 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px' 
+                    this.ref.detectChanges()   
+                    zChild[12].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(zChild[8].element).top   )+
+                        numberParse(   this.window.getComputedStyle(zChild[8].element).height   ) +
+                        90
+                    ).toString()+'px'
+                    zChild[12].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[12].element).width   )
+                    })                     
+                    this.ref.detectChanges()     
+                    zChild[10].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(zChild[12].element).top   ) +
+                        numberParse(   this.window.getComputedStyle(zChild[12].element).height   ) +
+                        30
+                    ).toString() + 'px'
+                    zChild[10].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:getTextWidth({
+                            elementText:zChild[10].innerText,
+                            font:this.window.getComputedStyle(   zChild[10].element ).getPropertyValue('font-size') + 
+                            " " +
+                            this.window.getComputedStyle(   zChild[10].element ).getPropertyValue('font-family') 
+                        })
+                    })
+                    
+
+                    if(   
+                        numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > fontLimit                    
+                    ){
+                        
+                        
+                        zChild[11].style['font-size'] = resize({
+                            default:numberParse(   zChild[11].cssDefault['font-size']   ),
+                            containActual:numberParse(   this.window.getComputedStyle(   zChild[12].element   ).width   ),
+                            containDefault:450
+                        })
+
+
+                    }
+
+
+                    zChild[11].style['width'] = (
+                        .95 * numberParse(   this.window.getComputedStyle(   zChild[12].element   ).width   )
+                    ).toString()+'px'   
+                    this.ref.detectChanges()   
+                    zChild[11].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(zChild[10].element).top   ) +
+                        numberParse(   this.window.getComputedStyle(zChild[10].element).height   ) +
+                        30
+                    ).toString() + 'px'
+                    zChild[11].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[11].element).width   ),
+                    })    
+                    this.ref.detectChanges()                                      
+                    
+                    zChild[15].style['width'] =  (
+                        .9 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px' 
+                    zChild[15].style['height'] =  (
+                        .6 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px' 
+                    this.ref.detectChanges()  
+                    zChild[15].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(zChild[11].element).top   )+
+                        numberParse(   this.window.getComputedStyle(zChild[11].element).height   ) +
+                        90
+                    ).toString()+'px'
+                    zChild[15].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[15].element).width   )
+                    })                     
+                    this.ref.detectChanges()    
+                    zChild[13].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(zChild[15].element).top   ) +
+                        numberParse(   this.window.getComputedStyle(zChild[15].element).height   ) +
+                        30
+                    ).toString() + 'px'
+                    zChild[13].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:getTextWidth({
+                            elementText:zChild[13].innerText,
+                            font:this.window.getComputedStyle(   zChild[13].element ).getPropertyValue('font-size') + 
+                            " " +
+                            this.window.getComputedStyle(   zChild[13].element ).getPropertyValue('font-family') 
+                        })
+                    })    
+
+
+                    if(   
+                        numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > fontLimit                    
+                    ){
+                        
+                        
+                        zChild[14].style['font-size'] = resize({
+                            default:numberParse(   zChild[14].cssDefault['font-size']   ),
+                            containActual:numberParse(   this.window.getComputedStyle(   zChild[15].element   ).width   ),
+                            containDefault:450
+                        })
+
+
+                    }
+
+
+                    zChild[14].style['width'] = (
+                        .95 * numberParse(   this.window.getComputedStyle(   zChild[15].element   ).width   )
+                    ).toString()+'px'   
+                    this.ref.detectChanges()        
+                    zChild[14].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(zChild[13].element).top   ) +
+                        numberParse(   this.window.getComputedStyle(zChild[13].element).height   ) +
+                        30
+                    ).toString() + 'px'
+                    zChild[14].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[14].element).width   ),
+                    })    
+                    this.ref.detectChanges()    
+                     
+                    zChild[1].style['height'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[14].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[14].element   ).height   ) +
+                        120
+                    ).toString() +'px'
+                    this.ref.detectChanges()                                                                                       
+
+                    
+                }
+
+
+                if(   
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 1282 &&
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 761
+                ){
+                    
+
+                    zChild.forEach((x,i)=>{
+                        x.style = Object.assign(x.style,x.cssDefault)
+                    }) 
+                    this.ref.detectChanges()                    
+                    zChild[16].style['left'] = '0px'
+                    zChild[16].style['width'] = '0px'
                     zChild[2].style['left'] =  xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                     target: getTextWidth({
@@ -1385,10 +1697,10 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     zChild[4].style['left'] = xPosition({
                         contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                         target:getTextWidth({
-                            elementText:zChild[7].innerText,
-                            font:this.window.getComputedStyle(   zChild[7].element ).getPropertyValue('font-size') + 
+                            elementText:zChild[4].innerText,
+                            font:this.window.getComputedStyle(   zChild[4].element ).getPropertyValue('font-size') + 
                             " " +
-                            this.window.getComputedStyle(   zChild[7].element ).getPropertyValue('font-family') 
+                            this.window.getComputedStyle(   zChild[4].element ).getPropertyValue('font-family') 
                         }),
                         containPos:.27
                     })   
@@ -1606,14 +1918,14 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
                 }
 
-
-                if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 1282   ){
-                    //massive component reset 
-                }
-
-                if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 1282   ){
+                
+                if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) >= 1282   ){
                     //centering adjust
 
+                    zChild.forEach((x,i)=>{
+                        x.style = Object.assign(x.style,x.cssDefault)
+                    }) 
+                    this.ref.detectChanges()                    
                     zChild[16].style['left'] =  xPosition({
                         contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                         target:numberParse(   this.window.getComputedStyle(zChild[16].element).width   )
@@ -1646,7 +1958,10 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     })
                     this.ref.detectChanges()
                     
-                }                
+                }        
+                
+
+
                 // zChild.forEach((x,i)=>{
                 //     console.log(x.element)
                 //     console.log(this.window.getComputedStyle(   x.element   ).left,i)
