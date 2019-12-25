@@ -3029,6 +3029,18 @@ export class WordsService {
                                 }
                             ]                         
                         ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'2000px',
+                                    width:'100%',
+                                    // bottom:'40px',
+                                    // width:'0px',
+                                    // height:'550px'
+                                }
+                            ]                         
+                        ],                        
                         extras:[
                             {},
                             {
@@ -3063,6 +3075,17 @@ export class WordsService {
                                     }
                                 ]                     
                             ],
+                            ngCssDefault:[
+                                [
+                                    {
+                                        position:'absolute',
+                                        // top:'700px',
+                                        width:'100%',
+                                        height:this.wordsCO4BoardDefaultHeight[0],
+                                        'background-color':'rgb(247, 247, 247)'
+                                    }
+                                ]                     
+                            ],                            
                             extras:[
                                 {},
                                 {
@@ -3070,7 +3093,7 @@ export class WordsService {
                                 }                         
                             ],                        
                             generator:this.appConsecutiveGenerator
-                        }}),                    
+                    }}),                    
                     ...Array.from(Array(1),()=> {
                         return {
                             quantity:[[],[3],[3,3,3],[],[3,3,3,3]],
@@ -3115,7 +3138,8 @@ export class WordsService {
                                         'font-size':'16px',
                                         'font-family':'Noto Sans',
                                         'font-weight':700,
-                                        'text-align':'center'
+                                        'text-align':'left',
+                                        width:'443.533px'
                                     },
                                     {
                                         color:'rgb(76, 88, 99)',
@@ -3125,7 +3149,8 @@ export class WordsService {
                                         'font-size':'16px',
                                         'font-family':'Noto Sans',
                                         'font-weight':700,
-                                        'text-align':'center'
+                                        'text-align':'left',
+                                        width:'443.533px'
                                     },
                                     {
                                         color:'rgb(76, 88, 99)',
@@ -3135,7 +3160,8 @@ export class WordsService {
                                         'font-size':'16px',
                                         'font-family':'Noto Sans',
                                         'font-weight':700,
-                                        'text-align':'center'
+                                        'text-align':'left',
+                                        width:'443.533px'
                                     }                                    
                                 ],
                                 [],
@@ -3170,6 +3196,86 @@ export class WordsService {
                                     }                                                                                                            
                                 ]                                                                 
                             ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO4TitleDefaultTop[0],
+                                        'font-size':'20px',
+                                        'font-family':'Montserrat',
+                                        'width':this.wordsCO4TitleDefaultWidth[0],
+                                        'background-color':'green',
+                                        left:this.wordsCO4TitleDefaultLeft[0]
+                                    }
+                                ],
+                                [
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO4ParagraphDefaultTop[0], 
+                                        left:this.wordsCO4ParagraphDefaultLeft[0],                                      
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':700,
+                                        'text-align':'left',
+                                        width:'443.533px;'
+                                    },
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO4ParagraphDefaultTop[1],   
+                                        left:this.wordsCO4ParagraphDefaultLeft[1],                                     
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':700,
+                                        'text-align':'left',
+                                        width:'443.533px'
+                                    },
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO4ParagraphDefaultTop[2],   
+                                        left:this.wordsCO4ParagraphDefaultLeft[2],                                     
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':700,
+                                        'text-align':'left',
+                                        width:'443.533px'
+                                    }                                    
+                                ],
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO4LineDefaultTop[0],
+                                        height:'2px',  
+                                        width:this.wordsCO4LineDefaultWidth[0],
+                                        left:this.wordsCO4LineDefaultLeft[0]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO4LineDefaultTop[1],
+                                        height:'2px',  
+                                        width:this.wordsCO4LineDefaultWidth[1],
+                                        left:this.wordsCO4LineDefaultLeft[1]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO4LineDefaultTop[2],
+                                        height:'2px',  
+                                        width:this.wordsCO4LineDefaultWidth[2],
+                                        left:this.wordsCO4LineDefaultLeft[2]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO4LineDefaultTop[3],
+                                        height:'2px',  
+                                        width:this.wordsCO4LineDefaultWidth[3],
+                                        left:this.wordsCO4LineDefaultLeft[3]
+                                    }                                                                                                            
+                                ]                                                                 
+                            ],                      
                             metadata:{
                                 titleDefaultWidth:null
                             },
@@ -3301,6 +3407,94 @@ export class WordsService {
                                     }                                                                                                            
                                 ]                                                                 
                             ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO4TitleDefaultTop[1],
+                                        'font-size':'20px',
+                                        'font-family':'Montserrat',
+                                        'width':this.wordsCO4TitleDefaultWidth[1],
+                                        'background-color':'green',
+                                        left:this.wordsCO4TitleDefaultLeft[1]
+                                    }
+                                ],
+                                [
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO4ParagraphDefaultTop[4], 
+                                        left:this.wordsCO4ParagraphDefaultLeft[4],
+                                        width:this.wordsCO4ParagraphDefaultWidth[4],
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':400,
+                                        'font-style':'italic'
+                                    },
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO4ParagraphDefaultTop[5],   
+                                        left:this.wordsCO4ParagraphDefaultLeft[5],  
+                                        width:this.wordsCO4ParagraphDefaultWidth[5],                                   
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':700
+                                    },
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO4ParagraphDefaultTop[6],   
+                                        left:this.wordsCO4ParagraphDefaultLeft[6],  
+                                        width:this.wordsCO4ParagraphDefaultWidth[6],                                   
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':700
+                                    },
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO4ParagraphDefaultTop[7],   
+                                        left:this.wordsCO4ParagraphDefaultLeft[7], 
+                                        width:this.wordsCO4ParagraphDefaultWidth[7],                                   
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':700
+                                    }                                                                        
+                                ],
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO4LineDefaultTop[4],
+                                        height:'2px',  
+                                        width:this.wordsCO4LineDefaultWidth[4],
+                                        left:this.wordsCO4LineDefaultLeft[4]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO4LineDefaultTop[5],
+                                        height:'2px',  
+                                        width:this.wordsCO4LineDefaultWidth[5],
+                                        left:this.wordsCO4LineDefaultLeft[5]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO4LineDefaultTop[6],
+                                        height:'2px',  
+                                        width:this.wordsCO4LineDefaultWidth[6],
+                                        left:this.wordsCO4LineDefaultLeft[6]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO4LineDefaultTop[7],
+                                        height:'2px',  
+                                        width:this.wordsCO4LineDefaultWidth[7],
+                                        left:this.wordsCO4LineDefaultLeft[7]
+                                    }                                                                                                            
+                                ]                                                                 
+                            ],                            
                             metadata:{
                                 titleDefaultWidth:null
                             },
@@ -3317,7 +3511,86 @@ export class WordsService {
                                 }
                             ],                            
                             generator:this.appConsecutiveGenerator
-                    }}),                                                                                                                 
+                    }}),        
+                    ...Array.from(Array(1),()=> {
+                        return {
+                            quantity:[[],[],[],[],[3]],
+                            bool:[[],[],[],[],['true']], 
+                            val:[
+                                [],
+                                [],
+                                [],
+                                [],
+                                ['w_o_r_d_s_ContenRef']
+                            ], 
+                            text:[
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [null,null,'LEARN MORE']
+                            ],
+                            metadata:{
+                            },
+                            ngStyle:[
+                                [],
+                                [
+                                ],
+                                [                          
+                                ],
+                                [                                                                                                                                             
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        // width:'3000px',
+                                        left:(
+                                            numberParse(   this.wordsCO3Image.defaultLeft[0]   )
+                                        ).toString() + 'px', // determined evalution and use another is a good idea here
+                                        height:'0px',
+                                        width:(
+                                            numberParse(   this.wordsCO3Image.defaultLeft[1]   ) +
+                                            numberParse(   this.wordsCO3ImageDefaultWidth[1]   ) -
+                                            numberParse(   this.wordsCO3Image.defaultLeft[0]   )
+                                        ).toString() + 'px',
+                                        // 'background-color':'blue'
+                                    }                                                             
+                                ]                            
+                            ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                ],
+                                [                          
+                                ],
+                                [                                                                                                                                             
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        // width:'3000px',
+                                        left:(
+                                            numberParse(   this.wordsCO3Image.defaultLeft[0]   )
+                                        ).toString() + 'px', // determined evalution and use another is a good idea here
+                                        height:'0px',
+                                        width:(
+                                            numberParse(   this.wordsCO3Image.defaultLeft[1]   ) +
+                                            numberParse(   this.wordsCO3ImageDefaultWidth[1]   ) -
+                                            numberParse(   this.wordsCO3Image.defaultLeft[0]   )
+                                        ).toString() + 'px',
+                                        // 'background-color':'blue'
+                                    }                                                             
+                                ]                            
+                            ],                            
+                            extras:[
+                                {},
+                                {},
+                                {
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                    }})                                                                                                                              
                 ],   
             ],
             generator:(function(){
