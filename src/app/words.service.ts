@@ -1368,9 +1368,9 @@ export class WordsService {
             '',
             '',
             '480px',
-            '360px',
-            '360px',
-            '360px'
+            '460px',
+            '460px',
+            '460px'
         ]         
 
         wordsCO4TitleDefaultTop = [
@@ -3219,7 +3219,7 @@ export class WordsService {
                                         'font-family':'Noto Sans',
                                         'font-weight':700,
                                         'text-align':'left',
-                                        width:'443.533px;'
+                                        width:'443.533px'
                                     },
                                     {
                                         color:'rgb(76, 88, 99)',
@@ -3342,7 +3342,7 @@ export class WordsService {
                                         'font-size':'16px',
                                         'font-family':'Noto Sans',
                                         'font-weight':400,
-                                        'font-style':'italic'
+                                        'font-style':'italic',
                                     },
                                     {
                                         color:'rgb(76, 88, 99)',
@@ -3352,7 +3352,8 @@ export class WordsService {
                                         width:this.wordsCO4ParagraphDefaultWidth[5],                                   
                                         'font-size':'16px',
                                         'font-family':'Noto Sans',
-                                        'font-weight':700
+                                        'font-weight':700,
+                                        // 'background-color':'green'
                                     },
                                     {
                                         color:'rgb(76, 88, 99)',
