@@ -12,3 +12,4 @@ export class componentObject { // not final
     generator?: Generator;
     metadata?: Object 
 }
+

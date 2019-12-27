@@ -3,6 +3,7 @@ import {   WordsService   } from '../words.service';
 import {   WINDOW   } from '../window.service';
 import {   fromEvent,interval, of,from, Observable,merge, Subject, combineLatest } from 'rxjs';
 import {   catchError,take,timeout,mapTo    } from 'rxjs/operators';
+import {   zChildren   } from '../customExports'
 function getStyle(   devObj:any   ){
     let location = null;
     devObj.ngStyleArray.filter((a:any)=>{
@@ -167,10 +168,9 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
         if(   this.overlayTemplateVariable === 'overlayComponentObject4'    ){
 
 
-            let zChild =[{
+            let zChild:zChildren[] =[{
                 element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
                 style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
-                innerText:null,
                 bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
             }]          
             let zCheckpoint = []                        
@@ -511,10 +511,9 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
         else if(   this.overlayTemplateVariable === 'overlayComponentObject0'   ){
 
 
-            let zChild =[{
+            let zChild:zChildren[] =[{
                 element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
                 style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
-                innerText:null,
                 bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
             }]     
             let zCheckpoint = []                        
@@ -645,10 +644,9 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
         else if(   this.overlayTemplateVariable === 'overlayComponentObject1'   ){
 
 
-            let zChild =[{
+            let zChild:zChildren[] =[{
                 element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
                 style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
-                innerText:null,
                 bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
             }]     
             let zCheckpoint = []                        
@@ -796,10 +794,9 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
         else if(   this.overlayTemplateVariable === 'overlayComponentObject2'   ){
 
 
-            let zChild =[{
+            let zChild:zChildren[] =[{
                 element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
                 style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
-                innerText:null,
                 bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
             }]     
             let zCheckpoint = []                        
@@ -947,10 +944,9 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
         else if(   this.overlayTemplateVariable === 'overlayComponentObject3'   ){
 
 
-            let zChild =[{
+            let zChild:zChildren[] =[{
                 element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
                 style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
-                innerText:null,
                 bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
             }]     
             let zCheckpoint = []                        
@@ -1037,7 +1033,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 })
                 // console.groupEnd()
             })      
-            console.log(   zChild   ) 
+            // console.log(   zChild   ) 
             zChild[2].style['width'] = (
                 getTextWidth({
                     elementText:zChild[2].innerText,

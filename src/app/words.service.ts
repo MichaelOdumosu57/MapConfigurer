@@ -1427,7 +1427,7 @@ export class WordsService {
         
         wordsCO5Title ={
             defaultTop:['100px','540px','540px'],
-            defaultWidth:[],
+            defaultWidth:['231px','336px','210px'],
             defaultLeft:['60px','60px','680px']
         }
         
@@ -3128,8 +3128,9 @@ export class WordsService {
                                         'font-size':'20px',
                                         'font-family':'Montserrat',
                                         'width':this.wordsCO4TitleDefaultWidth[0],
-                                        'background-color':'green',
-                                        left:this.wordsCO4TitleDefaultLeft[0]
+                                        // 'background-color':'green',
+                                        left:this.wordsCO4TitleDefaultLeft[0],
+                                        'text-align':'left'
                                     }
                                 ],
                                 [
@@ -3208,8 +3209,9 @@ export class WordsService {
                                         'font-size':'20px',
                                         'font-family':'Montserrat',
                                         'width':this.wordsCO4TitleDefaultWidth[0],
-                                        'background-color':'green',
-                                        left:this.wordsCO4TitleDefaultLeft[0]
+                                        // 'background-color':'green',
+                                        left:this.wordsCO4TitleDefaultLeft[0],
+                                        'text-align':'left'
                                     }
                                 ],
                                 [
@@ -3278,7 +3280,7 @@ export class WordsService {
                                         left:this.wordsCO4LineDefaultLeft[3]
                                     }                                                                                                            
                                 ]                                                                 
-                            ],                      
+                            ],                
                             metadata:{
                                 titleDefaultWidth:null
                             },
@@ -3331,8 +3333,9 @@ export class WordsService {
                                         'font-size':'20px',
                                         'font-family':'Montserrat',
                                         'width':this.wordsCO4TitleDefaultWidth[1],
-                                        'background-color':'green',
-                                        left:this.wordsCO4TitleDefaultLeft[1]
+                                        // 'background-color':'green',
+                                        left:this.wordsCO4TitleDefaultLeft[1],
+                                        'text-align':'left'
                                     }
                                 ],
                                 [
@@ -3421,8 +3424,9 @@ export class WordsService {
                                         'font-size':'20px',
                                         'font-family':'Montserrat',
                                         'width':this.wordsCO4TitleDefaultWidth[1],
-                                        'background-color':'green',
-                                        left:this.wordsCO4TitleDefaultLeft[1]
+                                        // 'background-color':'green',
+                                        left:this.wordsCO4TitleDefaultLeft[1],
+                                        'text-align':'left'
                                     }
                                 ],
                                 [
@@ -3501,7 +3505,7 @@ export class WordsService {
                                         left:this.wordsCO4LineDefaultLeft[7]
                                     }                                                                                                            
                                 ]                                                                 
-                            ],                          
+                            ],                   
                             metadata:{
                                 titleDefaultWidth:null
                             },
@@ -3634,6 +3638,18 @@ export class WordsService {
                                 }
                             ]                         
                         ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'600px',
+                                    width:'100%',
+                                    // bottom:'40px',
+                                    // width:'0px',
+                                    // height:'550px'
+                                }
+                            ]                         
+                        ],                        
                         extras:[
                             {},
                             {
@@ -3667,6 +3683,17 @@ export class WordsService {
                                     }
                                 ]                     
                             ],
+                            ngCssDefault:[
+                                [
+                                    {
+                                        position:'absolute',
+                                        // top:'700px',
+                                        width:'100%',
+                                        height:this.wordsCO5BoardDefaultHeight[0],
+                                        'background-color':'rgb(247, 247, 247)'
+                                    }
+                                ]                     
+                            ],                            
                             extras:[
                                 {},
                                 {
@@ -3674,7 +3701,7 @@ export class WordsService {
                                 }                         
                             ],                        
                             generator:this.appConsecutiveGenerator
-                        }}),                    
+                    }}),                    
                     ...Array.from(Array(1),()=> {
                         return {
                             quantity:[[],[3],[3,3],[],[3]],
@@ -3709,7 +3736,64 @@ export class WordsService {
                                         'font-size':'32px',
                                         'font-family':'Montserrat',
                                         'background-color':'green',
-                                        left:this.wordsCO5Title.defaultLeft[0]
+                                        left:this.wordsCO5Title.defaultLeft[0],
+                                        width:this.wordsCO5Title.defaultWidth[0],
+                                    }
+                                ],
+                                [
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO5Paragraph.defaultTop[0], 
+                                        left:this.wordsCO5Paragraph.defaultLeft[0],  
+                                        width:this.wordsCO5Paragraph.defaultWidth[0],                                    
+                                        'font-size':'20px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':700
+                                    },
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO5Paragraph.defaultTop[1],   
+                                        left:this.wordsCO5Paragraph.defaultLeft[1], 
+                                        width:this.wordsCO5Paragraph.defaultWidth[1],                                      
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':400
+                                    },
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO5Paragraph.defaultTop[2],   
+                                        left:this.wordsCO5Paragraph.defaultLeft[2],                                     
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':700,
+                                        'text-align':'center'
+                                    }                                    
+                                ],
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO5Line.defaultTop[0],
+                                        height:'2px',  
+                                        width:this.wordsCO5Line.defaultWidth[0],
+                                        left:this.wordsCO5Line.defaultLeft[0]
+                                    }                                                                                                          
+                                ]                                                                 
+                            ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO5Title.defaultTop[0],
+                                        'font-size':'32px',
+                                        'font-family':'Montserrat',
+                                        'background-color':'green',
+                                        left:this.wordsCO5Title.defaultLeft[0],
+                                        width:this.wordsCO5Title.defaultWidth[0],
                                     }
                                 ],
                                 [
@@ -3807,6 +3891,23 @@ export class WordsService {
                                 ],
                                 []                                                                 
                             ],
+                            ngCssDefault:[
+                                [],
+                                [],
+                                [],
+                                [
+                                    {
+                                        height:this.wordsCO5Image.defaultHeight[0],
+                                        width:this.wordsCO5Image.defaultWidth[0],
+                                        top:this.wordsCO5Image.defaultTop[0],
+                                        left:this.wordsCO5Image.defaultLeft[0],
+                                        position:'absolute',
+                                        'border-radius':'4px',
+                                        'box-shadow':'rgba(0, 0, 0, 0.07) 10px 10px 0px 1px'
+                                    }
+                                ],
+                                []                                                                 
+                            ],                            
                             metadata:{
                                 image:['/assets/media/mission-2.jpg']
                             },
@@ -3827,7 +3928,7 @@ export class WordsService {
                     ...Array.from(Array(1),()=> {
                         return {
                             quantity:[[],[3],[3,3],[],[3]],
-                            bool:[[],['true'],['true','true'],[],['true']], 
+                            bool:[[],['h2'],['true','true'],[],['true']], 
                             val:[
                                 [],
                                 ['w_o_r_d_s_Title'],
@@ -3839,7 +3940,7 @@ export class WordsService {
                                 [],
                                 ['EXTRAORDINARY EXPERIENCES'],
                                 [
-                                   `Click edit button to change this text. 
+                                   `zick edit button to change this text. 
                                    Lorem ipsum dolor sit amet, adipiscing elit`,
                                    `Click edit button to change this text. 
                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -3894,6 +3995,51 @@ export class WordsService {
                                     },                                                                                                         
                                 ]                                                                 
                             ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO5Title.defaultTop[1],
+                                        'font-size':'20px',
+                                        'font-family':'Montserrat',
+                                        'background-color':'green',
+                                        left:this.wordsCO5Title.defaultLeft[1]
+                                    }
+                                ],
+                                [
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO5Paragraph.defaultTop[3], 
+                                        left:this.wordsCO5Paragraph.defaultLeft[3],  
+                                        width:this.wordsCO5Paragraph.defaultWidth[3],                                    
+                                        'font-size':'20px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':700
+                                    },
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO5Paragraph.defaultTop[4],   
+                                        left:this.wordsCO5Paragraph.defaultLeft[4], 
+                                        width:this.wordsCO5Paragraph.defaultWidth[4],                                      
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':400
+                                    }                                    
+                                ],
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO5Line.defaultTop[1],
+                                        height:'2px',  
+                                        width:this.wordsCO5Line.defaultWidth[1],
+                                        left:this.wordsCO5Line.defaultLeft[1]
+                                    },                                                                                                         
+                                ]                                                                 
+                            ],                            
                             metadata:{
                                 image:['/assets/media/IMG-1786-1024x754.jpg']
                             },
@@ -3914,7 +4060,7 @@ export class WordsService {
                     ...Array.from(Array(1),()=> {
                         return {
                             quantity:[[],[3],[3,3,3,3],[],[3,3,3,3]],
-                            bool:[[],['true'],['true','true','true','true'],[],['true','true','true','true']], 
+                            bool:[[],['h2'],['true','true','true','true'],[],['true','true','true','true']], 
                             val:[
                                 [],
                                 ['w_o_r_d_s_Title'],
@@ -4021,6 +4167,92 @@ export class WordsService {
                                     }                                                                                                                                                                                                                      
                                 ]                                                                 
                             ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO5Title.defaultTop[2],
+                                        'font-size':'20px',
+                                        'font-family':'Montserrat',
+                                        'background-color':'green',
+                                        left:this.wordsCO5Title.defaultLeft[2]
+                                    }
+                                ],
+                                [
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO5Paragraph.defaultTop[5], 
+                                        left:this.wordsCO5Paragraph.defaultLeft[5],  
+                                        width:this.wordsCO5Paragraph.defaultWidth[5],                                    
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':400
+                                    },
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO5Paragraph.defaultTop[6],   
+                                        left:this.wordsCO5Paragraph.defaultLeft[6], 
+                                        width:this.wordsCO5Paragraph.defaultWidth[6],                                      
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':900
+                                    },
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO5Paragraph.defaultTop[7],   
+                                        left:this.wordsCO5Paragraph.defaultLeft[7], 
+                                        width:this.wordsCO5Paragraph.defaultWidth[7],                                      
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':900
+                                    },
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO5Paragraph.defaultTop[8],   
+                                        left:this.wordsCO5Paragraph.defaultLeft[8], 
+                                        width:this.wordsCO5Paragraph.defaultWidth[8],                                      
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':900
+                                    }                                                                                                                
+                                ],
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO5Line.defaultTop[2],
+                                        height:'2px',  
+                                        width:this.wordsCO5Line.defaultWidth[2],
+                                        left:this.wordsCO5Line.defaultLeft[2]
+                                    },    
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO5Line.defaultTop[3],
+                                        height:'2px',  
+                                        width:this.wordsCO5Line.defaultWidth[3],
+                                        left:this.wordsCO5Line.defaultLeft[3]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO5Line.defaultTop[4],
+                                        height:'2px',  
+                                        width:this.wordsCO5Line.defaultWidth[4],
+                                        left:this.wordsCO5Line.defaultLeft[4]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO5Line.defaultTop[5],
+                                        height:'2px',  
+                                        width:this.wordsCO5Line.defaultWidth[5],
+                                        left:this.wordsCO5Line.defaultLeft[5]
+                                    }                                                                                                                                                                                                                      
+                                ]                                                                 
+                            ],                            
                             metadata:{
                                 image:['/assets/media/IMG-1786-1024x754.jpg']
                             },
@@ -4037,7 +4269,86 @@ export class WordsService {
                                 }
                             ],                            
                             generator:this.appConsecutiveGenerator
-                    }}),                                                                                                                                                              
+                    }}),     
+                    ...Array.from(Array(1),()=> {
+                        return {
+                            quantity:[[],[],[],[],[3]],
+                            bool:[[],[],[],[],['true']], 
+                            val:[
+                                [],
+                                [],
+                                [],
+                                [],
+                                ['w_o_r_d_s_ContenRef']
+                            ], 
+                            text:[
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [null,null,'LEARN MORE']
+                            ],
+                            metadata:{
+                            },
+                            ngStyle:[
+                                [],
+                                [
+                                ],
+                                [                          
+                                ],
+                                [                                                                                                                                             
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        // width:'3000px',
+                                        left:(
+                                            numberParse(   this.wordsCO5Title.defaultLeft[0]   )
+                                        ).toString() + 'px', // determined evalution and use another is a good idea here
+                                        height:'30px',
+                                        width:(
+                                            numberParse(   this.wordsCO5Image.defaultLeft[0]   ) +
+                                            numberParse(   this.wordsCO5Image.defaultWidth[0]   ) -
+                                            numberParse(   this.wordsCO5Title.defaultLeft[0]   )
+                                        ).toString() + 'px',
+                                        'background-color':'blue'
+                                    }                                                             
+                                ]                            
+                            ],   
+                            ngCssDefault:[
+                                [],
+                                [
+                                ],
+                                [                          
+                                ],
+                                [                                                                                                                                             
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        // width:'3000px',
+                                        left:(
+                                            numberParse(   this.wordsCO5Title.defaultLeft[0]   )
+                                        ).toString() + 'px', // determined evalution and use another is a good idea here
+                                        height:'30px',
+                                        width:(
+                                            numberParse(   this.wordsCO5Image.defaultLeft[0]   ) +
+                                            numberParse(   this.wordsCO5Image.defaultWidth[0]   ) -
+                                            numberParse(   this.wordsCO5Title.defaultLeft[0]   )
+                                        ).toString() + 'px',
+                                        'background-color':'blue'
+                                    }                                                             
+                                ]                            
+                            ],                       
+                            extras:[
+                                {},
+                                {},
+                                {
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                    }})                                                                                                                                                                              
                 ],   
             ],
             generator:(function(){
