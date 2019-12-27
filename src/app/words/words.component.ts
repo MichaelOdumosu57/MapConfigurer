@@ -1245,6 +1245,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             let zChild: zChildren[] =[{
                 element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
+                cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
             }]          
             // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
             // console.log(this.wordsMyElements._results)
@@ -1355,7 +1356,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 ){
 
 
-                    // zChild.forEach((x,i)=>{
+                    // zChild.slice(1,-1).forEach((x,i)=>{
+                        // Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                     //     x.style = Object.assign(x.style,x.cssDefault)
                     // }) 
                     // this.ref.detectChanges()
@@ -1657,7 +1659,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 ){
                     
 
-                    zChild.forEach((x,i)=>{
+                    zChild.slice(1,-1).forEach((x,i)=>{
+                        Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                         x.style = Object.assign(x.style,x.cssDefault)
                     }) 
                     this.ref.detectChanges()                    
@@ -1921,7 +1924,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) >= 1282   ){
                     //centering adjust
 
-                    zChild.forEach((x,i)=>{
+                    zChild.slice(1,-1).forEach((x,i)=>{
+                        Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                         x.style = Object.assign(x.style,x.cssDefault)
                     }) 
                     this.ref.detectChanges()                    
@@ -1961,7 +1965,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 
 
 
-                // zChild.forEach((x,i)=>{
+                // zChild.slice(1,-1).forEach((x,i)=>{
                 //     console.log(x.element)
                 //     console.log(this.window.getComputedStyle(   x.element   ).left,i)
                 // })                 
@@ -1983,7 +1987,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             let zChild:zChildren[] =[{
                 element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
-                innerText:null
+                cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
             }]          
             // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
             // console.log(this.wordsMyElements._results)
@@ -2094,7 +2098,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 ){
 
 
-                    // zChild.forEach((x,i)=>{
+                    // zChild.slice(1,-1).forEach((x,i)=>{
+                        // Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                     //     x.style = Object.assign(x.style,x.cssDefault)
                     // })       
                     // this.ref.detectChanges()
@@ -2342,7 +2347,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 ){
                     
 
-                    zChild.forEach((x,i)=>{
+                    zChild.slice(1,-1).forEach((x,i)=>{
+                        Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                         x.style = Object.assign(x.style,x.cssDefault)
                     }) 
                     this.ref.detectChanges()                    
@@ -2542,7 +2548,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) >= 1282   ){
                     
                     
-                    zChild.forEach((x,i)=>{
+                    zChild.slice(1,-1).forEach((x,i)=>{
+                        Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                         x.style = Object.assign(x.style,x.cssDefault)
                     }) 
                     this.ref.detectChanges()  
@@ -2611,6 +2618,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             let zChild:zChildren[] =[{
                 element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
+                cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
             }]          
             // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
             // console.log(this.wordsMyElements._results)
@@ -2722,10 +2730,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 ){
                     
                     
-                    zChild.forEach((x,i)=>{
-                        x.style = Object.assign(x.style,x.cssDefault)
-                    }) 
-                    this.ref.detectChanges() 
+ 
                     zChild[20].style['left'] = '0px'
                     zChild[20].style['width'] = '0px'         
                     this.ref.detectChanges()    
@@ -2754,6 +2759,252 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                         40
                     ).toString() + 'px'      
                     this.ref.detectChanges()
+                    zChild[3].style['width'] = (
+                        .95 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px'
+                    zChild[3].style['font-size'] = '15px'
+                    zChild[3].style['font-style'] = 'italic'
+                    zChild[3].style['text-align'] = 'center'
+                    this.ref.detectChanges()
+                    zChild[3].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[3].element).width   )
+                    })     
+                    zChild[3].style['top']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[5].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[5].element   ).height   )+
+                        20
+                    ).toString() + 'px'      
+                    this.ref.detectChanges()        
+                    zChild[4].style['width'] = (
+                        .98 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px'
+                    zChild[4].style['font-size'] = '14.6px'
+                    zChild[4].style['text-align'] = 'center'
+                    this.ref.detectChanges()
+                    zChild[4].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[4].element).width   )
+                    })     
+                    zChild[4].style['top']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[3].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[3].element   ).height   )+
+                        45
+                    ).toString() + 'px'      
+                    this.ref.detectChanges()   
+
+                    zChild[6].style['width'] =  (
+                        .9 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px' 
+                    zChild[6].style['height'] =  (
+                        .6 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px'     
+                    this.ref.detectChanges()    
+                    zChild[6].style['top']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[4].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[4].element   ).height   )+
+                        45
+                    ).toString() + 'px'     
+                    zChild[6].style['left'] =   xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[6].element).width   )
+                    })           
+                    this.ref.detectChanges()  
+
+                    zChild[7].style['width'] = (
+                        .95* numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px'
+                    this.ref.detectChanges()
+                    zChild[7].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[6].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[6].element   ).height   )+
+                        45
+                    ).toString() + 'px'
+                    zChild[7].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[2].element).width   )
+                    })     
+                    zChild[7].style['text-align'] = 'center' 
+                    this.ref.detectChanges()    
+
+                    zChild[10].style['width'] = (
+                        .12 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px'
+                    this.ref.detectChanges()                                         
+                    zChild[10].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[10].element).width   )
+                    })     
+                    zChild[10].style['top']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[7].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[7].element   ).height   )+
+                        40
+                    ).toString() + 'px'      
+                    this.ref.detectChanges()           
+
+                    zChild[8].style['width'] = (
+                        .95* numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px'
+                    zChild[8].style['font-size'] = '14.6px'
+                    this.ref.detectChanges()
+                    zChild[8].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[10].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[10].element   ).height   )+
+                        25
+                    ).toString() + 'px'
+                    zChild[8].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[2].element).width   )
+                    })     
+                    zChild[8].style['text-align'] = 'center' 
+                    this.ref.detectChanges() 
+
+                    zChild[9].style['width'] = (
+                        .95* numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px'
+                    zChild[9].style['font-size'] = '14.6px'
+                    this.ref.detectChanges()
+                    zChild[9].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[8].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[8].element   ).height   )+
+                        25
+                    ).toString() + 'px'
+                    zChild[9].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[2].element).width   )
+                    })     
+                    zChild[9].style['text-align'] = 'center' 
+                    this.ref.detectChanges()                     
+
+                    zChild[11].style['width'] = (
+                        .95* numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px'
+                    this.ref.detectChanges()
+                    zChild[11].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[9].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[9].element   ).height   )+
+                        45
+                    ).toString() + 'px'
+                    zChild[11].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[11].element).width   )
+                    })     
+                    zChild[11].style['text-align'] = 'center' 
+                    this.ref.detectChanges()      
+                    
+                    zChild[16].style['width'] = (
+                        .12* numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px'
+                    this.ref.detectChanges()                                         
+                    zChild[16].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[16].element).width   )
+                    })     
+                    zChild[16].style['top']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[11].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[11].element   ).height   )+
+                        40
+                    ).toString() + 'px'      
+                    this.ref.detectChanges()         
+
+                    zChild[12].style['width'] = (
+                        .95* numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px'
+                    zChild[12].style['font-size'] = '14.6px'
+                    zChild[12].style['font-style'] = 'italic'
+                    this.ref.detectChanges()
+                    zChild[12].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[16].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[16].element   ).height   )+
+                        25
+                    ).toString() + 'px'
+                    zChild[12].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[12].element).width   )
+                    })     
+                    zChild[12].style['text-align'] = 'center' 
+                    this.ref.detectChanges()  
+                    
+
+
+                     zChild[13].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[12].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[12].element   ).height   )+
+                        50
+                    ).toString() + 'px'
+                    zChild[13].style['left'] = (
+                        numberParse(    zChild[11].style['left']   ) + 
+                        60
+                    ).toString() + 'px'
+                    this.ref.detectChanges()    
+                    zChild[17].style['top'] =(
+                        numberParse(   this.window.getComputedStyle(   zChild[13].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[13].element   )['fontSize']   )+
+                        8 
+                    ).toString() + 'px'  
+                    zChild[17].style['left'] =  (
+                        numberParse(   this.window.getComputedStyle(   zChild[13].element   ).left   ) +
+                        -30 
+                    ).toString() + 'px'                                        
+                    this.ref.detectChanges()  
+                    
+
+
+                    zChild[14].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[13].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[13].element   ).height   )+
+                        20
+                    ).toString() + 'px'
+                    zChild[14].style['left'] = (
+                        numberParse(    zChild[11].style['left']   ) + 
+                        60
+                    ).toString() + 'px'
+                    this.ref.detectChanges()    
+                    zChild[18].style['top'] =(
+                        numberParse(   this.window.getComputedStyle(   zChild[14].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[14].element   )['fontSize']   )+
+                        8 
+                    ).toString() + 'px'  
+                    zChild[18].style['left'] =  (
+                        numberParse(   this.window.getComputedStyle(   zChild[14].element   ).left   ) +
+                        -30 
+                    ).toString() + 'px'                                        
+                    this.ref.detectChanges() 
+                    
+                    
+                    zChild[15].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[14].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[14].element   ).height   )+
+                        20
+                    ).toString() + 'px'
+                    zChild[15].style['left'] = (
+                        numberParse(    zChild[11].style['left']   ) + 
+                        60
+                    ).toString() + 'px'
+                    this.ref.detectChanges()    
+                    zChild[19].style['top'] =(
+                        numberParse(   this.window.getComputedStyle(   zChild[15].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[15].element   )['fontSize']   )+
+                        8 
+                    ).toString() + 'px'  
+                    zChild[19].style['left'] =  (
+                        numberParse(   this.window.getComputedStyle(   zChild[15].element   ).left   ) +
+                        -30 
+                    ).toString() + 'px'                                        
+                    this.ref.detectChanges()                     
+
+                    zChild[1].style['height'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[15].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[15].element   ).height   ) +
+                        120
+                    ).toString() +'px'
+                    this.ref.detectChanges()  
+                    
+
+   
+                      
+
+                    
 
                 }
                 
@@ -2764,8 +3015,10 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 ){
                     
                     
-                    zChild.forEach((x,i)=>{
+                    zChild.slice(1,-1).forEach((x,i)=>{
+                        Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                         x.style = Object.assign(x.style,x.cssDefault)
+                        // console.log(x.style)
                     }) 
                     this.ref.detectChanges()  
                     zChild[20].style['left'] = '0px'
@@ -2896,7 +3149,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
             let zChild:zChildren[] =[{
                 element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
-                style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0]
+                style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
+                cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
             }]          
             // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
             console.log(this.wordsMyElements._results)
@@ -3003,10 +3257,10 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
         else if(   this.wordsTemplateVariable === 'wordsComponentObject8'   ){
 
 
-            let zChild =[{
+            let zChild:zChildren[] =[{
                 element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
-                innerText:null
+                cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
             }]          
             // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
             // console.log(this.wordsMyElements._results)
@@ -3126,10 +3380,10 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
         else if(   this.wordsTemplateVariable === 'wordsComponentObject9'   ){
 
 
-            let zChild =[{
+            let zChild:zChildren[] =[{
                 element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
-                innerText:null
+                cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
             }]          
             // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
             // console.log(this.wordsMyElements._results)

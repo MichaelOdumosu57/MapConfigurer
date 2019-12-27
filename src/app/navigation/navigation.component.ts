@@ -123,13 +123,13 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
     navigationCustomWordWrapElements:Array<any>  = []
     
-    // access(){
-    //     return this.wordsService
-    // }
+    access(){
+        return this.wordsService
+    }
 
-    // accessWindow(){
-    //     return this.window
-    // }
+    accessWindow(){
+        return this.window
+    }
 
     ngOnInit() {
         console.log(this.navigationTemplateVariable+ '  ngOnInit fires one remount')
