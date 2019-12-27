@@ -401,8 +401,8 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
 
                 
                 this.wordsService.footerResizeEventSubscription4 = this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO8.subscribe((data)=>{
-                    console.warn(data)
-                    console.log(zChild[0].style['top'])
+                    // console.warn(data)
+                    // console.log(zChild[0].style['top'])
                     zChild[0].style['top'] = zChild[0].element.style.top = (
                         numberParse(
                             data[0]     
@@ -412,8 +412,8 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                         ) -
                         10
                     ).toString() + 'px'
-                    console.log(zChild[0].style['top'])
-                    console.log(this.window.getComputedStyle(zChild[0].element).top)
+                    // console.log(zChild[0].style['top'])
+                    // console.log(this.window.getComputedStyle(zChild[0].element).top)
                     this.ref.detectChanges()   
                     // debugger                               
                 })

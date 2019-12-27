@@ -4383,6 +4383,18 @@ export class WordsService {
                                 }
                             ]                         
                         ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'500px',
+                                    width:'100%',
+                                    // bottom:'40px',
+                                    // width:'0px',
+                                    // height:'550px'
+                                }
+                            ]                         
+                        ],                        
                         extras:[
                             {},
                             {
@@ -4416,6 +4428,17 @@ export class WordsService {
                                     }
                                 ]                     
                             ],
+                            ngCssDefault:[
+                                [
+                                    {
+                                        position:'absolute',
+                                        // top:'700px',
+                                        width:'100%',
+                                        height:this.wordsCO6Board.defaultHeight[0],
+                                        'background-color':'rgb(247, 247, 247)'
+                                    }
+                                ]                     
+                            ],                            
                             extras:[
                                 {},
                                 {
@@ -4510,6 +4533,7 @@ export class WordsService {
                                         position:'absolute',
                                         top:this.wordsCO6Image.defaultTop[3],
                                         left:this.wordsCO6Image.defaultLeft[3],
+                                        display:'none',
                                         'z-index':-1
                                     }                                                                          
                                 ],
@@ -4555,6 +4579,115 @@ export class WordsService {
                                     }                                                                                                                                                                                                                          
                                 ]                                                                 
                             ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO6Title.defaultTop[0],
+                                        'font-size':'32px',
+                                        'font-family':'Montserrat',
+                                        'background-color':'green',
+                                        left:this.wordsCO6Title.defaultLeft[0]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO6Title.defaultTop[1],
+                                        'font-size':'15px',
+                                        'font-family':'Montserrat',
+                                        'background-color':'green',
+                                        left:this.wordsCO6Title.defaultLeft[1]
+                                    }                                    
+                                ],
+                                [
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO6Paragraph.defaultTop[0], 
+                                        left:this.wordsCO6Paragraph.defaultLeft[0],                                   
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':400
+                                    }                                   
+                                ],
+                                [
+                                    {
+                                        height:this.wordsCO6Image.defaultHeight[0],
+                                        width:this.wordsCO6Image.defaultWidth[0],
+                                        'border-radius':'5px',
+                                        position:'absolute',
+                                        top:this.wordsCO6Image.defaultTop[0],
+                                        left:this.wordsCO6Image.defaultLeft[0],
+                                    },
+                                    {
+                                        height:this.wordsCO6Image.defaultHeight[1],
+                                        width:this.wordsCO6Image.defaultWidth[1],
+                                        'border-radius':'5px',
+                                        position:'absolute',
+                                        top:this.wordsCO6Image.defaultTop[1],
+                                        left:this.wordsCO6Image.defaultLeft[1],
+                                    },
+                                    {
+                                        height:this.wordsCO6Image.defaultHeight[2],
+                                        width:this.wordsCO6Image.defaultWidth[2],
+                                        'border-radius':'5px',
+                                        position:'absolute',
+                                        top:this.wordsCO6Image.defaultTop[2],
+                                        left:this.wordsCO6Image.defaultLeft[2],
+                                    },
+                                    {
+                                        height:this.wordsCO6Image.defaultHeight[3],
+                                        width:this.wordsCO6Image.defaultWidth[3],
+                                        'border-radius':'5px',
+                                        position:'absolute',
+                                        top:this.wordsCO6Image.defaultTop[3],
+                                        left:this.wordsCO6Image.defaultLeft[3],
+                                        'display':'none',
+                                        'z-index':-1
+                                    }                                                                          
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO6Line.defaultTop[0],
+                                        height:'2px',  
+                                        width:this.wordsCO6Line.defaultWidth[0],
+                                        left:this.wordsCO6Line.defaultLeft[0]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        height:this.wordsCO6RadioButton.defaultHeight[0],
+                                        width:this.wordsCO6RadioButton.defaultWidth[0],
+                                        'border-radius':'7px',
+                                        top:this.wordsCO6RadioButton.defaultTop[0],
+                                        left:this.wordsCO6RadioButton.defaultLeft[0],                                        
+                                    },
+                                    {
+                                        position:'absolute',
+                                        height:this.wordsCO6RadioButton.defaultHeight[1],
+                                        width:this.wordsCO6RadioButton.defaultWidth[1],
+                                        'border-radius':'7px',
+                                        top:this.wordsCO6RadioButton.defaultTop[1],
+                                        left:this.wordsCO6RadioButton.defaultLeft[1],                                         
+                                    },
+                                    {
+                                        position:'absolute',
+                                        height:this.wordsCO6RadioButton.defaultHeight[2],
+                                        width:this.wordsCO6RadioButton.defaultWidth[2],
+                                        'border-radius':'7px',
+                                        top:this.wordsCO6RadioButton.defaultTop[2],
+                                        left:this.wordsCO6RadioButton.defaultLeft[2],                                         
+                                    },
+                                    {
+                                        position:'absolute',
+                                        height:this.wordsCO6RadioButton.defaultHeight[3],
+                                        width:this.wordsCO6RadioButton.defaultWidth[3],
+                                        'border-radius':'7px',
+                                        top:this.wordsCO6RadioButton.defaultTop[3],
+                                        left:this.wordsCO6RadioButton.defaultLeft[3],                                         
+                                    }                                                                                                                                                                                                                          
+                                ]                                                                 
+                            ],                            
                             metadata:{
                                 image:[
                                     '/assets/media/water-sports-03-o9imkgs4onpj360zge62vmy79y65wi73cl24g4l0k8.jpg',
@@ -4613,6 +4746,18 @@ export class WordsService {
                                 }
                             ]                         
                         ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'1300px',
+                                    width:'100%',
+                                    // bottom:'40px',
+                                    // width:'0px',
+                                    // height:'550px'
+                                }
+                            ]                         
+                        ],                        
                         extras:[
                             {},
                             {
@@ -4646,6 +4791,17 @@ export class WordsService {
                                     }
                                 ]                     
                             ],
+                            ngCssDefault:[
+                                [
+                                    {
+                                        position:'absolute',
+                                        // top:'700px',
+                                        width:'100%',
+                                        height:this.wordsCO7Board.defaultHeight[0],
+                                        'background-color':'rgb(247, 255, 0)'
+                                    }
+                                ]                     
+                            ],                            
                             extras:[
                                 {},
                                 {
@@ -4678,6 +4834,115 @@ export class WordsService {
                                 [],
                             ],                            
                             ngStyle:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO7Title.defaultTop[0],
+                                        'font-size':'32px',
+                                        'font-family':'Montserrat',
+                                        'background-color':'green',
+                                        left:this.wordsCO7Title.defaultLeft[0]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO7Title.defaultTop[1],
+                                        'font-size':'15px',
+                                        'font-family':'Montserrat',
+                                        'background-color':'green',
+                                        left:this.wordsCO7Title.defaultLeft[1]
+                                    }                                    
+                                ],
+                                [
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO7Paragraph.defaultTop[0], 
+                                        left:this.wordsCO7Paragraph.defaultLeft[0],                                   
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':400
+                                    }                                   
+                                ],
+                                [
+                                    {
+                                        height:this.wordsCO7Image.defaultHeight[0],
+                                        width:this.wordsCO7Image.defaultWidth[0],
+                                        'border-radius':'5px',
+                                        position:'absolute',
+                                        top:this.wordsCO7Image.defaultTop[0],
+                                        left:this.wordsCO7Image.defaultLeft[0],
+                                    },
+                                    {
+                                        height:this.wordsCO7Image.defaultHeight[1],
+                                        width:this.wordsCO7Image.defaultWidth[1],
+                                        'border-radius':'5px',
+                                        position:'absolute',
+                                        top:this.wordsCO7Image.defaultTop[1],
+                                        left:this.wordsCO7Image.defaultLeft[1],
+                                    },
+                                    {
+                                        height:this.wordsCO7Image.defaultHeight[2],
+                                        width:this.wordsCO7Image.defaultWidth[2],
+                                        'border-radius':'5px',
+                                        position:'absolute',
+                                        top:this.wordsCO7Image.defaultTop[2],
+                                        left:this.wordsCO7Image.defaultLeft[2],
+                                    },
+                                    {
+                                        height:this.wordsCO7Image.defaultHeight[3],
+                                        width:this.wordsCO7Image.defaultWidth[3],
+                                        'border-radius':'5px',
+                                        position:'absolute',
+                                        top:this.wordsCO7Image.defaultTop[3],
+                                        left:this.wordsCO7Image.defaultLeft[3],
+                                        'z-index':-1,
+                                        display:'none'
+                                    }                                                                          
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO7Line.defaultTop[0],
+                                        height:'2px',  
+                                        width:this.wordsCO7Line.defaultWidth[0],
+                                        left:this.wordsCO7Line.defaultLeft[0]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        height:this.wordsCO7RadioButton.defaultHeight[0],
+                                        width:this.wordsCO7RadioButton.defaultWidth[0],
+                                        'border-radius':'7px',
+                                        top:this.wordsCO7RadioButton.defaultTop[0],
+                                        left:this.wordsCO7RadioButton.defaultLeft[0],                                        
+                                    },
+                                    {
+                                        position:'absolute',
+                                        height:this.wordsCO7RadioButton.defaultHeight[1],
+                                        width:this.wordsCO7RadioButton.defaultWidth[1],
+                                        'border-radius':'7px',
+                                        top:this.wordsCO7RadioButton.defaultTop[1],
+                                        left:this.wordsCO7RadioButton.defaultLeft[1],                                         
+                                    },
+                                    {
+                                        position:'absolute',
+                                        height:this.wordsCO7RadioButton.defaultHeight[2],
+                                        width:this.wordsCO7RadioButton.defaultWidth[2],
+                                        'border-radius':'7px',
+                                        top:this.wordsCO7RadioButton.defaultTop[2],
+                                        left:this.wordsCO7RadioButton.defaultLeft[2],                                         
+                                    },
+                                    {
+                                        position:'absolute',
+                                        height:this.wordsCO7RadioButton.defaultHeight[3],
+                                        width:this.wordsCO7RadioButton.defaultWidth[3],
+                                        'border-radius':'7px',
+                                        top:this.wordsCO7RadioButton.defaultTop[3],
+                                        left:this.wordsCO7RadioButton.defaultLeft[3],                                         
+                                    }                                                                                                                                                                                    
+                                ]                                                                 
+                            ],
+                            ngCssDefault:[
                                 [],
                                 [
                                     {
@@ -4784,7 +5049,7 @@ export class WordsService {
                                         left:this.wordsCO7RadioButton.defaultLeft[3],                                         
                                     }                                                                                                                                                                                    
                                 ]                                                                 
-                            ],
+                            ],                            
                             metadata:{
                                 image:[
                                     '/assets/media/water-sports-03-o9imkgs4onpj360zge62vmy79y65wi73cl24g4l0k8.jpg',
@@ -4843,6 +5108,18 @@ export class WordsService {
                                 }
                             ]                         
                         ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'2100px',
+                                    width:'100%',
+                                    // bottom:'40px',
+                                    // width:'0px',
+                                    // height:'550px'
+                                }
+                            ]                         
+                        ],                        
                         extras:[
                             {},
                             {
@@ -4876,6 +5153,17 @@ export class WordsService {
                                     }
                                 ]                     
                             ],
+                            ngCssDefault:[
+                                [
+                                    {
+                                        position:'absolute',
+                                        // top:'700px',
+                                        width:'100%',
+                                        height:this.wordsCO8Board.defaultHeight[0],
+                                        'background-color':'rgb(247, 255, 255)'
+                                    }
+                                ]                     
+                            ],                            
                             extras:[
                                 {},
                                 {
@@ -4970,7 +5258,8 @@ export class WordsService {
                                         position:'absolute',
                                         top:this.wordsCO8Image.defaultTop[3],
                                         left:this.wordsCO8Image.defaultLeft[3],
-                                        'z-index':-1
+                                        'z-index':-1,
+                                        display:'none'
                                     }                                                                          
                                 ],
                                 [
@@ -5015,6 +5304,115 @@ export class WordsService {
                                     }                                                                                                                                                                                    
                                 ]                                                                 
                             ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO8Title.defaultTop[0],
+                                        'font-size':'32px',
+                                        'font-family':'Montserrat',
+                                        'background-color':'green',
+                                        left:this.wordsCO8Title.defaultLeft[0]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO8Title.defaultTop[1],
+                                        'font-size':'15px',
+                                        'font-family':'Montserrat',
+                                        'background-color':'green',
+                                        left:this.wordsCO8Title.defaultLeft[1]
+                                    }                                    
+                                ],
+                                [
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO8Paragraph.defaultTop[0], 
+                                        left:this.wordsCO8Paragraph.defaultLeft[0],                                   
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':400
+                                    }                                   
+                                ],
+                                [
+                                    {
+                                        height:this.wordsCO8Image.defaultHeight[0],
+                                        width:this.wordsCO8Image.defaultWidth[0],
+                                        'border-radius':'5px',
+                                        position:'absolute',
+                                        top:this.wordsCO8Image.defaultTop[0],
+                                        left:this.wordsCO8Image.defaultLeft[0],
+                                    },
+                                    {
+                                        height:this.wordsCO8Image.defaultHeight[1],
+                                        width:this.wordsCO8Image.defaultWidth[1],
+                                        'border-radius':'5px',
+                                        position:'absolute',
+                                        top:this.wordsCO8Image.defaultTop[1],
+                                        left:this.wordsCO8Image.defaultLeft[1],
+                                    },
+                                    {
+                                        height:this.wordsCO8Image.defaultHeight[2],
+                                        width:this.wordsCO8Image.defaultWidth[2],
+                                        'border-radius':'5px',
+                                        position:'absolute',
+                                        top:this.wordsCO8Image.defaultTop[2],
+                                        left:this.wordsCO8Image.defaultLeft[2],
+                                    },
+                                    {
+                                        height:this.wordsCO8Image.defaultHeight[3],
+                                        width:this.wordsCO8Image.defaultWidth[3],
+                                        'border-radius':'5px',
+                                        position:'absolute',
+                                        top:this.wordsCO8Image.defaultTop[3],
+                                        left:this.wordsCO8Image.defaultLeft[3],
+                                        'z-index':-1,
+                                        display:'none'
+                                    }                                                                          
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO8Line.defaultTop[0],
+                                        height:'2px',  
+                                        width:this.wordsCO8Line.defaultWidth[0],
+                                        left:this.wordsCO8Line.defaultLeft[0]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        height:this.wordsCO8RadioButton.defaultHeight[0],
+                                        width:this.wordsCO8RadioButton.defaultWidth[0],
+                                        'border-radius':'7px',
+                                        top:this.wordsCO8RadioButton.defaultTop[0],
+                                        left:this.wordsCO8RadioButton.defaultLeft[0],                                        
+                                    },
+                                    {
+                                        position:'absolute',
+                                        height:this.wordsCO8RadioButton.defaultHeight[1],
+                                        width:this.wordsCO8RadioButton.defaultWidth[1],
+                                        'border-radius':'7px',
+                                        top:this.wordsCO8RadioButton.defaultTop[1],
+                                        left:this.wordsCO8RadioButton.defaultLeft[1],                                         
+                                    },
+                                    {
+                                        position:'absolute',
+                                        height:this.wordsCO8RadioButton.defaultHeight[2],
+                                        width:this.wordsCO8RadioButton.defaultWidth[2],
+                                        'border-radius':'7px',
+                                        top:this.wordsCO8RadioButton.defaultTop[2],
+                                        left:this.wordsCO8RadioButton.defaultLeft[2],                                         
+                                    },
+                                    {
+                                        position:'absolute',
+                                        height:this.wordsCO8RadioButton.defaultHeight[3],
+                                        width:this.wordsCO8RadioButton.defaultWidth[3],
+                                        'border-radius':'7px',
+                                        top:this.wordsCO8RadioButton.defaultTop[3],
+                                        left:this.wordsCO8RadioButton.defaultLeft[3],                                         
+                                    }                                                                                                                                                                                    
+                                ]                                                                 
+                            ],                            
                             metadata:{
                                 image:[
                                     '/assets/media/water-sports-03-o9imkgs4onpj360zge62vmy79y65wi73cl24g4l0k8.jpg',
