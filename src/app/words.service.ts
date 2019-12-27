@@ -1618,7 +1618,8 @@ export class WordsService {
         wordsResizeEventSubscription17:Subscription  
         wordsResizeEventSubscription18:Subscription      
         wordsResizeEventSubscription19:Subscription    
-        wordsResizeEventSubscription20:Subscription               
+        wordsResizeEventSubscription20:Subscription  
+        wordsResizeEventSubscription21:Subscription             
         wordsClickEvent$:Observable<Event>        
         wordsClickEventSubscription0:Subscription
         //         
@@ -3072,6 +3073,7 @@ export class WordsService {
                                         width:'100%',
                                         height:this.wordsCO4BoardDefaultHeight[0],
                                         'background-color':'rgb(247, 247, 247)'
+                                        // 'background-color':'red'
                                     }
                                 ]                     
                             ],
@@ -3082,7 +3084,8 @@ export class WordsService {
                                         // top:'700px',
                                         width:'100%',
                                         height:this.wordsCO4BoardDefaultHeight[0],
-                                        'background-color':'rgb(247, 247, 247)'
+                                        'background-color':'rgb(247, 247, 247)',
+                                        // 'background-color':'red'
                                     }
                                 ]                     
                             ],                            
@@ -3150,7 +3153,7 @@ export class WordsService {
                                         'font-family':'Noto Sans',
                                         'font-weight':700,
                                         'text-align':'left',
-                                        width:'443.533px'
+                                        width:'473.533px'
                                     },
                                     {
                                         color:'rgb(76, 88, 99)',
@@ -3230,7 +3233,7 @@ export class WordsService {
                                         'font-family':'Noto Sans',
                                         'font-weight':700,
                                         'text-align':'left',
-                                        width:'443.533px'
+                                        width:'473.533px'
                                     },
                                     {
                                         color:'rgb(76, 88, 99)',
@@ -3343,6 +3346,7 @@ export class WordsService {
                                         'font-family':'Noto Sans',
                                         'font-weight':400,
                                         'font-style':'italic',
+                                        'text-align':'left'
                                     },
                                     {
                                         color:'rgb(76, 88, 99)',
@@ -3431,7 +3435,8 @@ export class WordsService {
                                         'font-size':'16px',
                                         'font-family':'Noto Sans',
                                         'font-weight':400,
-                                        'font-style':'italic'
+                                        'font-style':'italic',
+                                        'text-align':'left'
                                     },
                                     {
                                         color:'rgb(76, 88, 99)',
@@ -3441,7 +3446,8 @@ export class WordsService {
                                         width:this.wordsCO4ParagraphDefaultWidth[5],                                   
                                         'font-size':'16px',
                                         'font-family':'Noto Sans',
-                                        'font-weight':700
+                                        'font-weight':700,
+                                        // 'background-color':'green'
                                     },
                                     {
                                         color:'rgb(76, 88, 99)',
@@ -3495,7 +3501,7 @@ export class WordsService {
                                         left:this.wordsCO4LineDefaultLeft[7]
                                     }                                                                                                            
                                 ]                                                                 
-                            ],                            
+                            ],                          
                             metadata:{
                                 titleDefaultWidth:null
                             },
@@ -3546,15 +3552,15 @@ export class WordsService {
                                         position:'absolute',
                                         // width:'3000px',
                                         left:(
-                                            numberParse(   this.wordsCO3Image.defaultLeft[0]   )
+                                            numberParse(   this.wordsCO4TitleDefaultLeft[0]   )
                                         ).toString() + 'px', // determined evalution and use another is a good idea here
                                         height:'0px',
                                         width:(
-                                            numberParse(   this.wordsCO3Image.defaultLeft[1]   ) +
-                                            numberParse(   this.wordsCO3ImageDefaultWidth[1]   ) -
-                                            numberParse(   this.wordsCO3Image.defaultLeft[0]   )
+                                            numberParse(   this.wordsCO4TitleDefaultLeft[1]   ) +
+                                            numberParse(   this.wordsCO4TitleDefaultWidth[1]   ) -
+                                            numberParse(   this.wordsCO4TitleDefaultLeft[0]   )
                                         ).toString() + 'px',
-                                        // 'background-color':'blue'
+                                        'background-color':'blue'
                                     }                                                             
                                 ]                            
                             ],
@@ -3571,15 +3577,15 @@ export class WordsService {
                                         position:'absolute',
                                         // width:'3000px',
                                         left:(
-                                            numberParse(   this.wordsCO3Image.defaultLeft[0]   )
+                                            numberParse(   this.wordsCO4TitleDefaultLeft[0]   )
                                         ).toString() + 'px', // determined evalution and use another is a good idea here
                                         height:'0px',
                                         width:(
-                                            numberParse(   this.wordsCO3Image.defaultLeft[1]   ) +
-                                            numberParse(   this.wordsCO3ImageDefaultWidth[1]   ) -
-                                            numberParse(   this.wordsCO3Image.defaultLeft[0]   )
+                                            numberParse(   this.wordsCO4TitleDefaultLeft[1]   ) +
+                                            numberParse(   this.wordsCO4TitleDefaultWidth[1]   ) -
+                                            numberParse(   this.wordsCO4TitleDefaultLeft[0]   )
                                         ).toString() + 'px',
-                                        // 'background-color':'blue'
+                                        'background-color':'blue'
                                     }                                                             
                                 ]                            
                             ],                            

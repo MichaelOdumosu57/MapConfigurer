@@ -220,6 +220,8 @@ export class AppComponent implements OnInit,AfterViewInit {
                     'footerComponentObject0',
                     'wordsComponentObject3',
                     'wordsComponentObject4',
+                    // 'wordsComponentObject2',
+
                 ].sort()
                 this.wordsService.appViewCompleteArray = this.wordsService.appViewCompleteArray.sort()
                 // console.log(    arr.filter((x,i) =>{ 

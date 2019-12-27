@@ -5,6 +5,7 @@ import {   WINDOW   } from '../window.service';
 import {   fromEvent,interval   } from 'rxjs';
 import {   take,timeout   } from 'rxjs/operators';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import {   zChildren   } from '../customExports'
 
 function getTextWidth(   devObj:{elementText:string,font:string}   ){
     var canvas = document.createElement("canvas");
@@ -126,10 +127,9 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
         if(   this.footerTemplateVariable === 'footerComponentObject0'){
             
 
-            let zChild =[{
+            let zChild:zChildren[] =[{
                 element: this.window.document.querySelector('app-footer[ng-reflect-footer-template-variable='+this.footerTemplateVariable+']') as HTMLElement,
-                style:this.wordsService[this.footerTemplateVariable].quantity[0][0].ngStyle[0][0],
-                innerText:null
+                style:this.wordsService[this.footerTemplateVariable].quantity[0][0].ngStyle[0][0]
             }]          
             // console.log(   this.window.document.querySelectorAll('app-footer[ng-reflect-footer-template-variable='+this.footerTemplateVariable+']')   ) 
             let zCheckpoint = [0,1]     
@@ -281,7 +281,8 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                 //     this.window.getComputedStyle(   zChild[2].element   ).height,
                 //     zChild[3].style['top'],
                 //     this.window.getComputedStyle(zChild[3].element).top
-                // )                
+                // )     
+                this.ref.detectChanges()           
 
                 if(   
                     numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) >  getTextWidth({
@@ -302,7 +303,7 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                             this.window.getComputedStyle(   zChild[3].element ).getPropertyValue('font-family') 
                         })
                     })   
-                
+
                 
                 }
 

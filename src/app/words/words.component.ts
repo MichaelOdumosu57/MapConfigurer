@@ -1355,10 +1355,10 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 ){
 
 
-                    zChild.forEach((x,i)=>{
-                        x.style = Object.assign(x.style,x.cssDefault)
-                    }) 
-                    this.ref.detectChanges()
+                    // zChild.forEach((x,i)=>{
+                    //     x.style = Object.assign(x.style,x.cssDefault)
+                    // }) 
+                    // this.ref.detectChanges()
                     zChild[16].style['left'] = '0px'
                     zChild[16].style['width'] = '0px'
                     zChild[2].style['font-size'] = resize({
@@ -2094,9 +2094,12 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 ){
 
 
-                    zChild.forEach((x,i)=>{
-                        x.style = Object.assign(x.style,x.cssDefault)
-                    })       
+                    // zChild.forEach((x,i)=>{
+                    //     x.style = Object.assign(x.style,x.cssDefault)
+                    // })       
+                    // this.ref.detectChanges()
+                    zChild[19].style['left'] = '0px'
+                    zChild[19].style['width'] = '0px'
                     zChild[2].style['width'] = (
                         .95 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
                     ).toString() + 'px'
@@ -2140,7 +2143,6 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                         // misc:[.24]
                     }) 
                     this.ref.detectChanges()                                                        
-                    this.ref.detectChanges()
                     zChild[3].style['top']  = (
                         numberParse(   this.window.getComputedStyle(   zChild[6].element   ).top   ) +
                         numberParse(   this.window.getComputedStyle(   zChild[6].element   ).height   )+
@@ -2162,7 +2164,6 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                         numberParse(   this.window.getComputedStyle(   zChild[3].element   ).height   )+
                         20
                     ).toString() + 'px'  
-                    console.log()
                     zChild[4].style['left'] =zChild[3].style['left']      
                     this.ref.detectChanges()                     
                     zChild[5].style['top']  = (
@@ -2199,7 +2200,136 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                         numberParse(   this.window.getComputedStyle(   zChild[5].element   ).left   ) +
                         -30
                     ).toString() + 'px'                                                                  
-                    this.ref.detectChanges()                                                                   
+                    this.ref.detectChanges()   
+                    zChild[10].style['width'] = (
+                        .95 * numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px'
+                    this.ref.detectChanges()                      
+                    zChild[10].style['top'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[5].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[5].element   ).height   )+
+                        40
+                    ).toString() + 'px' 
+                    zChild[10].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[10].element).width   )
+                    })     
+                    zChild[10].style['text-align'] = 'center' 
+                    this.ref.detectChanges()          
+                    zChild[15].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[15].element).width   )
+                    })     
+                    zChild[15].style['top']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[10].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[10].element   ).height   )+
+                        40
+                    ).toString() + 'px'      
+                    this.ref.detectChanges()   
+                    zChild[11].style['width']  = resize({
+                        default:numberParse(   zChild[11].cssDefault['width']  ),
+                        containActual:numberParse(   this.window.getComputedStyle(zChild[1].element ).width   ),
+                        // containDefault: numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.imageDefaultWidth   )  
+                        containDefault:500,
+                        // misc:[.24]
+                    })   
+                    zChild[11].style['text-align'] = 'center' 
+                    zChild[12].style['width']  = resize({
+                        default:numberParse(  zChild[12].cssDefault['width']    ),
+                        containActual:numberParse(   this.window.getComputedStyle(zChild[1].element ).width   ),
+                        // containDefault: numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.imageDefaultWidth   )  
+                        containDefault:500,
+                        // misc:[.24]
+                    }) 
+                    zChild[13].style['width']  =resize({
+                        default:numberParse(   zChild[13].cssDefault['width']    ),
+                        containActual:numberParse(   this.window.getComputedStyle(zChild[1].element ).width   ),
+                        // containDefault: numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.imageDefaultWidth   )  
+                        containDefault:500,
+                        // misc:[.24]
+                    }) 
+                    zChild[14].style['width']  =resize({
+                        default:numberParse(   zChild[14].cssDefault['width']    ),
+                        containActual:numberParse(   this.window.getComputedStyle(zChild[1].element ).width   ),
+                        // containDefault: numberParse(   this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.imageDefaultWidth   )  
+                        containDefault:500,
+                        // misc:[.24]
+                    })                     
+                    this.ref.detectChanges()       
+                    zChild[11].style['top']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[15].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[15].element   ).height   )+
+                        20
+                    ).toString() + 'px'  
+                    zChild[11].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[11].element).width   )
+                    })          
+                    this.ref.detectChanges()  
+                    zChild[12].style['top']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[11].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[11].element   ).height   )+
+                        20
+                    ).toString() + 'px'  
+                    zChild[12].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[12].element).width   ) +
+                                // numberParse(   this.window.getComputedStyle(zChild[3].element).left   ) -
+                                // numberParse(   this.window.getComputedStyle(zChild[6].element).left   ),
+                                0,
+                        containPos:.15,
+                        targetPos:0
+
+                    })          
+                    this.ref.detectChanges()                     
+                    zChild[13].style['top']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[12].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[12].element   ).height   )+
+                        20
+                    ).toString() + 'px'  
+                    zChild[13].style['left'] =zChild[12].style['left']      
+                    this.ref.detectChanges()                     
+                    zChild[14].style['top']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[13].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[13].element   ).height   )+
+                        20
+                    ).toString() + 'px'  
+                    zChild[14].style['left'] = zChild[13].style['left']
+                    this.ref.detectChanges()              
+                    zChild[16].style['top']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[12].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[12].element   )['fontSize']   )+
+                        8
+                    ).toString() + 'px'  
+                    zChild[17].style['top']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[13].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[13].element   )['fontSize']   )+
+                        8 
+                    ).toString() + 'px'  
+                    zChild[18].style['top']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[14].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[14].element   )['fontSize']    )+
+                        8
+                    ).toString() + 'px'      
+                    zChild[16].style['left']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[12].element   ).left   ) +
+                        -30
+                    ).toString() + 'px'  
+                    zChild[17].style['left']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[13].element   ).left   ) +
+                        -30 
+                    ).toString() + 'px'  
+                    zChild[18].style['left']  = (
+                        numberParse(   this.window.getComputedStyle(   zChild[14].element   ).left   ) +
+                        -30
+                    ).toString() + 'px'                                                                  
+                    this.ref.detectChanges()              
+                    zChild[1].style['height'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[14].element   ).top   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[14].element   ).height   ) + 
+                        120                                       
+                    ).toString() +'px'
+                    this.ref.detectChanges()                                                                                                                                       
 
 
                 }
@@ -2409,6 +2539,35 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 }
                 
                 
+                if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) >= 1282   ){
+                    
+                    
+                    zChild.forEach((x,i)=>{
+                        x.style = Object.assign(x.style,x.cssDefault)
+                    }) 
+                    this.ref.detectChanges()  
+                    zChild[19].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[19].element).width   )
+                    })  
+                    this.ref.detectChanges()
+                    let shiftToLeft = (
+                        numberParse(   this.window.getComputedStyle(zChild[19].element).left   ) - 
+                        numberParse(   this.wordsService.wordsCO4TitleDefaultLeft[0]   )
+                    )      
+                    zChild.slice(2,-1).forEach((x,i)=>{
+                        x.style['left'] = (
+                            numberParse(   x.cssDefault['left']   ) +
+                            shiftToLeft
+                        ).toString()+ 'px' 
+                        // console.log(   x.style['left']   )
+                        // console.log(x,i)
+                    })     
+                    this.ref.detectChanges()                                                 
+                    
+                }
+
+                
             })
 
             // console.log('needed data from wordsCO4')
@@ -2423,16 +2582,20 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                         numberParse(   data[0]   )+
                         numberParse(   data[1]   )
                     ).toString()+'px'
-                    this.ref.detectChanges()
-                    this.wordsService.footerComponentObject0.quantity[1][1].metadata.wordsCO4.next([
-                        this.window.getComputedStyle(zChild[1].element).height,
-                        this.window.getComputedStyle(zChild[0].element).top,
-                        'services'
-                    ])  
+                    this.ref.detectChanges() 
                 })        
             
 
             }
+
+
+            this.wordsService.wordsResizeEventSubscription21 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+                this.wordsService.footerComponentObject0.quantity[1][1].metadata.wordsCO4.next([
+                    this.window.getComputedStyle(zChild[1].element).height,
+                    this.window.getComputedStyle(zChild[0].element).top,
+                    'services',
+                ]) 
+            })
 
 
                
@@ -2996,6 +3159,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             
             
             this.wordsService.wordsResizeEventSubscription5.unsubscribe()
+            this.wordsService.wordsResizeEventSubscription21.unsubscribe()
         
     
         }         
