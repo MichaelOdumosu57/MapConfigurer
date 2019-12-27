@@ -1356,7 +1356,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 ){
 
 
-                    // zChild.slice(1,-1).forEach((x,i)=>{
+                    // zChild.slice(1).forEach((x,i)=>{
                         // Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                     //     x.style = Object.assign(x.style,x.cssDefault)
                     // }) 
@@ -1659,7 +1659,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 ){
                     
 
-                    zChild.slice(1,-1).forEach((x,i)=>{
+                    zChild.slice(1).forEach((x,i)=>{
                         Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                         x.style = Object.assign(x.style,x.cssDefault)
                     }) 
@@ -1924,7 +1924,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) >= 1282   ){
                     //centering adjust
 
-                    zChild.slice(1,-1).forEach((x,i)=>{
+                    zChild.slice(1).forEach((x,i)=>{
                         Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                         x.style = Object.assign(x.style,x.cssDefault)
                     }) 
@@ -1965,7 +1965,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 
 
 
-                // zChild.slice(1,-1).forEach((x,i)=>{
+                // zChild.slice(1).forEach((x,i)=>{
                 //     console.log(x.element)
                 //     console.log(this.window.getComputedStyle(   x.element   ).left,i)
                 // })                 
@@ -2098,7 +2098,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 ){
 
 
-                    // zChild.slice(1,-1).forEach((x,i)=>{
+                    // zChild.slice(1).forEach((x,i)=>{
                         // Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                     //     x.style = Object.assign(x.style,x.cssDefault)
                     // })       
@@ -2347,7 +2347,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 ){
                     
 
-                    zChild.slice(1,-1).forEach((x,i)=>{
+                    zChild.slice(1).forEach((x,i)=>{
                         Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                         x.style = Object.assign(x.style,x.cssDefault)
                     }) 
@@ -2548,7 +2548,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) >= 1282   ){
                     
                     
-                    zChild.slice(1,-1).forEach((x,i)=>{
+                    zChild.slice(1).forEach((x,i)=>{
                         Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                         x.style = Object.assign(x.style,x.cssDefault)
                     }) 
@@ -3015,7 +3015,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 ){
                     
                     
-                    zChild.slice(1,-1).forEach((x,i)=>{
+                    zChild.slice(1).forEach((x,i)=>{
                         Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                         x.style = Object.assign(x.style,x.cssDefault)
                         // console.log(x.style)
@@ -3126,6 +3126,38 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 }
                 
 
+                if(   
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 1282 
+                ){                
+
+
+                    zChild.slice(1).forEach((x,i)=>{
+                        Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
+                        x.style = Object.assign(x.style,x.cssDefault)
+                    }) 
+                    this.ref.detectChanges()    
+                    zChild[20].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[20].element).width   )
+                    })                      
+                    this.ref.detectChanges()         
+                    let shiftToLeft = (
+                        numberParse(   this.window.getComputedStyle(zChild[20].element).left   ) - 
+                        numberParse(   this.wordsService.wordsCO5Title.defaultLeft[0]   )
+                    ) 
+                    zChild.slice(2,-1).forEach((x,i)=>{
+                        console.log(x)
+                        x.style['left'] = (
+                            numberParse(   x.cssDefault['left']   ) +
+                            shiftToLeft
+                        ).toString()+ 'px' 
+                        // console.log(   x.style['left']   )
+                        // console.log(x,i)
+                    })     
+                    this.ref.detectChanges()                      
+                    
+                    
+                }
 
             })
             this.wordsService.wordsResizeEventSubscription8 = this.wordsService.wordsResizeEvent$.subscribe(()=>{

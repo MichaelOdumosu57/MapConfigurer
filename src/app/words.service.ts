@@ -4301,17 +4301,16 @@ export class WordsService {
                                 [
                                     {
                                         position:'absolute',
-                                        // width:'3000px',
                                         left:(
                                             numberParse(   this.wordsCO5Title.defaultLeft[0]   )
                                         ).toString() + 'px', // determined evalution and use another is a good idea here
-                                        height:'30px',
+                                        // height:'30px',
                                         width:(
                                             numberParse(   this.wordsCO5Image.defaultLeft[0]   ) +
                                             numberParse(   this.wordsCO5Image.defaultWidth[0]   ) -
                                             numberParse(   this.wordsCO5Title.defaultLeft[0]   )
                                         ).toString() + 'px',
-                                        'background-color':'blue'
+                                        // 'background-color':'blue'
                                     }                                                             
                                 ]                            
                             ],   
@@ -4326,17 +4325,16 @@ export class WordsService {
                                 [
                                     {
                                         position:'absolute',
-                                        // width:'3000px',
                                         left:(
                                             numberParse(   this.wordsCO5Title.defaultLeft[0]   )
                                         ).toString() + 'px', // determined evalution and use another is a good idea here
-                                        height:'30px',
+                                        // height:'30px',
                                         width:(
                                             numberParse(   this.wordsCO5Image.defaultLeft[0]   ) +
                                             numberParse(   this.wordsCO5Image.defaultWidth[0]   ) -
                                             numberParse(   this.wordsCO5Title.defaultLeft[0]   )
                                         ).toString() + 'px',
-                                        'background-color':'blue'
+                                        // 'background-color':'blue'
                                     }                                                             
                                 ]                            
                             ],                       

@@ -146,13 +146,13 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
     overlayCustomWordWrapElements:Array<any> = this.wordsService.overlayCustomWordWrapElements 
 
-    access(){
-        return this.wordsService
-    }
+    // access(){
+    //     return this.wordsService
+    // }
 
-    accessWindow(){
-        return this.window
-    }
+    // accessWindow(){
+    //     return this.window
+    // }
     
     
     ngOnInit() {
