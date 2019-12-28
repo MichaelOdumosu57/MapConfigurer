@@ -3985,6 +3985,11 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 }
                             
                 
+                if(    x.nativeElement.id === 'w_o_r_d_s_ContentRef'   ){
+                    zCheckpoint.push(i)
+                }                
+
+
             })
             // console.log(zCheckpoint)
             let zGrid = {
@@ -4072,6 +4077,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 if(    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 830   ){
 
 
+                    zChild[14].style['left'] = '0px'
+                    zChild[14].style['width'] = '0px'
                     zChild[2].style['width'] = (
                         .95 * numberParse(  this.window.getComputedStyle(   zChild[1].element   ).width   )
                     ).toString() + 'px'
@@ -4098,7 +4105,9 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     ).toString() + 'px'
                     zChild[4].style['left'] = xPosition({
                         contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
-                        target:numberParse(   this.window.getComputedStyle(zChild[4].element).width   )
+                        target:(
+                            numberParse(   this.window.getComputedStyle(zChild[3].element).width   ) +70
+                        )
                     })     
                     this.ref.detectChanges()
 
@@ -4122,7 +4131,12 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     })     
                     this.ref.detectChanges()                       
 
-
+                    zChild[5].style['width'] = getTextWidth({
+                        elementText:zChild[5].innerText,
+                        font:this.window.getComputedStyle(   zChild[5].element ).getPropertyValue('font-size') + 
+                        " " +
+                        this.window.getComputedStyle(   zChild[5].element ).getPropertyValue('font-family')
+                    }).toString() + 'px'  
                     zChild[5].style['font-size'] = '25px'
                     // zChild[2].style['font-style'] = 'italic'
                     this.ref.detectChanges()
@@ -4281,11 +4295,13 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
                 if(   
-                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 1282 &&
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 1582 &&
                     numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 830
                 ){
                     
-
+                    
+                    zChild[14].style['left'] = '0px'
+                    zChild[14].style['width'] = '0px'
                     zChild.slice(1).forEach((x,i)=>{
                         Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                         x.style = Object.assign(x.style,x.cssDefault)
@@ -4331,6 +4347,36 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     })([12,13])                    
                     
                 }
+                
+                if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 1582   ){
+
+
+                    zChild.slice(1).forEach((x,i)=>{
+                        Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
+                        x.style = Object.assign(x.style,x.cssDefault)
+                    })                             
+                    this.ref.detectChanges() 
+                    zChild[14].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[14].element).width   )
+                    })             
+                    this.ref.detectChanges()
+                    let shiftToLeft = (
+                        numberParse(   this.window.getComputedStyle(zChild[14].element).left   ) - 
+                        numberParse(   this.wordsService.wordsCO9Title.defaultLeft[0]   )
+                    ) 
+                    zChild.slice(2,-1).forEach((x,i)=>{
+                        // console.log(x)
+                        x.style['left'] = (
+                            numberParse(   x.cssDefault['left']   ) +
+                            shiftToLeft
+                        ).toString()+ 'px' 
+                        // console.log(   x.style['left']   )
+                        // console.log(x,i)
+                    })     
+                    this.ref.detectChanges()                        
+
+                }         
                 
                 
             })

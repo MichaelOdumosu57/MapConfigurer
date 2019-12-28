@@ -1561,7 +1561,7 @@ export class WordsService {
         wordsCO9Title = {
             defaultTop:['110px','110px','250px','370px'],
             defaultLeft:['60px','695px','695px','695px'],
-            defaultWidth:['550px']
+            defaultWidth:['550px','255px']
         }        
         
         wordsCO9Button = {
@@ -5916,6 +5916,7 @@ export class WordsService {
                                         'font-family':'Montserrat',
                                         // 'width':this.wordsCO9Title.defaultWidth[0],
                                         'background-color':'green',
+                                        width:this.wordsCO9Title.defaultWidth[1],
                                         left:this.wordsCO9Title.defaultLeft[1]
                                     },
                                     {
@@ -5961,6 +5962,7 @@ export class WordsService {
                                         'font-family':'Montserrat',
                                         // 'width':this.wordsCO9Title.defaultWidth[0],
                                         'background-color':'green',
+                                        width:this.wordsCO9Title.defaultWidth[1],
                                         left:this.wordsCO9Title.defaultLeft[1]
                                     },
                                     {
@@ -6167,7 +6169,84 @@ export class WordsService {
                                 }
                             ],                            
                             generator:this.appConsecutiveGenerator
-                    }}),                                                                                                                                     
+                    }}), 
+                    ...Array.from(Array(1),()=> {
+                        return {
+                            quantity:[[],[],[],[],[3]],
+                            bool:[[],[],[],[],['true']], 
+                            val:[
+                                [],
+                                [],
+                                [],
+                                [],
+                                ['w_o_r_d_s_ContentRef']
+                            ], 
+                            text:[
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [null,null,'LEARN MORE']
+                            ],
+                            metadata:{
+                            },
+                            ngStyle:[
+                                [],
+                                [
+                                ],
+                                [                          
+                                ],
+                                [                                                                                                                                             
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        left:(
+                                            numberParse(   this.wordsCO9Title.defaultLeft[0]   )
+                                        ).toString() + 'px', // determined evalution and use another is a good idea here
+                                        // height:'30px',
+                                        width:(
+                                            numberParse(   this.wordsCO9Title.defaultLeft[1]   ) +
+                                            // numberParse(   this.wordsCO9Title.defaultWidth[1]   ) -
+                                            numberParse(   this.wordsCO9Title.defaultLeft[0]  )
+                                        ).toString() + 'px',
+                                        // 'background-color':'blue'
+                                    }                                                             
+                                ]                            
+                            ],   
+                            ngCssDefault:[
+                                [],
+                                [
+                                ],
+                                [                          
+                                ],
+                                [                                                                                                                                             
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        left:(
+                                            numberParse(   this.wordsCO9Title.defaultLeft[0]   )
+                                        ).toString() + 'px', // determined evalution and use another is a good idea here
+                                        // height:'30px',
+                                        width:(
+                                            numberParse(   this.wordsCO9Title.defaultLeft[1]   ) +
+                                            // numberParse(   this.wordsCO9Title.defaultWidth[1]   ) -
+                                            numberParse(   this.wordsCO9Title.defaultLeft[0]  )
+                                        ).toString() + 'px',
+                                        // 'background-color':'blue'
+                                    }                                                             
+                                ]                            
+                            ],                 
+                            extras:[
+                                {},
+                                {},
+                                {
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                    }})                                                                                                                                                          
                 ],   
             ],
             generator:(function(){
