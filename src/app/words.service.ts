@@ -5148,7 +5148,84 @@ export class WordsService {
                                 }
                             ],                            
                             generator:this.appConsecutiveGenerator
-                    }}),                                                                                                                                                            
+                    }}),       
+                    ...Array.from(Array(1),()=> {
+                        return {
+                            quantity:[[],[],[],[],[3]],
+                            bool:[[],[],[],[],['true']], 
+                            val:[
+                                [],
+                                [],
+                                [],
+                                [],
+                                ['w_o_r_d_s_ContentRef']
+                            ], 
+                            text:[
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [null,null,'LEARN MORE']
+                            ],
+                            metadata:{
+                            },
+                            ngStyle:[
+                                [],
+                                [
+                                ],
+                                [                          
+                                ],
+                                [                                                                                                                                             
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        left:(
+                                            numberParse(   this.wordsCO7Title.defaultLeft[0]   )
+                                        ).toString() + 'px', // determined evalution and use another is a good idea here
+                                        // height:'30px',
+                                        width:(
+                                            numberParse(   this.wordsCO7Image.defaultLeft[2]   ) +
+                                            numberParse(   this.wordsCO7Image.defaultWidth[2]   ) -
+                                            numberParse(   this.wordsCO7Image.defaultLeft[0]   )
+                                        ).toString() + 'px',
+                                        // 'background-color':'blue'
+                                    }                                                             
+                                ]                            
+                            ],   
+                            ngCssDefault:[
+                                [],
+                                [
+                                ],
+                                [                          
+                                ],
+                                [                                                                                                                                             
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        left:(
+                                            numberParse(   this.wordsCO7Title.defaultLeft[0]   )
+                                        ).toString() + 'px', // determined evalution and use another is a good idea here
+                                        // height:'30px',
+                                        width:(
+                                            numberParse(   this.wordsCO7Image.defaultLeft[2]   ) +
+                                            numberParse(   this.wordsCO7Image.defaultWidth[2]   ) -
+                                            numberParse(   this.wordsCO7Image.defaultLeft[0]   )
+                                        ).toString() + 'px',
+                                        // 'background-color':'blue'
+                                    }                                                             
+                                ]                            
+                            ],                     
+                            extras:[
+                                {},
+                                {},
+                                {
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                    }})                                                                                                                                                                             
                 ],   
             ],
             generator:(function(){
@@ -5248,7 +5325,7 @@ export class WordsService {
                                 }                         
                             ],                        
                             generator:this.appConsecutiveGenerator
-                        }}),                    
+                    }}),                    
                     ...Array.from(Array(1),()=> {
                         return {
                             quantity:[[],[3,3],[3],[3,3,3,3],[3,3,3,3,3]],
@@ -5511,7 +5588,84 @@ export class WordsService {
                                 }
                             ],                            
                             generator:this.appConsecutiveGenerator
-                    }}),                                                                                                                                                            
+                    }}),  
+                    ...Array.from(Array(1),()=> {
+                        return {
+                            quantity:[[],[],[],[],[3]],
+                            bool:[[],[],[],[],['true']], 
+                            val:[
+                                [],
+                                [],
+                                [],
+                                [],
+                                ['w_o_r_d_s_ContentRef']
+                            ], 
+                            text:[
+                                    [],
+                                    [],
+                                    [],
+                                    [],
+                                    [null,null,'LEARN MORE']
+                            ],
+                            metadata:{
+                            },
+                            ngStyle:[
+                                [],
+                                [
+                                ],
+                                [                          
+                                ],
+                                [                                                                                                                                             
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        left:(
+                                            numberParse(   this.wordsCO8Title.defaultLeft[0]   )
+                                        ).toString() + 'px', // determined evalution and use another is a good idea here
+                                        // height:'30px',
+                                        width:(
+                                            numberParse(   this.wordsCO8Image.defaultLeft[2]   ) +
+                                            numberParse(   this.wordsCO8Image.defaultWidth[2]   ) -
+                                            numberParse(   this.wordsCO8Image.defaultLeft[0]   )
+                                        ).toString() + 'px',
+                                        // 'background-color':'blue'
+                                    }                                                             
+                                ]                            
+                            ],   
+                            ngCssDefault:[
+                                [],
+                                [
+                                ],
+                                [                          
+                                ],
+                                [                                                                                                                                             
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        left:(
+                                            numberParse(   this.wordsCO8Title.defaultLeft[0]   )
+                                        ).toString() + 'px', // determined evalution and use another is a good idea here
+                                        // height:'30px',
+                                        width:(
+                                            numberParse(   this.wordsCO8Image.defaultLeft[2]   ) +
+                                            numberParse(   this.wordsCO8Image.defaultWidth[2]   ) -
+                                            numberParse(   this.wordsCO8Image.defaultLeft[0]   )
+                                        ).toString() + 'px',
+                                        // 'background-color':'blue'
+                                    }                                                             
+                                ]                            
+                            ],                     
+                            extras:[
+                                {},
+                                {},
+                                {
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                    }})                                                                                                                                                                                
                 ],   
             ],
             generator:(function(){

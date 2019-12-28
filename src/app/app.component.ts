@@ -129,13 +129,28 @@ export class AppComponent implements OnInit,AfterViewInit {
                         let event = new Event('resize')
                         this.window.dispatchEvent(event)      
                         this.window.dispatchEvent(event) 
+                        this.window.dispatchEvent(event) 
+                        this.window.dispatchEvent(event) 
+                        this.window.dispatchEvent(event) 
+                        this.window.dispatchEvent(event)      
+                        this.window.dispatchEvent(event) 
+                        this.window.dispatchEvent(event) 
+                        this.window.dispatchEvent(event) 
+                        this.window.dispatchEvent(event)                         
                     }
                     catch(e){
                         let eventLegacyLoad = this.window.document.createEvent("Event");
                         eventLegacyLoad.initEvent("resize", false, true);
                         this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )   
-                             
+                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        this.window.dispatchEvent(    eventLegacyLoad    )  
+                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        this.window.dispatchEvent(    eventLegacyLoad    )                                                                           
                     }  
                     this.wordsService.appViewCompleteArray = []
 

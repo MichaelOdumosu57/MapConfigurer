@@ -581,7 +581,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.groupEnd()
             })
             // see what happens when app-navigation top is made 0px
-            // console.log(   zChild   ) 
+            console.log(   zChild   ) 
             this.ref.detectChanges()  
             this.wordsService.wordsResizeEventSubscription1 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
                 zChild[2].style['left'] = xPosition({
@@ -591,17 +591,21 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 zChild[3].style['left'] = xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                     target:numberParse(   this.window.getComputedStyle(zChild[3].element).width   )
-                })                    
-                zChild[4].style['left'] = xPosition({
-                    contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
-                    target:numberParse(   this.window.getComputedStyle(zChild[4].element).width   ),
-                    containPos:.88
-                })     
+                })        
+                zChild[4].style['left'] = (        
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) -   
+                    numberParse(   this.window.getComputedStyle(zChild[4].element).width   ) -
+                    100
+                ).toString() + 'px'                            
                 zChild[5].style['left'] = xPosition({
                     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                     target:numberParse(   this.window.getComputedStyle(zChild[5].element).width   ),
                     containPos:.10
-                })                         
+                })     
+                // console.table(
+                //     zChild[5].style['left'],
+                //     this.window.getComputedStyle(zChild[5].element).width   
+                // )   
                 this.ref.detectChanges()              
             })    
         }
@@ -3283,7 +3287,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 })
                 // console.groupEnd()
             })
-            console.log(zChild)    
+            // console.log(zChild)    
             this.wordsService.wordsResizeEventSubscription9 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
 
 
@@ -3424,7 +3428,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 
                 
             })
-            this.wordsService.wordsResizeEventSubscription9 = this.wordsService.wordsResizeEvent$.subscribe(()=>{})
+            this.wordsService.wordsResizeEventSubscription10 = this.wordsService.wordsResizeEvent$.subscribe(()=>{})
                   
 
             
@@ -3453,7 +3457,10 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 if(    x.nativeElement.id === 'w_o_r_d_s_Title'   ){
                     zCheckpoint.push(i)
                 }
-                      
+                 
+                if(    x.nativeElement.id === 'w_o_r_d_s_ContentRef'   ){
+                    zCheckpoint.push(i)
+                }                
                             
                 
             })
@@ -3461,10 +3468,6 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             let zGrid = {
                 a:0, 
                 b:0, 
-                c:0,
-                d:0,
-                e:null,
-                f:null
             }                  
             zCheckpoint.map((y:any,j:any)=>{
                 // console.group('associated')
@@ -3535,7 +3538,149 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 })
                 // console.groupEnd()
             })
-            // console.log(zChild)          
+            console.log(zChild)
+            this.wordsService.wordsResizeEventSubscription11 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
+
+
+                if(    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 817   ){
+
+
+                    zChild[14].style['left'] = '0px'
+                    zChild[14].style['width'] = '0px' 
+                    zChild[6].style['display'] = 'none'   
+                    zChild[7].style['display'] = 'none'    
+                    this.ref.detectChanges()
+                    zChild[5].style['width'] = (
+                        .95 * numberParse(  this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px'
+                    this.ref.detectChanges()
+                    zChild[5].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[5].element).width   )
+                    })       
+                    this.ref.detectChanges()
+                    zChild[10].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:(
+                            numberParse(   this.window.getComputedStyle(zChild[13].element).width   ) +
+                            numberParse(   this.window.getComputedStyle(zChild[13].element).left   ) -
+                            numberParse(   this.window.getComputedStyle(zChild[10].element).left   ) 
+                        )
+                    })   
+                    this.ref.detectChanges();
+                    ((arr)=>{
+                        for(var x of arr){
+                            // console.log(x)
+                            zChild[x].style['left'] = (
+                                numberParse(   this.window.getComputedStyle(zChild[x-1].element).left   ) +
+                                20
+                            ).toString() + 'px'
+                            this.ref.detectChanges()
+                        }
+                    })([11,12,13])                                             
+                    
+                }
+
+
+                if(   
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 1282 &&
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 817
+                ){
+                    
+
+                    zChild[14].style['left'] = '0px'
+                    zChild[14].style['width'] = '0px'                     
+                    zChild.slice(1).forEach((x,i)=>{
+                        Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
+                        x.style = Object.assign(x.style,x.cssDefault)
+                        // console.log(x.style)
+                    }) 
+                    zChild[5].style['width'] = resize({
+                        default:numberParse(   zChild[5].cssDefault['width']   ),
+                        containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
+                        containDefault:1120
+                    })
+                    zChild[6].style['width'] = resize({
+                        default:numberParse(   zChild[6].cssDefault['width']   ),
+                        containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
+                        containDefault:1120
+                    })      
+                    zChild[7].style['width'] = resize({
+                        default:numberParse(   zChild[7].cssDefault['width']   ),
+                        containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
+                        containDefault:1120
+                    })                                        
+                    this.ref.detectChanges()    
+                    zChild[6].style['left'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[5].element   ).left   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[5].element   ).width   ) +
+                        30
+                    ).toString() + 'px'   
+                    this.ref.detectChanges()                       
+                    zChild[7].style['left'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[6].element   ).left   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[6].element   ).width   ) +
+                        30
+                    ).toString() + 'px'   
+                    this.ref.detectChanges()
+                    zChild[10].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:(
+                            numberParse(   this.window.getComputedStyle(zChild[13].element).width   ) +
+                            numberParse(   this.window.getComputedStyle(zChild[13].element).left   ) -
+                            numberParse(   this.window.getComputedStyle(zChild[10].element).left   ) 
+                        )
+                    })   
+                    this.ref.detectChanges();
+                    ((arr)=>{
+                        for(var x of arr){
+                            // console.log(x)
+                            zChild[x].style['left'] = (
+                                numberParse(   this.window.getComputedStyle(zChild[x-1].element).left   ) +
+                                20
+                            ).toString() + 'px'
+                            this.ref.detectChanges()
+                        }
+                    })([11,12,13])
+                    
+                    
+                }
+
+
+                if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 1282   ){
+
+
+                    zChild.slice(1).forEach((x,i)=>{
+                        Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
+                        x.style = Object.assign(x.style,x.cssDefault)
+                    })                     
+                    this.ref.detectChanges()   
+                    zChild[14].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[14].element).width   )
+                    })                      
+                    this.ref.detectChanges()
+                    let shiftToLeft = (
+                        numberParse(   this.window.getComputedStyle(zChild[14].element).left   ) - 
+                        numberParse(   this.wordsService.wordsCO5Title.defaultLeft[0]   )
+                    ) 
+                    zChild.slice(2,-1).forEach((x,i)=>{
+                        // console.log(x)
+                        x.style['left'] = (
+                            numberParse(   x.cssDefault['left']   ) +
+                            shiftToLeft
+                        ).toString()+ 'px' 
+                        // console.log(   x.style['left']   )
+                        // console.log(x,i)
+                    })     
+                    this.ref.detectChanges()                     
+                    
+                }   
+                
+                
+            })
+            this.wordsService.wordsResizeEventSubscription12 = this.wordsService.wordsResizeEvent$.subscribe(()=>{})
+                                   
 
             
         } 
@@ -3564,7 +3709,11 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 if(    x.nativeElement.id === 'w_o_r_d_s_Title'   ){
                     zCheckpoint.push(i)
                 }
-                            
+                
+                
+                if(    x.nativeElement.id === 'w_o_r_d_s_ContentRef'   ){
+                    zCheckpoint.push(i)
+                }                
                 
             })
             // console.log(zCheckpoint)
@@ -3647,7 +3796,144 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             })
             // console.log(zChild)
             this.wordsService.wordsResizeEventSubscription15 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
-                this.ref.detectChanges()
+
+
+                if(    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 817   ){
+
+
+                    zChild[14].style['left'] = '0px'
+                    zChild[14].style['width'] = '0px' 
+                    zChild[6].style['display'] = 'none'   
+                    zChild[7].style['display'] = 'none'    
+                    this.ref.detectChanges()
+                    zChild[5].style['width'] = (
+                        .95 * numberParse(  this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px'
+                    this.ref.detectChanges()
+                    zChild[5].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[5].element).width   )
+                    })       
+                    this.ref.detectChanges()
+                    zChild[10].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:(
+                            numberParse(   this.window.getComputedStyle(zChild[13].element).width   ) +
+                            numberParse(   this.window.getComputedStyle(zChild[13].element).left   ) -
+                            numberParse(   this.window.getComputedStyle(zChild[10].element).left   ) 
+                        )
+                    })   
+                    this.ref.detectChanges();
+                    ((arr)=>{
+                        for(var x of arr){
+                            // console.log(x)
+                            zChild[x].style['left'] = (
+                                numberParse(   this.window.getComputedStyle(zChild[x-1].element).left   ) +
+                                20
+                            ).toString() + 'px'
+                            this.ref.detectChanges()
+                        }
+                    })([11,12,13])                                             
+                    
+                }
+
+
+                if(   
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 1282 &&
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 817
+                ){
+                    
+
+                    zChild[14].style['left'] = '0px'
+                    zChild[14].style['width'] = '0px'                     
+                    zChild.slice(1).forEach((x,i)=>{
+                        Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
+                        x.style = Object.assign(x.style,x.cssDefault)
+                        // console.log(x.style)
+                    }) 
+                    zChild[5].style['width'] = resize({
+                        default:numberParse(   zChild[5].cssDefault['width']   ),
+                        containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
+                        containDefault:1120
+                    })
+                    zChild[6].style['width'] = resize({
+                        default:numberParse(   zChild[6].cssDefault['width']   ),
+                        containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
+                        containDefault:1120
+                    })      
+                    zChild[7].style['width'] = resize({
+                        default:numberParse(   zChild[7].cssDefault['width']   ),
+                        containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
+                        containDefault:1120
+                    })                                        
+                    this.ref.detectChanges()    
+                    zChild[6].style['left'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[5].element   ).left   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[5].element   ).width   ) +
+                        30
+                    ).toString() + 'px'   
+                    this.ref.detectChanges()                       
+                    zChild[7].style['left'] = (
+                        numberParse(   this.window.getComputedStyle(   zChild[6].element   ).left   ) +
+                        numberParse(   this.window.getComputedStyle(   zChild[6].element   ).width   ) +
+                        30
+                    ).toString() + 'px'   
+                    this.ref.detectChanges()
+                    zChild[10].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:(
+                            numberParse(   this.window.getComputedStyle(zChild[13].element).width   ) +
+                            numberParse(   this.window.getComputedStyle(zChild[13].element).left   ) -
+                            numberParse(   this.window.getComputedStyle(zChild[10].element).left   ) 
+                        )
+                    })   
+                    this.ref.detectChanges();
+                    ((arr)=>{
+                        for(var x of arr){
+                            // console.log(x)
+                            zChild[x].style['left'] = (
+                                numberParse(   this.window.getComputedStyle(zChild[x-1].element).left   ) +
+                                20
+                            ).toString() + 'px'
+                            this.ref.detectChanges()
+                        }
+                    })([11,12,13])
+                    
+                    
+                }
+
+
+                if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 1282   ){
+
+
+                    zChild.slice(1).forEach((x,i)=>{
+                        Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
+                        x.style = Object.assign(x.style,x.cssDefault)
+                    })                     
+                    this.ref.detectChanges()   
+                    zChild[14].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[14].element).width   )
+                    })                      
+                    this.ref.detectChanges()
+                    let shiftToLeft = (
+                        numberParse(   this.window.getComputedStyle(zChild[14].element).left   ) - 
+                        numberParse(   this.wordsService.wordsCO5Title.defaultLeft[0]   )
+                    ) 
+                    zChild.slice(2,-1).forEach((x,i)=>{
+                        // console.log(x)
+                        x.style['left'] = (
+                            numberParse(   x.cssDefault['left']   ) +
+                            shiftToLeft
+                        ).toString()+ 'px' 
+                        // console.log(   x.style['left']   )
+                        // console.log(x,i)
+                    })     
+                    this.ref.detectChanges()                     
+                    
+                }   
+                
+                
             })
             this.wordsService.wordsResizeEventSubscription16 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
                 // console.log('needed data from wordsCO4')
@@ -3884,6 +4170,17 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
         
     
         }           
+
+
+        else if(   this.wordsTemplateVariable  === 'wordsComponentObject7'   ){
+        
+                
+            this.wordsService.wordsResizeEventSubscription11.unsubscribe()
+            this.wordsService.wordsResizeEventSubscription12.unsubscribe()
+        
+    
+        }  
+
 
         else if(   this.wordsTemplateVariable  === 'wordsComponentObject8'   ){
         
