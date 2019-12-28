@@ -712,14 +712,15 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.groupEnd()
             })
             // see what happens when app-navigation top is made 0px
-            // console.log(   zChild   ) 
+            console.log(   zChild   ) 
             this.ref.detectChanges() 
             this.wordsService.wordsResizeEventSubscription2 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
 
 
                 if(   numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ) > 1064   ){
                     
-
+                    zChild[11].style['left'] = '0px'
+                    zChild[11].style['width'] = '0px'
                     zChild[2].style['top'] = this.wordsService.wordsComponentObject2TitleTop
                     zChild[2].style['left'] = this.wordsService.wordsComponentObject2TitleLeft
                     zChild[2].style['width'] = this.wordsService.wordsComponentObject2TitleWidth
@@ -860,6 +861,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 if(   numberParse(   this.window.getComputedStyle(    zChild[1].element   ).width   ) > 1309   ){
 
 
+                    zChild[11].style['width'] = '1183px'
+                    this.ref.detectChanges()
                     zChild[11].style['left']  =  xPosition({
                         contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
                         target:numberParse(   this.window.getComputedStyle(zChild[11].element).width   ),
@@ -943,7 +946,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
                 else if(   numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ) < 944   ){
 
-
+                    zChild[11].style['left'] = '0px'
+                    zChild[11].style['width'] = '0px'
                     zChild[2].style['top'] = '40px' // figure how to do this once
                     zChild[2].style['text-align'] = 'center'      
                     
@@ -1092,7 +1096,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
                 else if(   numberParse(   this.window.getComputedStyle(   zChild[1].element    ).width   ) < 1064   ){
 
-
+                    zChild[11].style['left'] = '0px'
+                    zChild[11].style['width'] = '0px'
                     zChild[2].style['top'] = this.wordsService.wordsComponentObject2TitleTop
                     zChild[2].style['left'] = this.wordsService.wordsComponentObject2TitleLeft
                     zChild[2].style['width'] = this.wordsService.wordsComponentObject2TitleWidth
@@ -3434,6 +3439,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             
         } 
         
+
         else if(   this.wordsTemplateVariable === 'wordsComponentObject7'   ){
 
 
@@ -3961,7 +3967,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             }]          
             // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
             // console.log(this.wordsMyElements._results)
-            console.log(zChild)
+            // console.log(zChild)
             let zCheckpoint = []                         
             this.wordsMyElements._results.map((x:any,i:any)=>{
 
@@ -3977,7 +3983,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                             
                 
             })
-            console.log(zCheckpoint)
+            // console.log(zCheckpoint)
             let zGrid = {
                 a:0, 
                 b:0, 
@@ -4024,7 +4030,8 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                         zChild.push({
                             element:x.nativeElement as HTMLElement,
                             style:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
-                            innerText: this.wordsService[this.wordsTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b]
+                            innerText: this.wordsService[this.wordsTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b],
+                            cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngCssDefault[zGrid.a][zGrid.b],
                         })
                         
 
@@ -4056,7 +4063,61 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             })
             console.log(zChild)
             this.wordsService.wordsResizeEventSubscription17 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
-                this.ref.detectChanges()
+
+
+                if(   
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 1282 &&
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 830
+                ){
+                    
+
+                    zChild.slice(1).forEach((x,i)=>{
+                        Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
+                        x.style = Object.assign(x.style,x.cssDefault)
+                        // console.log(x.style)
+                    }) 
+                    zChild[2].style['width'] = resize({
+                        default:numberParse(    zChild[2].cssDefault['width']  ),
+                        containActual:numberParse(   this.window.getComputedStyle(   zChild[1].element   ).width   ),
+                        containDefault:850
+                    })  
+                    // zChild[2].style['font-size'] = '14.6px'
+                    // zChild[2].style['font-style'] = 'italic'
+                    this.ref.detectChanges()
+                    // zChild[2].style['top'] = (
+                    //     numberParse(   this.window.getComputedStyle(   zChild[16].element   ).top   ) +
+                    //     numberParse(   this.window.getComputedStyle(   zChild[16].element   ).height   )+
+                    //     25
+                    // ).toString() + 'px'
+                    // zChild[2].style['left'] = xPosition({
+                    //     contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                    //     target:numberParse(   this.window.getComputedStyle(zChild[12].element).width   )
+                    // })     
+                    // zChild[2].style['text-align'] = 'center' 
+                    // this.ref.detectChanges()                     
+                    
+                    zChild.slice(5,12).forEach((x,i)=>{
+                        x.style['left'] = (
+                            numberParse(   this.window.getComputedStyle(   zChild[2].element   ).left   ) +
+                            numberParse(   this.window.getComputedStyle(   zChild[2].element   ).width   ) +
+                            60
+                        ).toString() + 'px'
+                        this.ref.detectChanges()
+                    });
+                    ((arr)=>{
+                        for(var x of arr){
+                            // console.log(x)
+                            zChild[x].style['left'] = (
+                                numberParse(   this.window.getComputedStyle(zChild[x-1].element).left   ) +
+                                55
+                            ).toString() + 'px'
+                            this.ref.detectChanges()
+                        }
+                    })([12,13])                    
+                    
+                }
+                
+                
             })
             this.wordsService.wordsResizeEventSubscription18 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
                 // console.log('needed data from wordsCO4')

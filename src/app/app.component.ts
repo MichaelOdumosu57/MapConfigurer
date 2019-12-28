@@ -71,7 +71,7 @@ export class AppComponent implements OnInit,AfterViewInit {
               
         
         this.wordsService.appViewComplete.subscribe(()=>{
-            console.log(this.wordsService.appCurrentNav)
+            // console.log(this.wordsService.appCurrentNav)
             // console.log(   this.window.location   )
             // console.log(
             //     this.window.name,
@@ -341,6 +341,59 @@ export class AppComponent implements OnInit,AfterViewInit {
 
 
             }   
+            
+            
+            if(   this.wordsService.appCurrentNav === '/blog'   ){
+
+
+                let arr = [
+                    'navigationComponentObject0',
+                ].sort()
+                this.wordsService.appViewCompleteArray = this.wordsService.appViewCompleteArray.sort()
+                // console.log(    arr.filter((x,i) =>{ 
+                //     return this.wordsService.appViewCompleteArray[i] !== x 
+                // }),
+                // arr,
+                // this.wordsService.appViewCompleteArray
+                // )
+
+
+                if(
+                    arr.filter((x,i) =>{ 
+                        return this.wordsService.appViewCompleteArray[i] !== x 
+                    }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length
+                ){
+
+
+                    console.log('dispatched')
+                    try{
+                        let event = new Event('resize')
+                        this.window.dispatchEvent(event)      
+                        this.window.dispatchEvent(event) 
+                    }
+                    catch(e){
+                        let eventLegacyLoad = this.window.document.createEvent("Event");
+                        eventLegacyLoad.initEvent("resize", false, true);
+                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        this.window.dispatchEvent(    eventLegacyLoad    )   
+                             
+                    } 
+                    this.wordsService.appViewCompleteArray = []
+
+
+                    if(   this.wordsService.appReloaded === 'true'){
+
+
+                        this.wordsService.appReloaded = 'false'
+        
+        
+                    } 
+
+                    
+                }
+
+
+            } 
             
             
             if(   this.wordsService.appCurrentNav === '/contact'   ){

@@ -34,6 +34,11 @@
     <app-footer   [footerTemplateVariable] = '"footerComponentObject0"' #appFooterVal0 [ngStyle] = 'wordsService.footerComponentObject0.quantity[0][0].ngStyle[0][0]' ></app-footer>
 </ng-container>
 
+<ng-container *ngIf ="wordsService.appCurrentNav  === '/blog'">
+    <app-navigation   [navigationTemplateVariable] = '"navigationComponentObject0"' #appNavigationVal0 ></app-navigation> 
+</ng-container>
+
+
 <ng-container *ngIf ="wordsService.appCurrentNav  === '/contact'">
     <app-navigation   [navigationTemplateVariable] = '"navigationComponentObject0"' #appNavigationVal0 ></app-navigation> 
     <app-overlay [overlayTemplateVariable]= '"overlayComponentObject2"' #appOverlayVal2 [ngStyle] = 'wordsService.overlayComponentObject2.quantity[0][0].ngStyle[0][0]'></app-overlay>

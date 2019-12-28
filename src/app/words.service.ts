@@ -5702,6 +5702,18 @@ export class WordsService {
                                 }
                             ]                         
                         ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'500px',
+                                    width:'100%',
+                                    // bottom:'40px',
+                                    // width:'0px',
+                                    // height:'550px'
+                                }
+                            ]                         
+                        ],                        
                         extras:[
                             {},
                             {
@@ -5735,6 +5747,17 @@ export class WordsService {
                                     }
                                 ]                     
                             ],
+                            ngCssDefault:[
+                                [
+                                    {
+                                        position:'absolute',
+                                        // top:'700px',
+                                        width:'100%',
+                                        height:this.wordsCO9Board.defaultHeight[0],
+                                        'background-color':'rgb(247, 247, 247)'
+                                    }
+                                ]                     
+                            ],                            
                             extras:[
                                 {},
                                 {
@@ -5801,6 +5824,46 @@ export class WordsService {
                                     }                                                                                                    
                                 ]                                                                 
                             ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO9Title.defaultTop[0],
+                                        'font-size':'32px',
+                                        'font-family':"'Charmonman',sans-serif",
+                                        'width':this.wordsCO9Title.defaultWidth[0],
+                                        'background-color':'green',
+                                        left:this.wordsCO9Title.defaultLeft[0]
+                                    }
+                                ],
+                                [
+                                    {
+                                        color:'rgb(255, 255, 255)',
+                                        position:'absolute',
+                                        top:this. wordsCO9Paragraph.defaultTop[0], 
+                                        left:this. wordsCO9Paragraph.defaultLeft[0],                                      
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':700,
+                                        'text-align':'center',
+                                        'z-index':1
+                                    }                        
+                                ],
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO9Button.defaultTop[0],
+                                        height:this.wordsCO9Button.defaultHeight[0],
+                                        width:this.wordsCO9Button.defaultWidth[0],
+                                        left:this.wordsCO9Button.defaultLeft[0],
+                                        'border-radius':'50px',
+                                        'border':'0px',
+                                        'background-color': 'rgb(251, 32, 86)'
+                                    }                                                                                                    
+                                ]                                                                 
+                            ],                            
                             metadata:{
                                 image:['/assets/media/IMG-1786-1024x754.jpg'],
                                 titleDefaultWidth:null
@@ -5821,12 +5884,12 @@ export class WordsService {
                     }}), 
                     ...Array.from(Array(1),()=> {
                         return {
-                            quantity:[[],[3,3],[3,3,3,3],[],[]],
-                            bool:[[],['true','h2'],['true','true','true','true'],[],[]], 
+                            quantity:[[],[3,3],[3,3],[],[]],
+                            bool:[[],['true','h2'],['true','true'],[],[]], 
                             val:[
                                 [],
                                 ['w_o_r_d_s_Title','w_o_r_d_s_SubTitle'],
-                                ['w_o_r_d_s_Paragragh','w_o_r_d_s_Paragragh','w_o_r_d_s_Paragragh','w_o_r_d_s_Paragragh'],
+                                ['w_o_r_d_s_Paragragh','w_o_r_d_s_Paragragh'],
                                 [],
                                 [],
                             ], 
@@ -5888,6 +5951,51 @@ export class WordsService {
                                 [],
                                 []                                                                 
                             ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO9Title.defaultTop[1],
+                                        'font-size':'32px',
+                                        'font-family':'Montserrat',
+                                        // 'width':this.wordsCO9Title.defaultWidth[0],
+                                        'background-color':'green',
+                                        left:this.wordsCO9Title.defaultLeft[1]
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO9Title.defaultTop[2],
+                                        'font-size':'15px',
+                                        'font-family':'Montserrat',
+                                        // 'width':this.wordsCO9Title.defaultWidth[0],
+                                        'background-color':'green',
+                                        left:this.wordsCO9Title.defaultLeft[2]
+                                    }                                    
+                                ],
+                                [
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO9Paragraph.defaultTop[1], 
+                                        left:this.wordsCO9Paragraph.defaultLeft[1],
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':400
+                                    },
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO9Paragraph.defaultTop[2], 
+                                        left:this.wordsCO9Paragraph.defaultLeft[2],                                   
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':400
+                                    }                                                                      
+                                ],
+                                [],
+                                []                                                                 
+                            ],                            
                             metadata:{
                                 titleDefaultWidth:null
                             },
@@ -5985,6 +6093,64 @@ export class WordsService {
                                     }                                                                        
                                 ]                                                                 
                             ],
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:this.wordsCO9Title.defaultTop[3],
+                                        'font-size':'15px',
+                                        'font-family':'Montserrat',
+                                        // 'width':this.wordsCO9Title.defaultWidth[0],
+                                        'background-color':'green',
+                                        left:this.wordsCO9Title.defaultLeft[3]
+                                    },                                  
+                                ],
+                                [
+                                    {
+                                        color:'rgb(76, 88, 99)',
+                                        position:'absolute',
+                                        top:this.wordsCO9Paragraph.defaultTop[3], 
+                                        left:this.wordsCO9Paragraph.defaultLeft[3],
+                                        'font-size':'16px',
+                                        'font-family':'Noto Sans',
+                                        'font-weight':400
+                                    },                                                                     
+                                ],
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        width:this.wordsCO9Button.defaultWidth[2],
+                                        height:this.wordsCO9Button.defaultHeight[2],
+                                        'border-radius':this.wordsCO9Button.defaultBorderRadius[2],
+                                        'border':'0px',
+                                        top:this.wordsCO9Button.defaultTop[2],
+                                        left:this.wordsCO9Button.defaultLeft[2],
+                                        'background-color':'rgb(147,147,147)'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        width:this.wordsCO9Button.defaultWidth[3],
+                                        height:this.wordsCO9Button.defaultHeight[3],
+                                        'border-radius':this.wordsCO9Button.defaultBorderRadius[3],
+                                        'border':'0px',
+                                        top:this.wordsCO9Button.defaultTop[3],
+                                        left:this.wordsCO9Button.defaultLeft[3],
+                                        'background-color':'rgb(147,147,147)'                                        
+                                    },
+                                    {
+                                        position:'absolute',
+                                        width:this.wordsCO9Button.defaultWidth[4],
+                                        height:this.wordsCO9Button.defaultHeight[4],
+                                        'border-radius':this.wordsCO9Button.defaultBorderRadius[4],
+                                        'border':'0px',
+                                        top:this.wordsCO9Button.defaultTop[4],
+                                        left:this.wordsCO9Button.defaultLeft[4],
+                                        'background-color':'rgb(147,147,147)'                                         
+                                    }                                                                        
+                                ]                                                                 
+                            ],                            
                             metadata:{
                                 titleDefaultWidth:null
                             },
