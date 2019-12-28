@@ -227,9 +227,9 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                     ){               
 
 
-                        let domElement = x.nativeElement as HTMLElement;
+
                         zChild.push({
-                            element:domElement,
+                            element:x.nativeElement as HTMLElement,
                             style:this.wordsService[this.overlayTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
                             innerText: this.wordsService[this.overlayTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b],
                             bool:this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b]
@@ -503,8 +503,6 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 })                              
                 this.ref.detectChanges()
             })
-      
-            "946px"
             
             
         }
