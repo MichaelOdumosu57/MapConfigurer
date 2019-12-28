@@ -240,7 +240,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.groupEnd()
             })
             // see what happens when app-navigation top is made 0px
-            // console.log(   zChild   ) 
+            console.log(   zChild   ) 
             this.ref.detectChanges()                       
             this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.TitleDefaultWidth = getTextWidth({
                 elementText:zChild[2].innerText,
@@ -252,13 +252,13 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 elementText:zChild[7].innerText,
                 font:this.window.getComputedStyle(   zChild[7].element ).getPropertyValue('font-size') + 
                 " " +
-                this.window.getComputedStyle(   zChild[2].element ).getPropertyValue('font-family') 
+                this.window.getComputedStyle(   zChild[7].element ).getPropertyValue('font-family') 
             })  
             this.wordsService[this.wordsTemplateVariable].quantity[1][3].metadata.subTitleDefaultWidth = getTextWidth({
                 elementText:zChild[8].innerText,
                 font:this.window.getComputedStyle(   zChild[8].element   ).getPropertyValue('font-size') + 
                 " " +
-                this.window.getComputedStyle(   zChild[2].element ).getPropertyValue('font-family') 
+                this.window.getComputedStyle(   zChild[8].element ).getPropertyValue('font-family') 
             })                                                     
             this.wordsService.wordsResizeEventSubscription0 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
                 zChild[6].style['width'] = resize({
@@ -581,7 +581,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.groupEnd()
             })
             // see what happens when app-navigation top is made 0px
-            console.log(   zChild   ) 
+            // console.log(   zChild   ) 
             this.ref.detectChanges()  
             this.wordsService.wordsResizeEventSubscription1 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
                 zChild[2].style['left'] = xPosition({

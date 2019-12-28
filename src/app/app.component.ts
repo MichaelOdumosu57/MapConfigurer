@@ -127,6 +127,10 @@ export class AppComponent implements OnInit,AfterViewInit {
                     console.log('dispatched')
                     try{
                         let event = new Event('resize')
+                        fromEvent(this.window,'load').subscribe(()=>{
+                            this.window.dispatchEvent(event)      
+                            this.window.dispatchEvent(event)                             
+                        })
                         this.window.dispatchEvent(event)      
                         this.window.dispatchEvent(event) 
                         this.window.dispatchEvent(event) 
@@ -141,8 +145,10 @@ export class AppComponent implements OnInit,AfterViewInit {
                     catch(e){
                         let eventLegacyLoad = this.window.document.createEvent("Event");
                         eventLegacyLoad.initEvent("resize", false, true);
-                        this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        fromEvent(this.window,'load').subscribe(()=>{
+                            this.window.dispatchEvent(eventLegacyLoad)      
+                            this.window.dispatchEvent(eventLegacyLoad)                             
+                        })
                         this.window.dispatchEvent(    eventLegacyLoad    )
                         this.window.dispatchEvent(    eventLegacyLoad    )
                         this.window.dispatchEvent(    eventLegacyLoad    )  
@@ -425,12 +431,20 @@ export class AppComponent implements OnInit,AfterViewInit {
                         let event = new Event('resize')
                         this.window.dispatchEvent(event)      
                         this.window.dispatchEvent(event) 
+                        fromEvent(this.window,'load').subscribe(()=>{
+                            this.window.dispatchEvent(event)      
+                            this.window.dispatchEvent(event)                             
+                        })                        
                     }
                     catch(e){
                         let eventLegacyLoad = this.window.document.createEvent("Event");
                         eventLegacyLoad.initEvent("resize", false, true);
                         this.window.dispatchEvent(    eventLegacyLoad    )
                         this.window.dispatchEvent(    eventLegacyLoad    )   
+                        fromEvent(this.window,'load').subscribe(()=>{
+                            this.window.dispatchEvent(eventLegacyLoad)      
+                            this.window.dispatchEvent(eventLegacyLoad)                             
+                        })                        
                              
                     } 
                     this.wordsService.appViewCompleteArray = []

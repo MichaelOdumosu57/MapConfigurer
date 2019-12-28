@@ -138,6 +138,17 @@ export class WordsService {
                                 }
                             ]                         
                         ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'0px',
+                                    height:'100%',
+                                    width:'100%',
+                                    'z-index':-1
+                                }
+                            ]                         
+                        ],                        
                         extras:[
                             {},
                             {
@@ -257,6 +268,76 @@ export class WordsService {
                                 }                                                                
                             ]                     
                         ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'fixed',
+                                    // height:'1000px',
+                                    height:'140%',
+                                    width:'100%',
+                                    'z-index':-1
+                                    // opacity:0
+                                },
+                                {
+                                    position:'absolute',
+                                    width:this.overlayComponentObject4Image1Width,
+                                    height:'451px',
+                                    top:'2000px'
+                                }
+                            ],
+                            [
+                                {
+                                    position:'absolute',
+                                    'font-family':"'Vidaloka',sans-serif",
+                                    top:"170px",
+                                    left:'45%',
+                                    'font-size': this.overlayAboutPreTitleDefaultFontSize,
+                                    'font-style':'italic',
+                                    'text-align':'center',
+                                    color:'white',
+                                    // 'margin-bottom':'20px',
+                                    'text-shadow':'rgba(0, 0, 0, 0.3) 2px -1px 0px' // so this property we allow because it doesnt make a meaningful difference if its not working
+                                },
+                                {
+                                        position:'absolute',
+                                        top:"270px",
+                                        left:'45%',
+                                        'font-size':'141px', 
+                                        'font-family':"'Aclonica',sans-serif",
+                                        'font-weight':'500',
+                                        'text-align':'center',
+                                        color:'white'
+                                },                                                                
+                            ],
+                            [],
+                            [],
+                            [
+                                {
+                                    // 'top':'540px',
+                                    'font-family':'Noto Sans',
+                                    'font-size':'13px',
+                                    'font-weight':'700',
+                                    'z-index':'1'
+                                }                                
+                            ],
+                            [
+                                {
+                                    'border-radius':'50px',
+                                    'height':'47px',
+                                    'width':'182px',
+                                    'top':'525px',
+                                    'border':'0px'
+                                },
+                                {
+                                    position:'absolute',
+                                    'background-color':'rgb(249, 87, 128)',
+                                    top:this.overlayAboutMailLineDefaultTop,
+                                    // left:'45%',
+                                    width:this.overlayAboutMailLineDefaultWidth,
+                                    height:"2px"
+                                }                                                                
+                            ]                     
+                        ],                        
                         extras:[
                             {},
                             {
@@ -2356,7 +2437,7 @@ export class WordsService {
                                         // bottom:'40px',
                                         // width:'0px',
                                         height:this.wordsCO3BoardDefaultHeight[0],
-                                        'background-color':'yellow'
+                                        // 'background-color':'yellow'
                                     }
                                 ]                     
                             ],
@@ -2369,10 +2450,10 @@ export class WordsService {
                                         // bottom:'40px',
                                         // width:'0px',
                                         height:this.wordsCO3BoardDefaultHeight[0],
-                                        'background-color':'yellow'
+                                        // 'background-color':'yellow'
                                     }
                                 ]                     
-                            ],                            
+                            ],                       
                             extras:[
                                 {},
                                 {
@@ -3128,7 +3209,7 @@ export class WordsService {
                                         'font-size':'20px',
                                         'font-family':'Montserrat',
                                         'width':this.wordsCO4TitleDefaultWidth[0],
-                                        // 'background-color':'green',
+                                        // // 'background-color':'green',
                                         left:this.wordsCO4TitleDefaultLeft[0],
                                         'text-align':'left'
                                     }
@@ -3209,7 +3290,7 @@ export class WordsService {
                                         'font-size':'20px',
                                         'font-family':'Montserrat',
                                         'width':this.wordsCO4TitleDefaultWidth[0],
-                                        // 'background-color':'green',
+                                        // // 'background-color':'green',
                                         left:this.wordsCO4TitleDefaultLeft[0],
                                         'text-align':'left'
                                     }
@@ -3333,7 +3414,7 @@ export class WordsService {
                                         'font-size':'20px',
                                         'font-family':'Montserrat',
                                         'width':this.wordsCO4TitleDefaultWidth[1],
-                                        // 'background-color':'green',
+                                        // // 'background-color':'green',
                                         left:this.wordsCO4TitleDefaultLeft[1],
                                         'text-align':'left'
                                     }
@@ -3424,7 +3505,7 @@ export class WordsService {
                                         'font-size':'20px',
                                         'font-family':'Montserrat',
                                         'width':this.wordsCO4TitleDefaultWidth[1],
-                                        // 'background-color':'green',
+                                        // // 'background-color':'green',
                                         left:this.wordsCO4TitleDefaultLeft[1],
                                         'text-align':'left'
                                     }
@@ -3735,7 +3816,7 @@ export class WordsService {
                                         top:this.wordsCO5Title.defaultTop[0],
                                         'font-size':'32px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        //  'background-color':'green',
                                         left:this.wordsCO5Title.defaultLeft[0],
                                         width:this.wordsCO5Title.defaultWidth[0],
                                     }
@@ -3791,7 +3872,7 @@ export class WordsService {
                                         top:this.wordsCO5Title.defaultTop[0],
                                         'font-size':'32px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO5Title.defaultLeft[0],
                                         width:this.wordsCO5Title.defaultWidth[0],
                                     }
@@ -3958,7 +4039,7 @@ export class WordsService {
                                         top:this.wordsCO5Title.defaultTop[1],
                                         'font-size':'20px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO5Title.defaultLeft[1]
                                     }
                                 ],
@@ -4003,7 +4084,7 @@ export class WordsService {
                                         top:this.wordsCO5Title.defaultTop[1],
                                         'font-size':'20px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO5Title.defaultLeft[1]
                                     }
                                 ],
@@ -4089,7 +4170,7 @@ export class WordsService {
                                         top:this.wordsCO5Title.defaultTop[2],
                                         'font-size':'20px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO5Title.defaultLeft[2]
                                     }
                                 ],
@@ -4175,7 +4256,7 @@ export class WordsService {
                                         top:this.wordsCO5Title.defaultTop[2],
                                         'font-size':'20px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO5Title.defaultLeft[2]
                                     }
                                 ],
@@ -4478,7 +4559,7 @@ export class WordsService {
                                         top:this.wordsCO6Title.defaultTop[0],
                                         'font-size':'32px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO6Title.defaultLeft[0]
                                     },
                                     {
@@ -4486,7 +4567,7 @@ export class WordsService {
                                         top:this.wordsCO6Title.defaultTop[1],
                                         'font-size':'15px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO6Title.defaultLeft[1]
                                     }                                    
                                 ],
@@ -4587,7 +4668,7 @@ export class WordsService {
                                         top:this.wordsCO6Title.defaultTop[0],
                                         'font-size':'32px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO6Title.defaultLeft[0]
                                     },
                                     {
@@ -4595,7 +4676,7 @@ export class WordsService {
                                         top:this.wordsCO6Title.defaultTop[1],
                                         'font-size':'15px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO6Title.defaultLeft[1]
                                     }                                    
                                 ],
@@ -4864,7 +4945,7 @@ export class WordsService {
                                         // top:'700px',
                                         width:'100%',
                                         height:this.wordsCO7Board.defaultHeight[0],
-                                        'background-color':'rgb(247, 255, 0)'
+                                        // 'background-color':'rgb(247, 255, 0)'
                                     }
                                 ]                     
                             ],
@@ -4875,10 +4956,10 @@ export class WordsService {
                                         // top:'700px',
                                         width:'100%',
                                         height:this.wordsCO7Board.defaultHeight[0],
-                                        'background-color':'rgb(247, 255, 0)'
+                                        // 'background-color':'rgb(247, 255, 0)'
                                     }
                                 ]                     
-                            ],                            
+                            ],
                             extras:[
                                 {},
                                 {
@@ -4918,7 +4999,7 @@ export class WordsService {
                                         top:this.wordsCO7Title.defaultTop[0],
                                         'font-size':'32px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO7Title.defaultLeft[0]
                                     },
                                     {
@@ -4926,7 +5007,7 @@ export class WordsService {
                                         top:this.wordsCO7Title.defaultTop[1],
                                         'font-size':'15px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO7Title.defaultLeft[1]
                                     }                                    
                                 ],
@@ -5027,7 +5108,7 @@ export class WordsService {
                                         top:this.wordsCO7Title.defaultTop[0],
                                         'font-size':'32px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO7Title.defaultLeft[0]
                                     },
                                     {
@@ -5035,7 +5116,7 @@ export class WordsService {
                                         top:this.wordsCO7Title.defaultTop[1],
                                         'font-size':'15px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO7Title.defaultLeft[1]
                                     }                                    
                                 ],
@@ -5357,7 +5438,7 @@ export class WordsService {
                                         top:this.wordsCO8Title.defaultTop[0],
                                         'font-size':'32px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO8Title.defaultLeft[0]
                                     },
                                     {
@@ -5365,7 +5446,7 @@ export class WordsService {
                                         top:this.wordsCO8Title.defaultTop[1],
                                         'font-size':'15px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO8Title.defaultLeft[1]
                                     }                                    
                                 ],
@@ -5466,7 +5547,7 @@ export class WordsService {
                                         top:this.wordsCO8Title.defaultTop[0],
                                         'font-size':'32px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO8Title.defaultLeft[0]
                                     },
                                     {
@@ -5474,7 +5555,7 @@ export class WordsService {
                                         top:this.wordsCO8Title.defaultTop[1],
                                         'font-size':'15px',
                                         'font-family':'Montserrat',
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO8Title.defaultLeft[1]
                                     }                                    
                                 ],
@@ -5793,7 +5874,7 @@ export class WordsService {
                                         'font-size':'32px',
                                         'font-family':"'Charmonman',sans-serif",
                                         'width':this.wordsCO9Title.defaultWidth[0],
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO9Title.defaultLeft[0]
                                     }
                                 ],
@@ -5833,7 +5914,7 @@ export class WordsService {
                                         'font-size':'32px',
                                         'font-family':"'Charmonman',sans-serif",
                                         'width':this.wordsCO9Title.defaultWidth[0],
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO9Title.defaultLeft[0]
                                     }
                                 ],
@@ -5915,7 +5996,7 @@ export class WordsService {
                                         'font-size':'32px',
                                         'font-family':'Montserrat',
                                         // 'width':this.wordsCO9Title.defaultWidth[0],
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         width:this.wordsCO9Title.defaultWidth[1],
                                         left:this.wordsCO9Title.defaultLeft[1]
                                     },
@@ -5925,7 +6006,7 @@ export class WordsService {
                                         'font-size':'15px',
                                         'font-family':'Montserrat',
                                         // 'width':this.wordsCO9Title.defaultWidth[0],
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO9Title.defaultLeft[2]
                                     }                                    
                                 ],
@@ -5961,7 +6042,7 @@ export class WordsService {
                                         'font-size':'32px',
                                         'font-family':'Montserrat',
                                         // 'width':this.wordsCO9Title.defaultWidth[0],
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         width:this.wordsCO9Title.defaultWidth[1],
                                         left:this.wordsCO9Title.defaultLeft[1]
                                     },
@@ -5971,7 +6052,7 @@ export class WordsService {
                                         'font-size':'15px',
                                         'font-family':'Montserrat',
                                         // 'width':this.wordsCO9Title.defaultWidth[0],
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO9Title.defaultLeft[2]
                                     }                                    
                                 ],
@@ -6046,7 +6127,7 @@ export class WordsService {
                                         'font-size':'15px',
                                         'font-family':'Montserrat',
                                         // 'width':this.wordsCO9Title.defaultWidth[0],
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO9Title.defaultLeft[3]
                                     },                                  
                                 ],
@@ -6104,7 +6185,7 @@ export class WordsService {
                                         'font-size':'15px',
                                         'font-family':'Montserrat',
                                         // 'width':this.wordsCO9Title.defaultWidth[0],
-                                        'background-color':'green',
+                                        // 'background-color':'green',
                                         left:this.wordsCO9Title.defaultLeft[3]
                                     },                                  
                                 ],
