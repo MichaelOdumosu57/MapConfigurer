@@ -3199,6 +3199,9 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     zCheckpoint.push(i)
                 }
                       
+                if(    x.nativeElement.id === 'w_o_r_d_s_ContentRef'   ){
+                    zCheckpoint.push(i)
+                }                
                             
                 
             })
@@ -3284,12 +3287,54 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             this.wordsService.wordsResizeEventSubscription9 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
 
 
+                if(    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 817   ){
+
+
+                    zChild[14].style['left'] = '0px'
+                    zChild[14].style['width'] = '0px' 
+                    zChild[6].style['display'] = 'none'   
+                    zChild[7].style['display'] = 'none'    
+                    this.ref.detectChanges()
+                    zChild[5].style['width'] = (
+                        .95 * numberParse(  this.window.getComputedStyle(   zChild[1].element   ).width   )
+                    ).toString() + 'px'
+                    this.ref.detectChanges()
+                    zChild[5].style['left'] = xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[5].element).width   )
+                    })       
+                    this.ref.detectChanges()
+                    zChild[10].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:(
+                            numberParse(   this.window.getComputedStyle(zChild[13].element).width   ) +
+                            numberParse(   this.window.getComputedStyle(zChild[13].element).left   ) -
+                            numberParse(   this.window.getComputedStyle(zChild[10].element).left   ) 
+                        )
+                    })   
+                    this.ref.detectChanges();
+                    ((arr)=>{
+                        for(var x of arr){
+                            // console.log(x)
+                            zChild[x].style['left'] = (
+                                numberParse(   this.window.getComputedStyle(zChild[x-1].element).left   ) +
+                                20
+                            ).toString() + 'px'
+                            this.ref.detectChanges()
+                        }
+                    })([11,12,13])                                             
+                    
+                }
+
+
                 if(   
                     numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 1282 &&
-                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 717
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 817
                 ){
                     
 
+                    zChild[14].style['left'] = '0px'
+                    zChild[14].style['width'] = '0px'                     
                     zChild.slice(1).forEach((x,i)=>{
                         Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
                         x.style = Object.assign(x.style,x.cssDefault)
@@ -3347,6 +3392,37 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 }
 
 
+                if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 1282   ){
+
+
+                    zChild.slice(1).forEach((x,i)=>{
+                        Object.keys(x.style).forEach(function(key) { delete x.style[key]; });
+                        x.style = Object.assign(x.style,x.cssDefault)
+                    })                     
+                    this.ref.detectChanges()   
+                    zChild[14].style['left'] =  xPosition({
+                        contain:numberParse(   this.window.getComputedStyle(zChild[1].element).width   ),
+                        target:numberParse(   this.window.getComputedStyle(zChild[14].element).width   )
+                    })                      
+                    this.ref.detectChanges()
+                    let shiftToLeft = (
+                        numberParse(   this.window.getComputedStyle(zChild[14].element).left   ) - 
+                        numberParse(   this.wordsService.wordsCO5Title.defaultLeft[0]   )
+                    ) 
+                    zChild.slice(2,-1).forEach((x,i)=>{
+                        // console.log(x)
+                        x.style['left'] = (
+                            numberParse(   x.cssDefault['left']   ) +
+                            shiftToLeft
+                        ).toString()+ 'px' 
+                        // console.log(   x.style['left']   )
+                        // console.log(x,i)
+                    })     
+                    this.ref.detectChanges()                     
+                    
+                }   
+                
+                
             })
             this.wordsService.wordsResizeEventSubscription9 = this.wordsService.wordsResizeEvent$.subscribe(()=>{})
                   
