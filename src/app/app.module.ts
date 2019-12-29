@@ -8,6 +8,7 @@ import { WINDOW_PROVIDERS } from './window.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { OverlayComponent } from './overlay/overlay.component';
 import { FooterComponent } from './footer/footer.component';
+import { BlogComponent } from './blog/blog.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent,
     WordsComponent,
     NavigationComponent,
-    OverlayComponent
+    OverlayComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,

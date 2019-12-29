@@ -1,4 +1,4 @@
-import {   Component,OnInit,AfterViewInit,AfterContentInit,ViewChildren,Inject,ElementRef,ChangeDetectorRef,ChangeDetectionStrategy  } from '@angular/core';
+import {   Component,OnInit,AfterViewInit,OnDestroy,ViewChildren,Inject,ElementRef,ChangeDetectorRef,ChangeDetectionStrategy  } from '@angular/core';
 import {   WordsService   } from './words.service';
 import {   fromEvent,Subject,Observable,of,Subscription,interval   } from 'rxjs';
 // import {   Router,RouterEvent } from '@angular/router';
@@ -28,7 +28,7 @@ function appGenerateSelector(   devObj   ){
 })
 
 
-export class AppComponent implements OnInit,AfterViewInit {
+export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
     
     // @ViewChildren(appGenerateSelector({val:'appWordsVal',times:3}), { read: ElementRef })  app_wordsConponentElements: any;
     // @ViewChildren(appGenerateSelector({val:'appWordsVal',times:3}))  app_wordsComponentReferences: any;
@@ -354,6 +354,9 @@ export class AppComponent implements OnInit,AfterViewInit {
 
                 let arr = [
                     'navigationComponentObject0',
+                    'overlayComponentObject5',
+                    'blogComponentObject0',
+                    'footerComponentObject0'
                 ].sort()
                 this.wordsService.appViewCompleteArray = this.wordsService.appViewCompleteArray.sort()
                 // console.log(    arr.filter((x,i) =>{ 
@@ -381,8 +384,7 @@ export class AppComponent implements OnInit,AfterViewInit {
                         let eventLegacyLoad = this.window.document.createEvent("Event");
                         eventLegacyLoad.initEvent("resize", false, true);
                         this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )   
-                             
+                        this.window.dispatchEvent(    eventLegacyLoad    )          
                     } 
                     this.wordsService.appViewCompleteArray = []
 
@@ -468,12 +470,13 @@ export class AppComponent implements OnInit,AfterViewInit {
         })
     }
 
-
-
     ngAfterViewInit(){
         console.log('app ngAfterViewInit fires on mount')
     }
 
+
+    ngOnDestroy(){
+    }
 }
 
 

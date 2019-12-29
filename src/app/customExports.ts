@@ -39,3 +39,92 @@ mobile stacking template
 to expand the height of the containing element
                     
 */ 
+
+
+export function getTextWidth(   devObj:{elementText:string,font:string}   ){
+    var canvas = document.createElement("canvas");
+    var ctx = canvas.getContext("2d");
+    ctx.font = devObj.font;  // This can be set programmaticly from the element's font-style if desired
+    return ctx.measureText(devObj.elementText).width;
+}
+
+export function numberParse(   dimension:any   ){
+    dimension = parseFloat(dimension.split("p")[0])
+    return dimension;
+}
+
+export function resize(   devObj:any   ){
+    // console.log(   devObj   )
+    let result = null
+
+
+    if(   devObj.misc === undefined   ){
+        devObj.misc = [.12]
+    }
+    
+
+    if(   devObj.type === 'direct'   ){
+
+
+        result = 
+        (
+            devObj.default -
+            (
+                devObj.containDefault   -
+                devObj.containActual    
+            ) * 
+            devObj.misc[0]
+        )
+
+
+    }
+    
+    else if(   devObj.type !== 'direct' ){
+
+
+        result = (
+            devObj.default *
+            (
+                (   
+                    (  
+                        devObj.containActual  /
+                        devObj.containDefault   
+                    ) -
+                    devObj.misc[0]   
+                ) 
+            )
+        ) 
+
+
+    }
+    return result = result > devObj.default  ? 
+        devObj.default.toString() + "px"      :
+        result.toString() + "px"     
+}
+
+
+export function xPosition(devObj){
+
+
+    if(   devObj.containPos === undefined   ){
+
+
+        devObj.containPos = .5
+        
+        
+    }
+
+
+    if(   devObj.targetPos === undefined   ){
+
+        
+        devObj.targetPos = .5
+        
+        
+    }
+    
+    return (    
+        (   devObj.contain*devObj.containPos   ) -  
+        (   devObj.target*devObj.targetPos   )   
+    ).toString() + "px"; 
+}

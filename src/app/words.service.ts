@@ -43,6 +43,11 @@ export class WordsService {
     appViewCompleteArray:Array<any> = []
     /* */
 
+    /*blog*/
+         // blog concept metadata
+
+
+
     /*overlay*/
 
         // OverlayComponent concept metadata
@@ -99,6 +104,140 @@ export class WordsService {
         // OverlayComponent Instances
         overlayMyElements :Subject<Array<any[]>> = new Subject<Array<any>>();
         overlayMyElementsArray: any[] = [];
+        overlayComponentObject5:any ={
+            quantity:[
+                [
+                    {
+                        quantity:[[3]],
+                        bool:[['true']], 
+                        val:[
+                            ['o_v_e_r_l_a_y_App']
+                        ], 
+                        text:[
+                                []
+                        ],
+                        metadata:{
+                        },
+                        ngStyle:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'0px',
+                                    height:'100%',
+                                    width:'100%',
+                                    'z-index':-1
+                                }
+                            ]                         
+                        ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'0px',
+                                    height:'100%',
+                                    width:'100%',
+                                    'z-index':-1
+                                }
+                            ]                         
+                        ],                        
+                        extras:[
+                            {},
+                            {
+                                bool:'false'
+                            }                         
+                        ],                        
+                        generator:this.appConsecutiveGenerator
+                    }                    
+                ],
+                [
+                    ...Array.from(Array(1),()=> {
+                    return {
+                        quantity:[[3],[],[],[],[],[]],
+                        bool:[['true'],[],[],[],[],[]], 
+                        val:[
+                            ['o_v_e_r_l_a_y_Board'],
+                            [],
+                            [],
+                            [],
+                            [],
+                            []
+                        ], 
+                        text:[
+                            [],
+                            [],
+                            [],
+                            [],
+                            [],
+                            []
+                        ],
+                        metadata:{
+                            image:[
+                                {
+                                    src:'assets/media/anton-repponen-wxxAx26SXys-unsplash.jpg',
+                                    alt:'Main Overlay Image',
+                                    defaultWidth:null
+                                },
+                                {
+                                    src:'assets/media/IMG-1475-881x1024.jpg',
+                                    alt:'Special Effects Overlay Image',
+                                    defaultWidth:this.overlayComponentObject4Image1Width
+                                }                                
+                            ],
+                            wordsCO0:new Subject<any>(),
+                            wordsCO2:new Subject<any>(),  
+                        },
+                        ngStyle:[
+                            [
+                                {
+                                    position:'fixed',
+                                    // height:'1000px',
+                                    height:'140%',
+                                    width:'100%',
+                                    'z-index':-1
+                                    // opacity:0
+                                },
+                            ],
+                            [],
+                            [],
+                            [],
+                            [],
+                            []                     
+                        ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'fixed',
+                                    // height:'1000px',
+                                    height:'140%',
+                                    width:'100%',
+                                    'z-index':-1
+                                    // opacity:0
+                                },
+                            ],
+                            [],
+                            [],
+                            [],
+                            [],
+                            []                     
+                        ],                      
+                        extras:[
+                            {},
+                            {
+                                bool:'false'
+                            }                         
+                        ],                        
+                        generator:this.appConsecutiveGenerator
+                    }})                                                                                        
+                ]
+            ],
+            generator:(function(){
+                return function *generator() {
+                    var index = 1;
+                    while (true)
+                    yield index;
+                }()
+            })()             
+        }        
         overlayComponentObject4:any ={
             metadata:{
                 title:'CHEF LIA',
@@ -1284,8 +1423,288 @@ export class WordsService {
         footerComponentMonitor:any = {
         }        
         //
-    
 
+
+  /*blog*/
+         // blogComponent concept metadata    
+
+
+        // blogComponent events
+        blogMyElementsSubscription: Subscription;
+        blogLoadEvent$:Observable<Event>
+        blogLoadEventSubscription0:Subscription
+        blogLoadEventSubscription1:Subscription 
+        blogResizeEvent$:Observable<Event>
+        blogResizeEventSubscription0:Subscription
+        blogResizeEventSubscription1:Subscription 
+        blogResizeEventSubscription2:Subscription
+        blogResizeEventSubscription3:Subscription  
+        blogResizeEventSubscription4:Subscription  
+        blogResizeEventSubscription5:Subscription 
+        blogResizeEventSubscription6:Subscription
+        blogResizeEventSubscription7:Subscription  
+        blogResizeEventSubscription8:Subscription
+        blogResizeEventSubscription9:Subscription
+        blogResizeEventSubscription10:Subscription 
+        blogResizeEventSubscription11:Subscription 
+        blogResizeEventSubscription12:Subscription
+        blogResizeEventSubscription13:Subscription  
+        blogResizeEventSubscription14:Subscription  
+        blogResizeEventSubscription15:Subscription 
+        blogResizeEventSubscription16:Subscription
+        blogResizeEventSubscription17:Subscription  
+        blogResizeEventSubscription18:Subscription      
+        blogResizeEventSubscription19:Subscription    
+        blogResizeEventSubscription20:Subscription  
+        blogResizeEventSubscription21:Subscription             
+        blogClickEvent$:Observable<Event>        
+        blogClickEventSubscription0:Subscription
+        //                  
+
+        //blogComponentInstances
+        blogCO0:any ={
+            quantity:[
+                [
+                    {
+                        quantity:[[3]],
+                        bool:[['true']], 
+                        val:[
+                            ['b_l_o_g_App']
+                        ], 
+                        text:[
+                                []
+                        ],
+                        metadata:{
+                        },
+                        ngStyle:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'0px',
+                                    height:'100%',
+                                    width:'100%',
+                                    'z-index':-1
+                                }
+                            ]                         
+                        ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'0px',
+                                    height:'100%',
+                                    width:'100%',
+                                    'z-index':-1
+                                }
+                            ]                         
+                        ],                        
+                        extras:[
+                            {},
+                            {
+                                bool:'false'
+                            }                         
+                        ],                        
+                        generator:this.appConsecutiveGenerator
+                    }                    
+                ],
+                [
+                    ...Array.from(Array(1),()=> {
+                    return {
+                        quantity:[[3,3],[3,3],[],[],[3],[3,3]],
+                        bool:[['true','true'],['true','true'],[],[],['true'],['button','true']], 
+                        val:[
+                            ['b_l_o_g_Board','b_l_o_g_Img0'],
+                            ['b_l_o_g_AboutPreTitle','b_l_o_g_Title'],
+                            [],
+                            [],
+                            ['b_l_o_g_AboutLearnText'],
+                            ['b_l_o_g_AboutLearnButton','b_l_o_g_AboutMainLine']
+                        ], 
+                        text:[
+                            [],
+                            ['Cooking With','CHEF LIA'],
+                            [],
+                            [],
+                            ['LEARN MORE'],
+                            []
+                        ],
+                        metadata:{
+                            TitleDefaultWidth:null,
+                            TitleDefaultFontSize:'32px',
+                            // an advatange is I'd have this in the non quantity to access easier
+                            image:[
+                                {
+                                    src:'assets/media/IMG-1787.jpg',
+                                    alt:'Main Overlay Image',
+                                    defaultWidth:null
+                                },
+                                {
+                                    src:'assets/media/IMG-1475-881x1024.jpg',
+                                    alt:'Special Effects Overlay Image',
+                                    defaultWidth:this.overlayComponentObject4Image1Width
+                                }                                
+                            ],
+                            wordsCO0:new Subject<any>(),
+                            wordsCO2:new Subject<any>(),  
+                        },
+                        ngStyle:[
+                            [
+                                {
+                                    position:'fixed',
+                                    // height:'1000px',
+                                    height:'140%',
+                                    width:'100%',
+                                    'z-index':-1
+                                    // opacity:0
+                                },
+                                {
+                                    position:'absolute',
+                                    width:this.overlayComponentObject4Image1Width,
+                                    height:'451px',
+                                    top:'2000px'
+                                }
+                            ],
+                            [
+                                {
+                                    position:'absolute',
+                                    'font-family':"'Vidaloka',sans-serif",
+                                    top:"170px",
+                                    left:'45%',
+                                    'font-size': this.overlayAboutPreTitleDefaultFontSize,
+                                    'font-style':'italic',
+                                    'text-align':'center',
+                                    color:'white',
+                                    // 'margin-bottom':'20px',
+                                    'text-shadow':'rgba(0, 0, 0, 0.3) 2px -1px 0px' // so this property we allow because it doesnt make a meaningful difference if its not working
+                                },
+                                {
+                                        position:'absolute',
+                                        top:"270px",
+                                        left:'45%',
+                                        'font-size':'141px', 
+                                        'font-family':"'Aclonica',sans-serif",
+                                        'font-weight':'500',
+                                        'text-align':'center',
+                                        color:'white'
+                                },                                                                
+                            ],
+                            [],
+                            [],
+                            [
+                                {
+                                    // 'top':'540px',
+                                    'font-family':'Noto Sans',
+                                    'font-size':'13px',
+                                    'font-weight':'700',
+                                    'z-index':'1'
+                                }                                
+                            ],
+                            [
+                                {
+                                    'border-radius':'50px',
+                                    'height':'47px',
+                                    'width':'182px',
+                                    'top':'525px',
+                                    'border':'0px'
+                                },
+                                {
+                                    position:'absolute',
+                                    'background-color':'rgb(249, 87, 128)',
+                                    top:this.overlayAboutMailLineDefaultTop,
+                                    // left:'45%',
+                                    width:this.overlayAboutMailLineDefaultWidth,
+                                    height:"2px"
+                                }                                                                
+                            ]                     
+                        ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'fixed',
+                                    // height:'1000px',
+                                    height:'140%',
+                                    width:'100%',
+                                    'z-index':-1
+                                    // opacity:0
+                                },
+                                {
+                                    position:'absolute',
+                                    width:this.overlayComponentObject4Image1Width,
+                                    height:'451px',
+                                    top:'2000px'
+                                }
+                            ],
+                            [
+                                {
+                                    position:'absolute',
+                                    'font-family':"'Vidaloka',sans-serif",
+                                    top:"170px",
+                                    left:'45%',
+                                    'font-size': this.overlayAboutPreTitleDefaultFontSize,
+                                    'font-style':'italic',
+                                    'text-align':'center',
+                                    color:'white',
+                                    // 'margin-bottom':'20px',
+                                    'text-shadow':'rgba(0, 0, 0, 0.3) 2px -1px 0px' // so this property we allow because it doesnt make a meaningful difference if its not working
+                                },
+                                {
+                                        position:'absolute',
+                                        top:"270px",
+                                        left:'45%',
+                                        'font-size':'141px', 
+                                        'font-family':"'Aclonica',sans-serif",
+                                        'font-weight':'500',
+                                        'text-align':'center',
+                                        color:'white'
+                                },                                                                
+                            ],
+                            [],
+                            [],
+                            [
+                                {
+                                    // 'top':'540px',
+                                    'font-family':'Noto Sans',
+                                    'font-size':'13px',
+                                    'font-weight':'700',
+                                    'z-index':'1'
+                                }                                
+                            ],
+                            [
+                                {
+                                    'border-radius':'50px',
+                                    'height':'47px',
+                                    'width':'182px',
+                                    'top':'525px',
+                                    'border':'0px'
+                                },
+                                {
+                                    position:'absolute',
+                                    'background-color':'rgb(249, 87, 128)',
+                                    top:this.overlayAboutMailLineDefaultTop,
+                                    // left:'45%',
+                                    width:this.overlayAboutMailLineDefaultWidth,
+                                    height:"2px"
+                                }                                                                
+                            ]                     
+                        ],                        
+                        extras:[
+                            {},
+                            {
+                                bool:'false'
+                            }                         
+                        ],                        
+                        generator:this.appConsecutiveGenerator
+                    }})                                                                                        
+                ]
+            ],
+            generator:(function(){
+                return function *generator() {
+                    var index = 1;
+                    while (true)
+                    yield index;
+                }()
+            })()             
+        }             
 
     /*words*/ //
     
@@ -1642,7 +2061,7 @@ export class WordsService {
         wordsCO9Title = {
             defaultTop:['110px','110px','250px','370px'],
             defaultLeft:['60px','695px','695px','695px'],
-            defaultWidth:['550px','255px']
+            defaultWidth:['550px','265px']
         }        
         
         wordsCO9Button = {
@@ -5846,7 +6265,7 @@ export class WordsService {
                                 }                         
                             ],                        
                             generator:this.appConsecutiveGenerator
-                        }}),                    
+                    }}),                    
                     ...Array.from(Array(1),()=> {
                         return {
                             quantity:[[],[3],[3],[],[3]],
