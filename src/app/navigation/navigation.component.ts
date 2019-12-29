@@ -474,8 +474,26 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
                     })                     
                     this.ref.detectChanges()                   
                 }
-            })
 
+                
+                if(   this.window.document.querySelector('app-blog[ng-reflect-blog-t-v=blogCO0]')  !== null   ){
+                
+                
+                    // console.log('needed data from wordsCO4')
+                    // console.log(   this.window.getComputedStyle(z.element).height   )
+                    // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
+                    this.wordsService.blogCO0.quantity[1][0].metadata.navigationCO0.next([
+                        this.window.getComputedStyle(zChild[0].element).top,
+                        this.window.getComputedStyle(zChild[1].element).height 
+                    ])                
+                
+                
+                }
+                
+                
+            })
+              
+            
         }
         
         // debugger

@@ -359,7 +359,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.groupEnd()
             })
             // see what happens when app-overlay top is made 0px
-            console.log(   zChild   ) 
+            // console.log(   zChild   ) 
 
             this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth = 516
             // console.log(this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth )    

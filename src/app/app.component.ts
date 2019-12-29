@@ -355,7 +355,7 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
                 let arr = [
                     'navigationComponentObject0',
                     'overlayComponentObject5',
-                    'blogComponentObject0',
+                    'blogCO0',
                     'footerComponentObject0'
                 ].sort()
                 this.wordsService.appViewCompleteArray = this.wordsService.appViewCompleteArray.sort()
@@ -377,12 +377,20 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
                     console.log('dispatched')
                     try{
                         let event = new Event('resize')
+                        fromEvent(this.window,'load').subscribe(()=>{
+                            this.window.dispatchEvent(event)      
+                            this.window.dispatchEvent(event)                             
+                        })                        
                         this.window.dispatchEvent(event)      
                         this.window.dispatchEvent(event) 
                     }
                     catch(e){
                         let eventLegacyLoad = this.window.document.createEvent("Event");
                         eventLegacyLoad.initEvent("resize", false, true);
+                        fromEvent(this.window,'load').subscribe(()=>{
+                            this.window.dispatchEvent(   eventLegacyLoad   )      
+                            this.window.dispatchEvent(   eventLegacyLoad   )                             
+                        })                        
                         this.window.dispatchEvent(    eventLegacyLoad    )
                         this.window.dispatchEvent(    eventLegacyLoad    )          
                     } 

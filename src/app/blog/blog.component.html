@@ -5,8 +5,14 @@
 
 
     <ng-container *ngFor = 'let aa of a.quantity[0];let bb = index'  >
-        <div #myBlogVal *ngIf= "a.bool[0][bb] ==='true'" id = {{a.val[0][bb]}}
+        <div #myBlogVal *ngIf= "a.bool[0][bb] ==='div' else boardBlock0" id = {{a.val[0][bb]}}
         [ngStyle] = 'a.ngStyle[0][bb]' ></div>
+        <ng-template #boardBlock0  >    
+            <img #myBlogVal *ngIf= "a.bool[2][bb] ==='img' else pictureBlock1" id = {{a.val[2][bb]}} [ngStyle] = 'a.ngStyle[2][bb]' src="{{a.metadata.image[2][bb]}}" />
+        </ng-template>  
+        <ng-template #boardBlock1  >    
+            <video #myBlogVal *ngIf= "a.bool[2][bb] ==='video' else pictureBlock2" id = {{a.val[2][bb]}} [ngStyle] = 'a.ngStyle[2][bb]' src="{{a.metadata.image[2][bb]}}" ></video>
+        </ng-template>                  
     </ng-container>
 
     <ng-container *ngFor = 'let aa of a.quantity[1];let bb = index' >
@@ -42,23 +48,23 @@
         </ng-template> 
         <ng-template #elseBlock9  > 
             <code #myBlogVal *ngIf= "a.bool[1][bb] ==='code' else elseBlock10" id = {{a.val[1][bb]}} 
-            [ngStyle] = 'a.ngStyle[1][bb]' href ={{a.metadata.router[1][bb]}} >{{a.text[1][bb]}}</code>            
+            [ngStyle] = 'a.ngStyle[1][bb]'>{{a.text[1][bb]}}</code>            
         </ng-template> 
         <ng-template #elseBlock10  > 
             <span #myBlogVal *ngIf= "a.bool[1][bb] ==='span' else elseBlock11" id = {{a.val[1][bb]}} 
-            [ngStyle] = 'a.ngStyle[1][bb]' href ={{a.metadata.router[1][bb]}} >{{a.text[1][bb]}}</span>            
+            [ngStyle] = 'a.ngStyle[1][bb]' >{{a.text[1][bb]}}</span>            
         </ng-template> 
         <ng-template #elseBlock11  > 
             <strong #myBlogVal *ngIf= "a.bool[1][bb] ==='strong' else elseBlock12" id = {{a.val[1][bb]}} 
-            [ngStyle] = 'a.ngStyle[1][bb]' href ={{a.metadata.router[1][bb]}} >{{a.text[1][bb]}}</strong>            
+            [ngStyle] = 'a.ngStyle[1][bb]'>{{a.text[1][bb]}}</strong>            
         </ng-template> 
         <ng-template #elseBlock12  > 
             <input #myBlogVal *ngIf= "a.bool[1][bb] ==='i' else elseBlock13" id = {{a.val[1][bb]}} 
-            [ngStyle] = 'a.ngStyle[1][bb]' href ={{a.metadata.router[1][bb]}} >{{a.text[1][bb]}}</input>            
+            [ngStyle] = 'a.ngStyle[1][bb]' placeholder ={{a.metadata.placeholder[1][bb]}} >           
         </ng-template> 
         <ng-template #elseBlock13  > 
             <textarea #myBlogVal *ngIf= "a.bool[1][bb] ==='ta' else elseBlock14" id = {{a.val[1][bb]}} 
-            [ngStyle] = 'a.ngStyle[1][bb]' href ={{a.metadata.router[1][bb]}} >{{a.text[1][bb]}}</input>            
+            [ngStyle] = 'a.ngStyle[1][bb]' placeholder ={{a.metadata.placeholder[1][bb]}} ></textarea>          
         </ng-template>                                                                                                 
     </ng-container>
 
@@ -73,20 +79,15 @@
             <button #myBlogVal *ngIf= "a.bool[2][bb] ==='button' else pictureBlock2 " id = {{a.val[2][bb]}}  [ngStyle] =  'a.ngStyle[2][bb]'  >{{a.text[2][bb]}}</button>
         </ng-template> 
         <ng-template #pictureBlock2  >    
-            <embed #myBlogVal *ngIf= "a.bool[2][bb] ==='embed' else pictureBlock3" id = {{a.val[2][bb]}}  [ngStyle] =  'a.ngStyle[2][bb]'  >{{a.text[2][bb]}}</embed>
+            <embed #myBlogVal *ngIf= "a.bool[2][bb] ==='embed' else pictureBlock3" id = {{a.val[2][bb]}}  [ngStyle] =  'a.ngStyle[2][bb]'  >
         </ng-template>           
         <ng-template #pictureBlock3  >    
-            <video #myBlogVal *ngIf= "a.bool[2][bb] ==='video' else pictureBlock4" id = {{a.val[2][bb]}}  [ngStyle] =  'a.ngStyle[2][bb]'  >{{a.text[2][bb]}}</embed>
+            <video #myBlogVal *ngIf= "a.bool[2][bb] ==='video' else pictureBlock4" id = {{a.val[2][bb]}}  [ngStyle] =  'a.ngStyle[2][bb]'  ></video>
         </ng-template>                      
         <ng-template #pictureBlock4  >    
-            <audio #myBlogVal *ngIf= "a.bool[2][bb] ==='audio' else pictureBlock5" id = {{a.val[2][bb]}}  [ngStyle] =  'a.ngStyle[2][bb]'  >{{a.text[2][bb]}}</audio>
+            <audio #myBlogVal *ngIf= "a.bool[2][bb] ==='audio' else pictureBlock5" id = {{a.val[2][bb]}}  [ngStyle] =  'a.ngStyle[2][bb]'  ></audio>
         </ng-template>                               
     </ng-container>    
 
-     
+</ng-container>     
     
-
-</ng-container>
-
-
-

@@ -125,7 +125,7 @@ export class WordsService {
                                     top:'0px',
                                     height:'100%',
                                     width:'100%',
-                                    'z-index':-1
+                                    'z-index':'0'
                                 }
                             ]                         
                         ],
@@ -136,7 +136,7 @@ export class WordsService {
                                     top:'0px',
                                     height:'100%',
                                     width:'100%',
-                                    'z-index':-1
+                                    'z-index':'0'
                                 }
                             ]                         
                         ],                        
@@ -191,9 +191,9 @@ export class WordsService {
                                 {
                                     position:'fixed',
                                     // height:'1000px',
-                                    height:'140%',
+                                    height:'100%',
                                     width:'100%',
-                                    'z-index':-1
+                                    'z-index':-2
                                     // opacity:0
                                 },
                             ],
@@ -202,15 +202,15 @@ export class WordsService {
                             [],
                             [],
                             []                     
-                        ],
+                        ],  
                         ngCssDefault:[
                             [
                                 {
                                     position:'fixed',
                                     // height:'1000px',
-                                    height:'140%',
+                                    height:'100%',
                                     width:'100%',
-                                    'z-index':-1
+                                    'z-index':-2
                                     // opacity:0
                                 },
                             ],
@@ -219,7 +219,7 @@ export class WordsService {
                             [],
                             [],
                             []                     
-                        ],                      
+                        ],                  
                         extras:[
                             {},
                             {
@@ -1016,10 +1016,24 @@ export class WordsService {
                                 [
                                     {
                                         postion:'absolute',
-                                        top:'0px'
+                                        top:'0px',
+                                        width:'100%',
+                                        height:'1px',
+                                        'z-index':'3'
                                     }
                                 ]                         
                             ],
+                            ngCssDefault:[
+                                [
+                                    {
+                                        postion:'absolute',
+                                        top:'0px',
+                                        width:'100%',
+                                        height:'1px',
+                                        'z-index':'3'
+                                    }
+                                ]                         
+                            ],                           
                             extras:[
                                 {},
                                 {
@@ -1122,7 +1136,8 @@ export class WordsService {
                                         position:'absolute',
                                         height: '165px',
                                         width:'100%',
-                                        top:'0px'
+                                        top:'0px',
+                                        'z-index':'3'
                                     }
                                 ],
                                 [
@@ -1132,7 +1147,8 @@ export class WordsService {
                                         left:'23px',
                                         top:'88px',
                                         margin:'0px',
-                                        width:'0px'                                                
+                                        width:'0px',
+                                        'z-index':'3'                                                
                                     }
                                 ],
                                 [
@@ -1142,6 +1158,7 @@ export class WordsService {
                                         left:'23px',
                                         fontSize:'16px',
                                         fontWeight:400,
+                                        'z-index':'3'
                                         // width:'0px'
                                     }
                                 ],
@@ -1149,7 +1166,8 @@ export class WordsService {
                                     {
                                         position:'absolute',
                                         top:'15px',
-                                        left:'20px'
+                                        left:'20px',
+                                        'z-index':'3'
                                     }                                                                
                                 ],
                                 [
@@ -1157,43 +1175,50 @@ export class WordsService {
                                         position:'absolute',
                                         top:'72px',
                                         left:'550px',
-                                        'fontSize':'16px'
+                                        'fontSize':'16px',
+                                        'z-index':'3'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'586px',
-                                        'fontSize':'16px'
+                                        'fontSize':'16px',
+                                        'z-index':'3'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'624px',
-                                        'fontSize':'16px'
+                                        'fontSize':'16px',
+                                        'z-index':'3'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'659px',
-                                        fontSize:'16px'
+                                        fontSize:'16px',
+                                        'z-index':'3'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'697px',
-                                        fontSize:'16px'
+                                        fontSize:'16px',
+                                        'z-index':'3'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'732px',
-                                        'fontSize':'16px'
+                                        'fontSize':'16px',
+                                        'z-index':'3'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'795px',
                                         fontSize:'16px',
+                                        'z-index':'3'
                                         // width:'0px'
                                     }                                                                                                                                                
                                 ],
@@ -1201,18 +1226,135 @@ export class WordsService {
                                     {
                                         position:'absolute',
                                         top:'60px',
-                                        left:'1142px'
+                                        left:'1142px',
+                                        'z-index':'3'
                                     },
                                     {
                                         position:'absolute',
                                         display:'none',
-                                        top:'50px'
+                                        top:'50px',
+                                        'z-index':'3'
                                     },
                                     {
                                         position:'absolute',
                                         fontSize:'30px',
                                         display:'none',
-                                        top:'60px'
+                                        top:'60px',
+                                        'z-index':'3'
+                                    }                                                                        
+                                ]                            
+                            ],
+                            ngCssDefault:[
+                                [
+                                    {
+                                        position:'absolute',
+                                        height: '165px',
+                                        width:'100%',
+                                        top:'0px',
+                                        'z-index':'3'
+                                    }
+                                ],
+                                [
+                                    {
+                                        'font-size':'36px',
+                                        position:'absolute',
+                                        left:'23px',
+                                        top:'88px',
+                                        margin:'0px',
+                                        width:'0px',
+                                        'z-index':'3'                                                
+                                    }
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:'120px',
+                                        left:'23px',
+                                        fontSize:'16px',
+                                        fontWeight:400,
+                                        'z-index':'3'
+                                        // width:'0px'
+                                    }
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:'15px',
+                                        left:'20px',
+                                        'z-index':'3'
+                                    }                                                                
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:'72px',
+                                        left:'550px',
+                                        'fontSize':'16px',
+                                        'z-index':'3'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:'72px',
+                                        left:'586px',
+                                        'fontSize':'16px',
+                                        'z-index':'3'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:'72px',
+                                        left:'624px',
+                                        'fontSize':'16px',
+                                        'z-index':'3'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:'72px',
+                                        left:'659px',
+                                        fontSize:'16px',
+                                        'z-index':'3'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:'72px',
+                                        left:'697px',
+                                        fontSize:'16px',
+                                        'z-index':'3'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:'72px',
+                                        left:'732px',
+                                        'fontSize':'16px',
+                                        'z-index':'3'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        top:'72px',
+                                        left:'795px',
+                                        fontSize:'16px',
+                                        'z-index':'3'
+                                        // width:'0px'
+                                    }                                                                                                                                                
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        top:'60px',
+                                        left:'1142px',
+                                        'z-index':'3'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        display:'none',
+                                        top:'50px',
+                                        'z-index':'3'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        fontSize:'30px',
+                                        display:'none',
+                                        top:'60px',
+                                        'z-index':'3'
                                     }                                                                        
                                 ]                            
                             ],
@@ -1322,7 +1464,7 @@ export class WordsService {
                 ],
                 [
                     ...Array.from(Array(1),()=> {
-                    return {
+                        return {
                         quantity:[[3]],
                         bool:[['true']], 
                         val:[
@@ -1355,7 +1497,8 @@ export class WordsService {
                             }                         
                         ],                        
                         generator:this.appConsecutiveGenerator
-                    }}),     
+                        }
+                    }),     
                     ...Array.from(Array(1),()=> {
                         return {
                             quantity:[[],[3,3]],
@@ -1382,6 +1525,7 @@ export class WordsService {
                                 wordsCO5: new Subject<any>(),
                                 wordsCO8: new Subject<any>(),
                                 wordsCO9: new Subject<any>(),
+                                blogCO0: new Subject<any>()
                             },
                             ngStyle:[
                                 [],
@@ -1409,7 +1553,7 @@ export class WordsService {
                                 }                         
                             ],                        
                             generator:this.appConsecutiveGenerator
-                        }}),                                                                                           
+                    }}),                                                                                           
                 ]
             ],
             generator:(function(){
@@ -1427,7 +1571,8 @@ export class WordsService {
 
   /*blog*/
          // blogComponent concept metadata    
-
+         blogCOTopSubject = new Subject<any>()
+         blogCOTopSubscription:Subscription
 
         // blogComponent events
         blogMyElementsSubscription: Subscription;
@@ -1481,9 +1626,8 @@ export class WordsService {
                                 {
                                     position:'absolute',
                                     top:'0px',
-                                    height:'100%',
                                     width:'100%',
-                                    'z-index':-1
+                                    'z-index':'1'
                                 }
                             ]                         
                         ],
@@ -1492,12 +1636,11 @@ export class WordsService {
                                 {
                                     position:'absolute',
                                     top:'0px',
-                                    height:'100%',
                                     width:'100%',
-                                    'z-index':-1
+                                    'z-index':'1'
                                 }
                             ]                         
-                        ],                        
+                        ],                   
                         extras:[
                             {},
                             {
@@ -1509,192 +1652,114 @@ export class WordsService {
                 ],
                 [
                     ...Array.from(Array(1),()=> {
-                    return {
-                        quantity:[[3,3],[3,3],[],[],[3],[3,3]],
-                        bool:[['true','true'],['true','true'],[],[],['true'],['button','true']], 
-                        val:[
-                            ['b_l_o_g_Board','b_l_o_g_Img0'],
-                            ['b_l_o_g_AboutPreTitle','b_l_o_g_Title'],
-                            [],
-                            [],
-                            ['b_l_o_g_AboutLearnText'],
-                            ['b_l_o_g_AboutLearnButton','b_l_o_g_AboutMainLine']
-                        ], 
-                        text:[
-                            [],
-                            ['Cooking With','CHEF LIA'],
-                            [],
-                            [],
-                            ['LEARN MORE'],
-                            []
-                        ],
-                        metadata:{
-                            TitleDefaultWidth:null,
-                            TitleDefaultFontSize:'32px',
-                            // an advatange is I'd have this in the non quantity to access easier
-                            image:[
-                                {
-                                    src:'assets/media/IMG-1787.jpg',
-                                    alt:'Main Overlay Image',
-                                    defaultWidth:null
-                                },
-                                {
-                                    src:'assets/media/IMG-1475-881x1024.jpg',
-                                    alt:'Special Effects Overlay Image',
-                                    defaultWidth:this.overlayComponentObject4Image1Width
-                                }                                
+                        return {
+                            quantity:[[3]],
+                            bool:[['div']], 
+                            val:[
+                                ['b_l_o_g_Board'],
+                            ], 
+                            text:[
+                                [],
                             ],
-                            wordsCO0:new Subject<any>(),
-                            wordsCO2:new Subject<any>(),  
-                        },
-                        ngStyle:[
-                            [
-                                {
-                                    position:'fixed',
-                                    // height:'1000px',
-                                    height:'140%',
-                                    width:'100%',
-                                    'z-index':-1
-                                    // opacity:0
-                                },
-                                {
-                                    position:'absolute',
-                                    width:this.overlayComponentObject4Image1Width,
-                                    height:'451px',
-                                    top:'2000px'
-                                }
-                            ],
-                            [
-                                {
-                                    position:'absolute',
-                                    'font-family':"'Vidaloka',sans-serif",
-                                    top:"170px",
-                                    left:'45%',
-                                    'font-size': this.overlayAboutPreTitleDefaultFontSize,
-                                    'font-style':'italic',
-                                    'text-align':'center',
-                                    color:'white',
-                                    // 'margin-bottom':'20px',
-                                    'text-shadow':'rgba(0, 0, 0, 0.3) 2px -1px 0px' // so this property we allow because it doesnt make a meaningful difference if its not working
-                                },
-                                {
+                            metadata:{
+                                navigationCO0:new Subject<any>(),
+                                footerCO0:new Subject<any>(),  
+                            },
+                            ngStyle:[
+                                [
+                                    {
                                         position:'absolute',
-                                        top:"270px",
-                                        left:'45%',
-                                        'font-size':'141px', 
-                                        'font-family':"'Aclonica',sans-serif",
-                                        'font-weight':'500',
-                                        'text-align':'center',
-                                        color:'white'
-                                },                                                                
+                                        height:'750px',
+                                        width:'100%',
+                                        'z-index':'1',
+                                        // 'background-color':'rgb(255, 192, 203)',
+                                        top:'0px'
+                                    }
+                                ]                    
                             ],
-                            [],
-                            [],
-                            [
-                                {
-                                    // 'top':'540px',
-                                    'font-family':'Noto Sans',
-                                    'font-size':'13px',
-                                    'font-weight':'700',
-                                    'z-index':'1'
-                                }                                
-                            ],
-                            [
-                                {
-                                    'border-radius':'50px',
-                                    'height':'47px',
-                                    'width':'182px',
-                                    'top':'525px',
-                                    'border':'0px'
-                                },
-                                {
-                                    position:'absolute',
-                                    'background-color':'rgb(249, 87, 128)',
-                                    top:this.overlayAboutMailLineDefaultTop,
-                                    // left:'45%',
-                                    width:this.overlayAboutMailLineDefaultWidth,
-                                    height:"2px"
-                                }                                                                
-                            ]                     
-                        ],
-                        ngCssDefault:[
-                            [
-                                {
-                                    position:'fixed',
-                                    // height:'1000px',
-                                    height:'140%',
-                                    width:'100%',
-                                    'z-index':-1
-                                    // opacity:0
-                                },
-                                {
-                                    position:'absolute',
-                                    width:this.overlayComponentObject4Image1Width,
-                                    height:'451px',
-                                    top:'2000px'
-                                }
-                            ],
-                            [
-                                {
-                                    position:'absolute',
-                                    'font-family':"'Vidaloka',sans-serif",
-                                    top:"170px",
-                                    left:'45%',
-                                    'font-size': this.overlayAboutPreTitleDefaultFontSize,
-                                    'font-style':'italic',
-                                    'text-align':'center',
-                                    color:'white',
-                                    // 'margin-bottom':'20px',
-                                    'text-shadow':'rgba(0, 0, 0, 0.3) 2px -1px 0px' // so this property we allow because it doesnt make a meaningful difference if its not working
-                                },
-                                {
+                            ngCssDefault:[
+                                [
+                                    {
                                         position:'absolute',
-                                        top:"270px",
-                                        left:'45%',
-                                        'font-size':'141px', 
-                                        'font-family':"'Aclonica',sans-serif",
-                                        'font-weight':'500',
-                                        'text-align':'center',
-                                        color:'white'
-                                },                                                                
+                                        height:'700px',
+                                        width:'100%',
+                                        'z-index':'1',
+                                        // 'background-color':'rgb(255, 192, 203)',
+                                        top:'0px'
+                                    }
+                                ]                    
+                            ],                   
+                            extras:[
+                                {},
+                                {
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                    }}),                     
+                    ...Array.from(Array(1),()=> {
+                        return {
+                            quantity:[[],[3],[3]],
+                            bool:[[],['h1'],['div']], 
+                            val:[
+                                [],
+                                ['b_l_o_g_Title'],
+                                ['b_l_o_g_Menu']
+                            ], 
+                            text:[
+                                [],
+                                ["LIA'S BLOG"],
+                                []
                             ],
-                            [],
-                            [],
-                            [
-                                {
-                                    // 'top':'540px',
-                                    'font-family':'Noto Sans',
-                                    'font-size':'13px',
-                                    'font-weight':'700',
-                                    'z-index':'1'
-                                }                                
+                            metadata:{
+                                navigationCO0:new Subject<any>()
+                            },
+                            ngStyle:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2'
+                                    }
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        height:'750px',
+                                        width:'250px',
+                                        'z-index':'1',
+                                        'background-color':'rgb(255, 192, 203)',
+                                        top:'0px'
+                                    }
+                                ]                    
                             ],
-                            [
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2'
+                                    }
+                                ],
+                                [
+                                    {
+                                        position:'absolute',
+                                        height:'750px',
+                                        width:'250px',
+                                        'z-index':'1',
+                                        'background-color':'rgb(255, 192, 203)',
+                                        top:'0px'
+                                    }
+                                ]                    
+                            ],                   
+                            extras:[
+                                {},
                                 {
-                                    'border-radius':'50px',
-                                    'height':'47px',
-                                    'width':'182px',
-                                    'top':'525px',
-                                    'border':'0px'
-                                },
-                                {
-                                    position:'absolute',
-                                    'background-color':'rgb(249, 87, 128)',
-                                    top:this.overlayAboutMailLineDefaultTop,
-                                    // left:'45%',
-                                    width:this.overlayAboutMailLineDefaultWidth,
-                                    height:"2px"
-                                }                                                                
-                            ]                     
-                        ],                        
-                        extras:[
-                            {},
-                            {
-                                bool:'false'
-                            }                         
-                        ],                        
-                        generator:this.appConsecutiveGenerator
-                    }})                                                                                        
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                    }}),                                                                                               
                 ]
             ],
             generator:(function(){

@@ -319,9 +319,38 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                 this.ref.detectChanges()
 
 
+
+                
+                
             })
+               
 
+            if(   this.window.document.querySelector('app-blog[ng-reflect-blog-t-v=blogCO0]')  !== null   ){
+                
 
+                this.wordsService.footerResizeEventSubscription6 = this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.blogCO0.subscribe((data)=>{
+                // console.log('needed data from wordsCO4')
+                // console.log(   this.window.getComputedStyle(z.element).height   )
+                // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
+
+                    zChild[0].style['top'] = zChild[0].element.style.top  = (
+                        numberParse(
+                            data[0]     
+                        ) + 
+                        numberParse(
+                            data[1]                     
+                        ) 
+                    ).toString() + 'px'
+                    // console.log(zChild[0].style['top'])
+                    // console.log(this.window.getComputedStyle(zChild[0].element).top)
+                    this.ref.detectChanges()          
+                    // debugger                                    
+                })
+
+            
+            }
+
+            
             if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject2]')  !== null ){
 
                 
@@ -552,7 +581,25 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
                 }    
                 
 
-            }            
+            }          
+            
+            
+            if(  
+                this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.blogCO0 !== undefined &&
+                this.wordsService.footerResizeEventSubscription6 !== undefined
+            ){
+                
+                // console.log(   this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.closed   )
+                if(  !this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.blogCO0.closed   ){
+
+                    
+                    this.wordsService.footerResizeEventSubscription6.unsubscribe()
+                
+            
+                }    
+                
+
+            }              
             
             
             this.wordsService.footerResizeEventSubscription0.unsubscribe()
