@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject, Subscription } from 'rxjs';
 // import { Router,RouterEvent } from '@angular/router';
+import { catchError, map, tap } from 'rxjs/operators';
 import { zChildren, componentObject } from './customExports';
-
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 function numberParse(dimension){
@@ -20,6 +20,7 @@ export class WordsService {
 
     constructor(
         // private router:Router
+        private http:HttpClient
     ) { };
 
     /*app*/
@@ -41,10 +42,20 @@ export class WordsService {
     appSubscriptionArray:Subscription[] = []
     appViewComplete:Subject<any> =  new  Subject<any>()
     appViewCompleteArray:Array<any> = []
-    /* */
+    appEventListener:Function = (a)=>{
+        
 
-    /*blog*/
-         // blog concept metadata
+        if(   typeof a === 'function'   ){
+
+
+            a()
+
+
+        }
+
+
+    }
+    /* */
 
 
 
@@ -1019,7 +1030,7 @@ export class WordsService {
                                         top:'0px',
                                         width:'100%',
                                         height:'1px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     }
                                 ]                         
                             ],
@@ -1030,7 +1041,7 @@ export class WordsService {
                                         top:'0px',
                                         width:'100%',
                                         height:'1px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     }
                                 ]                         
                             ],                           
@@ -1137,7 +1148,7 @@ export class WordsService {
                                         height: '165px',
                                         width:'100%',
                                         top:'0px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     }
                                 ],
                                 [
@@ -1148,7 +1159,7 @@ export class WordsService {
                                         top:'88px',
                                         margin:'0px',
                                         width:'0px',
-                                        'z-index':'3'                                                
+                                        'z-index':'4'                                                
                                     }
                                 ],
                                 [
@@ -1158,7 +1169,7 @@ export class WordsService {
                                         left:'23px',
                                         fontSize:'16px',
                                         fontWeight:400,
-                                        'z-index':'3'
+                                        'z-index':'4'
                                         // width:'0px'
                                     }
                                 ],
@@ -1167,7 +1178,7 @@ export class WordsService {
                                         position:'absolute',
                                         top:'15px',
                                         left:'20px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     }                                                                
                                 ],
                                 [
@@ -1176,49 +1187,49 @@ export class WordsService {
                                         top:'72px',
                                         left:'550px',
                                         'fontSize':'16px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'586px',
                                         'fontSize':'16px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'624px',
                                         'fontSize':'16px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'659px',
                                         fontSize:'16px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'697px',
                                         fontSize:'16px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'732px',
                                         'fontSize':'16px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'795px',
                                         fontSize:'16px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                         // width:'0px'
                                     }                                                                                                                                                
                                 ],
@@ -1227,20 +1238,20 @@ export class WordsService {
                                         position:'absolute',
                                         top:'60px',
                                         left:'1142px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         display:'none',
                                         top:'50px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         fontSize:'30px',
                                         display:'none',
                                         top:'60px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     }                                                                        
                                 ]                            
                             ],
@@ -1251,7 +1262,7 @@ export class WordsService {
                                         height: '165px',
                                         width:'100%',
                                         top:'0px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     }
                                 ],
                                 [
@@ -1262,7 +1273,7 @@ export class WordsService {
                                         top:'88px',
                                         margin:'0px',
                                         width:'0px',
-                                        'z-index':'3'                                                
+                                        'z-index':'4'                                                
                                     }
                                 ],
                                 [
@@ -1272,7 +1283,7 @@ export class WordsService {
                                         left:'23px',
                                         fontSize:'16px',
                                         fontWeight:400,
-                                        'z-index':'3'
+                                        'z-index':'4'
                                         // width:'0px'
                                     }
                                 ],
@@ -1281,7 +1292,7 @@ export class WordsService {
                                         position:'absolute',
                                         top:'15px',
                                         left:'20px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     }                                                                
                                 ],
                                 [
@@ -1290,49 +1301,49 @@ export class WordsService {
                                         top:'72px',
                                         left:'550px',
                                         'fontSize':'16px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'586px',
                                         'fontSize':'16px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'624px',
                                         'fontSize':'16px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'659px',
                                         fontSize:'16px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'697px',
                                         fontSize:'16px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'732px',
                                         'fontSize':'16px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         top:'72px',
                                         left:'795px',
                                         fontSize:'16px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                         // width:'0px'
                                     }                                                                                                                                                
                                 ],
@@ -1341,20 +1352,20 @@ export class WordsService {
                                         position:'absolute',
                                         top:'60px',
                                         left:'1142px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         display:'none',
                                         top:'50px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     },
                                     {
                                         position:'absolute',
                                         fontSize:'30px',
                                         display:'none',
                                         top:'60px',
-                                        'z-index':'3'
+                                        'z-index':'4'
                                     }                                                                        
                                 ]                            
                             ],
@@ -1449,6 +1460,7 @@ export class WordsService {
                                     position:'absolute',
                                     top:'90%',
                                     width:'100%',
+                                    'z-index':'4',
                                     // height:'1500px'
                                 }
                             ]                         
@@ -1570,9 +1582,55 @@ export class WordsService {
 
 
   /*blog*/
-         // blogComponent concept metadata    
-         blogCOTopSubject = new Subject<any>()
-         blogCOTopSubscription:Subscription
+        // blogComponent concept metadata    
+        blogCOTopSubject = new Subject<any>()
+        blogCOTopSubscription:Subscription
+
+            //blog XHR
+            private blogURL = '/backend'
+            blogGetTitles(): Observable<any> {
+                return this.http.post<any>(this.blogURL,'testing123')
+                    .pipe(
+                    tap((a)=> {return a.latestBlog}),  // return the string instead
+                    catchError(
+                        ((operation = 'operation', result?: any)=>{
+                        return (error: any): Observable<any> => {
+
+                        // TODO: send the error to remote logging infrastructure
+                        console.error(error); // log to console instead
+                    
+                        // TODO: better job of transforming error for user consumption
+                        // console.log(`${operation} failed: ${error.message}`);
+                        console.log('could not download latest Blogs')
+                    
+                        // Let the app keep running by returning an empty result.
+                        return of({latestBlog:this.blogTitles});
+                        }
+                    })('getBlogs', []))
+                );
+            }    
+            blogTitles: string[] = [
+                'Recipies for the New Year',
+                'Celebration in Boston',
+                'Winter Solstice',
+                'Keeping Healthy for the Holidays',
+                'A New Decade',
+                '2019’s Best Seller',
+                'Popular in The Shop This Week',
+                'Cant get enough of Lia Pastries!',
+                'Shopping With the Chef',
+                'Annie dog turns 3 today',
+                'A moment to never forget',
+                'Christmas Vacation is almost here',
+                'Places to make this winter magical in NYC',
+                'Too much coffee health risks',
+                'Meaning of December',
+                'The Iphone XS max is here, how can you use it as a cooking Tool? dasgsafwasgWGFAWJEKBFNBEJNfklasdjlk',
+                'Honeysweet Memories'                                
+            ]  
+            blogTitlesSubscription0:Subscription     
+            //SCO stands for sub component object
+
 
         // blogComponent events
         blogMyElementsSubscription: Subscription;
@@ -1583,25 +1641,6 @@ export class WordsService {
         blogResizeEventSubscription0:Subscription
         blogResizeEventSubscription1:Subscription 
         blogResizeEventSubscription2:Subscription
-        blogResizeEventSubscription3:Subscription  
-        blogResizeEventSubscription4:Subscription  
-        blogResizeEventSubscription5:Subscription 
-        blogResizeEventSubscription6:Subscription
-        blogResizeEventSubscription7:Subscription  
-        blogResizeEventSubscription8:Subscription
-        blogResizeEventSubscription9:Subscription
-        blogResizeEventSubscription10:Subscription 
-        blogResizeEventSubscription11:Subscription 
-        blogResizeEventSubscription12:Subscription
-        blogResizeEventSubscription13:Subscription  
-        blogResizeEventSubscription14:Subscription  
-        blogResizeEventSubscription15:Subscription 
-        blogResizeEventSubscription16:Subscription
-        blogResizeEventSubscription17:Subscription  
-        blogResizeEventSubscription18:Subscription      
-        blogResizeEventSubscription19:Subscription    
-        blogResizeEventSubscription20:Subscription  
-        blogResizeEventSubscription21:Subscription             
         blogClickEvent$:Observable<Event>        
         blogClickEventSubscription0:Subscription
         //                  
@@ -1620,6 +1659,16 @@ export class WordsService {
                                 []
                         ],
                         metadata:{
+                            mouseover:[
+                                [],
+                                [],
+                                []
+                            ],
+                            mouseout:[
+                                [],
+                                [],
+                                []
+                            ]                            
                         },
                         ngStyle:[
                             [
@@ -1653,6 +1702,7 @@ export class WordsService {
                 [
                     ...Array.from(Array(1),()=> {
                         return {
+                            signature:'containing',
                             quantity:[[3]],
                             bool:[['div']], 
                             val:[
@@ -1664,6 +1714,16 @@ export class WordsService {
                             metadata:{
                                 navigationCO0:new Subject<any>(),
                                 footerCO0:new Subject<any>(),  
+                                mouseover:[
+                                    [],
+                                    [],
+                                    []
+                                ],
+                                mouseout:[
+                                    [],
+                                    [],
+                                    []
+                                ]                                                               
                             },
                             ngStyle:[
                                 [
@@ -1699,28 +1759,145 @@ export class WordsService {
                     }}),                     
                     ...Array.from(Array(1),()=> {
                         return {
-                            quantity:[[],[3],[3]],
-                            bool:[[],['h1'],['div']], 
+                            signature:'menu',
+                            quantity:[[],[3,3,3,3,3,3,3,3],[3,3,3]],
+                            bool:[[],['h1','h2','h2','h2','h2','h2','h2','h2'],['div','div','div']], 
                             val:[
                                 [],
-                                ['b_l_o_g_Title'],
-                                ['b_l_o_g_Menu']
+                                [
+                                'b_l_o_g_Title',
+                                'b_l_o_g_SubTitle',
+                                'b_l_o_g_SubTitle',
+                                'b_l_o_g_SubTitle',
+                                'b_l_o_g_SubTitle',
+                                'b_l_o_g_SubTitle',
+                                'b_l_o_g_SubTitle',
+                                'b_l_o_g_SubTitle'                               
+                                ],
+                                [
+                                    'b_l_o_g_Menu',
+                                    'b_l_o_g_MenuMobileA',
+                                    'b_l_o_g_MenuMobileB'
+                                ]
                             ], 
                             text:[
                                 [],
-                                ["LIA'S BLOG"],
+                                [
+                                    "LIA'S BLOG",
+                                    'Women',
+                                    'Fashion',
+                                    'Recipies',
+                                    'Ingredients',
+                                    'Appliances',                                    
+                                    'Trends',
+                                    'Shopping'
+                                ],
                                 []
                             ],
                             metadata:{
-                                navigationCO0:new Subject<any>()
+                                mouseover:[
+                                    [],
+                                    [],
+                                    [
+                                        {
+                                            fn:null,
+                                            
+                                        }, 
+                                        {
+                                            fn:null,
+                                            
+                                        }, 
+                                        {
+                                            fn:null,
+                                            
+                                        },                                                                                                                          
+                                    ]
+                                ],
+                                mouseout:[
+                                    [],
+                                    [],
+                                    [
+                                        {
+                                            fn:null,
+                                            
+                                        }, 
+                                        {
+                                            fn:null,
+                                            
+                                        }, 
+                                        {
+                                            fn:null,
+                                            
+                                        },                                                                                                                          
+                                    ]
+                                ]                                
                             },
                             ngStyle:[
                                 [],
                                 [
                                     {
                                         position:'absolute',
-                                        'z-index':'2'
-                                    }
+                                        'z-index':'2',
+                                        'font-family':'Montserrat',
+                                        'left':'32.5px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Noto Sans',
+                                        'top':'50px',
+                                        'left':'80px',
+                                        'font-size':'24px'
+                                    }, 
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Noto Sans',
+                                        'top':'100px',
+                                        'left':'79.5px',
+                                        'font-size':'24px'
+                                    }, 
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Noto Sans',
+                                        'top':'150px',
+                                        'left':'77px',
+                                        'font-size':'24px'
+                                    },   
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Noto Sans',
+                                        'top':'200px',
+                                        'left':'57px',
+                                        'font-size':'24px'
+                                    }, 
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Noto Sans',
+                                        'top':'250px',
+                                        'left':'61.5px',
+                                        'font-size':'24px'
+
+                                    }, 
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Noto Sans',
+                                        'top':'300px',
+                                        left:'85px',
+                                        'font-size':'24px'
+                                    }, 
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Noto Sans',
+                                        'top':'350px',
+                                        left:'69px',
+                                        'font-size':'24px'
+                                    }                                                                                                                                                                                                                                                         
                                 ],
                                 [
                                     {
@@ -1730,16 +1907,97 @@ export class WordsService {
                                         'z-index':'1',
                                         'background-color':'rgb(255, 192, 203)',
                                         top:'0px'
-                                    }
+                                    },
+                                    {
+                                        position:'absolute',
+                                        display:'none',
+                                        height:'750px',
+                                        width:'225px',
+                                        left:'0px',
+                                        'z-index':'1',
+                                        'background-color':'rgb(0, 0, 0)',
+                                        border:'1px solid rgb(255, 192, 203)',
+                                        top:'72px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        display:'none',
+                                        height:'750px',
+                                        width:'225px',
+                                        'z-index':'1',
+                                        left:'911px',
+                                        'background-color':'rgb(0, 0, 0)',
+                                        border:'1px solid rgb(255, 192, 203)',
+                                        top:'72px'
+                                    }                                                                         
                                 ]                    
-                            ],
+                            ],  
                             ngCssDefault:[
                                 [],
                                 [
                                     {
                                         position:'absolute',
-                                        'z-index':'2'
-                                    }
+                                        'z-index':'2',
+                                        'font-family':'Montserrat',
+                                        'left':'32.5px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Noto Sans',
+                                        'top':'50px',
+                                        'left':'80px',
+                                        'font-size':'24px'
+                                    }, 
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Noto Sans',
+                                        'top':'100px',
+                                        'left':'79.5px',
+                                        'font-size':'24px'
+                                    }, 
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Noto Sans',
+                                        'top':'150px',
+                                        'left':'77px',
+                                        'font-size':'24px'
+                                    },   
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Noto Sans',
+                                        'top':'200px',
+                                        'left':'57px',
+                                        'font-size':'24px'
+                                    }, 
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Noto Sans',
+                                        'top':'250px',
+                                        'left':'61.5px',
+                                        'font-size':'24px'
+
+                                    }, 
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Noto Sans',
+                                        'top':'300px',
+                                        left:'85px',
+                                        'font-size':'24px'
+                                    }, 
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Noto Sans',
+                                        'top':'350px',
+                                        left:'69px',
+                                        'font-size':'24px'
+                                    }                                                                                                                                                                                                                                                         
                                 ],
                                 [
                                     {
@@ -1749,9 +2007,31 @@ export class WordsService {
                                         'z-index':'1',
                                         'background-color':'rgb(255, 192, 203)',
                                         top:'0px'
-                                    }
+                                    },
+                                    {
+                                        position:'absolute',
+                                        display:'none',
+                                        height:'750px',
+                                        width:'225px',
+                                        left:'0px',
+                                        'z-index':'1',
+                                        'background-color':'rgb(0, 0, 0)',
+                                        border:'1px solid rgb(255, 192, 203)',
+                                        top:'72px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        display:'none',
+                                        height:'750px',
+                                        width:'225px',
+                                        'z-index':'1',
+                                        left:'911px',
+                                        'background-color':'rgb(0, 0, 0)',
+                                        border:'1px solid rgb(255, 192, 203)',
+                                        top:'72px'
+                                    }                                                                         
                                 ]                    
-                            ],                   
+                            ],     
                             extras:[
                                 {},
                                 {
@@ -1759,7 +2039,216 @@ export class WordsService {
                                 }                         
                             ],                        
                             generator:this.appConsecutiveGenerator
-                    }}),                                                                                               
+                    }}), 
+                    ...Array.from(Array(1),()=> {
+                        return {
+                            signature:'hover title',
+                            quantity:[[],[3],[]],
+                            bool:[[],['h1'],[]], 
+                            val:[
+                                [],
+                                ['b_l_o_g_Title'],
+                                []
+                            ], 
+                            text:[
+                                [],
+                                ['Top Stories'],
+                                []
+                            ],
+                            metadata:{
+                                mouseover:[
+                                    [],
+                                    [],
+                                    []
+                                ],
+                                mouseout:[
+                                    [],
+                                    [],
+                                    []
+                                ]                                
+                            },
+                            ngStyle:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        color:'rgb(255,192,203)',
+                                        'font-family':'Vidaloka',
+                                        'font-style':'italic',
+                                        left: '650px',
+                                        'z-index':'2'
+                                    }                                    
+                                ],
+                                [                               
+                                ]                    
+                            ],  
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        color:'rgb(255,192,203)',
+                                        'font-family':'Vidaloka',
+                                        'font-style':'italic',
+                                        left: '650px',
+                                        'z-index':'2'
+                                    }                                    
+                                ],
+                                [                               
+                                ]                    
+                            ],        
+                            extras:[
+                                {},
+                                {
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                    }}),                      
+                    ...Array.from(Array(1),()=> {
+                        return {
+                            signature:'blog article',
+                            quantity:[[],[3],[3,3]],
+                            bool:[[],['a'],['div','button']], 
+                            val:[
+                                [],
+                                ['b_l_o_g_Title'],
+                                ['b_l_o_g_Topic','b_l_o_g_TopicButton']
+                            ], 
+                            text:[
+                                [],
+                                ['Recipies for the new year'],
+                                []
+                            ],
+                            metadata:{
+                                router:[
+                                    [],
+                                    [
+                                        [
+                                            {
+                                                link:'https://www.bbcgoodfood.com/recipes/collection/new-years-eve'
+                                            }
+                                        ]
+                                    ],
+                                    []
+                                ],
+                                mouseover:[
+                                    [],
+                                    [
+                                        {
+                                            fn:null,
+                                            assoc:null,
+                                            exit:false
+                                         }
+                                    ],
+                                    [
+                                        {
+                                            fn:null,
+                                            
+                                        },
+                                        {
+                                            fn:null,
+                                            
+                                        }                                                                                
+                                    ]
+                                ],
+                                mouseout:[
+                                    [],
+                                    [
+                                        {
+                                            fn:null,
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            fn:null,
+                                            
+                                        },
+                                        {
+                                            fn:null,
+                                            
+                                        }                                                                                
+                                    ]
+                                ]                                
+                            },
+                            ngStyle:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        'font-family':'Vidaloka',
+                                        'font-style':'italic',
+                                        left: '380px',
+                                        top:'65px',
+                                        'font-size':'30px',
+                                        'z-index':'3',
+                                        color: 'rgb(85,26,142)'
+                                    }                                    
+                                ],
+                                [
+                                    {   
+                                        position:'absolute',                                        
+                                        'background-color':'rgb(255,192,203)',
+                                        height:'50px',
+                                        width:'943px',
+                                        top:'60px',
+                                        left:'320px',
+                                        'z-index':'2'
+                                    },
+                                    {   
+                                        position:'absolute',                                        
+                                        'background-color':'rgb(255, 72, 137)',
+                                        height:'40px',
+                                        width:'40px',
+                                        top:'65px',
+                                        left:'325px',
+                                        'z-index':'2'
+                                    }                                    
+                                ]                    
+                            ],   
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        'font-family':'Vidaloka',
+                                        'font-style':'italic',
+                                        left: '380px',
+                                        top:'65px',
+                                        'font-size':'30px',
+                                        'z-index':'3',
+                                        color: 'rgb(85,26,142)'
+                                    }                                    
+                                ],
+                                [
+                                    {   
+                                        position:'absolute',                                        
+                                        'background-color':'rgb(255,192,203)',
+                                        height:'50px',
+                                        width:'943px',
+                                        top:'60px',
+                                        left:'320px',
+                                        'z-index':'2'
+                                    },
+                                    {   
+                                        position:'absolute',                                        
+                                        'background-color':'rgb(255, 72, 137)',
+                                        height:'40px',
+                                        width:'40px',
+                                        top:'65px',
+                                        left:'325px',
+                                        'z-index':'2'
+                                    }                                    
+                                ]                    
+                            ], 
+                            extras:[
+                                {},
+                                {
+                                    bool:'false'
+                                }                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                    }}),                                                                                                                   
                 ]
             ],
             generator:(function(){

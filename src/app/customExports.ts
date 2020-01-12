@@ -5,6 +5,9 @@ export class zChildren {
     bool?:string;
     innerText?:null | string;
     link?:string;
+    quantity?:any;
+    mouseover?:any;
+    mouseout?:any;
 }
 
 export class componentObject { // not final
@@ -13,6 +16,11 @@ export class componentObject { // not final
     metadata?: Object 
 }
 
+
+export let modenizr =  {
+    opacity:true,
+    transition:true
+}
 
 /*
 mobile stacking template
@@ -35,11 +43,13 @@ mobile stacking template
                     })     
                     zChild[2].style['text-align'] = 'center' 
                     this.ref.detectChanges()      
-
+                    
 to expand the height of the containing element
                     
 */ 
 
+
+  
 
 export function getTextWidth(   devObj:{elementText:string,font:string}   ){
     var canvas = document.createElement("canvas");

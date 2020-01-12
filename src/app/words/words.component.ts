@@ -4347,6 +4347,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     })([12,13])                    
                     
                 }
+
                 
                 if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 1582   ){
 

@@ -7,6 +7,7 @@ import {   catchError,take,timeout   } from 'rxjs/operators'
 
 
 
+
 function appGenerateSelector(   devObj   ){
     var a = 0;
     var string = '';
@@ -51,10 +52,18 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
         console.log('app ngOnInit fires on mount')
 
         
-        if(   this.window.name === ''   ){
+        if(   
+            this.window.name !== '/'   &&
+            this.window.name !== '/home'   &&
+            this.window.name !== '/about'   &&
+            this.window.name !== '/services'   &&
+            this.window.name !== '/projects'   &&
+            this.window.name !== '/blog'   &&  
+            this.window.name !== '/contact'                         
+        ){   // ts is annoying at this point
+ 
 
-
-            this.window.name = '/'
+            this.window.name = '/home'
 
 
         }
@@ -145,18 +154,30 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
                     catch(e){
                         let eventLegacyLoad = this.window.document.createEvent("Event");
                         eventLegacyLoad.initEvent("resize", false, true);
-                        fromEvent(this.window,'load').subscribe(()=>{
-                            this.window.dispatchEvent(eventLegacyLoad)      
-                            this.window.dispatchEvent(eventLegacyLoad)                             
-                        })
-                        this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )  
-                        this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )                                                                           
+                        try{
+                            fromEvent(this.window,'load').subscribe(()=>{
+                                this.window.dispatchEvent(eventLegacyLoad)      
+                                this.window.dispatchEvent(eventLegacyLoad)                             
+                            })
+                            this.window.dispatchEvent(    eventLegacyLoad    )
+                            this.window.dispatchEvent(    eventLegacyLoad    )
+                            this.window.dispatchEvent(    eventLegacyLoad    )  
+                            this.window.dispatchEvent(    eventLegacyLoad    )
+                            this.window.dispatchEvent(    eventLegacyLoad    )
+                            this.window.dispatchEvent(    eventLegacyLoad    )
+                            this.window.dispatchEvent(    eventLegacyLoad    )
+                            this.window.dispatchEvent(    eventLegacyLoad    )   
+                        }    
+                        catch(e){
+                            this.window.dispatchEvent(    eventLegacyLoad    )
+                            this.window.dispatchEvent(    eventLegacyLoad    )
+                            this.window.dispatchEvent(    eventLegacyLoad    )  
+                            this.window.dispatchEvent(    eventLegacyLoad    )
+                            this.window.dispatchEvent(    eventLegacyLoad    )
+                            this.window.dispatchEvent(    eventLegacyLoad    )
+                            this.window.dispatchEvent(    eventLegacyLoad    )
+                            this.window.dispatchEvent(    eventLegacyLoad    )                             
+                        }                                                                    
                     }  
                     this.wordsService.appViewCompleteArray = []
 
@@ -349,7 +370,7 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
             }   
             
             
-            if(   this.wordsService.appCurrentNav === '/blog'   ){
+            if(     this.wordsService.appCurrentNav === '/blog'    ){
 
 
                 let arr = [
@@ -370,7 +391,7 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
                 if(
                     arr.filter((x,i) =>{ 
                         return this.wordsService.appViewCompleteArray[i] !== x 
-                    }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length
+                    }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length 
                 ){
 
 
@@ -380,19 +401,25 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
                         fromEvent(this.window,'load').subscribe(()=>{
                             this.window.dispatchEvent(event)      
                             this.window.dispatchEvent(event)                             
-                        })                        
+                        })               
                         this.window.dispatchEvent(event)      
-                        this.window.dispatchEvent(event) 
+                        this.window.dispatchEvent(event)                                                           
                     }
                     catch(e){
                         let eventLegacyLoad = this.window.document.createEvent("Event");
-                        eventLegacyLoad.initEvent("resize", false, true);
+                        eventLegacyLoad.initEvent("resize", false, true);                        
+                        try{
                         fromEvent(this.window,'load').subscribe(()=>{
                             this.window.dispatchEvent(   eventLegacyLoad   )      
                             this.window.dispatchEvent(   eventLegacyLoad   )                             
-                        })                        
-                        this.window.dispatchEvent(    eventLegacyLoad    )
-                        this.window.dispatchEvent(    eventLegacyLoad    )          
+                        })               
+                        this.window.dispatchEvent(event)      
+                        this.window.dispatchEvent(event)                                      
+                        }       
+                        catch(e){
+                            this.window.dispatchEvent(event)      
+                            this.window.dispatchEvent(event)                             
+                        }                   
                     } 
                     this.wordsService.appViewCompleteArray = []
 
@@ -449,13 +476,18 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
                     catch(e){
                         let eventLegacyLoad = this.window.document.createEvent("Event");
                         eventLegacyLoad.initEvent("resize", false, true);
+                        try{
                         this.window.dispatchEvent(    eventLegacyLoad    )
                         this.window.dispatchEvent(    eventLegacyLoad    )   
                         fromEvent(this.window,'load').subscribe(()=>{
                             this.window.dispatchEvent(eventLegacyLoad)      
                             this.window.dispatchEvent(eventLegacyLoad)                             
-                        })                        
-                             
+                        })        
+                        }                
+                        catch(e){
+                            this.window.dispatchEvent(    eventLegacyLoad    )
+                            this.window.dispatchEvent(    eventLegacyLoad    )                               
+                        }
                     } 
                     this.wordsService.appViewCompleteArray = []
 
