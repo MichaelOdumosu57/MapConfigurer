@@ -40,7 +40,10 @@
         </ng-template> 
         <ng-template #elseBlock7  > 
             <a #myBlogVal *ngIf= "a.bool[1][bb] ==='a' else elseBlock8" id = {{a.val[1][bb]}} 
-            [ngStyle] = 'a.ngStyle[1][bb]' href ={{a.metadata.router[1][bb]}} >{{a.text[1][bb]}}</a>            
+            [ngStyle] = 'a.ngStyle[1][bb]' href ={{a.metadata.router[1][bb].link}}  
+            (mouseover)="wordsService.appEventListener(a.metadata.mouseover[1][bb].fn)"
+            (mouseout)="wordsService.appEventListener(a.metadata.mouseout[1][bb].fn)"
+            >{{a.text[1][bb]}}</a>            
         </ng-template> 
         <ng-template #elseBlock8  > 
             <p #myBlogVal *ngIf= "a.bool[1][bb] ==='p' else elseBlock9" id = {{a.val[1][bb]}} 
@@ -71,12 +74,16 @@
 
 
     <ng-container *ngFor = 'let aa of a.quantity[2];let bb = index' >
-        <div #myBlogVal *ngIf= "a.bool[2][bb] ==='div'   else pictureBlock0" id = {{a.val[2][bb]}} [ngStyle] = 'a.ngStyle[2][bb]' ></div>     
+        <div #myBlogVal *ngIf= "a.bool[2][bb] ==='div'   else pictureBlock0" id = {{a.val[2][bb]}} [ngStyle] = 'a.ngStyle[2][bb]'  
+        (mouseover)="wordsService.appEventListener(a.metadata.mouseover[2][bb].fn)" 
+        (mouseout)="wordsService.appEventListener(a.metadata.mouseout[2][bb].fn)"></div>     
         <ng-template #pictureBlock0  >    
             <img #myBlogVal *ngIf= "a.bool[2][bb] ==='img' else pictureBlock1" id = {{a.val[2][bb]}} [ngStyle] = 'a.ngStyle[2][bb]' src="{{a.metadata.image[2][bb]}}" />
         </ng-template>  
         <ng-template #pictureBlock1  >    
-            <button #myBlogVal *ngIf= "a.bool[2][bb] ==='button' else pictureBlock2 " id = {{a.val[2][bb]}}  [ngStyle] =  'a.ngStyle[2][bb]'  >{{a.text[2][bb]}}</button>
+            <button #myBlogVal *ngIf= "a.bool[2][bb] ==='button' else pictureBlock2 " id = {{a.val[2][bb]}}  [ngStyle] =  'a.ngStyle[2][bb]'  
+            (mouseover)="wordsService.appEventListener(a.metadata.mouseover[2][bb].fn)" 
+            (mouseout)="wordsService.appEventListener(a.metadata.mouseout[2][bb].fn)">{{a.text[2][bb]}}</button>
         </ng-template> 
         <ng-template #pictureBlock2  >    
             <embed #myBlogVal *ngIf= "a.bool[2][bb] ==='embed' else pictureBlock3" id = {{a.val[2][bb]}}  [ngStyle] =  'a.ngStyle[2][bb]'  >

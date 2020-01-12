@@ -9,6 +9,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { OverlayComponent } from './overlay/overlay.component';
 import { FooterComponent } from './footer/footer.component';
 import { BlogComponent } from './blog/blog.component';
+import {    HttpClientModule   }    from '@angular/common/http';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { BlogComponent } from './blog/blog.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule
     // AppRoutingModule
   ],
   providers: [WINDOW_PROVIDERS],
