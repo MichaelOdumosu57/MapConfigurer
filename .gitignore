@@ -2,6 +2,7 @@ misc/*
 /misc
 src/assets/misc/
 backend/nodejs/node_modules/*
+planning/*
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
