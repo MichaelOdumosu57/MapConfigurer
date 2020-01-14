@@ -4,7 +4,7 @@ import {   BrowserModule,platformBrowser,disableDebugTools   } from '@angular/pl
 import {   WINDOW   } from '../window.service';
 import {   fromEvent,interval   } from 'rxjs';
 import {   take,timeout   } from 'rxjs/operators';
-import {   zChildren   } from '../customExports'
+import {   zChildren,   } from '../customExports'
 
 function getTextWidth(   devObj:{elementText:string,font:string}   ){
     var canvas = document.createElement("canvas");
@@ -240,7 +240,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.groupEnd()
             })
             // see what happens when app-navigation top is made 0px
-            // console.log(   zChild   ) 
+            console.log(   zChild   ) 
             this.ref.detectChanges()                       
             this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.TitleDefaultWidth = getTextWidth({
                 elementText:zChild[2].innerText,

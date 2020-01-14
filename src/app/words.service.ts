@@ -2977,6 +2977,7 @@ export class WordsService {
                 [
                     ...Array.from(Array(1),()=> {
                         return {
+                            signature:'containing',
                             quantity:[[3]],
                             bool:[['true']], 
                             val:[
@@ -3010,6 +3011,7 @@ export class WordsService {
                         }}),   
                     ...Array.from(Array(1),()=> {
                     return {
+                        signature:'component title',
                         quantity:[[],[3],[],[],[3]],
                         bool:[[],['true'],['false'],[],['true']], 
                         val:[
@@ -3057,6 +3059,7 @@ export class WordsService {
                     }}),                    
                     ...Array.from(Array(1),()=> {
                         return {
+                            signature:'picture component 1',
                             quantity:[[],[3],[3],[3]],
                             bool:[[],['true'],['link','true'],['true']], 
                             val:[
@@ -3100,8 +3103,12 @@ export class WordsService {
                                         top:this.wordsComponentObject0Image0Top ,
                                         width:this.wordsComponentObject0Image0Width,
                                         height:this.wordsComponentObject0Image0Height,
-                                        'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
-                                        'border-radius':'4px 4px 4px 4px'
+                                        'box-shadow':(
+                                           window.Modernizr.boxshadow ? '10px 10px 0px 1px rgba(0,0,0,0.07)' : null
+                                        ),
+                                        'border-radius': (
+                                           window.Modernizr.borderradius ? '4px 4px 4px 4px' : null
+                                        )
                                     }
                                 ]                                                                      
                             ],
@@ -3129,6 +3136,7 @@ export class WordsService {
                     }}),                    
                     ...Array.from(Array(1),()=> {
                         return {
+                            signature:'picture component 2',
                             quantity:[[],[3],[3],[3]],
                             bool:[[],['true'],['link'],['true']], 
                             val:[
@@ -3167,8 +3175,12 @@ export class WordsService {
                                         position:'absolute',
                                         width:this.wordsComponentObject0Image1Width,
                                         height:this.wordsComponentObject0Image1Height,
-                                        'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
-                                        'border-radius':'4px 4px 4px 4px',
+                                        'box-shadow':(
+                                            window.Modernizr.boxshadow ? '10px 10px 0px 1px rgba(0,0,0,0.07)' : null
+                                         ),
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '4px 4px 4px 4px' : null
+                                        ),
                                         top:this.wordsComponentObject0Image1Top,
                                         left:'200px'                                        
                                     }
@@ -3906,8 +3918,12 @@ export class WordsService {
                                         top:this.wordsCO3ImageDefaultTop[3] ,
                                         width:this.wordsCO3ImageDefaultWidth[3],
                                         height:this.wordsCO3ImageDefaultHeight[3] ,
-                                        'box-shadow':'10px 10px 0px 1px rgba(0,0,0,0.07)',
-                                        'border-radius':'4px 4px 4px 4px',
+                                        'box-shadow':(
+                                            window.Modernizr.boxshadow ? '10px 10px 0px 1px rgba(0,0,0,0.07)' : null
+                                         ),
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '4px 4px 4px 4px' : null
+                                        ),
                                         left:this.wordsCO3Image.defaultLeft[3]
                                     }
                                 ]                                                                      
@@ -4939,7 +4955,9 @@ export class WordsService {
                                         top:this.wordsCO5Image.defaultTop[0],
                                         left:this.wordsCO5Image.defaultLeft[0],
                                         position:'absolute',
-                                        'border-radius':'4px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '4px 4px 4px 4px' : null
+                                        ),
                                         'box-shadow':'rgba(0, 0, 0, 0.07) 10px 10px 0px 1px'
                                     }
                                 ],
@@ -4956,7 +4974,9 @@ export class WordsService {
                                         top:this.wordsCO5Image.defaultTop[0],
                                         left:this.wordsCO5Image.defaultLeft[0],
                                         position:'absolute',
-                                        'border-radius':'4px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '4px 4px 4px 4px' : null
+                                        ),
                                         'box-shadow':'rgba(0, 0, 0, 0.07) 10px 10px 0px 1px'
                                     }
                                 ],
@@ -5559,7 +5579,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO6Image.defaultHeight[0],
                                         width:this.wordsCO6Image.defaultWidth[0],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO6Image.defaultTop[0],
                                         left:this.wordsCO6Image.defaultLeft[0],
@@ -5567,7 +5589,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO6Image.defaultHeight[1],
                                         width:this.wordsCO6Image.defaultWidth[1],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO6Image.defaultTop[1],
                                         left:this.wordsCO6Image.defaultLeft[1],
@@ -5575,7 +5599,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO6Image.defaultHeight[2],
                                         width:this.wordsCO6Image.defaultWidth[2],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO6Image.defaultTop[2],
                                         left:this.wordsCO6Image.defaultLeft[2],
@@ -5583,7 +5609,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO6Image.defaultHeight[3],
                                         width:this.wordsCO6Image.defaultWidth[3],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO6Image.defaultTop[3],
                                         left:this.wordsCO6Image.defaultLeft[3],
@@ -5603,7 +5631,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO6RadioButton.defaultHeight[0],
                                         width:this.wordsCO6RadioButton.defaultWidth[0],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO6RadioButton.defaultTop[0],
                                         left:this.wordsCO6RadioButton.defaultLeft[0],                                        
                                     },
@@ -5611,7 +5641,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO6RadioButton.defaultHeight[1],
                                         width:this.wordsCO6RadioButton.defaultWidth[1],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO6RadioButton.defaultTop[1],
                                         left:this.wordsCO6RadioButton.defaultLeft[1],                                         
                                     },
@@ -5619,7 +5651,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO6RadioButton.defaultHeight[2],
                                         width:this.wordsCO6RadioButton.defaultWidth[2],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO6RadioButton.defaultTop[2],
                                         left:this.wordsCO6RadioButton.defaultLeft[2],                                         
                                     },
@@ -5627,7 +5661,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO6RadioButton.defaultHeight[3],
                                         width:this.wordsCO6RadioButton.defaultWidth[3],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO6RadioButton.defaultTop[3],
                                         left:this.wordsCO6RadioButton.defaultLeft[3],                                         
                                     }                                                                                                                                                                                                                          
@@ -5668,7 +5704,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO6Image.defaultHeight[0],
                                         width:this.wordsCO6Image.defaultWidth[0],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO6Image.defaultTop[0],
                                         left:this.wordsCO6Image.defaultLeft[0],
@@ -5676,7 +5714,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO6Image.defaultHeight[1],
                                         width:this.wordsCO6Image.defaultWidth[1],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO6Image.defaultTop[1],
                                         left:this.wordsCO6Image.defaultLeft[1],
@@ -5684,7 +5724,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO6Image.defaultHeight[2],
                                         width:this.wordsCO6Image.defaultWidth[2],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO6Image.defaultTop[2],
                                         left:this.wordsCO6Image.defaultLeft[2],
@@ -5692,11 +5734,13 @@ export class WordsService {
                                     {
                                         height:this.wordsCO6Image.defaultHeight[3],
                                         width:this.wordsCO6Image.defaultWidth[3],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO6Image.defaultTop[3],
                                         left:this.wordsCO6Image.defaultLeft[3],
-                                        'display':'none',
+                                        display:'none',
                                         'z-index':-1
                                     }                                                                          
                                 ],
@@ -5712,7 +5756,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO6RadioButton.defaultHeight[0],
                                         width:this.wordsCO6RadioButton.defaultWidth[0],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO6RadioButton.defaultTop[0],
                                         left:this.wordsCO6RadioButton.defaultLeft[0],                                        
                                     },
@@ -5720,7 +5766,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO6RadioButton.defaultHeight[1],
                                         width:this.wordsCO6RadioButton.defaultWidth[1],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO6RadioButton.defaultTop[1],
                                         left:this.wordsCO6RadioButton.defaultLeft[1],                                         
                                     },
@@ -5728,7 +5776,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO6RadioButton.defaultHeight[2],
                                         width:this.wordsCO6RadioButton.defaultWidth[2],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO6RadioButton.defaultTop[2],
                                         left:this.wordsCO6RadioButton.defaultLeft[2],                                         
                                     },
@@ -5736,7 +5786,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO6RadioButton.defaultHeight[3],
                                         width:this.wordsCO6RadioButton.defaultWidth[3],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO6RadioButton.defaultTop[3],
                                         left:this.wordsCO6RadioButton.defaultLeft[3],                                         
                                     }                                                                                                                                                                                                                          
@@ -5999,7 +6051,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO7Image.defaultHeight[0],
                                         width:this.wordsCO7Image.defaultWidth[0],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO7Image.defaultTop[0],
                                         left:this.wordsCO7Image.defaultLeft[0],
@@ -6007,7 +6061,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO7Image.defaultHeight[1],
                                         width:this.wordsCO7Image.defaultWidth[1],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO7Image.defaultTop[1],
                                         left:this.wordsCO7Image.defaultLeft[1],
@@ -6015,7 +6071,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO7Image.defaultHeight[2],
                                         width:this.wordsCO7Image.defaultWidth[2],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO7Image.defaultTop[2],
                                         left:this.wordsCO7Image.defaultLeft[2],
@@ -6023,7 +6081,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO7Image.defaultHeight[3],
                                         width:this.wordsCO7Image.defaultWidth[3],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO7Image.defaultTop[3],
                                         left:this.wordsCO7Image.defaultLeft[3],
@@ -6043,7 +6103,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO7RadioButton.defaultHeight[0],
                                         width:this.wordsCO7RadioButton.defaultWidth[0],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO7RadioButton.defaultTop[0],
                                         left:this.wordsCO7RadioButton.defaultLeft[0],                                        
                                     },
@@ -6051,7 +6113,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO7RadioButton.defaultHeight[1],
                                         width:this.wordsCO7RadioButton.defaultWidth[1],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO7RadioButton.defaultTop[1],
                                         left:this.wordsCO7RadioButton.defaultLeft[1],                                         
                                     },
@@ -6059,7 +6123,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO7RadioButton.defaultHeight[2],
                                         width:this.wordsCO7RadioButton.defaultWidth[2],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO7RadioButton.defaultTop[2],
                                         left:this.wordsCO7RadioButton.defaultLeft[2],                                         
                                     },
@@ -6067,7 +6133,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO7RadioButton.defaultHeight[3],
                                         width:this.wordsCO7RadioButton.defaultWidth[3],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO7RadioButton.defaultTop[3],
                                         left:this.wordsCO7RadioButton.defaultLeft[3],                                         
                                     }                                                                                                                                                                                    
@@ -6108,7 +6176,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO7Image.defaultHeight[0],
                                         width:this.wordsCO7Image.defaultWidth[0],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO7Image.defaultTop[0],
                                         left:this.wordsCO7Image.defaultLeft[0],
@@ -6116,7 +6186,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO7Image.defaultHeight[1],
                                         width:this.wordsCO7Image.defaultWidth[1],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO7Image.defaultTop[1],
                                         left:this.wordsCO7Image.defaultLeft[1],
@@ -6124,7 +6196,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO7Image.defaultHeight[2],
                                         width:this.wordsCO7Image.defaultWidth[2],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO7Image.defaultTop[2],
                                         left:this.wordsCO7Image.defaultLeft[2],
@@ -6132,11 +6206,14 @@ export class WordsService {
                                     {
                                         height:this.wordsCO7Image.defaultHeight[3],
                                         width:this.wordsCO7Image.defaultWidth[3],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO7Image.defaultTop[3],
                                         left:this.wordsCO7Image.defaultLeft[3],
-                                        'z-index':-1
+                                        'z-index':-1,
+                                        display:'none'
                                     }                                                                          
                                 ],
                                 [
@@ -6151,7 +6228,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO7RadioButton.defaultHeight[0],
                                         width:this.wordsCO7RadioButton.defaultWidth[0],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO7RadioButton.defaultTop[0],
                                         left:this.wordsCO7RadioButton.defaultLeft[0],                                        
                                     },
@@ -6159,7 +6238,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO7RadioButton.defaultHeight[1],
                                         width:this.wordsCO7RadioButton.defaultWidth[1],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO7RadioButton.defaultTop[1],
                                         left:this.wordsCO7RadioButton.defaultLeft[1],                                         
                                     },
@@ -6167,7 +6248,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO7RadioButton.defaultHeight[2],
                                         width:this.wordsCO7RadioButton.defaultWidth[2],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO7RadioButton.defaultTop[2],
                                         left:this.wordsCO7RadioButton.defaultLeft[2],                                         
                                     },
@@ -6175,12 +6258,14 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO7RadioButton.defaultHeight[3],
                                         width:this.wordsCO7RadioButton.defaultWidth[3],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO7RadioButton.defaultTop[3],
                                         left:this.wordsCO7RadioButton.defaultLeft[3],                                         
                                     }                                                                                                                                                                                    
                                 ]                                                                 
-                            ],                            
+                            ],                           
                             metadata:{
                                 image:[
                                     '/assets/media/water-sports-03-o9imkgs4onpj360zge62vmy79y65wi73cl24g4l0k8.jpg',
@@ -6438,7 +6523,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO8Image.defaultHeight[0],
                                         width:this.wordsCO8Image.defaultWidth[0],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO8Image.defaultTop[0],
                                         left:this.wordsCO8Image.defaultLeft[0],
@@ -6446,7 +6533,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO8Image.defaultHeight[1],
                                         width:this.wordsCO8Image.defaultWidth[1],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO8Image.defaultTop[1],
                                         left:this.wordsCO8Image.defaultLeft[1],
@@ -6454,7 +6543,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO8Image.defaultHeight[2],
                                         width:this.wordsCO8Image.defaultWidth[2],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO8Image.defaultTop[2],
                                         left:this.wordsCO8Image.defaultLeft[2],
@@ -6462,7 +6553,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO8Image.defaultHeight[3],
                                         width:this.wordsCO8Image.defaultWidth[3],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO8Image.defaultTop[3],
                                         left:this.wordsCO8Image.defaultLeft[3],
@@ -6482,7 +6575,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO8RadioButton.defaultHeight[0],
                                         width:this.wordsCO8RadioButton.defaultWidth[0],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO8RadioButton.defaultTop[0],
                                         left:this.wordsCO8RadioButton.defaultLeft[0],                                        
                                     },
@@ -6490,7 +6585,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO8RadioButton.defaultHeight[1],
                                         width:this.wordsCO8RadioButton.defaultWidth[1],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO8RadioButton.defaultTop[1],
                                         left:this.wordsCO8RadioButton.defaultLeft[1],                                         
                                     },
@@ -6498,7 +6595,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO8RadioButton.defaultHeight[2],
                                         width:this.wordsCO8RadioButton.defaultWidth[2],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO8RadioButton.defaultTop[2],
                                         left:this.wordsCO8RadioButton.defaultLeft[2],                                         
                                     },
@@ -6506,7 +6605,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO8RadioButton.defaultHeight[3],
                                         width:this.wordsCO8RadioButton.defaultWidth[3],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO8RadioButton.defaultTop[3],
                                         left:this.wordsCO8RadioButton.defaultLeft[3],                                         
                                     }                                                                                                                                                                                    
@@ -6547,7 +6648,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO8Image.defaultHeight[0],
                                         width:this.wordsCO8Image.defaultWidth[0],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO8Image.defaultTop[0],
                                         left:this.wordsCO8Image.defaultLeft[0],
@@ -6555,7 +6658,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO8Image.defaultHeight[1],
                                         width:this.wordsCO8Image.defaultWidth[1],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO8Image.defaultTop[1],
                                         left:this.wordsCO8Image.defaultLeft[1],
@@ -6563,7 +6668,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO8Image.defaultHeight[2],
                                         width:this.wordsCO8Image.defaultWidth[2],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO8Image.defaultTop[2],
                                         left:this.wordsCO8Image.defaultLeft[2],
@@ -6571,7 +6678,9 @@ export class WordsService {
                                     {
                                         height:this.wordsCO8Image.defaultHeight[3],
                                         width:this.wordsCO8Image.defaultWidth[3],
-                                        'border-radius':'5px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '5px 5px 5px 5px' : null
+                                        ),
                                         position:'absolute',
                                         top:this.wordsCO8Image.defaultTop[3],
                                         left:this.wordsCO8Image.defaultLeft[3],
@@ -6591,7 +6700,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO8RadioButton.defaultHeight[0],
                                         width:this.wordsCO8RadioButton.defaultWidth[0],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO8RadioButton.defaultTop[0],
                                         left:this.wordsCO8RadioButton.defaultLeft[0],                                        
                                     },
@@ -6599,7 +6710,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO8RadioButton.defaultHeight[1],
                                         width:this.wordsCO8RadioButton.defaultWidth[1],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO8RadioButton.defaultTop[1],
                                         left:this.wordsCO8RadioButton.defaultLeft[1],                                         
                                     },
@@ -6607,7 +6720,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO8RadioButton.defaultHeight[2],
                                         width:this.wordsCO8RadioButton.defaultWidth[2],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO8RadioButton.defaultTop[2],
                                         left:this.wordsCO8RadioButton.defaultLeft[2],                                         
                                     },
@@ -6615,7 +6730,9 @@ export class WordsService {
                                         position:'absolute',
                                         height:this.wordsCO8RadioButton.defaultHeight[3],
                                         width:this.wordsCO8RadioButton.defaultWidth[3],
-                                        'border-radius':'7px',
+                                        'border-radius': (
+                                            window.Modernizr.borderradius ? '7px 7px 7px 7px' : null
+                                        ),
                                         top:this.wordsCO8RadioButton.defaultTop[3],
                                         left:this.wordsCO8RadioButton.defaultLeft[3],                                         
                                     }                                                                                                                                                                                    

@@ -241,6 +241,7 @@
     /* use feature detection for transititon */
 }   
 
+
 /* overlay */
 
 
@@ -257,9 +258,22 @@
 }
 
 #o_v_e_r_l_a_y_AboutLearnButton{
-    background-color:#f95b82;
+    background-color:rgb(249,91,130);
     position:absolute
 }
+
+/* Modernizr class */
+html.opacity #o_v_e_r_l_a_y_AboutLearnButton {
+    background-color:rgba(249,91,130,.7);
+    position:absolute
+}
+
+html.opacity #o_v_e_r_l_a_y_AboutLearnButton:hover {
+    background-color:rgb(249, 9, 69);
+    position:absolute
+}
+/* Modernizr class */
+
 
 #o_v_e_r_l_a_y_AboutLearnButton:hover{
     background-color:rgb(249, 9, 69);

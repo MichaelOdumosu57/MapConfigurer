@@ -611,3 +611,5 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
 }
+
+

@@ -5,8 +5,11 @@ import {   fromEvent,Subject,Observable,of,Subscription,interval   } from 'rxjs'
 import {   WINDOW   } from './window.service';
 import {   catchError,take,timeout   } from 'rxjs/operators'
 
+declare global {
+    interface Window { Modernizr: any; }
+}
 
-
+window.Modernizr = window.Modernizr || {}
 
 function appGenerateSelector(   devObj   ){
     var a = 0;
@@ -51,6 +54,7 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
     ngOnInit(){
         console.log('app ngOnInit fires on mount')
 
+        
         
         if(   
             this.window.name !== '/'   &&
@@ -132,7 +136,7 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
                     }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length
                 ){
 
-                    
+    
                     console.log('dispatched')
                     try{
                         let event = new Event('resize')

@@ -164,6 +164,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
         this.wordsService.overlayLoadEvent$ = fromEvent(this.window,'load')
         this.wordsService.overlayResizeEvent$ = fromEvent(this.window,'resize')
 
+
         if(   this.overlayTemplateVariable === 'overlayComponentObject5'   ){
 
 
@@ -387,8 +388,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
             this.wordsService.overlayResizeEventSubscription1 = this.wordsService.overlayResizeEvent$.subscribe(()=>{   
                 
-                // zChild[1].style['width'] = this.window.getComputedStyle(   zChild[0].element   ).width
-                // this.ref.detectChanges()
+
                 if(   
                     Math.floor(   
                         zChild[3].element.clientHeight / 

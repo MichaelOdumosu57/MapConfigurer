@@ -1,3 +1,5 @@
+import {   WINDOW   } from './window.service';
+
 export class zChildren {
     element:  HTMLElement;
     style:Object | any;
@@ -17,10 +19,10 @@ export class componentObject { // not final
 }
 
 
-export let modenizr =  {
-    opacity:true,
-    transition:true
-}
+// export let modenizr =  {
+//     opacity:true,
+//     transition:true
+// }
 
 /*
 mobile stacking template
@@ -138,3 +140,6 @@ export function xPosition(devObj){
         (   devObj.target*devObj.targetPos   )   
     ).toString() + "px"; 
 }
+
+
+

@@ -27,7 +27,9 @@
               "src/styles.css",
               "src/material-icons.css"
             ],
-            "scripts": []
+            "scripts": [
+                "backend/modernizr/modernizr.js"
+            ]
           },
           "configurations": {
             "production": {

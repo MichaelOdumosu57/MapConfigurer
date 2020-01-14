@@ -4,8 +4,8 @@ import {   BrowserModule,platformBrowser,disableDebugTools   } from '@angular/pl
 import {   WINDOW   } from '../window.service';
 import {   fromEvent,interval,combineLatest,Subject   } from 'rxjs';
 import {   take,timeout   } from 'rxjs/operators';
-import {   zChildren, getTextWidth,numberParse,resize,xPosition,modenizr   } from '../customExports'
-
+import {   zChildren, getTextWidth,numberParse,resize,xPosition   } from '../customExports'
+// import {  this.window.Modernizr   } from '../../../backend/a/modernizr.js'
 
 
 @Component({
@@ -151,10 +151,12 @@ export class BlogComponent implements OnInit,AfterViewInit,OnDestroy {
         this.ref.detectChanges() 
          
 
+        console.log(window.Modernizr)
+            
 
         if(    
-            modenizr.opacity &&
-            modenizr.transition 
+           this.window.Modernizr.csstransitions &&
+           this.window.Modernizr.opacity   
         ){
 
 
@@ -255,7 +257,7 @@ export class BlogComponent implements OnInit,AfterViewInit,OnDestroy {
             // console.log(nullThisIdentifier)
             let cssTop = nullThisIdentifier[0]
             let c = nullThisIdentifier[1]
-
+ 
             
                 // distinctuntilChanged rxjs
                 
@@ -386,8 +388,8 @@ export class BlogComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
                     if(  
-                        modenizr.opacity &&
-                        modenizr.transition 
+                       this.window.Modernizr.opacity &&
+                       this.window.Modernizr.csstransitions
                     ){    
                        
                     
@@ -991,8 +993,8 @@ export class BlogComponent implements OnInit,AfterViewInit,OnDestroy {
 
                         
                         if(  
-                            modenizr.opacity &&
-                            modenizr.transition 
+                           this.window.Modernizr.opacity &&
+                           this.window.Modernizr.csstransitions
                         ){    
                             
                             
@@ -1031,8 +1033,8 @@ export class BlogComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
                                 if(  
-                                    modenizr.opacity &&
-                                    modenizr.transition 
+                                   this.window.Modernizr.opacity &&
+                                   this.window.Modernizr.csstransitions
                                 ){  
                                     
 
@@ -1136,8 +1138,8 @@ export class BlogComponent implements OnInit,AfterViewInit,OnDestroy {
                     
                     
                     if(  
-                        modenizr.opacity &&
-                        modenizr.transition 
+                       this.window.Modernizr.opacity &&
+                       this.window.Modernizr.csstransitions
                     ){     
                         
                         
@@ -1246,8 +1248,8 @@ export class BlogComponent implements OnInit,AfterViewInit,OnDestroy {
 
                         
                         if(  
-                            modenizr.opacity &&
-                            modenizr.transition 
+                           this.window.Modernizr.opacity &&
+                           this.window.Modernizr.csstransitions
                         ){    
                             
                             
@@ -1286,8 +1288,8 @@ export class BlogComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
                                 if(  
-                                    modenizr.opacity &&
-                                    modenizr.transition 
+                                   this.window.Modernizr.opacity &&
+                                   this.window.Modernizr.csstransitions
                                 ){  
                                     
 
@@ -1391,8 +1393,8 @@ export class BlogComponent implements OnInit,AfterViewInit,OnDestroy {
                     
                     
                     if(  
-                        modenizr.opacity &&
-                        modenizr.transition 
+                       this.window.Modernizr.opacity &&
+                       this.window.Modernizr.csstransitions
                     ){     
                         
                         
