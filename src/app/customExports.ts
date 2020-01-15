@@ -1,5 +1,5 @@
 import {   WINDOW   } from './window.service';
-
+import {defer} from 'rxjs'
 export class zChildren {
     element:  HTMLElement;
     style:Object | any;
@@ -11,6 +11,25 @@ export class zChildren {
     mouseover?:any;
     mouseout?:any;
 }
+
+export function asyncData<T>(data: T) {
+    return defer(() => Promise.resolve(data));
+}
+
+export function asyncError<T>(errorObject: any) {
+    return defer(() => Promise.reject(errorObject));
+}  
+
+// The RxJS defer() operator returns an observable. 
+// It takes a factory function that returns either a promise or an observable. 
+// When something subscribes to defer's observable,
+//  it adds the subscriber to a new observable created with that factory.
+
+
+// The defer() operator transforms the Promise.resolve() into a new observable that, 
+// like HttpClient, emits once and completes. 
+// Subscribers are unsubscribed after they receive the data value.
+
 
 export class componentObject { // not final
     quantity: any[]; 

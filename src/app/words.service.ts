@@ -7433,58 +7433,7 @@ export class WordsService {
         //
 
         //dashes repositioning
-        wordsRepositionDashesCount:any = 0;
-        wordsRepositionDashesReadjust:number
-        wordsRepositionDashes(dev_obj:any ):any{
-            return (event:any)=>{
-            // console.log(event)
-            // console.log(   this.wordsMyElementsArray    )
-                for(   let dashes of this.wordsMyElementsArray   ){
-                    this.wordsRepositionDashesReadjust = this[dev_obj.templateVar].styles.length  - dashes.length
-                    // console.log(   this.wordsRepositionDashesReadjust   )
-                    for(var i=0; i!== dashes.length;i++){
-                            
-                    
-                        if(   dashes[i].nativeElement.id === 'w_o_r_d_s_paragraphDash'   ){
-                        
-                            //find out how tall is paragprah dash,height and adjust according
-                            // console.log(   dashes[i].nativeElement.clientHeight   )
-                            // console.log(   dashes[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective   ].nativeElement.style.top   )
-                            // console.log(   this[dev_obj.templateVar].stylesCopy[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective - this.wordsRepositionDashesReadjust],this[dev_obj.templateVar].stylesCopy[i]   )
-                            // console.log(   dev_obj.templateVar  )
-                            // console.log(   this[dev_obj.templateVar].styles[   this[dev_obj.templateVar].styles[i].repositionDash.respective   ]   )
-                            dashes[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective - this.wordsRepositionDashesReadjust     ].nativeElement.style.top = (
-                                parseInt(
-                                    this[dev_obj.templateVar].stylesCopy[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective - this.wordsRepositionDashesReadjust   ].css.top.split("px")[0]
-                                ) +
-                                (
-                                    parseInt(
-                                        this[dev_obj.templateVar].stylesCopy[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective - this.wordsRepositionDashesReadjust  ].css.top.split("px")[0]
-                                    ) *
-                                    (
-                                            (
-                                                dashes[i].nativeElement.clientHeight/this[   dev_obj.templateVar   ].stylesCopy[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective - this.wordsRepositionDashesReadjust   ].repositionDash.lineHeight - 1
-                                            ) * this[   dev_obj.templateVar   ].stylesCopy[   this[dev_obj.templateVar].stylesCopy[i].repositionDash.respective - this.wordsRepositionDashesReadjust  ].repositionDash.factor
-                                    )  * this.wordsRepositionDashesCount
-                                )
-                            ).toString() + "px"
-                            this.wordsRepositionDashesCount += 1
-                            //
 
-                            // base +     base * factor * arrayIndex
-                                
-                            // so when word wrap is one the factor expression needs to end up as zero
-                            //   on word wrap  1 factor ===0
-                            
-                        }
-                                
-                        
-                            
-                    }
-                    this.wordsRepositionDashesCount = 0
-                }
-            }
-        }
         // dashes repositioning
     /* */ //
 
