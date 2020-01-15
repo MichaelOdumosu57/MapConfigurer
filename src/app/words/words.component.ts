@@ -94,8 +94,6 @@ function xPosition(devObj){
     ).toString() + "px"; 
 }
 
-
-    
 @Component({
   selector: 'app-words',
   templateUrl: './words.component.html',

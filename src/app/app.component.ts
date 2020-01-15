@@ -64,7 +64,7 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
             this.window.name !== '/projects'   &&
             this.window.name !== '/blog'   &&  
             this.window.name !== '/contact'                         
-        ){   // ts is annoying at this point
+        ){   
  
 
             this.window.name = '/home'
@@ -77,7 +77,6 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             this.wordsService.appCurrentNav = this.window.name 
-            // this.ref.detectChanges()
 
 
         }            
