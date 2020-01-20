@@ -3,7 +3,7 @@ import {   WordsService   } from '../words.service';
 import {   WINDOW   } from '../window.service';
 import {   fromEvent,interval, of,from, Observable,merge, Subject, combineLatest } from 'rxjs';
 import {   catchError,take,timeout,mapTo    } from 'rxjs/operators';
-import {   zChildren   } from '../customExports'
+import {   zChildren,getTextWidth,numberParse   } from '../customExports'
 function getStyle(   devObj:any   ){
     let location = null;
     devObj.ngStyleArray.filter((a:any)=>{
@@ -32,17 +32,8 @@ function getStyle(   devObj:any   ){
     return location
 }
 
-function getTextWidth(   devObj:{elementText:string,font:string}   ){
-    var canvas = document.createElement("canvas");
-    var ctx = canvas.getContext("2d");
-    ctx.font = devObj.font;  // This can be set programmaticly from the element's font-style if desired
-    return ctx.measureText(devObj.elementText).width;
-}
 
-function numberParse(   dimension:any   ){
-    dimension = parseFloat(dimension.split("p")[0])
-    return dimension;
-}
+
 
 function resize(   devObj:any   ){
     let result = null
@@ -146,13 +137,6 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
     overlayCustomWordWrapElements:Array<any> = this.wordsService.overlayCustomWordWrapElements 
 
-    // access(){
-    //     return this.wordsService
-    // }
-
-    // accessWindow(){
-    //     return this.window
-    // }
     
     
     ngOnInit() {
@@ -360,7 +344,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.groupEnd()
             })
             // see what happens when app-overlay top is made 0px
-            // console.log(   zChild   ) 
+            console.log(   zChild   ) 
 
             this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth = 516
             // console.log(this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth )    
@@ -450,6 +434,8 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                         // zChild[7].style['top']
                     // )
                     this.ref.detectChanges() 
+
+                    
                 }
 
 
@@ -531,6 +517,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 this.wordsService[this.overlayTemplateVariable].quantity[1][0].metadata.wordsCO0,
                 this.wordsService[this.overlayTemplateVariable].quantity[1][0].metadata.wordsCO2
             ).subscribe((rs)=>{
+                console.log(rs)
                 // console.log(
                 //     numberParse(   rs[0][0]   ) +
                 //     numberParse(   rs[0][1]   ),
@@ -698,8 +685,9 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
             })      
             // console.log(   zChild   ) 
             this.wordsService.overlayResizeEventSubscription4 = this.wordsService.overlayResizeEvent$.subscribe(()=>{
+                // console.log('entered in the test')                
+            
                 
-
                 if(  
                     getTextWidth({
                         elementText:zChild[2].innerText,

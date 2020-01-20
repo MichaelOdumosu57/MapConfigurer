@@ -4,95 +4,9 @@ import {   BrowserModule,platformBrowser,disableDebugTools   } from '@angular/pl
 import {   WINDOW   } from '../window.service';
 import {   fromEvent,interval   } from 'rxjs';
 import {   take,timeout   } from 'rxjs/operators';
-import {   zChildren,   } from '../customExports'
-
-function getTextWidth(   devObj:{elementText:string,font:string}   ){
-    var canvas = document.createElement("canvas");
-    var ctx = canvas.getContext("2d");
-    ctx.font = devObj.font;  // This can be set programmaticly from the element's font-style if desired
-    return ctx.measureText(devObj.elementText).width;
-}
-
-function numberParse(   dimension:any   ){
-    dimension = parseFloat(dimension.split("p")[0])
-    return dimension;
-}
-
-function resize(   devObj:any   ){
-    // console.log(   devObj   )
-    let result = null
+import {   zChildren,numberParse,getTextWidth,xPosition,resize   } from '../customExports'
 
 
-    if(   devObj.misc === undefined   ){
-        devObj.misc = [.12]
-    }
-    
-
-    if(   devObj.type === 'direct'   ){
-
-
-        result = 
-        (
-            devObj.default -
-            (
-                devObj.containDefault   -
-                devObj.containActual    
-            ) * 
-            devObj.misc[0]
-        )
-
-
-    }
-    
-    else if(   devObj.type !== 'direct' ){
-
-
-        result = (
-            devObj.default *
-            (
-                (   
-                    (  
-                        devObj.containActual  /
-                        devObj.containDefault   
-                    ) -
-                    devObj.misc[0]   
-                ) 
-            )
-        ) 
-
-
-    }
-    return result = result > devObj.default  ? 
-        devObj.default.toString() + "px"      :
-        result.toString() + "px"     
-}
-
-
-function xPosition(devObj){
-
-
-    if(   devObj.containPos === undefined   ){
-
-
-        devObj.containPos = .5
-        
-        
-    }
-
-
-    if(   devObj.targetPos === undefined   ){
-
-        
-        devObj.targetPos = .5
-        
-        
-    }
-    
-    return (    
-        (   devObj.contain*devObj.containPos   ) -  
-        (   devObj.target*devObj.targetPos   )   
-    ).toString() + "px"; 
-}
 
 @Component({
   selector: 'app-words',
@@ -112,19 +26,6 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
     
     @Input() wordsTemplateVariable:string | any;
-    
-
-    wordsVal:Array<string> = this.wordsService.wordsVal;
-    
-    wordsbool:Array<any> = this.wordsService.wordsbool;
-    
-    wordsStyle:any =  this.wordsService.wordsStyle;
-
-    wordsValIndex:Array<any> = this.wordsService.wordsValIndex
-    wordsStyleIndex:Array<any> = this.wordsService.wordsStyleIndex
-    wordsBoolIndex:Array<any> = this.wordsService.wordsBoolIndex
-
-    wordsCustomWordWrapElements:Array<any>  = []
     
     ngOnInit() {
         console.log(this.wordsTemplateVariable+ ' ngOnInit fires one remount')
@@ -238,7 +139,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.groupEnd()
             })
             // see what happens when app-navigation top is made 0px
-            console.log(   zChild   ) 
+            // console.log(   zChild   ) 
             this.ref.detectChanges()                       
             this.wordsService[this.wordsTemplateVariable].quantity[1][1].metadata.TitleDefaultWidth = getTextWidth({
                 elementText:zChild[2].innerText,
@@ -4293,7 +4194,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
                 if(   
-                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 1582 &&
+                    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 1303 &&
                     numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 830
                 ){
                     
@@ -4347,7 +4248,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 }
 
                 
-                if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 1582   ){
+                if(   numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) > 1303   ){
 
 
                     zChild.slice(1).forEach((x,i)=>{

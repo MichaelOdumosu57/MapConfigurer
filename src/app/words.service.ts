@@ -4,12 +4,9 @@ import { Observable, of, Subject, Subscription } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { zChildren, componentObject } from './customExports';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { numberParse  } from './customExports'
 
 
-function numberParse(dimension){
-    dimension = parseFloat(dimension.split("p")[0])
-    return dimension;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -1461,7 +1458,7 @@ export class WordsService {
                                     top:'90%',
                                     width:'100%',
                                     'z-index':'4',
-                                    // height:'1500px'
+                                    // height:'1500px'  
                                 }
                             ]                         
                         ],
@@ -1585,26 +1582,30 @@ export class WordsService {
         // blogComponent concept metadata    
         blogCOTopSubject = new Subject<any>()
         blogCOTopSubscription:Subscription
+        blogNavTestStub:any
 
             //blog XHR
             private blogURL = '/backend'
-            blogGetTitles(): Observable<any> {
+            blogGetTitles(a:string[]): Observable<any> {
                 return this.http.post<any>(this.blogURL,'testing123')
                     .pipe(
-                    tap((a)=> {return a.latestBlog}),  // return the string instead
+                    tap((a)=> {
+                        console.log('http success!')
+                        return a.latestBlog
+                    }),  // return the string instead
                     catchError(
                         ((operation = 'operation', result?: any)=>{
                         return (error: any): Observable<any> => {
 
                         // TODO: send the error to remote logging infrastructure
-                        console.error(error); // log to console instead
+                        // console.error(error); // log to console instead
                     
                         // TODO: better job of transforming error for user consumption
                         // console.log(`${operation} failed: ${error.message}`);
                         console.log('could not download latest Blogs')
                     
                         // Let the app keep running by returning an empty result.
-                        return of({latestBlog:this.blogTitles});
+                        return of({latestBlog:a});
                         }
                     })('getBlogs', []))
                 );
@@ -1625,7 +1626,7 @@ export class WordsService {
                 'Places to make this winter magical in NYC',
                 'Too much coffee health risks',
                 'Meaning of December',
-                'The Iphone XS max is here, how can you use it as a cooking Tool? dasgsafwasgWGFAWJEKBFNBEJNfklasdjlk',
+                'The Iphone XS max is here, how can you use it as a cooking Tool? ',
                 'Honeysweet Memories'                                
             ]  
             blogTitlesSubscription0:Subscription     
@@ -1641,12 +1642,20 @@ export class WordsService {
         blogResizeEventSubscription0:Subscription
         blogResizeEventSubscription1:Subscription 
         blogResizeEventSubscription2:Subscription
+        blogResizeTestEventSubscription0:Subscription
         blogClickEvent$:Observable<Event>        
         blogClickEventSubscription0:Subscription
         //                  
 
         //blogComponentInstances
-        blogCO0:any ={
+        blogCO0:componentObject ={
+            metadata:{
+                blogArticle:{
+                    items:3,
+                    start :null,
+                    startMod : null
+                }
+            },
             quantity:[
                 [
                     {

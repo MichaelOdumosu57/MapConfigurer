@@ -19,10 +19,7 @@ function equalLen(   devObj   ){
 
 }
 
-
-
-
-fdescribe('WordsService', () => {
+describe('WordsService', () => {
     let service  :WordsService
     let behaviorSubject = null
 
@@ -110,7 +107,7 @@ fdescribe('WordsService', () => {
             let httpClientSpy = jasmine.createSpyObj('HttpClient', ['post']);
             let myService =  new WordsService(<any> httpClientSpy)
             httpClientSpy.post.and.returnValue(asyncData(myService.blogTitles));
-            myService.blogGetTitles().subscribe((a)=>{
+            myService.blogGetTitles(myService.blogTitles).subscribe((a)=>{
                 expect(a).toEqual(myService.blogTitles)
             })
         });         
@@ -127,14 +124,14 @@ fdescribe('WordsService', () => {
 
         it('should have a subComponent for the app element ', () => {
             Array.from({length:amnt}).map((x,i)=>{
-                console.log(i)
+                // console.log(i)
                 expect(service['wordsComponentObject'+i].quantity[0][0].val[0][0]).toEqual('w_o_r_d_s_App')
             })
         });  
         
         it('should have a containing area for the HTMLelements ', () => {
             Array.from({length:amnt}).map((x,i)=>{
-                console.log(i)
+                // console.log(i)
                 expect(service['wordsComponentObject'+i].quantity[1][0].val[0][0]).toEqual('w_o_r_d_s_Board')
             })
         });    
@@ -168,14 +165,14 @@ fdescribe('WordsService', () => {
 
         it('should have a subComponent for the app element ', () => {
             Array.from({length:amnt}).map((x,i)=>{
-                console.log(i)
+                // console.log(i)
                 expect(service['overlayComponentObject'+i].quantity[0][0].val[0][0]).toEqual('o_v_e_r_l_a_y_App')
             })
         });  
         
         it('should have a containing area for the HTMLelements ', () => {
             Array.from({length:amnt}).map((x,i)=>{
-                console.log(i)
+              //  console.log(i)
                 expect(service['overlayComponentObject'+i].quantity[1][0].val[0][0]).toEqual('o_v_e_r_l_a_y_Board')
             })
         });    
@@ -209,14 +206,14 @@ fdescribe('WordsService', () => {
 
         it('should have a subComponent for the app element ', () => {
             Array.from({length:amnt}).map((x,i)=>{
-                console.log(i)
+              //  console.log(i)
                 expect(service['navigationComponentObject'+i].quantity[0][0].val[0][0]).toEqual('n_a_v_i_g_a_t_i_o_n_App')
             })
         });  
         
         it('should have a containing area for the HTMLelements ', () => {
             Array.from({length:amnt}).map((x,i)=>{
-                console.log(i)
+              //  console.log(i)
                 expect(service['navigationComponentObject'+i].quantity[1][0].val[0][0]).toEqual('n_a_v_i_g_a_t_i_o_n_Board')
             })
         });    
@@ -250,14 +247,14 @@ fdescribe('WordsService', () => {
 
         it('should have a subComponent for the app element ', () => {
             Array.from({length:amnt}).map((x,i)=>{
-                console.log(i)
+              //  console.log(i)
                 expect(service['footerComponentObject'+i].quantity[0][0].val[0][0]).toEqual('f_o_o_t_e_r_App')
             })
         });  
         
         it('should have a containing area for the HTMLelements ', () => {
             Array.from({length:amnt}).map((x,i)=>{
-                console.log(i)
+              //  console.log(i)
                 expect(service['footerComponentObject'+i].quantity[1][0].val[0][0]).toEqual('f_o_o_t_e_r_Board')
             })
         });    
