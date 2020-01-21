@@ -3,98 +3,13 @@ import {   WordsService   } from '../words.service';
 import {   fromEvent,interval, of,from, Observable   } from 'rxjs';
 import {   WINDOW   } from '../window.service';
 import {   take,timeout,distinctUntilChanged   } from 'rxjs/operators';
-import {   zChildren   } from '../customExports'
+import {   zChildren,numberParse,getTextWidth,resize,xPosition   } from '../customExports'
 
-function numberParse(   dimension:any   ){
-    dimension = parseFloat(dimension.split("p")[0])
-    return dimension;
-}
 
 function styleProp(   devObj   ){
     return devObj.window.getComputedStyle(   devObj.element   )
 }
 
-function getTextWidth(   devObj:{elementText:string,font:string}   ){
-    var canvas = document.createElement("canvas");
-    var ctx = canvas.getContext("2d");
-    ctx.font = devObj.font;  // This can be set programmaticly from the element's font-style if desired
-    return ctx.measureText(devObj.elementText).width;
-}
-
-function resize(   devObj:any   ){
-    // console.log(   devObj   )
-    let result = null
-
-
-    if(   devObj.misc === undefined   ){
-        devObj.misc = [.12]
-    }
-    
-
-    if(   devObj.type === 'direct'   ){
-
-
-        result = 
-        (
-            devObj.default -
-            (
-                devObj.containDefault   -
-                devObj.containActual    
-            ) * 
-            devObj.misc[0]
-        )
-
-
-    }
-    
-    else if(   devObj.type !== 'direct' ){
-
-
-        result = (
-            devObj.default *
-            (
-                (   
-                    (  
-                        devObj.containActual  /
-                        devObj.containDefault   
-                    ) -
-                    devObj.misc[0]   
-                ) 
-            )
-        ) 
-
-
-    }
-    return result = result > devObj.default  ? 
-        devObj.default.toString() + "px"      :
-        result.toString() + "px"     
-}
-
-function xPosition(devObj){
-
-
-    if(   devObj.containPos === undefined   ){
-
-
-        devObj.containPos = .5
-        
-        
-    }
-
-
-    if(   devObj.targetPos === undefined   ){
-
-        
-        devObj.targetPos = .5
-        
-        
-    }
-    
-    return (    
-        (   devObj.contain*devObj.containPos   ) -  
-        (   devObj.target*devObj.targetPos   )   
-    ).toString() + "px"; 
-}
 
 @Component({
   selector: 'app-navigation',
@@ -122,14 +37,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
     navigationBoolIndex:Array<any> = this.wordsService.navigationBoolIndex    
 
     navigationCustomWordWrapElements:Array<any>  = []
-    
-    // access(){
-    //     return this.wordsService
-    // }
 
-    // accessWindow(){
-    //     return this.window
-    // }
 
     ngOnInit() {
         console.log(this.navigationTemplateVariable+ '  ngOnInit fires one remount')
