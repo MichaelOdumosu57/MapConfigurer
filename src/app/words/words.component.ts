@@ -1154,7 +1154,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild: zChildren[] =[{
-                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
                 cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
             }]          
@@ -1896,7 +1896,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+'],[id^="'+this.wordsService.appTestKeyword+'"]') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
                 cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
             }]          
@@ -2491,7 +2491,10 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             // console.log('needed data from wordsCO4')
             // console.log(   this.window.getComputedStyle(z.element).height   )
             // console.log(   this.window.getComputedStyle(z.element.parentElement).top   )
-            if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject3]')  !== null ){
+            if(  
+                this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject3]')  !== null ||
+                (   typeof this.wordsService.blogNavTestStub === 'object'   )    
+            ){
 
 
                 this.wordsService.wordsResizeEventSubscription6 =  this.wordsService[this.wordsTemplateVariable].quantity[1][0].metadata.wordsCO3.subscribe((data)=>{
@@ -3197,7 +3200,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             // console.log(zChild)    
             this.wordsService.wordsResizeEventSubscription9 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
 
-
+                // console.log('resize me')
                 if(    numberParse(   this.window.getComputedStyle(zChild[1].element).width   ) < 817   ){
 
 
@@ -3335,7 +3338,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 
                 
             })
-            this.wordsService.wordsResizeEventSubscription10 = this.wordsService.wordsResizeEvent$.subscribe(()=>{})
+            // this.wordsService.wordsResizeEventSubscription10 = this.wordsService.wordsResizeEvent$.subscribe(()=>{})
                   
 
             
@@ -3446,7 +3449,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 })
                 // console.groupEnd()
             })
-            console.log(zChild)
+            // console.log(zChild)
             this.wordsService.wordsResizeEventSubscription11 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
 
 
@@ -3587,7 +3590,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 
                 
             })
-            this.wordsService.wordsResizeEventSubscription12 = this.wordsService.wordsResizeEvent$.subscribe(()=>{})
+            // this.wordsService.wordsResizeEventSubscription12 = this.wordsService.wordsResizeEvent$.subscribe(()=>{})
                                    
 
             
@@ -4388,7 +4391,6 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
         
                 
             this.wordsService.wordsResizeEventSubscription9.unsubscribe()
-            this.wordsService.wordsResizeEventSubscription10.unsubscribe()
         
     
         }           
@@ -4398,7 +4400,6 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
         
                 
             this.wordsService.wordsResizeEventSubscription11.unsubscribe()
-            this.wordsService.wordsResizeEventSubscription12.unsubscribe()
         
     
         }  

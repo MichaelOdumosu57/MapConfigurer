@@ -38,16 +38,19 @@ fdescribe('NavigationComponent', () => {
     it('should be able to use Modernizr', () => {
         expect(window.Modernizr._version).toMatch('3.8.0')
     });
-  
 
     describe('navigationComponentObject0',()=>{
 
         beforeEach(() => {      
             component.navigationTemplateVariable = 'navigationComponentObject0'
-            fixture.debugElement.nativeElement.style.opacity = '0'
+            fixture.debugElement.nativeElement.style.opacity = '0'  
             /* if you need to see the component look here */
             fixture.detectChanges();        
         });  
+
+        it('should create', () => {
+            expect(component).toBeTruthy();
+        });        
 
         xit('PROTRACTOR should always hide the dropdown when navigation to another page',()=>{
             
