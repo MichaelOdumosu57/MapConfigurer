@@ -19,7 +19,7 @@ function equalLen(   devObj   ){
 
 }
 
-describe('WordsService', () => {
+fdescribe('WordsService', () => {
     let service  :WordsService
     let behaviorSubject = null
 

@@ -149,104 +149,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
         this.wordsService.overlayResizeEvent$ = fromEvent(this.window,'resize')
 
 
-        if(   this.overlayTemplateVariable === 'overlayComponentObject5'   ){
-
-
-            let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
-                style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
-                bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
-            }]     
-            let zCheckpoint = []                        
-            this.overlayMyElements._results.map((x:any,i:any)=>{
-
-
-                if(   x.nativeElement.id === 'o_v_e_r_l_a_y_Board'   ){
-                    zCheckpoint.push(i)
-                }                        
-                
-            
-            })      
-            let zGrid = {
-                a:0, 
-                b:0, 
-            }  
-            zCheckpoint.map((y:any,j:any)=>{
-                // console.group('associated')
-                // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
-                zGrid.a = 0;
-                (function(qq){
-                    return qq.overlayMyElements._results.length === 1 ? qq.overlayMyElements._results : qq.overlayMyElements._results.slice(y,zCheckpoint[j+1])
-                })(this).map((x:any,i:any)=>{     
-                    // console.log(   x.nativeElement.id   )
-                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
-                    // console.log(x)
-                    while(   
-                        this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
-                        zGrid.b +1 > this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a].length
-                    ){
-                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
-                        zGrid.a +=1
-                        // debugger                                
-                    }
-                    // console.log(   
-                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
-                    //     zChild,
-                    //     zGrid
-                    // )
-
-
-                    if(   x.nativeElement.id === this.wordsService[this.overlayTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
-                        (   
-                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'true' ||
-                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'link' ||
-                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'icon' ||
-                            this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] === 'button' 
-                        )    
-                    ){               
-
-
-                        let domElement = x.nativeElement as HTMLElement;
-                        zChild.push({
-                            element:domElement,
-                            style:this.wordsService[this.overlayTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
-                            innerText: this.wordsService[this.overlayTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b],
-                            bool:this.wordsService[this.overlayTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b]
-                        })
-                        
-
-                        if(   this.wordsService[this.overlayTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
-
-
-                            zGrid.a += 1
-                            zGrid.b = 0       
-                            
-                            
-                        }
-
-
-                        
-                        else if(   true   ){
-
-
-                            zGrid.b += 1       
-                            
-                            
-                        }
-
-
-                    }
-                    
-                    
-                })
-                // console.groupEnd()
-            })      
-            // console.log(   zChild   ) 
-
-        }
-
-
-        else if(   this.overlayTemplateVariable === 'overlayComponentObject4'    ){
+        if(   this.overlayTemplateVariable === 'overlayComponentObject4'    ){
 
 
             let zChild:zChildren[] =[{
@@ -344,7 +247,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 // console.groupEnd()
             })
             // see what happens when app-overlay top is made 0px
-            console.log(   zChild   ) 
+            // console.log(   zChild   ) 
 
             this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth = 516
             // console.log(this.wordsService[this.overlayTemplateVariable].metadata.aboutBoardDefaultWidth )    
@@ -517,7 +420,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
                 this.wordsService[this.overlayTemplateVariable].quantity[1][0].metadata.wordsCO0,
                 this.wordsService[this.overlayTemplateVariable].quantity[1][0].metadata.wordsCO2
             ).subscribe((rs)=>{
-                console.log(rs)
+                // console.log(rs)
                 // console.log(
                 //     numberParse(   rs[0][0]   ) +
                 //     numberParse(   rs[0][1]   ),

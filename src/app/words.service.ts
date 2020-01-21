@@ -184,12 +184,7 @@ export class WordsService {
                                     src:'assets/media/anton-repponen-wxxAx26SXys-unsplash.jpg',
                                     alt:'Main Overlay Image',
                                     defaultWidth:null
-                                },
-                                {
-                                    src:'assets/media/IMG-1475-881x1024.jpg',
-                                    alt:'Special Effects Overlay Image',
-                                    defaultWidth:this.overlayComponentObject4Image1Width
-                                }                                
+                                }                               
                             ],
                             wordsCO0:new Subject<any>(),
                             wordsCO2:new Subject<any>(),  
@@ -1396,6 +1391,7 @@ export class WordsService {
     
         // footerComponent concept metadata
         footerCustomWordWrapElements:Array<any>  = []
+        footerTestStub = null
         //
             
         footerVal:Array<string> = ['w_o_r_d_s_Title','w_o_r_d_s_Line','w_o_r_d_s_paragraph','w_o_r_d_s_Dash','w_o_r_d_s_paragraphDash']

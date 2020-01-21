@@ -5,94 +5,8 @@ import {   WINDOW   } from '../window.service';
 import {   fromEvent,interval   } from 'rxjs';
 import {   take,timeout   } from 'rxjs/operators';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import {   zChildren   } from '../customExports'
+import {   zChildren,getTextWidth,numberParse,resize,xPosition   } from '../customExports'
 
-function getTextWidth(   devObj:{elementText:string,font:string}   ){
-    var canvas = document.createElement("canvas");
-    var ctx = canvas.getContext("2d");
-    ctx.font = devObj.font;  // This can be set programmaticly from the element's font-style if desired
-    return ctx.measureText(devObj.elementText).width;
-}
-
-function numberParse(   dimension:any   ){
-    dimension = parseFloat(dimension.split("p")[0])
-    return dimension;
-}
-
-function resize(   devObj:any   ){
-    // console.log(   devObj   )
-    let result = null
-
-
-    if(   devObj.misc === undefined   ){
-        devObj.misc = [.12]
-    }
-    
-
-    if(   devObj.type === 'direct'   ){ // useful to change the rate of the resize, make at containing obj interval to achieve the responsiveness you need
-
-
-        result = 
-        (
-            devObj.default -
-            (
-                devObj.containDefault   -
-                devObj.containActual    
-            ) * 
-            devObj.misc[0]
-        )
-
-
-    }
-    
-    else if(   devObj.type !== 'direct' ){
-
-
-        result = (
-            devObj.default *
-            (
-                (   
-                    (  
-                        devObj.containActual  /
-                        devObj.containDefault   
-                    ) -
-                    devObj.misc[0]   
-                ) 
-            )
-        ) 
-
-
-    }
-    return result = result > devObj.default  ? 
-        devObj.default.toString() + "px"      :
-        result.toString() + "px"     
-}
-
-function xPosition(devObj){
-
-
-    if(   devObj.containPos === undefined   ){
-
-
-        devObj.containPos = .5
-        
-        
-    }
-
-
-    if(   devObj.targetPos === undefined   ){
-
-        
-        devObj.targetPos = .5
-        
-        
-    }
-    
-    return (    
-        (   devObj.contain*devObj.containPos   ) -  
-        (   devObj.target*devObj.targetPos   )   
-    ).toString() + "px"; 
-}
 
 @Component({
   selector: 'app-footer',
@@ -128,7 +42,7 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
             
 
             let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-footer[ng-reflect-footer-template-variable='+this.footerTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-footer[ng-reflect-footer-template-variable='+this.footerTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.footerTemplateVariable].quantity[0][0].ngStyle[0][0]
             }]          
             // console.log(   this.window.document.querySelectorAll('app-footer[ng-reflect-footer-template-variable='+this.footerTemplateVariable+']')   ) 
@@ -325,7 +239,10 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
             })
                
 
-            if(   this.window.document.querySelector('app-blog[ng-reflect-blog-t-v=blogCO0]')  !== null   ){
+            if(   
+                this.window.document.querySelector('app-blog[ng-reflect-blog-t-v=blogCO0]')  !== null  ||
+                (   typeof this.wordsService.blogNavTestStub === 'object'   ) 
+            ){
                 
 
                 this.wordsService.footerResizeEventSubscription6 = this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.blogCO0.subscribe((data)=>{
@@ -351,7 +268,10 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
             }
 
             
-            if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject2]')  !== null ){
+            if(  
+                this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject2]')  !== null ||
+                (   typeof this.wordsService.blogNavTestStub === 'object'   ) 
+            ){
 
                 
                 this.wordsService.footerResizeEventSubscription1 = this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO2.subscribe((data)=>{
@@ -376,7 +296,10 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
             }    
             
             
-            if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject4]')  !== null ){
+            if(  
+                this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject4]')  !== null ||
+                (   typeof this.wordsService.blogNavTestStub === 'object'   ) 
+            ){
 
                 
                 this.wordsService.footerResizeEventSubscription2 = this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO4.subscribe((data)=>{
@@ -401,7 +324,10 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
             }        
             
             
-            if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject5]')  !== null ){
+            if(  
+                this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject5]')  !== null ||
+                (   typeof this.wordsService.blogNavTestStub === 'object'   ) 
+            ){
 
                 
                 this.wordsService.footerResizeEventSubscription3 = this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO5.subscribe((data)=>{
@@ -426,7 +352,10 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
             }               
             
 
-            if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject8]')  !== null ){
+            if(  
+                this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject8]')  !== null ||
+                (   typeof this.wordsService.blogNavTestStub === 'object'   ) 
+            ){
 
                 
                 this.wordsService.footerResizeEventSubscription4 = this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO8.subscribe((data)=>{
@@ -451,7 +380,10 @@ export class FooterComponent implements OnInit, AfterViewInit, OnDestroy {
             }             
             
 
-            if(  this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject9]')  !== null ){
+            if(  
+                this.window.document.querySelector('app-words[ng-reflect-words-template-variable=wordsComponentObject9]')  !== null ||
+                (   typeof this.wordsService.blogNavTestStub === 'object'   ) 
+            ){
 
                 
                 this.wordsService.footerResizeEventSubscription5 = this.wordsService[this.footerTemplateVariable].quantity[1][1].metadata.wordsCO9.subscribe((data)=>{

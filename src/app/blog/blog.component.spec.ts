@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed,ComponentFixtureAutoDetect, fakeAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { WINDOW_PROVIDERS } from '../window.service';
 import { WordsService  } from '../words.service';
 import { BlogComponent } from './blog.component';
@@ -11,7 +11,7 @@ import { DebugElement } from '@angular/core';
 
 
 
-describe('BlogComponent', () => {
+fdescribe('BlogComponent', () => {
     let component: BlogComponent;
     let fixture: ComponentFixture<BlogComponent>;
     let wordsTestService: WordsService

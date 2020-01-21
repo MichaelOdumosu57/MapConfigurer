@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { fromEvent } from 'rxjs';
 
 fdescribe('OverlayComponent', () => {
   let component: OverlayComponent;
@@ -64,6 +64,12 @@ fdescribe('OverlayComponent', () => {
 
         it('should have 1 sub components on default', () => {        
             expect(wordsTestService[component.overlayTemplateVariable].quantity[1].length).toBe(1)
+        });    
+        
+        it('has the correct overlay image', () => {        
+            expect(
+                wordsTestService[component.overlayTemplateVariable].quantity[1][0].metadata.image[0].src
+            ).toEqual('assets/media/IMG-1788-1.jpg')         
         });         
 
         it('should modify the size of the title for mobile screens', (done) => {  
@@ -104,7 +110,14 @@ fdescribe('OverlayComponent', () => {
 
         it('should have 1 sub components on default', () => {        
             expect(wordsTestService[component.overlayTemplateVariable].quantity[1].length).toBe(1)
-        });         
+        });
+        
+        
+        it('has the correct overlay image', () => {        
+            expect(
+                wordsTestService[component.overlayTemplateVariable].quantity[1][0].metadata.image[0].src
+            ).toEqual('assets/media/project-background.jpg')         
+        });          
 
         it('should modify the size of the title for mobile screens', (done) => {  
             let aa = null;  
@@ -154,7 +167,13 @@ fdescribe('OverlayComponent', () => {
                 expect(titleEl.nativeElement.style.fontFamily).toContain('Charmonman')
                 done()
             });                
-        });        
+        });   
+        
+        it('has the correct overlay image', () => {        
+            expect(
+                wordsTestService[component.overlayTemplateVariable].quantity[1][0].metadata.image[0].src
+            ).toEqual('assets/media/IMG_1391.jpg')         
+        });         
 
         it('should modify the size of the title for mobile screens', (done) => {  
             let aa = null;  
@@ -195,6 +214,12 @@ fdescribe('OverlayComponent', () => {
         it('should have 1 sub components on default', () => {        
             expect(wordsTestService[component.overlayTemplateVariable].quantity[1].length).toBe(1)
         });
+
+        it('has the correct overlay image', () => {        
+            expect(
+                wordsTestService[component.overlayTemplateVariable].quantity[1][0].metadata.image[0].src
+            ).toEqual('assets/media/aboutMain.png')         
+        });           
         
         it('at any point in resize the blend words should not wordwrap', (done) => {  
             // let aa = 500;  
@@ -234,7 +259,7 @@ fdescribe('OverlayComponent', () => {
 
     }) 
 
-    fdescribe('overlayComponentObject4',()=>{
+    describe('overlayComponentObject4',()=>{
 
         beforeEach(()=>{
             component.overlayTemplateVariable = 'overlayComponentObject4'
@@ -248,6 +273,13 @@ fdescribe('OverlayComponent', () => {
         it('should have 1 sub components on default', () => {        
             expect(wordsTestService[component.overlayTemplateVariable].quantity[1].length).toBe(1)
         });
+
+
+        it('has the correct overlay image', () => {        
+            expect(
+                wordsTestService[component.overlayTemplateVariable].quantity[1][0].metadata.image[0].src
+            ).toEqual('assets/media/IMG-1787.jpg')         
+        });   
 
         it('at all points at least the title fontSize must be greater than the subTitle fontSize', (done) => {        
             let aa= 1500
@@ -301,7 +333,7 @@ fdescribe('OverlayComponent', () => {
             });                
         });        
         
-        fit('recevies data from the relative wordsCOs about how to modify Img0',(done)=>{
+        it('recevies data from the relative wordsCOs about how to modify Img0',(done)=>{
             let rs = [
                 ['856.85px','1000px'],
                 ['2680px']
@@ -325,6 +357,74 @@ fdescribe('OverlayComponent', () => {
                 done()
             })            
         })
+
+        // 3 
+        xit('button should change opacity if supported on the browsers else should stay the same', (done) => {        
+            fixture.whenStable().then(() => {
+                fixture.detectChanges();             
+                let blogDe: DebugElement =fixture.debugElement
+                let bb = blogDe.query(By.css('#o_v_e_r_l_a_y_AboutLearnButton')).nativeElement as HTMLElement
+                console.log(    
+                    bb,
+                    window.Modernizr.opacity &&
+                    window.Modernizr.rgba                     
+                )
+                
+
+                if(     
+                    window.Modernizr.opacity &&
+                    window.Modernizr.rgba
+                ){
+                        
+
+                    let event = new Event('mouseenter')
+                    let event$ = fromEvent(bb,'mouseenter')
+                    let hoverColor = null
+                    let sub = event$.subscribe((e)=>{
+                        hoverColor = window.getComputedStyle(bb).backgroundColor
+                        console.log(window.getComputedStyle(e.srcElement as HTMLElement).backgroundColor)
+                    })
+                    bb.dispatchEvent(event) 
+                    fixture.detectChanges()
+                    console.log(
+                        window.getComputedStyle(bb).backgroundColor,
+                        hoverColor
+                    )
+
+
+                }
+
+                
+                done()
+            })
+        });        
+
     })    
  
+    describe('overlayComponentObject5',()=>{
+
+        beforeEach(()=>{
+            component.overlayTemplateVariable = 'overlayComponentObject5'
+            // fixture.debugElement.nativeElement.style.opacity = '0'
+        })
+
+        it('should create', () => {    
+            expect(component).toBeTruthy();
+        });
+
+        it('should have 1 sub components on default', () => {        
+            expect(wordsTestService[component.overlayTemplateVariable].quantity[1].length).toBe(1)
+        });
+
+        it('has the correct overlay image', () => {        
+            expect(
+                wordsTestService[component.overlayTemplateVariable].quantity[1][0].metadata.image[0].src
+            ).toEqual('assets/media/anton-repponen-wxxAx26SXys-unsplash.jpg')         
+        });        
+        
+    
+
+    })        
+    
 });
+ 
