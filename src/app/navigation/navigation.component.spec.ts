@@ -10,7 +10,7 @@ import { DebugElement } from '@angular/core';
 
 
 
-fdescribe('NavigationComponent', () => {
+describe('NavigationComponent', () => {
     let component: NavigationComponent;
     let fixture: ComponentFixture<NavigationComponent>;
     let wordsTestService: WordsService

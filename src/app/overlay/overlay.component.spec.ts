@@ -8,7 +8,7 @@ import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { fromEvent } from 'rxjs';
 
-fdescribe('OverlayComponent', () => {
+describe('OverlayComponent', () => {
   let component: OverlayComponent;
   let fixture: ComponentFixture<OverlayComponent>;
   let wordsTestService: WordsService

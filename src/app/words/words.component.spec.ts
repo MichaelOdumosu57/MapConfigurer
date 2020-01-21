@@ -8,7 +8,7 @@ import { asyncData,numberParse,getTextWidth } from '../customExports';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-fdescribe('WordsComponent', () => {
+describe('WordsComponent', () => {
 
 
 let component: WordsComponent;

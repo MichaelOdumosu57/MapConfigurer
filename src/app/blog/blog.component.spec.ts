@@ -11,7 +11,7 @@ import { DebugElement } from '@angular/core';
 
 
 
-fdescribe('BlogComponent', () => {
+describe('BlogComponent', () => {
     let component: BlogComponent;
     let fixture: ComponentFixture<BlogComponent>;
     let wordsTestService: WordsService

@@ -10,20 +10,7 @@ declare global {
 }
 
 window.Modernizr = window.Modernizr || {}
-
-function appGenerateSelector(   devObj   ){
-    var a = 0;
-    var string = '';
-    while(   a!==devObj.times   ){
-        string += devObj.val +a+','
-        a+=1
-    }
-    return string.slice(0,-1)
-}
-
-
-
-  
+ 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -54,8 +41,6 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
     ngOnInit(){
         console.log('app ngOnInit fires on mount')
 
-        
-        
         if(   
             this.window.name !== '/'   &&
             this.window.name !== '/home'   &&
@@ -83,7 +68,7 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
               
         
         this.wordsService.appViewComplete.subscribe(()=>{
-            // console.log(this.wordsService.appCurrentNav)
+            console.log(this.wordsService.appCurrentNav)
             // console.log(   this.window.location   )
             // console.log(
             //     this.window.name,
@@ -466,6 +451,7 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
                     }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length
                 ){
 
+                    
                     console.log('dispatched')
                     try{
                         let event = new Event('resize')
@@ -516,7 +502,6 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
     ngAfterViewInit(){
         console.log('app ngAfterViewInit fires on mount')
     }
-
 
     ngOnDestroy(){
     }

@@ -19,7 +19,7 @@ function equalLen(   devObj   ){
 
 }
 
-fdescribe('WordsService', () => {
+describe('WordsService', () => {
     let service  :WordsService
     let behaviorSubject = null
 
@@ -41,9 +41,6 @@ fdescribe('WordsService', () => {
         service = TestBed.get(WordsService);
     });
 
-    beforeEach(async(() => {
-        behaviorSubject = new BehaviorSubject<boolean>(false)
-    }));    
 
     it('should be created', () => {
         expect(service).toBeTruthy();

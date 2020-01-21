@@ -7,7 +7,7 @@ import {  HttpClientModule  } from '@angular/common/http';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-fdescribe('FooterComponent', () => {
+describe('FooterComponent', () => {
   let component: FooterComponent;
   let fixture: ComponentFixture<FooterComponent>;
   let wordsTestService: WordsService;

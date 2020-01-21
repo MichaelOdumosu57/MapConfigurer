@@ -986,4 +986,13 @@ export function xPosition(devObj){
 }
 
 
+function appGenerateSelector(   devObj   ){
+    var a = 0;
+    var string = '';
+    while(   a!==devObj.times   ){
+        string += devObj.val +a+','
+        a+=1
+    }
+    return string.slice(0,-1)
+}
 
