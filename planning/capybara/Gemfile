@@ -9,3 +9,6 @@ gem 'capybara-angular'
 gem 'ffi'
 gem 'rspec'
 gem 'rails_helper'
+if ENV['CI'] then
+  gem 'selenium-webdriver'
+end
