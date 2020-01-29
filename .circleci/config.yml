@@ -42,7 +42,7 @@ jobs:
             source $BASH_ENV      
             sudo gem install bundler:1.17.2 
       - run:           
-          command: cd ./planning/capybara && bundle install --path=vendor/bundle
+          command: cd ./planning/capybara && bundle install 
       - save_cache:
           key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
