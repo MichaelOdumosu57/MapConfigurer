@@ -18,6 +18,11 @@ jobs:
       - image: circleci/ruby:2.6.5
     steps:
       - checkout
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0      
       - restore_cache:
           keys:
             - my-project-{{ checksum "./planning/capybara/Gemfile.lock" }}      
@@ -28,9 +33,9 @@ jobs:
       - run:
           name: Configure Bundler
           command: |
-            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            echo 'export BUNDLER_VERSION=$(cat ./planning/capybara/Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
             source $BASH_ENV
-            gem install bundler          
+            dockerize -wait gem install bundler          
       - run:           
           command: bundle check --path vendor/bundle || bundle install --deployment
       - save_cache:
