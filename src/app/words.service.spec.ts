@@ -107,6 +107,21 @@ describe('WordsService', () => {
             myService.blogGetTitles(myService.blogTitles).subscribe((a)=>{
                 expect(a).toEqual(myService.blogTitles)
             })
+        }); 
+        
+        it('if the  blogTitles  change  modify subComponent list', (done) => {     
+            console.log(service.blogCO0.quantity[1])
+            let oldTitles = service.blogTitles
+            service.blogTitles = [
+                'Jospey and Gulliam',
+                'Monte Recipe de fleur'
+            ]
+            // service.blogURL = '404'
+            service.blogGetTitles(service.blogTitles).subscribe((t)=>{
+                expect(oldTitles).not.toEqual(t.latestBlog)
+                done()
+            })
+
         });         
     
     })

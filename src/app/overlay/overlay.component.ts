@@ -3,7 +3,7 @@ import {   WordsService   } from '../words.service';
 import {   WINDOW   } from '../window.service';
 import {   fromEvent,interval, of,from, Observable,merge, Subject, combineLatest } from 'rxjs';
 import {   catchError,take,timeout,mapTo    } from 'rxjs/operators';
-import {   zChildren,getTextWidth,numberParse   } from '../customExports'
+import {   zChildren,getTextWidth,numberParse,xPosition   } from '../customExports'
 function getStyle(   devObj:any   ){
     let location = null;
     devObj.ngStyleArray.filter((a:any)=>{
@@ -83,31 +83,31 @@ function resize(   devObj:any   ){
         result     
 }
 
-function xPosition(devObj){
+// function xPosition(devObj){
 
 
-    if(   devObj.containPos === undefined   ){
+//     if(   devObj.containPos === undefined   ){
 
 
-        devObj.containPos = .5
+//         devObj.containPos = .5
         
         
-    }
+//     }
 
 
-    if(   devObj.targetPos === undefined   ){
+//     if(   devObj.targetPos === undefined   ){
 
         
-        devObj.targetPos = .5
+//         devObj.targetPos = .5
         
         
-    }
+//     }
     
-    return (    
-        (   devObj.contain*devObj.containPos   ) -  
-        (   devObj.target*devObj.targetPos   )   
-    ).toString() + "px"; 
-}
+//     return (    
+//         (   devObj.contain*devObj.containPos   ) -  
+//         (   devObj.target*devObj.targetPos   )   
+//     ).toString() + "px"; 
+// }
 
 @Component({
     selector: 'app-overlay',

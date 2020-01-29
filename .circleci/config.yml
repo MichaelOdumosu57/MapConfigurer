@@ -15,21 +15,28 @@ jobs:
     # working_directory: ~/
     docker:
       - image: circleci/node:10-browsers
+      - image: circleci/ruby:2.6.5
     steps:
       - checkout
       - restore_cache:
           key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
-      - run: npm install
+          key: my-project-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+      - run: 
+          command: npm install
+          command: bundle install
       - save_cache:
           key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: my-project-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - "node_modules"
+            - vendor/bundle
       # - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
       - run:
           command: npm run test -- --no-watch --no-progress 
       # - run:
       #     command: npm run e2e -- --protractor-config=e2e/protractor.conf.js 
-      #  find why the app cannot provide the correct chromedriver
+      - run:
+          command: rspec .\\planning\\capybara\\nav-e2e.spec.rb
   deploy:
     docker:
       - image: circleci/buildpack-deps:xenial

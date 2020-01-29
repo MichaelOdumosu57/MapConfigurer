@@ -113,7 +113,7 @@ describe('BlogComponent', () => {
         })
         
         //1 
-        xit('if the  blogTitles  change  modify subComponent list', () => {        
+        xit('if the  blogTitles  change  modify subComponent list', () => {     
             fixture.whenStable().then(() => {
                 fixture.detectChanges();
                 console.log(wordsTestService[component.blogTV].quantity[1])
@@ -204,13 +204,18 @@ describe('BlogComponent', () => {
         })
 
         //2
-        xit('should setup its blogArticles according to the modernizr settings',(done)=>{
+        it('should setup its blogArticles according to the modernizr settings',(done)=>{
             fixture.whenStable().then(() => {
                 fixture.detectChanges();
                 let blogDe: DebugElement =fixture.debugElement
+                // let nonArticleBlogDe = blogDe.queryAll(
+                //     By.css('*:nth-of-type(n+14)')
+                // )
                 let nonArticleBlogDe = blogDe.queryAll(
-                    By.css('*:nth-of-type(n+14)')
-                )
+                  By.css('#b_l_o_g_TopicButton,#b_l_o_g_Topic,#b_l_o_g_ArticleTitle')
+                )     
+                console.log(nonArticleBlogDe)       
+                console.log('stub theres no elements')    
                 console.log(wordsTestService.blogCO0.metadata)
                 nonArticleBlogDe.forEach((x,i)=>{
                     console.log(x.nativeElement.id,i)

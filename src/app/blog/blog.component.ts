@@ -58,8 +58,11 @@ export class BlogComponent implements OnInit,AfterViewInit,OnDestroy {
             
             if(   x.nativeElement.id === 'b_l_o_g_Title'   ){
                 zCheckpoint.push(i)
-            }               
-            
+            }   
+
+            if(   x.nativeElement.id === 'b_l_o_g_ArticleTitle'   ){
+              zCheckpoint.push(i)
+            } 
         
         })      
         // console.log(zCheckpoint)
@@ -264,7 +267,7 @@ export class BlogComponent implements OnInit,AfterViewInit,OnDestroy {
         ).pipe(
             // takeLast(3)
         ).subscribe((nullThisIdentifier)=>{
-            console.log(nullThisIdentifier)
+            // console.log(nullThisIdentifier)
             let cssTop = nullThisIdentifier[0]
             let c = nullThisIdentifier[1]
 
@@ -275,8 +278,8 @@ export class BlogComponent implements OnInit,AfterViewInit,OnDestroy {
             ){
 
 
-                console.log('fire')
-                console.log(c)
+                // console.log('fire')
+                // console.log(c)
                 this.wordsService.blogTitles = c.latestBlog
                 // console.log(this.wordsService)
                 // console.log(   this.wordsService[this.blogTV].quantity[1]   )
@@ -326,7 +329,11 @@ export class BlogComponent implements OnInit,AfterViewInit,OnDestroy {
                     
                     if(   x.nativeElement.id === 'b_l_o_g_Title'   ){
                         zCheckpoint.push(i)
-                    }               
+                    }        
+                    
+                    if(   x.nativeElement.id === 'b_l_o_g_ArticleTitle'   ){
+                      zCheckpoint.push(i)
+                    }                     
                     
                 
                 })      

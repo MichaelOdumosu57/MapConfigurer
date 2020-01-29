@@ -2118,7 +2118,7 @@ export class WordsService {
                             bool:[[],['a'],['div','button']], 
                             val:[
                                 [],
-                                ['b_l_o_g_Title'],
+                                ['b_l_o_g_ArticleTitle'],
                                 ['b_l_o_g_Topic','b_l_o_g_TopicButton']
                             ], 
                             text:[
