@@ -20,11 +20,17 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - my-project-{{ checksum "Gemfile.lock" }}      
+            - my-project-{{ checksum "./planning/capybara/Gemfile.lock" }}      
       - restore_cache:
           key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run: 
           command: npm install
+      - run:
+          name: Configure Bundler
+          command: |
+            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            source $BASH_ENV
+            gem install bundler          
       - run:           
           command: bundle check --path vendor/bundle || bundle install --deployment
       - save_cache:
@@ -32,7 +38,7 @@ jobs:
           paths:
             - "node_modules"
       - save_cache:
-          key: my-project-{{ checksum "Gemfile.lock" }}
+          key: my-project-{{ checksum "./planning/capybara/Gemfile.lock" }}
           paths:
             - vendor/bundle            
       # - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
