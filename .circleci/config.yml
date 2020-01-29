@@ -19,7 +19,7 @@ jobs:
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
           BUNDLER_VERSION: 1.17.2    
-      - image: circleci/node:12.14-node-browsers
+      - image: circleci/node:12.14-node
         environment:
           CHROME_BIN: 1.17.2          
     steps:
