@@ -9,17 +9,44 @@ workflows:
     #       filters:
     #         branches:
     #           only: master
-version: 2
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.2.1
 jobs:
   build:
     # working_directory: ~/
     docker:
-      - image: circleci/node:12.14-browsers
       - image: circleci/ruby:2.6.5-node
         environment:
-          BUNDLER_VERSION: 1.17.2
+          BUNDLER_VERSION: 1.17.2    
+      - image: circleci/node:12.14-browsers
     steps:
       - checkout  
+      - run:
+          command: |
+            # Determine if sudo is neccessary
+            SUDO=""
+            if [[ $EUID -ne 0 ]]; then
+              SUDO=sudo
+            fi
+
+            $SUDO apt-get update && $SUDO apt-get install -y ruby-full
+          name: Prep for RVM      
+      - run:
+          command: |
+            # Fix for retrieving GPG over IPv6 issue
+            mkdir ~/.gnupg && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf
+            curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+            curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
+
+            curl -sSL "https://get.rvm.io" | bash -s stable
+            adduser $(whoami) rvm
+            source /etc/profile.d/rvm.sh
+            rvm install << parameters.version >>
+            rvm use << parameters.version >> default
+
+            echo 'source /etc/profile.d/rvm.sh' >> $BASH_ENV
+          name: Install Ruby v<< parameters.version >> via RVM          
       - restore_cache:
           keys:
             - my-project-{{ checksum "./planning/capybara/Gemfile.lock" }}      
