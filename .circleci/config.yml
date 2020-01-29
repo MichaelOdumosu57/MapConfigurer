@@ -19,16 +19,22 @@ jobs:
     steps:
       - checkout
       - restore_cache:
+          keys:
+            - my-project-{{ checksum "Gemfile.lock" }}      
+      - restore_cache:
           key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run: 
           command: npm install
       - run:           
-          command: bundle install
+          command: bundle check --path vendor/bundle || bundle install --deployment
       - save_cache:
           key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - "node_modules"
-            - vendor/bundle
+      - save_cache:
+          key: my-project-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle            
       # - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
       - run:
           command: npm run test -- --no-watch --no-progress 
