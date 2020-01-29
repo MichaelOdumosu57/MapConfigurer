@@ -1,5 +1,5 @@
 workflows:
-  version: 2
+  version: 2.1
   build-deploy:
     jobs:
       - build
@@ -10,8 +10,8 @@ workflows:
     #         branches:
     #           only: master
 version: 2.1
-orbs:
-  ruby: circleci/ruby@0.2.1
+# orbs:
+#   ruby: circleci/ruby@0.2.1
 jobs:
   build:
     # working_directory: ~/
