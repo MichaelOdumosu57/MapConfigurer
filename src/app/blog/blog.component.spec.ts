@@ -214,11 +214,11 @@ describe('BlogComponent', () => {
                 let nonArticleBlogDe = blogDe.queryAll(
                   By.css('#b_l_o_g_TopicButton,#b_l_o_g_Topic,#b_l_o_g_ArticleTitle')
                 )     
-                console.log(nonArticleBlogDe)       
+                // console.log(nonArticleBlogDe)       
                 console.log('stub theres no elements')    
-                console.log(wordsTestService.blogCO0.metadata)
+                // console.log(wordsTestService.blogCO0.metadata)
                 nonArticleBlogDe.forEach((x,i)=>{
-                    console.log(x.nativeElement.id,i)
+                    // console.log(x.nativeElement.id,i)
                 })
                 expect(true).toBeTruthy()
                 done()           

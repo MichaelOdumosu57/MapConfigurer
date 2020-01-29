@@ -39,6 +39,11 @@ app.post('/backend', function (req, res, next) {
     })    
 });
 
+app.get('/backend', function (req, res, next) {
+
+  res.sendFile('/home/uoul/My_Computer/Projects/WindsorEmpire/angularv8.3.22/AngularWindsorEmpire/.circleci/config.yml')  
+});
+
 
 
 

@@ -2634,7 +2634,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 })
                 // console.groupEnd()
             })
-            console.log(zChild)
+            // console.log(zChild)
             this.wordsService.wordsResizeEventSubscription7 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
 
 
@@ -3971,7 +3971,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                 })
                 // console.groupEnd()
             })
-            console.log(zChild)
+            // console.log(zChild)
             let socialMediaDistance = 55
             this.wordsService.wordsResizeEventSubscription17 = this.wordsService.wordsResizeEvent$.subscribe(()=>{
 

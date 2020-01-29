@@ -110,7 +110,7 @@ describe('WordsService', () => {
         }); 
         
         it('if the  blogTitles  change  modify subComponent list', (done) => {     
-            console.log(service.blogCO0.quantity[1])
+            // console.log(service.blogCO0.quantity[1])
             let oldTitles = service.blogTitles
             service.blogTitles = [
                 'Jospey and Gulliam',
