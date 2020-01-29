@@ -34,10 +34,9 @@ jobs:
           name: Configure Bundler
           command: |
             echo 'export BUNDLER_VERSION=$(cat ./planning/capybara/Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
-            source $BASH_ENV
-            gem install bundler          
+            source $BASH_ENV          
       - run:           
-          command: bundle check --path vendor/bundle || bundle install --deployment
+          command: bundler check --path vendor/bundle || bundler install --deployment
       - save_cache:
           key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
