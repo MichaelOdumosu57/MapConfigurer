@@ -31,7 +31,7 @@ module.exports = function (config) {
         browsers: [ 'ChromeHeadless'],
         customLaunchers: {
               ChromeHeadlessCI: {
-                base: 'ChromeHeadless',
+                base: 'Chrome',
                 flags: ['--no-sandbox']
               }
         },
