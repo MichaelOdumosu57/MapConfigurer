@@ -1,5 +1,13 @@
-const { spawn } = require('child_process');
-const ls = spawn('ls', ['-lh', '/usr']);
+const { execFile,spawn } = require('child_process');
+const ls = execFile('ng serve',[],(e,stdout,stderr)=>{
+    
+
+    if(e){
+        console.log(e)
+        return 
+    }
+    console.log(stdout)
+});
 
 ls.stdout.on('data', (data) => {
   console.log(`stdout: ${data}`);

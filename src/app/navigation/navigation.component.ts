@@ -74,7 +74,7 @@ export class NavigationComponent implements OnInit,AfterViewInit,OnDestroy  {
 
 
             let zChild :zChildren[] = [{
-                element: this.window.document.querySelector('app-navigation[ng-reflect-navigation-template-variable='+this.navigationTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-navigation[ng-reflect-navigation-template-variable='+this.navigationTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.navigationTemplateVariable].quantity[0][0].ngStyle[0][0],
                 bool:this.wordsService[this.navigationTemplateVariable].quantity[0][0].bool[0][0]
             }]          

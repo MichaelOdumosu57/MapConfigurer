@@ -41,7 +41,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild: zChildren[] =[{
-                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
             }]          
             // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
@@ -386,7 +386,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
             
             let zChild: zChildren[] =[{
-                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']'),
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+'],[id^="root"]'),
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
             }]          
             // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
@@ -514,7 +514,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
             
             let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']'),
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+'],[id^="root"]'),
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
             }]          
             let zCheckpoint = []                         
@@ -1896,7 +1896,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+'],[id^="'+this.wordsService.appTestKeyword+'"]') as HTMLElement,
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
                 cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
             }]          
@@ -2530,7 +2530,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
                 cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
             }]          
@@ -3093,7 +3093,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
                 cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
             }]          
@@ -3349,7 +3349,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
                 cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
             }]          
@@ -3601,7 +3601,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
                 cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
             }]          
@@ -3866,7 +3866,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
                 cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
             }]          

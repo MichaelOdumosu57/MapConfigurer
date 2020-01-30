@@ -30,7 +30,7 @@ describe('FooterComponent', () => {
         component.footerTemplateVariable = 'footerComponentObject0'
         wordsTestService = TestBed.get(WordsService)
         wordsTestService.blogNavTestStub = {}
-        
+        fixture.destroy = ()=>{}
     }));
 
     it('should be able to use Modernizr', () => {

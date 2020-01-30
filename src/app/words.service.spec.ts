@@ -84,6 +84,7 @@ describe('WordsService', () => {
             component.blogTV = 'blogCO0'
             fixture.detectChanges();         
             let blogSpy = spyOn(component,'ngAfterViewInit')
+            spyOn(fixture,'destroy')
             new Promise((resolve,reject)=>{
                 blogSpy.and.callThrough()
                 resolve()
@@ -154,6 +155,7 @@ describe('WordsService', () => {
             component.wordsTemplateVariable = 'wordsComponentObject0'
             fixture.detectChanges();         
             let wordsSpy = spyOn(component,'ngAfterViewInit')
+            spyOn(fixture,'destroy')
             new Promise((resolve,reject)=>{
                 wordsSpy.and.callThrough()
                 resolve()
@@ -195,6 +197,7 @@ describe('WordsService', () => {
             component.overlayTemplateVariable = 'overlayComponentObject0'
             fixture.detectChanges();         
             let overlaySpy = spyOn(component,'ngAfterViewInit')
+            spyOn(fixture,'destroy')
             new Promise((resolve,reject)=>{
                 overlaySpy.and.callThrough()
                 resolve()
@@ -236,6 +239,7 @@ describe('WordsService', () => {
             component.navigationTemplateVariable = 'navigationComponentObject0'
             fixture.detectChanges();         
             let navigationSpy = spyOn(component,'ngAfterViewInit')
+            spyOn(fixture,'destroy')
             new Promise((resolve,reject)=>{
                 navigationSpy.and.callThrough()
                 resolve()
@@ -277,6 +281,7 @@ describe('WordsService', () => {
             component.footerTemplateVariable = 'footerComponentObject0'
             fixture.detectChanges();         
             let footerSpy = spyOn(component,'ngAfterViewInit')
+            spyOn(fixture,'destroy')
             new Promise((resolve,reject)=>{
                 footerSpy.and.callThrough()
                 resolve()

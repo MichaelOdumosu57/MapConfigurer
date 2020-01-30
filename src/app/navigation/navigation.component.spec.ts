@@ -33,6 +33,7 @@ describe('NavigationComponent', () => {
         component.navigationTemplateVariable = 'navigationComponentObject0'
         wordsTestService = TestBed.get(WordsService)
         wordsTestService.blogNavTestStub = {}
+        fixture.destroy = ()=>{}
     }));
     
     it('should be able to use Modernizr', () => {

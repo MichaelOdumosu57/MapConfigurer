@@ -11,7 +11,7 @@ require 'rails_helper'
 #     p d 
 # end 
 
-ENV.each {|k,v| puts "#{k}: #{v}"}  
+# ENV.each {|k,v| puts "#{k}: #{v}"}  
 
 module TestMod
 

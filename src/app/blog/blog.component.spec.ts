@@ -34,6 +34,7 @@ describe('BlogComponent', () => {
         component.blogTV = 'blogCO0'
         wordsTestService = TestBed.get(WordsService)
         wordsTestService.blogNavTestStub = {}
+        fixture.destroy = ()=>{}
     }));
     
     it('should be able to use Modernizr', () => {
@@ -223,7 +224,7 @@ describe('BlogComponent', () => {
                 expect(true).toBeTruthy()
                 done()           
             });  
-        })       
+        },20000)       
 
     })  
 

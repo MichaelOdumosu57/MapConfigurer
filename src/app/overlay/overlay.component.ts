@@ -127,17 +127,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
     @Input() overlayTemplateVariable:string | any;
 
-    overlayBool:Array<any> = this.wordsService.overlayBool
-    overlayStyle:Array<any> = this.wordsService.overlayStyle
-    overlayVal:Array<any> = this.wordsService.overlayVal
-    // overlayCss:Array<any> = this.wordsService.overlayCss
 
-    overlayStyleIndex:Array<any> = this.wordsService.overlayStyleIndex
-    overlayBoolIndex:Array<any> = this.wordsService.overlayBoolIndex   
-
-    overlayCustomWordWrapElements:Array<any> = this.wordsService.overlayCustomWordWrapElements 
-
-    
     
     ngOnInit() {
         console.log(this.overlayTemplateVariable+ '  ngOnInit fires one remount')
@@ -153,7 +143,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
                 bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
             }]          
@@ -498,7 +488,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
                 bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
             }]     
@@ -632,7 +622,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
                 bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
             }]     
@@ -782,7 +772,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
                 bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
             }]     
@@ -932,7 +922,7 @@ export class OverlayComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
             let zChild:zChildren[] =[{
-                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+']') as HTMLElement,
+                element: this.window.document.querySelector('app-overlay[ng-reflect-overlay-template-variable='+this.overlayTemplateVariable+'],[id^="root"]') as HTMLElement,
                 style:this.wordsService[this.overlayTemplateVariable].quantity[0][0].ngStyle[0][0],
                 bool:this.wordsService[this.overlayTemplateVariable].quantity[0][0].bool[0][0]
             }]     

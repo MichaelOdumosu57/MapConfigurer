@@ -95,7 +95,8 @@
               "src/styles.css"
             ],
             "scripts": [
-                "backend/modernizr/modernizr.js"
+                "backend/modernizr/modernizr.js",
+                "src/assets/scripts/karmaTest.config.js"
             ]
           }
         },

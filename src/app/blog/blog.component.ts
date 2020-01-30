@@ -44,7 +44,7 @@ export class BlogComponent implements OnInit,AfterViewInit,OnDestroy {
 
         // console.log(this.blogMyElements._results)
         let zChild:zChildren[] =[{
-            element: this.window.document.querySelector('app-blog[ng-reflect-blog-t-v='+this.blogTV+']') as HTMLElement,
+            element: this.window.document.querySelector('app-blog[ng-reflect-blog-t-v='+this.blogTV+'],[id^="root"]') as HTMLElement,
             style:this.wordsService[this.blogTV].quantity[0][0].ngStyle[0][0],
             bool:this.wordsService[this.blogTV].quantity[0][0].bool[0][0]
         }]     
