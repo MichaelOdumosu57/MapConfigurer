@@ -124,8 +124,10 @@ describe('NavigationComponent', () => {
                 let navDe = fixture.debugElement
                 let nn = navDe.queryAll(By.css('*')).slice(4,11)
                 let event = new Event('resize')
-                window.dispatchEvent(event)
-                fixture.detectChanges()
+                for(   var i of Array(3)   ){
+                    window.dispatchEvent(event)
+                    fixture.detectChanges()
+                }
                 nn.forEach((x,i)=>{
                     let bb = x.nativeElement as HTMLElement
                     
