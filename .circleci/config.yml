@@ -10,8 +10,6 @@ workflows:
     #         branches:
     #           only: master
 version: 2
-# orbs:
-#   ruby: circleci/ruby@0.2.1
 jobs:
   build:
     # working_directory: ~/
@@ -51,15 +49,14 @@ jobs:
           key: my-project-{{ checksum "./planning/capybara/Gemfile.lock" }}
           paths:
             - vendor/bundle            
-      # - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-      # - run:
-      #     command: | 
-      #       ls  
-      #       npx ng serve &  
-      #       sleep 20s
-      #       cd ./planning/capybara 
-      #       ls 
-      #       bundle exec rspec ./nav-e2e.spec.rb      
+      - run:
+          command: | 
+            ls  
+            npx ng serve &  
+            sleep 20s
+            cd ./planning/capybara 
+            ls 
+            bundle exec rspec ./nav-e2e.spec.rb      
       - run:
           command: npm run test -- --no-watch --no-progress  
   deploy:
