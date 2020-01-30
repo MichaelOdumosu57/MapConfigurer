@@ -53,7 +53,12 @@ jobs:
             - vendor/bundle            
       # - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
       - run:
-          command: ls && npx ng serve & && cd ./planning/capybara && ls &&  bundle exec rspec ./nav-e2e.spec.rb      
+          command: | 
+          ls  
+          npx ng serve &  
+          cd ./planning/capybara 
+          ls 
+          bundle exec rspec ./nav-e2e.spec.rb      
       - run:
           command: npm run test -- --no-watch --no-progress  --browsers=ChromeHeadlessCI
       # - run:
