@@ -56,6 +56,7 @@ jobs:
           command: | 
             ls  
             npx ng serve &  
+            sleep 20s
             cd ./planning/capybara 
             ls 
             bundle exec rspec ./nav-e2e.spec.rb      
