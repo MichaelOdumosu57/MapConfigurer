@@ -61,7 +61,7 @@ jobs:
             ls 
             bundle exec rspec ./nav-e2e.spec.rb      
       - run:
-          command: npm run test -- --no-watch --no-progress  --browsers=ChromeHeadlessCI
+          command: npm run test -- --no-watch --no-progress  
       # - run:
       #     command: npm run e2e -- --protractor-config=e2e/protractor.conf.js 
   deploy:
