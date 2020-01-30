@@ -8,6 +8,7 @@ gem 'capybara'
 gem 'ffi'
 gem 'rspec'
 gem 'rails_helper'
+gem 'rake'
 if ENV['CI'] then
   gem 'selenium-webdriver'
 end

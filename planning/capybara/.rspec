@@ -1,1 +1,3 @@
 --require spec_helper
+--default-path spec/e2e
+--pattern ****/*.spec.rb
