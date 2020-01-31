@@ -223,7 +223,7 @@ describe('OverlayComponent', () => {
         it('has the correct overlay image', () => {        
             expect(
                 wordsTestService[component.overlayTemplateVariable].quantity[1][0].metadata.image[0].src
-            ).toEqual('assets/media/aboutMain.png')         
+            ).toEqual('assets/media/aboutMain.jpg')         
         });           
         
         it('at any point in resize the blend words should not wordwrap', (done) => {  

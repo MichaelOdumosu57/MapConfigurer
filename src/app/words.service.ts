@@ -1623,7 +1623,7 @@ export class WordsService {
                 'Places to make this winter magical in NYC',
                 'Too much coffee health risks',
                 'Meaning of December',
-                'The Iphone XS max is here, how can you use it as a cooking Tool? ',
+                'The Iphone XS  how can you use it for cooking? ',
                 'Honeysweet Memories'                                
             ]  
             blogTitlesSubscription0:Subscription     
