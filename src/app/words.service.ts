@@ -813,7 +813,7 @@ export class WordsService {
             metadata:{
                 title:'',
                 cssAsync: new  Subject<any>(),
-                mainImg:'assets/media/aboutMain.png',
+                mainImg:'assets/media/aboutMain.jpg',
                 blendTitle:'ABOUT ME'   
             },
             quantity:[
@@ -871,7 +871,7 @@ export class WordsService {
                             // an advatange is I'd have this in the non quantity to access easier
                             image:[
                                 {
-                                    src:'assets/media/aboutMain.png',
+                                    src:'assets/media/aboutMain.jpg',
                                     alt:'Main Overlay Image',
                                     defaultWidth:null
                                 }                            
@@ -1586,7 +1586,7 @@ export class WordsService {
             blogGetTitles(a:string[]): Observable<any> {
                 return this.http.post<any>(this.blogURL,'testing123')
                     .pipe(
-                    tap((a)=> {
+                    tap((a:any)=> {
                         console.log('http success!')
                         return a.latestBlog
                     }),  // return the string instead

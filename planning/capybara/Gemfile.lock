@@ -18,6 +18,7 @@ GEM
     mini_portile2 (2.4.0)
     nokogiri (1.10.7-x64-mingw32)
       mini_portile2 (~> 2.4.0)
+    percy-capybara (4.0.2)
     public_suffix (4.0.3)
     rack (2.1.1)
     rack-test (1.1.0)
@@ -52,6 +53,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   ffi
+  percy-capybara (~> 4.0.0)
   rails_helper
   rake
   rspec

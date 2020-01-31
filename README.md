@@ -30,3 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Developers notes
 
 home page fully completed with excection to insignifcint responsive to wC01 and image for oCO4 for owners discretion
+
+## Visual Testing
+
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/WindsorEmpire/website)
