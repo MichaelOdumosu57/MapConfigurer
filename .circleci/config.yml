@@ -62,7 +62,7 @@ jobs:
       - run:
           command: npm run test -- --no-watch --no-progress  
       # - run:
-      #     command: npm run e2e -- --protractor-config=e2e/protractor.conf.js 
+      #     command: npm run e2e -- --protractor-config=e2e/protractor.conf.js #
   deploy:
     docker:
       - image: circleci/buildpack-deps:xenial
