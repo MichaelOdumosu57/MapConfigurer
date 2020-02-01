@@ -51,12 +51,9 @@ jobs:
       # - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
       - run:
           command: | 
-            ls  
-            echo $CHROME_BIN
             npx ng serve --no-progress &  
             sleep 20s
             cd ./planning/capybara/spec/e2e
-            ls 
             npx percy exec -- bundle exec rspec ./nav-e2e.spec.rb  
       # IF YOU want to start up the mock backend service    
       - run:

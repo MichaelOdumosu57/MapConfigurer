@@ -90,41 +90,75 @@ module TestMod
       end                      
     end
 
-    # RSpec.feature "user interaction" do
-    #   describe "home page" do
-    #     it 'should have the learn more button fire on hover ' do 
-    #       visit '/'
-    #       puts page
-    #     end
-    #   end
-    #   # scenario "head to about page" do
-    #   #   visit '/'
-    #   #   # puts page.has_selector? '#n_a_v_i_g_a_t_i_o_n_aboutLink'
-    #   #   elem = first "#n_a_v_i_g_a_t_i_o_n_aboutLink" 
-    #   #   elem.select_option
-    #   #   #sleep 9000
-    #   # end
-    #   # scenario "head to services page" do
-    #   #   visit '/'
-    #   #   elem = first "#n_a_v_i_g_a_t_i_o_n_servicesLink" 
-    #   #   elem.select_option
-    #   # end    
-    #   # scenario "head to projects page" do
-    #   #   visit '/'
-    #   #   elem = first "#n_a_v_i_g_a_t_i_o_n_projectsLink" 
-    #   #   elem.select_option
-    #   # end     
-    #   # scenario "head to blog page" do
-    #   #   visit '/'
-    #   #   elem = first "#n_a_v_i_g_a_t_i_o_n_blogLink" 
-    #   #   elem.select_option
-    #   # end  
-    #   # scenario "head to contact page" do
-    #   #   visit '/'
-    #   #   elem = first "#n_a_v_i_g_a_t_i_o_n_contactLink" 
-    #   #   elem.select_option
-    #   # end                      
-    # end
+    RSpec.feature "user interaction" do
+      describe "home page" do
+        it 'should have the learn more button fire on hover ' do 
+          visit '/'
+          opacity = page.evaluate_script %{window.Modernizr.opacity}
+          # puts opacity.class
+          /comparing strings/ 
+          unless opacity then   
+            learn_more = Hash.new 
+            learn_more[:element] = first %{#o_v_e_r_l_a_y_AboutLearnButton}
+            learn_more[:background_color] = learn_more[:element].style   %{background-color}
+            learn_more[:background_color_pre] = learn_more[:background_color][%{background-color}]
+            # puts learn_more
+            # learn_more[:element].hover  
+            learn_more[:background_color] = learn_more[:element].style   %{background-color}
+            learn_more[:background_color_post] = learn_more[:background_color][%{background-color}]    
+            # puts learn_more
+            puts learn_more[:background_color_post]        
+            puts learn_more[:background_color_pre]
+            expect(learn_more[:background_color_post]).not_to equal learn_more[:background_color_pre]
+          end  
+          /element.matches style/
+          if opacity then   
+            learn_more = Hash.new 
+            learn_more[:element] = first %{#o_v_e_r_l_a_y_AboutLearnButton}
+            learn_more[:text] = first %{#o_v_e_r_l_a_y_AboutLearnText}
+            learn_more[:text].evaluate_script "
+              this.style.display = 'none';console.log(1);console.log(this.style.display)
+            "
+            sleep 5
+            learn_more[:background_color] = learn_more[:element].style   %{background-color}
+            learn_more[:background_color_pre] = learn_more[:background_color][%{background-color}]
+            puts learn_more[:background_color] 
+            learn_more[:new_element] = learn_more[:element].hover
+            # learn_more[:new_element] = first %{#o_v_e_r_l_a_y_AboutLearnButton} 
+            puts learn_more[:new_element].style   %{background-color}
+            puts learn_more[:new_element].matches_style?  %{background-color} => learn_more[:background_color_pre]
+            expect(learn_more[:new_element].matches_style?  %{background-color} => learn_more[:background_color_pre]).not_to equal true           
+          end          
+        end
+      end
+      # scenario "head to about page" do
+      #   visit '/'
+      #   # puts page.has_selector? '#n_a_v_i_g_a_t_i_o_n_aboutLink'
+      #   elem = first "#n_a_v_i_g_a_t_i_o_n_aboutLink" 
+      #   elem.select_option
+      #   #sleep 9000
+      # end
+      # scenario "head to services page" do
+      #   visit '/'
+      #   elem = first "#n_a_v_i_g_a_t_i_o_n_servicesLink" 
+      #   elem.select_option
+      # end    
+      # scenario "head to projects page" do
+      #   visit '/'
+      #   elem = first "#n_a_v_i_g_a_t_i_o_n_projectsLink" 
+      #   elem.select_option
+      # end     
+      # scenario "head to blog page" do
+      #   visit '/'
+      #   elem = first "#n_a_v_i_g_a_t_i_o_n_blogLink" 
+      #   elem.select_option
+      # end  
+      # scenario "head to contact page" do
+      #   visit '/'
+      #   elem = first "#n_a_v_i_g_a_t_i_o_n_contactLink" 
+      #   elem.select_option
+      # end                      
+    end
 
     # RSpec.feature "visual regression debugging" do
     #   scenario "take a snapshot of the projects page", :js => true do
