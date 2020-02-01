@@ -31,6 +31,8 @@ module TestMod
     RSpec.feature "navigation stuff" do
       scenario "Go to home page" do
         visit '/'
+        elem = first "#n_a_v_i_g_a_t_i_o_n_homeLink" 
+        elem.select_option        
         expect(page).to have_selector 'app-navigation[ng-reflect-navigation-template-variable=navigationComponentObject0]';
         expect(page).to have_selector 'app-overlay[ng-reflect-overlay-template-variable=overlayComponentObject4]';
         expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject1]';
@@ -94,6 +96,8 @@ module TestMod
       describe "home page" do
         it 'should have the learn more button fire on hover ' do 
           visit '/'
+          elem = first "#n_a_v_i_g_a_t_i_o_n_homeLink" 
+          elem.select_option
           opacity = page.evaluate_script %{window.Modernizr.opacity}
           # puts opacity.class
           /comparing strings/ 
