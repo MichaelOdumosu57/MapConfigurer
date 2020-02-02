@@ -115,7 +115,7 @@ module TestMod
             puts learn_more[:background_color_pre]
             expect(learn_more[:background_color_post]).not_to equal learn_more[:background_color_pre]
           end  
-          /element.matches style/
+          /element.matches style some times this test fails mabye because of timing/
           if opacity then   
             learn_more = Hash.new 
             learn_more[:element] = first %{#o_v_e_r_l_a_y_AboutLearnButton}
@@ -128,40 +128,53 @@ module TestMod
             learn_more[:background_color_pre] = learn_more[:background_color][%{background-color}]
             puts learn_more[:background_color] 
             learn_more[:new_element] = learn_more[:element].hover
-            # learn_more[:new_element] = first %{#o_v_e_r_l_a_y_AboutLearnButton} 
-            puts learn_more[:new_element].style   %{background-color}
-            puts learn_more[:new_element].matches_style?  %{background-color} => learn_more[:background_color_pre]
+            # puts learn_more[:new_element].style   %{background-color}
+            # puts learn_more[:new_element].matches_style?  %{background-color} => learn_more[:background_color_pre]
             expect(learn_more[:new_element].matches_style?  %{background-color} => learn_more[:background_color_pre]).not_to equal true           
           end          
         end
       end
-      # scenario "head to about page" do
-      #   visit '/'
-      #   # puts page.has_selector? '#n_a_v_i_g_a_t_i_o_n_aboutLink'
-      #   elem = first "#n_a_v_i_g_a_t_i_o_n_aboutLink" 
-      #   elem.select_option
-      #   #sleep 9000
-      # end
-      # scenario "head to services page" do
-      #   visit '/'
-      #   elem = first "#n_a_v_i_g_a_t_i_o_n_servicesLink" 
-      #   elem.select_option
-      # end    
-      # scenario "head to projects page" do
-      #   visit '/'
-      #   elem = first "#n_a_v_i_g_a_t_i_o_n_projectsLink" 
-      #   elem.select_option
-      # end     
-      # scenario "head to blog page" do
-      #   visit '/'
-      #   elem = first "#n_a_v_i_g_a_t_i_o_n_blogLink" 
-      #   elem.select_option
-      # end  
-      # scenario "head to contact page" do
-      #   visit '/'
-      #   elem = first "#n_a_v_i_g_a_t_i_o_n_contactLink" 
-      #   elem.select_option
-      # end                      
+      describe "blog page" do
+        it 'should have a blog article come out on mouseover ' do 
+          visit '/'
+          elem = first "#n_a_v_i_g_a_t_i_o_n_blogLink" 
+          elem.select_option
+          modernizr = page.evaluate_script %{window.Modernizr.opacity}
+          csstransitions = page.evaluate_script %{window.Modernizr.csstransitions}
+          # puts opacity.class 
+          /element.matches style/          
+          if  modernizr and csstransitions then
+            topics = all(%{#b_l_o_g_Topic})
+            topicButton = all(%{#b_l_o_g_TopicButton})
+            articleTitle = all(%{#b_l_o_g_ArticleTitle})
+            topics.each do |a|  
+              styles = a.style %{width}, %{left},%{opacity}
+              a.hover
+              new_styles = a.style %{width}, %{left},%{opacity}
+              # puts styles
+              # puts new_styles
+              expect(styles).not_to equal new_styles
+            end
+            topicButton.each do |a|   
+              styles = a.style  %{left},%{opacity}
+              a.hover
+              new_styles = a.style  %{left},%{opacity}
+              # puts styles
+              # puts new_styles
+              expect(styles).not_to equal new_styles
+            end
+            articleTitle.each do |a|   
+              styles = a.style %{font-size}, %{left},%{opacity}
+              a.hover
+              new_styles = a.style %{font-size}, %{left},%{opacity}
+              # puts styles
+              # puts new_styles
+              expect(styles).not_to equal new_styles
+            end                        
+          end
+        end
+      end      
+                    
     end
 
     # RSpec.feature "visual regression debugging" do
@@ -176,96 +189,96 @@ module TestMod
     #   end
     # end
 
-    RSpec.feature "visual regression" do
-      my_widths = [ 668 ,1187 ,1800 ]   
-      scenario "take a snapshot of the homepage", :js => true do
-        visit '/'
-        # Percy.snapshot page, { :name => 'windsor homepage', :widths=> my_widths }
-        page.current_window.resize_to 668, 800
-        Percy.snapshot page, { :name => 'windsor homepage phone', :widths => [668] }
+    # RSpec.feature "visual regression" do
+    #   my_widths = [ 668 ,1187 ,1800 ]   
+    #   scenario "take a snapshot of the homepage", :js => true do
+    #     visit '/'
+    #     # Percy.snapshot page, { :name => 'windsor homepage', :widths=> my_widths }
+    #     page.current_window.resize_to 668, 800
+    #     Percy.snapshot page, { :name => 'windsor homepage phone', :widths => [668] }
         
-        page.current_window.resize_to 1187, 800
-        Percy.snapshot page, { :name => 'windsor homepage laptop', :widths => [1187] }
+    #     page.current_window.resize_to 1187, 800
+    #     Percy.snapshot page, { :name => 'windsor homepage laptop', :widths => [1187] }
 
-        page.current_window.resize_to 1800, 800
-        Percy.snapshot page, { :name => 'windsor homepage big desktop', :widths => [1800] }            
-      end
-      scenario "take a snapshot of the about page",  :js => true do
-        visit '/'
-        elem = first "#n_a_v_i_g_a_t_i_o_n_aboutLink" 
-        elem.select_option        
-        # Percy.snapshot page, { :name => 'windsor about page', :widths=> [668, 1187, 1800] }
-        page.current_window.resize_to 668, 800
-        Percy.snapshot page, { :name => 'windsor about page phone', :widths => [668] }
+    #     page.current_window.resize_to 1800, 800
+    #     Percy.snapshot page, { :name => 'windsor homepage big desktop', :widths => [1800] }            
+    #   end
+    #   scenario "take a snapshot of the about page",  :js => true do
+    #     visit '/'
+    #     elem = first "#n_a_v_i_g_a_t_i_o_n_aboutLink" 
+    #     elem.select_option        
+    #     # Percy.snapshot page, { :name => 'windsor about page', :widths=> [668, 1187, 1800] }
+    #     page.current_window.resize_to 668, 800
+    #     Percy.snapshot page, { :name => 'windsor about page phone', :widths => [668] }
         
-        page.current_window.resize_to 1187, 800
-        Percy.snapshot page, { :name => 'windsor about page laptop', :widths => [1187] }
+    #     page.current_window.resize_to 1187, 800
+    #     Percy.snapshot page, { :name => 'windsor about page laptop', :widths => [1187] }
 
-        page.current_window.resize_to 1800, 800
-        Percy.snapshot page, { :name => 'windsor about page big desktop', :widths => [1800] }   
-      end   
-      scenario "take a snapshot of the services page", :js => true do
-        visit '/'
-        elem = first "#n_a_v_i_g_a_t_i_o_n_servicesLink" 
-        elem.select_option        
-        # Percy.snapshot page, { :name => 'windsor services page', :widths=> [668, 1187, 1800] }
-        page.current_window.resize_to 668, 800
-        Percy.snapshot page, { :name => 'windsor services page phone', :widths => [668] }
+    #     page.current_window.resize_to 1800, 800
+    #     Percy.snapshot page, { :name => 'windsor about page big desktop', :widths => [1800] }   
+    #   end   
+    #   scenario "take a snapshot of the services page", :js => true do
+    #     visit '/'
+    #     elem = first "#n_a_v_i_g_a_t_i_o_n_servicesLink" 
+    #     elem.select_option        
+    #     # Percy.snapshot page, { :name => 'windsor services page', :widths=> [668, 1187, 1800] }
+    #     page.current_window.resize_to 668, 800
+    #     Percy.snapshot page, { :name => 'windsor services page phone', :widths => [668] }
         
-        page.current_window.resize_to 1187, 800
-        Percy.snapshot page, { :name => 'windsor services page laptop', :widths => [1187] }
+    #     page.current_window.resize_to 1187, 800
+    #     Percy.snapshot page, { :name => 'windsor services page laptop', :widths => [1187] }
 
-        page.current_window.resize_to 1800, 800
-        Percy.snapshot page, { :name => 'windsor services page big desktop', :widths => [1800] }         
-      end
-      scenario "take a snapshot of the projects page", :js => true do
-        visit '/'
-        elem = first "#n_a_v_i_g_a_t_i_o_n_projectsLink" 
-        elem.select_option
-        # Percy.snapshot page, { :name => 'windsor projects page', :widths=> [668, 1187, 1800] }
-        page.current_window.resize_to 668, 800
-        sleep 30
-        Percy.snapshot page, { :name => 'windsor projects page phone', :widths => [668] }
+    #     page.current_window.resize_to 1800, 800
+    #     Percy.snapshot page, { :name => 'windsor services page big desktop', :widths => [1800] }         
+    #   end
+    #   scenario "take a snapshot of the projects page", :js => true do
+    #     visit '/'
+    #     elem = first "#n_a_v_i_g_a_t_i_o_n_projectsLink" 
+    #     elem.select_option
+    #     # Percy.snapshot page, { :name => 'windsor projects page', :widths=> [668, 1187, 1800] }
+    #     page.current_window.resize_to 668, 800
+    #     sleep 30
+    #     Percy.snapshot page, { :name => 'windsor projects page phone', :widths => [668] }
         
-        page.current_window.resize_to 1187, 800
-        Percy.snapshot page, { :name => 'windsor projects page laptop', :widths => [1187] }
+    #     page.current_window.resize_to 1187, 800
+    #     Percy.snapshot page, { :name => 'windsor projects page laptop', :widths => [1187] }
 
-        page.current_window.resize_to 1800, 800
-        Percy.snapshot page, { :name => 'windsor projects page big desktop', :widths => [1800] }       
-      end
-      scenario "take a snapshot of the blog page", :js => true do
-        visit '/'
-        elem = first "#n_a_v_i_g_a_t_i_o_n_blogLink" 
-        elem.select_option
-        # Percy.snapshot page, { :name => 'windsor blog page', :widths=> [668, 1187, 1800] }
-        page.current_window.resize_to 668, 800
-        sleep 5
-        Percy.snapshot page, { :name => 'windsor blog page phone', :widths => [668] }
+    #     page.current_window.resize_to 1800, 800
+    #     Percy.snapshot page, { :name => 'windsor projects page big desktop', :widths => [1800] }       
+    #   end
+    #   scenario "take a snapshot of the blog page", :js => true do
+    #     visit '/'
+    #     elem = first "#n_a_v_i_g_a_t_i_o_n_blogLink" 
+    #     elem.select_option
+    #     # Percy.snapshot page, { :name => 'windsor blog page', :widths=> [668, 1187, 1800] }
+    #     page.current_window.resize_to 668, 800
+    #     sleep 5
+    #     Percy.snapshot page, { :name => 'windsor blog page phone', :widths => [668] }
         
-        page.current_window.resize_to 1187, 800
-        sleep 5
-        Percy.snapshot page, { :name => 'windsor blog page laptop', :widths => [1187] }
+    #     page.current_window.resize_to 1187, 800
+    #     sleep 5
+    #     Percy.snapshot page, { :name => 'windsor blog page laptop', :widths => [1187] }
 
-        page.current_window.resize_to 1800, 800
-        sleep 5
-        Percy.snapshot page, { :name => 'windsor blog page big desktop', :widths => [1800] }         
-      end
-      scenario "take a snapshot of the contact page", :js => true do
-        visit '/'
-        elem = first "#n_a_v_i_g_a_t_i_o_n_contactLink" 
-        elem.select_option
-        # Percy.snapshot page, { :name => 'windsor contact page', :widths=> [668, 1187, 1800] }
-        page.current_window.resize_to 668, 800
-        sleep 5
-        Percy.snapshot page, { :name => 'windsor contact page phone', :widths => [668] }
+    #     page.current_window.resize_to 1800, 800
+    #     sleep 5
+    #     Percy.snapshot page, { :name => 'windsor blog page big desktop', :widths => [1800] }         
+    #   end
+    #   scenario "take a snapshot of the contact page", :js => true do
+    #     visit '/'
+    #     elem = first "#n_a_v_i_g_a_t_i_o_n_contactLink" 
+    #     elem.select_option
+    #     # Percy.snapshot page, { :name => 'windsor contact page', :widths=> [668, 1187, 1800] }
+    #     page.current_window.resize_to 668, 800
+    #     sleep 5
+    #     Percy.snapshot page, { :name => 'windsor contact page phone', :widths => [668] }
         
-        page.current_window.resize_to 1187, 800
-        Percy.snapshot page, { :name => 'windsor contact page laptop', :widths => [1187] }
+    #     page.current_window.resize_to 1187, 800
+    #     Percy.snapshot page, { :name => 'windsor contact page laptop', :widths => [1187] }
 
-        page.current_window.resize_to 1800, 800
-        Percy.snapshot page, { :name => 'windsor contact page big desktop', :widths => [1800] }      
-      end               
-    end
+    #     page.current_window.resize_to 1800, 800
+    #     Percy.snapshot page, { :name => 'windsor contact page big desktop', :widths => [1800] }      
+    #   end               
+    # end
 
     
 =begin  
