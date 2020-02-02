@@ -7,7 +7,24 @@ require 'capybara/rspec/matcher_proxies'
 require 'rspec/expectations'
 require 'rails_helper'
 require 'percy'
+require 'selenium/webdriver'
 
+ 
+# monkey patch to avoid reset sessions
+class Capybara::Selenium::Driver < Capybara::Driver::Base
+  def reset!
+    if @browser
+      @browser.navigate.to('about:blank')
+    end
+  end
+end
+
+
+ 
+
+ 
+# Capybara.default_driver = :lambdatest
+# Capybara.run_server = true
 
 # $:.each do |d|
 #     p d 
@@ -19,7 +36,7 @@ module TestMod
 
   include Capybara::DSL
   Capybara.default_driver = :selenium 
-  Capybara.current_driver = :selenium
+  # Capybara.current_driver = :selenium
   Capybara.app_host = 'http://localhost:4200'
 
   # Capybara.configure do |config|
@@ -28,72 +45,106 @@ module TestMod
   
   def TestMod.startTest  
     @javascript
-    RSpec.feature "navigation stuff" do
-      scenario "Go to home page" do
-        visit '/'
-        elem = first "#n_a_v_i_g_a_t_i_o_n_homeLink" 
-        elem.select_option        
-        expect(page).to have_selector 'app-navigation[ng-reflect-navigation-template-variable=navigationComponentObject0]';
-        expect(page).to have_selector 'app-overlay[ng-reflect-overlay-template-variable=overlayComponentObject4]';
-        expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject1]';
-        expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject0]';
-        expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject2]';
-        expect(page).to have_selector 'app-footer[ng-reflect-footer-template-variable=footerComponentObject0]';
-      end
-      scenario "head to about page" do
-        visit '/'
-        # puts page.has_selector? '#n_a_v_i_g_a_t_i_o_n_aboutLink'
-        elem = first "#n_a_v_i_g_a_t_i_o_n_aboutLink" 
-        elem.select_option
-        expect(page).to have_selector 'app-navigation[ng-reflect-navigation-template-variable=navigationComponentObject0]';
-        expect(page).to have_selector 'app-overlay[ng-reflect-overlay-template-variable=overlayComponentObject3]';
-        expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject5]';
-        expect(page).to have_selector 'app-footer[ng-reflect-footer-template-variable=footerComponentObject0]';
-        #sleep 9000
-      end
-      scenario "head to services page" do
-        visit '/'
-        elem = first "#n_a_v_i_g_a_t_i_o_n_servicesLink" 
-        elem.select_option
-        expect(page).to have_selector 'app-navigation[ng-reflect-navigation-template-variable=navigationComponentObject0]';
-        expect(page).to have_selector 'app-overlay[ng-reflect-overlay-template-variable=overlayComponentObject0]';
-        expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject3]';
-        expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject4]';
-        expect(page).to have_selector 'app-footer[ng-reflect-footer-template-variable=footerComponentObject0]';
-      end    
-      scenario "head to projects page" do
-        visit '/'
-        elem = first "#n_a_v_i_g_a_t_i_o_n_projectsLink" 
-        elem.select_option
-        expect(page).to have_selector 'app-navigation[ng-reflect-navigation-template-variable=navigationComponentObject0]';
-        expect(page).to have_selector 'app-overlay[ng-reflect-overlay-template-variable=overlayComponentObject1]';
-        expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject6]';
-        expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject7]';
-        expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject8]';
-        expect(page).to have_selector 'app-footer[ng-reflect-footer-template-variable=footerComponentObject0]';
-      end     
-      scenario "head to blog page" do
-        visit '/'
-        elem = first "#n_a_v_i_g_a_t_i_o_n_blogLink" 
-        elem.select_option
-        expect(page).to have_selector 'app-navigation[ng-reflect-navigation-template-variable=navigationComponentObject0]';
-        expect(page).to have_selector 'app-overlay[ng-reflect-overlay-template-variable=overlayComponentObject5]';
-        expect(page).to have_selector 'app-blog[ng-reflect-blog-t-v=blogCO0]';
-        expect(page).to have_selector 'app-footer[ng-reflect-footer-template-variable=footerComponentObject0]';
-      end  
-      scenario "head to contact page" do
-        visit '/'
-        elem = first "#n_a_v_i_g_a_t_i_o_n_contactLink" 
-        elem.select_option
-        expect(page).to have_selector 'app-navigation[ng-reflect-navigation-template-variable=navigationComponentObject0]';
-        expect(page).to have_selector 'app-overlay[ng-reflect-overlay-template-variable=overlayComponentObject2]';
-        expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject9]';
-        expect(page).to have_selector 'app-footer[ng-reflect-footer-template-variable=footerComponentObject0]';
-      end                      
-    end
+    # RSpec.feature "navigation stuff" do
+    #   scenario "Go to home page" do
+    #     visit '/'
+    #     elem = first "#n_a_v_i_g_a_t_i_o_n_homeLink" 
+    #     elem.select_option        
+    #     expect(page).to have_selector 'app-navigation[ng-reflect-navigation-template-variable=navigationComponentObject0]';
+    #     expect(page).to have_selector 'app-overlay[ng-reflect-overlay-template-variable=overlayComponentObject4]';
+    #     expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject1]';
+    #     expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject0]';
+    #     expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject2]';
+    #     expect(page).to have_selector 'app-footer[ng-reflect-footer-template-variable=footerComponentObject0]';
+    #   end
+    #   scenario "head to about page" do
+    #     visit '/'
+    #     # puts page.has_selector? '#n_a_v_i_g_a_t_i_o_n_aboutLink'
+    #     elem = first "#n_a_v_i_g_a_t_i_o_n_aboutLink" 
+    #     elem.select_option
+    #     expect(page).to have_selector 'app-navigation[ng-reflect-navigation-template-variable=navigationComponentObject0]';
+    #     expect(page).to have_selector 'app-overlay[ng-reflect-overlay-template-variable=overlayComponentObject3]';
+    #     expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject5]';
+    #     expect(page).to have_selector 'app-footer[ng-reflect-footer-template-variable=footerComponentObject0]';
+    #     #sleep 9000
+    #   end
+    #   scenario "head to services page" do
+    #     visit '/'
+    #     elem = first "#n_a_v_i_g_a_t_i_o_n_servicesLink" 
+    #     elem.select_option
+    #     expect(page).to have_selector 'app-navigation[ng-reflect-navigation-template-variable=navigationComponentObject0]';
+    #     expect(page).to have_selector 'app-overlay[ng-reflect-overlay-template-variable=overlayComponentObject0]';
+    #     expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject3]';
+    #     expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject4]';
+    #     expect(page).to have_selector 'app-footer[ng-reflect-footer-template-variable=footerComponentObject0]';
+    #   end    
+    #   scenario "head to projects page" do
+    #     visit '/'
+    #     elem = first "#n_a_v_i_g_a_t_i_o_n_projectsLink" 
+    #     elem.select_option
+    #     expect(page).to have_selector 'app-navigation[ng-reflect-navigation-template-variable=navigationComponentObject0]';
+    #     expect(page).to have_selector 'app-overlay[ng-reflect-overlay-template-variable=overlayComponentObject1]';
+    #     expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject6]';
+    #     expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject7]';
+    #     expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject8]';
+    #     expect(page).to have_selector 'app-footer[ng-reflect-footer-template-variable=footerComponentObject0]';
+    #   end     
+    #   scenario "head to blog page" do
+    #     visit '/'
+    #     elem = first "#n_a_v_i_g_a_t_i_o_n_blogLink" 
+    #     elem.select_option
+    #     expect(page).to have_selector 'app-navigation[ng-reflect-navigation-template-variable=navigationComponentObject0]';
+    #     expect(page).to have_selector 'app-overlay[ng-reflect-overlay-template-variable=overlayComponentObject5]';
+    #     expect(page).to have_selector 'app-blog[ng-reflect-blog-t-v=blogCO0]';
+    #     expect(page).to have_selector 'app-footer[ng-reflect-footer-template-variable=footerComponentObject0]';
+    #   end  
+    #   scenario "head to contact page" do
+    #     visit '/'
+    #     elem = first "#n_a_v_i_g_a_t_i_o_n_contactLink" 
+    #     elem.select_option
+    #     expect(page).to have_selector 'app-navigation[ng-reflect-navigation-template-variable=navigationComponentObject0]';
+    #     expect(page).to have_selector 'app-overlay[ng-reflect-overlay-template-variable=overlayComponentObject2]';
+    #     expect(page).to have_selector 'app-words[ng-reflect-words-template-variable=wordsComponentObject9]';
+    #     expect(page).to have_selector 'app-footer[ng-reflect-footer-template-variable=footerComponentObject0]';
+    #   end                      
+    # end
 
     RSpec.feature "user interaction" do
       describe "home page" do
+
+        before(:each) do   
+          config = Hash.new 
+          config[:user] = ENV['LT_USERNAME']  
+          config[:key] = ENV['LT_APIKEY'] 
+          config[:server] = 'hub.lambdatest.com'            
+          caps = {                       
+              :browserName => "chrome",         
+              :version => "76.0",         
+              :platform =>  "win10",
+              :name =>  "RSpec Sample Test",
+              :build =>  "RSpec Selenium Sample",      
+              :network =>  true,
+              :visual =>  true,
+              :video =>  true,
+              :console =>  true
+          }  
+          puts caps
+          puts config
+          puts "https://#{config[:user]}:#{config[:key]}@#{config[:server]}/wd/hub"
+          @driver = Selenium::WebDriver.for(:remote,
+              :url => "https://#{config[:user]}:#{config[:key]}@#{config[:server]}/wd/hub",
+              :desired_capabilities => caps)
+           
+          @driver.manage.window.maximize
+           
+          @driver.get("https://www.sortforyou.com" )
+          sleep(3)       
+        end
+         
+        after(:each) do  
+          @driver.quit   
+        end
+
         it 'should have the learn more button fire on hover ' do 
           visit '/'
           elem = first "#n_a_v_i_g_a_t_i_o_n_homeLink" 
@@ -134,46 +185,46 @@ module TestMod
           end          
         end
       end
-      describe "blog page" do
-        it 'should have a blog article come out on mouseover ' do 
-          visit '/'
-          elem = first "#n_a_v_i_g_a_t_i_o_n_blogLink" 
-          elem.select_option
-          modernizr = page.evaluate_script %{window.Modernizr.opacity}
-          csstransitions = page.evaluate_script %{window.Modernizr.csstransitions}
-          # puts opacity.class 
-          /element.matches style/          
-          if  modernizr and csstransitions then
-            topics = all(%{#b_l_o_g_Topic})
-            topicButton = all(%{#b_l_o_g_TopicButton})
-            articleTitle = all(%{#b_l_o_g_ArticleTitle})
-            topics.each do |a|  
-              styles = a.style %{width}, %{left},%{opacity}
-              a.hover
-              new_styles = a.style %{width}, %{left},%{opacity}
-              # puts styles
-              # puts new_styles
-              expect(styles).not_to equal new_styles
-            end
-            topicButton.each do |a|   
-              styles = a.style  %{left},%{opacity}
-              a.hover
-              new_styles = a.style  %{left},%{opacity}
-              # puts styles
-              # puts new_styles
-              expect(styles).not_to equal new_styles
-            end
-            articleTitle.each do |a|   
-              styles = a.style %{font-size}, %{left},%{opacity}
-              a.hover
-              new_styles = a.style %{font-size}, %{left},%{opacity}
-              # puts styles
-              # puts new_styles
-              expect(styles).not_to equal new_styles
-            end                        
-          end
-        end
-      end      
+      # describe "blog page" do
+      #   it 'should have a blog article come out on mouseover ' do 
+      #     visit '/'
+      #     elem = first "#n_a_v_i_g_a_t_i_o_n_blogLink" 
+      #     elem.select_option
+      #     modernizr = page.evaluate_script %{window.Modernizr.opacity}
+      #     csstransitions = page.evaluate_script %{window.Modernizr.csstransitions}
+      #     # puts opacity.class 
+      #     /element.matches style/          
+      #     if  modernizr and csstransitions then
+      #       topics = all(%{#b_l_o_g_Topic})
+      #       topicButton = all(%{#b_l_o_g_TopicButton})
+      #       articleTitle = all(%{#b_l_o_g_ArticleTitle})
+      #       topics.each do |a|  
+      #         styles = a.style %{width}, %{left},%{opacity}
+      #         a.hover
+      #         new_styles = a.style %{width}, %{left},%{opacity}
+      #         # puts styles
+      #         # puts new_styles
+      #         expect(styles).not_to equal new_styles
+      #       end
+      #       topicButton.each do |a|   
+      #         styles = a.style  %{left},%{opacity}
+      #         a.hover
+      #         new_styles = a.style  %{left},%{opacity}
+      #         # puts styles
+      #         # puts new_styles
+      #         expect(styles).not_to equal new_styles
+      #       end
+      #       articleTitle.each do |a|   
+      #         styles = a.style %{font-size}, %{left},%{opacity}
+      #         a.hover
+      #         new_styles = a.style %{font-size}, %{left},%{opacity}
+      #         # puts styles
+      #         # puts new_styles
+      #         expect(styles).not_to equal new_styles
+      #       end                        
+      #     end
+      #   end
+      # end      
                     
     end
 
