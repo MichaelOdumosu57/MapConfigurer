@@ -185,7 +185,6 @@ module TestMod
           end          
         end
       end
-<<<<<<< HEAD
       # describe "blog page" do
       #   it 'should have a blog article come out on mouseover ' do 
       #     visit '/'
@@ -226,48 +225,6 @@ module TestMod
       #     end
       #   end
       # end      
-=======
-      describe "blog page" do
-        it 'should have a blog article come out on mouseover ' do 
-          visit '/'
-          elem = first "#n_a_v_i_g_a_t_i_o_n_blogLink" 
-          elem.select_option
-          modernizr = page.evaluate_script %{window.Modernizr.opacity}
-          csstransitions = page.evaluate_script %{window.Modernizr.csstransitions}
-          # puts opacity.class 
-          /element.matches style/          
-          if  modernizr and csstransitions then
-            topics = all(%{#b_l_o_g_Topic})
-            topicButton = all(%{#b_l_o_g_TopicButton})
-            articleTitle = all(%{#b_l_o_g_ArticleTitle})
-            topics.each do |a|  
-              styles = a.style %{width}, %{left},%{opacity}
-              a.hover
-              new_styles = a.style %{width}, %{left},%{opacity}
-              # puts styles
-              # puts new_styles
-              expect(styles).not_to equal new_styles
-            end
-            topicButton.each do |a|   
-              styles = a.style  %{left},%{opacity}
-              a.hover
-              new_styles = a.style  %{left},%{opacity}
-              # puts styles
-              # puts new_styles
-              expect(styles).not_to equal new_styles
-            end
-            articleTitle.each do |a|   
-              styles = a.style %{font-size}, %{left},%{opacity}
-              a.hover
-              new_styles = a.style %{font-size}, %{left},%{opacity}
-              # puts styles
-              # puts new_styles
-              expect(styles).not_to equal new_styles
-            end                        
-          end
-        end
-      end      
->>>>>>> efe225445b38f306849761ccf52f0aeace91aafe
                     
     end
 
