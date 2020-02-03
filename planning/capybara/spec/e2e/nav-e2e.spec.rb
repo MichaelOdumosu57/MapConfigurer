@@ -38,6 +38,7 @@ module TestMod
   Capybara.default_driver = :selenium 
   # Capybara.current_driver = :selenium
   Capybara.app_host = 'http://localhost:4200'
+  # Capybara.app_host = "https://www.sortforyou.com"
 
   # Capybara.configure do |config|
   #   config.default_max_wait_time = 20
@@ -115,8 +116,9 @@ module TestMod
         before(:each) do   
           config = Hash.new 
           config[:user] = ENV['LT_USERNAME']  
-          config[:key] = ENV['LT_APIKEY'] 
-          config[:server] = 'hub.lambdatest.com'            
+          config[:key] = ENV['LT_APIKEY']     
+          p config[:user].class
+          p config[:key].class                 
           caps = {                       
               :browserName => "chrome",         
               :version => "76.0",         
@@ -126,25 +128,26 @@ module TestMod
               :network =>  true,
               :visual =>  true,
               :video =>  true,
-              :console =>  true
+              :console =>  true,
+              :tunnel =>true
           }  
-          puts caps
-          puts config
+          # puts caps
+          # puts config
           puts "https://#{config[:user]}:#{config[:key]}@#{config[:server]}/wd/hub"
           @driver = Selenium::WebDriver.for(:remote,
-              :url => "https://#{config[:user]}:#{config[:key]}@#{config[:server]}/wd/hub",
+              :url => "https://#{config[:user]}:#{config[:key]}@hub.lambdatest.com/wd/hub",
               :desired_capabilities => caps)
            
           @driver.manage.window.maximize
            
-          @driver.get("https://www.sortforyou.com" )
+          @driver.get('http://localhost:4200')
           sleep(3)       
         end
          
         after(:each) do  
           @driver.quit   
         end
-
+                
         it 'should have the learn more button fire on hover ' do 
           visit '/'
           elem = first "#n_a_v_i_g_a_t_i_o_n_homeLink" 

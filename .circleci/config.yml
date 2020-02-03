@@ -52,9 +52,11 @@ jobs:
       - run:
           command: | 
             npx ng serve --no-progress &  
+            cd ./planning/capybara/linux
+            ./LT -user $LT_USERNAME -key $LT_APIKEY &
             sleep 20s
-            cd ./planning/capybara/spec/e2e
-            npx percy exec -- bundle exec rspec ./nav-e2e.spec.rb  
+            cd ../spec/e2e
+            npx percy exec -- bundle exec rspec ./nav-e2e.lambdatest.spec.rb  
       # IF YOU want to start up the mock backend service    
       - run:
           command: npm run test -- --no-watch --no-progress  
