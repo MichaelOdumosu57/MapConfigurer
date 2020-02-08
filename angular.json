@@ -28,7 +28,7 @@
               "src/material-icons.css"
             ],
             "scripts": [
-                "backend/modernizr/modernizr.js"
+              "backend/modernizr/modernizr.js"
             ]
           },
           "configurations": {
@@ -95,8 +95,8 @@
               "src/styles.css"
             ],
             "scripts": [
-                "backend/modernizr/modernizr.js",
-                "src/assets/scripts/karmaTest.config.js"
+              "backend/modernizr/modernizr.js",
+              "src/assets/scripts/karmaTest.config.js"
             ]
           }
         },
@@ -126,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AngularWindsorEmpire"
+    }
+  },
+  "defaultProject": "AngularWindsorEmpire",
+  "cli": {
+    "analytics": "71e67012-df69-47a5-b66e-f2b93a485add"
+  }
 }
