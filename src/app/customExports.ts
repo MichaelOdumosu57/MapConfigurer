@@ -2,6 +2,12 @@ import {   WINDOW   } from './window.service';
 import {defer} from 'rxjs'
 import {  HttpClient, HttpHeaders,HttpXhrBackend,   }    from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { NgZone } from '@angular/core' ; 
+
+let Zone = new NgZone({
+    enableLongStackTrace:true,
+    shouldCoalesceEventChangeDetection:true
+})
 
 export class zChildren {
     element:  HTMLElement;
@@ -18,7 +24,6 @@ export class zChildren {
 
 
 
-let http = new HttpClient(new HttpXhrBackend({ build: () => new XMLHttpRequest() }));
 let final:any = {}; 
 
 
@@ -29,6 +34,7 @@ function wait(   ms   ){
       end = new Date().getTime();
     }
  }
+
 
 
 export var firebase =  (()=>{
@@ -43,8 +49,13 @@ export var firebase =  (()=>{
         final.messagingSenderId = a.AF_GCM_SENDER_ID
         final.appId = a.AF_APPID
         final.measurementId = 'null'        
-    }    
-    xhr.open('get', 'http://localhost:3001/env', false)
+    }  
+    window.onerror= (e)=>{
+        // console.log(e)
+        //try to silence zone.js error
+    }        
+    xhr.open('GET', 'sortforyou.com/env', false)
+    xhr.open('GET', 'http://localhost:3001/env', false)
     xhr.send()
     return final
 })() 

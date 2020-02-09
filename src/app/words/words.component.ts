@@ -143,16 +143,21 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             console.log(zChild)
             zChild[3].element = this.window.document.getElementById(zChild[3].element.id) as HTMLInputElement
             //for some annoying reason
-            firebase.messaging().requestPermission()
-            // Notification permission granted.
-            .then(() => this.saveMessagingDeviceToken())
-            .catch((err) => {
-            console.log('Unable to get permission to notify.');
-            console.error(err);
-            });            
+            // firebase.messaging().requestPermission()
+            // // Notification permission granted.
+            // .then(() => this.saveMessagingDeviceToken())
+            // .catch((err) => {
+            // console.log('Unable to get permission to notify.');
+            // console.error(err);
+            // });            
             this.wordsService.wordsClickEventSubscription1 = fromEvent(zChild[4].element,'click').subscribe((event)=>{
                 console.log(zChild[3].element['value'])
                 const messages = this.db.list('/messages');
+                console.log(messages)
+                var query  = messages.valueChanges()
+                query.subscribe((e)=>{
+                    console.log(e)
+                })                
                 messages.push({
                     name: 'tryme',
                     text: zChild[3].element['value'],
@@ -164,8 +169,14 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
                     zChild[3].element['value'] = ''
                     this.ref.detectChanges()                      
                     console.error(err);
-                  });                
+                  }); 
+
+
+                // var query = firebase.firestore().collection('messages').orderBy('timestamp', 'desc').limit(12);
+               
+                 
             })
+
 
             
         } 

@@ -16,14 +16,13 @@ xhr.onload= ()=>{
     final.messagingSenderId = a.AF_GCM_SENDER_ID
     final.appId = a.AF_APPID
     final.measurementId = 'null'   
-    firebase.initializeApp(final)  
-    console.log(messaging) 
-    messaging = firebase.messaging();
-  
+    firebase.initializeApp(final)    
 }    
-xhr.open('get', 'http://localhost:3001/env', true)
+xhr.open('get', 'http://localhost:3001/env', false)
 xhr.send()
 
+console.log(messaging) 
+messaging = firebase.messaging();
 
 
     
