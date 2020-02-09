@@ -2682,6 +2682,7 @@ export class WordsService {
         wordsResizeEventSubscription21:Subscription             
         wordsClickEvent$:Observable<Event>        
         wordsClickEventSubscription0:Subscription
+        wordsClickEventSubscription1:Subscription
         //         
 
 
@@ -7433,7 +7434,237 @@ export class WordsService {
                     yield index;
                 }()
             })()        
-        }                                      
+        }                       
+        wordsComponentObject10:componentObject ={
+            metadata:{
+
+            },
+            quantity:[
+                [
+                    {
+                        quantity:[[3]],
+                        bool:[['true']], 
+                        val:[
+                            ['w_o_r_d_s_App']
+                        ], 
+                        text:[
+                                []
+                        ],
+                        metadata:{
+                            mouseover:[
+                                [],
+                                [],
+                                []
+                            ],
+                            mouseout:[
+                                [],
+                                [],
+                                []
+                            ]                            
+                        },
+                        ngStyle:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'0px',
+                                    width:'100%',
+                                    'z-index':'1'
+                                }
+                            ]                         
+                        ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'absolute',
+                                    top:'0px',
+                                    width:'100%',
+                                    'z-index':'1'
+                                }
+                            ]                         
+                        ],                   
+                        extras:[
+                            {},  
+                            {},  
+                            {}                      
+                        ]
+                    }                    
+                ],
+                [
+                    {
+                        signature:'containing',
+                        quantity:[[3]],
+                        bool:[['true']], 
+                        val:[
+                            ['w_o_r_d_s_Board'],
+                        ], 
+                        text:[
+                            [],
+                        ],
+                        metadata:{
+                            CO10:new Subject<any>(),
+                            mouseover:[
+                                [],
+                                [],
+                                []
+                            ],
+                            mouseout:[
+                                [],
+                                [],
+                                []
+                            ]                                                               
+                        },
+                        ngStyle:[
+                            [
+                                {
+                                    position:'absolute',
+                                    height:'750px',
+                                    width:'100%',
+                                    'z-index':'1',
+                                    // 'background-color':'rgb(255, 192, 203)',
+                                    top:'0px'
+                                }
+                            ]                    
+                        ],
+                        ngCssDefault:[
+                            [
+                                {
+                                    position:'absolute',
+                                    height:'700px',
+                                    width:'100%',
+                                    'z-index':'1',
+                                    // 'background-color':'rgb(255, 192, 203)',
+                                    top:'0px'
+                                }
+                            ]                    
+                        ],                   
+                        extras:[
+                            {}                       
+                        ]
+                    },                     
+                    {
+                            signature:'content',
+                            quantity:[[],[3,3,3]],
+                            bool:[[],['true','textarea','button']], 
+                            val:[
+                                [],
+                                [
+                                    'w_o_r_d_s_SubTitle',
+                                    'w_o_r_d_s_Firebase',
+                                    'w_o_r_d_s_Submit'           
+                                ],
+                            ], 
+                            text:[
+                                [],
+                                [
+                                    "my componentObject works",
+                                    "",
+                                    "submit"
+                                ],
+                                []
+                            ],
+                            metadata:{
+                                mouseover:[
+                                    [],
+                                    [],
+                                    [
+                                        {
+                                            fn:null,
+                                            
+                                        }, 
+                                        {
+                                            fn:null,
+                                            
+                                        }, 
+                                        {
+                                            fn:null,
+                                            
+                                        },                                                                                                                          
+                                    ]
+                                ],
+                                mouseout:[
+                                    [],
+                                    [],
+                                    [
+                                        {
+                                            fn:null,
+                                            
+                                        }, 
+                                        {
+                                            fn:null,
+                                            
+                                        }, 
+                                        {
+                                            fn:null,
+                                            
+                                        },                                                                                                                          
+                                    ]
+                                ]                                
+                            },
+                            ngStyle:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Montserrat',
+                                        'left':'32.5px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Montserrat',
+                                        'left':'32.5px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'background-color':'blue',
+                                        'left':'302.5px'
+                                    }                                                                                                                                                                                                                                                                                                                                   
+                                ]                   
+                            ],  
+                            ngCssDefault:[
+                                [],
+                                [
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Montserrat',
+                                        'left':'32.5px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'font-family':'Montserrat',
+                                        'left':'32.5px'
+                                    },
+                                    {
+                                        position:'absolute',
+                                        'z-index':'2',
+                                        'background-color':'blue',
+                                        'left':'302.5px'
+                                    }                                                                                                                                                                                                                                                                                                                                   
+                                ]                   
+                            ],  
+                            extras:[
+                                {},
+                                {
+                                    bool:'false'
+                                },
+                                {}                                                         
+                            ],                        
+                            generator:this.appConsecutiveGenerator
+                    },                                                                                                                   
+                ]
+            ],
+            generator:(function(){
+                return function *generator() {
+                    var index = 1;
+                    while (true)
+                    yield index;
+                }()
+            })()             
+        }                
         wordsComponentMonitor:any = {
         }        
         //

@@ -5,7 +5,9 @@ import {   WINDOW   } from '../window.service';
 import {   fromEvent,interval   } from 'rxjs';
 import {   take,timeout   } from 'rxjs/operators';
 import {   zChildren,numberParse,getTextWidth,xPosition,resize   } from '../customExports'
-
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import * as firebase from 'firebase';
 
 
 @Component({
@@ -21,7 +23,9 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
     constructor(
         private wordsService: WordsService,
         @Inject(WINDOW) private window: Window,
-        private ref: ChangeDetectorRef
+        private ref: ChangeDetectorRef,
+        private db:AngularFireDatabase,
+        public afAuth: AngularFireAuth
     ) { }
 
     
@@ -36,8 +40,138 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
         this.wordsService.wordsLoadEvent$ = fromEvent(this.window ,'load');
         this.wordsService.wordsResizeEvent$ = fromEvent(this.window,'resize');
     
+        if(   this.wordsTemplateVariable === 'wordsComponentObject10'   ){
 
-        if(   this.wordsTemplateVariable === 'wordsComponentObject0'   ){
+
+            let zChild:zChildren[] =[{
+                element: this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+'],[id^="root"]') ,
+                style:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngStyle[0][0],
+                cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[0][0].ngCssDefault[0][0]
+            }]          
+            // console.log(   this.window.document.querySelector('app-words[ng-reflect-words-template-variable='+this.wordsTemplateVariable+']')  ) 
+            // console.log(this.wordsMyElements._results)
+            // console.log(zChild)
+            let zCheckpoint = []                         
+            this.wordsMyElements._results.map((x:any,i:any)=>{
+
+
+                if(   x.nativeElement.id === 'w_o_r_d_s_Board'   ){
+                    zCheckpoint.push(i)
+                }    
+                
+                
+                if(    x.nativeElement.id === 'w_o_r_d_s_SubTitle'   ){
+                    zCheckpoint.push(i)
+                }              
+
+            })
+            // console.log(zCheckpoint)
+            let zGrid = {
+                a:0, 
+                b:0, 
+                c:0,
+                d:0,
+                e:null,
+                f:null
+            }                  
+            zCheckpoint.map((y:any,j:any)=>{
+                // console.group('associated')
+                // console.log(    this.wordsMyElements._results.slice(y,zCheckpoint[j+1])   )
+                zGrid.a = 0;
+                (function(qq){
+                    return qq.wordsMyElements._results.length === 1 ? qq.wordsMyElements._results : qq.wordsMyElements._results.slice(y,zCheckpoint[j+1])
+                })(this).map((x:any,i:any)=>{     
+                    // console.log(   x.nativeElement.id   )
+                    // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].val  )
+
+                    while(   
+                        this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b] === undefined &&   
+                        zGrid.b +1 > this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a].length
+                    ){
+                        // console.log(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a]   )
+                        zGrid.a +=1
+                        // debugger                                
+                    }
+                    // console.log(   
+                    //     this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a],   
+                    //     zChild,
+                    //     zGrid
+                    // )
+
+
+                    if(   x.nativeElement.id === this.wordsService[this.wordsTemplateVariable].quantity[1][j].val[zGrid.a][zGrid.b]   &&
+                        (   
+                            this.wordsService[this.wordsTemplateVariable].quantity[1][j].bool[zGrid.a][zGrid.b] !== 'false'
+                        )    
+                    ){               
+                        
+                        
+                        zChild.push({
+                            element:x.nativeElement,
+                            style:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngStyle[zGrid.a][zGrid.b],
+                            innerText: this.wordsService[this.wordsTemplateVariable].quantity[1][j].text[zGrid.a][zGrid.b],
+                            cssDefault:this.wordsService[this.wordsTemplateVariable].quantity[1][j].ngCssDefault[zGrid.a][zGrid.b],
+                        })
+                        
+
+                        if(   this.wordsService[this.wordsTemplateVariable].quantity[1][j].quantity[zGrid.a][zGrid.b+1] === undefined   ){
+
+
+                            zGrid.a += 1
+                            zGrid.b = 0       
+                            
+                            
+                        }
+
+
+                        
+                        else if(   true   ){
+
+
+                            zGrid.b += 1       
+                            
+                            
+                        }
+
+
+                    }
+                    
+                    
+                })
+                // console.groupEnd()
+            })
+            console.log(zChild)
+            zChild[3].element = this.window.document.getElementById(zChild[3].element.id) as HTMLInputElement
+            //for some annoying reason
+            firebase.messaging().requestPermission()
+            // Notification permission granted.
+            .then(() => this.saveMessagingDeviceToken())
+            .catch((err) => {
+            console.log('Unable to get permission to notify.');
+            console.error(err);
+            });            
+            this.wordsService.wordsClickEventSubscription1 = fromEvent(zChild[4].element,'click').subscribe((event)=>{
+                console.log(zChild[3].element['value'])
+                const messages = this.db.list('/messages');
+                messages.push({
+                    name: 'tryme',
+                    text: zChild[3].element['value'],
+                    photoUrl: 'n/a'
+                  }).then(() => {
+                    zChild[3].element['value'] = ''
+                    this.ref.detectChanges()
+                  }, (err) => {
+                    zChild[3].element['value'] = ''
+                    this.ref.detectChanges()                      
+                    console.error(err);
+                  });                
+            })
+
+            
+        } 
+
+
+        else if(   this.wordsTemplateVariable === 'wordsComponentObject0'   ){
 
 
             let zChild: zChildren[] =[{
@@ -4427,6 +4561,26 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
         
         
     }
+
+    saveMessagingDeviceToken() {
+        return firebase.messaging().getToken()
+          .then((currentToken) => {
+            if (currentToken) {
+              console.log('Got FCM device token:', currentToken);
+              // Save the Device Token to the datastore.
+              firebase.database()
+                .ref('/fcmTokens')
+                .child(currentToken)
+            } else {
+              // Need to request permissions to show notifications.
+             
+            }
+          }).catch((err) => {
+            console.log('unabke to get token');
+            console.warn(err);
+          });
+      };
+    
 }
 
 

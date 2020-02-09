@@ -1,5 +1,8 @@
 import {   WINDOW   } from './window.service';
 import {defer} from 'rxjs'
+import {  HttpClient, HttpHeaders,HttpXhrBackend,   }    from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
+
 export class zChildren {
     element:  HTMLElement;
     style:Object | any;
@@ -10,7 +13,42 @@ export class zChildren {
     quantity?:any;
     mouseover?:any;
     mouseout?:any;
+    Ielement?:any
 }
+
+
+
+let http = new HttpClient(new HttpXhrBackend({ build: () => new XMLHttpRequest() }));
+let final:any = {}; 
+
+
+function wait(   ms   ){
+    var start = new Date().getTime();
+    var end = start;
+    while(   end < start + ms   ) {
+      end = new Date().getTime();
+    }
+ }
+
+
+export var firebase =  (()=>{
+    let xhr = new XMLHttpRequest();
+    xhr.onload= ()=>{
+        let a = JSON.parse(xhr.response)
+        final.apiKey = a.AF_APIKEY
+        final.authDomain = a.AF_AUTHDOMAIN
+        final.databaseURL = a.AF_DATABASEURL
+        final.projectId = a.AF_PROJECTID
+        final.storageBucket = a.AF_STORAGEBUCKET
+        final.messagingSenderId = a.AF_GCM_SENDER_ID
+        final.appId = a.AF_APPID
+        final.measurementId = 'null'        
+    }    
+    xhr.open('get', 'http://localhost:3001/env', false)
+    xhr.send()
+    return final
+})() 
+
 
 export function asyncData<T>(data: T) {
     return defer(() => Promise.resolve(data));
@@ -996,3 +1034,227 @@ function appGenerateSelector(   devObj   ){
     return string.slice(0,-1)
 }
 
+
+var defaultCO:componentObject 
+// {
+//     metadata:{
+
+//     },
+//     quantity:[
+//         [
+//             {
+//                 quantity:[[3]],
+//                 bool:[['true']], 
+//                 val:[
+//                     ['_App']
+//                 ], 
+//                 text:[
+//                         []
+//                 ],
+//                 metadata:{
+//                     mouseover:[
+//                         [],
+//                         [],
+//                         []
+//                     ],
+//                     mouseout:[
+//                         [],
+//                         [],
+//                         []
+//                     ]                            
+//                 },
+//                 ngStyle:[
+//                     [
+//                         {
+//                             position:'absolute',
+//                             top:'0px',
+//                             width:'100%',
+//                             'z-index':'1'
+//                         }
+//                     ]                         
+//                 ],
+//                 ngCssDefault:[
+//                     [
+//                         {
+//                             position:'absolute',
+//                             top:'0px',
+//                             width:'100%',
+//                             'z-index':'1'
+//                         }
+//                     ]                         
+//                 ],                   
+//                 extras:[
+//                     {},                        
+//                 ]
+//             }                    
+//         ],
+//         [
+//             {
+//                 signature:'containing',
+//                 quantity:[[3]],
+//                 bool:[['div']], 
+//                 val:[
+//                     ['_Board'],
+//                 ], 
+//                 text:[
+//                     [],
+//                 ],
+//                 metadata:{
+//                     CO10:new Subject<any>(),
+//                     mouseover:[
+//                         [],
+//                         [],
+//                         []
+//                     ],
+//                     mouseout:[
+//                         [],
+//                         [],
+//                         []
+//                     ]                                                               
+//                 },
+//                 ngStyle:[
+//                     [
+//                         {
+//                             position:'absolute',
+//                             height:'750px',
+//                             width:'100%',
+//                             'z-index':'1',
+//                             // 'background-color':'rgb(255, 192, 203)',
+//                             top:'0px'
+//                         }
+//                     ]                    
+//                 ],
+//                 ngCssDefault:[
+//                     [
+//                         {
+//                             position:'absolute',
+//                             height:'700px',
+//                             width:'100%',
+//                             'z-index':'1',
+//                             // 'background-color':'rgb(255, 192, 203)',
+//                             top:'0px'
+//                         }
+//                     ]                    
+//                 ],                   
+//                 extras:[
+//                     {}                       
+//                 ]
+//             },                     
+//             {
+//                     signature:'content',
+//                     quantity:[[],[3],[3]],
+//                     bool:[[],['h1'],['div']], 
+//                     val:[
+//                         [],
+//                         [
+//                         '_SubTitle'                             
+//                         ],
+//                         [
+//                             '_Menu',
+//                         ]
+//                     ], 
+//                     text:[
+//                         [],
+//                         [
+//                             "my componentObject works",
+//                         ],
+//                         []
+//                     ],
+//                     metadata:{
+//                         mouseover:[
+//                             [],
+//                             [],
+//                             [
+//                                 {
+//                                     fn:null,
+                                    
+//                                 }, 
+//                                 {
+//                                     fn:null,
+                                    
+//                                 }, 
+//                                 {
+//                                     fn:null,
+                                    
+//                                 },                                                                                                                          
+//                             ]
+//                         ],
+//                         mouseout:[
+//                             [],
+//                             [],
+//                             [
+//                                 {
+//                                     fn:null,
+                                    
+//                                 }, 
+//                                 {
+//                                     fn:null,
+                                    
+//                                 }, 
+//                                 {
+//                                     fn:null,
+                                    
+//                                 },                                                                                                                          
+//                             ]
+//                         ]                                
+//                     },
+//                     ngStyle:[
+//                         [],
+//                         [
+//                             {
+//                                 position:'absolute',
+//                                 'z-index':'2',
+//                                 'font-family':'Montserrat',
+//                                 'left':'32.5px'
+//                             }                                                                                                                                                                                                                                                        
+//                         ],
+//                         [
+//                             {
+//                                 position:'absolute',
+//                                 height:'750px',
+//                                 width:'250px',
+//                                 'z-index':'1',
+//                                 'background-color':'rgb(255, 192, 203)',
+//                                 top:'0px'
+//                             }                                                                        
+//                         ]                    
+//                     ],  
+//                     ngCssDefault:[
+//                         [],
+//                         [
+//                             {
+//                                 position:'absolute',
+//                                 'z-index':'2',
+//                                 'font-family':'Montserrat',
+//                                 'left':'32.5px'
+//                             }                                                                                                                                                                                                                                                        
+//                         ],
+//                         [
+//                             {
+//                                 position:'absolute',
+//                                 height:'750px',
+//                                 width:'250px',
+//                                 'z-index':'1',
+//                                 'background-color':'rgb(255, 192, 203)',
+//                                 top:'0px'
+//                             }                                                                        
+//                         ]                    
+//                     ],     
+//                     extras:[
+//                         {},
+//                         {
+//                             bool:'false'
+//                         }                         
+//                     ],                        
+//                     generator:this.appConsecutiveGenerator
+//             },                                                                                                                   
+//         ]
+//     ],
+//     generator:(function(){
+//         return function *generator() {
+//             var index = 1;
+//             while (true)
+//             yield index;
+//         }()
+//     })()             
+// }      

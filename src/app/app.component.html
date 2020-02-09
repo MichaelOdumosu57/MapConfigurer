@@ -45,6 +45,11 @@
 <ng-container *ngIf ="wordsService.appCurrentNav  === '/contact'">
     <app-navigation   [navigationTemplateVariable] = '"navigationComponentObject0"' #appNavigationVal0  [ngStyle] = 'wordsService.navigationComponentObject0.quantity[0][0].ngStyle[0][0]' ></app-navigation>
     <app-overlay [overlayTemplateVariable]= '"overlayComponentObject2"' #appOverlayVal2 [ngStyle] = 'wordsService.overlayComponentObject2.quantity[0][0].ngStyle[0][0]'></app-overlay>
-    <app-words   [wordsTemplateVariable] = '"wordsComponentObject9"' #appWordsVal8 [ngStyle] = 'wordsService.wordsComponentObject9.quantity[0][0].ngStyle[0][0]'  ></app-words>       
+    <app-words   [wordsTemplateVariable] = '"wordsComponentObject9"' #appWordsVal9 [ngStyle] = 'wordsService.wordsComponentObject9.quantity[0][0].ngStyle[0][0]'  ></app-words>       
     <app-footer  [footerTemplateVariable] = '"footerComponentObject0"' #appFooterVal0 [ngStyle] = 'wordsService.footerComponentObject0.quantity[0][0].ngStyle[0][0]' ></app-footer>
+</ng-container>
+
+
+<ng-container *ngIf ="wordsService.appCurrentNav  === '/firebase'">
+    <app-words   [wordsTemplateVariable] = '"wordsComponentObject10"' #appWordsVal10 [ngStyle] = 'wordsService.wordsComponentObject10.quantity[0][0].ngStyle[0][0]'  ></app-words>       
 </ng-container>

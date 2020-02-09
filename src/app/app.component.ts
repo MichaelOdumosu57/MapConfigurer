@@ -19,6 +19,7 @@ window.Modernizr = window.Modernizr || {}
 })
 
 
+
 export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
     
     // @ViewChildren(appGenerateSelector({val:'appWordsVal',times:3}), { read: ElementRef })  app_wordsConponentElements: any;
@@ -48,7 +49,8 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
             this.window.name !== '/services'   &&
             this.window.name !== '/projects'   &&
             this.window.name !== '/blog'   &&  
-            this.window.name !== '/contact'                         
+            this.window.name !== '/contact' &&  
+            this.window.name !== '/firebase'                          
         ){   
  
 
@@ -495,8 +497,74 @@ export class AppComponent implements OnInit,AfterViewInit,OnDestroy {
 
             }    
             
+            if(   this.wordsService.appCurrentNav === '/firebase'   ){
+
+
+                let arr = [
+                    'wordsComponentObject10',
+                ].sort()
+                this.wordsService.appViewCompleteArray = this.wordsService.appViewCompleteArray.sort()
+                // console.log(    arr.filter((x,i) =>{ 
+                //     return this.wordsService.appViewCompleteArray[i] !== x 
+                // }),
+                // arr,
+                // this.wordsService.appViewCompleteArray
+                // )
+
+
+                if(
+                    arr.filter((x,i) =>{ 
+                        return this.wordsService.appViewCompleteArray[i] !== x 
+                    }).length === 0 && arr.length === this.wordsService.appViewCompleteArray.length
+                ){
+
+                    
+                    console.log('dispatched')
+                    try{
+                        let event = new Event('resize')
+                        this.window.dispatchEvent(event)      
+                        this.window.dispatchEvent(event) 
+                        fromEvent(this.window,'load').subscribe(()=>{
+                            this.window.dispatchEvent(event)      
+                            this.window.dispatchEvent(event)                             
+                        })                        
+                    }
+                    catch(e){
+                        let eventLegacyLoad = this.window.document.createEvent("Event");
+                        eventLegacyLoad.initEvent("resize", false, true);
+                        try{
+                        this.window.dispatchEvent(    eventLegacyLoad    )
+                        this.window.dispatchEvent(    eventLegacyLoad    )   
+                        fromEvent(this.window,'load').subscribe(()=>{
+                            this.window.dispatchEvent(eventLegacyLoad)      
+                            this.window.dispatchEvent(eventLegacyLoad)                             
+                        })        
+                        }                
+                        catch(e){
+                            this.window.dispatchEvent(    eventLegacyLoad    )
+                            this.window.dispatchEvent(    eventLegacyLoad    )                               
+                        }
+                    } 
+                    this.wordsService.appViewCompleteArray = []
+
+
+                    if(   this.wordsService.appReloaded === 'true'){
+
+
+                        this.wordsService.appReloaded = 'false'
+        
+        
+                    } 
+
+                    
+                }
+
+
+            }               
             
         })
+
+        console.log(this.window.location.pathname)
     }
 
     ngAfterViewInit(){
