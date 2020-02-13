@@ -54,8 +54,8 @@ export var firebase =  (()=>{
         // console.log(e)
         //try to silence zone.js error
     }        
-    xhr.open('GET', 'sortforyou.com/env', false)
-    xhr.open('GET', 'http://localhost:3001/env', false)
+    // xhr.open('GET', '/env', false)
+    xhr.open('GET', 'http://localhost:8000/env', false)
     xhr.send()
     return final
 })() 
