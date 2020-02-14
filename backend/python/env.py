@@ -4,7 +4,7 @@ from urllib import parse
 import os
 import json 
 
-PORT = 8000
+
 
 
 
@@ -27,8 +27,6 @@ class my_base_handler(http.server.BaseHTTPRequestHandler):
             ]            
         )        
         if(   self.path == '/env'):
-            message_parts.append('')
-            message = '\r\n'.join(message_parts)
             self.send_response(200)
             self.send_header('Content-Type',
                             'application/json; charset=utf-8')
@@ -40,7 +38,9 @@ class my_base_handler(http.server.BaseHTTPRequestHandler):
 
 Handler =  my_base_handler
 
-with http.server.HTTPServer(("", PORT), Handler) as httpd:
+if __name__ == "__main__":
+    httpd = http.server.HTTPServer(("", 3001), Handler) 
     print("serving at port", PORT)
     httpd.serve_forever()
+
 
