@@ -8,17 +8,17 @@ var messaging
 let xhr = new XMLHttpRequest();
 xhr.onload= ()=>{
     let a = JSON.parse(xhr.response)
-    final.apiKey = a.AF_APIKEY
-    final.authDomain = a.AF_AUTHDOMAIN
-    final.databaseURL = a.AF_DATABASEURL
-    final.projectId = a.AF_PROJECTID
-    final.storageBucket = a.AF_STORAGEBUCKET
-    final.messagingSenderId = a.AF_GCM_SENDER_ID
-    final.appId = a.AF_APPID
+    final.apiKey = _APIKEY
+    final.authDomain = _AUTHDOMAIN
+    final.databaseURL = _DATABASEURL
+    final.projectId = _PROJECTID
+    final.storageBucket = _STORAGEBUCKET
+    final.messagingSenderId = _GCM_SENDER_ID
+    final.appId = _APPID
     final.measurementId = 'null'   
     firebase.initializeApp(final)    
 }    
-xhr.open('get', 'http://localhost:3001/env', false)
+xhr.open('get', 'env-auth', false)
 xhr.send()
 
 console.log(messaging) 

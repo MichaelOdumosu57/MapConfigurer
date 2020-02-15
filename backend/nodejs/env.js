@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = 3001
 const file_name = __filename.split("/")[__filename.split("/").length-1].split(".js")[0]
 const path = require('path')
 const fs = require('fs');
@@ -10,24 +9,24 @@ app.use(compression())
 app.use(cors())
 // console.log(process.env)
 
-app.get('/env', function (req, res, next) {
+app.get('/env-auth', function (req, res, next) {
     let  { 
-        AF_APIKEY,
-        AF_APPID,
-        AF_AUTHDOMAIN,
-        AF_DATABASEURL,
-        AF_GCM_SENDER_ID,
-        AF_PROJECTID,
-        AF_STORAGEBUCKET
+        _APIKEY,
+        _APPID,
+        _AUTHDOMAIN,
+        _DATABASEURL,
+        _GCM_SENDER_ID,
+        _PROJECTID,
+        _STORAGEBUCKET
     } = process.env
     let needed = { 
-        AF_APIKEY,
-        AF_APPID,
-        AF_AUTHDOMAIN,
-        AF_DATABASEURL,
-        AF_GCM_SENDER_ID,
-        AF_PROJECTID,
-        AF_STORAGEBUCKET
+        _APIKEY,
+        _APPID,
+        _AUTHDOMAIN,
+        _DATABASEURL,
+        _GCM_SENDER_ID,
+        _PROJECTID,
+        _STORAGEBUCKET
     } 
     // console.log('got a request from env')
     res.json(needed)  

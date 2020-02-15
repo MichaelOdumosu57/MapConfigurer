@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = 3000
 const file_name = __filename.split("/")[__filename.split("/").length-1].split(".js")[0]
 const path = require('path')
 const fs = require('fs');
@@ -40,8 +39,7 @@ app.post('/backend', function (req, res, next) {
 });
 
 app.get('/backend', function (req, res, next) {
-
-  res.sendFile('/home/uoul/My_Computer/Projects/WindsorEmpire/angularv8.3.22/AngularWindsorEmpire/.circleci/config.yml')  
+ 
 });
 
 

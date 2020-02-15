@@ -5,9 +5,7 @@ import {   WINDOW   } from '../window.service';
 import {   fromEvent,interval   } from 'rxjs';
 import {   take,timeout   } from 'rxjs/operators';
 import {   zChildren,numberParse,getTextWidth,xPosition,resize   } from '../customExports'
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import * as firebase from 'firebase';
+
 
 
 @Component({
@@ -23,9 +21,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
     constructor(
         private wordsService: WordsService,
         @Inject(WINDOW) private window: Window,
-        private ref: ChangeDetectorRef,
-        private db:AngularFireDatabase,
-        public afAuth: AngularFireAuth
+        private ref: ChangeDetectorRef
     ) { }
 
     
@@ -152,25 +148,6 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
             // });            
             this.wordsService.wordsClickEventSubscription1 = fromEvent(zChild[4].element,'click').subscribe((event)=>{
                 console.log(zChild[3].element['value'])
-                const messages = this.db.list('/messages');
-                console.log(messages)
-                var query  = messages.valueChanges()
-                query.subscribe((e)=>{
-                    console.log(e)
-                })                
-                messages.push({
-                    name: 'tryme',
-                    text: zChild[3].element['value'],
-                    photoUrl: 'n/a'
-                  }).then(() => {
-                    zChild[3].element['value'] = ''
-                    this.ref.detectChanges()
-                  }, (err) => {
-                    zChild[3].element['value'] = ''
-                    this.ref.detectChanges()                      
-                    console.error(err);
-                  }); 
-
 
                 // var query = firebase.firestore().collection('messages').orderBy('timestamp', 'desc').limit(12);
                
@@ -4573,25 +4550,7 @@ export class WordsComponent implements OnInit,AfterViewInit,OnDestroy {
         
     }
 
-    saveMessagingDeviceToken() {
-        return firebase.messaging().getToken()
-          .then((currentToken) => {
-            if (currentToken) {
-              console.log('Got FCM device token:', currentToken);
-              // Save the Device Token to the datastore.
-              firebase.database()
-                .ref('/fcmTokens')
-                .child(currentToken)
-            } else {
-              // Need to request permissions to show notifications.
-             
-            }
-          }).catch((err) => {
-            console.log('unabke to get token');
-            console.warn(err);
-          });
-      };
-    
+
 }
 
 

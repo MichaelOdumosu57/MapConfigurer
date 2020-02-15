@@ -1,7 +1,5 @@
 import {   WINDOW   } from './window.service';
 import {defer} from 'rxjs'
-import {  HttpClient, HttpHeaders,HttpXhrBackend,   }    from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
 import { NgZone } from '@angular/core' ; 
 
 let Zone = new NgZone({
@@ -57,7 +55,7 @@ export var firebase =  (()=>{
     xhr.open('GET', '/env', false)
     xhr.send()
     return final
-})() 
+})
 
 
 export function asyncData<T>(data: T) {
